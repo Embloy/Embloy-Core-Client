@@ -1,21 +1,36 @@
-import { redirect } from "next/navigation"
+"use client"
 
-// import { db } from "@/lib/db"
+import { redirect } from "next/navigation"
+import { useEffect, useState } from 'react';
 import { getCurrentUser } from "@/lib/api/session"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { DashboardHeader } from "@/components/header"
 import { PostCreateButton } from "@/components/post-create-button"
 import { DashboardShell } from "@/components/shell"
 
-export const metadata = {
-  title: "Dashboard",
-}
-
 export default async function DashboardPage() {
-  const user = await getCurrentUser()
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const currentUser = await getCurrentUser();
+      setIsLoading(false);
+      if (currentUser) {
+        setUser(currentUser);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  if (isLoading) {
+    // You can return a loading spinner here
+    return null;
+  }
 
   if (!user) {
-    redirect("/login")
+    redirect("/login");
   }
 
   const posts = []

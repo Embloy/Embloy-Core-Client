@@ -1,7 +1,9 @@
-import { notFound, redirect } from "next/navigation"
+"use client"
 
+import { notFound, redirect } from "next/navigation"
 import { dashboardConfig } from "@/config/dashboard"
-import { getCurrentUser } from "@/lib/api/session"
+import { useEffect, useState } from 'react';
+import { getCurrentUser, User } from '@/lib/api/session';
 import { MainNav } from "@/components/main-nav"
 import { DashboardNav } from "@/components/nav"
 import { SiteFooter } from "@/components/site-footer"
@@ -11,15 +13,31 @@ interface DashboardLayoutProps {
   children?: React.ReactNode
 }
 
-export default async function DashboardLayout({
-  children,
-}: DashboardLayoutProps) {
-  const user = await getCurrentUser()
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const currentUser = await getCurrentUser();
+      setIsLoading(false);
+      if (currentUser) {
+        setUser(currentUser);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  if (isLoading) {
+    // You can return a loading spinner here
+    return null;
+  }
 
   if (!user) {
-    // return notFound()
-    redirect("/login")
+    redirect("/login");
   }
+
 
   return (
     <div className="flex min-h-screen flex-col space-y-6">

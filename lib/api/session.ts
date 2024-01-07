@@ -1,6 +1,7 @@
 // /lib/api/session.ts
 import { siteConfig } from '@/config/site';
 import { getAccessToken, clearUserSession } from './auth';
+import { getUserData } from './user';
 
 // Define your own user type
 export interface User {
@@ -35,38 +36,32 @@ export interface User {
 }
 
 export async function getSession(): Promise<{ user: User } | null> {
-  const accessToken = getAccessToken();
-
-  if (accessToken) {
-    try {
-      // Example: Make a GET request to the user endpoint of your external API
-      const response = await fetch(`${siteConfig.api_url}/user`, {
-        method: 'GET',
-        headers: {
-          "access_token": `${accessToken}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data');
-      }
-
-      const user: User = await response.json();
-      return { user };
-    } catch (error) {
-      // Handle error (e.g., token expiration)
-      // You might want to refresh the token and retry the request
-      // For simplicity, we'll clear the session here
-      clearUserSession();
-      return null;
+  console.log('getSession is called');
+  let accessToken;
+  try {
+    const accessToken = await getAccessToken();
+    console.log(`accessToken=${accessToken}`)
+    if (accessToken) {
+      const userData = await getUserData(accessToken);
+      console.log(`user=${userData.user}`)
+      return { user: userData.user };
     }
+  } catch (error) {
+    console.error("Error getting user data:", error);
+    clearUserSession();
+    return null;
   }
-
-  return null;
 }
 
 export async function getCurrentUser(): Promise<User | null> {
-  const session = await getSession();
+  console.log('getCurrentUser is called');
+  let session;
+  try {
+    session = await getSession();
+  } catch (error) {
+    console.error("Error getting session:", error);
+    return null;
+  }
 
   if (session) {
     return session.user;

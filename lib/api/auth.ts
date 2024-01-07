@@ -2,6 +2,7 @@
 
 import { siteConfig } from "@/config/site";
 import Cookies from 'js-cookie';
+import { redirect } from 'next/navigation';
 
 export async function login(username: string, password: string): Promise<void> {
   const encodedCredentials = btoa(`${username}:${password}`);
@@ -27,9 +28,11 @@ export async function login(username: string, password: string): Promise<void> {
 }
 
 export async function getAccessToken(): Promise<string | null> {
+  console.log('getAccessToken is called');
   const refreshToken = Cookies.get('refresh_token');
 
   if (!refreshToken) {
+    console.log('refresh_token is null');
     return null;
   }
 

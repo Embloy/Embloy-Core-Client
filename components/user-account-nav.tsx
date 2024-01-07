@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { User } from "lib/api/session"
-import { signOut } from "next-auth/react"
+import { User } from "@/lib/api/session"
+import { logout } from "@/lib/api/auth"
 
 import {
   DropdownMenu,
@@ -53,7 +53,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           className="cursor-pointer"
           onSelect={(event) => {
             event.preventDefault()
-            signOut({
+            logout({
               callbackUrl: `${window.location.origin}/login`,
             })
           }}
