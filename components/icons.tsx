@@ -28,8 +28,6 @@ import {
 
 import { Logo } from './ui/command' // adjust the path according to your project structure
 
-import { useTheme } from 'next-themes';
-
 export type Icon = LucideIcon
 
 

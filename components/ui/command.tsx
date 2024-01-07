@@ -11,9 +11,8 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image'
 
 const Logo = ({ size = 30, ...props }) => {
-  const { theme } = useTheme();
-  const logoSrc = theme == 'dark' ? 'https://raw.githubusercontent.com/Embloy/Embloy-Core-Server/master/app/assets/images/logo-dark.svg' : 'https://raw.githubusercontent.com/Embloy/Embloy-Core-Server/master/app/assets/images/logo-dark.svg';
-  
+  const { resolvedTheme } = useTheme();
+  const logoSrc = resolvedTheme === 'dark' ? 'https://raw.githubusercontent.com/Embloy/Embloy-Core-Server/master/app/assets/images/logo-dark.svg' : 'https://raw.githubusercontent.com/Embloy/Embloy-Core-Server/master/app/assets/images/logo-light.svg';  
   return (
     <Image src={logoSrc} alt="logo" width={size} height={size} {...props} />
   );
