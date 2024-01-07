@@ -51,6 +51,7 @@ export async function getSession(): Promise<{ user: User } | null> {
     clearUserSession();
     return null;
   }
+  return null;
 }
 
 export async function getCurrentUser(): Promise<User | null> {

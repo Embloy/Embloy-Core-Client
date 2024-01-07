@@ -53,9 +53,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           className="cursor-pointer"
           onSelect={(event) => {
             event.preventDefault()
-            logout({
-              callbackUrl: `${window.location.origin}/login`,
-            })
+            logout()
           }}
         >
           Sign out

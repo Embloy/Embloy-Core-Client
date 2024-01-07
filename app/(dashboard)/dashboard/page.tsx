@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation"
 import { useEffect, useState } from 'react';
-import { getCurrentUser } from "@/lib/api/session"
+import { getCurrentUser, User } from "@/lib/api/session"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { DashboardHeader } from "@/components/header"
 import { PostCreateButton } from "@/components/post-create-button"
