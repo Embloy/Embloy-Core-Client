@@ -1,6 +1,8 @@
-import { redirect } from "next/navigation"
+"use client"
 
-import { getCurrentUser } from "@/lib/api/session"
+import { redirect } from "next/navigation"
+import { useEffect, useState } from 'react';
+import { getCurrentUser, User } from "@/lib/api/session"
 import { stripe } from "@/lib/api/stripe"
 import { getUserSubscriptionPlan } from "@/lib/api/subscription"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -16,28 +18,41 @@ import { DashboardHeader } from "@/components/header"
 import { Icons } from "@/components/icons"
 import { DashboardShell } from "@/components/shell"
 
-export const metadata = {
-  title: "Billing",
-  description: "Manage billing and your subscription plan.",
-}
-
 export default async function BillingPage() {
-  const user = await getCurrentUser()
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const currentUser = await getCurrentUser();
+      setIsLoading(false);
+      if (currentUser) {
+        setUser(currentUser);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  if (isLoading) {
+    // You can return a loading spinner here
+    return null;
+  }
 
   if (!user) {
-    redirect("/login")
+    redirect("/login");
   }
 
   const subscriptionPlan = await getUserSubscriptionPlan()
 
   // If user has a pro plan, check cancel status on Stripe.
   let isCanceled = false
-  if (subscriptionPlan.isPro && subscriptionPlan.stripeSubscriptionId) {
+  /*if (subscriptionPlan.isPro && subscriptionPlan.stripeSubscriptionId) {
     const stripePlan = await stripe.subscriptions.retrieve(
       subscriptionPlan.stripeSubscriptionId
     )
     isCanceled = stripePlan.cancel_at_period_end
-  }
+  }*/
 
   return (
     <DashboardShell>

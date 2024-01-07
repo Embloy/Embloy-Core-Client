@@ -21,11 +21,11 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: "Applications",
-      href: "/dashboard",
+      href: "/dashboard/applications",
       icon: "post",
     },
     {
-      title: "Preferences",
+      title: "Billing",
       href: "/dashboard/billing",
       icon: "billing",
     },
