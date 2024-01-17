@@ -18,7 +18,7 @@ export default function PricingPage() {
         <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
           For applicants, Embloy is 100% free.</p>
         <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-          Job providers can request a basic subscription for an application if they want to verify that a user is "real" in which case the applicant will have to subscribe to Embloy-Free.
+          Job providers can request a basic subscription for an application if they want to verify that a user is &quot;real&quot; in which case the applicant will have to subscribe to Embloy-Free.
         </p>
       </div>
       <div className="grid w-full items-start gap-10 rounded-lg border p-10 md:grid-cols-[1fr_200px]">
