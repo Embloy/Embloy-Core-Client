@@ -22,6 +22,7 @@ import {
   Trash,
   Twitter,
   User,
+  Timer,
   X,
   type Icon as LucideIcon,
 } from "lucide-react"
@@ -71,5 +72,6 @@ export const Icons = {
     </svg>
   ),
   twitter: Twitter,
+  timer: Timer,
   check: Check,
 }

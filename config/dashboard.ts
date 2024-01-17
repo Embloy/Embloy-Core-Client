@@ -4,31 +4,34 @@ import { siteConfig } from "./site"
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
-      title: "Developer",
+      title: "Embloyers",
+      href: siteConfig.links.genius,
+    },
+    {
+      title: "Developers",
       href: siteConfig.links.developer,
     },
     {
-      title: "Support",
-      href: "/support",
-      disabled: true,
+      title: "About",
+      href: siteConfig.links.about,
     },
   ],
   sidebarNav: [
     {
       title: "Upcoming Jobs",
       href: "/dashboard",
-      icon: "post",
+      icon: "timer",
     },
     {
       title: "Applications",
       href: "/dashboard/applications",
       icon: "post",
     },
-    {
+/*    {
       title: "Billing",
       href: "/dashboard/billing",
       icon: "billing",
-    },
+    },*/  
     {
       title: "Settings",
       href: "/dashboard/settings",

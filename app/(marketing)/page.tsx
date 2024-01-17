@@ -58,12 +58,12 @@ export default async function IndexPage() {
               Get Started
             </Link>
             <Link
-              href={siteConfig.links.github}
+              href={siteConfig.links.genius}
               target="_blank"
               rel="noreferrer"
               className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
             >
-              GitHub
+              For Companies
             </Link>
           </div>
         </div>

@@ -2,10 +2,9 @@
 
 import { siteConfig } from "@/config/site";
 import Cookies from 'js-cookie';
-import { redirect } from 'next/navigation';
 
-export async function login(username: string, password: string): Promise<void> {
-  const encodedCredentials = btoa(`${username}:${password}`);
+export async function login(email: string, password: string): Promise<void> {
+  const encodedCredentials = btoa(`${email}:${password}`);
 
   const responseRt = await fetch(`${siteConfig.api_url}/user/auth/token/refresh`, {
     method: 'POST',
@@ -13,7 +12,7 @@ export async function login(username: string, password: string): Promise<void> {
       'Content-Type': 'application/json',
       'Authorization': `Basic ${encodedCredentials}`
     },
-    body: JSON.stringify({ email: username, password: password })
+    body: JSON.stringify({ email: email, password: password })
   })
 
   const rtResult = await responseRt.json()
@@ -22,7 +21,53 @@ export async function login(username: string, password: string): Promise<void> {
     throw new Error('Authentication failed');
   }
 
-  Cookies.set('refresh_token', rtResult.refresh_token);
+  Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'None', secure: true });
+
+  await getAccessToken();
+}
+
+export async function signup(email: string, firstName: string, lastName: string, password: string, passwordConfirmation: string): Promise<void> {
+  const response = await fetch(`${siteConfig.api_url}/user`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user: {
+        email: email,
+        first_name: firstName,
+        last_name: lastName,
+        password: password,
+        password_confirmation: passwordConfirmation
+      }
+    })
+  })
+
+  if (!response.ok) {
+    throw new Error('Account Creation Failed');
+  }
+
+  await verify(email, password);
+}
+
+export async function verify(email: string, password: string): Promise<void> {
+  const encodedCredentials = btoa(`${email}:${password}`);
+
+  const responseRt = await fetch(`${siteConfig.api_url}/user/verify`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Basic ${encodedCredentials}`
+    },
+  })
+
+  const rtResult = await responseRt.json()
+
+  if (!rtResult || !rtResult?.refresh_token) {
+    throw new Error('Authentication failed');
+  }
+
+  Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'None', secure: true });
 
   await getAccessToken();
 }
@@ -51,7 +96,7 @@ export async function getAccessToken(): Promise<string | null> {
   }
 
   const accessToken = atResult.access_token;
-  Cookies.set('access_token', accessToken);
+Cookies.set('access_token', accessToken, { sameSite: 'None', secure: true });
 
   return accessToken;
 }

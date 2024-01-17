@@ -3,7 +3,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
-import { UserAuthForm } from "@/components/user-auth-form"
+import { UserSignUpForm } from "@/components/user-signup-form"
 
 export const metadata = {
   title: "Create an account",
@@ -31,10 +31,10 @@ export default function RegisterPage() {
               Create an account
             </h1>
             <p className="text-sm text-muted-foreground">
-              Enter your email below to create your account
+              Enter your name and email below to create your account
             </p>
           </div>
-          <UserAuthForm />
+          <UserSignUpForm />
           <p className="px-8 text-center text-sm text-muted-foreground">
             By clicking continue, you agree to our{" "}
             <Link

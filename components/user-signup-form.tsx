@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { login } from '@/lib/api/auth';
+import { signup } from '@/lib/api/auth';
 import { cn } from "@/lib/utils"
-import { userAuthSchema } from "@/lib/validations/auth"
+import { userSignUpSchema } from "@/lib/validations/auth"
 import { buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -15,17 +15,17 @@ import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { useRouter } from "next/navigation"
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserSignUpFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-type FormData = z.infer<typeof userAuthSchema>
+type FormData = z.infer<typeof userSignUpSchema>
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(userAuthSchema),
+    resolver: zodResolver(userSignUpSchema),
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
@@ -35,12 +35,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     setIsLoading(true)
 
     try {
-      await login(data.email, data.password);
+      await signup(data.email, data.firstName, data.lastName, data.password, data.passwordConfirmation);
       // Redirect to dashboard or show success message
       setIsLoading(false)
       // This forces a cache invalidation.
       router.refresh()
       router.push(`/dashboard`)
+      return toast({
+        title: "Welcome to Embloy!",
+        description: "You have successfully created a new account.",
+      })
   
     } catch (error) {
       setIsLoading(false)
@@ -76,13 +80,48 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               </p>
             )}
           </div>
+
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="firstName">
+              First Name
+            </Label>
+            <Input
+              id="firstName"
+              placeholder="First Name"
+              type="text"
+              disabled={isLoading || isGitHubLoading}
+              {...register("firstName")}
+            />
+            {errors?.firstName && (
+              <p className="px-1 text-xs text-red-600">
+                {errors.firstName.message}
+              </p>
+            )}
+          </div>
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="lastName">
+              Last Name
+            </Label>
+            <Input
+              id="lastName"
+              placeholder="Last Name"
+              type="text"
+              disabled={isLoading || isGitHubLoading}
+              {...register("lastName")}
+            />
+            {errors?.lastName && (
+              <p className="px-1 text-xs text-red-600">
+                {errors.lastName.message}
+              </p>
+            )}
+          </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="password">
               Password
             </Label>
             <Input
               id="password"
-              placeholder="password"
+              placeholder="Password"
               type="password"
               autoCapitalize="none"
               autoComplete="password"
@@ -93,6 +132,23 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             {errors?.password && (
               <p className="px-1 text-xs text-red-600">
                 {errors.password.message}
+              </p>
+            )}
+          </div>
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="passwordConfirmation">
+              Confirm Password
+            </Label>
+            <Input
+              id="passwordConfirmation"
+              placeholder="Confirm Password"
+              type="password"
+              disabled={isLoading || isGitHubLoading}
+              {...register("passwordConfirmation")}
+            />
+            {errors?.passwordConfirmation && (
+              <p className="px-1 text-xs text-red-600">
+                {errors.passwordConfirmation.message}
               </p>
             )}
           </div>
@@ -121,7 +177,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           setIsGitHubLoading(true)
           signIn("github")
         }}*/
-        disabled={isLoading || isGitHubLoading}
       >
         {isGitHubLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
@@ -129,7 +184,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           <Icons.gitHub className="mr-2 h-4 w-4" />
         )}{" "}
         Github
-      </button>
-    </div>
+    </button>
+  </div>
   )
 }

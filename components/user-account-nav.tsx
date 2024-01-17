@@ -12,12 +12,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { UserAvatar } from "@/components/user-avatar"
+import { useRouter } from "next/navigation"
+import { toast } from "./ui/use-toast"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "first_name" | "last_name" | "image_url" | "email">
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
+  const router = useRouter()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -51,9 +54,12 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="cursor-pointer"
-          onSelect={(event) => {
+          onSelect={async (event) => {
             event.preventDefault()
-            logout()
+            await logout()
+            // This forces a cache invalidation.
+            router.refresh()
+            router.push(`/login`)
           }}
         >
           Sign out
