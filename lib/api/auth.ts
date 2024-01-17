@@ -21,7 +21,7 @@ export async function login(email: string, password: string): Promise<void> {
     throw new Error('Authentication failed');
   }
 
-  Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'None', secure: true });
+  Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'Strict', secure: true });
 
   await getAccessToken();
 }
@@ -67,7 +67,7 @@ export async function verify(email: string, password: string): Promise<void> {
     throw new Error('Authentication failed');
   }
 
-  Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'None', secure: true });
+  Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'Strict', secure: true });
 
   await getAccessToken();
 }
@@ -96,7 +96,7 @@ export async function getAccessToken(): Promise<string | null> {
   }
 
   const accessToken = atResult.access_token;
-Cookies.set('access_token', accessToken, { sameSite: 'None', secure: true });
+Cookies.set('access_token', accessToken, { sameSite: 'Strict', secure: true });
 
   return accessToken;
 }
@@ -107,6 +107,6 @@ export async function logout(): Promise<void> {
 
 export function clearUserSession(): void {
   // Implement logic to clear user session (e.g., clear local storage, cookies, or state)
-  Cookies.remove('access_token');
-  Cookies.remove('refresh_token');
+  Cookies.remove('access_token', { sameSite: 'Strict', secure: true });
+  Cookies.remove('refresh_token', { sameSite: 'Strict', secure: true });
 }
