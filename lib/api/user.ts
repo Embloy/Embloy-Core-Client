@@ -1,7 +1,6 @@
 // /lib/api/user.ts
 
 import { siteConfig } from "@/config/site";
-import { User } from "@prisma/client";
 import { getAccessToken, clearUserSession } from "./auth";
 
 export async function getUserData(accessToken): Promise<Record<string, any>> {
