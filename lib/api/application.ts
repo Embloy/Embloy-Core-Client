@@ -35,3 +35,36 @@ export async function getApplications(): Promise<Application[] | null> {
     const data = JSON.parse(text);
     return data.applications || [];
 }
+
+export async function submitApplication(application_text: string, request_token: string): Promise<Boolean> {
+    console.log('submitApplication is called');
+    const accessToken = await getAccessToken();
+  
+    // Create form data
+    const formData = new FormData();
+    formData.append('application_text', (application_text));
+  
+    const response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
+      method: 'POST',
+      headers: {
+        "access_token": `${accessToken}`,
+        "request_token": `${request_token}`,
+      },
+      body: formData
+    });
+  
+    if (!response.ok) {
+      return false;
+    }
+  
+    const text = await response.text();
+    if (!text) {
+      return false;
+    }
+  
+    return true
+}
+
+
+
+// Update this to show the job information on one side, and on the other, an application 
