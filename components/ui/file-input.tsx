@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import * as React from 'react';
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Icons } from '../icons';
 
 interface FileInputProps {
   id: string
@@ -26,12 +28,23 @@ export function FileInput({ id, className, onFileChange, currentUserImageUrl }: 
         onChange={handleChange}
       />
       <label htmlFor={id} className="cursor-pointer">
-      <Image 
-        src={selectedImage ? URL.createObjectURL(selectedImage) : (currentUserImageUrl ?? "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.murrayglass.com%2Fwp-content%2Fuploads%2F2020%2F10%2Favatar-scaled.jpeg&f=1&nofb=1&ipt=2d0c052bfc773e1a6cfa9363c777cf9b5fe6898b058f5b2cfd32cadccae5b6db&ipo=images")} 
-        alt="Profile" 
-        title="This will be your new image"
-        className="h-40 w-40 rounded-full object-cover" 
-      />
+        {(selectedImage || currentUserImageUrl) ? 
+             <Image 
+            src={selectedImage ? URL.createObjectURL(selectedImage) : (currentUserImageUrl!)} 
+            alt="Profile" 
+            title="This will be your new image"
+            className="h-40 w-40 rounded-full object-cover" 
+            width={160} // Add this line
+            height={160} // Add this line
+          />
+          :
+          <Avatar className="h-40 w-40">
+          <AvatarFallback className="h-40 w-40">
+            <span className="sr-only"></span>
+            <Icons.user className="h-40 w-40" />
+          </AvatarFallback>
+          </Avatar>
+        }
       </label>
     </div>
   );

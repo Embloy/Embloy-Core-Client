@@ -8,9 +8,9 @@ import { StartApplyButton } from "@/components/start-apply-button"
 import { DashboardShell } from "@/components/shell"
 
 export default async function DashboardPage() {
-  const loggedIn = await getSession()
+  const { session } = await getSession()
 
-  if (!loggedIn) {
+  if (!session) {
     redirect("/login");
   }
 
@@ -23,7 +23,7 @@ export default async function DashboardPage() {
       </DashboardHeader>
       <div>
           <EmptyPlaceholder>
-            <EmptyPlaceholder.Icon name="post" />
+            <EmptyPlaceholder.Icon name="timer" />
             <EmptyPlaceholder.Title>No upcoming jobs.</EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
               You don&apos;t have jobs yet. Start applying now.

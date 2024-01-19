@@ -44,7 +44,7 @@ export function StartApplyButton({
 
       return toast({
         title: "Something went wrong.",
-        description: "Your post was not created. Please try again.",
+        description: "Your application was not submitted. Please try again.",
         variant: "destructive",
       })
     }

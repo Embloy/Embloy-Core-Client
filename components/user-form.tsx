@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@/lib/api/session";
 import { useForm } from "react-hook-form";
@@ -30,6 +30,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/icons";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 
 interface UserFormProps extends React.HTMLAttributes<HTMLFormElement> {
   user: User;
@@ -58,6 +68,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
   const [isSaving, setIsSaving] = React.useState<boolean>(false);
   const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
   const [selectedImage, setSelectedImage] = React.useState<File | null>(null);
+  const [showDeleteAlert, setShowDeleteAlert] = React.useState(false);
 
   async function onSubmit(data: FormData) {
     setIsSaving(true);
@@ -133,7 +144,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
       onSubmit={handleSubmit(onSubmit)}
       {...props}
     >
-      <CardContent className="space-y-4">
+      <div className="space-y-4">
         <Card>
           <CardHeader>
             <CardTitle>Your Profile</CardTitle>
@@ -358,8 +369,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
             </div>
           </CardContent>
         </Card>
-      </CardContent>
-      <CardFooter>
+        <CardFooter>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="submit"
@@ -378,16 +388,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
               className
             )}
             disabled={isSaving}
-            onClick={async () => {
-              if (
-                window.confirm(
-                  "Are you sure you want to delete your account? This action cannot be undone."
-                )
-              ) {
-                await onDelete();
-                router.push("/login");
-              }
-            }}
+            onClick={() => setShowDeleteAlert(true)}
           >
             {isDeleting && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
@@ -396,6 +397,46 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
           </button>
         </div>
       </CardFooter>
+      <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              Are you sure you want to delete your account?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setShowDeleteAlert(false)}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={async (event) => {
+                event.preventDefault();
+                setIsDeleting(true);
+
+                await onDelete();
+                setIsDeleting(false);
+                setShowDeleteAlert(false);
+                router.push("/login");
+                }
+              }
+              className={cn(
+                buttonVariants({ variant: "destructive" }),
+              )}
+  
+            >
+              {isDeleting ? (
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Icons.trash className="mr-2 h-4 w-4" />
+              )}
+              <span>Delete</span>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      </div>
     </form>
   );
 }
