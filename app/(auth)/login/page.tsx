@@ -45,6 +45,14 @@ export default function LoginPage() {
             Don&apos;t have an account? Sign Up
           </Link>
         </p>
+        <p className="px-8 text-center text-sm text-muted-foreground">
+          <Link
+            href="/password-reset"
+            className="hover:text-brand underline underline-offset-4"
+          >
+            Forgot password?
+          </Link>
+        </p>
       </div>
     </div>
   )
