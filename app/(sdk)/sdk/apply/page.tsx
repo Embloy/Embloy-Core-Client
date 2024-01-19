@@ -85,7 +85,7 @@ export default function ApplyPage() {
         >
           Go To Embloy
         </Link>
-        <EmptyPlaceholder className="mx-auto max-w-[800px] mt-5">
+        <EmptyPlaceholder className="mx-auto mt-5 max-w-[800px]">
           <EmptyPlaceholder.Icon name="warning" />
           <EmptyPlaceholder.Title>Uh oh! Not Found</EmptyPlaceholder.Title>
           <EmptyPlaceholder.Description>
@@ -126,15 +126,15 @@ export default function ApplyPage() {
         Go To Embloy
         </Link>
       {/* Job Information */}
-      <div className="h-full lg:p-8 bg-muted flex items-center justify-center">
-        <div className="mx-auto flex w-full bg-muted flex-col justify-center space-y-6 sm:w-[350px]">
-          <div className="bg-white shadow rounded-lg p-6">
-            <h1 className="text-2xl font-bold mb-2 text-center">{job.title}</h1>
+      <div className="flex h-full items-center justify-center bg-muted lg:p-8">
+        <div className="mx-auto flex w-full flex-col justify-center space-y-6 bg-muted sm:w-[350px]">
+          <div className="rounded-lg bg-white p-6 shadow">
+            <h1 className="mb-2 text-center text-2xl font-bold">{job.title}</h1>
             {job.description && <p className="text-center">{job.description.body}</p>}
-            <p className="text-sm text-gray-500 mb-1 text-center">
+            <p className="mb-1 text-center text-sm text-gray-500">
               Posted by user {session.user_id}
             </p>
-            <p className="text-sm text-gray-500 text-center">
+            <p className="text-center text-sm text-gray-500">
               Subscription type: {session.subscription_type}
             </p>
           </div>
@@ -155,7 +155,7 @@ export default function ApplyPage() {
           <textarea
             onChange={handleInputChange}
             value={applicationText}
-            className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black w-full h-32 resize-none"
+            className="h-32 w-full resize-none rounded-md border p-2 focus:outline-none focus:ring-2 focus:ring-black"
             placeholder="Enter your application text here..."
           />
           <ApplyButton
