@@ -1,53 +1,34 @@
 "use client"
 
 import { redirect } from "next/navigation"
-import { useEffect, useState } from 'react';
-import { getCurrentUser, User } from "@/lib/api/session"
+import { getSession } from "@/lib/api/session"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { DashboardHeader } from "@/components/header"
-import { PostCreateButton } from "@/components/post-create-button"
+import { StartApplyButton } from "@/components/start-apply-button"
 import { DashboardShell } from "@/components/shell"
 
 export default async function DashboardPage() {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const loggedIn = await getSession()
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const currentUser = await getCurrentUser();
-      setIsLoading(false);
-      if (currentUser) {
-        setUser(currentUser);
-      }
-    };
-
-    fetchUser();
-  }, []);
-
-  if (isLoading) {
-    // You can return a loading spinner here
-    return null;
-  }
-
-  if (!user) {
+  if (!loggedIn) {
     redirect("/login");
   }
 
-  const posts = []
+  const jobs = []
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Posts" text="Create and manage posts.">
-        <PostCreateButton />
+      <DashboardHeader heading="Jobs" text="Upcoming jobs.">
+        <StartApplyButton />
       </DashboardHeader>
       <div>
           <EmptyPlaceholder>
             <EmptyPlaceholder.Icon name="post" />
-            <EmptyPlaceholder.Title>No posts created</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Title>No upcoming jobs.</EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
-              You don&apos;t have any posts yet. Start creating content.
+              You don&apos;t have jobs yet. Start applying now.
             </EmptyPlaceholder.Description>
-            <PostCreateButton variant="outline" />
+            <StartApplyButton variant="outline" />
           </EmptyPlaceholder>
       </div>
     </DashboardShell>

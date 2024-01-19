@@ -8,13 +8,13 @@ import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
-interface PostCreateButtonProps extends ButtonProps {}
+interface StartApplyButtonProps extends ButtonProps {}
 
-export function PostCreateButton({
+export function StartApplyButton({
   className,
   variant,
   ...props
-}: PostCreateButtonProps) {
+}: StartApplyButtonProps) {
   const router = useRouter()
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 

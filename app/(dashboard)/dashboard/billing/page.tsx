@@ -1,8 +1,7 @@
 "use client"
 
 import { redirect } from "next/navigation"
-import { useEffect, useState } from 'react';
-import { getCurrentUser, User } from "@/lib/api/session"
+import { getSession } from "@/lib/api/session"
 import { stripe } from "@/lib/api/stripe"
 import { getUserSubscriptionPlan } from "@/lib/api/subscription"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -19,25 +18,7 @@ import { Icons } from "@/components/icons"
 import { DashboardShell } from "@/components/shell"
 
 export default async function BillingPage() {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const currentUser = await getCurrentUser();
-      setIsLoading(false);
-      if (currentUser) {
-        setUser(currentUser);
-      }
-    };
-
-    fetchUser();
-  }, []);
-
-  if (isLoading) {
-    // You can return a loading spinner here
-    return null;
-  }
+  const user = await getSession()
 
   if (!user) {
     redirect("/login");

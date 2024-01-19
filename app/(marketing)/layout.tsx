@@ -12,7 +12,6 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
-import { DashboardNav } from "@/components/nav";
 
 interface MarketingLayoutProps {
   children: React.ReactNode

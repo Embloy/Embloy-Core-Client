@@ -1,35 +1,16 @@
 "use client"
 
 import { redirect } from "next/navigation"
-import { useEffect, useState } from 'react';
-import { getCurrentUser, User } from "@/lib/api/session"
+import { getCurrentUser } from "@/lib/api/session"
 import { DashboardHeader } from "@/components/header"
 import { DashboardShell } from "@/components/shell"
-import { UserNameForm } from "@/components/user-name-form"
+import { UserForm } from "@/components/user-form"
 
 export default async function SettingsPage() {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const currentUser = await getCurrentUser();
-      setIsLoading(false);
-      if (currentUser) {
-        setUser(currentUser);
-      }
-    };
-
-    fetchUser();
-  }, []);
-
-  if (isLoading) {
-    // You can return a loading spinner here
-    return null;
-  }
+  const user = await getCurrentUser()
 
   if (!user) {
-    redirect("/login");
+    redirect("/login")
   }
 
   return (
@@ -39,7 +20,7 @@ export default async function SettingsPage() {
         text="Manage account and website settings."
       />
       <div className="grid gap-10">
-        <UserNameForm user={{ id: user.id, first_name: user.first_name, last_name:  user.last_name }} />
+        <UserForm user={user} />
       </div>
     </DashboardShell>
   )

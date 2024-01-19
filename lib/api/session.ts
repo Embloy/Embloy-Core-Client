@@ -1,5 +1,4 @@
 // /lib/api/session.ts
-import { siteConfig } from '@/config/site';
 import { getAccessToken, clearUserSession } from './auth';
 import { getUserData } from './user';
 
@@ -35,9 +34,8 @@ export interface User {
   linkedin_url: string | null;
 }
 
-export async function getSession(): Promise<{ user: User } | null> {
+export async function getSessionUser(): Promise<{ user: User } | null> {
   console.log('getSession is called');
-  let accessToken;
   try {
     const accessToken = await getAccessToken();
     console.log(`accessToken=${accessToken}`)
@@ -56,9 +54,9 @@ export async function getSession(): Promise<{ user: User } | null> {
 
 export async function getCurrentUser(): Promise<User | null> {
   console.log('getCurrentUser is called');
-  let session;
+  let session: { user: User; } | null;
   try {
-    session = await getSession();
+    session = await getSessionUser();
   } catch (error) {
     console.error("Error getting session:", error);
     return null;
@@ -69,4 +67,20 @@ export async function getCurrentUser(): Promise<User | null> {
   }
 
   return null;
+}
+
+export async function getSession(): Promise<{ session: Boolean }> {
+  console.log('getSession is called');
+  try {
+    const accessToken = await getAccessToken();
+    console.log(`accessToken=${accessToken}`)
+    if (accessToken) {
+      return { session: true };
+    }
+  } catch (error) {
+    console.error("Error getting user data:", error);
+    clearUserSession();
+    return { session: false };
+  }
+  return { session: false };
 }
