@@ -110,3 +110,16 @@ export function clearUserSession(): void {
   Cookies.remove('access_token', { sameSite: 'Strict', secure: false });
   Cookies.remove('refresh_token', { sameSite: 'Strict', secure: false });
 }
+
+export async function resetPassword(email: string): Promise<void> {
+  const response = await fetch(`${siteConfig.api_url}/user/password/reset?email=${email}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to send password reset email');
+  }
+}
