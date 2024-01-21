@@ -1,3 +1,5 @@
+"use client"
+
 import { Metadata } from "next"
 import Link from "next/link"
 
@@ -5,13 +7,11 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { PasswordResetForm } from "@/components/password-reset-form"
-
-export const metadata: Metadata = {
-  title: "Reset Password",
-  description: "Enter your email to reset your password",
-}
+import { useSearchParams } from "next/navigation"
 
 export default function PasswordResetPage() {
+  const origin = useSearchParams().get("origin") as string
+
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <Link
@@ -39,7 +39,7 @@ export default function PasswordResetPage() {
         <PasswordResetForm /> {/* Make sure to create this component */}
         <p className="px-8 text-center text-sm text-muted-foreground">
           <Link
-            href="/register"
+            href={origin ? `/register?origin=${origin}` : "/register"}
             className="hover:text-brand underline underline-offset-4"
           >
             Don&apos;t have an account? Sign Up

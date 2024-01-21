@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 interface UserSignUpFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -30,6 +30,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
   const router = useRouter()
+  const origin = useSearchParams().get("origin") as string
 
   async function onSubmit(data: FormData) {
     setIsLoading(true)
@@ -40,7 +41,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
       setIsLoading(false)
       // This forces a cache invalidation.
       router.refresh()
-      router.push(`/dashboard`)
+      router.push(origin || '/dashboard')  
       return toast({
         title: "Welcome to Embloy!",
         description: "You have successfully created a new account.",

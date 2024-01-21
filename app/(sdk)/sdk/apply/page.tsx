@@ -6,7 +6,7 @@ import { Job, Session } from "@/lib/api/sdk";
 import makeRequest from "@/lib/api/sdk";
 import { toast } from "@/components/ui/use-toast";
 import { getSession } from "@/lib/api/session";
-import { redirect, useSearchParams, useRouter } from "next/navigation";
+import { redirect, useSearchParams, useRouter, usePathname } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { UserSignUpForm } from "@/components/user-signup-form";
@@ -21,6 +21,8 @@ export default function ApplyPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [applicationText, setApplicationText] = useState("");
+  const pathName = usePathname() as string
+  const origin = useSearchParams()
 
   const handleInputChange = (event) => {
     setApplicationText(event.target.value);
@@ -36,7 +38,7 @@ export default function ApplyPage() {
 
       const { session } = await getSession();
       if (!session) {
-        router.push("/login");
+        router.push(origin ? `/login?origin=${pathName}?${origin}`: "/login");
         return;
       }
 
