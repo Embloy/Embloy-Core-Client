@@ -12,16 +12,16 @@ export const marketingConfig: MarketingConfig = {
       href: "/pricing",
     },
     {
-      title: "Genius",
+      title: "Employers",
       href: siteConfig.links.genius,
     },
     {
-      title: "Blog",
-      href: `${ siteConfig.links.developer }/blog`,
+      title: "Developers",
+      href: siteConfig.links.developer,
     },
     {
-      title: "Developer",
-      href: siteConfig.links.developer,
+      title: "About",
+      href: siteConfig.links.about,
     },
   ],
 }

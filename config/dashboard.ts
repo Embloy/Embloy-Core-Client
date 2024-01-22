@@ -4,7 +4,7 @@ import { siteConfig } from "./site"
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
-      title: "Embloyers",
+      title: "Employers",
       href: siteConfig.links.genius,
     },
     {

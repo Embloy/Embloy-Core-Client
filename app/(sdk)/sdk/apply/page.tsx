@@ -61,7 +61,8 @@ export default function ApplyPage() {
     };
 
     fetchData();
-  }, [searchParams, router]);
+  }, [searchParams, router, origin, pathName]);
+
   if (!job || !session) {
     return (
       <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-1 lg:px-0">

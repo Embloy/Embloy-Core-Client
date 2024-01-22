@@ -15,15 +15,15 @@ import {
 } from "@/components/ui/card"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
+import { postCheckout, Subscription } from "@/lib/api/subscription"
+import { getNextBestPlan, getSubscriptionPlanBySubscription } from "@/config/subscriptions"
 
 interface BillingFormProps extends React.HTMLAttributes<HTMLFormElement> {
-  subscriptionPlan: UserSubscriptionPlan & {
-    isCanceled: boolean
-  }
+  subscription: Subscription
 }
 
 export function BillingForm({
-  subscriptionPlan,
+  subscription,
   className,
   ...props
 }: BillingFormProps) {
@@ -31,29 +31,31 @@ export function BillingForm({
 
   async function onSubmit(event) {
     event.preventDefault()
-    setIsLoading(!isLoading)
-
+    setIsLoading(true)
+  
     // Get a Stripe session URL.
-    const response = await fetch("/api/users/stripe")
-
-    if (!response?.ok) {
+    const response = await postCheckout('premium', 'subscription')
+  
+    if (!response) {
+      setIsLoading(false)
       return toast({
         title: "Something went wrong.",
         description: "Please refresh the page and try again.",
         variant: "destructive",
       })
     }
-
+  
     // Redirect to the Stripe session.
     // This could be a checkout page for initial upgrade.
     // Or portal to manage existing subscription.
-    const session = await response.json()
-    if (session) {
-      window.location.href = session.url
+    if (response.url) {
+      window.location.href = response.url
     }
   }
 
-  return (
+  const subscriptionPlan = getSubscriptionPlanBySubscription(subscription) 
+
+  return subscriptionPlan && (
     <form className={cn(className)} onSubmit={onSubmit} {...props}>
       <Card>
         <CardHeader>
@@ -73,18 +75,13 @@ export function BillingForm({
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            {subscriptionPlan.isPro ? "Manage Subscription" : "Upgrade to PRO"}
+            {`Upgrade to ${getNextBestPlan(subscription)?.name || 'SMART'}`}
           </button>
-          {subscriptionPlan.isPro ? (
             <p className="rounded-full text-xs font-medium">
-              {subscriptionPlan.isCanceled
-                ? "Your plan will be canceled on "
-                : "Your plan renews on "}
-              {formatDate(subscriptionPlan.stripeCurrentPeriodEnd)}.
+              {"Your plan renews on "}
+              {formatDate(subscription.current_period_end)}.
             </p>
-          ) : null}
         </CardFooter>
       </Card>
     </form>
-  )
-}
+  )}
