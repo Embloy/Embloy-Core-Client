@@ -73,7 +73,7 @@ export async function getActiveSubscription(): Promise<Subscription | null> {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch subscription data');
+    return null;
   }
 
   const data = await response.json();
