@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { signup } from '@/lib/api/auth';
+import { signup, signInWithGoogle, signInWithLinkedin, signInWithMicrosoft } from '@/lib/api/auth';
 import { cn } from "@/lib/utils"
 import { userSignUpSchema } from "@/lib/validations/auth"
 import { buttonVariants } from "@/components/ui/button"
@@ -29,6 +29,9 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
+  const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
+  const [isMicrosoftLoading, setIsMicrosoftLoading] = React.useState<boolean>(false)
+  const [isLinkedinLoading, setIsLinkedinLoading] = React.useState<boolean>(false)
   const router = useRouter()
   const origin = useSearchParams().get("origin") as string
 
@@ -54,6 +57,78 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
         description: "Your sign in request failed. Please try again.",
         variant: "destructive",
       })
+    }
+  }
+
+  async function handleGithubSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithGithub();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsGitHubLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with GitHub request failed. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  async function handleGoogleSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithGoogle();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsGoogleLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with Google request failed. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  async function handleMicrosoftSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithMicrosoft();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsMicrosoftLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with Microsoft request failed. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  async function handleLinkedinSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithLinkedin();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsLinkedinLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with Linkedin request failed. Please try again.",
+        variant: "destructive",
+      });
     }
   }
 
@@ -173,11 +248,9 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
       </div>
       <button
         type="button"
-        className={cn(buttonVariants({ variant: "outline" }), 'cursor-not-allowed')}
-        /*onClick={() => {
-          setIsGitHubLoading(true)
-          signIn("github")
-        }}*/
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleGithubSignIn} // Add the onClick handler
+        disabled={isLoading || isGitHubLoading}
       >
         {isGitHubLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
@@ -185,7 +258,33 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
           <Icons.gitHub className="mr-2 h-4 w-4" />
         )}{" "}
         Github
-    </button>
+      </button>
+      <button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleGoogleSignIn} // Add the onClick handler
+        disabled={isLoading || isGoogleLoading}
+      >
+        {isGoogleLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.google className="mr-2 h-4 w-4" />
+        )}{" "}
+        Google
+      </button>
+      <button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleLinkedinSignIn} // Add the onClick handler
+        disabled={isLoading || isLinkedinLoading}
+      >
+        {isLinkedinLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.linkedin className="mr-2 h-4 w-4" />
+        )}{" "}
+        LinkedIn
+      </button>      
   </div>
   )
 }

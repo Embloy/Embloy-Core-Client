@@ -73,9 +73,56 @@ export const Icons = {
       ></path>
     </svg>
   ),
+  google: ({ ...props}: LucideProps) => (
+    <svg 
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fab"
+      data-icon="github"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 50 50"
+      {...props}>
+      <path 
+        fill="currentColor"
+        d="M 25.996094 48 C 13.3125 48 2.992188 37.683594 2.992188 25 C 2.992188 12.316406 13.3125 2 25.996094 2 C 31.742188 2 37.242188 4.128906 41.488281 7.996094 L 42.261719 8.703125 L 34.675781 16.289063 L 33.972656 15.6875 C 31.746094 13.78125 28.914063 12.730469 25.996094 12.730469 C 19.230469 12.730469 13.722656 18.234375 13.722656 25 C 13.722656 31.765625 19.230469 37.269531 25.996094 37.269531 C 30.875 37.269531 34.730469 34.777344 36.546875 30.53125 L 24.996094 30.53125 L 24.996094 20.175781 L 47.546875 20.207031 L 47.714844 21 C 48.890625 26.582031 47.949219 34.792969 43.183594 40.667969 C 39.238281 45.53125 33.457031 48 25.996094 48 Z">
+      </path>
+    </svg>
+  ),
+  microsoft: ({ ...props}: LucideProps) => (
+    <svg 
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fab"
+      data-icon="github"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 50 50"
+      {...props}>
+      <path 
+        fill="currentColor"
+        d="M 5 4 C 4.448 4 4 4.447 4 5 L 4 24 L 24 24 L 24 4 L 5 4 z M 26 4 L 26 24 L 46 24 L 46 5 C 46 4.447 45.552 4 45 4 L 26 4 z M 4 26 L 4 45 C 4 45.553 4.448 46 5 46 L 24 46 L 24 26 L 4 26 z M 26 26 L 26 46 L 45 46 C 45.552 46 46 45.553 46 45 L 46 26 L 26 26 z">
+      </path>
+    </svg>
+  ),
   twitter: Twitter,
   chrome: Chrome,
   timer: Timer,
-  linkedin: Linkedin,
+  linkedin: ({ ...props}: LucideProps) => (
+    <svg 
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fab"
+      data-icon="github"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 50 50"
+      {...props}>
+      <path 
+        fill="currentColor"
+        d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z">
+      </path>  
+    </svg>
+  ),
   check: Check,
 }

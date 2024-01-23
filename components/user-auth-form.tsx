@@ -212,22 +212,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         {isGoogleLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.chrome className="mr-2 h-4 w-4" />
+          <Icons.google className="mr-2 h-4 w-4" />
         )}{" "}
         Google
-      </button>
-      <button
-        type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleMicrosoftSignIn} // Add the onClick handler
-        disabled={isLoading || isMicrosoftLoading}
-      >
-        {isMicrosoftLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.chrome className="mr-2 h-4 w-4" />
-        )}{" "}
-        Microsoft
       </button>
       <button
         type="button"
@@ -238,10 +225,24 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         {isLinkedinLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.chrome className="mr-2 h-4 w-4" />
+          <Icons.linkedin className="mr-2 h-4 w-4" />
         )}{" "}
         LinkedIn
+      </button>      
+      {/*<button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleMicrosoftSignIn} // Add the onClick handler
+        disabled={isLoading || isMicrosoftLoading}
+      >
+        {isMicrosoftLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.microsoft className="mr-2 h-4 w-4" />
+        )}{" "}
+        Microsoft
       </button>
+        */}
     </div>
   )
 }
