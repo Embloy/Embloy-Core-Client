@@ -125,13 +125,14 @@ export async function getAllSubscriptions(): Promise<SubscriptionsResponse> {
 export async function postCheckout(tier: string, payment_mode: string): Promise<Checkout | null> {
   console.log('postCheckout is called');
   const accessToken = await getAccessToken();
+  const origin = "core"
   const response = await fetch(`${siteConfig.api_url}/checkout`, {
     method: 'POST',
     headers: {
       "access_token": `${accessToken}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ tier, payment_mode }),
+    body: JSON.stringify({ tier, payment_mode, origin }),
   });
 
   if (!response.ok) {
