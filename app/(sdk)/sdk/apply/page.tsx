@@ -21,9 +21,14 @@ export default function ApplyPage() {
   const [applicationText, setApplicationText] = useState("");
   const pathName = usePathname() as string
   const origin = useSearchParams()
+  const [cvFile, setCvFile] = useState<File | undefined>();
 
   const handleInputChange = (event) => {
     setApplicationText(event.target.value);
+  };
+
+  const handleFileChange = (event) => { // New handler for the file input change
+    setCvFile(event.target.files[0]);
   };
 
   useEffect(() => {
@@ -65,7 +70,7 @@ export default function ApplyPage() {
         <Link
           href="/.."
           className={cn(
-            buttonVariants({ variant: "ghost" }),
+            buttonVariants({ variant: "default" }),
             "absolute left-4 top-4 md:left-8 md:top-8"
           )}
         >
@@ -105,7 +110,7 @@ export default function ApplyPage() {
       <Link
         href="/.."
         className={cn(
-          buttonVariants({ variant: "ghost" }),
+          buttonVariants({ variant: "default" }),
           "absolute left-4 top-4 md:left-8 md:top-8"
         )}
       >
@@ -124,24 +129,25 @@ export default function ApplyPage() {
       >
         Go To Embloy
         </Link>
-      {/* Job Information */}
-      <div className="flex h-full items-center justify-center bg-muted lg:p-8">
-        <div className="mx-auto flex w-full flex-col justify-center space-y-6 bg-muted sm:w-[350px]">
-          <div className="rounded-lg bg-white p-6 shadow">
-            <h1 className="mb-2 text-center text-2xl font-bold">{job.title}</h1>
-            {job.description && <p className="text-center">{job.description.body}</p>}
-            <p className="mb-1 text-center text-sm text-gray-500">
-              Posted by user {session.user_id}
-            </p>
-            <p className="text-center text-sm text-gray-500">
-              Subscription type: {session.subscription_type}
-            </p>
-          </div>
-        </div>
-      </div>
-      {/* Application Form */}
+      <img src="/images/banner-2.png" alt="Description of the image" className="hidden h-full w-full object-cover lg:block" />
       <div className="lg:p-8">
-        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+      {/* Job Information 
+        <div className="flex h-full items-center justify-center lg:p-8 mb-10">
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 bg-muted sm:w-[350px]">
+            <div className="rounded-lg bg-muted p-6 shadow">
+              <h1 className="mb-2 text-center text-2xl font-bold">{job.title}</h1>
+              {job.description && <p className="text-center">{job.description.body}</p>}
+              <p className="mb-1 text-center text-sm text-gray-500">
+                Posted by user {session.user_id}
+              </p>
+              <p className="text-center text-sm text-gray-500">
+                Subscription type: {session.subscription_type}
+              </p>
+            </div>
+          </div>
+        </div>*/}
+      {/* Application Form */}
+       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
             <Icons.logo className="mx-auto h-6 w-6" />
             <h1 className="text-2xl font-semibold tracking-tight">
@@ -157,11 +163,32 @@ export default function ApplyPage() {
             className="h-32 w-full resize-none rounded-md border p-2 focus:outline-none focus:ring-2 focus:ring-black"
             placeholder="Enter your application text here..."
           />
-          <ApplyButton
-            application_text={applicationText}
-            request_token={searchParams.get("request_token") || ""}
-            // other props...
-          />
+          {job.cv_required && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Upload your CV
+              </label>
+              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                <div className="space-y-1 text-center">
+                  <input
+                    type="file"
+                    onChange={handleFileChange}
+                    accept={job.allowed_cv_formats.join(",")}
+                    className="focus:ring-indigo-500 focus:border-indigo-500 w-full"
+                  />
+                  <p className="text-xs text-gray-500">
+                    Allowed formats: {job.allowed_cv_formats.join(", ")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        <ApplyButton
+          application_text={applicationText}
+          request_token={searchParams.get("request_token") || ""}
+          cv_file={cvFile} // Pass the CV file to the ApplyButton component
+          // other props...
+        />
         </div>
       </div>
     </div>
