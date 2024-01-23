@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 export async function login(email: string, password: string): Promise<void> {
   const encodedCredentials = btoa(`${email}:${password}`);
 
-  const responseRt = await fetch(`${siteConfig.api_url}/user/auth/token/refresh`, {
+  const responseRt = await fetch(`${siteConfig.api_url}/auth/token/refresh`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export async function getAccessToken(): Promise<string | null> {
     return null;
   }
 
-  const responseAt = await fetch(`${siteConfig.api_url}/user/auth/token/access`, {
+  const responseAt = await fetch(`${siteConfig.api_url}/auth/token/access`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
