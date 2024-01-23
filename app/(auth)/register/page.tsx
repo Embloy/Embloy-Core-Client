@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { UserSignUpForm } from "@/components/user-signup-form"
 import { useSearchParams } from "next/navigation"
+import Image from 'next/image';
 
 export default function RegisterPage() {
   const origin = useSearchParams().get("origin") as string
@@ -22,7 +23,13 @@ export default function RegisterPage() {
       >
         Login
       </Link>
-      <img src="/images/register.png" alt="Description of the image" className="hidden h-full w-full object-cover lg:block" />
+      <Image 
+        src="/images/register.png" 
+        alt="Description of the image" 
+        width={842}
+        height={842}
+        className="hidden h-full w-full object-cover lg:block" 
+      />
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">

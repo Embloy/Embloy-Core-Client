@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image"
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Job, Session } from "@/lib/api/sdk";
@@ -129,7 +130,13 @@ export default function ApplyPage() {
       >
         Go To Embloy
         </Link>
-      <img src="/images/banner-2.png" alt="Description of the image" className="hidden h-full w-full object-cover lg:block" />
+      <Image 
+        src="/images/banner-2.png" 
+        alt="Description of the image" 
+        width={842}
+        height={842}
+        className="hidden h-full w-full object-cover lg:block" 
+      />
       <div className="lg:p-8">
       {/* Job Information 
         <div className="flex h-full items-center justify-center lg:p-8 mb-10">
@@ -168,13 +175,13 @@ export default function ApplyPage() {
               <label className="block text-sm font-medium text-gray-700">
                 Upload your CV
               </label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+              <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
                 <div className="space-y-1 text-center">
                   <input
                     type="file"
                     onChange={handleFileChange}
                     accept={job.allowed_cv_formats.join(",")}
-                    className="focus:ring-indigo-500 focus:border-indigo-500 w-full"
+                    className="w-full focus:border-indigo-500 focus:ring-indigo-500"
                   />
                   <p className="text-xs text-gray-500">
                     Allowed formats: {job.allowed_cv_formats.join(", ")}
