@@ -6,7 +6,7 @@ export const siteConfig: SiteConfig = {
     "Solutions that brain-boost HR.",
   url: "https://embloy.com",
   api_url: "https://api.embloy.com/api/v0",
-  api_root_url: "https://api.embloy.com/api/v0",
+  api_root_url: "https://api.embloy.com",
   //api_url: "http://localhost:3000/api/v0",
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",
   links: {
