@@ -1,5 +1,3 @@
-// /lib/api/auth.ts
-
 import { siteConfig } from "@/config/site";
 import Cookies from 'js-cookie';
 

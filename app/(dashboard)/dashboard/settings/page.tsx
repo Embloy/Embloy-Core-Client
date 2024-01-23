@@ -1,16 +1,30 @@
 "use client"
 
+import { useState, useEffect } from 'react';
 import { redirect } from "next/navigation"
-import { getCurrentUser } from "@/lib/api/session"
+import { getCurrentUser, User } from "@/lib/api/session"
 import { DashboardHeader } from "@/components/header"
 import { DashboardShell } from "@/components/shell"
 import { UserForm } from "@/components/user-form"
 
-export default async function SettingsPage() {
-  const user = await getCurrentUser()
+export default function SettingsPage() {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const currentUser = await getCurrentUser();
+      if (!currentUser) {
+        redirect("/login");
+      } else {
+        setUser(currentUser);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   if (!user) {
-    redirect("/login")
+    return null; // or a loading spinner
   }
 
   return (

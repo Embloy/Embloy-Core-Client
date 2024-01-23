@@ -1,27 +1,39 @@
 "use client"
 
 import * as React from "react"
-import { getPortalSession } from "@/lib/api/subscription"
+import { getPortalSession, postCheckout } from "@/lib/api/subscription"
 
 import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
-interface SubscribeButtonProps extends ButtonProps {}
+interface SubscribeButtonProps extends ButtonProps {
+  subscriptionType: string;
+}
 
 export function SubscribeButton({
   className,
   variant,
+  subscriptionType,
   ...props
 }: SubscribeButtonProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   const handleManageSubscriptions = async () => {
     setIsLoading(true);
-    const portalSession = await getPortalSession();
+
+    const subscriptionTypeMap = {
+      "free": "basic",
+      "smart": "premium",
+      "genius": "enterprise_1"
+    };
+
+    const mappedSubscriptionType = subscriptionTypeMap[subscriptionType.toLowerCase()];
+
+    const checkout = await postCheckout(mappedSubscriptionType, "subscription");
     setIsLoading(false);
-    if (portalSession && portalSession.url) {
-      window.location.href = portalSession.url;
+    if (checkout && checkout.url) {
+      window.location.href = checkout.url;
     }
   };
 
@@ -43,7 +55,7 @@ export function SubscribeButton({
       ) : (
         <Icons.laptop className="mr-2 h-4 w-4" />
       )}
-      Subscribe to EMBLOY FREE
+      Subscribe to {subscriptionType.toUpperCase()}
     </button>
   )
 }

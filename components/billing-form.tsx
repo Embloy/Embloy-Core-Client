@@ -29,31 +29,36 @@ export function BillingForm({
 }: BillingFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
+  const nextBestPlan = getNextBestPlan(subscription)
+
   async function onSubmit(event) {
     event.preventDefault()
     setIsLoading(true)
   
-    // Get a Stripe session URL.
-    const response = await postCheckout('premium', 'subscription')
-  
-    if (!response) {
-      setIsLoading(false)
-      return toast({
-        title: "Something went wrong.",
-        description: "Please refresh the page and try again.",
-        variant: "destructive",
-      })
-    }
-  
-    // Redirect to the Stripe session.
-    // This could be a checkout page for initial upgrade.
-    // Or portal to manage existing subscription.
-    if (response.url) {
-      window.location.href = response.url
+    if (nextBestPlan) {
+      // Get a Stripe session URL.
+      const response = await postCheckout(nextBestPlan?.internal_name, 'subscription')
+    
+      if (!response) {
+        setIsLoading(false)
+        return toast({
+          title: "Something went wrong.",
+          description: "Please refresh the page and try again.",
+          variant: "destructive",
+        })
+      }
+    
+      // Redirect to the Stripe session.
+      // This could be a checkout page for initial upgrade.
+      // Or portal to manage existing subscription.
+      if (response.url) {
+       window.location.href = response.url
+      }
     }
   }
 
   const subscriptionPlan = getSubscriptionPlanBySubscription(subscription) 
+
 
   return subscriptionPlan && (
     <form className={cn(className)} onSubmit={onSubmit} {...props}>
@@ -67,21 +72,24 @@ export function BillingForm({
         </CardHeader>
         <CardContent>{subscriptionPlan.description}</CardContent>
         <CardFooter className="flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0">
-          <button
-            type="submit"
-            className={cn(buttonVariants())}
-            disabled={isLoading}
-          >
-            {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )}
-            {`Upgrade to ${getNextBestPlan(subscription)?.name || 'SMART'}`}
-          </button>
-            <p className="rounded-full text-xs font-medium">
-              {"Your plan renews on "}
-              {formatDate(subscription.current_period_end)}.
-            </p>
+          {nextBestPlan?.internal_name !== 'enterprise_3' && (
+            <button
+              type="submit"
+              className={cn(buttonVariants())}
+              disabled={isLoading}
+            >
+              {isLoading && (
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              )}
+              {`Upgrade to ${nextBestPlan?.name || 'SMART'}`}
+            </button>
+          )}
+          <p className="rounded-full text-xs font-medium">
+            {"Your plan renews on "}
+            {formatDate(subscription.current_period_end)}.
+          </p>
         </CardFooter>
       </Card>
     </form>
-  )}
+  )
+}

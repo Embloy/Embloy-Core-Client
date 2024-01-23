@@ -1,18 +1,16 @@
-"use client";
+"use client"
 
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Job, Session } from "@/lib/api/sdk";
 import makeRequest from "@/lib/api/sdk";
 import { toast } from "@/components/ui/use-toast";
 import { getSession } from "@/lib/api/session";
-import { redirect, useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
-import { UserSignUpForm } from "@/components/user-signup-form";
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
-
-import React, { useEffect, useState } from "react";
 import { ApplyButton } from "@/components/apply-button";
 
 export default function ApplyPage() {
@@ -31,19 +29,17 @@ export default function ApplyPage() {
   useEffect(() => {
     const fetchData = async () => {
       if (!searchParams.has("request_token")) {
-        // router.push("/referrer");
         router.back();
         return;
       }
 
-      const { session } = await getSession();
-      if (!session) {
+      const loggedIn = (await getSession()).session;
+      if (!loggedIn) {
         router.push(origin ? `/login?origin=${pathName}?${origin}`: "/login");
         return;
       }
 
       const request_token = searchParams.get("request_token");
-      console.log("request_token: ", request_token);
 
       if (typeof request_token === "string") {
         const requestData = await makeRequest(request_token);

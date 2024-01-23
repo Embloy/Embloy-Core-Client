@@ -3,6 +3,7 @@ import { SubscriptionPlan } from "types"
 
 export const freePlan: SubscriptionPlan = {
   name: "EMBLOY FREE",
+  internal_name: "basic",
   description:
     "One-Click-Application, apply to as many jobs as you want and no ads",
   stripePriceId: "price_1OUuTgKMiBrigNb6R7xzRzTL",
@@ -10,6 +11,7 @@ export const freePlan: SubscriptionPlan = {
 
 export const smartPlan: SubscriptionPlan = {
   name: "EMBLOY SMART",
+  internal_name: "premium",
   description:
     "Unlimited job postings and client token customization.",
   stripePriceId: "price_1OUqrPKMiBrigNb6lia8VWiD",
@@ -17,18 +19,21 @@ export const smartPlan: SubscriptionPlan = {
 
 export const geniusPlan: SubscriptionPlan = {
   name: "EMBLOY GENIUS",
+  internal_name: "enterprise_1",
   description: "Coming soon.",
   stripePriceId: "price_1OUuVBKMiBrigNb6J9xmLWg8",
 }
  
 export const enterprise2: SubscriptionPlan = {
-  name: "enterprise2",
+  name: "EMBLOY PREMIUM",
+  internal_name: "enterprise_2",
   description: "Coming soon.",
   stripePriceId: "price_1OUuVgKMiBrigNb6XVIqsydL",
 }
  
 export const enterprise3: SubscriptionPlan = {
-  name: "enterprise3",
+  name: "EMBLOY ENTERPRISE",
+  internal_name: "enterprise_3",
   description: "Coming soon.",
   stripePriceId: "price_1OUuWFKMiBrigNb6lfAf7ptj",
 }

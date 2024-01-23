@@ -1,5 +1,3 @@
-// /lib/api/user.ts
-
 import { siteConfig } from "@/config/site";
 import { getAccessToken, clearUserSession } from "./auth";
 

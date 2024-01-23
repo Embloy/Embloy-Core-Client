@@ -1,3 +1,5 @@
+"use client"
+
 // @ts-nocheck
 // TODO: Fix this when we turn strict mode on.
 import { siteConfig } from "@/config/site";
@@ -62,6 +64,24 @@ export interface Subscription {
   prorate: boolean;
 }
 
+type Checkout = {
+  id: string;
+  object: string;
+  amount_subtotal: number;
+  amount_total: number;
+  created: number;
+  currency: string;
+  customer: string;
+  customer_details: {
+    email: string;
+    tax_exempt: string;
+  };
+  payment_status: string;
+  status: string;
+  url: string;
+  // ...other properties
+};
+
 export async function getActiveSubscription(): Promise<Subscription | null> {
   console.log('getActiveSubscription is called');
   const accessToken = await getAccessToken();
@@ -115,7 +135,7 @@ export async function postCheckout(tier: string, payment_mode: string): Promise<
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch subscription data');
+    throw new Error('Failed to fetch checkout data');
   }
 
   const data = await response.json();

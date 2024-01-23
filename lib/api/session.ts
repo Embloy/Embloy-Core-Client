@@ -1,4 +1,3 @@
-// /lib/api/session.ts
 import { getAccessToken, clearUserSession } from './auth';
 import { getUserData } from './user';
 

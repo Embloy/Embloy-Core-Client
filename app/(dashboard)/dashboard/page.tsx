@@ -18,7 +18,7 @@ export default async function DashboardPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Jobs" text="Upcoming jobs.">
+      <DashboardHeader heading="Upcoming Jobs" text="See what's next.">
         <StartApplyButton />
       </DashboardHeader>
       <div>
