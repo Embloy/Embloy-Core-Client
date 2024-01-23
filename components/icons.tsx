@@ -21,8 +21,10 @@ import {
   SunMedium,
   Trash,
   Twitter,
+  Chrome,
   User,
   Timer,
+  Linkedin,
   X,
   type Icon as LucideIcon,
 } from "lucide-react"
@@ -72,6 +74,8 @@ export const Icons = {
     </svg>
   ),
   twitter: Twitter,
+  chrome: Chrome,
   timer: Timer,
+  linkedin: Linkedin,
   check: Check,
 }

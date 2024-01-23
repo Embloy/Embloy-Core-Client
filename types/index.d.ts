@@ -30,6 +30,7 @@ export type SiteConfig = {
   name: string
   description: string
   url: string
+  api_root_url: string
   api_url: string
   ogImage: string
   links: {

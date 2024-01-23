@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import Cookies from 'js-cookie';
+import { getSession } from "./session";
 
 export async function login(email: string, password: string): Promise<void> {
   const encodedCredentials = btoa(`${email}:${password}`);
@@ -120,4 +121,48 @@ export async function resetPassword(email: string): Promise<void> {
   if (!response.ok) {
     throw new Error('Failed to send password reset email');
   }
+}
+
+export async function signInWithGithub() {
+  const authUrl = `${siteConfig.api_root_url}/auth/github`;
+  const authWindow = window.open(authUrl, '_blank');
+  const checkInterval = setInterval(() => {
+    if (authWindow && authWindow.closed) {
+      clearInterval(checkInterval);
+      return getSession();
+    }
+  }, 1000);
+}
+
+export async function signInWithGoogle() {
+  const authUrl = `${siteConfig.api_root_url}/auth/google_oauth2`;
+  const authWindow = window.open(authUrl, '_blank');
+  const checkInterval = setInterval(() => {
+    if (authWindow && authWindow.closed) {
+      clearInterval(checkInterval);
+      return getSession();
+    }
+  }, 1000);
+}
+
+export async function signInWithMicrosoft() {
+  const authUrl = `${siteConfig.api_root_url}/auth/azure_activedirectory_v2`;
+  const authWindow = window.open(authUrl, '_blank');
+  const checkInterval = setInterval(() => {
+    if (authWindow && authWindow.closed) {
+      clearInterval(checkInterval);
+      return getSession();
+    }
+  }, 1000);
+}
+
+export async function signInWithLinkedin() {
+  const authUrl = `${siteConfig.api_root_url}/auth/linkedin`;
+  const authWindow = window.open(authUrl, '_blank');
+  const checkInterval = setInterval(() => {
+    if (authWindow && authWindow.closed) {
+      clearInterval(checkInterval);
+      return getSession();
+    }
+  }, 1000);
 }

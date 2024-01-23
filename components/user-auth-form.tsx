@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { login } from '@/lib/api/auth';
+import { login, signInWithGoogle, signInWithLinkedin, signInWithMicrosoft } from '@/lib/api/auth';
 import { cn } from "@/lib/utils"
 import { userAuthSchema } from "@/lib/validations/auth"
 import { buttonVariants } from "@/components/ui/button"
@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { useRouter, useSearchParams } from "next/navigation"
+import { signInWithGithub } from '@/lib/api/auth'; // Import the signInWithGithub function
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -29,6 +30,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
+  const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
+  const [isMicrosoftLoading, setIsMicrosoftLoading] = React.useState<boolean>(false)
+  const [isLinkedinLoading, setIsLinkedinLoading] = React.useState<boolean>(false)
   const router = useRouter()
   const origin = useSearchParams().get("origin") as string
 
@@ -49,6 +53,78 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         description: "Your sign in request failed. Please try again.",
         variant: "destructive",
       })
+    }
+  }
+
+  async function handleGithubSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithGithub();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsGitHubLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with GitHub request failed. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  async function handleGoogleSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithGoogle();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsGoogleLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with Google request failed. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  async function handleMicrosoftSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithMicrosoft();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsMicrosoftLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with Microsoft request failed. Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  async function handleLinkedinSignIn() {
+    setIsGitHubLoading(true);
+
+    try {
+      await signInWithLinkedin();
+      // This forces a cache invalidation.
+      router.refresh();
+      router.push(origin || '/dashboard');
+    } catch (error) {
+      setIsLinkedinLoading(false);
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in with Linkedin request failed. Please try again.",
+        variant: "destructive",
+      });
     }
   }
 
@@ -116,11 +192,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       </div>
       <button
         type="button"
-        className={cn(buttonVariants({ variant: "outline" }), 'cursor-not-allowed')}
-        /*onClick={() => {
-          setIsGitHubLoading(true)
-          signIn("github")
-        }}*/
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleGithubSignIn} // Add the onClick handler
         disabled={isLoading || isGitHubLoading}
       >
         {isGitHubLoading ? (
@@ -130,6 +203,46 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         )}{" "}
         Github
       </button>
+      <button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleGoogleSignIn} // Add the onClick handler
+        disabled={isLoading || isGoogleLoading}
+      >
+        {isGoogleLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.chrome className="mr-2 h-4 w-4" />
+        )}{" "}
+        Google
+      </button>
+      <button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleMicrosoftSignIn} // Add the onClick handler
+        disabled={isLoading || isMicrosoftLoading}
+      >
+        {isMicrosoftLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.chrome className="mr-2 h-4 w-4" />
+        )}{" "}
+        Microsoft
+      </button>
+      <button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleLinkedinSignIn} // Add the onClick handler
+        disabled={isLoading || isLinkedinLoading}
+      >
+        {isLinkedinLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.chrome className="mr-2 h-4 w-4" />
+        )}{" "}
+        LinkedIn
+      </button>
     </div>
   )
 }
+
