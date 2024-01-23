@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { signup, signInWithGoogle, signInWithLinkedin, signInWithMicrosoft } from '@/lib/api/auth';
+import { signup, signInWithGoogle, signInWithLinkedin, signInWithMicrosoft, signInWithGithub } from '@/lib/api/auth';
 import { cn } from "@/lib/utils"
 import { userSignUpSchema } from "@/lib/validations/auth"
 import { buttonVariants } from "@/components/ui/button"
