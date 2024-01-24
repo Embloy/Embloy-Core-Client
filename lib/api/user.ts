@@ -43,15 +43,17 @@ export async function updateUser(userJson: string): Promise<{ success: Boolean }
   }
 }
 
-export async function uploadUserImage(formData: FormData): Promise<{ success: Boolean }> {
+export async function uploadUserImage(selectedImage: File): Promise<{ success: Boolean }> {
   console.log('uploadUserImage is called');
+  const formData = new FormData();
+  formData.append("image_url", selectedImage);
+  console.log(`url is: ${URL.createObjectURL(selectedImage)}`)
   try {
     const accessToken = await getAccessToken();
     console.log(`accessToken=${accessToken}`)
     const response = await fetch(`${siteConfig.api_url}/user/image`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'form/data',
         "access_token": `${accessToken}`,
       },
       body: formData

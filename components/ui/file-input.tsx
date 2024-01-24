@@ -32,7 +32,7 @@ export function FileInput({ id, className, onFileChange, currentUserImageUrl }: 
              <Image 
             src={selectedImage ? URL.createObjectURL(selectedImage) : (currentUserImageUrl!)} 
             alt="Profile" 
-            title="This will be your new image"
+            title={selectedImage ? "This will be your new image" : "Click here to update your image"}
             className="h-40 w-40 rounded-full object-cover" 
             width={160} // Add this line
             height={160} // Add this line

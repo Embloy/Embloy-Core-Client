@@ -114,10 +114,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
 
   async function uploadImage() {
     if (selectedImage) {
-      const formData = new FormData();
-      formData.append("image_url", selectedImage);
-
-      const success = await uploadUserImage(formData);
+      const success = await uploadUserImage(selectedImage);
       if (!success) {
         return toast({
           title: "Something went wrong.",
@@ -127,7 +124,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
       }
 
       toast({
-        description: "Your profile image has been updated.",
+        description: "Your profile image has been updated. Reload the page to see the change.",
       });
 
       //  router.refresh()
@@ -154,7 +151,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
               <div className="space-y-4">
                 <div className="space-y-1">
                   <Label htmlFor="first_name">First Name</Label>

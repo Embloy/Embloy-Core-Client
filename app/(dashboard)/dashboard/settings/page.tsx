@@ -24,7 +24,7 @@ export default function SettingsPage() {
   }, []);
 
   if (!user) {
-    return null; // or a loading spinner
+    return null;
   }
 
   return (
