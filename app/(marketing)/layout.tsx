@@ -44,7 +44,7 @@ export default function MarketingLayout({children }: MarketingLayoutProps) {
   if (user) {
     return (
       <div className="flex min-h-screen flex-col space-y-6">
-        <header className="sticky top-0 z-40 border-b bg-background">
+        <header className="sticky top-0 z-40 border-b">
           <div className="container flex h-16 items-center justify-between py-4">
             <MainNav items={dashboardConfig.mainNav} />
             <UserAccountNav
@@ -64,7 +64,7 @@ export default function MarketingLayout({children }: MarketingLayoutProps) {
   } else {
     return (
       <div className="flex min-h-screen flex-col">
-        <header className="container z-40 bg-background">
+        <header className="container z-40">
           <div className="flex h-20 items-center justify-between py-6">
             <MainNav items={marketingConfig.mainNav} />
             <nav>
