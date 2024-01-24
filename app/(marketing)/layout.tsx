@@ -6,12 +6,13 @@ import { getCurrentUser, User } from '@/lib/api/session';
 import { UserAccountNav } from "@/components/user-account-nav"
 
 import Link from "next/link"
-
+import { useSearchParams } from "next/navigation";
 import { marketingConfig } from "@/config/marketing"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
+
 
 interface MarketingLayoutProps {
   children: React.ReactNode
@@ -21,10 +22,11 @@ export default function MarketingLayout({children }: MarketingLayoutProps) {
 
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const refreshToken = useSearchParams().get('refresh_token');
 
   useEffect(() => {
     const fetchUser = async () => {
-      const currentUser = await getCurrentUser();
+      const currentUser = await getCurrentUser(refreshToken ?? undefined);
       setIsLoading(false);
       if (currentUser) {
         setUser(currentUser);

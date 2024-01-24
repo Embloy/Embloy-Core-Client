@@ -1,5 +1,6 @@
 import { getAccessToken, clearUserSession } from './auth';
 import { getUserData } from './user';
+import Cookies from 'js-cookie';
 
 // Define your own user type
 export interface User {
@@ -51,10 +52,11 @@ export async function getSessionUser(): Promise<{ user: User } | null> {
   return null;
 }
 
-export async function getCurrentUser(): Promise<User | null> {
+export async function getCurrentUser(refreshToken?: string): Promise<User | null> {
   console.log('getCurrentUser is called');
   let session: { user: User; } | null;
   try {
+    if (refreshToken) Cookies.set('refresh_token', refreshToken, { sameSite: 'Strict', secure: false });
     session = await getSessionUser();
   } catch (error) {
     console.error("Error getting session:", error);
