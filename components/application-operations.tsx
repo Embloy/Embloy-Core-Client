@@ -57,15 +57,25 @@ export function ApplicationOperations({ application }: ApplicationOperationsProp
           <Icons.ellipsis className="h-4 w-4" />
           <span className="sr-only">Open</span>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
+        <DropdownMenuContent align="end" >
           <DropdownMenuItem>
-            <Link href={`/editor/${application.job_id}`} className="flex w-full">
-              Edit
+            <Link href={`/dashboard/applications`} className="flex w-full cursor-not-allowed opacity-50">
+              Pin this application
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href={`/dashboard/applications`} className="flex w-full cursor-not-allowed opacity-50">
+              View status history
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href={`/dashboard/applications`} className="flex w-full cursor-not-allowed opacity-50">
+              See employer&apos;s profile
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            className="flex cursor-pointer items-center text-destructive focus:text-destructive"
+            className="flex cursor-not-allowed items-center text-destructive opacity-50 focus:text-destructive" // set to cursor-pointed once activated
             onSelect={() => setShowDeleteAlert(true)}
           >
             Delete
@@ -76,7 +86,7 @@ export function ApplicationOperations({ application }: ApplicationOperationsProp
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Are you sure you want to delete this post?
+              Are you sure you want to delete this application?
             </AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone.

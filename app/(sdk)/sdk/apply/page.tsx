@@ -158,7 +158,7 @@ export default function ApplyPage() {
           <div className="flex flex-col space-y-2 text-center">
             <Icons.logo className="mx-auto h-6 w-6" />
             <h1 className="text-2xl font-semibold tracking-tight">
-              Apply for this job
+              Apply for {job.title ?? "this job"} 
             </h1>
             <p className="text-sm text-muted-foreground">
               Enter your details below to apply

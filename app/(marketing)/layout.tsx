@@ -34,7 +34,7 @@ export default function MarketingLayout({children }: MarketingLayoutProps) {
     };
 
     fetchUser();
-  }, []);
+  }, [refreshToken]);
 
   if (isLoading) {
     // You can return a loading spinner here

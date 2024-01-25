@@ -29,14 +29,21 @@ export default function ApplicationsPage() {
 
   if (!applications) {
     return (
-      <EmptyPlaceholder>
-        <EmptyPlaceholder.Icon name="post" />
-        <EmptyPlaceholder.Title>No pending applications.</EmptyPlaceholder.Title>
-        <EmptyPlaceholder.Description>
-          You don&apos;t have applications yet. Start applying now.
-        </EmptyPlaceholder.Description>
-        <StartApplyButton variant="outline" />
-      </EmptyPlaceholder>
+      <DashboardShell>
+        <DashboardHeader heading="Applications" text="Your submitted applications.">
+          <StartApplyButton />
+        </DashboardHeader>
+        <div>
+          <EmptyPlaceholder>
+            <EmptyPlaceholder.Icon name="post" />
+            <EmptyPlaceholder.Title>No pending applications.</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Description>
+              You don&apos;t have applications yet. Start applying now.
+            </EmptyPlaceholder.Description>
+            <StartApplyButton variant="outline" />
+          </EmptyPlaceholder>
+        </div>
+      </DashboardShell>
     );
   }
 
@@ -46,8 +53,8 @@ export default function ApplicationsPage() {
         <StartApplyButton />
       </DashboardHeader>
       <div>
-      {applications.length ? (
-          <div className="divide-y divide-border rounded-md border">
+        {applications.length ? (
+          <div>
             {applications.map((application) => (
               <ApplicationItem key={application.job_id} application={application} />
             ))}

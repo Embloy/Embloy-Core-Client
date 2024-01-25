@@ -151,7 +151,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="space-y-4">
                 <div className="space-y-1">
                   <Label htmlFor="first_name">First Name</Label>
