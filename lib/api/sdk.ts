@@ -1,6 +1,18 @@
 import { siteConfig } from "@/config/site";
 import { getAccessToken } from "./auth";
 
+export interface ApplicationOption {
+  id: number;
+  job_id: number;
+  question: string;
+  question_type: string;
+  required: boolean;
+  options: string[];
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+}
+
 export interface Job {
   job_id: number;
   job_type: string;
@@ -46,6 +58,7 @@ export interface Job {
   allowed_cv_formats: string[];
   deleted_at: string | null;
   job_value: string;
+  application_options: ApplicationOption[];
   image_url: string | null;
 }
   

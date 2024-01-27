@@ -12,7 +12,8 @@ import { submitApplication } from "@/lib/api/application"
 interface ApplyButtonProps extends ButtonProps {
   application_text: string;
   request_token: string;
-  cv_file?: File; // New prop for the CV file
+  cv_file?: File;
+  options: { [key: string]: any }; // New prop for the job options
 }
 
 export function ApplyButton({
@@ -20,7 +21,8 @@ export function ApplyButton({
   variant,
   application_text,
   request_token,
-  cv_file, // New prop for the CV file
+  cv_file,
+  options, // New prop for the job options
   ...props
 }: ApplyButtonProps) {
   const router = useRouter()
@@ -29,7 +31,7 @@ export function ApplyButton({
   async function onClick() {
     setIsLoading(true)
   
-    const response = await submitApplication(application_text, request_token, cv_file) // Pass the CV file to the submitApplication function
+    const response = await submitApplication(application_text, request_token, cv_file, options) // Include the options in the submitApplication function call
   
     setIsLoading(false)
     if (!response) {

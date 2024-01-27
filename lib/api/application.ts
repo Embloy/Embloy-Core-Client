@@ -1,5 +1,3 @@
-"use client"
-
 import { siteConfig } from "@/config/site";
 import { getAccessToken } from "./auth";
 
@@ -56,7 +54,8 @@ export async function getApplications(): Promise<Application[] | null> {
 export async function submitApplication(
   application_text: string, 
   request_token: string, 
-  cv_file?: File
+  cv_file?: File,
+  options?: { [key: string]: any } // New parameter for the job options
 ): Promise<Boolean> {
   console.log('submitApplication is called');
   const accessToken = await getAccessToken();
@@ -65,6 +64,13 @@ export async function submitApplication(
   formData.append('application_text', application_text);
   if (cv_file) { // If a CV file is provided, append it to the form data
     formData.append('application_attachment', cv_file);
+  }
+
+  // If options are provided, append them to the form data
+  if (options) {
+    for (const key in options) {
+      formData.append(key, options[key]);
+    }
   }
 
   const response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
