@@ -74,7 +74,78 @@ export default function ApplyPage() {
     fetchData();
   }, [searchParams, router, origin, pathName]);
 
-  const [options, setOptions] = useState<{ [key: string]: any }>({});
+  // Initialize options as an empty array
+  const [options, setOptions] = useState<
+    Array<{ application_option_id: number; answer: string }>
+  >([]);
+
+  // Update function for text and link question types
+  const handleTextChange = (id: number, value: string) => {
+    setOptions((prevOptions) => {
+      const index = prevOptions.findIndex(
+        (option) => option.application_option_id === id
+      );
+      if (index !== -1) {
+        // Update the existing answer
+        const newOptions = [...prevOptions];
+        newOptions[index].answer = value;
+        return newOptions;
+      } else {
+        // Add a new answer
+        return [...prevOptions, { application_option_id: id, answer: value }];
+      }
+    });
+  };
+
+  // Update function for yes_no and single_choice question types
+  const handleSingleChoiceChange = (id: number, value: string) => {
+    setOptions((prevOptions) => {
+      const index = prevOptions.findIndex(
+        (option) => option.application_option_id === id
+      );
+      if (index !== -1) {
+        // Update the existing answer
+        const newOptions = [...prevOptions];
+        newOptions[index].answer = value;
+        return newOptions;
+      } else {
+        // Add a new answer
+        return [...prevOptions, { application_option_id: id, answer: value }];
+      }
+    });
+  };
+
+  // Update function for multiple_choice question type
+  const handleMultipleChoiceChange = (
+    id: number,
+    value: string,
+    isChecked: boolean
+  ) => {
+    setOptions((prevOptions) => {
+      const index = prevOptions.findIndex(
+        (option) => option.application_option_id === id
+      );
+      if (index !== -1) {
+        // Update the existing answer
+        const newOptions = [...prevOptions];
+        if (isChecked) {
+          newOptions[index].answer += `, ${value}`;
+        } else {
+          newOptions[index].answer = newOptions[index].answer.replace(
+            `, ${value}`,
+            ""
+          );
+        }
+        return newOptions;
+      } else {
+        // Add a new answer
+        return [
+          ...prevOptions,
+          { application_option_id: id, answer: isChecked ? value : "" },
+        ];
+      }
+    });
+  };
 
   if (!job || !session) {
     return (
@@ -216,7 +287,9 @@ export default function ApplyPage() {
                       required={option.required}
                       placeholder="https://example.com"
                       className="text-blue-500 underline"
-                      onClick={() => console.log("Input clicked")}
+                      onChange={(event) =>
+                        handleTextChange(option.id, event.target.value)
+                      }
                     />
                   </div>
                 );
@@ -229,22 +302,24 @@ export default function ApplyPage() {
                       type="text"
                       required={option.required}
                       placeholder="Enter your response (max. 200 characters)"
-                      onClick={() => console.log("Input clicked")}
+                      onChange={(event) =>
+                        handleTextChange(option.id, event.target.value)
+                      }
                     />
                   </div>
                 );
               case "yes_no":
                 return (
-                  <Select key={index} required={option.required}>
+                  <Select
+                    key={index}
+                    required={option.required}
+                    onValueChange={(value) =>
+                      handleSingleChoiceChange(option.id, value)
+                    }
+                  >
                     <SelectTrigger>{label}</SelectTrigger>
                     <SelectContent>
-                      <SelectItem
-                        key="1"
-                        value={"Yes"}
-                        onChange={(value) =>
-                          setOptions({ ...options, [option.question]: value })
-                        }
-                      >
+                      <SelectItem key="1" value={"Yes"}>
                         {"Yes"}
                       </SelectItem>
                       <SelectItem key="2" value={"No"}>
@@ -255,17 +330,17 @@ export default function ApplyPage() {
                 );
               case "single_choice":
                 return (
-                  <Select key={index} required={option.required}>
+                  <Select
+                    key={index}
+                    required={option.required}
+                    onValueChange={(value) =>
+                      handleSingleChoiceChange(option.id, value)
+                    }
+                  >
                     <SelectTrigger>{label}</SelectTrigger>
                     <SelectContent>
                       {option.options.map((opt, optIndex) => (
-                        <SelectItem
-                          key={optIndex}
-                          value={opt}
-                          onChange={(value) =>
-                            setOptions({ ...options, [option.question]: value })
-                          }
-                        >
+                        <SelectItem key={optIndex} value={opt}>
                           {opt}
                         </SelectItem>
                       ))}
@@ -283,14 +358,12 @@ export default function ApplyPage() {
                       >
                         <Checkbox
                           value={opt}
-                          onChange={(isChecked) =>
-                            setOptions({
-                              ...options,
-                              [option.question]: {
-                                ...options[option.question],
-                                [opt]: isChecked,
-                              },
-                            })
+                          onCheckedChange={(isChecked) =>
+                            handleMultipleChoiceChange(
+                              option.id,
+                              opt,
+                              !!isChecked
+                            )
                           }
                         />{" "}
                         <span>{opt}</span>
@@ -305,13 +378,12 @@ export default function ApplyPage() {
           <p className="mt-2 text-sm text-gray-500">
             Fields marked with an * are required.
           </p>
-
           <ApplyButton
             application_text={applicationText}
             request_token={searchParams.get("request_token") || ""}
             cv_file={cvFile}
             options={options}
-          />
+          />{" "}
         </div>
       </div>
     </div>

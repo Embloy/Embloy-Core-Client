@@ -22,7 +22,7 @@ export function ApplyButton({
   application_text,
   request_token,
   cv_file,
-  options, // New prop for the job options
+  options,
   ...props
 }: ApplyButtonProps) {
   const router = useRouter()
