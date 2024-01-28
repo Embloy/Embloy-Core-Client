@@ -269,7 +269,7 @@ export default function ApplyPage() {
             maxLength={500}
             onChange={handleInputChange}
             value={applicationText}
-            className="h-32 w-full resize-none rounded-md border text-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary bg-secondary"
+            className="h-32 w-full resize-none rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
             placeholder="* Enter your application text here... (max. 500 characters)"
           />
           {job.cv_required && (
@@ -326,7 +326,7 @@ export default function ApplyPage() {
                         }
                         maxLength={200}
                         style={{ resize: 'none', overflow: 'auto' }}
-                        className="h-20 w-full rounded-md text-sm border p-2 focus:outline-none focus:ring-2 focus:ring-primary bg-secondary"
+                        className="h-20 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="Enter your response (max. 200 characters)"
                       />
                   </div>
