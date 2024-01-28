@@ -12,12 +12,15 @@ import { ManageSubscriptionsButton } from "@/components/manage-subscriptions-but
 import { toast } from "@/components/ui/use-toast"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { SubscribeButton } from "@/components/subscribe-button"
+import BillingLoading from './loading';
 
 export default function BillingPage() {
   const [activeSubscription, setActiveSubscription] = useState<Subscription | null>(null);
+  const [isLoading, setIsLoading] = useState<Boolean>(true);
 
   useEffect(() => {
     const fetchSubscription = async () => {
+      setIsLoading(true);
       const loggedIn = (await getSession()).session;
       if (!loggedIn) {
         redirect("/login");
@@ -25,12 +28,18 @@ export default function BillingPage() {
         const subscription = await getActiveSubscription();
         setActiveSubscription(subscription);
       }
+      setIsLoading(false);
     };
 
     fetchSubscription();
   }, []);
 
-  if (!activeSubscription) {
+  if (isLoading) {
+  return <BillingLoading/>
+  }
+
+
+  if (!activeSubscription && !isLoading) {
     return (
       <EmptyPlaceholder>
         <EmptyPlaceholder.Icon name="billing" />
@@ -44,7 +53,7 @@ export default function BillingPage() {
       </EmptyPlaceholder>
     );
   }
-
+if (activeSubscription && !isLoading)
   return (
     <DashboardShell>
       <DashboardHeader heading="Billing" text="Manage your subscription plan.">
