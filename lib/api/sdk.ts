@@ -67,7 +67,8 @@ export interface Session {
     job_slug: string;
     user_id: number;
     subscription_type: string;
-    referrer_url: string | null;
+    success_url: string | null;
+    cancel_url: string | null;
 }
 
 export interface ResponseData {

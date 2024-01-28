@@ -21,6 +21,7 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import LoadingScreen from "./loading";
 
 export default function ApplyPage() {
   const [job, setJob] = useState<Job | null>(null);
@@ -31,6 +32,7 @@ export default function ApplyPage() {
   const pathName = usePathname() as string;
   const origin = useSearchParams();
   const [cvFile, setCvFile] = useState<File | undefined>();
+  const [isLoading, setIsLoading] = React.useState<boolean>(true)
 
   const handleInputChange = (event) => {
     setApplicationText(event.target.value);
@@ -41,8 +43,18 @@ export default function ApplyPage() {
     setCvFile(event.target.files[0]);
   };
 
+  const handleBackClick = (e) => {
+    e.preventDefault();
+    if (session && session.cancel_url) {
+      window.location.href = session.cancel_url;
+    } else {
+      router.back();
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true)
       if (!searchParams.has("request_token")) {
         router.back();
         return;
@@ -69,6 +81,8 @@ export default function ApplyPage() {
           });
         }
       }
+
+      setIsLoading(false)
     };
 
     fetchData();
@@ -147,7 +161,11 @@ export default function ApplyPage() {
     });
   };
 
-  if (!job || !session) {
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
+  if (!isLoading && (!job || !session)) {
     return (
       <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-1 lg:px-0">
         <Link
@@ -188,10 +206,12 @@ export default function ApplyPage() {
       </div>
     );
   }
+  if (!isLoading && job && session) {
   return (
     <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0">
       <Link
         href="/.."
+        onClick={handleBackClick}
         className={cn(
           buttonVariants({ variant: "outline" }),
           "absolute left-4 top-4 text-white md:left-8 md:top-8"
@@ -212,7 +232,7 @@ export default function ApplyPage() {
         Go To Embloy
       </Link>
       <Image
-        src="/images/banner-3.png"
+        src="/images/banner-5.png"
         alt="Description of the image"
         width={842}
         height={842}
@@ -246,10 +266,11 @@ export default function ApplyPage() {
             </p>
           </div>
           <textarea
+            maxLength={500}
             onChange={handleInputChange}
             value={applicationText}
-            className="h-32 w-full resize-none rounded-md border p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            placeholder="Enter your application text here..."
+            className="h-32 w-full resize-none rounded-md border text-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary bg-secondary"
+            placeholder="* Enter your application text here... (max. 500 characters)"
           />
           {job.cv_required && (
             <div>
@@ -297,15 +318,17 @@ export default function ApplyPage() {
                 return (
                   <div>
                     <legend className="text-lg font-semibold">{label}</legend>
-                    <Input
-                      key={index}
-                      type="text"
-                      required={option.required}
-                      placeholder="Enter your response (max. 200 characters)"
-                      onChange={(event) =>
-                        handleTextChange(option.id, event.target.value)
-                      }
-                    />
+                      <textarea
+                        key={index}
+                        required={option.required}  
+                        onChange={(event) =>
+                          handleTextChange(option.id, event.target.value)
+                        }
+                        maxLength={200}
+                        style={{ resize: 'none', overflow: 'auto' }}
+                        className="h-20 w-full rounded-md text-sm border p-2 focus:outline-none focus:ring-2 focus:ring-primary bg-secondary"
+                        placeholder="Enter your response (max. 200 characters)"
+                      />
                   </div>
                 );
               case "yes_no":
@@ -388,4 +411,7 @@ export default function ApplyPage() {
       </div>
     </div>
   );
-}
+}}
+
+
+
