@@ -21,9 +21,9 @@ export function MainNav({ items, children }: MainNavProps) {
 
   return (
     <div className="flex gap-6 md:gap-10">
-<Link href="/" className="hidden items-center space-x-2 md:flex  mb-1">
+<Link href="/" className="mb-1 hidden items-center space-x-2  md:flex">
   <Icons.logo />
-  <span className="hidden font-bold text-xl underline-gradient sm:inline-block">
+  <span className="underline-gradient hidden text-xl font-bold sm:inline-block">
     {siteConfig.name.toLowerCase()}
   </span>
 </Link>

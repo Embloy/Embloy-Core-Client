@@ -24,7 +24,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
       <Link href="/" className="flex items-center space-x-2">
         <Icons.logo />
-        <span className="font-bold text-xl underline-gradient">
+        <span className="underline-gradient text-xl font-bold">
           {siteConfig.name.toLowerCase()}
         </span>
       </Link>
