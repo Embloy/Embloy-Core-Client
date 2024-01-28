@@ -1,4 +1,4 @@
-import { Inter as FontSans } from "next/font/google"
+import { Lexend } from "next/font/google"
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
@@ -9,7 +9,7 @@ import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const fontSans = FontSans({
+const fontSans = Lexend({
   subsets: ["latin"],
   variable: "--font-sans",
 })
