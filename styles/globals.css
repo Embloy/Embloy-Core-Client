@@ -70,6 +70,28 @@
   }
 }
 
+.underline-gradient {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.underline-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #99F7CB, #99FFFF);
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.underline-gradient:hover::after {
+  left: 0;
+}
+
 @layer base {
   * {
     @apply border-border;
