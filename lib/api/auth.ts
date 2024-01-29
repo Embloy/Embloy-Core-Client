@@ -124,7 +124,7 @@ export async function resetPassword(email: string): Promise<void> {
 
 export async function signInWithGithub() {
   const authUrl = `${siteConfig.api_root_url}/auth/github`;
-  const authWindow = window.open(authUrl, '_blank');
+  const authWindow = window.open(authUrl);
   const checkInterval = setInterval(() => {
     if (authWindow && authWindow.closed) {
       clearInterval(checkInterval);
@@ -135,7 +135,7 @@ export async function signInWithGithub() {
 
 export async function signInWithGoogle() {
   const authUrl = `${siteConfig.api_root_url}/auth/google_oauth2`;
-  const authWindow = window.open(authUrl, '_blank');
+  const authWindow = window.open(authUrl);
   const checkInterval = setInterval(() => {
     if (authWindow && authWindow.closed) {
       clearInterval(checkInterval);
@@ -146,7 +146,7 @@ export async function signInWithGoogle() {
 
 export async function signInWithMicrosoft() {
   const authUrl = `${siteConfig.api_root_url}/auth/azure_activedirectory_v2`;
-  const authWindow = window.open(authUrl, '_blank');
+  const authWindow = window.open(authUrl);
   const checkInterval = setInterval(() => {
     if (authWindow && authWindow.closed) {
       clearInterval(checkInterval);
@@ -157,7 +157,7 @@ export async function signInWithMicrosoft() {
 
 export async function signInWithLinkedin() {
   const authUrl = `${siteConfig.api_root_url}/auth/linkedin`;
-  const authWindow = window.open(authUrl, '_blank');
+  const authWindow = window.open(authUrl);
   const checkInterval = setInterval(() => {
     if (authWindow && authWindow.closed) {
       clearInterval(checkInterval);

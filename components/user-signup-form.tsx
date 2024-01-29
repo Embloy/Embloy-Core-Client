@@ -246,58 +246,56 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
           </span>
         </div>
       </div>
-      <button
-        type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleGithubSignIn}
-        disabled={isLoading || isGitHubLoading}
-      >
-        {isGitHubLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.gitHub className="mr-2 h-4 w-4" />
-        )}{" "}
-        Github
-      </button>
-      <button
-        type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleGoogleSignIn}
-        disabled={isLoading || isGoogleLoading}
-      >
-        {isGoogleLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.google className="mr-2 h-4 w-4" />
-        )}{" "}
-        Google
-      </button>
-      <button
-        type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleLinkedinSignIn}
-        disabled={isLoading || isLinkedinLoading}
-      >
-        {isLinkedinLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.linkedin className="mr-2 h-4 w-4" />
-        )}{" "}
-        LinkedIn
-      </button>      
-      <button
-        type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleMicrosoftSignIn}
-        disabled={isLoading || isMicrosoftLoading}
-      >
-        {isMicrosoftLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.microsoft className="mr-2 h-4 w-4" />
-        )}{" "}
-        Microsoft
-      </button>
+      <div className="flex justify-center space-x-4">
+        <button
+          type="button"
+          className={cn(buttonVariants({ variant: "outline" }), "rounded-full border-none p-2 px-1 hover:bg-secondary")}
+          onClick={handleGithubSignIn}
+          disabled={isLoading || isGitHubLoading}
+        >
+          {isGitHubLoading ? (
+            <Icons.spinner className="h-8 w-8 animate-spin" />
+          ) : (
+            <Icons.gitHub className="h-8 w-8" />
+          )}
+        </button>
+        <button
+          type="button"
+          className={cn(buttonVariants({ variant: "outline" }), "rounded-full border-none p-2 px-1 hover:bg-secondary")}
+          onClick={handleGoogleSignIn}
+          disabled={isLoading || isGoogleLoading}
+        >
+          {isGoogleLoading ? (
+            <Icons.spinner className="h-8 w-8 animate-spin" />
+          ) : (
+            <Icons.google className="h-8 w-8" />
+          )}
+        </button>
+        <button
+          type="button"
+          className={cn(buttonVariants({ variant: "ghost" }), "border-none p-2 px-1 hover:bg-secondary")}
+          onClick={handleLinkedinSignIn}
+          disabled={isLoading || isLinkedinLoading}
+        >
+          {isLinkedinLoading ? (
+            <Icons.spinner className="h-8 w-8 animate-spin" />
+          ) : (
+            <Icons.linkedin className="h-8 w-8" />
+          )}
+        </button>      
+        <button
+          type="button"
+          className={cn(buttonVariants({ variant: "outline" }), "border-none p-2 px-1 hover:bg-secondary")}
+          onClick={handleMicrosoftSignIn}
+          disabled={isLoading || isMicrosoftLoading}
+        >
+          {isMicrosoftLoading ? (
+            <Icons.spinner className="h-8 w-8 animate-spin" />
+          ) : (
+            <Icons.microsoft className="h-8 w-8" />
+          )}
+        </button>
+      </div>   
   </div>
   )
 }
