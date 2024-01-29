@@ -105,7 +105,6 @@ export async function logout(): Promise<void> {
 }
 
 export function clearUserSession(): void {
-  // Implement logic to clear user session (e.g., clear local storage, cookies, or state)
   Cookies.remove('access_token', { sameSite: 'Strict', secure: false });
   Cookies.remove('refresh_token', { sameSite: 'Strict', secure: false });
 }

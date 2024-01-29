@@ -193,7 +193,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleGithubSignIn} // Add the onClick handler
+        onClick={handleGithubSignIn}
         disabled={isLoading || isGitHubLoading}
       >
         {isGitHubLoading ? (
@@ -206,7 +206,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleGoogleSignIn} // Add the onClick handler
+        onClick={handleGoogleSignIn}
         disabled={isLoading || isGoogleLoading}
       >
         {isGoogleLoading ? (
@@ -219,7 +219,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleLinkedinSignIn} // Add the onClick handler
+        onClick={handleLinkedinSignIn}
         disabled={isLoading || isLinkedinLoading}
       >
         {isLinkedinLoading ? (
@@ -229,10 +229,10 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         )}{" "}
         LinkedIn
       </button>      
-      {/*<button
+      <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleMicrosoftSignIn} // Add the onClick handler
+        onClick={handleMicrosoftSignIn}
         disabled={isLoading || isMicrosoftLoading}
       >
         {isMicrosoftLoading ? (
@@ -242,7 +242,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         )}{" "}
         Microsoft
       </button>
-        */}
     </div>
   )
 }

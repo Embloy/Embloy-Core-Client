@@ -249,7 +249,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleGithubSignIn} // Add the onClick handler
+        onClick={handleGithubSignIn}
         disabled={isLoading || isGitHubLoading}
       >
         {isGitHubLoading ? (
@@ -262,7 +262,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleGoogleSignIn} // Add the onClick handler
+        onClick={handleGoogleSignIn}
         disabled={isLoading || isGoogleLoading}
       >
         {isGoogleLoading ? (
@@ -275,7 +275,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={handleLinkedinSignIn} // Add the onClick handler
+        onClick={handleLinkedinSignIn}
         disabled={isLoading || isLinkedinLoading}
       >
         {isLinkedinLoading ? (
@@ -285,6 +285,19 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
         )}{" "}
         LinkedIn
       </button>      
+      <button
+        type="button"
+        className={cn(buttonVariants({ variant: "outline" }))}
+        onClick={handleMicrosoftSignIn}
+        disabled={isLoading || isMicrosoftLoading}
+      >
+        {isMicrosoftLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.microsoft className="mr-2 h-4 w-4" />
+        )}{" "}
+        Microsoft
+      </button>
   </div>
   )
 }

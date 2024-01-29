@@ -28,7 +28,7 @@ import {
   type Icon as LucideIcon,
 } from "lucide-react"
 
-import { Logo } from './ui/command' // adjust the path according to your project structure
+import { Logo } from './ui/command'
 
 export type Icon = LucideIcon
 
