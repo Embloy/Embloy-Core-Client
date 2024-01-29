@@ -79,7 +79,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
   }
 
   async function handleGoogleSignIn() {
-    setIsGitHubLoading(true);
+    setIsGoogleLoading(true);
 
     try {
       await signInWithGoogle();
@@ -97,7 +97,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
   }
 
   async function handleMicrosoftSignIn() {
-    setIsGitHubLoading(true);
+    setIsMicrosoftLoading(true);
 
     try {
       await signInWithMicrosoft();
@@ -115,7 +115,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
   }
 
   async function handleLinkedinSignIn() {
-    setIsGitHubLoading(true);
+    setIsLinkedinLoading(true);
 
     try {
       await signInWithLinkedin();
