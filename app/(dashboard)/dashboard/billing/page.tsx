@@ -1,15 +1,13 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { getSession } from "@/lib/api/session"
 import { getActiveSubscription, Subscription } from "@/lib/api/subscription"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { BillingForm } from "@/components/billing-form"
 import { DashboardHeader } from "@/components/header"
 import { DashboardShell } from "@/components/shell"
 import { ManageSubscriptionsButton } from "@/components/manage-subscriptions-button"
-import { toast } from "@/components/ui/use-toast"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { SubscribeButton } from "@/components/subscribe-button"
 import BillingLoading from './loading';
@@ -17,13 +15,14 @@ import BillingLoading from './loading';
 export default function BillingPage() {
   const [activeSubscription, setActiveSubscription] = useState<Subscription | null>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
+  const router = useRouter()
 
   useEffect(() => {
     const fetchSubscription = async () => {
       setIsLoading(true);
       const loggedIn = (await getSession()).session;
       if (!loggedIn) {
-        redirect("/login");
+        router.push("/login");
       } else {
         const subscription = await getActiveSubscription();
         setActiveSubscription(subscription);

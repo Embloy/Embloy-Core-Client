@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { getSession } from "@/lib/api/session"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { DashboardHeader } from "@/components/header"
@@ -14,13 +14,14 @@ import ApplicationsLoading from './loading';
 export default function ApplicationsPage() {
   const [applications, setApplications] = useState<Application[] | null>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
+  const router = useRouter()
 
   useEffect(() => {
     const fetchApplications = async () => {
       setIsLoading(true);
       const loggedIn = (await getSession()).session;
       if (!loggedIn) {
-        redirect("/login");
+        router.push(`/login`)
       } else {
         const apps = await getApplications();
         setApplications(apps);

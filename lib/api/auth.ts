@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import Cookies from 'js-cookie';
 import { getSession } from "./session";
+import { decode } from 'jsonwebtoken';
 
 export async function login(email: string, password: string): Promise<void> {
   const encodedCredentials = btoa(`${email}:${password}`);
@@ -73,10 +74,29 @@ export async function verify(email: string, password: string): Promise<void> {
 
 export async function getAccessToken(): Promise<string | null> {
   console.log('getAccessToken is called');
+  
+  // Check if a valid access token is already set
+  const existingAccessToken = Cookies.get('access_token');
+  if (existingAccessToken) {
+    // Verify if the access token is expired
+    const isExpired = checkIfTokenExpired(existingAccessToken);
+    if (!isExpired) {
+      console.log('A valid access token is already set');
+      return existingAccessToken;
+    }
+  }
+
   const refreshToken = Cookies.get('refresh_token');
 
   if (!refreshToken) {
     console.log('refresh_token is null');
+    return null;
+  }
+
+  // Verify if the refresh token is expired
+  const isRefreshTokenExpired = checkIfTokenExpired(refreshToken);
+  if (isRefreshTokenExpired) {
+    console.log('refresh_token is expired');
     return null;
   }
 
@@ -95,9 +115,23 @@ export async function getAccessToken(): Promise<string | null> {
   }
 
   const accessToken = atResult.access_token;
-Cookies.set('access_token', accessToken, { sameSite: 'Strict', secure: false });
+  Cookies.set('access_token', accessToken, { sameSite: 'Strict', secure: false });
 
   return accessToken;
+}
+
+// Function to check if the token is expired
+function checkIfTokenExpired(token: string): boolean {
+  try {
+    const decodedToken: any = decode(token);
+    if (Date.now() >= decodedToken.exp * 1000) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch {
+    return true;
+  }
 }
 
 export async function logout(): Promise<void> {
