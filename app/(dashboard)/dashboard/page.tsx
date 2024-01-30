@@ -1,20 +1,33 @@
 "use client"
 
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { getSession } from "@/lib/api/session"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { DashboardHeader } from "@/components/header"
 import { StartApplyButton } from "@/components/start-apply-button"
 import { DashboardShell } from "@/components/shell"
+import { getActiveSubscription } from "@/lib/api/subscription"
+import { useEffect, useState } from "react"
 
 export default async function DashboardPage() {
-  const { session } = await getSession()
-
-  if (!session) {
-    redirect("/login");
-  }
-
+  const [isLoading, setIsLoading] = useState<Boolean>(true);
+  const router = useRouter()
   const jobs = []
+
+
+  useEffect(() => {
+    const fetchSubscription = async () => {
+      setIsLoading(true);
+      const loggedIn = (await getSession()).session;
+      if (!loggedIn) {
+        router.push("/login");
+      } else {
+      }
+      setIsLoading(false);
+    };
+
+    fetchSubscription();
+  }, []);
 
   return (
     <DashboardShell>
