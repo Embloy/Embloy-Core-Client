@@ -171,30 +171,11 @@ export default async function IndexPage() {
         </div>
       </section>
       <section id="open-source" className="container py-8 md:py-12 lg:py-24">
-        <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            All it takes is one click
-          </h2>
-          <div className="grid grid-cols-3 gap-4">
-            <Image
-             className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" 
-             src="/images/mobile_button_page.png" alt="Description of Image 1" 
-             width={842}
-             height={842}
-             />
-            <Image
-             className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" 
-             src="/images/mobile_button_page.png" alt="Description of Image 1" 
-             width={842}
-             height={842}
-             />
-            <Image
-             className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" 
-             src="/images/mobile_button_page.png" alt="Description of Image 1" 
-             width={842}
-             height={842}
-             />
-          </div>
+        <div className="mx-auto flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center">
+          <video width="auto" height="auto" loop autoPlay muted preload="none" style={{ borderRadius: '30px' }}>
+            <source src="/videos/vod.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
       <section id="open-source" className="container py-8 md:py-12 lg:py-24">

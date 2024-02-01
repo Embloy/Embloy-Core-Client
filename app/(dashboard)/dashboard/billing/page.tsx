@@ -40,16 +40,21 @@ export default function BillingPage() {
 
   if (!activeSubscription && !isLoading) {
     return (
-      <EmptyPlaceholder>
-        <EmptyPlaceholder.Icon name="billing" />
-        <EmptyPlaceholder.Title>No active subscriptions.</EmptyPlaceholder.Title>
-        <EmptyPlaceholder.Description>
-          You don&apos;t have an active subscriptions yet. Start using Embloy&apos;s most exclusive features now.
-        </EmptyPlaceholder.Description>
-        <SubscribeButton variant="outline" subscriptionType="Free" />
-        <SubscribeButton variant="outline" subscriptionType="Smart" />
-        <SubscribeButton variant="outline" subscriptionType="Genius" />
-      </EmptyPlaceholder>
+      <div>
+        <div className="mt-10 mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+            No active subscriptions.
+          </h2>
+          <p>
+            You don&apos;t have an active subscriptions yet. Start using Embloy&apos;s most exclusive features now.
+          </p>
+          <div className="grid grid-cols-3 gap-4">
+            <SubscribeButton variant="outline" subscriptionType="Free" className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" />
+            <SubscribeButton variant="outline" subscriptionType="Smart" className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" />
+            <SubscribeButton variant="outline" subscriptionType="Genius" className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" />
+          </div>
+        </div>
+      </div>
     );
   }
 if (activeSubscription && !isLoading)
