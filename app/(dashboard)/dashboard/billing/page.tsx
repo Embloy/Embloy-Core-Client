@@ -31,7 +31,7 @@ export default function BillingPage() {
     };
 
     fetchSubscription();
-  }, []);
+  }, [router]);
 
   if (isLoading) {
   return <BillingLoading/>
@@ -41,7 +41,7 @@ export default function BillingPage() {
   if (!activeSubscription && !isLoading) {
     return (
       <div>
-        <div className="mt-10 mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+        <div className="mx-auto mt-10 flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             No active subscriptions.
           </h2>

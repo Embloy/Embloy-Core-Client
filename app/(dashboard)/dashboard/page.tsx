@@ -31,7 +31,7 @@ export default function DashboardPage() {
     };
 
     fetchJobs();
-  }, []);
+  }, [router]);
 
   return (
     <DashboardShell>

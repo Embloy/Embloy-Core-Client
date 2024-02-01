@@ -372,7 +372,7 @@ export default function ApplyPage() {
             className="h-32 w-full resize-none rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
             placeholder="* Enter your application text here... (max. 500 characters)"
           />
-          {errorMessages['applicationText'] && <div className="text-red-500 text-sm">{errorMessages['applicationText']}</div>}
+          {errorMessages['applicationText'] && <div className="text-sm text-red-500">{errorMessages['applicationText']}</div>}
           {job.cv_required && (
             <div>
               <legend className="text-lg font-semibold">
@@ -413,7 +413,7 @@ export default function ApplyPage() {
                         handleTextChange(option.id, event.target.value, option.required)
                       }
                     />
-                    {errorMessages[option.id] && <div className="text-red-500 text-sm">{errorMessages[option.id]}</div>}
+                    {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
                   </div>
                 );
               case "text":
@@ -431,7 +431,7 @@ export default function ApplyPage() {
                         className="h-20 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="Enter your response (max. 200 characters)"
                       />
-                    {errorMessages[option.id] && <div className="text-red-500 text-sm">{errorMessages[option.id]}</div>}
+                    {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
                   </div>
                 );
                 case "yes_no":
@@ -441,7 +441,7 @@ export default function ApplyPage() {
                         key={index}
                         required={option.required}
                         onValueChange={(value) => {
-                          handleSingleChoiceChange(option.id, value, option.required);
+                          handleSingleChoiceChange(option.id, value);
                         }}
                       >
                         <SelectTrigger>{label}</SelectTrigger>
@@ -454,7 +454,7 @@ export default function ApplyPage() {
                           </SelectItem>
                         </SelectContent>
                       </Select>
-                      {errorMessages[option.id] && <div className="text-red-500 text-sm">{errorMessages[option.id]}</div>}
+                      {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
                     </div>
                   );
                 case "single_choice":
@@ -476,7 +476,7 @@ export default function ApplyPage() {
                           ))}
                         </SelectContent>
                       </Select>
-                      {errorMessages[option.id] && <div className="text-red-500 text-sm">{errorMessages[option.id]}</div>}
+                      {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
                     </div>
                   );
                 case "multiple_choice":
@@ -501,7 +501,7 @@ export default function ApplyPage() {
                           <span>{opt}</span>
                         </label>
                       ))}
-                      {errorMessages[option.id] && <div className="text-red-500 text-sm">{errorMessages[option.id]}</div>}
+                      {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
                     </fieldset>
                   );
               default:

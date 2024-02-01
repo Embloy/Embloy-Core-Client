@@ -49,12 +49,6 @@ type FormData = z.infer<typeof userSchema>;
 
 export function UserForm({ user, className, ...props }: UserFormProps) {
   const router = useRouter();
-  const defaultValues = {
-    ...user,
-    date_of_birth: user.date_of_birth ? user.date_of_birth.toISOString() : "",
-    created_at: "",
-    updated_at: "",
-  };
 
   const {
     handleSubmit,
@@ -62,7 +56,6 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(userSchema),
-    defaultValues,
   });
 
   const [isSaving, setIsSaving] = React.useState<boolean>(false);

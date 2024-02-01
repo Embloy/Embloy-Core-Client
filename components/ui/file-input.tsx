@@ -26,6 +26,7 @@ export function FileInput({ id, className, onFileChange, currentUserImageUrl }: 
         id={id}
         className="hidden"
         onChange={handleChange}
+        accept=".png, .jpg, .jpeg" // Only accept PNGs and JPGs
       />
       <label htmlFor={id} className="cursor-pointer">
         {(selectedImage || currentUserImageUrl) ? 
@@ -34,8 +35,8 @@ export function FileInput({ id, className, onFileChange, currentUserImageUrl }: 
             alt="Profile" 
             title={selectedImage ? "This will be your new image" : "Click here to update your image"}
             className="h-40 w-40 rounded-full object-cover" 
-            width={160} // Add this line
-            height={160} // Add this line
+            width={160}
+            height={160}
           />
           :
           <Avatar className="h-40 w-40">

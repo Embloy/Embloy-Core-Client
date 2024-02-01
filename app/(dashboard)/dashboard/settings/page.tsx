@@ -26,7 +26,7 @@ export default function SettingsPage() {
     };
 
     fetchUser();
-  }, []);
+  }, [router]);
 
   if (isLoading) {
     return <DashboardSettingsLoading/>

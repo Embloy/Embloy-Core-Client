@@ -30,7 +30,7 @@ export default function ApplicationsPage() {
     };
 
     fetchApplications();
-  }, []);
+  }, [router]);
 
   if (isLoading) {
     return <ApplicationsLoading/>
