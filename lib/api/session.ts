@@ -70,9 +70,10 @@ export async function getCurrentUser(refreshToken?: string): Promise<User | null
   return null;
 }
 
-export async function getSession(): Promise<{ session: Boolean }> {
+export async function getSession(refreshToken?: string): Promise<{ session: Boolean }> {
   console.log('getSession is called');
   try {
+    if (refreshToken) Cookies.set('refresh_token', refreshToken, { sameSite: 'Strict', secure: false });
     const accessToken = await getAccessToken();
     console.log(`accessToken=${accessToken}`)
     if (accessToken) {
