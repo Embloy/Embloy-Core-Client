@@ -37,11 +37,7 @@ export async function generateMetadata({
   }
 
   const url = env.NEXT_PUBLIC_APP_URL
-
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set("heading", page.title)
-  ogUrl.searchParams.set("type", siteConfig.name)
-  ogUrl.searchParams.set("mode", "light")
+  const imageUrl = `${url}/og.jpg`;
 
   return {
     title: page.title,
@@ -53,7 +49,7 @@ export async function generateMetadata({
       url: absoluteUrl(page.slug),
       images: [
         {
-          url: ogUrl.toString(),
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: page.title,
@@ -64,7 +60,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: page.title,
       description: page.description,
-      images: [ogUrl.toString()],
+      images: [imageUrl],
     },
   }
 }
