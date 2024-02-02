@@ -168,7 +168,8 @@ export async function signInWithGithub() {
 }
 
 export async function signInWithGoogle() {
-  const authUrl = `${siteConfig.api_root_url}/auth/google_oauth2`;
+  const redirectUri = encodeURIComponent(window.location.href);
+  const authUrl = `${siteConfig.api_root_url}/auth/google_oauth2?redirect_uri=${redirectUri}`;
   const authWindow = window.open(authUrl);
   const checkInterval = setInterval(() => {
     if (authWindow && authWindow.closed) {
@@ -190,7 +191,8 @@ export async function signInWithMicrosoft() {
 }
 
 export async function signInWithLinkedin() {
-  const authUrl = `${siteConfig.api_root_url}/auth/linkedin`;
+  const redirectUri = encodeURIComponent(window.location.href);
+  const authUrl = `${siteConfig.api_root_url}/auth/linkedin?redirect_uri=${redirectUri}`;
   const authWindow = window.open(authUrl);
   const checkInterval = setInterval(() => {
     if (authWindow && authWindow.closed) {
