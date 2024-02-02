@@ -56,6 +56,17 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(userSchema),
+    defaultValues: {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      phone: user.phone,
+      address: user.address,
+      twitter_url: user.twitter_url,
+      linkedin_url: user.linkedin_url,
+      instagram_url: user.instagram_url,
+      facebook_url: user.facebook_url,
+    },
   });
 
   const [isSaving, setIsSaving] = React.useState<boolean>(false);

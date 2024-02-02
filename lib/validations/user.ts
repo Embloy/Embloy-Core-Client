@@ -1,5 +1,4 @@
 import * as z from "zod"
-import { URL } from 'url';
 
 export const userSchema = z.object({
   id: z.number(),

@@ -53,7 +53,8 @@ export default function ApplyPage() {
     }
 
     job?.application_options.forEach((option) => {
-      if (option.required) {
+      const optionExists = options.some(opt => opt.application_option_id === option.id && opt.answer !== '');
+      if (optionExists || option.required) {
         const optionExists = options.some(opt => opt.application_option_id === option.id && opt.answer !== '');
         switch (option.question_type) {
           case 'yes_no':
@@ -179,11 +180,19 @@ export default function ApplyPage() {
   // Update function for text and link question types
   const handleTextChange = (id: number, value: string, required: boolean) => {
     try {
-      idSchema.parse(id);
-      if (required && value.trim() === '') {
-        throw new Error('This field is required');
+      setErrorMessages((prevMessages) => {
+        const newMessages = { ...prevMessages };
+        delete newMessages[id];
+        return newMessages;
+      });
+
+      if (required) {
+        idSchema.parse(id);
+        if (required && value.trim() === '') {
+          throw new Error('This field is required');
+        }
+        textSchema.parse(value);
       }
-      textSchema.parse(value);
   
       setOptions((prevOptions) => {
         const index = prevOptions.findIndex(
@@ -197,7 +206,6 @@ export default function ApplyPage() {
           return [...prevOptions, { application_option_id: id, answer: value }];
         }
       });
-      setErrorMessages((prevMessages) => ({ ...prevMessages, [id]: null }));
     } catch (error) {
       setErrorMessages((prevMessages) => ({ ...prevMessages, [id]: error.message }));
     }

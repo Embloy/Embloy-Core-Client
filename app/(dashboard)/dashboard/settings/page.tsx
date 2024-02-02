@@ -37,6 +37,7 @@ export default function SettingsPage() {
   }
 
   if (user && !isLoading) {
+    console.log("user: ", user);
     return (
       <DashboardShell>
         <DashboardHeader
