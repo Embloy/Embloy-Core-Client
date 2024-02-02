@@ -156,48 +156,78 @@ export async function resetPassword(email: string): Promise<void> {
   }
 }
 
-export async function signInWithGithub() {
-  const authUrl = `${siteConfig.api_root_url}/auth/github`;
-  const authWindow = window.open(authUrl);
-  const checkInterval = setInterval(() => {
-    if (authWindow && authWindow.closed) {
-      clearInterval(checkInterval);
-      return getSession();
-    }
-  }, 1000);
+export function signInWithGithub() {
+  return new Promise<void>((resolve, reject) => {
+    const authUrl = `${siteConfig.api_root_url}/auth/github`;
+    const authWindow = window.open(authUrl);
+    const checkInterval = setInterval(() => {
+      if (authWindow && authWindow.closed) {
+        clearInterval(checkInterval);
+        getSession().then(isAuthenticated => {
+          if (isAuthenticated) {
+            resolve();
+          } else {
+            reject(new Error('User is not authenticated'));
+          }
+        });
+      }
+    }, 1000);
+  });
 }
 
-export async function signInWithGoogle() {
-  const redirectUri = encodeURIComponent(window.location.href);
-  const authUrl = `${siteConfig.api_root_url}/auth/google_oauth2?redirect_uri=${redirectUri}`;
-  const authWindow = window.open(authUrl);
-  const checkInterval = setInterval(() => {
-    if (authWindow && authWindow.closed) {
-      clearInterval(checkInterval);
-      return getSession();
-    }
-  }, 1000);
+export function signInWithGoogle() {
+  return new Promise<void>((resolve, reject) => {
+    const authUrl = `${siteConfig.api_root_url}/auth/google_oauth2`;
+    const authWindow = window.open(authUrl);
+    const checkInterval = setInterval(() => {
+      if (authWindow && authWindow.closed) {
+        clearInterval(checkInterval);
+        getSession().then(isAuthenticated => {
+          if (isAuthenticated) {
+            resolve();
+          } else {
+            reject(new Error('User is not authenticated'));
+          }
+        });
+      }
+    }, 1000);
+  });
 }
 
-export async function signInWithMicrosoft() {
-  const authUrl = `${siteConfig.api_root_url}/auth/azure_activedirectory_v2`;
-  const authWindow = window.open(authUrl);
-  const checkInterval = setInterval(() => {
-    if (authWindow && authWindow.closed) {
-      clearInterval(checkInterval);
-      return getSession();
-    }
-  }, 1000);
+export function signInWithMicrosoft() {
+  return new Promise<void>((resolve, reject) => {
+    const authUrl = `${siteConfig.api_root_url}/auth/azure_activedirectory_v2`;
+    const authWindow = window.open(authUrl);
+    const checkInterval = setInterval(() => {
+      if (authWindow && authWindow.closed) {
+        clearInterval(checkInterval);
+        getSession().then(isAuthenticated => {
+          if (isAuthenticated) {
+            resolve();
+          } else {
+            reject(new Error('User is not authenticated'));
+          }
+        });
+      }
+    }, 1000);
+  });
 }
 
-export async function signInWithLinkedin() {
-  const redirectUri = encodeURIComponent(window.location.href);
-  const authUrl = `${siteConfig.api_root_url}/auth/linkedin?redirect_uri=${redirectUri}`;
-  const authWindow = window.open(authUrl);
-  const checkInterval = setInterval(() => {
-    if (authWindow && authWindow.closed) {
-      clearInterval(checkInterval);
-      return getSession();
-    }
-  }, 1000);
+export function signInWithLinkedin() {
+  return new Promise<void>((resolve, reject) => {
+    const authUrl = `${siteConfig.api_root_url}/auth/linkedin`;
+    const authWindow = window.open(authUrl);
+    const checkInterval = setInterval(() => {
+      if (authWindow && authWindow.closed) {
+        clearInterval(checkInterval);
+        getSession().then(session => {
+          if (session.session) {
+            resolve();
+          } else {
+            reject(new Error('User is not authenticated'));
+          }
+        });
+      }
+    }, 1000);
+  });
 }

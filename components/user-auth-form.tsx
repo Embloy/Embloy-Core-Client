@@ -57,10 +57,13 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   }
 
   async function handleGithubSignIn() {
+    console.log("0 SIGN IN");
     setIsGitHubLoading(true);
-
+  
     try {
+      console.log("STARTED SIGN IN");
       await signInWithGithub();
+      console.log("FINISHED SIGN IN");
       // This forces a cache invalidation.
       router.refresh();
       router.push(origin || '/dashboard');
@@ -73,12 +76,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       });
     }
   }
-
+  
   async function handleGoogleSignIn() {
+    console.log("0 SIGN IN");
     setIsGoogleLoading(true);
-
+  
     try {
+      console.log("STARTED SIGN IN");
       await signInWithGoogle();
+      console.log("FINISHED SIGN IN");
       // This forces a cache invalidation.
       router.refresh();
       router.push(origin || '/dashboard');
@@ -91,12 +97,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       });
     }
   }
-
+  
   async function handleMicrosoftSignIn() {
+    console.log("0 SIGN IN");
     setIsMicrosoftLoading(true);
-
+  
     try {
+      console.log("STARTED SIGN IN");
       await signInWithMicrosoft();
+      console.log("FINISHED SIGN IN");
       // This forces a cache invalidation.
       router.refresh();
       router.push(origin || '/dashboard');
@@ -111,10 +120,13 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   }
 
   async function handleLinkedinSignIn() {
+    console.log("0 SIGN IN");
     setIsLinkedinLoading(true);
-
+  
     try {
+      console.log("STARTED SIGN IN");
       await signInWithLinkedin();
+      console.log("FINSISHED SIGN IN");
       // This forces a cache invalidation.
       router.refresh();
       router.push(origin || '/dashboard');
