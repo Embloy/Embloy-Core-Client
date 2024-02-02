@@ -40,7 +40,7 @@ export async function generateMetadata({
   }
 
   const url = env.NEXT_PUBLIC_APP_URL
-  const imageUrl = `${url}/og.jpg`;
+  const imageUrl = `https://embloy.com/og.jpg`;
 
   return {
     title: post.title,

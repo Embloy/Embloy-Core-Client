@@ -32,10 +32,10 @@ export const metadata = {
   description: siteConfig.description,
   keywords: [
     "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
+    "HR",
+    "Genius",
+    "Integrations",
+    "Lightweight",
   ],
   authors: [
     {
@@ -57,18 +57,18 @@ export const metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: `${siteConfig.url}/og.jpg`,
+        url: "https://embloy.com/opengraph-image.jpg?5669f67eac8f9423",
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: "Embloy",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
+    title: "Embloy",
+    description: "Solutions that brain-boost HR.",
+    images: ["https://embloy.com/opengraph-image.jpg?5669f67eac8f9423"],
     creator: "@embloy",
   },
   icons: {
