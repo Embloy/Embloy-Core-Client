@@ -38,11 +38,45 @@ export default function ApplyPage() {
   const [errorMessages, setErrorMessages] = useState<{ [key: number]: string | null }>({});
   const textSchema = z.string().nonempty({ message: 'Input cannot be empty' });
   const idSchema = z.number().int().positive({ message: 'ID must be a positive integer' });
-  
   const [options, setOptions] = useState<
   Array<{ application_option_id: number; answer: string }>
   >([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true)
+      if (!searchParams.has("request_token")) {
+        router.back();
+        return;
+      }
+
+      const loggedIn = (await getSession()).session;
+      if (!loggedIn) {
+        router.push(origin ? `/login?origin=${pathName}?${origin}` : "/login");
+        return;
+      }
+
+      const request_token = searchParams.get("request_token");
+
+      if (typeof request_token === "string") {
+        const requestData = await makeRequest(request_token);
+        if (requestData !== null) {
+          setJob(requestData.job);
+          setSession(requestData.session);
+        } else {
+          toast({
+            title: "Something went wrong.",
+            description: "Your request was not processed. Please try again.",
+            variant: "destructive",
+          });
+        }
+      }
+
+      setIsLoading(false)
+    };
+
+    fetchData();
+  }, [searchParams, router, origin, pathName]);
 
   function validateFields() {
     let isValid = true;
@@ -140,41 +174,6 @@ export default function ApplyPage() {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true)
-      if (!searchParams.has("request_token")) {
-        router.back();
-        return;
-      }
-
-      const loggedIn = (await getSession()).session;
-      if (!loggedIn) {
-        router.push(origin ? `/login?origin=${pathName}?${origin}` : "/login");
-        return;
-      }
-
-      const request_token = searchParams.get("request_token");
-
-      if (typeof request_token === "string") {
-        const requestData = await makeRequest(request_token);
-        if (requestData !== null) {
-          setJob(requestData.job);
-          setSession(requestData.session);
-        } else {
-          toast({
-            title: "Something went wrong.",
-            description: "Your request was not processed. Please try again.",
-            variant: "destructive",
-          });
-        }
-      }
-
-      setIsLoading(false)
-    };
-
-    fetchData();
-  }, [searchParams, router, origin, pathName]);
 
 
   // Update function for text and link question types
