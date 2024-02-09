@@ -18,8 +18,13 @@ export const dashboardConfig: DashboardConfig = {
   ],
   sidebarNav: [
     {
-      title: "Upcoming Jobs",
+      title: "Dashboard",
       href: "/dashboard",
+      icon: "laptop",
+    },
+    {
+      title: "Upcoming Jobs",
+      href: "/dashboard/upcoming-jobs",
       icon: "timer",
     },
     {

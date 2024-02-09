@@ -62,7 +62,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           {children}
         </main>
       </div>
-      <SiteFooter className="border-t" />
+      <SiteFooter id="footer" className="border-t" />
     </div>
   )
 }
