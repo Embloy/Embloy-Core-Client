@@ -12,7 +12,7 @@ import Image from 'next/image'
 
 const Logo = ({ size = 30, ...props }) => {
   const { resolvedTheme } = useTheme();
-  const logoSrc = resolvedTheme === 'dark' ? 'https://raw.githubusercontent.com/Embloy/Embloy-Core-Server/master/app/assets/images/logo-dark.svg' : 'https://raw.githubusercontent.com/Embloy/Embloy-Core-Server/master/app/assets/images/logo-light.svg';  
+  const logoSrc = resolvedTheme === 'dark' ? 'https://embloy.com/images/logo-dark.svg' : 'https://embloy.com/images/logo-light.svg';  
   return (
     <Image src={logoSrc} alt="logo" width={size} height={size} {...props} />
   );
