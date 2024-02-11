@@ -6,7 +6,6 @@ import { Badge } from "@/components/new-york/ui/badge";
 import { ScrollArea } from "@/components/new-york/ui/scroll-area";
 import { Application } from "@/lib/api/application";
 import { useApplication } from "@/app/(dashboard)/dashboard/applications/use-application";
-
 interface ApplicationListProps {
   items: Application[];
 }
@@ -35,7 +34,7 @@ export function ApplicationList({ items }: ApplicationListProps) {
               <div className="flex w-full flex-col gap-1">
                 <div className="flex items-center">
                   <div className="flex items-center gap-2">
-                    <div className="font-semibold">{item.job_id}</div>
+                    <div className="font-semibold">{item.job?.title || item.job?.job_slug || `Job#${item.job_id}`}</div>
                     {!true && (
                       <span className="flex h-2 w-2 rounded-full bg-blue-600" />
                     )}
@@ -53,7 +52,7 @@ export function ApplicationList({ items }: ApplicationListProps) {
                     })}
                   </div>
                 </div>
-                <div className="text-xs font-medium">{item.job_id}</div>
+                <div className="text-xs font-medium">{item.job?.employer_name || item.job?.employer_email || `User#${item.job?.user_id}`}</div>
               </div>
               <div className="line-clamp-2 text-xs text-muted-foreground">
                 {item.application_text.substring(0, 300)}
@@ -74,11 +73,11 @@ export function ApplicationList({ items }: ApplicationListProps) {
 function getBadgeVariantFromLabel(
   label: string
 ): ComponentProps<typeof Badge>["variant"] {
-  if (["-1"].includes(label.toLowerCase())) {
-    return "default";
+  if (["1"].includes(label.toLowerCase())) {
+    return "success";
   }
 
-  if (["1"].includes(label.toLowerCase())) {
+  if (["-1"].includes(label.toLowerCase())) {
     return "destructive";
   }
 

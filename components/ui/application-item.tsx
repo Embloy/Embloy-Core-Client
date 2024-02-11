@@ -81,7 +81,7 @@ export function ApplicationItem({ application }: ApplicationItemProps) {
           <CheckCircle className="h-5 w-5" />
         </Tooltip>
       );
-      statusColor = "bg-green-500";
+      statusColor = "bg-success";
       statusValue = 100;
       break;
     default:

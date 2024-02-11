@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { getAccessToken } from "./auth";
+import { Job } from "./sdk";
 
 export interface ApplicationAttachment {
   attachment: {
@@ -12,6 +13,14 @@ export interface ApplicationAttachment {
   url: string;
 }
 
+export interface ApplicationAnswer {
+  id: number;
+  job_id: number;
+  user_id: number;
+  application_option_id: number;
+  answer: string;
+}
+
 export interface Application {
   job_id: number;
   user_id: number;
@@ -19,10 +28,10 @@ export interface Application {
   created_at: string;
   status: string;
   application_text: string;
-  application_documents: null | string;
   response: string;
-  deleted_at: null | string;
   application_attachment: null | ApplicationAttachment;
+  application_answers: null | ApplicationAnswer[];
+  job: null | Job;
 }
   
 export async function getApplications(): Promise<Application[] | null> {
@@ -47,7 +56,9 @@ export async function getApplications(): Promise<Application[] | null> {
   const data = JSON.parse(text);
   return data.map((item: any) => ({
     ...item.application,
-    application_attachment: item.application_attachment
+    application_attachment: item.application_attachment,
+    application_answers: item.application_answers,
+    job: JSON.parse(item.job),
   })) || [];
 }
 

@@ -5,12 +5,8 @@ import nextSaturday from "date-fns/nextSaturday"
 import {
   Archive,
   Clock,
-  Download,
   DownloadCloud,
-  Forward,
   MoreVertical,
-  Reply,
-  ReplyAll,
   Trash2,
 } from "lucide-react"
 
@@ -39,13 +35,37 @@ import {
   TooltipTrigger,
 } from "@/components/new-york/ui/tooltip"
 import { Application } from "@/lib/api/application"
+import { useState } from "react"
+import { isBefore, isToday } from "date-fns"
+import { ApplicationAnswerList } from "./application-answer-list"
+import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar"
+import { Icons } from "./icons"
+import { ApplicationResponse } from "./application-response"
 
 interface ApplicationDisplayProps {
   application: Application | null
 }
 
 export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
+  const [deadline, setDeadline] = useState<Date | null>(null);
   const today = new Date()
+  const disabledPastDates = (date) => isBefore(date, new Date()) && !isToday(date);
+  
+  const downloadAttachment = (application: Application | null) => {
+    if (application && application.application_attachment && application.application_attachment.url) {
+      const cvUrl = application.application_attachment.url;
+      const link = document.createElement('a');
+      link.href = cvUrl;
+      link.setAttribute('download', `${application.user_id}_${application.job_id}_CV}`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const handleSetDeadline = (date: Date) => {
+    setDeadline(date);
+  };
 
   return (
     <div className="flex h-full flex-col">
@@ -53,7 +73,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" disabled={!application}>
+              <Button variant="ghost" size="icon" disabled={!!application}>
                 <Archive className="h-4 w-4" />
                 <span className="sr-only">Archive</span>
               </Button>
@@ -62,7 +82,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" disabled={!application}>
+              <Button variant="ghost" size="icon" disabled={!!application}>
                 <Trash2 className="h-4 w-4" />
                 <span className="sr-only">Move to trash</span>
               </Button>
@@ -82,11 +102,12 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
               </PopoverTrigger>
               <PopoverContent className="flex w-[535px] p-0">
                 <div className="flex flex-col gap-2 border-r px-2 py-4">
-                  <div className="px-4 text-sm font-medium">Snooze until</div>
+                  <div className="px-4 text-sm font-medium">Set deadline for employer</div>
                   <div className="grid min-w-[250px] gap-1">
                     <Button
                       variant="ghost"
                       className="justify-start font-normal"
+                      onClick={() => handleSetDeadline(addHours(today, 4))}
                     >
                       Later today{" "}
                       <span className="ml-auto text-muted-foreground">
@@ -96,6 +117,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                     <Button
                       variant="ghost"
                       className="justify-start font-normal"
+                      onClick={() => handleSetDeadline(addDays(today, 1))}
                     >
                       Tomorrow
                       <span className="ml-auto text-muted-foreground">
@@ -105,6 +127,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                     <Button
                       variant="ghost"
                       className="justify-start font-normal"
+                      onClick={() => handleSetDeadline(nextSaturday(today))}
                     >
                       This weekend
                       <span className="ml-auto text-muted-foreground">
@@ -114,6 +137,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                     <Button
                       variant="ghost"
                       className="justify-start font-normal"
+                      onClick={() => handleSetDeadline(addDays(today, 7))}
                     >
                       Next week
                       <span className="ml-auto text-muted-foreground">
@@ -123,22 +147,27 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                   </div>
                 </div>
                 <div className="p-2">
-                  <Calendar />
+                  <Calendar onDayClick={handleSetDeadline} disabled={disabledPastDates} />
                 </div>
               </PopoverContent>
             </Popover>
-            <TooltipContent>Snooze</TooltipContent>
+            <TooltipContent>Set employer deadline</TooltipContent>
           </Tooltip>
         </div>
         <div className="ml-auto flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" disabled={!application}>
-                <DownloadCloud className="h-4 w-4" />
-                <span className="sr-only">Download Attachments</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>Download Attachments</TooltipContent>
+            <Button
+              variant="ghost"
+              size="icon"
+              disabled={!application?.application_attachment?.url}
+              onClick={() => downloadAttachment(application)}
+            >
+              <DownloadCloud className="h-4 w-4" />
+              <span className="sr-only">Download Attachment</span>
+            </Button>
+                </TooltipTrigger>
+            <TooltipContent>Download Attachment</TooltipContent>
           </Tooltip>
         </div>
         <Separator orientation="vertical" className="mx-2 h-6" />
@@ -150,10 +179,9 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Mark as unread</DropdownMenuItem>
-            <DropdownMenuItem>Star thread</DropdownMenuItem>
-            <DropdownMenuItem>Add label</DropdownMenuItem>
-            <DropdownMenuItem>Mute thread</DropdownMenuItem>
+            <DropdownMenuItem disabled>Mark as unread</DropdownMenuItem>
+            <DropdownMenuItem disabled>Star job</DropdownMenuItem>
+            <DropdownMenuItem disabled>Add label</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -162,22 +190,22 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
         <div className="flex flex-1 flex-col">
           <div className="flex items-start p-4">
             <div className="flex items-start gap-4 text-sm">
-            {/*
-              <Avatar>
-                <AvatarImage alt={"application.job_id"} />
+              {
+              <Avatar >
+              {application.job?.employer_image_url ? (
+                <AvatarImage alt="Picture" src={application.job?.employer_image_url} className="h-12 w-12 rounded-full border-2 border-muted-foreground text-muted-foreground"/>
+              ) : (
                 <AvatarFallback>
-                  {application.job_id
-                    .split(" ")
-                    .map((chunk) => chunk[0])
-                    .join("")}
+                  <Icons.user className="h-12 w-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
                 </AvatarFallback>
-              </Avatar>
-            */}
+              )}
+            </Avatar>
+            }
               <div className="grid gap-1">
-                <div className="font-semibold">{application.job_id}</div>
-                <div className="line-clamp-1 text-xs">{application.user_id}</div>
+                <div className="font-semibold">{application.job?.employer_name || `User#${application.job?.user_id}`}</div>
+                <div className="line-clamp-1 text-xs">{application.job?.employer_email || application.job?.employer_phone || 'No contact information provided.'}</div>
                 <div className="line-clamp-1 text-xs">
-                  <span className="font-medium">Respose:</span> {application.response}
+                  <span className="font-medium text-muted-foreground">{application.job?.job_slug || `Job#${application.job_id}`}</span>
                 </div>
               </div>
             </div>
@@ -188,36 +216,13 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
             )}
           </div>
           <Separator />
-          <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
+          <div className="flex-1 space-y-2 whitespace-pre-wrap p-4 text-sm">
             {application.application_text}
           </div>
+          <Separator />
+          <ApplicationAnswerList application={application}/>
           <Separator className="mt-auto" />
-          <div className="p-4">
-            <form>
-              <div className="grid gap-4">
-                <Textarea
-                  className="p-4"
-                  placeholder={`Reply ${application.user_id}...`}
-                />
-                <div className="flex items-center">
-                  <Label
-                    htmlFor="mute"
-                    className="flex items-center gap-2 text-xs font-normal"
-                  >
-                    <Switch id="mute" aria-label="Mute thread" /> Mute this
-                    thread
-                  </Label>
-                  <Button
-                    onClick={(e) => e.preventDefault()}
-                    size="sm"
-                    className="ml-auto"
-                  >
-                    Send
-                  </Button>
-                </div>
-              </div>
-            </form>
-          </div>
+          <ApplicationResponse application={application}/>
         </div>
       ) : (
         <div className="p-8 text-center text-muted-foreground">

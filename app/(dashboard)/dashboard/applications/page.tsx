@@ -10,11 +10,14 @@ import ApplicationsLoading from './loading';
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { DashboardHeader } from "@/components/header";
 import { StartApplyButton } from "@/components/start-apply-button";
+import { ApplicationItem } from "@/components/ui/application-item";
+import { useMediaQuery } from '@react-hook/media-query';
 
 export default function ApplicationsPage() {
   const [applications, setApplications] = useState<Application[] | null>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
   const router = useRouter()
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -58,15 +61,24 @@ export default function ApplicationsPage() {
 
   if (applications && !isLoading) {
     return (
-      <>
-        <DashboardShell>
-          <div className="hidden flex-col md:flex">
-            <ApplicationPanel
-              applications={applications}
-            />
-          </div>
-        </DashboardShell>
-      </>
-    )
+      <div>
+        {isMobile ? (
+          <DashboardShell>
+            <DashboardHeader heading="Applications" text="Your submitted applications."/>
+            <div>
+              {applications.map((application) => (
+                <ApplicationItem key={application.job_id} application={application} />
+              ))}
+            </div>
+          </DashboardShell>
+        ) : (
+          <DashboardShell>
+            <div className="hidden md:flex">
+              <ApplicationPanel applications={applications} />
+            </div>
+          </DashboardShell>
+        )}
+      </div>
+    );
   }
 }

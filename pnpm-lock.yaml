@@ -127,6 +127,9 @@ dependencies:
   '@radix-ui/react-tooltip':
     specifier: ^1.0.5
     version: 1.0.5(@types/react@18.0.15)(react-dom@18.2.0)(react@18.2.0)
+  '@react-hook/media-query':
+    specifier: ^1.1.1
+    version: 1.1.1(react@18.2.0)
   '@t3-oss/env-nextjs':
     specifier: ^0.2.2
     version: 0.2.2(zod@3.21.4)
@@ -4850,6 +4853,14 @@ packages:
       '@editorjs/editorjs': 2.26.5
       '@editorjs/paragraph': 2.9.0
       '@react-editor-js/core': 2.1.0(@editorjs/editorjs@2.26.5)(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@react-hook/media-query@1.1.1(react@18.2.0):
+    resolution: {integrity: sha512-VM14wDOX5CW5Dn6b2lTiMd79BFMTut9AZj2+vIRT3LCKgMCYmdqruTtzDPSnIVDQdtxdPgtOzvU9oK20LopuOw==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
       react: 18.2.0
     dev: false
 

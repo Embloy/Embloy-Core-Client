@@ -60,6 +60,10 @@ export interface Job {
   job_value: string;
   application_options: ApplicationOption[];
   image_url: string | null;
+  employer_email: string | null;
+  employer_name: string | null;
+  employer_phone: string | null;
+  employer_image_url: string | null;
 }
   
 export interface Session {
