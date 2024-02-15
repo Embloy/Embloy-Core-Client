@@ -5,32 +5,6 @@ An open source application built using the new router, server components and eve
 > **Warning**
 > This app is a work in progress. I'm building this in public.
 
-## Note on Performance
-
-> **Warning**
-> This app is using the unstable releases for Next.js 13 and React 18. The new router and app dir is still in beta and not production-ready.
-> **Expect some performance hits when testing the dashboard**.
-
-## Features
-
-- New `/app` dir,
-- Routing, Layouts, Nested Layouts and Layout Groups
-- Data Fetching, Caching and Mutation
-- Loading UI
-- Route handlers
-- Metadata files
-- Server and Client Components
-- API Routes and Middlewares
-- Authentication using **NextAuth.js**
-- ORM using **Prisma**
-- Database on **PlanetScale**
-- UI Components built using **Radix UI**
-- Documentation and blog using **MDX** and **Contentlayer**
-- Subscriptions using **Stripe**
-- Styled using **Tailwind CSS**
-- Validations using **Zod**
-- Written in **TypeScript**
-
 ## Running Locally
 
 1. Install dependencies using pnpm:
@@ -49,6 +23,26 @@ cp .env.example .env.local
 
 ```sh
 pnpm dev
+```
+
+## Running on Kubernetes
+
+1. Build docker container:
+
+```sh
+docker build -t embloy-core-front . && docker tag embloy-front:latest <your-username>/embloy-core-front
+```
+
+2. Push to container registry:
+
+```sh
+docker push <your-username>/embloy-core-front
+```
+
+3. Run image in K8s:
+
+```sh
+kubectl apply -f AKS_core_front.yml
 ```
 
 ## License

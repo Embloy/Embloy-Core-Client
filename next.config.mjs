@@ -12,6 +12,7 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: ["@prisma/client"],
   },
+  output: "standalone",
 }
 
 export default withContentlayer(nextConfig)
