@@ -41,7 +41,7 @@ export default function PricingPage() {
               <Icons.check className="mr-2 h-4 w-4" /> Share open job positions
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> Create three job postings
+              <Icons.check className="mr-2 h-4 w-4" /> Create 3 job postings (sandbox mode)
             </li>
             <li className="flex items-center">
               <Icons.check className="mr-2 h-4 w-4" /> No ads
@@ -50,7 +50,7 @@ export default function PricingPage() {
         </div>
         <div className="flex flex-col gap-4 text-center">
           <div>
-            <h4 className="text-7xl font-bold">$0</h4>
+            <h4 className="text-7xl font-bold">€0</h4>
             <p className="text-sm font-medium text-muted-foreground">
               Billed Monthly
             </p>
@@ -68,7 +68,7 @@ export default function PricingPage() {
           </h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> Unlimited job postings
+              <Icons.check className="mr-2 h-4 w-4" /> Up to 50 active job postings
             </li>
             <li className="flex items-center">
               <Icons.check className="mr-2 h-4 w-4" /> Unlimited client tokens
@@ -84,7 +84,7 @@ export default function PricingPage() {
         </div>
         <div className="flex flex-col gap-4 text-center">
           <div>
-            <h4 className="text-7xl font-bold">$50</h4>
+            <h4 className="text-7xl font-bold">€50</h4>
             <p className="text-sm font-medium text-muted-foreground">
               Billed Monthly
             </p>
@@ -102,35 +102,28 @@ export default function PricingPage() {
           </h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> G...
+              <Icons.check className="mr-2 h-4 w-4" /> Create as many active job postings as you want
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> E...
-            </li>
-
-            <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> N...
+              <Icons.check className="mr-2 h-4 w-4" /> Access to genius-queries
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> I...
+              <Icons.check className="mr-2 h-4 w-4" /> Access 3rd party integrations
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> U...
-            </li>
-            <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> S...
+              <Icons.check className="mr-2 h-4 w-4" /> Personal support
             </li>
           </ul>
         </div>
         <div className="flex flex-col gap-4 text-center">
           <div>
-            <h4 className="text-7xl font-bold">?</h4>
+            <h4 className="text-7xl font-bold">€500</h4>
             <p className="text-sm font-medium text-muted-foreground">
               Billed Monthly
             </p>
           </div>
-          <Link href="/login"   className={cn(buttonVariants({ size: "lg" }), 'pointer-events-none opacity-50')}>
-            Coming Soon ...
+          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
+            Get Started
           </Link>
         </div>
       </div>

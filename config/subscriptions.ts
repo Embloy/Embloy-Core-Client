@@ -6,22 +6,22 @@ export const freePlan: SubscriptionPlan = {
   internal_name: "basic",
   description:
     "One-Click-Application, apply to as many jobs as you want and no ads",
-  stripePriceId: "price_1OUuTgKMiBrigNb6R7xzRzTL",
+  stripePriceId: "price_1On8ItKMiBrigNb6eZ9PKFG0",
 }
 
 export const smartPlan: SubscriptionPlan = {
   name: "EMBLOY SMART",
   internal_name: "premium",
   description:
-    "Unlimited job postings and client token customization.",
-  stripePriceId: "price_1OUqrPKMiBrigNb6lia8VWiD",
+    "Up to 50 active job postings and client token customization.",
+  stripePriceId: "price_1On8KvKMiBrigNb6bZG4nWQh",
 }
 
 export const geniusPlan: SubscriptionPlan = {
   name: "EMBLOY GENIUS",
   internal_name: "enterprise_1",
-  description: "Coming soon.",
-  stripePriceId: "price_1OUuVBKMiBrigNb6J9xmLWg8",
+  description: "Unlimited job postings and much more.",
+  stripePriceId: "price_1On8R5KMiBrigNb6R8ara8Kd",
 }
  
 export const enterprise2: SubscriptionPlan = {
