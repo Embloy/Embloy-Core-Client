@@ -72,7 +72,7 @@ export function BillingForm({
         </CardHeader>
         <CardContent>{subscriptionPlan.description}</CardContent>
         <CardFooter className="flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0">
-          {nextBestPlan?.internal_name !== 'enterprise_3' && (
+          {nextBestPlan?.internal_name !== 'enterprise_1' && (
             <button
               type="submit"
               className={cn(buttonVariants())}
