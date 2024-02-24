@@ -1,0 +1,318 @@
+{
+  "pages": {
+    "features": "Funktionen",
+    "pricing": "Preisgestaltung",
+    "employers": "Arbeitgeber",
+    "developers": "Entwickler",
+    "about": "Über uns",
+    "login": "Anmelden"
+  },
+  "marketing": {
+    "workInProgress": "Diese Seite ist noch in Bearbeitung - Folgen Sie auf GitHub",
+    "mainHeader": "Embloy.",
+    "subHeader": "Lösungen, die das HR-Management verbessern.",
+    "recruitmentSteps": "Alle Rekrutierungsschritte an einem Ort: Vereinfachen Sie das Leben für Organisationen und Jobsuchende, indem Sie die Rekrutierungsprozesse zentralisieren.",
+    "getStarted": "Loslegen",
+    "forCompanies": "Für Unternehmen",
+    "features": "Funktionen",
+    "featureDescription": "Embloy dient als Brücke, die Organisationen mit potenziellen Jobsuchenden verbindet. Als Middleware-Lösung, maßgeschneidert für das digitale Zeitalter, entdecken Sie, wie Embloy Ihren Einstellungsprozess verbessern kann:",
+    "smartHiring": "Intelligente Einstellung",
+    "smartHiringDescription": "10x schnellere HR-Prozesse durch Automatisierung.",
+    "endToEndRecruitment": "End-to-End-Rekrutierungshosting",
+    "endToEndRecruitmentDescription": "Beseitigen Sie die Notwendigkeit für lange E-Mail- und Telefonwechsel.",
+    "easyToIntegrate": "Einfache Integration",
+    "easyToIntegrateDescription": "Für mühelose, nicht überwachte Einarbeitung neuer Interessengruppen konzipiert.",
+    "oneClickToApply": "Ein Klick zum Bewerben",
+    "oneClickToApplyDescription": "Genießen Sie die Bequemlichkeit einer einzigen Plattform, auf der alles nur einen Klick entfernt ist.",
+    "xPlatform": "X-Plattform",
+    "xPlatformDescription": "Hochmodulares System, zugänglich im Web, iOS und Android, ermöglicht benutzerdefinierte Integrationen über API.",
+    "socialTools": "Soziale Tools",
+    "socialToolsDescription": "Nahtlose Integration in die heutige Social-Media-Landschaft für beispiellose Interaktion mit Jobsuchenden.",
+    "smarterFasterBetter": "Intelligenter, schneller, besser: Personalmanagement 2.0",
+    "videoNotSupported": "Ihr Browser unterstützt das Video-Tag nicht.",
+    "openSource": "Stolz Open Source",
+    "openSourceDescription": "Embloy ist Open Source und wird von Open Source-Software unterstützt.",
+    "sourceCodeAvailableOnGitHub": "Der Code ist verfügbar auf ",
+    "logo": "Logo",
+    "copyright": "Urheberrecht © 2024 Embloy, GbR. Der Quellcode ist verfügbar auf ",
+    "pricing": {
+      "simpleTransparentPricing": "Einfache, transparente Preisgestaltung",
+      "freeForApplicants": "Für Bewerber ist Embloy zu 100% kostenlos.",
+      "basicSubscriptionForProviders": "Arbeitgeber können ein Basisabonnement für eine Bewerbung anfordern, wenn sie überprüfen möchten, dass ein Benutzer „echt“ ist. In diesem Fall muss der Bewerber ein kostenloses Embloy-Abonnement abschließen.",
+      "embloyFree": {
+        "title": "Was ist in EMBLOY FREE enthalten",
+        "features": [
+          "Ein-Klick-Bewerbung",
+          "Bewerben Sie sich auf beliebig viele Stellenangebote",
+          "Lebensläufe hochladen, zusätzliche Dokumente usw.",
+          "Offene Stellen teilen",
+          "3 Stellenanzeigen erstellen (Sandbox-Modus)",
+          "Keine Werbung"
+        ],
+        "price": "€0",
+        "billing": "Monatlich abgerechnet",
+        "getStarted": "Loslegen"
+      },
+      "embloySmart": {
+        "title": "Was ist in EMBLOY SMART enthalten",
+        "features": [
+          "Bis zu 50 aktive Stellenanzeigen",
+          "Unbegrenzte Kunden-Token",
+          "Anpassung der Kunden-Token",
+          "Keine Werbung"
+        ],
+        "price": "€50",
+        "billing": "Monatlich abgerechnet",
+        "getStarted": "Loslegen"
+      },
+      "embloyGenius": {
+        "title": "Was ist in EMBLOY GENIUS enthalten",
+        "features": [
+          "Unbegrenzte aktive Stellenanzeigen",
+          "Zugriff auf Genius-Abfragen",
+          "Voller Zugriff auf Integrationen von Drittanbietern",
+          "Persönliche Unterstützung"
+        ],
+        "price": "€500",
+        "billing": "Monatlich abgerechnet",
+        "getStarted": "Loslegen"
+      },
+      "partnershipWithStripe1": "Partnerschaft mit ",
+      "partnershipWithStripe2": " für vereinfachte Abrechnung."
+    }
+  },
+  "auth": {
+    "login": {
+      "back": "Zurück",
+      "welcomeback": "Willkommen zurück",
+      "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein, um sich anzumelden",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "continueWith": "Oder weiter mit",
+      "dontHaveAccount": "Sie haben noch kein Konto? Registrieren",
+      "forgotPassword": "Passwort vergessen?",
+      "signIn": "Anmelden",
+      "orContinueWith": "Oder weiter mit"
+    },
+    "register": {
+      "login": "Anmelden",
+      "signUp": "Registrieren",
+      "description": "Beschreibung des Bildes",
+      "createAccount": "Ein Konto erstellen",
+      "enterDetails": "Geben Sie Ihren Namen und Ihre E-Mail-Adresse ein, um Ihr Konto zu erstellen",
+      "email": "E-Mail",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "orContinueWith": "Oder weiter mit",
+      "agreeToTerms": "Indem Sie auf Fortfahren klicken, stimmen Sie unseren ",
+      "terms": "Nutzungsbedingungen",
+      "and": " und ",
+      "privacyPolicy": "Datenschutzbestimmungen zu"
+    },
+    "pwreset": {
+      "backToHomepage": "Zurück zur Homepage",
+      "title": "Passwort zurücksetzen",
+      "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen",
+      "dontHaveAccount": "Sie haben noch kein Konto? Registrieren",
+      "reset": "Jetzt zurücksetzen",
+      "email": "E-Mail"
+    },
+    "errors": {
+      "login": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihre Anmeldung ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+      },
+      "registration": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihr Registrierungsantrag ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+      },
+      "loginGitHub": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihr Anmeldeantrag bei GitHub ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+      },
+      "loginGoogle": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihr Anmeldeantrag bei Google ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+      },
+      "loginMicrosoft": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihr Anmeldeantrag bei Microsoft ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+      },
+      "loginLinkedIn": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihr Anmeldeantrag bei LinkedIn ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+      },
+      "register": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihr Konto wurde nicht gelöscht. Bitte versuchen Sie es erneut."
+      },
+      "pwreset": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihr Profilbild wurde nicht aktualisiert. Bitte versuchen Sie es erneut."
+      }
+    },
+    "success": {
+      "login": {
+        "description": "Ihr Profil wurde aktualisiert."
+      },
+      "register": {
+        "title": "Willkommen bei Embloy!",
+        "description": "Sie haben erfolgreich ein neues Konto erstellt."
+      },
+      "pwreset": {
+        "description": "Ihr Profilbild wurde aktualisiert. Laden Sie die Seite neu, um die Änderung zu sehen."
+      }
+    }
+  },
+  "dashboard": {
+    "dashboard": {
+      "": ""
+    },
+    "upcoming": {
+      "title": "Bevorstehende Stellenangebote",
+      "subtitle": "Sehen Sie, was als nächstes kommt.",
+      "noUpcomingJobs": "Keine bevorstehenden Stellenangebote.",
+      "startApply": "Sie haben noch keine Stellenangebote. Beginnen Sie jetzt mit der Bewerbung.",
+      "apply": "Neue Bewerbung"
+    },
+    "applications": {
+      "title": "Bewerbungen",
+      "subtitle": "Ihre eingereichten Bewerbungen.",
+      "startApply": "Sie haben noch keine Bewerbungen. Beginnen Sie jetzt mit der Bewerbung.",
+      "noPending": "Keine ausstehenden Bewerbungen.",
+      "submittedApplications": "Eingereichte Bewerbungen",
+      "search": "Suche",
+      "all": "Alle",
+      "accepted": "Akzeptiert",
+      "status": {
+        "accepted": "akzeptiert",
+        "rejected": "abgelehnt",
+        "pending": "ausstehend"
+      },
+      "archive": "Archiv",
+      "moveToTrash": "In den Papierkorb verschieben",
+      "snooze": "Snooze",
+      "setDeadline1": "Frist für Arbeitgeber setzen",
+      "setDeadline2": "Arbeitgeberfrist setzen",
+      "laterToday": "Später heute ",
+      "tomorrow": "Morgen",
+      "thisWeekend": "Dieses Wochenende",
+      "nextWeek": "Nächste Woche",
+      "downloadAttachment": "Anhang herunterladen",
+      "more": "Mehr",
+      "markAsUnread": "Als ungelesen markieren",
+      "starJob": "Stellenangebot markieren",
+      "addLabel": "Label hinzufügen",
+      "noContact": "Keine Kontaktdaten angegeben",
+      "noMessageSelected": "Keine Nachricht ausgewählt",
+      "noResponseYet": "Noch keine Antwort ...",
+      "muteJobNotifications": "Alle Jobbenachrichtigungen stummschalten",
+      "reviewEmployer": "Arbeitgeber bewerten"
+    },
+    "billing": {
+      "title": "Abrechnung",
+      "subtitle": "Verwalten Sie Ihren Abonnementplan.",
+      "manageSubscriptions": "Abonnements verwalten",
+      "noActiveSubscriptions": "Keine aktiven Abonnements.",
+      "noActiveSubscriptionsText": "Sie haben noch keine aktiven Abonnements. Beginnen Sie jetzt mit der Nutzung der exklusivsten Funktionen von Embloy.",
+      "subscribeToFree": "Kostenlos abonnieren",
+      "subscribeToSmart": "SMART abonnieren",
+      "subscribeToGenius": "GENIUS abonnieren",
+      "subscriptionPlan": "Abonnementplan",
+      "youAreCurrentlyOn": "Sie sind derzeit auf dem ",
+      "plan": " Plan. ",
+      "upgradeTo": "Upgrade auf ",
+      "yourPlanRenewsOn": "Ihr Plan wird erneuert am "
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "subtitle": "Konto- und Website-Einstellungen verwalten.",
+      "yourProfile": "Ihr Profil",
+      "enterFullName": "Bitte geben Sie Ihren vollständigen Namen ein und wählen Sie ein Bild aus, das Sie als Profilbild verwenden möchten.",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "profileImage": "Profilbild",
+      "removeImage": "Bild entfernen",
+      "removeImageNotice": "Dies ist Ihr aktuelles Bild. Es wird ersetzt, wenn Sie hochladen drücken.",
+      "uploadImage": "Bild hochladen",
+      "yourContactInfo": "Ihre Kontaktdaten",
+      "enterEmailPhone": "Bitte geben Sie Ihre E-Mail-Adresse und Telefonnummer ein.",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "yourAddress": "Ihre Adresse",
+      "enterAddress": "Bitte geben Sie Ihre Adresse ein.",
+      "address": "Adresse",
+      "yourSocials": "Ihre Social-Media",
+      "enterSocialMedia": "Bitte geben Sie Ihre Social-Media-Handles ein.",
+      "twitter": "Twitter",
+      "linkedIn": "LinkedIn",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "save": "Speichern",
+      "cancel": "Abbrechen",
+      "delete": "Löschen",
+      "deleteAccount": "Konto löschen",
+      "deleteAccountConfirmation": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?",
+      "deleteAccountWarning": "Diese Aktion kann nicht rückgängig gemacht werden.",
+      "errors": {
+        "updateAccount": {
+          "title": "Etwas ist schief gelaufen.",
+          "description": "Ihr Profil wurde nicht aktualisiert. Bitte versuchen Sie es erneut."
+        },
+        "deleteAccount": {
+          "title": "Etwas ist schief gelaufen.",
+          "description": "Ihr Konto wurde nicht gelöscht. Bitte versuchen Sie es erneut."
+        },
+        "uploadImage": {
+          "title": "Etwas ist schief gelaufen.",
+          "description": "Ihr Profilbild wurde nicht aktualisiert. Bitte versuchen Sie es erneut."
+        }
+      },
+      "success": {
+        "updateAccount": {
+          "description": "Ihr Profil wurde aktualisiert."
+        },
+        "deleteAccount": {
+          "description": "Ihr Konto wurde gelöscht."
+        },
+        "uploadImage": {
+          "description": "Ihr Profilbild wurde aktualisiert. Laden Sie die Seite neu, um die Änderung zu sehen."
+        }
+      }
+    }
+  },
+  "sdk": {
+    "loading": "Laden...",
+    "byEmbloy": "von Embloy Platforms GbR",
+    "required": "Dieses Feld ist erforderlich",
+    "validURL": "Dieses Feld muss eine gültige URL sein",
+    "backToHomepage": "Zurück zur Startseite",
+    "goToEmbloy": "Zu Embloy gehen",
+    "goToDashboard": "Zum Dashboard gehen",
+    "notFoundTitle": "Oh oh! Nicht gefunden",
+    "notFoundSubtitle": "Diese Stelle konnte nicht gefunden werden. Bitte versuchen Sie es erneut.",
+    "applyFor": "Bewerben für",
+    "thisJob": "diese Stelle",
+    "enterDetails": "Geben Sie Ihre Details unten ein, um sich zu bewerben",
+    "enterApplicationText": "* Geben Sie hier Ihren Bewerbungstext ein... (max. 500 Zeichen)",
+    "uploadCV": "Laden Sie Ihren Lebenslauf hoch *",
+    "allowedFormats": "Erlaubte Formate: ",
+    "enterResponse": "Geben Sie Ihre Antwort ein (max. 200 Zeichen)",
+    "yes": "Ja",
+    "no": "Nein",
+    "fieldsMarkedAreRequired": "Felder mit einem * sind erforderlich.",
+    "newApplication": "Neue Bewerbung",
+    "errors": {
+      "request": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihre Anfrage wurde nicht bearbeitet. Bitte versuchen Sie es erneut."
+      },
+      "submit": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Ihre Bewerbung wurde nicht eingereicht. Bitte versuchen Sie es erneut."
+      }
+    }
+  }
+}

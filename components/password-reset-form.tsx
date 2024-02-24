@@ -13,8 +13,14 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { useRouter } from "next/navigation"
+import { Locale } from "@/i18n-config"
+import { getDictionary } from "@/app/[lang]/dictionaries"
 
-interface PasswordResetFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface PasswordResetFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  params: {
+    lang: Locale
+  }
+}
 
 const passwordResetSchema = z.object({
   email: z.string().email(),
@@ -22,7 +28,18 @@ const passwordResetSchema = z.object({
 
 type FormData = z.infer<typeof passwordResetSchema>
 
-export function PasswordResetForm({ className, ...props }: PasswordResetFormProps) {
+export function PasswordResetForm({ className, params: {lang}, ...props }: PasswordResetFormProps) {
+  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
+
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
   const {
     register,
     handleSubmit,
@@ -53,13 +70,13 @@ export function PasswordResetForm({ className, ...props }: PasswordResetFormProp
     }
   }
 
-  return (
+  return dict && (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
-              Email
+            {dict.auth.pwreset.email}
             </Label>
             <Input
               id="email"
@@ -81,7 +98,7 @@ export function PasswordResetForm({ className, ...props }: PasswordResetFormProp
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Reset Password
+            {dict.auth.pwreset.reset}
           </button>
         </div>
       </form>

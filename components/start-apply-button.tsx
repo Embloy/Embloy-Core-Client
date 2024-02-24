@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
+import { getDictionary } from "@/app/[lang]/dictionaries"
+import { Locale } from "../i18n-config"
 
 interface StartApplyButtonProps extends ButtonProps {
   params: {
@@ -22,6 +24,16 @@ export function StartApplyButton({
 }: StartApplyButtonProps) {
   const router = useRouter()
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
+
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
 
   async function onClick() {
     setIsLoading(true)
@@ -62,7 +74,7 @@ export function StartApplyButton({
     router.push(`/${lang}/editor/${post.id}`)
   }
 
-  return (
+  return dict && (
     <button
       onClick={onClick}
       className={cn(
@@ -80,7 +92,7 @@ export function StartApplyButton({
       ) : (
         <Icons.add className="mr-2 h-4 w-4" />
       )}
-      Apply for job
+      {dict.dashboard.upcoming.apply}
     </button>
   )
 }

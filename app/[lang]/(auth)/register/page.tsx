@@ -50,7 +50,7 @@ export default function RegisterPage({ params: { lang } }) {
               {dict.auth.register.createAccount}
             </h1>
             <p className="text-sm text-muted-foreground">
-              Enter your name and email below to create your account
+            {dict.auth.register.enterDetails}
             </p>
           </div>
           <UserSignUpForm params={lang} />

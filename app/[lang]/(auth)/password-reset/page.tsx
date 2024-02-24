@@ -47,7 +47,7 @@ export default function PasswordResetPage({ params: { lang } }) {
           {dict.auth.pwreset.enterEmail}
           </p>
         </div>
-        <PasswordResetForm />
+        <PasswordResetForm params={{lang: lang}} />
         <p className="px-8 text-center text-sm text-muted-foreground">
           <Link
             href={origin ? `/${lang}/register?origin=${origin}` : `/${lang}/register`}

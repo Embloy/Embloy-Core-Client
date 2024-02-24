@@ -175,7 +175,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
             </Label>
             <Input
               id="firstName"
-              placeholder="First Name"
+              placeholder={dict.auth.register.firstName}
               type="text"
               disabled={isLoading || isGitHubLoading}
               {...register("firstName")}
@@ -192,7 +192,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
             </Label>
             <Input
               id="lastName"
-              placeholder="Last Name"
+              placeholder={dict.auth.register.lastName}
               type="text"
               disabled={isLoading || isGitHubLoading}
               {...register("lastName")}
@@ -209,7 +209,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
             </Label>
             <Input
               id="password"
-              placeholder="Password"
+              placeholder={dict.auth.register.password}
               type="password"
               autoCapitalize="none"
               autoComplete="password"
@@ -229,7 +229,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
             </Label>
             <Input
               id="passwordConfirmation"
-              placeholder="Confirm Password"
+              placeholder={dict.auth.register.confirmPassword}
               type="password"
               disabled={isLoading || isGitHubLoading}
               {...register("passwordConfirmation")}

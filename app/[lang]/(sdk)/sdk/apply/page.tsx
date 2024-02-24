@@ -24,6 +24,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import LoadingScreen from "./loading";
 import { submitApplication } from "@/lib/api/application";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
 export default function ApplyPage({ params: { lang } }) {
   const [job, setJob] = useState<Job | null>(null);
@@ -38,12 +39,13 @@ export default function ApplyPage({ params: { lang } }) {
   const [errorMessages, setErrorMessages] = useState<{ [key: number]: string | null }>({});
   const textSchema = z.string().nonempty({ message: 'Input cannot be empty' });
   const idSchema = z.number().int().positive({ message: 'ID must be a positive integer' });
-  const [options, setOptions] = useState<
-  Array<{ application_option_id: number; answer: string }>
-  >([]);
+  const [options, setOptions] = useState<Array<{ application_option_id: number; answer: string }>>([]);
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
       setIsLoading(true)
       if (!searchParams.has("request_token")) {
         router.back();
@@ -58,15 +60,15 @@ export default function ApplyPage({ params: { lang } }) {
 
       const request_token = searchParams.get("request_token");
 
-      if (typeof request_token === "string") {
+      if (typeof request_token === "string" && dict) {
         const requestData = await makeRequest(request_token);
         if (requestData !== null) {
           setJob(requestData.job);
           setSession(requestData.session);
         } else {
           toast({
-            title: "Something went wrong.",
-            description: "Your request was not processed. Please try again.",
+            title: dict.sdk.errors.request.title,
+            description: dict.sdk.errors.request.description,
             variant: "destructive",
           });
         }
@@ -81,8 +83,8 @@ export default function ApplyPage({ params: { lang } }) {
   function validateFields() {
     let isValid = true;
 
-    if (applicationText.trim() === '') {
-      setErrorMessages((prevMessages) => ({ ...prevMessages, 'applicationText': 'This field is required' }));
+    if (applicationText.trim() === '' && dict) {
+      setErrorMessages((prevMessages) => ({ ...prevMessages, 'applicationText': dict.sdk.required }));
       isValid = false;
     }
 
@@ -94,27 +96,27 @@ export default function ApplyPage({ params: { lang } }) {
           case 'yes_no':
           case 'single_choice':
           case 'multiple_choice':
-            if (!optionExists) {
-              setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: 'This field is required' }));
+            if (!optionExists && dict) {
+              setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: dict.sdk.required }));
               isValid = false;
             }
             break;
           case 'link':
-            if (!optionExists) {
-              setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: 'This field is required' }));
+            if (!optionExists && dict) {
+              setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: dict.sdk.required }));
               isValid = false;
             } else {
               try {
                 new URL(options.find(opt => opt.application_option_id === option.id)?.answer || '');
               } catch (_) {
-                setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: 'This field must be a valid URL' }));
+                setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: dict?.sdk.validURL }));
                 isValid = false;
               }
             }
             break;
           case 'text':
-            if (!optionExists) {
-              setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: 'This field is required' }));
+            if (!optionExists && dict) {
+              setErrorMessages((prevMessages) => ({ ...prevMessages, [option.id]: dict.sdk.required }));
               isValid = false;
             }
             break;
@@ -136,11 +138,11 @@ export default function ApplyPage({ params: { lang } }) {
     const response = await submitApplication(applicationText, searchParams.get("request_token") || "", cvFile, options)
   
     setIsLoading(false)
-    if (!response) {
+    if (!response && dict) {
       return toast({
-        title: "Something went wrong.",
-        description: "Your application was not submitted. Please try again.",
-        variant: "destructive",
+        title: dict.sdk.errors.submit.title,
+        description: dict.sdk.errors.submit.description,
+    variant: "destructive",
       })
     }
   
@@ -152,8 +154,8 @@ export default function ApplyPage({ params: { lang } }) {
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    if (value.trim() === '') {
-      setErrorMessages((prevMessages) => ({ ...prevMessages, 'applicationText': 'This field is required' }));
+    if (value.trim() === '' && dict) {
+      setErrorMessages((prevMessages) => ({ ...prevMessages, 'applicationText': dict.sdk.required }));
     } else {
       setErrorMessages((prevMessages) => ({ ...prevMessages, 'applicationText': null }));
     }
@@ -187,8 +189,8 @@ export default function ApplyPage({ params: { lang } }) {
 
       if (required) {
         idSchema.parse(id);
-        if (required && value.trim() === '') {
-          throw new Error('This field is required');
+        if (required && value.trim() === '' && dict) {
+          throw new Error(dict.sdk.required);
         }
         textSchema.parse(value);
       }
@@ -273,7 +275,7 @@ export default function ApplyPage({ params: { lang } }) {
   }
 
   if (!isLoading && (!job || !session)) {
-    return (
+    return dict && (
       <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-1 lg:px-0">
         <Link
           href="/.."
@@ -284,7 +286,7 @@ export default function ApplyPage({ params: { lang } }) {
         >
           <>
             <Icons.chevronLeft className="mr-2 h-4 w-4" />
-            Back to Homepage
+            {dict.sdk.backToHomepage}
           </>
         </Link>
 
@@ -295,26 +297,26 @@ export default function ApplyPage({ params: { lang } }) {
             "absolute right-4 top-4 md:right-8 md:top-8"
           )}
         >
-          Go To Embloy
+          {dict.sdk.goToEmbloy}
         </Link>
         <EmptyPlaceholder className="mx-auto mt-5 max-w-[800px]">
           <EmptyPlaceholder.Icon name="warning" />
-          <EmptyPlaceholder.Title>Uh oh! Not Found</EmptyPlaceholder.Title>
+          <EmptyPlaceholder.Title>{dict.sdk.notFoundTitle}</EmptyPlaceholder.Title>
           <EmptyPlaceholder.Description>
-            This job cound not be found. Please try again.
+            {dict.sdk.notFoundSubtitle}
           </EmptyPlaceholder.Description>
           <Link
             href={`/${lang}/dashboard`}
             className={buttonVariants({ variant: "ghost" })}
           >
-            Go to Dashboard
+            {dict.sdk.goToDashboard}
           </Link>
         </EmptyPlaceholder>
       </div>
     );
   }
   if (!isLoading && job && session) {
-  return (
+  return dict && (
     <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0">
       <Link
         href="/.."
@@ -326,7 +328,7 @@ export default function ApplyPage({ params: { lang } }) {
       >
         <>
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
-          Back to Homepage
+          {dict.sdk.backToHomepage}
         </>
       </Link>
       <Link
@@ -336,7 +338,7 @@ export default function ApplyPage({ params: { lang } }) {
           "absolute right-4 top-4 md:right-8 md:top-8"
         )}
       >
-        Go To Embloy
+        {dict.sdk.goToEmbloy}
       </Link>
       <Image
         src="/images/banner-5.png"
@@ -366,10 +368,10 @@ export default function ApplyPage({ params: { lang } }) {
           <div className="flex flex-col space-y-2 text-center">
             <Icons.logo className="mx-auto h-6 w-6" />
             <h1 className="text-2xl font-semibold tracking-tight">
-              Apply for {job.title ?? "this job"}
+            {dict.sdk.applyFor}{job.title ?? dict.sdk.thisJob}
             </h1>
             <p className="text-sm text-muted-foreground">
-              Enter your details below to apply
+              {dict.sdk.enterDetails}
             </p>
           </div>
           <textarea
@@ -377,13 +379,13 @@ export default function ApplyPage({ params: { lang } }) {
             onChange={handleInputChange}
             value={applicationText}
             className="h-32 w-full resize-none rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="* Enter your application text here... (max. 500 characters)"
+            placeholder={dict.sdk.enterApplicationText}
           />
           {errorMessages['applicationText'] && <div className="text-sm text-red-500">{errorMessages['applicationText']}</div>}
           {job.cv_required && (
             <div>
               <legend className="text-lg font-semibold">
-                Upload your CV *
+              {dict.sdk.uploadCV}
               </legend>
               <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
                 <div className="space-y-1 text-center">
@@ -394,7 +396,7 @@ export default function ApplyPage({ params: { lang } }) {
                     className="w-full focus:border-indigo-500 focus:ring-indigo-500"
                   />
                   <p className="text-xs text-gray-500">
-                    Allowed formats: {job.allowed_cv_formats.join(", ")}
+                  {dict.sdk.allowedFormats}{job.allowed_cv_formats.join(", ")}
                   </p>
                 </div>
               </div>
@@ -436,7 +438,7 @@ export default function ApplyPage({ params: { lang } }) {
                         maxLength={200}
                         style={{ resize: 'none', overflow: 'auto' }}
                         className="h-20 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="Enter your response (max. 200 characters)"
+                        placeholder={dict.sdk.enterResponse}
                       />
                     {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
                   </div>
@@ -454,10 +456,10 @@ export default function ApplyPage({ params: { lang } }) {
                         <SelectTrigger>{label}</SelectTrigger>
                         <SelectContent>
                           <SelectItem key="1" value={"Yes"}>
-                            {"Yes"}
+                          {dict.sdk.yes}
                           </SelectItem>
                           <SelectItem key="2" value={"No"}>
-                            {"No"}
+                          {dict.sdk.no}
                           </SelectItem>
                         </SelectContent>
                       </Select>
@@ -516,7 +518,7 @@ export default function ApplyPage({ params: { lang } }) {
             }
           })}
           <p className="mt-2 text-sm text-gray-500">
-            Fields marked with an * are required.
+            {dict.sdk.fieldsMarkedAreRequired}
           </p>
           <button
             onClick={onClick}
@@ -531,7 +533,7 @@ export default function ApplyPage({ params: { lang } }) {
             ) : (
               <Icons.add className="mr-2 h-4 w-4" />
             )}
-            New application
+            {dict.sdk.newApplication}
           </button>
         </div>
       </div>

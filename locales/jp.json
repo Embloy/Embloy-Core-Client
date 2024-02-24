@@ -1,0 +1,318 @@
+{
+  "pages": {
+      "features": "特長",
+      "pricing": "価格設定",
+      "employers": "雇用者",
+      "developers": "開発者",
+      "about": "について",
+      "login": "ログイン"
+  },
+  "marketing": {
+      "workInProgress": "このページはまだ作業中です - GitHub でフォローしてください",
+      "mainHeader": "Embloy.",
+      "subHeader": "HRを脳力アップするソリューション。",
+      "recruitmentSteps": "すべての採用ステップを1か所に：採用プロセスを集約することで、組織と求職者の両方の生活を楽にします。",
+      "getStarted": "はじめる",
+      "forCompanies": "企業向け",
+      "features": "特長",
+      "featureDescription": "Embloyは、組織と見込み求職者を結び付ける架け橋として機能します。デジタル時代にカスタマイズされたミドルウェアソリューションとして機能し、Embloyが採用プロセスをどのように向上させるかを探ってみてください：",
+      "smartHiring": "スマートハイヤリング",
+      "smartHiringDescription": "自動化により10倍速いHRプロセス。",
+      "endToEndRecruitment": "エンドツーエンドの採用ホスティング",
+      "endToEndRecruitmentDescription": "長いメールや電話のやり取りの必要性をなくします。",
+      "easyToIntegrate": "簡単に統合",
+      "easyToIntegrateDescription": "新しいステークホルダーの無監視オンボーディングのために作られました。",
+      "oneClickToApply": "ワンクリックで応募",
+      "oneClickToApplyDescription": "すべてがクリック1つで利用できる単一のプラットフォームの利便性をお楽しみください。",
+      "xPlatform": "クロスプラットフォーム",
+      "xPlatformDescription": "高度にモジュール化されたシステムで、Web、iOS、Androidでアクセスでき、APIを介したカスタム統合が可能です。",
+      "socialTools": "ソーシャルツール",
+      "socialToolsDescription": "本日のソーシャルメディアの景色にシームレスに統合し、求職者との優れたエンゲージメントを実現します。",
+      "smarterFasterBetter": "よりスマートで、より速く、より良い：ワークフォースマネジメント2.0",
+      "videoNotSupported": "お使いのブラウザはビデオタグをサポートしていません。",
+      "openSource": "誇らしくオープンソース",
+      "openSourceDescription": "Embloyはオープンソースであり、オープンソースソフトウェアで動作しています。",
+      "sourceCodeAvailableOnGitHub": "コードはこちらで入手できます ",
+      "logo": "ロゴ",
+      "copyright": "Copyright © 2024 Embloy、GbR。ソースコードは ",
+      "pricing": {
+          "simpleTransparentPricing": "シンプルで透明な価格設定",
+          "freeForApplicants": "応募者にとって、Embloyは100％無料です。",
+          "basicSubscriptionForProviders": "求人プロバイダーは、ユーザーが「本物」であることを確認する場合、申請に基本的なサブスクリプションを要求できます。その場合、応募者はEmbloy-Freeに登録する必要があります。",
+          "embloyFree": {
+            "title": "EMBLOY FREEに含まれるもの",
+            "features": [
+              "ワンクリック応募",
+              "希望する仕事に応募できます",
+              "CV、追加ドキュメントなどのアップロード",
+              "公開された求人の共有",
+              "3つの求人ポストの作成（サンドボックスモード）",
+              "広告なし"
+            ],
+            "price": "€0",
+            "billing": "月額請求",
+            "getStarted": "はじめる"
+          },
+          "embloySmart": {
+            "title": "EMBLOY SMARTに含まれるもの",
+            "features": [
+              "最大50件のアクティブな求人ポスト",
+              "無制限のクライアントトークン",
+              "クライアントトークンのカスタマイズ",
+              "広告なし"
+            ],
+            "price": "€50",
+            "billing": "月額請求",
+            "getStarted": "はじめる"
+          },
+          "embloyGenius": {
+            "title": "EMBLOY GENIUSに含まれるもの",
+            "features": [
+              "無制限のアクティブな求人ポスト",
+              "ジーニアスクエリへのアクセス",
+              "第三者統合の完全アクセス",
+              "パーソナルサポート"
+            ],
+            "price": "€500",
+            "billing": "月額請求",
+            "getStarted": "はじめる"
+          },
+          "partnershipWithStripe1": "が提携しています ",
+          "partnershipWithStripe2": " 簡素化された請求のために。" 
+      }
+  },
+  "auth": {
+    "login": {
+      "back": "戻る",
+      "welcomeback": "お帰りなさい",
+      "enterEmail": "アカウントにサインインするにはメールアドレスを入力してください",
+      "email": "メール",
+      "password": "パスワード",
+      "continueWith": "または次の方法で続行",
+      "dontHaveAccount": "アカウントをお持ちでないですか？サインアップ",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "signIn": "サインイン",
+      "orContinueWith": "または次の方法で続行"
+    },
+    "register": {
+      "login": "ログイン",
+      "signUp": "サインアップ",
+      "description": "画像の説明",
+      "createAccount": "アカウントを作成",
+      "enterDetails": "アカウントを作成するには、名前とメールアドレスを入力してください",
+      "email": "メール",
+      "firstName": "名",
+      "lastName": "姓",
+      "password": "パスワード",
+      "confirmPassword": "パスワードの確認",
+      "orContinueWith": "または次の方法で続行",
+      "agreeToTerms": "続行すると、当社の ",
+      "terms": "利用規約",
+      "and": " そして ",
+      "privacyPolicy": "プライバシーポリシー に同意する"
+    },
+    "pwreset": {
+      "backToHomepage": "ホームページに戻る",
+      "title": "パスワードをリセットする",
+      "enterEmail": "パスワードをリセットするにはメールアドレスを入力してください",
+      "dontHaveAccount": "アカウントをお持ちでないですか？サインアップ",
+      "reset": "パスワードをリセット",
+      "email": "Eメール"
+    },
+    "errors": {
+      "login": {
+        "title": "エラーが発生しました。",
+        "description": "サインインリクエストに失敗しました。もう一度やり直してください。"
+      },
+      "registration": {
+        "title": "エラーが発生しました。",
+        "description": "登録リクエストに失敗しました。もう一度やり直してください。"
+      },
+      "loginGitHub": {
+        "title": "エラーが発生しました。",
+        "description": "GitHubでのサインインリクエストに失敗しました。もう一度やり直してください。"
+      },
+      "loginGoogle": {
+        "title": "エラーが発生しました。",
+        "description": "Googleでのサインインリクエストに失敗しました。もう一度やり直してください。"
+      },
+      "loginMicrosoft": {
+        "title": "エラーが発生しました。",
+        "description": "Microsoftでのサインインリクエストに失敗しました。もう一度やり直してください。"
+      },
+      "loginLinkedIn": {
+        "title": "エラーが発生しました。",
+        "description": "LinkedInでのサインインリクエストに失敗しました。もう一度やり直してください。"
+      },
+      "register": {
+        "title": "エラーが発生しました。",
+        "description": "アカウントが削除されませんでした。もう一度やり直してください。"
+      },
+      "pwreset": {
+        "title": "エラーが発生しました。",
+        "description": "プロファイル画像が更新されませんでした。もう一度やり直してください。"
+      }
+    },
+    "success": {
+      "login": {
+        "description": "プロファイルが更新されました。"
+      },
+      "register": {
+        "title": "Embloyへようこそ！",
+        "description": "新しいアカウントを作成しました。"
+      },
+      "pwreset": {
+        "description": "プロファイル画像が更新されました。変更を表示するにはページをリロードしてください。"
+      }
+    }
+  },
+  "dashboard": {
+    "dashboard": {
+      "": ""
+    },
+    "upcoming": {
+      "title": "今後のジョブ",
+      "subtitle": "次に何があるかを見る。",
+      "noUpcomingJobs": "今後のジョブはありません。",
+      "startApply": "まだジョブがありません。今すぐ応募を開始してください。",
+      "apply": "仕事に応募する"
+    },
+    "applications": {
+      "title": "応募",
+      "subtitle": "提出した応募。",
+      "startApply": "まだ応募がありません。今すぐ応募を開始してください。",
+      "noPending": "保留中の応募はありません。",
+      "submittedApplications": "提出された応募",
+      "search": "検索",
+      "all": "すべて",
+      "accepted": "受理済み",
+      "status": {
+        "accepted": "受理済み",
+        "rejected": "拒否済み",
+        "pending": "保留中"
+      },
+      "archive": "アーカイブ",
+      "moveToTrash": "ゴミ箱に移動",
+      "snooze": "スヌーズ",
+      "setDeadline1": "雇用主の締め切りを設定",
+      "setDeadline2": "雇用主の締め切りを設定",
+      "laterToday": "今日の後 ",
+      "tomorrow": "明日",
+      "thisWeekend": "今週末",
+      "nextWeek": "来週",
+      "downloadAttachment": "添付ファイルをダウンロード",
+      "more": "詳細",
+      "markAsUnread": "未読としてマーク",
+      "starJob": "ジョブに星を付ける",
+      "addLabel": "ラベルを追加",
+      "noContact": "連絡先情報が提供されていません",
+      "noMessageSelected": "メッセージが選択されていません",
+      "noResponseYet": "まだ返信がありません...",
+      "muteJobNotifications": "すべてのジョブ通知をミュート",
+      "reviewEmployer": "雇用主をレビュー"
+    },
+    "billing": {
+      "title": "請求",
+      "subtitle": "サブスクリプションプランを管理します。",
+      "manageSubscriptions": "サブスクリプションを管理",
+      "noActiveSubscriptions": "アクティブなサブスクリプションはありません。",
+      "noActiveSubscriptionsText": "まだアクティブなサブスクリプションがありません。Embloyの最もエクスクルーシブな機能を使用し始めてください。",
+      "subscribeToFree": "FREEに登録",
+      "subscribeToSmart": "SMARTに登録",
+      "subscribeToGenius": "GENIUSに登録",
+      "subscriptionPlan": "サブスクリプションプラン",
+      "youAreCurrentlyOn": "現在のプラン：",
+      "plan": " プラン ",
+      "upgradeTo": "にアップグレード",
+      "yourPlanRenewsOn": "プランの更新日："
+    },
+    "settings": {
+      "title": "設定",
+      "subtitle": "アカウントとウェブサイトの設定を管理します。",
+      "yourProfile": "あなたのプロフィール",
+      "enterFullName": "フルネームを入力し、プロフィール画像として使用する画像を選択してください。",
+      "firstName": "名",
+      "lastName": "姓",
+      "profileImage": "プロフィール",
+      "removeImage": "画像を削除",
+      "removeImageNotice": "これが現在の画像です。アップロードを押すと置き換えられます。",
+      "uploadImage": "画像をアップロード",
+      "yourContactInfo": "あなたの連絡先情報",
+      "enterEmailPhone": "メールアドレスと電話番号を入力してください。",
+      "email": "メール",
+      "phone": "電話",
+      "yourAddress": "あなたの住所",
+      "enterAddress": "住所を入力してください。",
+      "address": "住所",
+      "yourSocials": "あなたのソーシャル",
+      "enterSocialMedia": "ソーシャルメディアのハンドルを入力してください。",
+      "twitter": "Twitter",
+      "linkedIn": "LinkedIn",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "save": "保存",
+      "cancel": "キャンセル",
+      "delete": "削除",
+      "deleteAccount": "アカウントを削除",
+      "deleteAccountConfirmation": "本当にアカウントを削除しますか？",
+      "deleteAccountWarning": "この操作は取り消せません。",
+      "errors": {
+        "updateAccount": {
+          "title": "エラーが発生しました。",
+          "description": "プロフィールが更新されませんでした。もう一度やり直してください。"
+        },
+        "deleteAccount": {
+          "title": "エラーが発生しました。",
+          "description": "アカウントが削除されませんでした。もう一度やり直してください。"
+        },
+        "uploadImage": {
+          "title": "エラーが発生しました。",
+          "description": "プロフィール画像が更新されませんでした。もう一度やり直してください。"
+        }
+      },
+      "success": {
+        "updateAccount": {
+          "description": "プロフィールが更新されました。"
+        },
+        "deleteAccount": {
+          "description": "アカウントが削除されました。"
+        },
+        "uploadImage": {
+          "description": "プロフィール画像が更新されました。変更を表示するにはページをリロードしてください。"
+        }
+      }
+    }
+  },
+  "sdk": {
+    "loading": "読み込み中...",
+    "byEmbloy": "by Embloy Platforms GbR",
+    "required": "このフィールドは必須です",
+    "validURL": "このフィールドは有効なURLである必要があります",
+    "backToHomepage": "ホームページに戻る",
+    "goToEmbloy": "Embloyに移動する",
+    "goToDashboard": "ダッシュボードに移動する",
+    "notFoundTitle": "おっと！見つかりません",
+    "notFoundSubtitle": "この求人は見つかりませんでした。もう一度お試しください。",
+    "applyFor": "応募する",
+    "thisJob": "この仕事",
+    "enterDetails": "応募するには以下に詳細を入力してください",
+    "enterApplicationText": "* ここに応募テキストを入力してください...（最大500文字）",
+    "uploadCV": "CVをアップロードする *",
+    "allowedFormats": "許可されている形式：",
+    "enterResponse": "返信を入力してください（最大200文字）",
+    "yes": "はい",
+    "no": "いいえ",
+    "fieldsMarkedAreRequired": "* が付いているフィールドは必須です。",
+    "newApplication": "新しい応募",
+    "errors": {
+      "request": {
+        "title": "何かがうまくいかなかった。",
+        "description": "リクエストが処理されませんでした。もう一度お試しください。"
+      },
+      "submit": {
+        "title": "何かがうまくいかなかった。",
+        "description": "応募が送信されませんでした。もう一度お試しください。"
+      }
+    }
+  }
+}

@@ -1,284 +1,318 @@
 {
-    "pages": {
-        "features": "Features",
-        "pricing": "Pricing",
-        "employers": "Employers",
-        "developers": "Developers",
-        "about": "About",
-        "login": "Login"
+  "pages": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "employers": "Employers",
+      "developers": "Developers",
+      "about": "About",
+      "login": "Login"
+  },
+  "marketing": {
+      "workInProgress": "This page is still a work in progress - Follow along on GitHub",
+      "mainHeader": "Embloy.",
+      "subHeader": "Solutions that brain-boost HR.",
+      "recruitmentSteps": "All Recruitment Steps in One Place: Make life easier for both organizations and job seekers by centralizing recruitment processes.",
+      "getStarted": "Get Started",
+      "forCompanies": "For Companies",
+      "features": "Features",
+      "featureDescription": "Embloy serves as the bridge connecting organizations with prospective job seekers. Functioning as a middleware solution customized for the digital age, explore how Embloy can enhance your hiring process:",
+      "smartHiring": "Smart Hiring",
+      "smartHiringDescription": "10x Faster HR processes due to automation.",
+      "endToEndRecruitment": "End-to-End Recruitment Hosting",
+      "endToEndRecruitmentDescription": "Eliminate the need for lengthy email and phone exchanges.",
+      "easyToIntegrate": "Easy to Integrate",
+      "easyToIntegrateDescription": "Made for effortless, unsupervised onboarding of new stakeholders.",
+      "oneClickToApply": "One-Click-To-Apply",
+      "oneClickToApplyDescription": "Enjoy the convenience of a single platform, where everything is just a click away.",
+      "xPlatform": "X-Platform",
+      "xPlatformDescription": "Highly modular system, accessible on web, iOS, and Android, allows for custom integrations through API",
+      "socialTools": "Social Tools",
+      "socialToolsDescription": "Seamless integration into today's social media landscape for unparalleled engagement with job seekers.",
+      "smarterFasterBetter": "Smarter, Faster, Better: Workforce Management 2.0",
+      "videoNotSupported": "Your browser does not support the video tag.",
+      "openSource": "Proudly Open Source",
+      "openSourceDescription": "Embloy is open source and powered by open source software.",
+      "sourceCodeAvailableOnGitHub": "The code is available on ",
+      "logo": "Logo",
+      "copyright": "Copyright © 2024 Embloy, GbR. The source code is available on ",
+      "pricing": {
+          "simpleTransparentPricing": "Simple, transparent pricing",
+          "freeForApplicants": "For applicants, Embloy is 100% free.",
+          "basicSubscriptionForProviders": "Job providers can request a basic subscription for an application if they want to verify that a user is \"real\" in which case the applicant will have to subscribe to Embloy-Free.",
+          "embloyFree": {
+            "title": "What's included in EMBLOY FREE",
+            "features": [
+              "One-Click-Application",
+              "Apply to as many jobs as you want",
+              "Upload CVs, extra documents, etc.",
+              "Share open job positions",
+              "Create 3 job postings (sandbox mode)",
+              "No ads"
+            ],
+            "price": "€0",
+            "billing": "Billed Monthly",
+            "getStarted": "Get Started"
+          },
+          "embloySmart": {
+            "title": "What's included in EMBLOY SMART",
+            "features": [
+              "Up to 50 active job postings",
+              "Unlimited client tokens",
+              "Client token customization",
+              "No ads"
+            ],
+            "price": "€50",
+            "billing": "Billed Monthly",
+            "getStarted": "Get Started"
+          },
+          "embloyGenius": {
+            "title": "What's included in EMBLOY GENIUS",
+            "features": [
+              "Unlimited active job postings",
+              "Access to genius-queries",
+              "Full access to 3rd party integrations",
+              "Personal support"
+            ],
+            "price": "€500",
+            "billing": "Billed Monthly",
+            "getStarted": "Get Started"
+          },
+          "partnershipWithStripe1": "partners with ",
+          "partnershipWithStripe2": " for simplified billing." 
+      }
+  },
+  "auth": {
+    "login": {
+      "back": "Back",
+      "welcomeback": "Welcome back",
+      "enterEmail": "Enter your email to sign in to your account",
+      "email": "Email",
+      "password": "Password",
+      "continueWith": "Or continue with",
+      "dontHaveAccount": "Don't have an account? Sign Up",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign In",
+      "orContinueWith": "Or continue with"
     },
-    "marketing": {
-        "workInProgress": "This page is still a work in progress - Follow along on GitHub",
-        "mainHeader": "Embloy.",
-        "subHeader": "Solutions that brain-boost HR.",
-        "recruitmentSteps": "All Recruitment Steps in One Place: Make life easier for both organizations and job seekers by centralizing recruitment processes.",
-        "getStarted": "Get Started",
-        "forCompanies": "For Companies",
-        "features": "Features",
-        "featureDescription": "Embloy serves as the bridge connecting organizations with prospective job seekers. Functioning as a middleware solution customized for the digital age, explore how Embloy can enhance your hiring process:",
-        "smartHiring": "Smart Hiring",
-        "smartHiringDescription": "10x Faster HR processes due to automation.",
-        "endToEndRecruitment": "End-to-End Recruitment Hosting",
-        "endToEndRecruitmentDescription": "Eliminate the need for lengthy email and phone exchanges.",
-        "easyToIntegrate": "Easy to Integrate",
-        "easyToIntegrateDescription": "Made for effortless, unsupervised onboarding of new stakeholders.",
-        "oneClickToApply": "One-Click-To-Apply",
-        "oneClickToApplyDescription": "Enjoy the convenience of a single platform, where everything is just a click away.",
-        "xPlatform": "X-Platform",
-        "xPlatformDescription": "Highly modular system, accessible on web, iOS, and Android, allows for custom integrations through API",
-        "socialTools": "Social Tools",
-        "socialToolsDescription": "Seamless integration into today's social media landscape for unparalleled engagement with job seekers.",
-        "smarterFasterBetter": "Smarter, Faster, Better: Workforce Management 2.0",
-        "videoNotSupported": "Your browser does not support the video tag.",
-        "openSource": "Proudly Open Source",
-        "openSourceDescription": "Embloy is open source and powered by open source software.",
-        "sourceCodeAvailableOnGitHub": "The code is available on ",
-        "logo": "Logo",
-        "copyright": "Copyright © 2024 Embloy, GbR. The source code is available on ",
-        "pricing": {
-            "simpleTransparentPricing": "Simple, transparent pricing",
-            "freeForApplicants": "For applicants, Embloy is 100% free.",
-            "basicSubscriptionForProviders": "Job providers can request a basic subscription for an application if they want to verify that a user is \"real\" in which case the applicant will have to subscribe to Embloy-Free.",
-            "embloyFree": {
-              "title": "What's included in EMBLOY FREE",
-              "features": [
-                "One-Click-Application",
-                "Apply to as many jobs as you want",
-                "Upload CVs, extra documents, etc.",
-                "Share open job positions",
-                "Create 3 job postings (sandbox mode)",
-                "No ads"
-              ],
-              "price": "€0",
-              "billing": "Billed Monthly",
-              "getStarted": "Get Started"
-            },
-            "embloySmart": {
-              "title": "What's included in EMBLOY SMART",
-              "features": [
-                "Up to 50 active job postings",
-                "Unlimited client tokens",
-                "Client token customization",
-                "No ads"
-              ],
-              "price": "€50",
-              "billing": "Billed Monthly",
-              "getStarted": "Get Started"
-            },
-            "embloyGenius": {
-              "title": "What's included in EMBLOY GENIUS",
-              "features": [
-                "Unlimited active job postings",
-                "Access to genius-queries",
-                "Full access to 3rd party integrations",
-                "Personal support"
-              ],
-              "price": "€500",
-              "billing": "Billed Monthly",
-              "getStarted": "Get Started"
-            },
-            "partnershipWithStripe1": "partners with ",
-            "partnershipWithStripe2": " for simplified billing." 
-        }
+    "register": {
+      "login": "Login",
+      "signUp": "Sign Up",
+      "description": "Description of the image",
+      "createAccount": "Create an account",
+      "enterDetails": "Enter your name and email below to create your account",
+      "email": "Email",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "orContinueWith": "Or continue with",
+      "agreeToTerms": "By clicking continue, you agree to our ",
+      "terms": "Terms of Service",
+      "and": " and ",
+      "privacyPolicy": "Privacy Policy"
     },
-    "auth": {
+    "pwreset": {
+      "backToHomepage": "Back to Homepage",
+      "title": "Reset Your Password",
+      "enterEmail": "Enter your email to reset your password",
+      "dontHaveAccount": "Don't have an account? Sign Up",
+      "reset": "Reset Password",
+      "Email": "email"
+    },
+    "errors": {
       "login": {
-        "back": "Back",
-        "welcomeback": "Welcome back",
-        "enterEmail": "Enter your email to sign in to your account",
-        "email": "Email",
-        "password": "Password",
-        "continueWith": "Or continue with",
-        "dontHaveAccount": "Don't have an account? Sign Up",
-        "forgotPassword": "Forgot password?",
-        "signIn": "Sign In",
-        "orContinueWith": "Or continue with"
+        "title": "Something went wrong.",
+        "description": "Your sign in request failed. Please try again."
+      },
+      "registration": {
+        "title": "Something went wrong.",
+        "description": "Your registration request failed. Please try again."
+      },
+      "loginGitHub": {
+        "title": "Something went wrong.",
+        "description": "Your sign in with GitHub request failed. Please try again."
+      },
+      "loginGoogle": {
+        "title": "Something went wrong.",
+        "description": "Your sign in with Google request failed. Please try again."
+      },
+      "loginMicrosoft": {
+        "title": "Something went wrong.",
+        "description": "Your sign in with Microsoft request failed. Please try again."
+      },
+      "loginLinkedIn": {
+        "title": "Something went wrong.",
+        "description": "Your sign in with Linkedin request failed. Please try again."
       },
       "register": {
-        "login": "Login",
-        "signUp": "Sign Up",
-        "description": "Description of the image",
-        "createAccount": "Create an account",
-        "enterDetails": "Enter your name and email below to create your account",
-        "email": "Email",
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "password": "Password",
-        "confirmPassword": "Confirm Password",
-        "orContinueWith": "Or continue with",
-        "agreeToTerms": "By clicking continue, you agree to our ",
-        "terms": "Terms of Service",
-        "and": " and ",
-        "privacyPolicy": "Privacy Policy"
+        "title": "Something went wrong.",
+        "description": "Your account was not deleted. Please try again."
       },
       "pwreset": {
-        "backToHomepage": "Back to Homepage",
-        "title": "Reset Your Password",
-        "enterEmail": "Enter your email to reset your password",
-        "dontHaveAccount": "Don't have an account? Sign Up"
+        "title": "Something went wrong.",
+        "description": "Your profile image was not updated. Please try again."
+      }
+    },
+    "success": {
+      "login": {
+        "description": "Your profile has been updated."
       },
+      "register": {
+        "title": "Welcome to Embloy!",
+        "description": "You have successfully created a new account."
+      },
+      "pwreset": {
+        "description": "Your profile image has been updated. Reload the page to see the change."
+      }
+    }
+  },
+  "dashboard": {
+    "dashboard": {
+      "": ""
+    },
+    "upcoming": {
+      "title": "Upcoming Jobs",
+      "subtitle": "See what's next.",
+      "noUpcomingJobs": "No upcoming jobs.",
+      "startApply": "You don't have jobs yet. Start applying now.",
+      "apply": "Apply for job"
+    },
+    "applications": {
+      "title": "Applications",
+      "subtitle": "Your submitted applications.",
+      "startApply": "You don't have applications yet. Start applying now.",
+      "noPending": "No pending applications.",
+      "submittedApplications": "Submitted Applications",
+      "search": "Search",
+      "all": "All",
+      "accepted": "Accepted",
+      "status": {
+        "accepted": "accepted",
+        "rejected": "rejected",
+        "pending": "pending"
+      },
+      "archive": "Archive",
+      "moveToTrash": "Move to trash",
+      "snooze": "Snooze",
+      "setDeadline1": "Set deadline for employer",
+      "setDeadline2": "Set employer deadline",
+      "laterToday": "Later today ",
+      "tomorrow": "Tomorrow",
+      "thisWeekend": "This weekend",
+      "nextWeek": "Next week",
+      "downloadAttachment": "Download Attachment",
+      "more": "More",
+      "markAsUnread": "Mark as unread",
+      "starJob": "Star job",
+      "addLabel": "Add label",
+      "noContact": "No contact information provided",
+      "noMessageSelected": "No message selected",
+      "noResponseYet": "No response yet ...",
+      "muteJobNotifications": "Mute all job notifications",
+      "reviewEmployer": "Review employer"
+    },
+    "billing": {
+      "title": "Billing",
+      "subtitle": "Manage your subscription plan.",
+      "manageSubscriptions": "Manage subscriptions",
+      "noActiveSubscriptions": "No active subscriptions.",
+      "noActiveSubscriptionsText": "You don't have an active subscriptions yet. Start using Embloy's most exclusive features now.",
+      "subscribeToFree": "Subscribe to FREE",
+      "subscribeToSmart": "Subscribe to SMART",
+      "subscribeToGenius": "Subscribe to GENIUS",
+      "subscriptionPlan": "Subscription Plan",
+      "youAreCurrentlyOn": "You are currently on the ",
+      "plan": " plan. ",
+      "upgradeTo": "Upgrade to ",
+      "yourPlanRenewsOn": "Your plan renews on "
+    },
+    "settings": {
+      "title": "Settings",
+      "subtitle": "Manage account and website settings.",
+      "yourProfile": "Your Profile",
+      "enterFullName": "Please enter your full name and select an image to use as your profile picture.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "profileImage": "Profile",
+      "removeImage": "Remove Image",
+      "removeImageNotice": "This is your current image. It will be replaced if you press upload.",
+      "uploadImage": "Upload Image",
+      "yourContactInfo": "Your Contact Information",
+      "enterEmailPhone": "Please enter your email and phone number.",
+      "email": "Email",
+      "phone": "Phone",
+      "yourAddress": "Your Address",
+      "enterAddress": "Please enter your address.",
+      "address": "Address",
+      "yourSocials": "Your Socials",
+      "enterSocialMedia": "Please enter your social media handles.",
+      "twitter": "Twitter",
+      "linkedIn": "LinkedIn",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleteAccount": "Delete Account",
+      "deleteAccountConfirmation": "Are you sure you want to delete your account?",
+      "deleteAccountWarning": "This action cannot be undone.",
       "errors": {
-        "login": {
+        "updateAccount": {
           "title": "Something went wrong.",
-          "description": "Your sign in request failed. Please try again."
+          "description": "Your profile was not updated. Please try again."
         },
-        "registration": {
-          "title": "Something went wrong.",
-          "description": "Your registration request failed. Please try again."
-        },
-        "loginGitHub": {
-          "title": "Something went wrong.",
-          "description": "Your sign in with GitHub request failed. Please try again."
-        },
-        "loginGoogle": {
-          "title": "Something went wrong.",
-          "description": "Your sign in with Google request failed. Please try again."
-        },
-        "loginMicrosoft": {
-          "title": "Something went wrong.",
-          "description": "Your sign in with Microsoft request failed. Please try again."
-        },
-        "loginLinkedIn": {
-          "title": "Something went wrong.",
-          "description": "Your sign in with Linkedin request failed. Please try again."
-        },
-        "register": {
+        "deleteAccount": {
           "title": "Something went wrong.",
           "description": "Your account was not deleted. Please try again."
         },
-        "pwreset": {
+        "uploadImage": {
           "title": "Something went wrong.",
           "description": "Your profile image was not updated. Please try again."
         }
       },
       "success": {
-        "login": {
+        "updateAccount": {
           "description": "Your profile has been updated."
         },
-        "register": {
-          "title": "Welcome to Embloy!",
-          "description": "You have successfully created a new account."
+        "deleteAccount": {
+          "description": "Your account has been deleted."
         },
-        "pwreset": {
+        "uploadImage": {
           "description": "Your profile image has been updated. Reload the page to see the change."
         }
       }
-    },
-    "dashboard": {
-      "dashboard": {
-        "": ""
+    }
+  },
+  "sdk": {
+    "loading": "Loading ...",
+    "byEmbloy": "by Embloy Platforms GbR",
+    "required": "This field is required",
+    "validURL": "This field must be a valid URL",
+    "backToHomepage": "Back to Homepage",
+    "goToEmbloy": "Go To Embloy",
+    "goToDashboard": "Go to Dashboard",
+    "notFoundTitle": "Uh oh! Not Found",
+    "notFoundSubtitle": "This job cound not be found. Please try again.",
+    "applyFor": "Apply for ",
+    "thisJob": "this job",
+    "enterDetails": "Enter your details below to apply",
+    "enterApplicationText": "* Enter your application text here... (max. 500 characters)",
+    "uploadCV": "Upload your CV *",
+    "allowedFormats": "Allowed formats: ",
+    "enterResponse": "Enter your response (max. 200 characters)",
+    "yes": "Yes",
+    "no": "No",
+    "fieldsMarkedAreRequired": "Fields marked with an * are required.",
+    "newApplication": "New application",
+    "errors": {
+      "request": {
+        "title": "Something went wrong.",
+        "description": "Your request was not processed. Please try again."
       },
-      "upcoming": {
-        "title": "Upcoming Jobs",
-        "subtitle": "See what's next.",
-        "noUpcomingJobs": "No upcoming jobs.",
-        "startApply": "You don't have jobs yet. Start applying now."
-      },
-      "applications": {
-        "title": "Applications",
-        "subtitle": "Your submitted applications.",
-        "startApply": "You don't have applications yet. Start applying now.",
-        "noPending": "No pending applications.",
-        "submittedApplications": "Submitted Applications",
-        "search": "Search",
-        "all": "All",
-        "accepted": "Accepted",
-        "status": {
-          "accepted": "accepted",
-          "rejected": "rejected",
-          "pending": "pending"
-        },
-        "archive": "Archive",
-        "moveToTrash": "Move to trash",
-        "snooze": "Snooze",
-        "setDeadline1": "Set deadline for employer",
-        "setDeadline2": "Set employer deadline",
-        "laterToday": "Later today ",
-        "tomorrow": "Tomorrow",
-        "thisWeekend": "This weekend",
-        "nextWeek": "Next week",
-        "downloadAttachment": "Download Attachment",
-        "more": "More",
-        "markAsUnread": "Mark as unread",
-        "starJob": "Star job",
-        "addLabel": "Add label",
-        "noContact": "No contact information provided",
-        "noMessageSelected": "No message selected",
-        "noResponseYet": "No response yet ...",
-        "muteJobNotifications": "Mute all job notifications",
-        "reviewEmployer": "Review employer"
-      },
-      "billing": {
-        "title": "Billing",
-        "subtitle": "Manage your subscription plan.",
-        "manageSubscriptions": "Manage subscriptions",
-        "noActiveSubscriptions": "No active subscriptions.",
-        "noActiveSubscriptionsText": "You don't have an active subscriptions yet. Start using Embloy's most exclusive features now.",
-        "subscribeToFree": "Subscribe to FREE",
-        "subscribeToSmart": "Subscribe to SMART",
-        "subscribeToGenius": "Subscribe to GENIUS",
-        "subscriptionPlan": "Subscription Plan",
-        "youAreCurrentlyOn": "You are currently on the ",
-        "plan": " plan. ",
-        "upgradeTo": "Upgrade to ",
-        "yourPlanRenewsOn": "Your plan renews on "
-      },
-      "settings": {
-        "title": "Settings",
-        "subtitle": "Manage account and website settings.",
-        "yourProfile": "Your Profile",
-        "enterFullName": "Please enter your full name and select an image to use as your profile picture.",
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "profileImage": "Profile",
-        "removeImage": "Remove Image",
-        "removeImageNotice": "This is your current image. It will be replaced if you press upload.",
-        "uploadImage": "Upload Image",
-        "yourContactInfo": "Your Contact Information",
-        "enterEmailPhone": "Please enter your email and phone number.",
-        "email": "Email",
-        "phone": "Phone",
-        "yourAddress": "Your Address",
-        "enterAddress": "Please enter your address.",
-        "address": "Address",
-        "yourSocials": "Your Socials",
-        "enterSocialMedia": "Please enter your social media handles.",
-        "twitter": "Twitter",
-        "linkedIn": "LinkedIn",
-        "instagram": "Instagram",
-        "facebook": "Facebook",
-        "save": "Save",
-        "cancel": "Cancel",
-        "delete": "Delete",
-        "deleteAccount": "Delete Account",
-        "deleteAccountConfirmation": "Are you sure you want to delete your account?",
-        "deleteAccountWarning": "This action cannot be undone.",
-        "errors": {
-          "updateAccount": {
-            "title": "Something went wrong.",
-            "description": "Your profile was not updated. Please try again."
-          },
-          "deleteAccount": {
-            "title": "Something went wrong.",
-            "description": "Your account was not deleted. Please try again."
-          },
-          "uploadImage": {
-            "title": "Something went wrong.",
-            "description": "Your profile image was not updated. Please try again."
-          }
-        },
-        "success": {
-          "updateAccount": {
-            "description": "Your profile has been updated."
-          },
-          "deleteAccount": {
-            "description": "Your account has been deleted."
-          },
-          "uploadImage": {
-            "description": "Your profile image has been updated. Reload the page to see the change."
-          }
-        }
+      "submit": {
+        "title": "Something went wrong.",
+        "description": "Your application was not submitted. Please try again."
       }
     }
   }
-  
+}

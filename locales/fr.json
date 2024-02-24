@@ -1,0 +1,318 @@
+{
+  "pages": {
+    "features": "Fonctionnalités",
+    "pricing": "Tarification",
+    "employers": "Employeurs",
+    "developers": "Développeurs",
+    "about": "À propos",
+    "login": "Connexion"
+  },
+  "marketing": {
+    "workInProgress": "Cette page est toujours en cours de développement - Suivez-nous sur GitHub",
+    "mainHeader": "Embloy.",
+    "subHeader": "Solutions qui stimulent les RH.",
+    "recruitmentSteps": "Toutes les étapes de recrutement en un seul endroit : Facilitez la vie des organisations et des chercheurs d'emploi en centralisant les processus de recrutement.",
+    "getStarted": "Commencer",
+    "forCompanies": "Pour les entreprises",
+    "features": "Fonctionnalités",
+    "featureDescription": "Embloy sert de pont entre les organisations et les chercheurs d'emploi potentiels. Fonctionnant comme une solution middleware personnalisée pour l'ère numérique, découvrez comment Embloy peut améliorer votre processus de recrutement :",
+    "smartHiring": "Recrutement intelligent",
+    "smartHiringDescription": "Processus RH 10 fois plus rapides grâce à l'automatisation.",
+    "endToEndRecruitment": "Hébergement de recrutement de bout en bout",
+    "endToEndRecruitmentDescription": "Éliminez le besoin d'échanges de courriels et de téléphone interminables.",
+    "easyToIntegrate": "Facile à intégrer",
+    "easyToIntegrateDescription": "Conçu pour une intégration facile et sans surveillance de nouveaux intervenants.",
+    "oneClickToApply": "Postuler en un clic",
+    "oneClickToApplyDescription": "Profitez de la commodité d'une plateforme unique, où tout est à portée de clic.",
+    "xPlatform": "Plateforme multiplateforme",
+    "xPlatformDescription": "Système hautement modulaire, accessible sur le web, iOS et Android, permet des intégrations personnalisées via une API",
+    "socialTools": "Outils sociaux",
+    "socialToolsDescription": "Intégration transparente dans le paysage des médias sociaux d'aujourd'hui pour un engagement sans précédent avec les chercheurs d'emploi.",
+    "smarterFasterBetter": "Plus intelligent, plus rapide, meilleur : Gestion de la main-d'œuvre 2.0",
+    "videoNotSupported": "Votre navigateur ne prend pas en charge la balise vidéo.",
+    "openSource": "Fièrement open source",
+    "openSourceDescription": "Embloy est open source et alimenté par des logiciels open source.",
+    "sourceCodeAvailableOnGitHub": "Le code est disponible sur ",
+    "logo": "Logo",
+    "copyright": "Droits d'auteur © 2024 Embloy, GbR. Le code source est disponible sur ",
+    "pricing": {
+      "simpleTransparentPricing": "Tarification simple et transparente",
+      "freeForApplicants": "Pour les candidats, Embloy est 100% gratuit.",
+      "basicSubscriptionForProviders": "Les fournisseurs d'emplois peuvent demander un abonnement de base pour une candidature s'ils veulent vérifier qu'un utilisateur est \"réel\", auquel cas le candidat devra s'abonner à Embloy-Free.",
+      "embloyFree": {
+        "title": "Ce qui est inclus dans EMBLOY FREE",
+        "features": [
+          "Postulation en un clic",
+          "Postulez à autant d'emplois que vous le souhaitez",
+          "Téléchargez des CV, des documents supplémentaires, etc.",
+          "Partagez des postes vacants",
+          "Créez 3 offres d'emploi (mode bac à sable)",
+          "Pas de publicité"
+        ],
+        "price": "€0",
+        "billing": "Facturé mensuellement",
+        "getStarted": "Commencer"
+      },
+      "embloySmart": {
+        "title": "Ce qui est inclus dans EMBLOY SMART",
+        "features": [
+          "Jusqu'à 50 offres d'emploi actives",
+          "Jetons de client illimités",
+          "Personnalisation du jeton de client",
+          "Pas de publicité"
+        ],
+        "price": "€50",
+        "billing": "Facturé mensuellement",
+        "getStarted": "Commencer"
+      },
+      "embloyGenius": {
+        "title": "Ce qui est inclus dans EMBLOY GENIUS",
+        "features": [
+          "Offres d'emploi actives illimitées",
+          "Accès aux requêtes de génie",
+          "Accès complet aux intégrations tierces",
+          "Support personnel"
+        ],
+        "price": "€500",
+        "billing": "Facturé mensuellement",
+        "getStarted": "Commencer"
+      },
+      "partnershipWithStripe1": "partenaires avec ",
+      "partnershipWithStripe2": " pour une facturation simplifiée."
+    }
+  },
+  "auth": {
+    "login": {
+      "back": "Retour",
+      "welcomeback": "Bienvenue de retour",
+      "enterEmail": "Entrez votre e-mail pour vous connecter à votre compte",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "continueWith": "Ou continuez avec",
+      "dontHaveAccount": "Vous n'avez pas de compte ? S'inscrire",
+      "forgotPassword": "Mot de passe oublié ?",
+      "signIn": "Se connecter",
+      "orContinueWith": "Ou continuez avec"
+    },
+    "register": {
+      "login": "Connexion",
+      "signUp": "S'inscrire",
+      "description": "Description de l'image",
+      "createAccount": "Créer un compte",
+      "enterDetails": "Entrez votre nom et votre e-mail ci-dessous pour créer votre compte",
+      "email": "E-mail",
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmez le mot de passe",
+      "orContinueWith": "Ou continuez avec",
+      "agreeToTerms": "En cliquant sur Continuer, vous acceptez nos ",
+      "terms": "Conditions d'utilisation",
+      "and": " et ",
+      "privacyPolicy": "Politique de confidentialité"
+    },
+    "pwreset": {
+      "backToHomepage": "Retour à la page d'accueil",
+      "title": "Réinitialiser votre mot de passe",
+      "enterEmail": "Entrez votre e-mail pour réinitialiser votre mot de passe",
+      "dontHaveAccount": "Vous n'avez pas de compte ? S'inscrire",
+      "reset": "Réinitialiser mot de passe",
+      "email": "e-mail"
+    },
+    "errors": {
+      "login": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande de connexion a échoué. Veuillez réessayer."
+      },
+      "registration": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande d'inscription a échoué. Veuillez réessayer."
+      },
+      "loginGitHub": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande de connexion avec GitHub a échoué. Veuillez réessayer."
+      },
+      "loginGoogle": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande de connexion avec Google a échoué. Veuillez réessayer."
+      },
+      "loginMicrosoft": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande de connexion avec Microsoft a échoué. Veuillez réessayer."
+      },
+      "loginLinkedIn": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande de connexion avec Linkedin a échoué. Veuillez réessayer."
+      },
+      "register": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre compte n'a pas été supprimé. Veuillez réessayer."
+      },
+      "pwreset": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre image de profil n'a pas été mise à jour. Veuillez réessayer."
+      }
+    },
+    "success": {
+      "login": {
+        "description": "Votre profil a été mis à jour."
+      },
+      "register": {
+        "title": "Bienvenue sur Embloy !",
+        "description": "Vous avez créé un nouveau compte avec succès."
+      },
+      "pwreset": {
+        "description": "Votre image de profil a été mise à jour. Rechargez la page pour voir le changement."
+      }
+    }
+  },
+  "dashboard": {
+    "dashboard": {
+      "": ""
+    },
+    "upcoming": {
+      "title": "Prochains emplois",
+      "subtitle": "Voir ce qui vient.",
+      "noUpcomingJobs": "Pas d'emplois à venir.",
+      "startApply": "Vous n'avez pas encore d'emplois. Commencez dès maintenant à postuler.",
+      "apply": "Postuler pour un travail"
+    },
+    "applications": {
+      "title": "Candidatures",
+      "subtitle": "Vos candidatures soumises.",
+      "startApply": "Vous n'avez pas encore de candidatures. Commencez dès maintenant à postuler.",
+      "noPending": "Aucune candidature en attente.",
+      "submittedApplications": "Candidatures soumises",
+      "search": "Chercher",
+      "all": "Tous",
+      "accepted": "Accepté",
+      "status": {
+        "accepted": "accepté",
+        "rejected": "rejeté",
+        "pending": "en attente"
+      },
+      "archive": "Archiver",
+      "moveToTrash": "Déplacer vers la corbeille",
+      "snooze": "Snooze",
+      "setDeadline1": "Définir une échéance pour l'employeur",
+      "setDeadline2": "Définir une échéance pour l'employeur",
+      "laterToday": "Plus tard dans la journée ",
+      "tomorrow": "Demain",
+      "thisWeekend": "Ce week-end",
+      "nextWeek": "La semaine prochaine",
+      "downloadAttachment": "Télécharger la pièce jointe",
+      "more": "Plus",
+      "markAsUnread": "Marquer comme non lu",
+      "starJob": "Marquer le poste",
+      "addLabel": "Ajouter une étiquette",
+      "noContact": "Aucune information de contact fournie",
+      "noMessageSelected": "Aucun message sélectionné",
+      "noResponseYet": "Aucune réponse pour le moment ...",
+      "muteJobNotifications": "Muter toutes les notifications d'emploi",
+      "reviewEmployer": "Évaluer l'employeur"
+    },
+    "billing": {
+      "title": "Facturation",
+      "subtitle": "Gérez votre plan d'abonnement.",
+      "manageSubscriptions": "Gérer les abonnements",
+      "noActiveSubscriptions": "Aucun abonnement actif.",
+      "noActiveSubscriptionsText": "Vous n'avez pas encore d'abonnement actif. Commencez dès maintenant à utiliser les fonctionnalités les plus exclusives d'Embloy.",
+      "subscribeToFree": "S'abonner à FREE",
+      "subscribeToSmart": "S'abonner à SMART",
+      "subscribeToGenius": "S'abonner à GENIUS",
+      "subscriptionPlan": "Plan d'abonnement",
+      "youAreCurrentlyOn": "Vous êtes actuellement sur le ",
+      "plan": ". ",
+      "upgradeTo": "Passer à ",
+      "yourPlanRenewsOn": "Votre plan est renouvelé le "
+    },
+    "settings": {
+      "title": "Paramètres",
+      "subtitle": "Gérer les paramètres du compte et du site Web.",
+      "yourProfile": "Votre profil",
+      "enterFullName": "Veuillez entrer votre nom complet et sélectionner une image à utiliser comme photo de profil.",
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "profileImage": "Profil",
+      "removeImage": "Supprimer l'image",
+      "removeImageNotice": "Ceci est votre image actuelle. Elle sera remplacée si vous appuyez sur Télécharger.",
+      "uploadImage": "Télécharger l'image",
+      "yourContactInfo": "Vos coordonnées",
+      "enterEmailPhone": "Veuillez entrer votre e-mail et votre numéro de téléphone.",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "yourAddress": "Votre adresse",
+      "enterAddress": "Veuillez entrer votre adresse.",
+      "address": "Adresse",
+      "yourSocials": "Vos réseaux sociaux",
+      "enterSocialMedia": "Veuillez entrer vos identifiants sur les réseaux sociaux.",
+      "twitter": "Twitter",
+      "linkedIn": "LinkedIn",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "delete": "Supprimer",
+      "deleteAccount": "Supprimer le compte",
+      "deleteAccountConfirmation": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+      "deleteAccountWarning": "Cette action ne peut pas être annulée.",
+      "errors": {
+        "updateAccount": {
+          "title": "Quelque chose s'est mal passé.",
+          "description": "Votre profil n'a pas été mis à jour. Veuillez réessayer."
+        },
+        "deleteAccount": {
+          "title": "Quelque chose s'est mal passé.",
+          "description": "Votre compte n'a pas été supprimé. Veuillez réessayer."
+        },
+        "uploadImage": {
+          "title": "Quelque chose s'est mal passé.",
+          "description": "Votre image de profil n'a pas été mise à jour. Veuillez réessayer."
+        }
+      },
+      "success": {
+        "updateAccount": {
+          "description": "Votre profil a été mis à jour."
+        },
+        "deleteAccount": {
+          "description": "Votre compte a été supprimé."
+        },
+        "uploadImage": {
+          "description": "Votre image de profil a été mise à jour. Rechargez la page pour voir le changement."
+        }
+      }
+    }
+  },
+  "sdk": {
+    "loading": "Chargement...",
+    "byEmbloy": "par Embloy Platforms GbR",
+    "required": "Ce champ est requis",
+    "validURL": "Ce champ doit être une URL valide",
+    "backToHomepage": "Retour à la page d'accueil",
+    "goToEmbloy": "Aller à Embloy",
+    "goToDashboard": "Aller au tableau de bord",
+    "notFoundTitle": "Oups ! Non trouvé",
+    "notFoundSubtitle": "Cette offre d'emploi n'a pas pu être trouvée. Veuillez réessayer.",
+    "applyFor": "Postuler pour",
+    "thisJob": "cette offre d'emploi",
+    "enterDetails": "Entrez vos coordonnées ci-dessous pour postuler",
+    "enterApplicationText": "* Saisissez votre texte de candidature ici... (max. 500 caractères)",
+    "uploadCV": "Téléchargez votre CV *",
+    "allowedFormats": "Formats autorisés : ",
+    "enterResponse": "Entrez votre réponse (max. 200 caractères)",
+    "yes": "Oui",
+    "no": "Non",
+    "fieldsMarkedAreRequired": "Les champs marqués d'un * sont obligatoires.",
+    "newApplication": "Nouvelle candidature",
+    "errors": {
+      "request": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande n'a pas été traitée. Veuillez réessayer."
+      },
+      "submit": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre candidature n'a pas été soumise. Veuillez réessayer."
+      }
+    }
+  }
+}
