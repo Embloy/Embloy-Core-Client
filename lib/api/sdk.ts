@@ -23,7 +23,7 @@ export interface Job {
   user_id: number;
   referrer_url: string | null;
   duration: number;
-  code_lang: string | null;
+  code_lang: Locale | null;
   title: string | null;
   position: string | null;
   description: {

@@ -17,19 +17,36 @@ import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { postCheckout, Subscription } from "@/lib/api/subscription"
 import { getNextBestPlan, getSubscriptionPlanBySubscription } from "@/config/subscriptions"
+import { Locale } from "@/i18n-config"
+import { getDictionary } from "@/app/[lang]/dictionaries"
+import { useState } from "react"
 
 interface BillingFormProps extends React.HTMLAttributes<HTMLFormElement> {
   subscription: Subscription
+  params: {
+    lang: Locale
+  }
 }
 
 export function BillingForm({
   subscription,
   className,
+  params: {lang},
   ...props
 }: BillingFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
   const nextBestPlan = getNextBestPlan(subscription)
+
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -60,14 +77,13 @@ export function BillingForm({
   const subscriptionPlan = getSubscriptionPlanBySubscription(subscription) 
 
 
-  return subscriptionPlan && (
+  return subscriptionPlan && dict && (
     <form className={cn(className)} onSubmit={onSubmit} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle>Subscription Plan</CardTitle>
+          <CardTitle>{dict.dashboard.billing.subscriptionPlan}</CardTitle>
           <CardDescription>
-            You are currently on the <strong>{subscriptionPlan.name}</strong>{" "}
-            plan.
+          {dict.dashboard.billing.youAreCurrentlyOn} <strong>{subscriptionPlan.name}</strong>{dict.dashboard.billing.plan}
           </CardDescription>
         </CardHeader>
         <CardContent>{subscriptionPlan.description}</CardContent>
@@ -81,12 +97,12 @@ export function BillingForm({
               {isLoading && (
                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
               )}
-              {`Upgrade to ${nextBestPlan?.name || 'SMART'}`}
+              {`${dict.dashboard.billing.upgradeTo}${nextBestPlan?.name || 'SMART'}`}
             </button>
           )}
           <p className="rounded-full text-xs font-medium">
-            {"Your plan renews on "}
-            {formatDate(subscription.current_period_end)}.
+            {dict.dashboard.billing.yourPlanRenewsOn}
+            {formatDate(lang, subscription.current_period_end)}.
           </p>
         </CardFooter>
       </Card>

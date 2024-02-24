@@ -8,11 +8,16 @@ import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
-interface StartApplyButtonProps extends ButtonProps {}
+interface StartApplyButtonProps extends ButtonProps {
+  params: {
+    lang: Locale
+  }
+}
 
 export function StartApplyButton({
   className,
   variant,
+  params: {lang},
   ...props
 }: StartApplyButtonProps) {
   const router = useRouter()
@@ -54,7 +59,7 @@ export function StartApplyButton({
     // This forces a cache invalidation.
     router.refresh()
 
-    router.push(`/editor/${post.id}`)
+    router.push(`/${lang}/editor/${post.id}`)
   }
 
   return (

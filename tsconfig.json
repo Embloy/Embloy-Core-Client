@@ -32,6 +32,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "app/[lang]/dictionaries.tsx"  ],
   "exclude": ["node_modules"]
 }

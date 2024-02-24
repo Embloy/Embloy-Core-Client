@@ -14,12 +14,18 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { useRouter, useSearchParams } from "next/navigation"
+import { getDictionary } from "@/app/[lang]/dictionaries"
+import { Locale } from "../i18n-config"
 
-interface UserSignUpFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserSignUpFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  params: {
+    lang: Locale
+  }
+}
 
 type FormData = z.infer<typeof userSignUpSchema>
 
-export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
+export function UserSignUpForm({ className, params: {lang}, ...props }: UserSignUpFormProps) {
   const {
     register,
     handleSubmit,
@@ -34,6 +40,16 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
   const [isLinkedinLoading, setIsLinkedinLoading] = React.useState<boolean>(false)
   const router = useRouter()
   const origin = useSearchParams().get("origin") as string
+  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
+
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
 
   async function onSubmit(data: FormData) {
     setIsLoading(true)
@@ -44,113 +60,97 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
       setIsLoading(false)
       // This forces a cache invalidation.
       router.refresh()
-      router.push(origin || '/dashboard')  
-      return toast({
-        title: "Welcome to Embloy!",
-        description: "You have successfully created a new account.",
+      router.push(origin || `/${lang}/dashboard`)  
+      return dict && toast({
+        title: dict.auth.success.registration.title,
+        description: dict.auth.success.registration.description,
       })
   
     } catch (error) {
       setIsLoading(false)
-      return toast({
-        title: "Something went wrong.",
-        description: "Your sign in request failed. Please try again.",
+      return dict && toast({
+        title: dict.auth.errors.registration.title,
+        description: dict.auth.errors.registration.description,
         variant: "destructive",
       })
     }
   }
 
   async function handleGithubSignIn() {
-    console.log("0 SIGN IN");
     setIsGitHubLoading(true);
   
     try {
-      console.log("STARTED SIGN IN");
       await signInWithGithub();
-      console.log("FINISHED SIGN IN");
-      // This forces a cache invalidation.
       router.refresh();
-      router.push(origin || '/dashboard');
+      router.push(origin || `/${lang}/dashboard`);
     } catch (error) {
       setIsGitHubLoading(false);
-      return toast({
-        title: "Something went wrong.",
-        description: "Your sign in with GitHub request failed. Please try again.",
+      return dict && toast({
+        title: dict.auth.errors.loginGitHub.title,
+        description: dict.auth.errors.loginGitHub.description,
         variant: "destructive",
       });
     }
   }
   
   async function handleGoogleSignIn() {
-    console.log("0 SIGN IN");
     setIsGoogleLoading(true);
   
     try {
-      console.log("STARTED SIGN IN");
       await signInWithGoogle();
-      console.log("FINISHED SIGN IN");
-      // This forces a cache invalidation.
       router.refresh();
-      router.push(origin || '/dashboard');
+      router.push(origin || `/${lang}/dashboard`);
     } catch (error) {
       setIsGoogleLoading(false);
-      return toast({
-        title: "Something went wrong.",
-        description: "Your sign in with Google request failed. Please try again.",
+      return dict && toast({
+        title: dict.auth.errors.loginGoogle.title,
+        description: dict.auth.errors.loginGoogle.description,
         variant: "destructive",
       });
     }
   }
   
   async function handleMicrosoftSignIn() {
-    console.log("0 SIGN IN");
     setIsMicrosoftLoading(true);
   
     try {
-      console.log("STARTED SIGN IN");
       await signInWithMicrosoft();
-      console.log("FINISHED SIGN IN");
-      // This forces a cache invalidation.
       router.refresh();
-      router.push(origin || '/dashboard');
+      router.push(origin || `/${lang}/dashboard`);
     } catch (error) {
       setIsMicrosoftLoading(false);
-      return toast({
-        title: "Something went wrong.",
-        description: "Your sign in with Microsoft request failed. Please try again.",
+      return dict && toast({
+        title: dict.auth.errors.loginMicrosoft.title,
+        description: dict.auth.errors.loginMicrosoft.description,
         variant: "destructive",
       });
     }
   }
 
   async function handleLinkedinSignIn() {
-    console.log("0 SIGN IN");
     setIsLinkedinLoading(true);
   
     try {
-      console.log("STARTED SIGN IN");
       await signInWithLinkedin();
-      console.log("FINSISHED SIGN IN");
-      // This forces a cache invalidation.
       router.refresh();
-      router.push(origin || '/dashboard');
+      router.push(origin || `/${lang}/dashboard`);
     } catch (error) {
       setIsLinkedinLoading(false);
-      return toast({
-        title: "Something went wrong.",
-        description: "Your sign in with Linkedin request failed. Please try again.",
+      return dict && toast({
+        title: dict.auth.errors.loginLinkedIn.title,
+        description: dict.auth.errors.loginLinkedIn.description,
         variant: "destructive",
       });
     }
   }
 
-  return (
+  return dict && (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
-              Email
+              {dict.auth.register.email}
             </Label>
             <Input
               id="email"
@@ -171,7 +171,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
 
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="firstName">
-              First Name
+            {dict.auth.register.firstName}
             </Label>
             <Input
               id="firstName"
@@ -188,7 +188,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
           </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="lastName">
-              Last Name
+            {dict.auth.register.lastName}
             </Label>
             <Input
               id="lastName"
@@ -205,7 +205,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
           </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="password">
-              Password
+            {dict.auth.register.password}
             </Label>
             <Input
               id="password"
@@ -225,7 +225,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
           </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="passwordConfirmation">
-              Confirm Password
+            {dict.auth.register.confirmPassword}
             </Label>
             <Input
               id="passwordConfirmation"
@@ -244,7 +244,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Sign In
+            {dict.auth.register.signUp}
           </button>
         </div>
       </form>
@@ -254,7 +254,7 @@ export function UserSignUpForm({ className, ...props }: UserSignUpFormProps) {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
+          {dict.auth.register.orContinueWith}
           </span>
         </div>
       </div>

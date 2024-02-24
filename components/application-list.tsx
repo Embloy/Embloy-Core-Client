@@ -5,15 +5,30 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/new-york/ui/badge";
 import { ScrollArea } from "@/components/new-york/ui/scroll-area";
 import { Application } from "@/lib/api/application";
-import { useApplication } from "@/app/(dashboard)/dashboard/applications/use-application";
+import { useApplication } from "@/app/[lang]/(dashboard)/dashboard/applications/use-application";
+import { getLocale, Locale } from "@/i18n-config";
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import React from "react";
 interface ApplicationListProps {
-  items: Application[];
+  items: Application[]
+  params: {
+    lang: Locale
+  }
 }
 
-export function ApplicationList({ items }: ApplicationListProps) {
+export function ApplicationList({ items, params: {lang} }: ApplicationListProps) {
   const [application, setApplication] = useApplication(items);
+  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
+  
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+    fetchDictionary();
+  }, [lang] );
 
-  return (
+  return dict && (
     <>
       <ScrollArea className="h-screen" style={{ height: "70vh" }}>
         <div className="flex flex-col gap-2 p-4 pt-0">
@@ -49,6 +64,7 @@ export function ApplicationList({ items }: ApplicationListProps) {
                   >
                     {formatDistanceToNow(new Date(item.updated_at), {
                       addSuffix: true,
+                      locale: getLocale(lang)
                     })}
                   </div>
                 </div>
@@ -59,7 +75,7 @@ export function ApplicationList({ items }: ApplicationListProps) {
               </div>
                 <div className="flex items-center gap-2">
                     <Badge key={item.status} variant={getBadgeVariantFromLabel(item.status)}>
-                      {getTextFromLabel(item.status)}
+                      {getTextFromLabel(item.status, dict)}
                     </Badge>
                 </div>
             </button>
@@ -73,16 +89,16 @@ export function ApplicationList({ items }: ApplicationListProps) {
 function getBadgeVariantFromLabel(
   label: string
 ): ComponentProps<typeof Badge>["variant"] {
-  if (["1"].includes(label.toLowerCase())) {
+  if (["accepted"].includes(label.toLowerCase())) {
     return "success";
   }
 
-  if (["-1"].includes(label.toLowerCase())) {
+  if (["rejected"].includes(label.toLowerCase())) {
     return "destructive";
   }
 
 
-  if (["0"].includes(label.toLowerCase())) {
+  if (["pending"].includes(label.toLowerCase())) {
     return "outline";
   }
 
@@ -90,19 +106,18 @@ function getBadgeVariantFromLabel(
 }
 
 function getTextFromLabel(
-  label: string
+  label: string, dict: Record<string, any>
 ) {
-  if (["-1"].includes(label.toLowerCase())) {
-    return "rejected";
+  if (["rejected"].includes(label.toLowerCase())) {
+    return dict.dashboard.applications.status.rejected;
   }
 
-  if (["1"].includes(label.toLowerCase())) {
-    return "accepted";
+  if (["accepted"].includes(label.toLowerCase())) {
+    return dict.dashboard.applications.status.accepted;
   }
 
-
-  if (["0"].includes(label.toLowerCase())) {
-    return "pending";
+  if (["pending"].includes(label.toLowerCase())) {
+    return dict.dashboard.applications.status.pending;
   }
 
   return "secondary";

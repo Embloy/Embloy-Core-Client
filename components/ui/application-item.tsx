@@ -15,12 +15,16 @@ import {
 import React from "react";
 import { useTheme } from "next-themes"
 import { Separator } from "./separator";
+import { Locale } from "@/i18n-config";
 
 interface ApplicationItemProps {
   application: Application;
+  params: {
+    lang: Locale
+  }
 }
 
-export function ApplicationItem({ application }: ApplicationItemProps) {
+export function ApplicationItem({ application, params: {lang} }: ApplicationItemProps) {
   let statusIcon;
   let statusColor;
   let statusValue;
@@ -192,7 +196,7 @@ export function ApplicationItem({ application }: ApplicationItemProps) {
         </Modal>
         <div>
           <p className="text-muted-background text-sm">
-            {formatDate(application.created_at)}
+            {formatDate(lang, application.created_at)}
           </p>
         </div>
       </div>

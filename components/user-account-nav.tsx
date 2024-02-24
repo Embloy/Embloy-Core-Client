@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { User } from "@/lib/api/session"
 import { logout } from "@/lib/api/auth"
+import {Locale} from "../i18n-config";
 
 import {
   DropdownMenu,
@@ -16,9 +17,12 @@ import { useRouter } from "next/navigation"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "first_name" | "last_name" | "image_url" | "email">
+  params: {
+    lang: Locale
+  }
 }
 
-export function UserAccountNav({ user }: UserAccountNavProps) {
+export function UserAccountNav({ user, params: {lang} }: UserAccountNavProps ) {
   const router = useRouter()
   return (
     <DropdownMenu>
@@ -42,19 +46,19 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/dashboard">Dashboard</Link>
+          <Link href={`/${lang}/dashboard`}>Dashboard</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/dashboard/upcoming-jobs">Upcoming Jobs</Link>
+          <Link href={`/${lang}/dashboard/upcoming-jobs`}>Upcoming Jobs</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/dashboard/applications">Applications</Link>
+          <Link href={`/${lang}/dashboard/applications`}>Applications</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/dashboard/billing">Billing</Link>
+          <Link href={`/${lang}/dashboard/billing`}>Billing</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/dashboard/settings">Settings</Link>
+          <Link href={`/${lang}/dashboard/settings`}>Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
@@ -64,7 +68,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
             await logout()
             // This forces a cache invalidation.
             router.refresh()
-            router.push(`/login`)
+            router.push(`/${lang}/login`)
           }}
         >
           Sign out

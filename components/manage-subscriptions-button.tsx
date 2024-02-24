@@ -7,11 +7,14 @@ import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
-interface ManageSubscriptionsButtonProps extends ButtonProps {}
+interface ManageSubscriptionsButtonProps extends ButtonProps {
+  text: string
+}
 
 export function ManageSubscriptionsButton({
   className,
   variant,
+  text,
   ...props
 }: ManageSubscriptionsButtonProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
@@ -43,7 +46,7 @@ export function ManageSubscriptionsButton({
       ) : (
         <Icons.laptop className="mr-2 h-4 w-4" />
       )}
-      Manage subscriptions
+      {text}
     </button>
   )
 }

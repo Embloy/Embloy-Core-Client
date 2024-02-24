@@ -41,16 +41,31 @@ import { ApplicationAnswerList } from "./application-answer-list"
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar"
 import { Icons } from "./icons"
 import { ApplicationResponse } from "./application-response"
+import { getLocale, Locale } from "@/i18n-config"
+import React from "react"
+import { getDictionary } from "@/app/[lang]/dictionaries"
 
 interface ApplicationDisplayProps {
   application: Application | null
+  params: {
+    lang: Locale
+  }
 }
 
-export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
+export function ApplicationDisplay({ application, params: {lang} }: ApplicationDisplayProps) {
   const [deadline, setDeadline] = useState<Date | null>(null);
   const today = new Date()
   const disabledPastDates = (date) => isBefore(date, new Date()) && !isToday(date);
+  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
   
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+    fetchDictionary();
+  }, [lang] );
+
   const downloadAttachment = (application: Application | null) => {
     if (application && application.application_attachment && application.application_attachment.url) {
       const cvUrl = application.application_attachment.url;
@@ -67,7 +82,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
     setDeadline(date);
   };
 
-  return (
+  return dict && (
     <div className="flex h-full flex-col">
       <div className="flex items-center p-2">
         <div className="flex items-center gap-2">
@@ -75,19 +90,19 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!!application}>
                 <Archive className="h-4 w-4" />
-                <span className="sr-only">Archive</span>
+                <span className="sr-only">{dict.dashboard.applications.archive}</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Archive</TooltipContent>
+            <TooltipContent>{dict.dashboard.applications.archive}</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!!application}>
                 <Trash2 className="h-4 w-4" />
-                <span className="sr-only">Move to trash</span>
+                <span className="sr-only">{dict.dashboard.applications.moveToTrash}</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Move to trash</TooltipContent>
+            <TooltipContent>{dict.dashboard.applications.moveToTrash}</TooltipContent>
           </Tooltip>
           <Separator orientation="vertical" className="mx-1 h-6" />
           <Tooltip>
@@ -96,13 +111,13 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                 <TooltipTrigger asChild>
                   <Button variant="ghost" size="icon" disabled={!application}>
                     <Clock className="h-4 w-4" />
-                    <span className="sr-only">Snooze</span>
+                    <span className="sr-only">{dict.dashboard.applications.snooze}</span>
                   </Button>
                 </TooltipTrigger>
               </PopoverTrigger>
               <PopoverContent className="flex w-[535px] p-0">
                 <div className="flex flex-col gap-2 border-r px-2 py-4">
-                  <div className="px-4 text-sm font-medium">Set deadline for employer</div>
+                  <div className="px-4 text-sm font-medium">{dict.dashboard.applications.setDeadline1}</div>
                   <div className="grid min-w-[250px] gap-1">
                     <Button
                       variant="ghost"
@@ -119,7 +134,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                       className="justify-start font-normal"
                       onClick={() => handleSetDeadline(addDays(today, 1))}
                     >
-                      Tomorrow
+                      {dict.dashboard.applications.tomorrow}
                       <span className="ml-auto text-muted-foreground">
                         {format(addDays(today, 1), "E, h:m b")}
                       </span>
@@ -129,7 +144,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                       className="justify-start font-normal"
                       onClick={() => handleSetDeadline(nextSaturday(today))}
                     >
-                      This weekend
+                      {dict.dashboard.applications.thisWeekend}
                       <span className="ml-auto text-muted-foreground">
                         {format(nextSaturday(today), "E, h:m b")}
                       </span>
@@ -139,7 +154,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                       className="justify-start font-normal"
                       onClick={() => handleSetDeadline(addDays(today, 7))}
                     >
-                      Next week
+                      {dict.dashboard.applications.nextWeek}
                       <span className="ml-auto text-muted-foreground">
                         {format(addDays(today, 7), "E, h:m b")}
                       </span>
@@ -151,7 +166,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
                 </div>
               </PopoverContent>
             </Popover>
-            <TooltipContent>Set employer deadline</TooltipContent>
+            <TooltipContent>{dict.dashboard.applications.setDeadline2}</TooltipContent>
           </Tooltip>
         </div>
         <div className="ml-auto flex items-center gap-2">
@@ -164,10 +179,10 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
               onClick={() => downloadAttachment(application)}
             >
               <DownloadCloud className="h-4 w-4" />
-              <span className="sr-only">Download Attachment</span>
+              <span className="sr-only">{dict.dashboard.applications.downloadAttachment}</span>
             </Button>
                 </TooltipTrigger>
-            <TooltipContent>Download Attachment</TooltipContent>
+            <TooltipContent>{dict.dashboard.applications.downloadAttachment}</TooltipContent>
           </Tooltip>
         </div>
         <Separator orientation="vertical" className="mx-2 h-6" />
@@ -179,9 +194,9 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem disabled>Mark as unread</DropdownMenuItem>
-            <DropdownMenuItem disabled>Star job</DropdownMenuItem>
-            <DropdownMenuItem disabled>Add label</DropdownMenuItem>
+            <DropdownMenuItem disabled>{dict.dashboard.applications.markAsUnread}</DropdownMenuItem>
+            <DropdownMenuItem disabled>{dict.dashboard.applications.starJob}</DropdownMenuItem>
+            <DropdownMenuItem disabled>{dict.dashboard.applications.addLabel}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -203,7 +218,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
             }
               <div className="grid gap-1">
                 <div className="font-semibold">{application.job?.employer_name || `User#${application.job?.user_id}`}</div>
-                <div className="line-clamp-1 text-xs">{application.job?.employer_email || application.job?.employer_phone || 'No contact information provided.'}</div>
+                <div className="line-clamp-1 text-xs">{application.job?.employer_email || application.job?.employer_phone || dict.dashboard.applications.noContact}</div>
                 <div className="line-clamp-1 text-xs">
                   <span className="font-medium text-muted-foreground">{application.job?.job_slug || `Job#${application.job_id}`}</span>
                 </div>
@@ -211,7 +226,7 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
             </div>
             {application.updated_at && (
               <div className="ml-auto text-xs text-muted-foreground">
-                {format(new Date(application.updated_at), "PPpp")}
+                {format(new Date(application.updated_at), "PPpp", {locale: getLocale(lang)} )}
               </div>
             )}
           </div>
@@ -222,11 +237,11 @@ export function ApplicationDisplay({ application }: ApplicationDisplayProps) {
           <Separator />
           <ApplicationAnswerList application={application}/>
           <Separator className="mt-auto" />
-          <ApplicationResponse application={application}/>
+          <ApplicationResponse application={application} params={{lang: lang}}/>
         </div>
       ) : (
         <div className="p-8 text-center text-muted-foreground">
-          No message selected
+          {dict.dashboard.applications.noMessageSelected}
         </div>
       )}
     </div>

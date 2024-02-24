@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@/lib/api/session";
 import { useForm } from "react-hook-form";
@@ -14,7 +14,7 @@ import {
   deleteImage,
 } from "@/lib/api/user";
 import { cn } from "@/lib/utils";
-import { AvatarLarge, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { AvatarLarge, AvatarImage } from "@/components/ui/avatar";
 
 import { userSchema } from "@/lib/validations/user";
 import { buttonVariants } from "@/components/ui/button";
@@ -40,14 +40,20 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import { useState } from "react";
+import {Locale} from "../i18n-config"
 
 interface UserFormProps extends React.HTMLAttributes<HTMLFormElement> {
-  user: User;
+  user: User
+  params: {
+    lang: Locale;
+  };
 }
 
 type FormData = z.infer<typeof userSchema>;
 
-export function UserForm({ user, className, ...props }: UserFormProps) {
+export function UserForm({ user, className, params: { lang }, ...props }: UserFormProps) {
   const router = useRouter();
 
   const {
@@ -73,6 +79,16 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
   const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
   const [selectedImage, setSelectedImage] = React.useState<File | null>(null);
   const [showDeleteAlert, setShowDeleteAlert] = React.useState(false);
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
+
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
 
   async function onSubmit(data: FormData) {
     setIsSaving(true);
@@ -81,15 +97,15 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
     setIsSaving(false);
 
     if (!success) {
-      return toast({
-        title: "Something went wrong.",
-        description: "Your profile was not updated. Please try again.",
+      return dict && toast({
+        title: dict.dashboard.settings.errors.updateAccount.title,
+        description: dict.dashboard.settings.errors.updateAccount.description,
         variant: "destructive",
       });
     }
 
-    toast({
-      description: "Your profile has been updated.",
+    dict && toast({
+      description: dict.dashboard.settings.success.updateAccount.description,
     });
 
     // router.refresh()
@@ -102,15 +118,15 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
     setIsDeleting(false);
 
     if (!success) {
-      return toast({
-        title: "Something went wrong.",
-        description: "Your account was not deleted. Please try again.",
+      return dict && toast({
+        title: dict.dashboard.settings.errors.deleteAccount.title,
+        description: dict.dashboard.settings.errors.deleteAccount.description,
         variant: "destructive",
       });
     }
 
-    toast({
-      description: "Your account has been deleted.",
+    dict && toast({
+      description: dict.dashboard.settings.success.deleteAccount.description,
     });
 
     // router.refresh()
@@ -120,18 +136,16 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
     if (selectedImage) {
       const success = await uploadUserImage(selectedImage);
       if (!success) {
-        return toast({
-          title: "Something went wrong.",
-          description: "Your profile image was not updated. Please try again.",
+        return dict && toast({
+          title: dict.dashboard.settings.errors.uploadImage.title,
+          description: dict.dashboard.settings.errors.uploadImage.description,
           variant: "destructive",
         });
       }
-
-      toast({
-        description: "Your profile image has been updated. Reload the page to see the change.",
-      });
-
-      //  router.refresh()
+  
+      dict && toast({
+        description: dict.dashboard.settings.success.uploadImage.description,
+      });    
     }
   }
 
@@ -139,7 +153,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
     setSelectedImage(file);
   }
 
-  return (
+  return dict && (
     <form
       className={cn(className)}
       onSubmit={handleSubmit(onSubmit)}
@@ -148,24 +162,23 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
       <div className="space-y-4">
         <Card>
           <CardHeader>
-            <CardTitle>Your Profile</CardTitle>
+            <CardTitle>{dict.dashboard.settings.yourProfile}</CardTitle>
             <CardDescription>
-              Please enter your full name and select an image to use as your
-              profile picture.
+            {dict.dashboard.settings.enterFullName}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="space-y-4">
                 <div className="space-y-1">
-                  <Label htmlFor="first_name">First Name</Label>
+                  <Label htmlFor="first_name">{dict.dashboard.settings.firstName}</Label>
                   <Input
                     id="first_name"
                     className={cn(
                       "w-full",
                       errors.first_name && "border-red-600"
                     )}
-                    placeholder="First Name"
+                    placeholder={dict.dashboard.settings.firstName}
                     {...register("first_name")}
                   />
                   {errors?.first_name && (
@@ -177,7 +190,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
 
                 <div className="space-y-1">
                   <Label htmlFor="last_name" className="mt-4">
-                    Last Name
+                  {dict.dashboard.settings.lastName}
                   </Label>
                   <Input
                     id="last_name"
@@ -185,7 +198,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
                       "w-full",
                       errors.last_name && "border-red-600"
                     )}
-                    placeholder="Last Name"
+                    placeholder={dict.dashboard.settings.lastName}
                     {...register("last_name")}
                   />
                   {errors?.last_name && (
@@ -201,7 +214,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
                       className={cn(buttonVariants(), className)}
                       onClick={deleteImage}
                     >
-                      Remove Image
+                      {dict.dashboard.settings.removeImage}
                     </button>
                   )}
                   <button
@@ -210,7 +223,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
                     onClick={uploadImage}
                     disabled={!selectedImage}
                   >
-                    Upload Image
+                    {dict.dashboard.settings.uploadImage}
                   </button>
                 </div>
               </div>
@@ -225,9 +238,9 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
                   {selectedImage && user.image_url && (
                     <div className="mt-2">
                       <AvatarLarge>
-                        <AvatarImage src={user.image_url} alt="Profile Image" />
+                        <AvatarImage src={user.image_url} alt={dict.dashboard.settings.profileImage} />
                       </AvatarLarge>
-                      <p className="mt-2 text-sm text-gray-500">This is your current image. It will be replaced if you press upload.</p>
+                      <p className="mt-2 text-sm text-gray-500">{dict.dashboard.settings.removeImageNotice}</p>
                     </div>
                   )}
                 </div>
@@ -237,15 +250,15 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Your Contact Information</CardTitle>
+            <CardTitle>{dict.dashboard.settings.yourContactInfo}</CardTitle>
             <CardDescription>
-              Please enter your email and phone number.
+              {dict.dashboard.settings.enterEmailPhone}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{dict.dashboard.settings.email}</Label>
                 <Input
                   id="email"
                   className={cn("w-full", errors.email && "border-red-600")}
@@ -259,7 +272,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
                 )}
               </div>
               <div>
-                <Label htmlFor="phone">Phone</Label>
+                <Label htmlFor="phone">{dict.dashboard.settings.phone}</Label>
                 <Input
                   id="phone"
                   className={cn("w-full", errors.phone && "border-red-600")}
@@ -278,12 +291,12 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Your Address</CardTitle>
-            <CardDescription>Please enter your address.</CardDescription>
+            <CardTitle>{dict.dashboard.settings.yourAddress}</CardTitle>
+            <CardDescription>{dict.dashboard.settings.enterAddress}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-1">
-              <Label htmlFor="address">Address</Label>
+              <Label htmlFor="address">{dict.dashboard.settings.address}</Label>
               <Input
                 id="address"
                 className="w-full"
@@ -302,14 +315,14 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Your Socials</CardTitle>
+            <CardTitle>{dict.dashboard.settings.yourSocials}</CardTitle>
             <CardDescription>
-              Please enter your social media handles.
+              {dict.dashboard.settings.enterSocialMedia}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-1">
-              <Label htmlFor="twitter">Twitter</Label>
+              <Label htmlFor="twitter">{dict.dashboard.settings.twitter}</Label>
               <Input
                 id="twitter"
                 className="w-full"
@@ -324,7 +337,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
               )}
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="linkedin">LinkedIn</Label>
+              <Label htmlFor="linkedin">{dict.dashboard.settings.linkedIn}</Label>
               <Input
                 id="linkedin"
                 className="w-full"
@@ -339,7 +352,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
               )}
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="instagram">Instagram</Label>
+              <Label htmlFor="instagram">{dict.dashboard.settings.instagram}</Label>
               <Input
                 id="instagram"
                 className="w-full"
@@ -354,7 +367,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
               )}
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="facebook">Facebook</Label>
+              <Label htmlFor="facebook">{dict.dashboard.settings.facebook}</Label>
               <Input
                 id="facebook"
                 className="w-full"
@@ -380,7 +393,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
             {isSaving && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            <span>Save</span>
+            <span>{dict.dashboard.settings.save}</span>
           </button>
           <button
             type="button"
@@ -394,7 +407,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
             {isDeleting && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            <span>Delete Account</span>
+            <span>{dict.dashboard.settings.deleteAccount}</span>
           </button>
         </div>
       </CardFooter>
@@ -402,14 +415,14 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Are you sure you want to delete your account?
+            {dict.dashboard.settings.deleteAccountConfirmation}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone.
+            {dict.dashboard.settings.deleteAccountWarning}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setShowDeleteAlert(false)}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel onClick={() => setShowDeleteAlert(false)}>{dict.dashboard.settings.cancel}</AlertDialogCancel>
             <AlertDialogAction
               onClick={async (event) => {
                 event.preventDefault();
@@ -418,7 +431,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
                 await onDelete();
                 setIsDeleting(false);
                 setShowDeleteAlert(false);
-                router.push("/login");
+                router.push(`/${lang}/login`);
                 }
               }
               className={cn(
@@ -431,7 +444,7 @@ export function UserForm({ user, className, ...props }: UserFormProps) {
               ) : (
                 <Icons.trash className="mr-2 h-4 w-4" />
               )}
-              <span>Delete</span>
+              <span>{dict.dashboard.settings.delete}</span>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

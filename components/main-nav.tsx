@@ -9,30 +9,34 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { MobileNav } from "@/components/mobile-nav"
+import {Locale} from "../i18n-config";
 
 interface MainNavProps {
   items?: MainNavItem[]
   children?: React.ReactNode
+  params: {
+    lang: Locale;
+  };
 }
 
-export function MainNav({ items, children }: MainNavProps) {
+export function MainNav({ items, children, params: { lang } }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
 
   return (
     <div className="flex gap-6 md:gap-10">
-<Link href="/" className="mb-1 hidden items-center space-x-2  md:flex">
-  <Icons.logo />
-  <span className="underline-gradient hidden text-xl font-bold sm:inline-block">
-    {siteConfig.name.toLowerCase()}
-  </span>
-</Link>
+    <Link href={`/${lang}`} className="mb-1 hidden items-center space-x-2  md:flex">
+      <Icons.logo />
+      <span className="underline-gradient hidden text-xl font-bold sm:inline-block">
+        {siteConfig.name.toLowerCase()}
+      </span>
+    </Link>
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
           {items?.map((item, index) => (
             <Link
               key={index}
-              href={item.disabled ? "#" : item.href}
+              href={item.disabled ? "#" : `${item.href.startsWith('/') ? `/${lang}` : ''}${item.href}`}
               className={cn(
                 "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
                 item.href.startsWith(`/${segment}`)
@@ -54,7 +58,7 @@ export function MainNav({ items, children }: MainNavProps) {
         <span className="font-bold">Menu</span>
       </button>
       {showMobileMenu && items && (
-        <MobileNav items={items}>{children}</MobileNav>
+        <MobileNav items={items} params={{lang: lang}}>{children}</MobileNav>
       )}
     </div>
   )

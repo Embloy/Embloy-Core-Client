@@ -1,14 +1,30 @@
+import { getDictionary } from "@/app/[lang]/dictionaries"
 import { Button } from "@/components/new-york/ui/button"
 import { Label } from "@/components/new-york/ui/label"
 import { Switch } from "@/components/new-york/ui/switch"
+import { Locale } from "@/i18n-config"
 import { Application } from "@/lib/api/application"
+import React from "react"
 
 interface ApplicationResponseProps {
-  application: Application;
+  application: Application
+  params: {
+    lang: Locale
+  }
 }
 
-export function ApplicationResponse({ application }: ApplicationResponseProps) {
+export function ApplicationResponse({ application, params: {lang} }: ApplicationResponseProps) {
   let statusColor: string | null ;
+  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
+ 
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+    fetchDictionary();
+  }, [lang] );
+
 
   switch (application.status) {
     case '0':
@@ -24,7 +40,7 @@ export function ApplicationResponse({ application }: ApplicationResponseProps) {
       statusColor = 'border-2 border-gray-500';
   }
 
-  return statusColor ? (
+  return dict && statusColor ? (
     <div className="p-4">
       <div className="grid gap-4">
         <div className="grid gap-4">
@@ -34,7 +50,7 @@ export function ApplicationResponse({ application }: ApplicationResponseProps) {
           </div>
         ) : (
           <div className={`rounded-lg bg-secondary p-4 text-primary ${statusColor}`}>
-            No response yet ...
+            {dict.dashboard.applications.noResponseYet}
           </div>
         )}
       </div>
@@ -43,7 +59,7 @@ export function ApplicationResponse({ application }: ApplicationResponseProps) {
           htmlFor="mute"
           className="flex items-center gap-2 text-xs font-normal"
         >
-          <Switch id="mute" aria-label="Mute thread" /> Mute all job notifications
+          <Switch id="mute" aria-label="Mute thread" /> {dict.dashboard.applications.muteJobNotifications}
         </Label>
         {application.response ? (
           <Button
@@ -51,7 +67,7 @@ export function ApplicationResponse({ application }: ApplicationResponseProps) {
             size="sm"
             className="ml-auto"
           >
-            Review employer
+            {dict.dashboard.applications.reviewEmployer}
           </Button>
         ) : (
           <Button
@@ -59,7 +75,7 @@ export function ApplicationResponse({ application }: ApplicationResponseProps) {
             className="ml-auto"
             disabled
           >
-            Review employer
+            {dict.dashboard.applications.reviewEmployer}
           </Button>
         )}
       </div>

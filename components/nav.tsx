@@ -6,12 +6,16 @@ import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import {Locale} from "../i18n-config";
 
 interface DashboardNavProps {
   items: SidebarNavItem[]
+  params: {
+    lang: Locale
+  }
 }
 
-export function DashboardNav({ items }: DashboardNavProps) {
+export function DashboardNav({ items, params: {lang} }: DashboardNavProps) {
   const path = usePathname()
 
   if (!items?.length) {
@@ -22,13 +26,16 @@ export function DashboardNav({ items }: DashboardNavProps) {
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
         const Icon = Icons[item.icon || "arrowRight"]
+        console.log("path=", path.split('/').slice(2).join('/'));
+        console.log("item=", item.href);
+
         return (
           item.href && (
-            <Link key={index} href={item.disabled ? "/" : item.href}>
+            <Link key={index} href={item.disabled ? "#" : `${item.href.startsWith('/') ? `/${lang}` : ''}${item.href}`}>
               <span
                 className={cn(
                   "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                  path === item.href ? "bg-accent" : "transparent",
+                  "/"+path.split('/').slice(2).join('/') === item.href ? "bg-accent" : "transparent",
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
               >
