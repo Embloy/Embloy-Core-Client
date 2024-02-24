@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { UserAvatar } from "@/components/user-avatar"
 import { useRouter } from "next/navigation"
-import { toast } from "./ui/use-toast"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "first_name" | "last_name" | "image_url" | "email">
