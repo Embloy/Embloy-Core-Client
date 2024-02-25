@@ -163,8 +163,31 @@ export default function ApplyPage({ params: { lang } }) {
   };
 
   const handleFileChange = (event) => {
-    // New handler for the file input change
-    setCvFile(event.target.files[0]);
+    if (job && dict) {
+      const file = event.target.files[0];
+      const validTypes = job.allowed_cv_formats;
+      const validSize = 2 * 1024 * 1024; // 2MB in bytes
+    
+      if (!validTypes.includes(file.type)) {
+        toast({
+          title: dict.dashboard.settings.errors.invalidFileType.title,
+          description: dict.invalidFileType.description.replace('{formats}', job.allowed_cv_formats.join(", ")),
+          variant: "destructive",
+        });
+        return;
+      }
+    
+      if (file.size > validSize) {
+        toast({
+          title: dict.dashboard.settings.errors.largeFile.title,
+          description: dict.dashboard.settings.errors.largeFile.description,
+          variant: "destructive",
+        });
+        return;
+      }
+    
+      setCvFile(file);
+    }
   };
 
   const handleBackClick = (e) => {

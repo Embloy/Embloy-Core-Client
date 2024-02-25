@@ -268,9 +268,7 @@
       "errors": {
         "updateAccount": {
           "title": "Qualcosa è andato storto.",
-         
-
- "description": "Il tuo profilo non è stato aggiornato. Riprova."
+          "description": "Il tuo profilo non è stato aggiornato. Riprova."
         },
         "deleteAccount": {
           "title": "Qualcosa è andato storto.",
@@ -279,6 +277,43 @@
         "uploadImage": {
           "title": "Qualcosa è andato storto.",
           "description": "La tua immagine del profilo non è stata aggiornata. Riprova."
+        },
+        "invalidImageType": {
+          "title": "Qualcosa è andato storto.",
+          "description": "Sono ammessi solo file JPG, JPEG e PNG. Per favore, riprova."
+        },
+        "invalidImageSize": {
+          "title": "Qualcosa è andato storto.",
+          "description": "La dimensione dell'immagine deve essere inferiore a 2MB. Per favore, riprova."
+        },
+        "validations": { 
+          "id": "ID è richiesto", 
+          "password_digest": "Digest della password è richiesto", 
+          "activity_status": "Lo stato di attività è richiesto", 
+          "image_url": "L'URL dell'immagine deve essere un URL valido",
+          "longitude": "La longitudine deve essere un numero valido",
+          "latitude": "La latitudine deve essere un numero valido",
+          "country_code": "Il codice del paese è richiesto",
+          "postal_code": "Il codice postale è richiesto",
+          "city": "La città è richiesta",
+          "date_of_birth": "La data di nascita deve essere una data valida",
+          "user_type": "Il tipo di utente deve essere inferiore a 100 caratteri",
+          "view_count": "Il conteggio delle visualizzazioni deve essere un numero valido",
+          "created_at": "Creato a è richiesto",
+          "updated_at": "Aggiornato a è richiesto",
+          "applications_count": "Il conteggio delle applicazioni deve essere un numero valido",
+          "jobs_count": "Il conteggio dei lavori deve essere un numero valido",
+          "user_role": "Il ruolo dell'utente deve essere inferiore a 100 caratteri",
+          "application_notifications": "Le notifiche di applicazione devono essere un booleano",
+          "first_name": "Il nome è obbligatorio",
+          "last_name": "Il cognome è obbligatorio",
+          "email": "L'email deve essere un'email valida",
+          "address": "L'indirizzo deve essere inferiore a 500 caratteri",
+          "phone": "Il numero di telefono deve essere un numero di telefono valido",
+          "twitter_url": "L'URL deve essere un URL Twitter",
+          "facebook_url": "L'URL deve essere un URL Facebook",
+          "instagram_url": "L'URL deve essere un URL Instagram",
+          "linkedin_url": "L'URL deve essere un URL LinkedIn"
         }
       },
       "success": {
@@ -323,6 +358,14 @@
       "submit": {
         "title": "Qualcosa è andato storto.",
         "description": "La tua candidatura non è stata inviata. Per favore riprova."
+      },
+      "invalidFileType": {
+        "title": "Qualcosa è andato storto.",
+        "description": "Si prega di caricare un file in uno dei formati consentiti: {formats}."
+      },
+      "invalidFileSize": {
+        "title": "Qualcosa è andato storto.",
+        "description": "La dimensione del file deve essere inferiore a 2MB. Per favore, riprova."
       }
     }
   },

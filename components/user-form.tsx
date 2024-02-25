@@ -63,6 +63,7 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
   } = useForm<FormData>({
     resolver: zodResolver(userSchema),
     defaultValues: {
+      ...user,
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
@@ -150,16 +151,40 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
   }
 
   function onFileChange(file: File | null) {
+    if (file && dict) {
+      const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+      const validSize = 2 * 1024 * 1024; // 2MB in bytes
+  
+      if (!validTypes.includes(file.type)) {
+        toast({
+          title: dict.dashboard.settings.errors.invalidImageType.title,
+          description: dict.dashboard.settings.errors.invalidImageType.description,
+          variant: "destructive",
+        });
+        return;
+      }
+  
+      if (file.size > validSize) {
+        toast({
+          title: dict.dashboard.settings.errors.invalidImageSize.title,
+          description: dict.dashboard.settings.errors.invalidImageSize.description,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+  
     setSelectedImage(file);
   }
 
   return dict && (
-    <form
-      className={cn(className)}
-      onSubmit={handleSubmit(onSubmit)}
-      {...props}
-    >
+    <form onSubmit={handleSubmit((data) => {
+          console.log('Form submitted with data:', data);
+          onSubmit(data);
+      })} className={cn(className)} {...props}>
+   
       <div className="space-y-4">
+   
         <Card>
           <CardHeader>
             <CardTitle>{dict.dashboard.settings.yourProfile}</CardTitle>
@@ -181,9 +206,9 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                     placeholder={dict.dashboard.settings.firstName}
                     {...register("first_name")}
                   />
-                  {errors?.first_name && (
+                  {errors?.first_name?.message && (
                     <p className="px-1 text-xs text-red-600">
-                      {errors.first_name.message}
+                      {dict.dashboard.settings.errors.validations[errors.first_name.message] || errors.first_name.message}
                     </p>
                   )}
                 </div>
@@ -201,9 +226,9 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                     placeholder={dict.dashboard.settings.lastName}
                     {...register("last_name")}
                   />
-                  {errors?.last_name && (
+                  {errors?.last_name?.message && (
                     <p className="px-1 text-xs text-red-600">
-                      {errors.last_name.message}
+                      {dict.dashboard.settings.errors.validations[errors.last_name.message] || errors.last_name.message}
                     </p>
                   )}
                 </div>
@@ -265,11 +290,11 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                   placeholder="example@embloy.com"
                   {...register("email")}
                 />
-                {errors?.email && (
-                  <p className="px-1 text-xs text-red-600">
-                    {errors.email.message}
-                  </p>
-                )}
+                  {errors?.email?.message && (
+                    <p className="px-1 text-xs text-red-600">
+                      {dict.dashboard.settings.errors.validations[errors.email.message] || errors.email.message}
+                    </p>
+                  )}
               </div>
               <div>
                 <Label htmlFor="phone">{dict.dashboard.settings.phone}</Label>
@@ -279,12 +304,12 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                   placeholder="+49 123456789"
                   {...register("phone")}
                 />
-                {errors?.phone && (
-                  <p className="px-1 text-xs text-red-600">
-                    {errors.phone.message}
-                  </p>
-                )}
-              </div>
+                  {errors?.phone?.message && (
+                    <p className="px-1 text-xs text-red-600">
+                      {dict.dashboard.settings.errors.validations[errors.phone.message] || errors.phone.message}
+                    </p>
+                  )}
+                </div>
             </div>
           </CardContent>
         </Card>
@@ -304,9 +329,9 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                 placeholder="Raiffeisenstraße 9 85356 Freising"
                 {...register("address")}
               />
-              {errors?.address && (
+              {errors?.address?.message && (
                 <p className="px-1 text-xs text-red-600">
-                  {errors.address.message}
+                  {dict.dashboard.settings.errors.validations[errors.address.message] || errors.address.message}
                 </p>
               )}
             </div>
@@ -330,12 +355,12 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                 placeholder="https://twitter.com/embloy"
                 {...register("twitter_url")}
               />
-              {errors?.twitter_url && (
+              {errors?.twitter_url?.message && (
                 <p className="px-1 text-xs text-red-600">
-                  {errors.twitter_url.message}
+                  {dict.dashboard.settings.errors.validations[errors.twitter_url.message] || errors.twitter_url.message}
                 </p>
               )}
-            </div>
+              </div>
             <div className="grid gap-1">
               <Label htmlFor="linkedin">{dict.dashboard.settings.linkedIn}</Label>
               <Input
@@ -345,9 +370,9 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                 placeholder="https://linkedin.com/company/embloy"
                 {...register("linkedin_url")}
               />
-              {errors?.linkedin_url && (
+              {errors?.linkedin_url?.message && (
                 <p className="px-1 text-xs text-red-600">
-                  {errors.linkedin_url.message}
+                  {dict.dashboard.settings.errors.validations[errors.linkedin_url.message] || errors.linkedin_url.message}
                 </p>
               )}
             </div>
@@ -360,9 +385,9 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                 placeholder="https://instagram.com/embloy"
                 {...register("instagram_url")}
               />
-              {errors?.instagram_url && (
+              {errors?.instagram_url?.message && (
                 <p className="px-1 text-xs text-red-600">
-                  {errors.instagram_url.message}
+                  {dict.dashboard.settings.errors.validations[errors.instagram_url.message] || errors.instagram_url.message}
                 </p>
               )}
             </div>
@@ -375,9 +400,9 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                 placeholder="https://facebook.com/embloy"
                 {...register("facebook_url")}
               />
-              {errors?.facebook_url && (
+              {errors?.facebook_url?.message && (
                 <p className="px-1 text-xs text-red-600">
-                  {errors.facebook_url.message}
+                  {dict.dashboard.settings.errors.validations[errors.facebook_url.message] || errors.facebook_url.message}
                 </p>
               )}
             </div>

@@ -275,6 +275,43 @@
         "uploadImage": {
           "title": "エラーが発生しました。",
           "description": "プロフィール画像が更新されませんでした。もう一度やり直してください。"
+        },
+        "invalidImageType": {
+          "title": "何かが間違っています。",
+          "description": "JPG、JPEG、PNGファイルのみが許可されています。もう一度お試しください。"
+        },
+        "invalidImageSize": {
+          "title": "何かが間違っています。",
+          "description": "画像のサイズは2MB未満でなければなりません。もう一度お試しください。"
+        },
+        "validations": {
+          "id": "IDが必要です",
+          "password_digest": "パスワードダイジェストが必要です",
+          "activity_status": "活動ステータスが必要です",
+          "image_url": "画像URLは有効なURLでなければなりません",
+          "longitude": "経度は有効な数値でなければなりません",
+          "latitude": "緯度は有効な数値でなければなりません",
+          "country_code": "国コードが必要です",
+          "postal_code": "郵便番号が必要です",
+          "city": "市が必要です",
+          "date_of_birth": "生年月日は有効な日付でなければなりません",
+          "user_type": "ユーザータイプは100文字未満でなければなりません",
+          "view_count": "ビューカウントは有効な数値でなければなりません",
+          "created_at": "作成日が必要です",
+          "updated_at": "更新日が必要です",
+          "applications_count": "アプリケーション数は有効な数値でなければなりません",
+          "jobs_count": "ジョブ数は有効な数値でなければなりません",
+          "user_role": "ユーザーロールは100文字未満でなければなりません",
+          "application_notifications": "アプリケーション通知はブール値でなければなりません",
+          "first_name": "名前は必須です",
+          "last_name": "苗字は必須です",
+          "email": "メールアドレスは有効なメールアドレスでなければなりません",
+          "address": "住所は500文字以下でなければなりません",
+          "phone": "電話番号は有効な電話番号でなければなりません",
+          "twitter_url": "URLはTwitterのURLでなければなりません",
+          "facebook_url": "URLはFacebookのURLでなければなりません",
+          "instagram_url": "URLはInstagramのURLでなければなりません",
+          "linkedin_url": "URLはLinkedInのURLでなければなりません"
         }
       },
       "success": {
@@ -319,6 +356,14 @@
       "submit": {
         "title": "何かがうまくいかなかった。",
         "description": "応募が送信されませんでした。もう一度お試しください。"
+      },
+      "invalidFileType": {
+        "title": "何かが間違っています。",
+        "description": "許可された形式のいずれかでファイルをアップロードしてください: {formats}。"
+      },
+      "invalidFileSize": {
+        "title": "何かが間違っています。",
+        "description": "ファイルサイズは 2MB 未満である必要があります。 もう一度試してください。"
       }
     }
   },

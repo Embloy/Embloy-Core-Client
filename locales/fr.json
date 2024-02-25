@@ -275,6 +275,43 @@
         "uploadImage": {
           "title": "Quelque chose s'est mal passé.",
           "description": "Votre image de profil n'a pas été mise à jour. Veuillez réessayer."
+        },
+        "invalidImageType": {
+          "title": "Quelque chose s'est mal passé.",
+          "description": "Seuls les fichiers JPG, JPEG et PNG sont autorisés. Veuillez réessayer."
+        },
+        "invalidImageSize": {
+          "title": "Quelque chose s'est mal passé.",
+          "description": "La taille de l'image doit être inférieure à 2MB. Veuillez réessayer."
+        },
+        "validations": {
+          "id": "L'ID est requis",
+          "password_digest": "Le digest du mot de passe est requis",
+          "activity_status": "Le statut d'activité est requis",
+          "image_url": "L'URL de l'image doit être une URL valide",
+          "longitude": "La longitude doit être un nombre valide",
+          "latitude": "La latitude doit être un nombre valide",
+          "country_code": "Le code du pays est requis",
+          "postal_code": "Le code postal est requis",
+          "city": "La ville est requise",
+          "date_of_birth": "La date de naissance doit être une date valide",
+          "user_type": "Le type d'utilisateur doit comporter moins de 100 caractères",
+          "view_count": "Le nombre de vues doit être un nombre valide",
+          "created_at": "La date de création est requise",
+          "updated_at": "La date de mise à jour est requise",
+          "applications_count": "Le nombre d'applications doit être un nombre valide",
+          "jobs_count": "Le nombre de jobs doit être un nombre valide",
+          "user_role": "Le rôle de l'utilisateur doit comporter moins de 100 caractères",
+          "application_notifications": "Les notifications d'application doivent être un booléen",
+          "first_name": "Le prénom est requis",
+          "last_name": "Le nom est requis",
+          "email": "L'email doit être un email valide",
+          "address": "L'adresse doit comporter moins de 500 caractères",
+          "phone": "Le numéro de téléphone doit être un numéro de téléphone valide",
+          "twitter_url": "L'URL doit être une URL Twitter",
+          "facebook_url": "L'URL doit être une URL Facebook",
+          "instagram_url": "L'URL doit être une URL Instagram",
+          "linkedin_url": "L'URL doit être une URL LinkedIn"
         }
       },
       "success": {
@@ -319,6 +356,14 @@
       "submit": {
         "title": "Quelque chose s'est mal passé.",
         "description": "Votre candidature n'a pas été soumise. Veuillez réessayer."
+      },
+      "invalidFileType": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Veuillez télécharger un fichier dans l'un des formats autorisés: {formats}."
+      },    
+      "invalidFileSize": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "La taille de l'file doit être inférieure à 2MB. Veuillez réessayer."
       }
     }
   },

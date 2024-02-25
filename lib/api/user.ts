@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site";
-import { getAccessToken, clearUserSession } from "./auth";
+import { getAccessToken } from "./auth";
 
 export async function getUserData(accessToken): Promise<Record<string, any>> {
     console.log('getUserData is called');
@@ -32,12 +32,12 @@ export async function updateUser(userJson: string): Promise<{ success: Boolean }
     });
   
     if (!response.ok) {
-      throw new Error('Failed to delete user');
+      throw new Error('Failed to update user');
     }
     return {success: true}
 
   } catch (error) {
-    console.error("Error deleting user:", error);
+    console.error("Error updating user:", error);
     // clearUserSession();
     return { success: false };
   }

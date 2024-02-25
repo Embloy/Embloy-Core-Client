@@ -275,6 +275,43 @@
         "uploadImage": {
           "title": "Etwas ist schief gelaufen.",
           "description": "Dein Profilbild wurde nicht aktualisiert. Bitte versuche es erneut."
+        },
+        "invalidImageType": {
+          "title": "Etwas ist schief gelaufen.",
+          "description": "Nur JPG-, JPEG- und PNG-Dateien sind erlaubt. Bitte versuche es erneut."
+        },
+        "invalidImageSize": {
+          "title": "Etwas ist schief gelaufen.",
+          "description": "Die Bildgröße muss kleiner als 2MB sein. Bitte versuche es erneut."
+        },
+        "validations": {
+          "id": "ID ist erforderlich",
+          "password_digest": "Passwort-Digest ist erforderlich",
+          "activity_status": "Aktivitätsstatus ist erforderlich",
+          "image_url": "Bild-URL muss eine gültige URL sein",
+          "longitude": "Längengrad muss eine gültige Zahl sein",
+          "latitude": "Breitengrad muss eine gültige Zahl sein",
+          "country_code": "Ländercode ist erforderlich",
+          "postal_code": "Postleitzahl ist erforderlich",
+          "city": "Stadt ist erforderlich",
+          "date_of_birth": "Geburtsdatum muss ein gültiges Datum sein",
+          "user_type": "Benutzertyp muss weniger als 100 Zeichen sein",
+          "view_count": "Anzahl der Aufrufe muss eine gültige Zahl sein",
+          "created_at": "Erstellt am ist erforderlich",
+          "updated_at": "Aktualisiert am ist erforderlich",
+          "applications_count": "Anzahl der Bewerbungen muss eine gültige Zahl sein",
+          "jobs_count": "Anzahl der Jobs muss eine gültige Zahl sein",
+          "user_role": "Benutzerrolle muss weniger als 100 Zeichen sein",
+          "application_notifications": "Bewerbungsbenachrichtigungen müssen ein Boolescher Wert sein",
+          "first_name": "Vorname ist erforderlich",
+          "last_name": "Nachname ist erforderlich",
+          "email": "E-Mail muss eine gültige E-Mail sein",
+          "address": "Adresse muss weniger als 500 Zeichen sein",
+          "phone": "Telefonnummer muss eine gültige Telefonnummer sein",
+          "twitter_url": "URL muss eine Twitter-URL sein",
+          "facebook_url": "URL muss eine Facebook-URL sein",
+          "instagram_url": "URL muss eine Instagram-URL sein",
+          "linkedin_url": "URL muss eine LinkedIn-URL sein"
         }
       },
       "success": {
@@ -319,6 +356,14 @@
       "submit": {
         "title": "Etwas ist schief gelaufen.",
         "description": "Deine Bewerbung wurde nicht eingereicht. Bitte versuche es erneut."
+      },
+      "invalidFileType": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Bitte laden Sie eine Datei in einem der zulässigen Formate hoch: {formats}."
+      },
+      "invalidFileSize": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Die Dateigröße muss kleiner als 2MB sein. Bitte versuche es erneut."
       }
     }
   },

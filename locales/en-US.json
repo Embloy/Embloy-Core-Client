@@ -275,6 +275,43 @@
         "uploadImage": {
           "title": "Something went wrong.",
           "description": "Your profile image was not updated. Please try again."
+        },
+        "invalidImageType": {
+          "title": "Something went wrong.",
+          "description": "Only JPG, JPEG, and PNG files are allowed. Please try again."
+        },
+        "invalidImageSize": {
+          "title": "Something went wrong.",
+          "description": "The image size must be less than 2MB. Please try again."
+        },
+        "validations": {
+          "id": "ID is required",
+          "password_digest": "Password digest is required",
+          "activity_status": "Activity status is required",
+          "image_url": "Image URL must be a valid URL",
+          "longitude": "Longitude must be a valid number",
+          "latitude": "Latitude must be a valid number",
+          "country_code": "Country code is required",
+          "postal_code": "Postal code is required",
+          "city": "City is required",
+          "date_of_birth": "Date of birth must be a valid date",
+          "user_type": "User type must be less than 100 characters",
+          "view_count": "View count must be a valid number",
+          "created_at": "Created at is required",
+          "updated_at": "Updated at is required",
+          "applications_count": "Applications count must be a valid number",
+          "jobs_count": "Jobs count must be a valid number",
+          "user_role": "User role must be less than 100 characters",
+          "application_notifications": "Application notifications must be a boolean",
+          "first_name": "First name is required",
+          "last_name": "Last name is required",
+          "email": "Email must be a valid email",
+          "address": "Address must be less than 500 characters",
+          "phone": "Phone number must be a valid phone number",
+          "twitter_url": "URL must be a Twitter URL",
+          "facebook_url": "URL must be a Facebook URL",
+          "instagram_url": "URL must be an Instagram URL",
+          "linkedin_url": "URL must be a LinkedIn URL"
         }
       },
       "success": {
@@ -319,6 +356,14 @@
       "submit": {
         "title": "Something went wrong.",
         "description": "Your application was not submitted. Please try again."
+      },
+      "invalidFileType": {
+        "title": "Something went wrong.",
+        "description": "Please upload a file in one of the allowed formats: {formats}."
+      },
+      "invalidFileSize": {
+        "title": "Something went wrong.",
+        "description": "The file size must be less than 2MB. Please try again."
       }
     }
   },
