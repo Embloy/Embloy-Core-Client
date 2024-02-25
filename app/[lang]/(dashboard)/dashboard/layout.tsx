@@ -64,7 +64,7 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
             <div className="mx-6 hidden md:flex">
               <LanguageToggle />
               <Separator className="mx-1"/>
-              <ModeToggle />
+              <ModeToggle params={{lang: lang}}/>
             </div>
             <UserAccountNav
               user={{
@@ -86,7 +86,7 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
           {children}
         </main>
       </div>
-      <SiteFooter id="footer" className="border-t" copyRight={`${dict.marketing.copyright}`} />
+      <SiteFooter id="footer" className="border-t" params={{lang: lang}} />
     </div>
   )
 }

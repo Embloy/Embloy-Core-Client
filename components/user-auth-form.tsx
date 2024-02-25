@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { login, signInWithGoogle, signInWithLinkedin, signInWithMicrosoft } from '@/lib/api/auth';
+import { login, signInWithGoogle, signInWithLinkedin, signInWithMicrosoft, signInWithGithub } from '@/lib/api/auth';
 import { cn } from "@/lib/utils"
 import { userAuthSchema } from "@/lib/validations/auth"
 import { buttonVariants } from "@/components/ui/button"
@@ -14,7 +14,6 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { useRouter, useSearchParams } from "next/navigation"
-import { signInWithGithub } from '@/lib/api/auth'; // Import the signInWithGithub function
 import { getDictionary } from "@/app/[lang]/dictionaries"
 import { Locale } from "../i18n-config"
 
@@ -144,7 +143,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
-              Email
+            {dict.auth.login.email}
             </Label>
             <Input
               id="email"
@@ -156,19 +155,19 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
               disabled={isLoading || isGitHubLoading}
               {...register("email")}
             />
-            {errors?.email && (
+            {errors?.email?.message && (
               <p className="px-1 text-xs text-red-600">
-                {errors.email.message}
+                {dict.auth.errors[errors.email.message]}
               </p>
             )}
           </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="password">
-              Password
+            {dict.auth.login.password}
             </Label>
             <Input
               id="password"
-              placeholder="password"
+              placeholder={dict.auth.login.password}
               type="password"
               autoCapitalize="none"
               autoComplete="password"
@@ -176,9 +175,9 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
               disabled={isLoading || isGitHubLoading}
               {...register("password")}
             />
-            {errors?.password && (
+            {errors?.password?.message && (
               <p className="px-1 text-xs text-red-600">
-                {errors.password.message}
+                {dict.auth.errors[errors.password.message]}
               </p>
             )}
           </div>
@@ -196,7 +195,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-          {dict.auth.login.orContinueWith}
+            {dict.auth.login.orContinueWith}
           </span>
         </div>
       </div>

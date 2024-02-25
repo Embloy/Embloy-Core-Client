@@ -180,7 +180,7 @@ export function ApplicationItem({ application, params: {lang} }: ApplicationItem
           <Separator/>
 
           <div className="mb-2 mt-4 flex items-center">
-            {React.cloneElement(statusIcon)}
+            {statusIcon}
             <p className="ml-2 font-medium">Application Response:</p>
           </div>
           <p className="mb-4 italic">{application.response}</p>

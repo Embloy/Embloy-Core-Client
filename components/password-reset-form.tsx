@@ -23,7 +23,7 @@ interface PasswordResetFormProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const passwordResetSchema = z.object({
-  email: z.string().email(),
+  email: z.string().email({ message: 'Email must be a valid email' }),
 });
 
 type FormData = z.infer<typeof passwordResetSchema>
@@ -48,7 +48,6 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
     resolver: zodResolver(passwordResetSchema),
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const router = useRouter()
 
   async function onSubmit(data: FormData) {
     setIsLoading(true)
@@ -88,11 +87,12 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
               disabled={isLoading}
               {...register("email")}
             />
-            {errors?.email && (
+            {errors?.email?.message && (
               <p className="px-1 text-xs text-red-600">
-                {errors.email.message}
+                {dict.auth.errors[errors.email.message] || errors.email.message}
               </p>
             )}
+
           </div>
           <button className={cn(buttonVariants())} disabled={isLoading}>
             {isLoading && (

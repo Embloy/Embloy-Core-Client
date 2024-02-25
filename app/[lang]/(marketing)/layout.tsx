@@ -53,7 +53,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
   }
 
   if (user) {
-    return (
+    return dict && (
       <div className="flex min-h-screen flex-col">
         <header className="container top-0 z-40">
           <div className="flex h-20 items-center justify-between py-6">
@@ -62,7 +62,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
               <div className="mx-6 hidden md:flex">
                 <LanguageToggle />
                 <Separator className="mx-1"/>
-                <ModeToggle />
+                <ModeToggle params={{lang: lang}}/>
               </div>
               <UserAccountNav
                 user={{
@@ -77,7 +77,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
           </div>
         </header>
         <main className="flex-1">{children}</main>
-        <SiteFooter className="border-t" copyRight={`${dict?.marketing?.copyright}`} />
+        <SiteFooter className="border-t" params={{lang: lang}} />
       </div>
     )
   } else {
@@ -90,7 +90,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
             <div className="mx-6 hidden md:flex">
               <LanguageToggle />
               <Separator className="mx-1"/>
-              <ModeToggle />
+              <ModeToggle params={{lang: lang}}/>
             </div>
             <nav>
               <Link
@@ -107,7 +107,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
         </div>
       </header>
         <main className="flex-1">{children}</main>
-        <SiteFooter className="" copyRight={`${dict?.marketing?.copyright}`} />
+        <SiteFooter className="" params={{lang: lang}} />
       </div>
     )
   }

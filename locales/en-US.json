@@ -151,7 +151,13 @@
       "pwreset": {
         "title": "Something went wrong.",
         "description": "Your profile image was not updated. Please try again."
-      }
+      },
+      "First name is required": "First name is required",
+      "Last name is required": "Last name is required",
+      "Email must be a valid email": "Email must be a valid email",
+      "Password must be at least 8 characters": "Password must be at least 8 characters",
+      "Password must be at most 72 characters": "Password must be at most 72 characters",
+      "Passwords must match": "Passwords must match"
     },
     "success": {
       "login": {
@@ -224,7 +230,8 @@
       "youAreCurrentlyOn": "You are currently on the ",
       "plan": " plan. ",
       "upgradeTo": "Upgrade to ",
-      "yourPlanRenewsOn": "Your plan renews on "
+      "yourPlanRenewsOn": "Your plan renews on ",
+      "subscribeTo": "Subscribe to "
     },
     "settings": {
       "title": "Settings",
@@ -329,7 +336,13 @@
       "upcoming jobs": "Upcoming Jobs",
       "applications": "Applications",
       "billing": "Billing",
-      "settings": "Settings"
+      "settings": "Settings",
+      "signOut": "Sign Out"
+    },
+    "modeToggle": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
     }
   }
 }

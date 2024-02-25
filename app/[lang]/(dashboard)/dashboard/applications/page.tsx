@@ -44,7 +44,7 @@ export default function ApplicationsPage({ params: { lang } }) {
   }, [router, lang] );
 
   if (isLoading) {
-    return <ApplicationsLoading params={lang}/>
+    return <ApplicationsLoading params={{lang: lang}}/>
   }
 
   if (!applications && !isLoading) {

@@ -6,18 +6,35 @@ import { getPortalSession, postCheckout } from "@/lib/api/subscription"
 import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import { getDictionary } from "@/app/[lang]/dictionaries"
+import { useEffect, useState } from "react"
+import { Locale } from "@/i18n-config"
 
 interface SubscribeButtonProps extends ButtonProps {
-  subscriptionType: string;
+  subscriptionType: string
+  params: {
+    lang: Locale
+  }
 }
 
 export function SubscribeButton({
   className,
   variant,
   subscriptionType,
+  params: { lang },
   ...props
 }: SubscribeButtonProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
+
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
 
   const handleManageSubscriptions = async () => {
     setIsLoading(true);
@@ -37,7 +54,7 @@ export function SubscribeButton({
     }
   };
 
-  return (
+  return dict && (
     <button
       onClick={handleManageSubscriptions}
       className={cn(
@@ -55,7 +72,7 @@ export function SubscribeButton({
       ) : (
         <Icons.laptop className="mr-2 h-4 w-4" />
       )}
-      Subscribe to {subscriptionType.toUpperCase()}
+      {dict.dashboard.billing.subscribeTo}{subscriptionType.toUpperCase()}
     </button>
   )
 }

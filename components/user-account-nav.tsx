@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { UserAvatar } from "@/components/user-avatar"
 import { useRouter } from "next/navigation"
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import { useState, useEffect } from "react";
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "first_name" | "last_name" | "image_url" | "email">
@@ -24,7 +26,18 @@ interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function UserAccountNav({ user, params: {lang} }: UserAccountNavProps ) {
   const router = useRouter()
-  return (
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
+
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
+  return dict && (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <UserAvatar
@@ -46,19 +59,19 @@ export function UserAccountNav({ user, params: {lang} }: UserAccountNavProps ) {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href={`/${lang}/dashboard`}>Dashboard</Link>
+          <Link href={`/${lang}/dashboard`}>{dict.nav.side.dashboard}</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href={`/${lang}/dashboard/upcoming-jobs`}>Upcoming Jobs</Link>
+          <Link href={`/${lang}/dashboard/upcoming-jobs`}>{dict.nav.side["upcoming jobs"]}</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href={`/${lang}/dashboard/applications`}>Applications</Link>
+          <Link href={`/${lang}/dashboard/applications`}>{dict.nav.side.applications}</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href={`/${lang}/dashboard/billing`}>Billing</Link>
+          <Link href={`/${lang}/dashboard/billing`}>{dict.nav.side.billing}</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href={`/${lang}/dashboard/settings`}>Settings</Link>
+          <Link href={`/${lang}/dashboard/settings`}>{dict.nav.side.settings}</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
@@ -71,7 +84,7 @@ export function UserAccountNav({ user, params: {lang} }: UserAccountNavProps ) {
             router.push(`/${lang}/login`)
           }}
         >
-          Sign out
+          {dict.nav.side.signOut}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

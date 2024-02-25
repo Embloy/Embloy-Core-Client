@@ -151,7 +151,13 @@
       "pwreset": {
         "title": "Etwas ist schief gelaufen.",
         "description": "Dein Profilbild wurde nicht aktualisiert. Bitte versuche es erneut."
-      }
+      },
+      "First name is required": "Vorname ist erforderlich",
+      "Last name is required": "Nachname ist erforderlich",
+      "Email must be a valid email": "E-Mail muss eine gültige E-Mail sein",
+      "Password must be at least 8 characters": "Passwort muss mindestens 8 Zeichen lang sein",
+      "Password must be at most 72 characters": "Passwort darf höchstens 72 Zeichen lang sein",
+      "Passwords must match": "Passwörter müssen übereinstimmen"    
     },
     "success": {
       "login": {
@@ -224,7 +230,8 @@
       "youAreCurrentlyOn": "Du bist derzeit auf dem ",
       "plan": " Plan. ",
       "upgradeTo": "Upgrade auf ",
-      "yourPlanRenewsOn": "Dein Plan wird erneuert am "
+      "yourPlanRenewsOn": "Dein Plan wird erneuert am ",
+      "subscribeTo": "Abboniere "
     },
     "settings": {
       "title": "Einstellungen",
@@ -329,7 +336,13 @@
       "upcoming jobs": "Bevorstehende Jobs",
       "applications": "Bewebungen",
       "billing": "Zahlungsinformationen",
-      "settings": "Einstellungen"
-    }
+      "settings": "Einstellungen",
+      "signOut": "Abmelden"
+    },
+    "modeToggle": {
+      "light": "Hell",
+      "dark": "Dunkel",
+      "system": "System"
+    }  
   }
 }

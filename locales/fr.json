@@ -151,7 +151,13 @@
       "pwreset": {
         "title": "Quelque chose s'est mal passé.",
         "description": "Votre image de profil n'a pas été mise à jour. Veuillez réessayer."
-      }
+      },
+      "First name is required": "Prénom est requis",
+      "Last name is required": "Nom est requis",
+      "Email must be a valid email": "Email doit être un email valide",
+      "Password must be at least 8 characters": "Le mot de passe doit comporter au moins 8 caractères",
+      "Password must be at most 72 characters": "Le mot de passe doit comporter au maximum 72 caractères",
+      "Passwords must match": "Les mots de passe doivent correspondre"    
     },
     "success": {
       "login": {
@@ -224,7 +230,8 @@
       "youAreCurrentlyOn": "Vous êtes actuellement sur le ",
       "plan": ". ",
       "upgradeTo": "Passer à ",
-      "yourPlanRenewsOn": "Votre plan est renouvelé le "
+      "yourPlanRenewsOn": "Votre plan est renouvelé le ",
+      "subscribeTo": "S'abonner à "
     },
     "settings": {
       "title": "Paramètres",
@@ -329,7 +336,13 @@
       "upcoming jobs": "Emplois à venir",
       "applications": "Applications",
       "billing": "Facturation",
-      "settings": "Paramètres"
-    }
+      "settings": "Paramètres",
+      "signOut": "Se déconnecter"
+    },
+    "modeToggle": {
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    }  
   }
 }

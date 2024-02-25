@@ -11,11 +11,29 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Icons } from "@/components/icons"
+import { getDictionary } from "@/app/[lang]/dictionaries"
+import { useEffect, useState } from "react"
+import { Locale } from "@/i18n-config"
 
-export function ModeToggle() {
+interface ModeToggleProps {
+  params: {
+    lang: Locale
+  }
+}
+
+export function ModeToggle({params: { lang} }: ModeToggleProps)  {
   const { setTheme } = useTheme()
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
 
-  return (
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+    fetchDictionary();
+  }, [lang]);
+
+  return dict && (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
@@ -27,15 +45,15 @@ export function ModeToggle() {
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <Icons.sun className="mr-2 h-4 w-4" />
-          <span>Light</span>
+          <span>{dict.nav.modeToggle.light}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           <Icons.moon className="mr-2 h-4 w-4" />
-          <span>Dark</span>
+          <span>{dict.nav.modeToggle.dark}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Icons.laptop className="mr-2 h-4 w-4" />
-          <span>System</span>
+          <span>{dict.nav.modeToggle.system}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -153,7 +153,13 @@
       "pwreset": {
         "title": "Qualcosa è andato storto.",
         "description": "La tua immagine del profilo non è stata aggiornata. Riprova."
-      }
+      },
+      "First name is required": "Nome è richiesto",
+      "Last name is required": "Cognome è richiesto",
+      "Email must be a valid email": "Email deve essere un'email valida",
+      "Password must be at least 8 characters": "La password deve contenere almeno 8 caratteri",
+      "Password must be at most 72 characters": "La password deve contenere al massimo 72 caratteri",
+      "Passwords must match": "Le password devono corrispondere"    
     },
     "success": {
       "login": {
@@ -177,7 +183,7 @@
       "subtitle": "Vedi cosa c'è di nuovo.",
       "noUpcomingJobs": "Nessun lavoro in arrivo.",
       "startApply": "Non hai ancora lavori. Inizia a candidarti adesso.",
-      "apply": "Candidati ora per un lavoro"
+      "apply": "Candidati ora"
     },
     "applications": {
       "title": "Applicazioni",
@@ -226,7 +232,8 @@
       "youAreCurrentlyOn": "Attualmente sei sul ",
       "plan": " piano. ",
       "upgradeTo": "Aggiorna a ",
-      "yourPlanRenewsOn": "Il tuo piano si rinnova il "
+      "yourPlanRenewsOn": "Il tuo piano si rinnova il ",
+      "subscribeTo": "Iscriviti a "
     },
     "settings": {
       "title": "Impostazioni",
@@ -333,7 +340,13 @@
       "upcoming jobs": "Lavori imminenti",
       "applications": "Applicazioni",
       "billing": "Fatturazione",
-      "settings": "Impostazioni"
-    }
+      "settings": "Impostazioni",
+      "signOut": "Esci"
+    },
+    "modeToggle": {
+      "light": "Chiaro",
+      "dark": "Scuro",
+      "system": "Sistema"
+    }  
   }
 }

@@ -151,7 +151,13 @@
       "pwreset": {
         "title": "エラーが発生しました。",
         "description": "プロファイル画像が更新されませんでした。もう一度やり直してください。"
-      }
+      },
+      "First name is required": "名前が必要です",
+      "Last name is required": "姓が必要です",
+      "Email must be a valid email": "メールは有効なメールでなければなりません",
+      "Password must be at least 8 characters": "パスワードは8文字以上でなければなりません",
+      "Password must be at most 72 characters": "パスワードは最大72文字でなければなりません",
+      "Passwords must match": "パスワードが一致しなければなりません"    
     },
     "success": {
       "login": {
@@ -224,7 +230,8 @@
       "youAreCurrentlyOn": "現在のプラン：",
       "plan": " プラン ",
       "upgradeTo": "にアップグレード",
-      "yourPlanRenewsOn": "プランの更新日："
+      "yourPlanRenewsOn": "プランの更新日：",
+      "subscribeTo": "申し込む "
     },
     "settings": {
       "title": "設定",
@@ -329,7 +336,13 @@
       "upcoming jobs": "今後の仕事",
       "applications": "アプリケーション",
       "billing": "課金",
-      "settings": "設定"
-    }
+      "settings": "設定",
+      "signOut": "サインアウト"
+    },
+    "modeToggle": {
+      "light": "ライト",
+      "dark": "ダーク",
+      "system": "システム"
+    }  
   }
 }

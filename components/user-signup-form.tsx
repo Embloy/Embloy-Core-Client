@@ -162,9 +162,9 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
               disabled={isLoading || isGitHubLoading}
               {...register("email")}
             />
-            {errors?.email && (
+            {errors?.email?.message && (
               <p className="px-1 text-xs text-red-600">
-                {errors.email.message}
+                {dict.auth.errors[errors.email.message] || errors.email.message}
               </p>
             )}
           </div>
@@ -180,9 +180,9 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
               disabled={isLoading || isGitHubLoading}
               {...register("firstName")}
             />
-            {errors?.firstName && (
+            {errors?.firstName?.message && (
               <p className="px-1 text-xs text-red-600">
-                {errors.firstName.message}
+                {dict.auth.errors[errors.firstName.message] || errors.firstName.message}
               </p>
             )}
           </div>
@@ -197,9 +197,9 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
               disabled={isLoading || isGitHubLoading}
               {...register("lastName")}
             />
-            {errors?.lastName && (
+            {errors?.lastName?.message && (
               <p className="px-1 text-xs text-red-600">
-                {errors.lastName.message}
+                {dict.auth.errors[errors.lastName.message] || errors.lastName.message}
               </p>
             )}
           </div>
@@ -217,11 +217,11 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
               disabled={isLoading || isGitHubLoading}
               {...register("password")}
             />
-            {errors?.password && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.password.message}
-              </p>
-            )}
+          {errors?.password?.message && (
+            <p className="px-1 text-xs text-red-600">
+              {dict.auth.errors[errors.password.message] || errors.password.message}
+            </p>
+          )}
           </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="passwordConfirmation">
@@ -234,11 +234,11 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
               disabled={isLoading || isGitHubLoading}
               {...register("passwordConfirmation")}
             />
-            {errors?.passwordConfirmation && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.passwordConfirmation.message}
-              </p>
-            )}
+          {errors?.passwordConfirmation?.message && (
+            <p className="px-1 text-xs text-red-600">
+              {dict.auth.errors[errors.passwordConfirmation.message] || errors.passwordConfirmation.message}
+            </p>
+          )}
           </div>
           <button className={cn(buttonVariants())} disabled={isLoading}>
             {isLoading && (

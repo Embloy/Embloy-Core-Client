@@ -53,7 +53,7 @@ export default function RegisterPage({ params: { lang } }) {
             {dict.auth.register.enterDetails}
             </p>
           </div>
-          <UserSignUpForm params={lang} />
+          <UserSignUpForm params={{lang: lang}} />
           <p className="px-8 text-center text-sm text-muted-foreground">
           {dict.auth.register.agreeToTerms}
             <Link
