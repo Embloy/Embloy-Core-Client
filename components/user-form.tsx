@@ -179,7 +179,6 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
 
   return dict && (
     <form onSubmit={handleSubmit((data) => {
-          console.log('Form submitted with data:', data);
           onSubmit(data);
       })} className={cn(className)} {...props}>
    

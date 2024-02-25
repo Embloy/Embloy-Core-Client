@@ -83,7 +83,6 @@ type Checkout = {
 };
 
 export async function getActiveSubscription(): Promise<Subscription | null> {
-  console.log('getActiveSubscription is called');
   const accessToken = await getAccessToken();
   const response = await fetch(`${siteConfig.api_url}/client/subscriptions/active?info=0`, {
     method: 'GET',
@@ -105,7 +104,6 @@ export interface SubscriptionsResponse {
 }
 
 export async function getAllSubscriptions(): Promise<SubscriptionsResponse> {
-  console.log('getAllSubscriptions is called');
   const accessToken = await getAccessToken();
   const response = await fetch(`${siteConfig.api_url}/client/subscriptions`, {
     method: 'GET',
@@ -123,7 +121,6 @@ export async function getAllSubscriptions(): Promise<SubscriptionsResponse> {
 }
 
 export async function postCheckout(tier: string, payment_mode: string): Promise<Checkout | null> {
-  console.log('postCheckout is called');
   const accessToken = await getAccessToken();
   const origin = "core"
   const response = await fetch(`${siteConfig.api_url}/checkout`, {
@@ -144,7 +141,6 @@ export async function postCheckout(tier: string, payment_mode: string): Promise<
 }
 
 export async function getPortalSession(): Promise<Checkout | null> {
-  console.log('getPortalSession is called');
   const accessToken = await getAccessToken();
   const response = await fetch(`${siteConfig.api_url}/checkout/portal`, {
     method: 'GET',

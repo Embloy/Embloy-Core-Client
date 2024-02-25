@@ -39,9 +39,6 @@ export function DashboardNav({ items, params: {lang} }: DashboardNavProps) {
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
         const Icon = Icons[item.icon || "arrowRight"]
-        console.log("path=", path.split('/').slice(2).join('/'));
-        console.log("item=", item.href);
-
         return (
           item.href && (
             <Link key={index} href={item.disabled ? "#" : `${item.href.startsWith('/') ? `/${lang}` : ''}${item.href}`}>

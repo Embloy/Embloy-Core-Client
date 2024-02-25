@@ -16,7 +16,7 @@ export async function getActiveSubscription(): Promise<Job[] | null> {
       return null;
     }
   
-    let data;
+    let data: { jobs: any[]; };
     try {
       data = await response.json();
     } catch (error) {

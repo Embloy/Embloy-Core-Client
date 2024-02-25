@@ -35,25 +35,20 @@ export interface User {
 }
 
 export async function getSessionUser(): Promise<{ user: User } | null> {
-  console.log('getSession is called');
   try {
     const accessToken = await getAccessToken();
-    console.log(`accessToken=${accessToken}`)
     if (accessToken) {
       const userData = await getUserData(accessToken);
-      console.log(`user=${userData.user}`)
       return { user: userData.user };
     }
   } catch (error) {
     console.error("Error getting user data:", error);
     clearUserSession();
-    return null;
   }
   return null;
 }
 
 export async function getCurrentUser(refreshToken?: string): Promise<User | null> {
-  console.log('getCurrentUser is called');
   let session: { user: User; } | null;
   try {
     if (refreshToken) Cookies.set('refresh_token', refreshToken, { sameSite: 'Strict', secure: false });
@@ -71,11 +66,9 @@ export async function getCurrentUser(refreshToken?: string): Promise<User | null
 }
 
 export async function getSession(refreshToken?: string): Promise<{ session: Boolean }> {
-  console.log('getSession is called');
   try {
     if (refreshToken) Cookies.set('refresh_token', refreshToken, { sameSite: 'Strict', secure: false });
     const accessToken = await getAccessToken();
-    console.log(`accessToken=${accessToken}`)
     if (accessToken) {
       return { session: true };
     }

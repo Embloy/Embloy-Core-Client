@@ -73,7 +73,6 @@ export async function verify(email: string, password: string): Promise<void> {
 }
 
 export async function getAccessToken(): Promise<string | null> {
-  console.log('getAccessToken is called');
   
   // Check if a valid access token is already set
   const existingAccessToken = Cookies.get('access_token');
@@ -81,7 +80,6 @@ export async function getAccessToken(): Promise<string | null> {
     // Verify if the access token is expired
     const isExpired = checkIfTokenExpired(existingAccessToken);
     if (!isExpired) {
-      console.log('A valid access token is already set');
       return existingAccessToken;
     }
   }
@@ -89,14 +87,12 @@ export async function getAccessToken(): Promise<string | null> {
   const refreshToken = Cookies.get('refresh_token');
 
   if (!refreshToken) {
-    console.log('refresh_token is null');
     return null;
   }
 
   // Verify if the refresh token is expired
   const isRefreshTokenExpired = checkIfTokenExpired(refreshToken);
   if (isRefreshTokenExpired) {
-    console.log('refresh_token is expired');
     return null;
   }
 

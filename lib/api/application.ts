@@ -35,7 +35,6 @@ export interface Application {
 }
   
 export async function getApplications(): Promise<Application[] | null> {
-  console.log('getApplicationData is called');
   const accessToken = await getAccessToken();
   const response = await fetch(`${siteConfig.api_url}/user/applications`, {
     method: 'GET',
@@ -68,7 +67,6 @@ export async function submitApplication(
   cv_file?: File,
   answers?: { [key: string]: any }
 ): Promise<Boolean> {
-  console.log('submitApplication is called');
 
   const accessToken = await getAccessToken();
 
@@ -76,7 +74,6 @@ export async function submitApplication(
   formData.append('application_text', application_text);
 
   if (answers) {
-    console.log('Answers before appending:', answers); // Print answers before appending
     answers.forEach((answerObj, index) => {
       formData.append(`application_answers[${index}][application_option_id]`, answerObj.application_option_id.toString());
       formData.append(`application_answers[${index}][answer]`, answerObj.answer);

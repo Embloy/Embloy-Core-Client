@@ -81,7 +81,6 @@ job: Job;
 }
 
 export default async function makeRequest(requestToken: string): Promise<ResponseData | null> {
-console.log('makeRequest is called');
 const accessToken = await getAccessToken();
 
 const response = await fetch(`${siteConfig.api_url}/sdk/request/handle`, {

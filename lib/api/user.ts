@@ -2,7 +2,6 @@ import { siteConfig } from "@/config/site";
 import { getAccessToken } from "./auth";
 
 export async function getUserData(accessToken): Promise<Record<string, any>> {
-    console.log('getUserData is called');
     const response = await fetch(`${siteConfig.api_url}/user`, {
       method: 'GET',
       headers: {
@@ -18,7 +17,6 @@ export async function getUserData(accessToken): Promise<Record<string, any>> {
 }
 
 export async function updateUser(userJson: string): Promise<{ success: Boolean }> {
-  console.log('updateUser is called');
   try {
     const accessToken = await getAccessToken();
     console.log(`accessToken=${accessToken}`)
@@ -38,19 +36,15 @@ export async function updateUser(userJson: string): Promise<{ success: Boolean }
 
   } catch (error) {
     console.error("Error updating user:", error);
-    // clearUserSession();
     return { success: false };
   }
 }
 
 export async function uploadUserImage(selectedImage: File): Promise<{ success: Boolean }> {
-  console.log('uploadUserImage is called');
   const formData = new FormData();
   formData.append("image_url", selectedImage);
-  console.log(`url is: ${URL.createObjectURL(selectedImage)}`)
   try {
     const accessToken = await getAccessToken();
-    console.log(`accessToken=${accessToken}`)
     const response = await fetch(`${siteConfig.api_url}/user/image`, {
       method: 'POST',
       headers: {
@@ -66,16 +60,13 @@ export async function uploadUserImage(selectedImage: File): Promise<{ success: B
 
   } catch (error) {
     console.error("Error uploading user image:", error);
-    // clearUserSession();
     return { success: false };
   }
 }
 
 export async function deleteUser(): Promise<{ success: Boolean }> {
-  console.log('deleteUser is called');
   try {
     const accessToken = await getAccessToken();
-    console.log(`accessToken=${accessToken}`)
     const response = await fetch(`${siteConfig.api_url}/user`, {
       method: 'DELETE',
       headers: {
@@ -90,16 +81,13 @@ export async function deleteUser(): Promise<{ success: Boolean }> {
     return {success: true}
   } catch (error) {
     console.error("Error deleting user:", error);
-    // clearUserSession();
     return { success: false };
   }
 }
 
 export async function deleteImage(): Promise<{ success: Boolean }> {
-  console.log('deleteUser is called');
   try {
     const accessToken = await getAccessToken();
-    console.log(`accessToken=${accessToken}`)
     const response = await fetch(`${siteConfig.api_url}/user`, {
       method: 'DELETE',
       headers: {
@@ -114,7 +102,6 @@ export async function deleteImage(): Promise<{ success: Boolean }> {
     return {success: true}
   } catch (error) {
     console.error("Error deleting user:", error);
-    // clearUserSession();
     return { success: false };
   }
 }

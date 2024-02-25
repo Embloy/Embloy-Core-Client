@@ -45,7 +45,6 @@ export default function SettingsPage({ params: { lang } }) {
   }
 
   if (user && !isLoading) {
-    console.log("user: ", user);
     return dict && (
       <DashboardShell>
         <DashboardHeader
