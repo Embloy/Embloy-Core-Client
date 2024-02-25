@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Job, Session } from "@/lib/api/sdk";
-import makeRequest from "@/lib/api/sdk";
+import { applyWithGQ, Job, makeRequest, Session } from "@/lib/api/sdk";
 import { toast } from "@/components/ui/use-toast";
 import { getSession } from "@/lib/api/session";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
@@ -47,7 +46,7 @@ export default function ApplyPage({ params: { lang } }) {
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
       setIsLoading(true)
-      if (!searchParams.has("request_token")) {
+      if (!searchParams.has("request_token") && !searchParams.has("gq")) {
         router.back();
         return;
       }
@@ -59,9 +58,10 @@ export default function ApplyPage({ params: { lang } }) {
       }
 
       const request_token = searchParams.get("request_token");
+      const gq = searchParams.get("gq");
 
-      if (typeof request_token === "string" && dict) {
-        const requestData = await makeRequest(request_token);
+      if (typeof gq === "string" && dict) {
+        const requestData = await applyWithGQ(gq);
         if (requestData !== null) {
           setJob(requestData.job);
           setSession(requestData.session);
@@ -72,8 +72,21 @@ export default function ApplyPage({ params: { lang } }) {
             variant: "destructive",
           });
         }
+      } else {
+        if (typeof request_token === "string" && dict) {
+          const requestData = await makeRequest(request_token);
+          if (requestData !== null) {
+            setJob(requestData.job);
+            setSession(requestData.session);
+          } else {
+            toast({
+              title: dict.sdk.errors.request.title,
+              description: dict.sdk.errors.request.description,
+              variant: "destructive",
+            });
+          }
+        }
       }
-
       setIsLoading(false)
     };
 
@@ -135,7 +148,7 @@ export default function ApplyPage({ params: { lang } }) {
     
     setIsLoading(true)
   
-    const response = await submitApplication(applicationText, searchParams.get("request_token") || "", cvFile, options)
+    const response = await submitApplication(applicationText, searchParams.get("request_token"), job?.job_id || 0, cvFile, options)
   
     setIsLoading(false)
     if (!response && dict) {

@@ -80,24 +80,46 @@ session: Session;
 job: Job;
 }
 
-export default async function makeRequest(requestToken: string): Promise<ResponseData | null> {
-const accessToken = await getAccessToken();
+export async function makeRequest(requestToken: string): Promise<ResponseData | null> {
+  const accessToken = await getAccessToken();
 
-const response = await fetch(`${siteConfig.api_url}/sdk/request/handle`, {
-    method: 'POST',
-    headers: {
-    "access_token": `${accessToken}`,
-    "request_token": `${requestToken}`
-    },
-});
+  const response = await fetch(`${siteConfig.api_url}/sdk/request/handle`, {
+      method: 'POST',
+      headers: {
+        "access_token": `${accessToken}`,
+        "request_token": `${requestToken}`
+      },
+  });
 
-if (!response.ok) {
+  if (!response.ok) {
     return null;
-}
+  }
 
-const data = await response.json();
-return {
+  const data = await response.json();
+  return {
     session: data.session,
     job: JSON.parse(data.job)
-};
+  };
+}
+
+export async function applyWithGQ(gq: string): Promise<ResponseData | null> {
+  const response = await fetch(`${siteConfig.api_url}/resource/${gq}`, { method: 'GET', });
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const data = await response.json();
+  const job = JSON.parse(data.job);
+  return {
+    session: {
+      mode: "job",
+      job_slug: job.job_slug,
+      user_id: job.user_id,
+      subscription_type: "gq",
+      success_url: job.referrer_url,
+      cancel_url: job.referrer_url
+    },
+    job: job
+  };
 }

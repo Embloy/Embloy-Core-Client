@@ -63,7 +63,8 @@ export async function getApplications(): Promise<Application[] | null> {
 
 export async function submitApplication(
   application_text: string, 
-  request_token: string, 
+  request_token: string | null, 
+  gq_job_id: number | null,
   cv_file?: File,
   answers?: { [key: string]: any }
 ): Promise<Boolean> {
@@ -80,18 +81,30 @@ export async function submitApplication(
     });
   }
 
+  let response: Response;
+
   if (cv_file) { // If a CV file is provided, append it to the form data
     formData.append('application_attachment', cv_file);
   }
 
-  const response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
-    method: 'POST',
-    headers: {
-      "access_token": `${accessToken}`,
-      "request_token": `${request_token}`,
-    },
-    body: formData
-  });
+  if (request_token) {
+    response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
+      method: 'POST',
+      headers: {
+        "access_token": `${accessToken}`,
+        "request_token": `${request_token}`,
+      },
+      body: formData
+    });
+  } else {
+    response = await fetch(`${siteConfig.api_url}/jobs/${gq_job_id}/applications`, {
+      method: 'POST',
+      headers: {
+        "access_token": `${accessToken}`,
+      },
+      body: formData
+    });
+  }
 
   if (!response.ok) {
     return false;
