@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { ModeToggle } from "@/components/mode-toggle"
+import { LanguageToggle } from "./language-toggle"
 
 interface FooterProps extends React.HTMLAttributes<HTMLElement>{
   className: string
@@ -29,7 +30,10 @@ export function SiteFooter({ className, copyRight }: FooterProps) {
             .
           </p>
         </div>
-        <ModeToggle />
+        <div style={{ display: 'flex', justifyContent: 'flex-start', gap: '10px' }}>
+          <LanguageToggle/>
+          <ModeToggle />
+        </div>
       </div>
     </footer>
   )

@@ -6,7 +6,7 @@ import { Badge } from "@/components/new-york/ui/badge";
 import { ScrollArea } from "@/components/new-york/ui/scroll-area";
 import { Application } from "@/lib/api/application";
 import { useApplication } from "@/app/[lang]/(dashboard)/dashboard/applications/use-application";
-import { getLocale, Locale } from "@/i18n-config";
+import { parseLocale, Locale } from "@/i18n-config";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import React from "react";
 interface ApplicationListProps {
@@ -64,7 +64,7 @@ export function ApplicationList({ items, params: {lang} }: ApplicationListProps)
                   >
                     {formatDistanceToNow(new Date(item.updated_at), {
                       addSuffix: true,
-                      locale: getLocale(lang)
+                      locale: parseLocale(lang)
                     })}
                   </div>
                 </div>

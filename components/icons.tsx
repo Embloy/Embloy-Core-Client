@@ -26,6 +26,9 @@ import {
   Linkedin,
   X,
   type Icon as LucideIcon,
+  Flag,
+  Globe,
+  Globe2,
 } from "lucide-react"
 
 import { Logo } from './ui/command'
@@ -55,6 +58,8 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  flag: Flag,
+  globe: Globe,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

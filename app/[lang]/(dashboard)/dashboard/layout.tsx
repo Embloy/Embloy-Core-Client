@@ -10,6 +10,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { UserAccountNav } from "@/components/user-account-nav"
 import { getDictionary } from "../../dictionaries";
 import {Locale} from "../../../../i18n-config";
+import { ModeToggle } from "@/components/mode-toggle";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -57,6 +58,7 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">
           <MainNav items={dashboardConfig.mainNav} params={{lang: lang}} />
+          <ModeToggle />
           <UserAccountNav
             user={{
               first_name: `${user.first_name}`,

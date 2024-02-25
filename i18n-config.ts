@@ -8,7 +8,7 @@ const localeMap = {
   'jp': ja
 };
 
-export function getLocale(localeString) {
+export function parseLocale(localeString) {
   return localeMap[localeString];
 }
 

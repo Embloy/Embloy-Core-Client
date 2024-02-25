@@ -41,7 +41,7 @@ import { ApplicationAnswerList } from "./application-answer-list"
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar"
 import { Icons } from "./icons"
 import { ApplicationResponse } from "./application-response"
-import { getLocale, Locale } from "@/i18n-config"
+import { parseLocale, Locale } from "@/i18n-config"
 import React from "react"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
@@ -226,7 +226,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
             </div>
             {application.updated_at && (
               <div className="ml-auto text-xs text-muted-foreground">
-                {format(new Date(application.updated_at), "PPpp", {locale: getLocale(lang)} )}
+                {format(new Date(application.updated_at), "PPpp", {locale: parseLocale(lang)} )}
               </div>
             )}
           </div>

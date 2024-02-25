@@ -15,6 +15,9 @@ import { SiteFooter } from "@/components/site-footer"
 import Loading from "../(sdk)/sdk/apply/loading";
 import { getDictionary } from "../dictionaries";
 import {Locale} from "../../../i18n-config";
+import { ModeToggle } from "@/components/mode-toggle";
+import { Separator } from "@radix-ui/react-select";
+import { LanguageToggle } from "@/components/language-toggle";
 
 
 interface MarketingLayoutProps {
@@ -55,6 +58,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
         <header className="container top-0 z-40">
           <div className="flex h-20 items-center justify-between py-6">
             <MainNav items={dashboardConfig.mainNav} params={{lang: lang}} />
+            <ModeToggle />
             <UserAccountNav
               user={{
                 first_name: `${user.first_name}`,
@@ -74,9 +78,15 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
     return dict && (
       <div className="flex min-h-screen flex-col">
         <header className="container z-40">
-          <div className="flex h-20 items-center justify-between py-6">
-            <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
-            <nav>
+        <div className="flex h-20 items-center justify-between py-6">
+          <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
+          <div className="flex items-center">
+          <div className="md:flex hidden">
+            <LanguageToggle />
+            <Separator className="mx-1"/>
+            <ModeToggle />
+          </div>
+            <nav className="mx-6">
               <Link
                 href={`/${lang}/login`}
                 className={cn(
@@ -88,7 +98,8 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
               </Link>
             </nav>
           </div>
-        </header>
+        </div>
+      </header>
         <main className="flex-1">{children}</main>
         <SiteFooter className="" copyRight={`${dict?.marketing?.copyright}`} />
       </div>

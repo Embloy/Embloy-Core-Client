@@ -78,7 +78,7 @@ export default function ApplyPage({ params: { lang } }) {
     };
 
     fetchData();
-  }, [searchParams, router, origin, pathName, lang]);
+  }, [searchParams, router, origin, pathName, lang, dict]);
 
   function validateFields() {
     let isValid = true;
