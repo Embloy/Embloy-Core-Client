@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
@@ -11,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Icons } from "@/components/icons"
 import { useLanguage } from "@/hooks/use-language"
+import Image from 'next/image';
 
 export function LanguageToggle() {
   const [language, setLanguage] = useLanguage()
@@ -26,14 +25,14 @@ export function LanguageToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {[
-          { code: "en-US", label: "English" },
-          { code: "de", label: "Deutsch" },
-          { code: "fr", label: "Française" },
-          { code: "it", label: "Italiano" },
-          { code: "jp", label: "日本語" },
-        ].map(({ code, label }) => (
+          { code: "en-US", label: "English", src: "/flags/usFlag.svg" },
+          { code: "de", label: "Deutsch", src: "/flags/deFlag.svg" },
+          { code: "fr", label: "Française", src: "/flags/frFlag.svg" },
+          { code: "it", label: "Italiano", src: "/flags/itFlag.svg" },
+          { code: "jp", label: "日本語", src: "/flags/jpFlag.svg" },
+        ].map(({ code, label, src }) => (
           <DropdownMenuItem key={code} onClick={() => setLanguage(code)}>
-            <Icons.flag className="mr-2 h-4 w-4" />
+            <Image src={src} alt="flag" className="mr-2 h-4 w-4" width="10" height="10"/>
             <span>{label}</span>
             {language === code && <Icons.check className="ml-2 h-4 w-4" />}
           </DropdownMenuItem>

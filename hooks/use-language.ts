@@ -1,10 +1,11 @@
 import { useCookies } from 'react-cookie';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export function useLanguage() {
   const [cookies, setCookie, removeCookie] = useCookies(['lang']);
   const router = useRouter();
+  const pathName = usePathname();
 
   const setLanguage = (lang) => {
     setCookie('lang', lang, { path: '/' });
@@ -12,12 +13,14 @@ export function useLanguage() {
 
   useEffect(() => {
     if (cookies.lang) {
-        router.refresh()
+      router.refresh()
+      router.push(pathName)
     } else {
       removeCookie('lang');
       router.refresh()
+      router.push(pathName)
     }
   }, [cookies.lang]);
 
-  return [cookies.lang, setLanguage];
+  return [cookies.lang || 'en-US', setLanguage];
 }

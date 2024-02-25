@@ -81,11 +81,11 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
         <div className="flex h-20 items-center justify-between py-6">
           <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
           <div className="flex items-center">
-          <div className="md:flex hidden">
-            <LanguageToggle />
-            <Separator className="mx-1"/>
-            <ModeToggle />
-          </div>
+            <div className="hidden md:flex">
+              <LanguageToggle />
+              <Separator className="mx-1"/>
+              <ModeToggle />
+            </div>
             <nav className="mx-6">
               <Link
                 href={`/${lang}/login`}

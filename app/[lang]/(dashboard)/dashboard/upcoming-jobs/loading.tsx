@@ -5,19 +5,20 @@ import { getDictionary } from "@/app/[lang]/dictionaries";
 import React from "react";
 
 export default function UpcomingJobsLoading({params}) {
-  if (!params) {
-    return null;
-  }
-  const { lang } = params;
+  const { lang } = params || {};
   const [dict, setDict] = React.useState<Record<string, any> | null>(null);
  
   React.useEffect(() => {
+    if (!params) {
+      return;
+    }
+
     const fetchDictionary = async () => {
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
     };
     fetchDictionary();
-  }, [lang] );
+  }, [lang, params]);
 
   return dict && (
     <DashboardShell>

@@ -11,6 +11,8 @@ import { UserAccountNav } from "@/components/user-account-nav"
 import { getDictionary } from "../../dictionaries";
 import {Locale} from "../../../../i18n-config";
 import { ModeToggle } from "@/components/mode-toggle";
+import { LanguageToggle } from "@/components/language-toggle";
+import { Separator } from "@radix-ui/react-select";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -58,17 +60,24 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">
           <MainNav items={dashboardConfig.mainNav} params={{lang: lang}} />
-          <ModeToggle />
-          <UserAccountNav
-            user={{
-              first_name: `${user.first_name}`,
-              last_name: `${user.last_name}`,
-              image_url: user.image_url,
-              email: user.email,
-            }}
-            params={{lang: lang}} 
-          />
-        </div>
+          <div className="flex items-center">
+            <div className="mx-6 hidden md:flex">
+              <LanguageToggle />
+              <Separator className="mx-1"/>
+              <ModeToggle />
+            </div>
+            <UserAccountNav
+              className="mx-10"
+              user={{
+                first_name: `${user.first_name}`,
+                last_name: `${user.last_name}`,
+                image_url: user.image_url,
+                email: user.email,
+              }}
+              params={{lang: lang}} 
+              />
+            </div>
+          </div>
       </header>
       <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
         <aside className="hidden w-[200px] flex-col md:flex">

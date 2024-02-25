@@ -8,19 +8,20 @@ import { useState, useEffect } from "react";
 
 export default function DashboardSettingsLoading({ params }) {
   const [dict, setDict] = useState<Record<string, any> | null>(null);
-  if (!params) {
-    return null;
-  }
-  const { lang } = params;
+  const { lang } = params || {};
 
   useEffect(() => {
+    if (!params) {
+      return;
+    }
+
     const fetchDictionary = async () => {
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
     };
 
     fetchDictionary();
-  }, [lang]);
+  }, [lang, params]);
 
   return dict && (
     <DashboardShell>
