@@ -318,5 +318,22 @@
         "description": "La tua candidatura non è stata inviata. Per favore riprova."
       }
     }
+  },
+  "nav": {
+    "menu": "Menu",
+    "main": {
+      "features": "Funzionalità",
+      "pricing": "Prezzi",
+      "employers": "Datori di lavoro",
+      "developers": "Sviluppatori",
+      "about": "Di"
+    },
+    "side": {
+      "dashboard": "Dashboard",
+      "upcoming jobs": "Lavori imminenti",
+      "applications": "Applicazioni",
+      "billing": "Fatturazione",
+      "settings": "Impostazioni"
+    }
   }
 }

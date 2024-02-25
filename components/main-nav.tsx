@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { MobileNav } from "@/components/mobile-nav"
 import {Locale} from "../i18n-config";
+import { getDictionary } from "@/app/[lang]/dictionaries"
+import { useEffect, useState } from "react"
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -22,8 +24,18 @@ interface MainNavProps {
 export function MainNav({ items, children, params: { lang } }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
 
-  return (
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
+  return dict && (
     <div className="flex gap-6 md:gap-10">
     <Link href={`/${lang}`} className="mb-1 hidden items-center space-x-2  md:flex">
       <Icons.logo />
@@ -45,7 +57,7 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
                 item.disabled && "cursor-not-allowed opacity-80"
               )}
             >
-              {item.title}
+              {dict.nav.main[item.title.toLowerCase()]}
             </Link>
           ))}
         </nav>
@@ -55,7 +67,7 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
         {showMobileMenu ? <Icons.close /> : <Icons.logo />}
-        <span className="font-bold">Menu</span>
+        <span className="font-bold">{dict.nav.menu}</span>
       </button>
       {showMobileMenu && items && (
         <MobileNav items={items} params={{lang: lang}}>{children}</MobileNav>

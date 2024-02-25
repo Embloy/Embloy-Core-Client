@@ -7,6 +7,8 @@ import { SidebarNavItem } from "types"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import {Locale} from "../i18n-config";
+import { useEffect, useState } from "react"
+import { getDictionary } from "@/app/[lang]/dictionaries"
 
 interface DashboardNavProps {
   items: SidebarNavItem[]
@@ -18,11 +20,22 @@ interface DashboardNavProps {
 export function DashboardNav({ items, params: {lang} }: DashboardNavProps) {
   const path = usePathname()
 
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
+
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
   if (!items?.length) {
     return null
   }
 
-  return (
+  return dict && (
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
         const Icon = Icons[item.icon || "arrowRight"]
@@ -40,7 +53,7 @@ export function DashboardNav({ items, params: {lang} }: DashboardNavProps) {
                 )}
               >
                 <Icon className="mr-2 h-4 w-4" />
-                <span>{item.title}</span>
+                <span>{dict.nav.side[item.title.toLowerCase()]}</span>
               </span>
             </Link>
           )

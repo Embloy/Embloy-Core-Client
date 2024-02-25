@@ -8,29 +8,29 @@
     "login": "Anmelden"
   },
   "marketing": {
-    "workInProgress": "Diese Seite ist noch in Bearbeitung - Folgen Sie auf GitHub",
+    "workInProgress": "Diese Seite ist noch in Bearbeitung - Folge uns auf GitHub",
     "mainHeader": "Embloy.",
     "subHeader": "Lösungen, die das HR-Management verbessern.",
     "recruitmentSteps": "Alle Rekrutierungsschritte an einem Ort: Vereinfachen Sie das Leben für Organisationen und Jobsuchende, indem Sie die Rekrutierungsprozesse zentralisieren.",
     "getStarted": "Loslegen",
     "forCompanies": "Für Unternehmen",
     "features": "Funktionen",
-    "featureDescription": "Embloy dient als Brücke, die Organisationen mit potenziellen Jobsuchenden verbindet. Als Middleware-Lösung, maßgeschneidert für das digitale Zeitalter, entdecken Sie, wie Embloy Ihren Einstellungsprozess verbessern kann:",
-    "smartHiring": "Intelligente Einstellung",
+    "featureDescription": "Embloy dient als Brücke, die Organisationen mit potenziellen Jobsuchenden verbindet. Als Middleware-Lösung, maßgeschneidert für das digitale Zeitalter, verbessert Embloy Ihren Bewerbungsprozess:",
+    "smartHiring": "Intelligente Bewebungen",
     "smartHiringDescription": "10x schnellere HR-Prozesse durch Automatisierung.",
     "endToEndRecruitment": "End-to-End-Rekrutierungshosting",
     "endToEndRecruitmentDescription": "Beseitigen Sie die Notwendigkeit für lange E-Mail- und Telefonwechsel.",
     "easyToIntegrate": "Einfache Integration",
-    "easyToIntegrateDescription": "Für mühelose, nicht überwachte Einarbeitung neuer Interessengruppen konzipiert.",
+    "easyToIntegrateDescription": "Mit weniger als 10 Zeilen Code integrierbar.",
     "oneClickToApply": "Ein Klick zum Bewerben",
-    "oneClickToApplyDescription": "Genießen Sie die Bequemlichkeit einer einzigen Plattform, auf der alles nur einen Klick entfernt ist.",
+    "oneClickToApplyDescription": "Genieße die Bequemlichkeit einer einzigen Plattform, auf der alles nur einen Klick entfernt ist.",
     "xPlatform": "X-Plattform",
-    "xPlatformDescription": "Hochmodulares System, zugänglich im Web, iOS und Android, ermöglicht benutzerdefinierte Integrationen über API.",
+    "xPlatformDescription": "Hochmodulares System, zugänglich sowohl als Web-App als auch auf iOS und Android, ermöglicht Embloy benutzerdefinierte Integrationen.",
     "socialTools": "Soziale Tools",
     "socialToolsDescription": "Nahtlose Integration in die heutige Social-Media-Landschaft für beispiellose Interaktion mit Jobsuchenden.",
     "smarterFasterBetter": "Intelligenter, schneller, besser: Personalmanagement 2.0",
-    "videoNotSupported": "Ihr Browser unterstützt das Video-Tag nicht.",
-    "openSource": "Stolz Open Source",
+    "videoNotSupported": "Dein Browser unterstützt das Video-Tag nicht.",
+    "openSource": "Open Source",
     "openSourceDescription": "Embloy ist Open Source und wird von Open Source-Software unterstützt.",
     "sourceCodeAvailableOnGitHub": "Der Code ist verfügbar auf ",
     "logo": "Logo",
@@ -43,7 +43,7 @@
         "title": "Was ist in EMBLOY FREE enthalten",
         "features": [
           "Ein-Klick-Bewerbung",
-          "Bewerben Sie sich auf beliebig viele Stellenangebote",
+          "Bewirb Dich auf beliebig viele Stellenangebote",
           "Lebensläufe hochladen, zusätzliche Dokumente usw.",
           "Offene Stellen teilen",
           "3 Stellenanzeigen erstellen (Sandbox-Modus)",
@@ -85,11 +85,11 @@
     "login": {
       "back": "Zurück",
       "welcomeback": "Willkommen zurück",
-      "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein, um sich anzumelden",
+      "enterEmail": "Gebe Deine E-Mail-Adresse ein, um dich anzumelden",
       "email": "E-Mail",
       "password": "Passwort",
       "continueWith": "Oder weiter mit",
-      "dontHaveAccount": "Sie haben noch kein Konto? Registrieren",
+      "dontHaveAccount": "Du hast noch kein Konto? Jetzt registrieren",
       "forgotPassword": "Passwort vergessen?",
       "signIn": "Anmelden",
       "orContinueWith": "Oder weiter mit"
@@ -99,14 +99,14 @@
       "signUp": "Registrieren",
       "description": "Beschreibung des Bildes",
       "createAccount": "Ein Konto erstellen",
-      "enterDetails": "Geben Sie Ihren Namen und Ihre E-Mail-Adresse ein, um Ihr Konto zu erstellen",
+      "enterDetails": "Gib Deinen Namen und Deine E-Mail-Adresse ein, um Dein Konto zu erstellen",
       "email": "E-Mail",
       "firstName": "Vorname",
       "lastName": "Nachname",
       "password": "Passwort",
       "confirmPassword": "Passwort bestätigen",
       "orContinueWith": "Oder weiter mit",
-      "agreeToTerms": "Indem Sie auf Fortfahren klicken, stimmen Sie unseren ",
+      "agreeToTerms": "Indem Du auf Fortfahren klickst, stimmst du unseren ",
       "terms": "Nutzungsbedingungen",
       "and": " und ",
       "privacyPolicy": "Datenschutzbestimmungen zu"
@@ -114,55 +114,55 @@
     "pwreset": {
       "backToHomepage": "Zurück zur Homepage",
       "title": "Passwort zurücksetzen",
-      "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen",
-      "dontHaveAccount": "Sie haben noch kein Konto? Registrieren",
+      "enterEmail": "Gebe Deine E-Mail-Adresse ein, um Dein Passwort zurückzusetzen",
+      "dontHaveAccount": "Du hast noch kein Konto? Jetzt registrieren",
       "reset": "Jetzt zurücksetzen",
       "email": "E-Mail"
     },
     "errors": {
       "login": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihre Anmeldung ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+        "description": "Deine Anmeldung ist fehlgeschlagen. Bitte versuche es erneut."
       },
       "registration": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihr Registrierungsantrag ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+        "description": "Dein Registrierungsantrag ist fehlgeschlagen. Bitte versuche es erneut."
       },
       "loginGitHub": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihr Anmeldeantrag bei GitHub ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+        "description": "Deine Anmeldung über GitHub ist fehlgeschlagen. Bitte versuche es erneut."
       },
       "loginGoogle": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihr Anmeldeantrag bei Google ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+        "description": "Deine Anmeldung über Google ist fehlgeschlagen. Bitte versuche es erneut."
       },
       "loginMicrosoft": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihr Anmeldeantrag bei Microsoft ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+        "description": "Deine Anmeldung über Microsoft ist fehlgeschlagen. Bitte versuche es erneut."
       },
       "loginLinkedIn": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihr Anmeldeantrag bei LinkedIn ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+        "description": "Deine Anmeldung über LinkedIn ist fehlgeschlagen. Bitte versuche es erneut."
       },
       "register": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihr Konto wurde nicht gelöscht. Bitte versuchen Sie es erneut."
+        "description": "Dein Konto wurde nicht gelöscht. Bitte versuche es erneut."
       },
       "pwreset": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihr Profilbild wurde nicht aktualisiert. Bitte versuchen Sie es erneut."
+        "description": "Dein Profilbild wurde nicht aktualisiert. Bitte versuche es erneut."
       }
     },
     "success": {
       "login": {
-        "description": "Ihr Profil wurde aktualisiert."
+        "description": "Dein Profil wurde aktualisiert."
       },
       "register": {
         "title": "Willkommen bei Embloy!",
-        "description": "Sie haben erfolgreich ein neues Konto erstellt."
+        "description": "Du hast erfolgreich ein neues Konto erstellt."
       },
       "pwreset": {
-        "description": "Ihr Profilbild wurde aktualisiert. Laden Sie die Seite neu, um die Änderung zu sehen."
+        "description": "Dein Profilbild wurde aktualisiert. Lade die Seite neu, um die Änderung zu sehen."
       }
     }
   },
@@ -172,15 +172,15 @@
     },
     "upcoming": {
       "title": "Bevorstehende Stellenangebote",
-      "subtitle": "Sehen Sie, was als nächstes kommt.",
+      "subtitle": "Sehe, was als nächstes kommt.",
       "noUpcomingJobs": "Keine bevorstehenden Stellenangebote.",
-      "startApply": "Sie haben noch keine Stellenangebote. Beginnen Sie jetzt mit der Bewerbung.",
+      "startApply": "Du hast noch keine aktiven Jobs. Starte jetzt mit der Bewerbung.",
       "apply": "Neue Bewerbung"
     },
     "applications": {
       "title": "Bewerbungen",
-      "subtitle": "Ihre eingereichten Bewerbungen.",
-      "startApply": "Sie haben noch keine Bewerbungen. Beginnen Sie jetzt mit der Bewerbung.",
+      "subtitle": "Deine eingereichten Bewerbungen.",
+      "startApply": "Du hast noch keine Bewerbungen. Beginne jetzt mit der Bewerbung.",
       "noPending": "Keine ausstehenden Bewerbungen.",
       "submittedApplications": "Eingereichte Bewerbungen",
       "search": "Suche",
@@ -213,39 +213,39 @@
     },
     "billing": {
       "title": "Abrechnung",
-      "subtitle": "Verwalten Sie Ihren Abonnementplan.",
+      "subtitle": "Verwalte Deinen Abonnementplan.",
       "manageSubscriptions": "Abonnements verwalten",
       "noActiveSubscriptions": "Keine aktiven Abonnements.",
-      "noActiveSubscriptionsText": "Sie haben noch keine aktiven Abonnements. Beginnen Sie jetzt mit der Nutzung der exklusivsten Funktionen von Embloy.",
-      "subscribeToFree": "Kostenlos abonnieren",
+      "noActiveSubscriptionsText": "Du hast noch keine aktiven Abonnements. Abboniere, um auf alle Funktionen von Embloy zugreifen zu können.",
+      "subscribeToFree": "FREE abonnieren",
       "subscribeToSmart": "SMART abonnieren",
       "subscribeToGenius": "GENIUS abonnieren",
       "subscriptionPlan": "Abonnementplan",
-      "youAreCurrentlyOn": "Sie sind derzeit auf dem ",
+      "youAreCurrentlyOn": "Du bist derzeit auf dem ",
       "plan": " Plan. ",
       "upgradeTo": "Upgrade auf ",
-      "yourPlanRenewsOn": "Ihr Plan wird erneuert am "
+      "yourPlanRenewsOn": "Dein Plan wird erneuert am "
     },
     "settings": {
       "title": "Einstellungen",
       "subtitle": "Konto- und Website-Einstellungen verwalten.",
-      "yourProfile": "Ihr Profil",
-      "enterFullName": "Bitte geben Sie Ihren vollständigen Namen ein und wählen Sie ein Bild aus, das Sie als Profilbild verwenden möchten.",
+      "yourProfile": "Dein Profil",
+      "enterFullName": "Bitte gib Deinen vollständigen Namen ein und wähle ein Bild aus, das Du als Profilbild verwenden möchten.",
       "firstName": "Vorname",
       "lastName": "Nachname",
       "profileImage": "Profilbild",
       "removeImage": "Bild entfernen",
-      "removeImageNotice": "Dies ist Ihr aktuelles Bild. Es wird ersetzt, wenn Sie hochladen drücken.",
+      "removeImageNotice": "Dies ist Dein aktuelles Bild. Es wird ersetzt, wenn Du auf hochladen drückst.",
       "uploadImage": "Bild hochladen",
-      "yourContactInfo": "Ihre Kontaktdaten",
-      "enterEmailPhone": "Bitte geben Sie Ihre E-Mail-Adresse und Telefonnummer ein.",
+      "yourContactInfo": "Deine Kontaktdaten",
+      "enterEmailPhone": "Bitte gib Deine E-Mail-Adresse und Telefonnummer ein.",
       "email": "E-Mail",
       "phone": "Telefon",
       "yourAddress": "Ihre Adresse",
-      "enterAddress": "Bitte geben Sie Ihre Adresse ein.",
+      "enterAddress": "Bitte gib Deine Adresse ein.",
       "address": "Adresse",
-      "yourSocials": "Ihre Social-Media",
-      "enterSocialMedia": "Bitte geben Sie Ihre Social-Media-Handles ein.",
+      "yourSocials": "Social-Media",
+      "enterSocialMedia": "Bitte gib Deine Social-Media-Handles ein.",
       "twitter": "Twitter",
       "linkedIn": "LinkedIn",
       "instagram": "Instagram",
@@ -254,31 +254,31 @@
       "cancel": "Abbrechen",
       "delete": "Löschen",
       "deleteAccount": "Konto löschen",
-      "deleteAccountConfirmation": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?",
+      "deleteAccountConfirmation": "Bist du sicher, dass Du Dein Konto löschen möchtest?",
       "deleteAccountWarning": "Diese Aktion kann nicht rückgängig gemacht werden.",
       "errors": {
         "updateAccount": {
           "title": "Etwas ist schief gelaufen.",
-          "description": "Ihr Profil wurde nicht aktualisiert. Bitte versuchen Sie es erneut."
+          "description": "Dein Profil wurde nicht aktualisiert. Bitte versuche es erneut."
         },
         "deleteAccount": {
           "title": "Etwas ist schief gelaufen.",
-          "description": "Ihr Konto wurde nicht gelöscht. Bitte versuchen Sie es erneut."
+          "description": "Dein Konto wurde nicht gelöscht. Bitte versuche es erneut."
         },
         "uploadImage": {
           "title": "Etwas ist schief gelaufen.",
-          "description": "Ihr Profilbild wurde nicht aktualisiert. Bitte versuchen Sie es erneut."
+          "description": "Dein Profilbild wurde nicht aktualisiert. Bitte versuche es erneut."
         }
       },
       "success": {
         "updateAccount": {
-          "description": "Ihr Profil wurde aktualisiert."
+          "description": "Dein Profil wurde aktualisiert."
         },
         "deleteAccount": {
-          "description": "Ihr Konto wurde gelöscht."
+          "description": "Dein Konto wurde gelöscht."
         },
         "uploadImage": {
-          "description": "Ihr Profilbild wurde aktualisiert. Laden Sie die Seite neu, um die Änderung zu sehen."
+          "description": "Dein Profilbild wurde aktualisiert. Lade die Seite neu, um die Änderung zu sehen."
         }
       }
     }
@@ -292,14 +292,14 @@
     "goToEmbloy": "Zu Embloy gehen",
     "goToDashboard": "Zum Dashboard gehen",
     "notFoundTitle": "Oh oh! Nicht gefunden",
-    "notFoundSubtitle": "Diese Stelle konnte nicht gefunden werden. Bitte versuchen Sie es erneut.",
+    "notFoundSubtitle": "Diese Stelle konnte nicht gefunden werden. Bitte versuche es erneut.",
     "applyFor": "Bewerben für",
     "thisJob": "diese Stelle",
-    "enterDetails": "Geben Sie Ihre Details unten ein, um sich zu bewerben",
-    "enterApplicationText": "* Geben Sie hier Ihren Bewerbungstext ein... (max. 500 Zeichen)",
-    "uploadCV": "Laden Sie Ihren Lebenslauf hoch *",
+    "enterDetails": "Gebe Deine Details unten ein, um dich zu bewerben",
+    "enterApplicationText": "* Gebe hier Deinen Bewerbungstext ein... (max. 500 Zeichen)",
+    "uploadCV": "Lade Deinen Lebenslauf hoch *",
     "allowedFormats": "Erlaubte Formate: ",
-    "enterResponse": "Geben Sie Ihre Antwort ein (max. 200 Zeichen)",
+    "enterResponse": "Gebe Deine Antwort ein (max. 200 Zeichen)",
     "yes": "Ja",
     "no": "Nein",
     "fieldsMarkedAreRequired": "Felder mit einem * sind erforderlich.",
@@ -307,12 +307,29 @@
     "errors": {
       "request": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihre Anfrage wurde nicht bearbeitet. Bitte versuchen Sie es erneut."
+        "description": "Die Anfrage wurde nicht bearbeitet. Bitte versuche es erneut."
       },
       "submit": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Ihre Bewerbung wurde nicht eingereicht. Bitte versuchen Sie es erneut."
+        "description": "Deine Bewerbung wurde nicht eingereicht. Bitte versuche es erneut."
       }
+    }
+  },
+  "nav": {
+    "menu": "Menü",
+    "main": {
+      "features": "Features",
+      "pricing": "Preise",
+      "employers": "Arbeitgeber",
+      "developers": "Entwickler",
+      "about": "Über"
+    },
+    "side": {
+      "dashboard": "Dashboard",
+      "upcoming jobs": "Bevorstehende Jobs",
+      "applications": "Bewebungen",
+      "billing": "Zahlungsinformationen",
+      "settings": "Einstellungen"
     }
   }
 }

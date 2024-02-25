@@ -314,5 +314,22 @@
         "description": "応募が送信されませんでした。もう一度お試しください。"
       }
     }
+  },
+  "nav": {
+    "menu": "メニュー",
+    "main": {
+      "features": "機能",
+      "pricing": "価格設定",
+      "employers": "雇用主",
+      "developers": "開発者",
+      "about": "約"
+    },
+    "side": {
+      "dashboard": "ダッシュボード",
+      "upcoming jobs": "今後の仕事",
+      "applications": "アプリケーション",
+      "billing": "課金",
+      "settings": "設定"
+    }
   }
 }

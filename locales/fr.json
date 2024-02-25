@@ -314,5 +314,22 @@
         "description": "Votre candidature n'a pas été soumise. Veuillez réessayer."
       }
     }
+  },
+  "nav": {
+    "menu": "Menu",
+    "main": {
+      "features": "Fonctionnalités",
+      "pricing": "Prix",
+      "employers": "Employeurs",
+      "developers": "Développeurs",
+      "about": "À propos"
+    },
+    "side": {
+      "dashboard": "Panel",
+      "upcoming jobs": "Emplois à venir",
+      "applications": "Applications",
+      "billing": "Facturation",
+      "settings": "Paramètres"
+    }
   }
 }

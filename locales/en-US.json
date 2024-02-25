@@ -314,5 +314,22 @@
         "description": "Your application was not submitted. Please try again."
       }
     }
+  },
+  "nav": {
+    "menu": "Menu",
+    "main": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "employers": "Employers",
+      "developers": "Developers",
+      "about": "About"
+    },
+    "side": {
+      "dashboard": "Dashboard",
+      "upcoming jobs": "Upcoming Jobs",
+      "applications": "Applications",
+      "billing": "Billing",
+      "settings": "Settings"
+    }
   }
 }

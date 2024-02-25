@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 import { useLockBody } from "@/hooks/use-lock-body"
 import { Icons } from "@/components/icons"
 import {Locale} from "../i18n-config";
+import { getDictionary } from "@/app/[lang]/dictionaries"
+import { useEffect, useState } from "react"
 
 interface MobileNavProps {
   items: MainNavItem[]
@@ -18,8 +20,18 @@ interface MobileNavProps {
 
 export function MobileNav({ items, children, params: { lang } }: MobileNavProps) {
   useLockBody()
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
 
-  return (
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
+  return dict && (
     <div
       className={cn(
         "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden"
@@ -42,7 +54,7 @@ export function MobileNav({ items, children, params: { lang } }: MobileNavProps)
                 item.disabled && "cursor-not-allowed opacity-60"
               )}
             >
-              {item.title}
+              {dict.nav.main[item.title.toLowerCase()]}
             </Link>
           ))}
         </nav>

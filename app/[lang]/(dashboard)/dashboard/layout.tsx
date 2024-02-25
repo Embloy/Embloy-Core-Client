@@ -67,7 +67,6 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
               <ModeToggle />
             </div>
             <UserAccountNav
-              className="mx-10"
               user={{
                 first_name: `${user.first_name}`,
                 last_name: `${user.last_name}`,

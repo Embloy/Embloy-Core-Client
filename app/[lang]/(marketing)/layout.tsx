@@ -57,17 +57,23 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
       <div className="flex min-h-screen flex-col">
         <header className="container top-0 z-40">
           <div className="flex h-20 items-center justify-between py-6">
-            <MainNav items={dashboardConfig.mainNav} params={{lang: lang}} />
-            <ModeToggle />
-            <UserAccountNav
-              user={{
-                first_name: `${user.first_name}`,
-                last_name: `${user.last_name}`,
-                image_url: user.image_url,
-                email: user.email,
-              }}
-              params={{lang: lang}}
-            />
+            <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
+            <div className="flex items-center">
+              <div className="mx-6 hidden md:flex">
+                <LanguageToggle />
+                <Separator className="mx-1"/>
+                <ModeToggle />
+              </div>
+              <UserAccountNav
+                user={{
+                  first_name: `${user.first_name}`,
+                  last_name: `${user.last_name}`,
+                  image_url: user.image_url,
+                  email: user.email,
+                }}
+                params={{lang: lang}}
+              />
+            </div>
           </div>
         </header>
         <main className="flex-1">{children}</main>
@@ -78,15 +84,15 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
     return dict && (
       <div className="flex min-h-screen flex-col">
         <header className="container z-40">
-        <div className="flex h-20 items-center justify-between py-6">
+        <div className="flex h-20 items-center justify-between py-4">
           <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
           <div className="flex items-center">
-            <div className="hidden md:flex">
+            <div className="mx-6 hidden md:flex">
               <LanguageToggle />
               <Separator className="mx-1"/>
               <ModeToggle />
             </div>
-            <nav className="mx-6">
+            <nav>
               <Link
                 href={`/${lang}/login`}
                 className={cn(

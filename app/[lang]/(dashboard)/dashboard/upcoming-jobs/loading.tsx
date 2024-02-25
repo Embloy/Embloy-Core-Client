@@ -1,14 +1,16 @@
+"use client"
+
 import { DashboardHeader } from "@/components/header"
 import { StartApplyButton } from "@/components/start-apply-button"
 import { DashboardShell } from "@/components/shell"
 import { getDictionary } from "@/app/[lang]/dictionaries";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function UpcomingJobsLoading({params}) {
   const { lang } = params || {};
-  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
  
-  React.useEffect(() => {
+  useEffect(() => {
     if (!params) {
       return;
     }
