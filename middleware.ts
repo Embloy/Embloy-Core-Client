@@ -12,7 +12,7 @@ export function middleware(request) {
   const requestLocale = locales.find((reqLocale) => pathname.startsWith(`/${reqLocale}/`) || pathname === `/${reqLocale}`)
   
   // Ignore image and video files
-  const isMediaFile = /\.(jpe?g|png|gif|svg|mp4|ico)$/i.test(pathname)
+  const isMediaFile = /\.(jpe?g|png|gif|svg|mp4|ico|json)$/i.test(pathname)
   
   if (isMediaFile) return
 
