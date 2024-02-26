@@ -5,10 +5,10 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
-import { PasswordResetForm } from "@/components/password-reset-form"
 import { useSearchParams } from "next/navigation"
 import { useState, useEffect } from "react"
-import { getDictionary } from "../../dictionaries"
+import { getDictionary } from "../../../dictionaries"
+import { PasswordForm } from "@/components/password-form"
 
 export default function PasswordResetPage({ params: { lang } }) {
   const origin = useSearchParams().get("origin") as string
@@ -26,11 +26,11 @@ export default function PasswordResetPage({ params: { lang } }) {
   return dict && (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <Link
-        href={origin ? `/${lang}/login?origin=${origin}` : `/${lang}/login`}
-        className={cn(
-        buttonVariants({ variant: "ghost" }),
-        "absolute left-4 top-4 md:left-8 md:top-8"
-      )}
+          href={origin ? `/${lang}/login?origin=${origin}` : `/${lang}/login`}
+          className={cn(
+          buttonVariants({ variant: "ghost" }),
+          "absolute left-4 top-4 md:left-8 md:top-8"
+        )}
       >
         <>
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
@@ -47,7 +47,7 @@ export default function PasswordResetPage({ params: { lang } }) {
           {dict.auth.pwreset.enterEmail}
           </p>
         </div>
-        <PasswordResetForm params={{lang: lang}} />
+        <PasswordForm params={{lang: lang}} />
         <p className="px-8 text-center text-sm text-muted-foreground">
           <Link
             href={origin ? `/${lang}/register?origin=${origin}` : `/${lang}/register`}

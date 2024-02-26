@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { getPortalSession, postCheckout } from "@/lib/api/subscription"
+import { postCheckout } from "@/lib/api/subscription"
 
 import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
@@ -9,6 +9,7 @@ import { Icons } from "@/components/icons"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 import { useEffect, useState } from "react"
 import { Locale } from "@/i18n-config"
+import { toast } from "./ui/use-toast"
 
 interface SubscribeButtonProps extends ButtonProps {
   subscriptionType: string
@@ -47,10 +48,18 @@ export function SubscribeButton({
 
     const mappedSubscriptionType = subscriptionTypeMap[subscriptionType.toLowerCase()];
 
-    const checkout = await postCheckout(mappedSubscriptionType, "subscription");
-    setIsLoading(false);
-    if (checkout && checkout.url) {
-      window.location.href = checkout.url;
+    const {response, err} = await postCheckout(mappedSubscriptionType, 'subscription')
+    setIsLoading(false)
+    
+    if (err && dict) {
+      return toast({
+        title: dict.errors[err].title || dict.errors.generic.title,
+        description: dict.errors[err].description || dict.errors.generic.description,
+        variant: "destructive",
+      })
+    }
+    if (response && response.url) {
+      window.location.href = response.url
     }
   };
 

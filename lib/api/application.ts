@@ -34,7 +34,7 @@ export interface Application {
   job: null | Job;
 }
   
-export async function getApplications(): Promise<Application[] | null> {
+export async function getApplications(): Promise<{response: Application[] | null, err: number | null}> {
   const accessToken = await getAccessToken();
   const response = await fetch(`${siteConfig.api_url}/user/applications`, {
     method: 'GET',
@@ -44,21 +44,27 @@ export async function getApplications(): Promise<Application[] | null> {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch application data');
+    return { response: null, err: response.status };
+  }
+  
+  if (response.status === 204) {
+    return { response: [], err: null };
   }
 
   const text = await response.text();
   if (!text) {
-    return null;
+    return { response: null, err: 500 };
   }
 
   const data = JSON.parse(text);
-  return data.map((item: any) => ({
+  const result = data.map((item: any) => ({
     ...item.application,
     application_attachment: item.application_attachment,
     application_answers: item.application_answers,
     job: JSON.parse(item.job),
   })) || [];
+
+  return { response: result, err: null };
 }
 
 export async function submitApplication(
@@ -67,7 +73,7 @@ export async function submitApplication(
   gq_job_id: number | null,
   cv_file?: File,
   answers?: { [key: string]: any }
-): Promise<Boolean> {
+): Promise<number | null> {
 
   const accessToken = await getAccessToken();
 
@@ -107,13 +113,13 @@ export async function submitApplication(
   }
 
   if (!response.ok) {
-    return false;
+    return response.status;
   }
 
   const text = await response.text();
   if (!text) {
-    return false;
+    return 500;
   }
 
-  return true
+  return null;
 }

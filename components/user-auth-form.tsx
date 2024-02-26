@@ -55,8 +55,15 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
     setIsLoading(true)
 
     try {
-      await login(data.email, data.password);
+      const err = await login(data.email, data.password);
       setIsLoading(false)
+      if (err && dict) {
+        return toast({
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
+          variant: "destructive",
+        })
+      }
       router.refresh()
       router.push(origin || `/${lang}/dashboard`)  
     } catch (error) {

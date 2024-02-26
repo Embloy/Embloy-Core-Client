@@ -112,18 +112,17 @@
       "privacyPolicy": "Informativa sulla privacy"
     },
     "pwreset": {
-      "backToHomepage": "Torna alla Homepage",
+      "back": "Torna indietro",
       "title": "Reimposta la tua password",
       "enterEmail": "Inserisci la tua email per reimpostare la password",
       "dontHaveAccount": "Non hai un account? Registrati",
       "reset": "Reimposta password",
+      "setPassword": "Imposta password",
       "email": "Email"
     },
     "errors": {
       "login": {
         "title": "Qualcosa è andato storto.",
-
-
         "description": "La tua richiesta di accesso non è riuscita. Riprova."
       },
       "registration": {
@@ -152,7 +151,7 @@
       },
       "pwreset": {
         "title": "Qualcosa è andato storto.",
-        "description": "La tua immagine del profilo non è stata aggiornata. Riprova."
+        "description": "La richiesta di reimpostazione della password è fallita. Si prega di riprovare."
       },
       "First name is required": "Nome è richiesto",
       "Last name is required": "Cognome è richiesto",
@@ -166,11 +165,16 @@
         "description": "Il tuo profilo è stato aggiornato."
       },
       "register": {
-        "title": "Benvenuto su Embloy!",
-        "description": "Hai creato un nuovo account con successo."
+        "title": "Benvenuto in Embloy!",
+        "description": "Hai creato un nuovo account con successo. Controlla le tue email per attivare il tuo account."
       },
       "pwreset": {
-        "description": "La tua immagine del profilo è stata aggiornata. Ricarica la pagina per vedere il cambiamento."
+        "title": "Successo",
+        "description": "È stato inviato un link per la reimpostazione della password alla tua email."
+      },
+      "pwresetsuccess": {
+        "title": "Successo",
+        "description": "La tua password è stata reimpostata con successo."
       }
     }
   },
@@ -278,6 +282,10 @@
           "title": "Qualcosa è andato storto.",
           "description": "La tua immagine del profilo non è stata aggiornata. Riprova."
         },
+        "removeImage": {
+          "title": "Qualcosa è andato storto.",
+          "description": "La tua immagine del profilo non è stata cancellata. Per favore, riprova."
+        },
         "invalidImageType": {
           "title": "Qualcosa è andato storto.",
           "description": "Sono ammessi solo file JPG, JPEG e PNG. Per favore, riprova."
@@ -325,6 +333,9 @@
         },
         "uploadImage": {
           "description": "La tua immagine del profilo è stata aggiornata. Ricarica la pagina per vedere il cambiamento."
+        },
+        "deleteImage": {
+          "description": "La tua immagine del profilo è stata rimossa. Ricarica la pagina per vedere il cambiamento."
         }
       }
     }
@@ -391,5 +402,63 @@
       "dark": "Scuro",
       "system": "Sistema"
     }  
+  },
+  "errors": {
+    "400": {
+      "title": "Richiesta non valida",
+      "description": "Il server non è stato in grado di elaborare la tua richiesta. Si prega di riprovare."
+    },
+    "401": {
+      "title": "Non autorizzato",
+      "description": "Non sei connesso, le tue credenziali non sono valide o la tua sessione è scaduta. Effettua l'accesso e riprova."
+    },
+    "403": {
+      "title": "Vietato",
+      "description": "Non hai il permesso di visualizzare questa pagina. Le possibili ragioni includono: non hai un abbonamento attivo, sei stato bloccato o non hai le autorizzazioni necessarie. Effettua l'accesso e riprova."
+    },
+    "404": {
+      "title": "Ops! Non trovato",
+      "description": "Questa pagina o risorsa non può essere trovata. Si prega di riprovare."
+    },
+    "409": {
+      "title": "Conflitto",
+      "description": "La richiesta non ha potuto essere completata a causa di un conflitto con lo stato corrente della risorsa."
+    },
+    "410": {
+      "title": "Sparito",
+      "description": "La risorsa richiesta non è più disponibile e non lo sarà più."
+    },
+    "422": {
+      "title": "Entità non elaborabile",
+      "description": "Il server non è stato in grado di elaborare la tua richiesta. Si prega di riprovare."
+    },
+    "429": {
+      "title": "Troppe richieste",
+      "description": "Hai inviato troppe richieste in un determinato periodo di tempo. Si prega di riprovare più tardi."
+    },
+    "500": {
+      "title": "Errore del server",
+      "description": "Si è verificato un errore sul server. Si prega di riprovare."
+    },
+    "501": {
+      "title": "Non implementato",
+      "description": "Il server non supporta la funzionalità richiesta per soddisfare la richiesta."
+    },
+    "503": {
+      "title": "Servizio non disponibile",
+      "description": "Il server è attualmente non disponibile. Si prega di riprovare più tardi."
+    },
+    "maintenance": {
+      "title": "In manutenzione",
+      "description": "Questa pagina è attualmente in manutenzione. Si prega di riprovare più tardi."
+    },
+    "noInternet": {
+      "title": "Nessuna connessione Internet",
+      "description": "Si prega di controllare la connessione Internet e riprovare."
+    },
+    "generic": {
+      "title": "Qualcosa è andato storto.",
+      "description": "Si prega di riprovare. Se il problema persiste, contattare il supporto."
+    }
   }
 }

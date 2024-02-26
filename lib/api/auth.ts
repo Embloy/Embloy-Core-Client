@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { getSession } from "./session";
 import { decode } from 'jsonwebtoken';
 
-export async function login(email: string, password: string): Promise<void> {
+export async function login(email: string, password: string): Promise<number | null> {
   const encodedCredentials = btoa(`${email}:${password}`);
 
   const responseRt = await fetch(`${siteConfig.api_url}/auth/token/refresh`, {
@@ -18,15 +18,17 @@ export async function login(email: string, password: string): Promise<void> {
   const rtResult = await responseRt.json()
 
   if (!rtResult || !rtResult?.refresh_token) {
-    throw new Error('Authentication failed');
+    return responseRt.status;
   }
 
   Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'Strict', secure: false });
 
   await getAccessToken();
+
+  return null;
 }
 
-export async function signup(email: string, firstName: string, lastName: string, password: string, passwordConfirmation: string): Promise<void> {
+export async function signup(email: string, firstName: string, lastName: string, password: string, passwordConfirmation: string): Promise<number | null> {
   const response = await fetch(`${siteConfig.api_url}/user`, {
     method: 'POST',
     headers: {
@@ -44,13 +46,13 @@ export async function signup(email: string, firstName: string, lastName: string,
   })
 
   if (!response.ok) {
-    throw new Error('Account Creation Failed');
+    return response.status;
   }
 
-  await verify(email, password);
+  return await verify(email, password);
 }
 
-export async function verify(email: string, password: string): Promise<void> {
+export async function verify(email: string, password: string): Promise<number | null> {
   const encodedCredentials = btoa(`${email}:${password}`);
 
   const responseRt = await fetch(`${siteConfig.api_url}/user/verify`, {
@@ -64,14 +66,13 @@ export async function verify(email: string, password: string): Promise<void> {
   const rtResult = await responseRt.json()
 
   if (!rtResult || !rtResult?.refresh_token) {
-    throw new Error('Authentication failed');
+    return rtResult.status;
   }
 
-  Cookies.set('refresh_token', rtResult.refresh_token, { sameSite: 'Strict', secure: false });
-
-  await getAccessToken();
+  return null;
 }
 
+// TODO: ERROR HANDLING
 export async function getAccessToken(): Promise<string | null> {
   
   // Check if a valid access token is already set
@@ -149,6 +150,25 @@ export async function resetPassword(email: string): Promise<void> {
 
   if (!response.ok) {
     throw new Error('Failed to send password reset email');
+  }
+}
+
+export async function setPassword(password: string, password_confirmation: string, reset_token: string): Promise<void> {
+  const response = await fetch(`${siteConfig.api_url}/user/password/reset?token=${reset_token}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user: {
+        password: password,
+        password_confirmation: password_confirmation
+      }
+    })
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to update password');
   }
 }
 

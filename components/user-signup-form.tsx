@@ -55,15 +55,23 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
     setIsLoading(true)
 
     try {
-      await signup(data.email, data.firstName, data.lastName, data.password, data.passwordConfirmation);
+      const err = await signup(data.email, data.firstName, data.lastName, data.password, data.passwordConfirmation);
       // Redirect to dashboard or show success message
       setIsLoading(false)
+      if (err && dict) {
+        return toast({
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
+          variant: "destructive",
+        })
+      }
+
       // This forces a cache invalidation.
-      router.refresh()
-      router.push(origin || `/${lang}/dashboard`)  
+      // router.refresh()
+      // router.push(origin || `/${lang}/dashboard`)  
       return dict && toast({
-        title: dict.auth.success.registration.title,
-        description: dict.auth.success.registration.description,
+        title: dict.auth.success.register.title,
+        description: dict.auth.success.register.description,
       })
   
     } catch (error) {

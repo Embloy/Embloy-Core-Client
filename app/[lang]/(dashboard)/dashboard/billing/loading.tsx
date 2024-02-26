@@ -27,7 +27,7 @@ export default function BillingLoading({ params }) {
   return dict && (
     <DashboardShell>
       <DashboardHeader heading={dict.dashboard.billing.title} text={dict.dashboard.billing.subtitle}>
-        <ManageSubscriptionsButton text={dict.dashboard.billing.manageSubscriptions} />
+        <ManageSubscriptionsButton text={dict.dashboard.billing.manageSubscriptions} params={{lang: lang}} />
       </DashboardHeader>
       <div className="grid gap-10">
         <CardSkeleton />

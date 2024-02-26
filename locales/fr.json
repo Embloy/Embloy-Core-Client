@@ -112,11 +112,12 @@
       "privacyPolicy": "Politique de confidentialité"
     },
     "pwreset": {
-      "backToHomepage": "Retour à la page d'accueil",
+      "back": "Retour",
       "title": "Réinitialiser votre mot de passe",
       "enterEmail": "Entrez votre e-mail pour réinitialiser votre mot de passe",
       "dontHaveAccount": "Vous n'avez pas de compte ? S'inscrire",
       "reset": "Réinitialiser mot de passe",
+      "setPassword": "Définir le mot de passe",
       "email": "e-mail"
     },
     "errors": {
@@ -150,7 +151,7 @@
       },
       "pwreset": {
         "title": "Quelque chose s'est mal passé.",
-        "description": "Votre image de profil n'a pas été mise à jour. Veuillez réessayer."
+        "description": "Votre demande de réinitialisation de mot de passe a échoué. Veuillez réessayer."
       },
       "First name is required": "Prénom est requis",
       "Last name is required": "Nom est requis",
@@ -164,11 +165,16 @@
         "description": "Votre profil a été mis à jour."
       },
       "register": {
-        "title": "Bienvenue sur Embloy !",
-        "description": "Vous avez créé un nouveau compte avec succès."
+        "title": "Bienvenue chez Embloy !",
+        "description": "Vous avez créé un nouveau compte avec succès. Veuillez vérifier vos e-mails pour activer votre compte."
       },
       "pwreset": {
-        "description": "Votre image de profil a été mise à jour. Rechargez la page pour voir le changement."
+        "title": "Succès",
+        "description": "Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail."
+      },
+      "pwresetsuccess": {
+        "title": "Succès",
+        "description": "Votre mot de passe a été réinitialisé avec succès."
       }
     }
   },
@@ -276,6 +282,10 @@
           "title": "Quelque chose s'est mal passé.",
           "description": "Votre image de profil n'a pas été mise à jour. Veuillez réessayer."
         },
+        "removeImage": {
+          "title": "Quelque chose s'est mal passé.",
+          "description": "Votre image de profil n'a pas été supprimée. Veuillez réessayer."
+        },
         "invalidImageType": {
           "title": "Quelque chose s'est mal passé.",
           "description": "Seuls les fichiers JPG, JPEG et PNG sont autorisés. Veuillez réessayer."
@@ -323,6 +333,9 @@
         },
         "uploadImage": {
           "description": "Votre image de profil a été mise à jour. Rechargez la page pour voir le changement."
+        },
+        "deleteImage": {
+          "description": "Votre image de profil a été supprimée. Rechargez la page pour voir le changement."
         }
       }
     }
@@ -389,5 +402,63 @@
       "dark": "Sombre",
       "system": "Système"
     }  
+  },
+  "errors": {
+    "400": {
+      "title": "Requête incorrecte",
+      "description": "Le serveur n'a pas pu traiter votre demande. Veuillez réessayer."
+    },
+    "401": {
+      "title": "Non autorisé",
+      "description": "Vous n'êtes pas connecté, vos informations d'identification sont invalides ou votre session a expiré. Veuillez vous connecter et réessayer."
+    },
+    "403": {
+      "title": "Interdit",
+      "description": "Vous n'avez pas la permission de voir cette page. Les raisons possibles incluent : vous n'avez pas d'abonnement actif, vous avez été bloqué ou vous n'avez pas les autorisations nécessaires. Veuillez vous connecter et réessayer."
+    },
+    "404": {
+      "title": "Uh oh! Non trouvé",
+      "description": "Cette page ou ressource n'a pas pu être trouvée. Veuillez réessayer."
+    },
+    "409": {
+      "title": "Conflit",
+      "description": "La demande n'a pas pu être complétée en raison d'un conflit avec l'état actuel de la ressource."
+    },
+    "410": {
+      "title": "Disparu",
+      "description": "La ressource demandée n'est plus disponible et ne le sera plus."
+    },
+    "422": {
+      "title": "Entité non traitable",
+      "description": "Le serveur n'a pas pu traiter votre demande. Veuillez réessayer."
+    },
+    "429": {
+      "title": "Trop de requêtes",
+      "description": "Vous avez envoyé trop de requêtes dans un laps de temps donné. Veuillez réessayer plus tard."
+    },
+    "500": {
+      "title": "Erreur serveur",
+      "description": "Une erreur est survenue sur le serveur. Veuillez réessayer."
+    },
+    "501": {
+      "title": "Non implémenté",
+      "description": "Le serveur ne prend pas en charge la fonctionnalité requise pour répondre à la demande."
+    },
+    "503": {
+      "title": "Service non disponible",
+      "description": "Le serveur est actuellement indisponible. Veuillez réessayer plus tard."
+    },
+    "maintenance": {
+      "title": "En maintenance",
+      "description": "Cette page est actuellement en maintenance. Veuillez réessayer plus tard."
+    },
+    "noInternet": {
+      "title": "Pas de connexion Internet",
+      "description": "Veuillez vérifier votre connexion Internet et réessayer."
+    },
+    "generic": {
+      "title": "Quelque chose s'est mal passé.",
+      "description": "Veuillez réessayer. Si le problème persiste, contactez le support."
+    }
   }
 }

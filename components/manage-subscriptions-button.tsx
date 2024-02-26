@@ -6,25 +6,54 @@ import { getPortalSession } from "@/lib/api/subscription"
 import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import { toast } from "./ui/use-toast"
+import { Locale } from "@/i18n-config"
+import { useState } from "react"
+import { getDictionary } from "@/app/[lang]/dictionaries"
 
 interface ManageSubscriptionsButtonProps extends ButtonProps {
   text: string
+  params: {
+    lang: Locale
+  }
 }
 
 export function ManageSubscriptionsButton({
   className,
   variant,
   text,
+  params: { lang },
   ...props
 }: ManageSubscriptionsButtonProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
+
+  React.useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
 
   const handleManageSubscriptions = async () => {
-    setIsLoading(true);
-    const portalSession = await getPortalSession();
-    setIsLoading(false);
-    if (portalSession && portalSession.url) {
-      window.location.href = portalSession.url;
+    if (dict) {
+      setIsLoading(true);    
+      const {response, err} = await getPortalSession()
+      setIsLoading(false)
+
+      if (err || !response) {
+        return toast({
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
+          variant: "destructive",
+        })
+      } else {
+        if (response && response.url) {
+          window.location.href = response.url;
+        }
+      }
     }
   };
 

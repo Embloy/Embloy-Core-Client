@@ -52,24 +52,19 @@ export function BillingForm({
     event.preventDefault()
     setIsLoading(true)
   
-    if (nextBestPlan) {
+    if (nextBestPlan && dict) {
       // Get a Stripe session URL.
-      const response = await postCheckout(nextBestPlan?.internal_name, 'subscription')
-    
-      if (!response) {
-        setIsLoading(false)
+      const {response, err} = await postCheckout(nextBestPlan?.internal_name, 'subscription')
+      setIsLoading(false)
+      if (err || !response) {
         return toast({
-          title: "Something went wrong.",
-          description: "Please refresh the page and try again.",
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
           variant: "destructive",
         })
       }
-    
-      // Redirect to the Stripe session.
-      // This could be a checkout page for initial upgrade.
-      // Or portal to manage existing subscription.
-      if (response.url) {
-       window.location.href = response.url
+      if (response && response.url) {
+        window.location.href = response.url
       }
     }
   }

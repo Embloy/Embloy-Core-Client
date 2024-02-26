@@ -112,11 +112,12 @@
       "privacyPolicy": "Privacy Policy"
     },
     "pwreset": {
-      "backToHomepage": "Back to Homepage",
+      "back": "Back",
       "title": "Reset Your Password",
       "enterEmail": "Enter your email to reset your password",
       "dontHaveAccount": "Don't have an account? Sign Up",
       "reset": "Reset Password",
+      "setPassword": "Set Password",
       "Email": "email"
     },
     "errors": {
@@ -150,7 +151,7 @@
       },
       "pwreset": {
         "title": "Something went wrong.",
-        "description": "Your profile image was not updated. Please try again."
+        "description": "Your password reset request failed. Please try again."
       },
       "First name is required": "First name is required",
       "Last name is required": "Last name is required",
@@ -165,10 +166,15 @@
       },
       "register": {
         "title": "Welcome to Embloy!",
-        "description": "You have successfully created a new account."
+        "description": "You have successfully created a new account. Check your emails to activate your account."
       },
       "pwreset": {
-        "description": "Your profile image has been updated. Reload the page to see the change."
+        "title": "Success",
+        "description": "A password reset link has been sent to your email."
+      },
+      "pwresetsuccess": {
+        "title": "Success",
+        "description": "Your password has been successfully reset."
       }
     }
   },
@@ -276,6 +282,10 @@
           "title": "Something went wrong.",
           "description": "Your profile image was not updated. Please try again."
         },
+        "removeImage": {
+          "title": "Something went wrong.",
+          "description": "Your profile image was not deleted. Please try again."
+        },
         "invalidImageType": {
           "title": "Something went wrong.",
           "description": "Only JPG, JPEG, and PNG files are allowed. Please try again."
@@ -323,6 +333,9 @@
         },
         "uploadImage": {
           "description": "Your profile image has been updated. Reload the page to see the change."
+        },
+        "deleteImage": {
+          "description": "Your profile image has been removed. Reload the page to see the change."
         }
       }
     }
@@ -388,6 +401,64 @@
       "light": "Light",
       "dark": "Dark",
       "system": "System"
+    }
+  }, 
+  "errors" : {
+    "400": {
+      "title": "Bad Request",
+      "description": "The server was unable to process your request. Please try again."
+    },
+    "401": {
+      "title": "Unauthorized",
+      "description": "You are not signed in, your credentials are invalid or your session has expired. Please sign in and try again."
+    },
+    "403": {
+      "title": "Forbidden",
+      "description": "You do not have permission to view this page. Possible reasons include: you don't have an active subscription, you have been blocked, or you do not have the necessary permissions. Please sign in and try again."
+    },
+    "404": {
+      "title": "Uh oh! Not Found",
+      "description": "This page or resource could not be found. Please try again."
+    },
+    "409": {
+      "title": "Conflict",
+      "description": "The request could not be completed due to a conflict with the current state of the resource."
+    },
+    "410": {
+      "title": "Gone",
+      "description": "The requested resource is no longer available and will not be available again."
+    },
+    "422": {
+      "title": "Unprocessable Entity",
+      "description": "The server was unable to process your request. Please try again."
+    },
+    "429": {
+      "title": "Too Many Requests",
+      "description": "You have sent too many requests in a given amount of time. Please try again later."
+    },
+    "500": {
+      "title": "Server Error",
+      "description": "An error occurred on the server. Please try again."
+    },
+    "501": {
+      "title": "Not Implemented",
+      "description": "The server does not support the functionality required to fulfill the request."
+    },
+    "503": {
+      "title": "Service Unavailable",
+      "description": "The server is currently unavailable. Please try again later."
+    },
+    "maintenance": {
+      "title": "Under Maintenance",
+      "description": "This page is currently under maintenance. Please try again later."
+    },
+    "noInternet": {
+      "title": "No Internet Connection",
+      "description": "Please check your internet connection and try again."
+    },
+    "generic": {
+      "title": "Something went wrong.",
+      "description": "Please try again. If the problem persists, contact support."
     }
   }
 }

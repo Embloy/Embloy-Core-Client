@@ -13,6 +13,7 @@ import { StartApplyButton } from "@/components/start-apply-button";
 import { ApplicationItem } from "@/components/ui/application-item";
 import { useMediaQuery } from '@react-hook/media-query';
 import { getDictionary } from "@/app/[lang]/dictionaries";
+import { toast } from "@/components/ui/use-toast";
 
 export default function ApplicationsPage({ params: { lang } }) {
   const [applications, setApplications] = useState<Application[] | null>(null);
@@ -33,21 +34,30 @@ export default function ApplicationsPage({ params: { lang } }) {
       const loggedIn = (await getSession()).session;
       if (!loggedIn) {
         router.push(`/${lang}/login`)
-      } else {
-        const apps = await getApplications();
-        setApplications(apps);
+      } else if (dict) {
+        const {response, err} = await getApplications();
+        setIsLoading(false);
+
+        if (err || !response) {
+          return toast({
+            title: dict.errors[err || "500"].title || dict.errors.generic.title,
+            description: dict.errors[err || "500"].description || dict.errors.generic.description,
+            variant: "destructive",
+          })
+        } else {
+          setApplications(response);
+        }
       }
-      setIsLoading(false);
     };
 
     fetchApplications();
-  }, [router, lang] );
+  }, [router, lang, dict] );
 
   if (isLoading) {
     return <ApplicationsLoading params={{lang: lang}}/>
   }
 
-  if (!applications && !isLoading) {
+  if (!applications && !isLoading || applications && applications.length === 0 && !isLoading) {
     return dict && (
       <DashboardShell>
         <DashboardHeader heading={dict.dashboard.applications.title} text={dict.dashboard.applications.subtitle}>

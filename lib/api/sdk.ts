@@ -80,6 +80,7 @@ session: Session;
 job: Job;
 }
 
+// TODO: ERROR HANDLING
 export async function makeRequest(requestToken: string): Promise<ResponseData | null> {
   const accessToken = await getAccessToken();
 
@@ -102,6 +103,7 @@ export async function makeRequest(requestToken: string): Promise<ResponseData | 
   };
 }
 
+// TODO: ERROR HANDLING
 export async function applyWithGQ(gq: string): Promise<ResponseData | null> {
   const response = await fetch(`${siteConfig.api_url}/resource/${gq}`, { method: 'GET', });
 

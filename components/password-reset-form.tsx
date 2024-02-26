@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
-import { useRouter } from "next/navigation"
 import { Locale } from "@/i18n-config"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
@@ -51,21 +50,22 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
 
   async function onSubmit(data: FormData) {
     setIsLoading(true)
-
-    try {
-      await resetPassword(data.email);
-      setIsLoading(false)
-      toast({
-        title: "Success",
-        description: "A password reset link has been sent to your email.",
-      })
-    } catch (error) {
-      setIsLoading(false)
-      toast({
-        title: "Something went wrong.",
-        description: "Your password reset request failed. Please try again.",
-        variant: "destructive",
-      })
+    if (dict) {
+      try {
+        await resetPassword(data.email);
+        setIsLoading(false)
+        toast({
+          title: dict.auth.success.pwreset.title,
+          description: dict.auth.success.pwreset.description,
+        })
+      } catch (error) {
+        setIsLoading(false)
+        toast({
+          title: dict.auth.errors.pwreset.title,
+          description: dict.auth.errors.pwreset.description,
+          variant: "destructive",
+        })
+      }
     }
   }
 

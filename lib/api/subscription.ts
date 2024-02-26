@@ -82,7 +82,7 @@ type Checkout = {
   // ...other properties
 };
 
-export async function getActiveSubscription(): Promise<Subscription | null> {
+export async function getActiveSubscription(): Promise<{response: Subscription | null, err: number | null}> {
   const accessToken = await getAccessToken();
   const response = await fetch(`${siteConfig.api_url}/client/subscriptions/active?info=0`, {
     method: 'GET',
@@ -91,19 +91,23 @@ export async function getActiveSubscription(): Promise<Subscription | null> {
     },
   });
 
+  if (response.status === 404) {
+    return { response: null, err: null };
+  }
+
   if (!response.ok) {
-    return null;
+    return { response: null, err: response.status };
   }
 
   const data = await response.json();
-  return data.subscription || null;
+  return { response: data.subscription, err: null };
 }
 
 export interface SubscriptionsResponse {
   subscriptions: Subscription[];
 }
 
-export async function getAllSubscriptions(): Promise<SubscriptionsResponse> {
+export async function getAllSubscriptions(): Promise<{response: SubscriptionsResponse | null, err: number | null}> {
   const accessToken = await getAccessToken();
   const response = await fetch(`${siteConfig.api_url}/client/subscriptions`, {
     method: 'GET',
@@ -113,14 +117,18 @@ export async function getAllSubscriptions(): Promise<SubscriptionsResponse> {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch all subscriptions data');
+    return { response: null, err: response.status };
+  }
+
+  if (response.status === 204) {
+    return { response: {subscriptions: []}, err: null };
   }
 
   const data = await response.json();
-  return data;
+  return { response: {subscriptions: data.Subscriptions}, err: null };
 }
 
-export async function postCheckout(tier: string, payment_mode: string): Promise<Checkout | null> {
+export async function postCheckout(tier: string, payment_mode: string): Promise<{response: Checkout | null, err: number | null}> {
   const accessToken = await getAccessToken();
   const origin = "core"
   const response = await fetch(`${siteConfig.api_url}/checkout`, {
@@ -133,26 +141,27 @@ export async function postCheckout(tier: string, payment_mode: string): Promise<
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch checkout data');
+    return { response: null, err: response.status };
   }
 
   const data = await response.json();
-  return data || null;
+  return { response: data, err: null };
 }
 
-export async function getPortalSession(): Promise<Checkout | null> {
+export async function getPortalSession(): Promise<{response: Checkout | null, err: number | null}> {
   const accessToken = await getAccessToken();
-  const response = await fetch(`${siteConfig.api_url}/checkout/portal`, {
+  const response = await fetch(`${siteConfig.api_url}/checkout/portal?origin=core`, {
     method: 'GET',
     headers: {
       "access_token": `${accessToken}`,
+      
     },
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch portal data');
+    return { response: null, err: response.status };
   }
 
   const data = await response.json();
-  return data.portal_session || null;
+  return { response: data.portal_session, err: null };
 }

@@ -15,7 +15,7 @@
     "getStarted": "Loslegen",
     "forCompanies": "Für Unternehmen",
     "features": "Funktionen",
-    "featureDescription": "Embloy dient als Brücke, die Organisationen mit potenziellen Jobsuchenden verbindet. Als Middleware-Lösung, maßgeschneidert für das digitale Zeitalter, verbessert Embloy Ihren Bewerbungsprozess:",
+    "featureDescription": "Embloy dient als Brücke, die Organisationen mit potenziellen Jobsuchenden verbindet. Als Middleware-Lösung, maßgeschneidert für das digitale Zeitalter, verbessert Embloy Deinen Bewerbungsprozess:",
     "smartHiring": "Intelligente Bewebungen",
     "smartHiringDescription": "10x schnellere HR-Prozesse durch Automatisierung.",
     "endToEndRecruitment": "End-to-End-Rekrutierungshosting",
@@ -43,7 +43,7 @@
         "title": "Was ist in EMBLOY FREE enthalten",
         "features": [
           "Ein-Klick-Bewerbung",
-          "Bewirb Dich auf beliebig viele Stellenangebote",
+          "Bewirb dich auf beliebig viele Stellenangebote",
           "Lebensläufe hochladen, zusätzliche Dokumente usw.",
           "Offene Stellen teilen",
           "3 Stellenanzeigen erstellen (Sandbox-Modus)",
@@ -112,11 +112,12 @@
       "privacyPolicy": "Datenschutzbestimmungen zu"
     },
     "pwreset": {
-      "backToHomepage": "Zurück zur Homepage",
+      "back": "Zurück",
       "title": "Passwort zurücksetzen",
       "enterEmail": "Gebe Deine E-Mail-Adresse ein, um Dein Passwort zurückzusetzen",
       "dontHaveAccount": "Du hast noch kein Konto? Jetzt registrieren",
       "reset": "Jetzt zurücksetzen",
+      "setPassword": "Passwort festlegen",
       "email": "E-Mail"
     },
     "errors": {
@@ -150,7 +151,7 @@
       },
       "pwreset": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Dein Profilbild wurde nicht aktualisiert. Bitte versuche es erneut."
+        "description": "Der Passwortrücksetzungsantrag ist fehlgeschlagen. Bitte versuche es erneut."
       },
       "First name is required": "Vorname ist erforderlich",
       "Last name is required": "Nachname ist erforderlich",
@@ -165,10 +166,15 @@
       },
       "register": {
         "title": "Willkommen bei Embloy!",
-        "description": "Du hast erfolgreich ein neues Konto erstellt."
+        "description": "Du hast erfolgreich ein neues Konto erstellt. Überprüfe Deine E-Mails, um Dein Konto zu aktivieren."
       },
       "pwreset": {
-        "description": "Dein Profilbild wurde aktualisiert. Lade die Seite neu, um die Änderung zu sehen."
+        "title": "Erfolgreich abgeschlossen",
+        "description": "Ein Link zum Zurücksetzen des Passworts wurde an Deine E-Mail-Adresse gesendet."
+      },
+      "pwresetsuccess": {
+        "title": "Erfolgrech abgeschlossen",
+        "description": "Dein Passwort wurde erfolgreich zurückgesetzt."
       }
     }
   },
@@ -248,7 +254,7 @@
       "enterEmailPhone": "Bitte gib Deine E-Mail-Adresse und Telefonnummer ein.",
       "email": "E-Mail",
       "phone": "Telefon",
-      "yourAddress": "Ihre Adresse",
+      "yourAddress": "Deine Adresse",
       "enterAddress": "Bitte gib Deine Adresse ein.",
       "address": "Adresse",
       "yourSocials": "Social-Media",
@@ -275,6 +281,10 @@
         "uploadImage": {
           "title": "Etwas ist schief gelaufen.",
           "description": "Dein Profilbild wurde nicht aktualisiert. Bitte versuche es erneut."
+        },
+        "removeImage": {
+          "title": "Etwas ist schief gelaufen.",
+          "description": "Dein Profilbild wurde nicht gelöscht. Bitte versuche es erneut."
         },
         "invalidImageType": {
           "title": "Etwas ist schief gelaufen.",
@@ -323,6 +333,9 @@
         },
         "uploadImage": {
           "description": "Dein Profilbild wurde aktualisiert. Lade die Seite neu, um die Änderung zu sehen."
+        },
+        "deleteImage": {
+          "description": "Dein Profilbild wurde entfernt. Lade die Seite neu, um die Änderung zu sehen."
         }
       }
     }
@@ -359,7 +372,7 @@
       },
       "invalidFileType": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Bitte laden Sie eine Datei in einem der zulässigen Formate hoch: {formats}."
+        "description": "Bitte lade eine Datei in einem der zulässigen Formate hoch: {formats}."
       },
       "invalidFileSize": {
         "title": "Etwas ist schief gelaufen.",
@@ -389,5 +402,63 @@
       "dark": "Dunkel",
       "system": "System"
     }  
+  },
+  "errors": {
+    "400": {
+      "title": "Ungültige Anfrage",
+      "description": "Der Server konnte Deine Anfrage nicht verarbeiten. Bitte versuche es erneut."
+    },
+    "401": {
+      "title": "Unbefugt",
+      "description": "Du bist nicht angemeldet, Deine Anmeldeinformationen sind ungültig oder Deine Sitzung ist abgelaufen. Bitte melde dich an und versuche es erneut."
+    },
+    "403": {
+      "title": "Verboten",
+      "description": "Du hast keine Berechtigung, diese Seite anzuzeigen. Mögliche Gründe sind: Du hast kein aktives Abonnement, Du wurdest blockiert oder Dir fehlen die erforderlichen Berechtigungen. Bitte melde dich an und versuche es erneut."
+    },
+    "404": {
+      "title": "Hoppla! Nicht gefunden",
+      "description": "Diese Seite oder Ressource konnte nicht gefunden werden. Bitte versuche es erneut."
+    },
+    "409": {
+      "title": "Konflikt",
+      "description": "Die Anfrage konnte aufgrund eines Konflikts mit dem aktuellen Zustand der Ressource nicht abgeschlossen werden."
+    },
+    "410": {
+      "title": "Verschwunden",
+      "description": "Die angeforderte Ressource ist nicht mehr verfügbar und wird auch nicht wieder verfügbar sein."
+    },
+    "422": {
+      "title": "Nicht verarbeitbare Entität",
+      "description": "Der Server konnte Deine Anfrage nicht verarbeiten. Bitte versuche es erneut."
+    },
+    "429": {
+      "title": "Zu viele Anfragen",
+      "description": "Du hast in einem bestimmten Zeitraum zu viele Anfragen gesendet. Bitte versuche es später erneut."
+    },
+    "500": {
+      "title": "Serverfehler",
+      "description": "Ein Fehler ist auf dem Server aufgetreten. Bitte versuche es erneut."
+    },
+    "501": {
+      "title": "Nicht implementiert",
+      "description": "Der Server unterstützt die für die Anforderung erforderliche Funktionalität nicht."
+    },
+    "503": {
+      "title": "Dienst nicht verfügbar",
+      "description": "Der Server ist derzeit nicht verfügbar. Bitte versuche es später erneut."
+    },
+    "maintenance": {
+      "title": "In Wartung",
+      "description": "Diese Seite wird derzeit gewartet. Bitte versuche es später erneut."
+    },
+    "noInternet": {
+      "title": "Keine Internetverbindung",
+      "description": "Bitte überprüfe Deine Internetverbindung und versuche es erneut."
+    },
+    "generic": {
+      "title": "Etwas ist schief gelaufen.",
+      "description": "Bitte versuche es erneut. Wenn das Problem weiterhin besteht, wende dich an den Support."
+    }
   }
 }

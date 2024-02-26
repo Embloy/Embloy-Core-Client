@@ -150,6 +150,21 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
     }
   }
 
+  async function removeImage() {
+    const success = await deleteImage();
+    if (!success) {
+      return dict && toast({
+        title: dict.dashboard.settings.errors.deleteImage.title,
+        description: dict.dashboard.settings.errors.deleteImage.description,
+        variant: "destructive",
+      });
+    }
+
+    dict && toast({
+      description: dict.dashboard.settings.success.deleteImage.description,
+    });    
+  }
+
   function onFileChange(file: File | null) {
     if (file && dict) {
       const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
@@ -236,7 +251,7 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                     <button
                       type="button"
                       className={cn(buttonVariants(), className)}
-                      onClick={deleteImage}
+                      onClick={removeImage}
                     >
                       {dict.dashboard.settings.removeImage}
                     </button>
@@ -451,7 +466,6 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
               onClick={async (event) => {
                 event.preventDefault();
                 setIsDeleting(true);
-
                 await onDelete();
                 setIsDeleting(false);
                 setShowDeleteAlert(false);

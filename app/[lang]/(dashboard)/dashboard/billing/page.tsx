@@ -11,6 +11,7 @@ import { ManageSubscriptionsButton } from "@/components/manage-subscriptions-but
 import { SubscribeButton } from "@/components/subscribe-button"
 import BillingLoading from './loading';
 import { getDictionary } from '@/app/[lang]/dictionaries';
+import { toast } from '@/components/ui/use-toast';
 
 export default function BillingPage({ params: { lang } }) {
   const [activeSubscription, setActiveSubscription] = useState<Subscription | null>(null);
@@ -31,15 +32,23 @@ export default function BillingPage({ params: { lang } }) {
       const loggedIn = (await getSession()).session;
       if (!loggedIn) {
         router.push(`/${lang}/login`);
-      } else {
-        const subscription = await getActiveSubscription();
-        setActiveSubscription(subscription);
+      } else if (dict) {
+        const {response, err} = await getActiveSubscription();
+        setIsLoading(false);
+        setActiveSubscription(response);
+        if (err) {
+          return toast({
+            title: dict.errors[err || "500"].title || dict.errors.generic.title,
+            description: dict.errors[err || "500"].description || dict.errors.generic.description,
+            variant: "destructive",
+          })
+        }
       }
       setIsLoading(false);
     };
 
     fetchSubscription();
-  }, [router, lang]);
+  }, [router, lang, dict]);
 
   if (isLoading) {
     return <BillingLoading params={{ lang }}/>
@@ -69,7 +78,7 @@ if (activeSubscription && !isLoading)
   return dict && (
     <DashboardShell>
       <DashboardHeader heading={dict.dashboard.billing.title} text={dict.dashboard.billing.subtitle}>
-        <ManageSubscriptionsButton text={dict.dashboard.billing.manageSubscriptions} />
+        <ManageSubscriptionsButton text={dict.dashboard.billing.manageSubscriptions} params={{lang: lang}}/>
       </DashboardHeader>
       <div>
         <BillingForm

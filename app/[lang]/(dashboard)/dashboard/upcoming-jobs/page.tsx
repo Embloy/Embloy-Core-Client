@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { getSession } from "@/lib/api/session";
-import { getActiveSubscription } from "@/lib/api/jobs";
+import { getUpcomingJobs } from "@/lib/api/jobs";
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { DashboardHeader } from "@/components/header";
 import { StartApplyButton } from "@/components/start-apply-button";
@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Job } from "@/lib/api/sdk";
 import Image from "next/image";
 import { getDictionary } from "@/app/[lang]/dictionaries";
+import { toast } from "@/components/ui/use-toast";
 
 export default function UpcomingJobsPage({ params: { lang } }) {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
@@ -30,16 +31,25 @@ export default function UpcomingJobsPage({ params: { lang } }) {
       const loggedIn = (await getSession()).session;
       if (!loggedIn) {
         router.push(`/${lang}/login`);
-      } else {
-        // Fetch jobs here and update the jobs state
-        const fetchedJobs = await getActiveSubscription();
-        setJobs(fetchedJobs || []);
+      } else if (dict) {
+        const {response, err} = await getUpcomingJobs()
+        setIsLoading(false)
+  
+        if (err || !response) {
+          return toast({
+            title: dict.errors[err || "500"].title || dict.errors.generic.title,
+            description: dict.errors[err || "500"].description || dict.errors.generic.description,
+            variant: "destructive",
+          })
+        } else {
+          setJobs(response || []);
+        }
       }
       setIsLoading(false);
     };
 
     fetchJobs();
-  }, [router, lang]);
+  }, [router, lang, dict]);
 
   return dict && (
     <DashboardShell>

@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { getAccessToken } from "./auth";
 
+// TODO: ERROR HANDLING
 export async function getUserData(accessToken): Promise<Record<string, any>> {
     const response = await fetch(`${siteConfig.api_url}/user`, {
       method: 'GET',
@@ -16,6 +17,7 @@ export async function getUserData(accessToken): Promise<Record<string, any>> {
     return response.json();
 }
 
+// TODO: ERROR HANDLING
 export async function updateUser(userJson: string): Promise<{ success: Boolean }> {
   try {
     const accessToken = await getAccessToken();
@@ -40,6 +42,7 @@ export async function updateUser(userJson: string): Promise<{ success: Boolean }
   }
 }
 
+// TODO: ERROR HANDLING
 export async function uploadUserImage(selectedImage: File): Promise<{ success: Boolean }> {
   const formData = new FormData();
   formData.append("image_url", selectedImage);
@@ -64,6 +67,7 @@ export async function uploadUserImage(selectedImage: File): Promise<{ success: B
   }
 }
 
+// TODO: ERROR HANDLING
 export async function deleteUser(): Promise<{ success: Boolean }> {
   try {
     const accessToken = await getAccessToken();
@@ -85,10 +89,11 @@ export async function deleteUser(): Promise<{ success: Boolean }> {
   }
 }
 
+// TODO: ERROR HANDLING
 export async function deleteImage(): Promise<{ success: Boolean }> {
   try {
     const accessToken = await getAccessToken();
-    const response = await fetch(`${siteConfig.api_url}/user`, {
+    const response = await fetch(`${siteConfig.api_url}/user/image`, {
       method: 'DELETE',
       headers: {
         "access_token": `${accessToken}`,
