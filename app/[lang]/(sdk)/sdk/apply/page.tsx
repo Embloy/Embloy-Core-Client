@@ -157,12 +157,12 @@ export default function ApplyPage({ params: { lang } }) {
         description: dict.errors[err || "500"].description || dict.errors.generic.description,
         variant: "destructive",
       })
+    } else {
+      // This forces a cache invalidation.
+      router.refresh()
+    
+      router.push(`/${lang}/dashboard/applications`)
     }
-  
-    // This forces a cache invalidation.
-    router.refresh()
-  
-    router.push(`/${lang}/dashboard/applications`)
   }
 
   const handleInputChange = (event) => {
