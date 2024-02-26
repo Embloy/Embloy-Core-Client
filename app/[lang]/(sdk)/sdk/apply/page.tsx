@@ -151,7 +151,7 @@ export default function ApplyPage({ params: { lang } }) {
     const err = await submitApplication(applicationText, searchParams.get("request_token"), job?.job_id || 0, cvFile, options)
   
     setIsLoading(false)
-    if (!err && dict) {
+    if (err && dict) {
       return toast({
         title: dict.errors[err || "500"].title || dict.errors.generic.title,
         description: dict.errors[err || "500"].description || dict.errors.generic.description,
