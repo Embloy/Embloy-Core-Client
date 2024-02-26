@@ -237,7 +237,19 @@
       "plan": ". ",
       "upgradeTo": "Passer à ",
       "yourPlanRenewsOn": "Votre plan est renouvelé le ",
-      "subscribeTo": "S'abonner à "
+      "subscribeTo": "S'abonner à ",
+      "basic": {
+        "name": "EMBLOY FREE",
+        "description": "Application en un clic, postulez à autant d'emplois que vous le souhaitez et aucune publicité."
+      },
+      "premium": {
+        "name": "EMBLOY SMART",
+        "description": "Jusqu'à 50 offres d'emploi actives et personnalisation du jeton client."
+      },
+      "enterprise_1": {
+        "name": "EMBLOY GENIUS",
+        "description": "Offres d'emploi illimitées et bien plus encore."
+      }
     },
     "settings": {
       "title": "Paramètres",

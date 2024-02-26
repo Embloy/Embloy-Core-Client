@@ -57,8 +57,8 @@
         "title": "Was ist in EMBLOY SMART enthalten",
         "features": [
           "Bis zu 50 aktive Stellenanzeigen",
-          "Unbegrenzte Kunden-Token",
-          "Anpassung der Kunden-Token",
+          "Unbegrenzte Client-Token",
+          "Anpassung der Client-Token",
           "Keine Werbung"
         ],
         "price": "€50",
@@ -77,15 +77,15 @@
         "billing": "Monatlich abgerechnet",
         "getStarted": "Loslegen"
       },
-      "partnershipWithStripe1": "Partnerschaft mit ",
-      "partnershipWithStripe2": " für vereinfachte Abrechnung."
+      "partnershipWithStripe1": " arbeitet mit ",
+      "partnershipWithStripe2": " zusammen für vereinfachte Zahlungen."
     }
   },
   "auth": {
     "login": {
       "back": "Zurück",
       "welcomeback": "Willkommen zurück",
-      "enterEmail": "Gebe Deine E-Mail-Adresse ein, um dich anzumelden",
+      "enterEmail": "Gib Deine E-Mail-Adresse ein, um dich anzumelden",
       "email": "E-Mail",
       "password": "Passwort",
       "continueWith": "Oder weiter mit",
@@ -114,7 +114,7 @@
     "pwreset": {
       "back": "Zurück",
       "title": "Passwort zurücksetzen",
-      "enterEmail": "Gebe Deine E-Mail-Adresse ein, um Dein Passwort zurückzusetzen",
+      "enterEmail": "Gib Deine E-Mail-Adresse ein, um Dein Passwort zurückzusetzen",
       "dontHaveAccount": "Du hast noch kein Konto? Jetzt registrieren",
       "reset": "Jetzt zurücksetzen",
       "setPassword": "Passwort festlegen",
@@ -237,7 +237,19 @@
       "plan": " Plan. ",
       "upgradeTo": "Upgrade auf ",
       "yourPlanRenewsOn": "Dein Plan wird erneuert am ",
-      "subscribeTo": "Abboniere "
+      "subscribeTo": "Abboniere ",
+      "basic": {
+        "name": "EMBLOY FREE",
+        "description": "Ein-Klick-Bewerbung, unbegrenzte Bewerbungen und keine Werbung."
+      },
+      "premium": {
+        "name": "EMBLOY SMART",
+        "description": "Bis zu 50 aktive Stellenanzeigen und Anpassung von Client-Token."
+      },
+      "enterprise_1": {
+        "name": "EMBLOY GENIUS",
+        "description": "Unbegrenzte Stellenanzeigen und vieles mehr."
+      }
     },
     "settings": {
       "title": "Einstellungen",
@@ -352,11 +364,11 @@
     "notFoundSubtitle": "Diese Stelle konnte nicht gefunden werden. Bitte versuche es erneut.",
     "applyFor": "Bewerben für",
     "thisJob": "diese Stelle",
-    "enterDetails": "Gebe Deine Details unten ein, um dich zu bewerben",
-    "enterApplicationText": "* Gebe hier Deinen Bewerbungstext ein... (max. 500 Zeichen)",
+    "enterDetails": "Gib Deine Details unten ein, um dich zu bewerben",
+    "enterApplicationText": "* Gib hier Deinen Bewerbungstext ein... (max. 500 Zeichen)",
     "uploadCV": "Lade Deinen Lebenslauf hoch *",
     "allowedFormats": "Erlaubte Formate: ",
-    "enterResponse": "Gebe Deine Antwort ein (max. 200 Zeichen)",
+    "enterResponse": "Gib Deine Antwort ein (max. 200 Zeichen)",
     "yes": "Ja",
     "no": "Nein",
     "fieldsMarkedAreRequired": "Felder mit einem * sind erforderlich.",

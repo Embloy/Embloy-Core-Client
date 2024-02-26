@@ -237,7 +237,19 @@
       "plan": " プラン ",
       "upgradeTo": "にアップグレード",
       "yourPlanRenewsOn": "プランの更新日：",
-      "subscribeTo": "申し込む "
+      "subscribeTo": "申し込む ",
+      "basic": {
+        "name": "EMBLOY無料",
+        "description": "ワンクリックアプリケーション、希望するだけの仕事に応募し、広告はありません。"
+      },
+      "premium": {
+        "name": "EMBLOYスマート",
+        "description": "最大50のアクティブな求人投稿とクライアントトークンのカスタマイズ。"
+      },
+      "enterprise_1": {
+        "name": "EMBLOYジーニアス",
+        "description": "無制限の求人投稿とその他多くの機能。"
+      } 
     },
     "settings": {
       "title": "設定",

@@ -5,7 +5,7 @@ export const freePlan: SubscriptionPlan = {
   name: "EMBLOY FREE",
   internal_name: "basic",
   description:
-    "One-Click-Application, apply to as many jobs as you want and no ads",
+    "One-Click-Application, apply to as many jobs as you want and no ads.",
   stripePriceId: "price_1On8ItKMiBrigNb6eZ9PKFG0",
 }
 

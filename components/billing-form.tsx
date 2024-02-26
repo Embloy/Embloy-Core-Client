@@ -78,10 +78,10 @@ export function BillingForm({
         <CardHeader>
           <CardTitle>{dict.dashboard.billing.subscriptionPlan}</CardTitle>
           <CardDescription>
-          {dict.dashboard.billing.youAreCurrentlyOn} <strong>{subscriptionPlan.name}</strong>{dict.dashboard.billing.plan}
+          {dict.dashboard.billing.youAreCurrentlyOn}<strong>{dict.dashboard.billing[subscriptionPlan.internal_name].name}</strong>{dict.dashboard.billing.plan}
           </CardDescription>
         </CardHeader>
-        <CardContent>{subscriptionPlan.description}</CardContent>
+        <CardContent>{dict.dashboard.billing[subscriptionPlan.internal_name].description}</CardContent>
         <CardFooter className="flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0">
           {nextBestPlan?.internal_name !== 'enterprise_2' && (
             <button

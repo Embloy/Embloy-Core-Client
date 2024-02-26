@@ -237,7 +237,19 @@
       "plan": " plan. ",
       "upgradeTo": "Upgrade to ",
       "yourPlanRenewsOn": "Your plan renews on ",
-      "subscribeTo": "Subscribe to "
+      "subscribeTo": "Subscribe to ",
+      "basic": {
+        "name": "EMBLOY FREE",
+        "description": "One-Click-Application, apply to as many jobs as you want and no ads"
+      },
+      "premium": {
+        "name": "EMBLOY SMART",
+        "description": "Up to 50 active job postings and client token customization."
+      },
+      "enterprise_1": {
+        "name": "EMBLOY GENIUS",
+        "description": "Unlimited job postings and much more."
+      }
     },
     "settings": {
       "title": "Settings",

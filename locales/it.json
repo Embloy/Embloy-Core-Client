@@ -237,7 +237,19 @@
       "plan": " piano. ",
       "upgradeTo": "Aggiorna a ",
       "yourPlanRenewsOn": "Il tuo piano si rinnova il ",
-      "subscribeTo": "Iscriviti a "
+      "subscribeTo": "Iscriviti a ",
+      "basic": {
+        "name": "EMBLOY FREE",
+        "description": "Applicazione con un clic, candidati a quanti lavori vuoi e nessuna pubblicità."
+      },
+      "premium": {
+        "name": "EMBLOY SMART",
+        "description": "Fino a 50 annunci di lavoro attivi e personalizzazione del token del cliente."
+      },
+      "enterprise_1": {
+        "name": "EMBLOY GENIUS",
+        "description": "Annunci di lavoro illimitati e molto altro."
+      }
     },
     "settings": {
       "title": "Impostazioni",
