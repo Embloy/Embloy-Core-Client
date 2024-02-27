@@ -11,16 +11,10 @@ export default function OAuthRedirect({ params: { lang } }) {
   const [dict, setDict] = useState<Record<string, any> | null>(null);
   
   useEffect(() => {
-    const fetchDictionary = async () => {
+    const fetchUserAndDictionary = async () => {
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
-    };
 
-    fetchDictionary();
-  }, [lang]);
-
-  useEffect(() => {
-    const fetchUser = async () => {
       if (dict) {
         try {
           const session = await getSession(refreshToken ?? undefined);
@@ -35,8 +29,8 @@ export default function OAuthRedirect({ params: { lang } }) {
       }
     };
 
-    fetchUser();
-  }, [refreshToken]);
+    fetchUserAndDictionary();
+  }, [refreshToken, lang]);
 
   return <div>{message}</div>;
 }
