@@ -5,6 +5,7 @@
       "employers": "Employers",
       "developers": "Developers",
       "about": "About",
+      "resources": "Resources",
       "login": "Login"
   },
   "marketing": {
@@ -82,6 +83,11 @@
       }
   },
   "auth": {
+    "oauth": {
+      "success": "Authentication successful. Please close this window.",
+      "error": "Authentication failed. Please close this window and try again.",
+      "errorOccured": "An error occurred: {error}. Please close this window and try again."
+    },
     "login": {
       "back": "Back",
       "welcomeback": "Welcome back",
@@ -398,6 +404,7 @@
       "features": "Features",
       "pricing": "Pricing",
       "employers": "Employers",
+      "resources": "Resources",
       "developers": "Developers",
       "about": "About"
     },
@@ -471,6 +478,54 @@
     "generic": {
       "title": "Something went wrong.",
       "description": "Please try again. If the problem persists, contact support."
+    }
+  },
+  "resources": {
+    "Overview": {
+      "title": "Resources"
+    },
+    "Privacy Policy": {
+      "title": "Privacy"
+    },
+    "Terms of Service": {
+      "title": "Terms & Conditions"
+    },
+    "Resources": {
+      "title": "Resources"
+    },
+    "Introduction": {
+      "title": "Introduction"
+    },
+    "Cookies": {
+      "title": "Cookies"
+    },
+    "sidebar": {
+      "onThisPage": "On This Page",
+      "OVERVIEW": {
+        "title": "OVERVIEW",
+        "Introduction": "Introduction"
+      },
+      "LEGAL RESOURCES": {
+        "title": "LEGAL RESOURCES",
+        "Terms of Service": "Terms of Service",
+        "Privacy Policy": "Privacy Policy",
+        "Cookies": "Cookies"
+      },
+      "DOCUMENTATION": {
+        "title": "DOCUMENTATION",
+        "Developer documentation": "Developer documentation",
+        "API documentation": "API documentation",
+        "Postman collection": "Postman collection"
+      },
+      "CONTACT US": {
+        "title": "CONTACT US",
+        "Contact Forms": "Contact Forms",
+        "Help overview": "Help overview",
+        "GitHub": "GitHub",
+        "LinkedIn": "LinkedIn",
+        "Twitter": "Twitter",
+        "Instagram": "Instagram"
+      }  
     }
   }
 }

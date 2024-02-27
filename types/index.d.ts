@@ -59,4 +59,9 @@ export type SubscriptionPlan = {
   stripePriceId: string
 }
 
+export type ResourcesConfig = {
+  mainNav: MainNavItem[]
+  sidebarNav: SidebarNavItem[]
+}
+
 export type UserSubscriptionPlan = SubscriptionPlan & Subscription

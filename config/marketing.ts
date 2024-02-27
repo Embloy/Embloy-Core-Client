@@ -20,6 +20,10 @@ export const marketingConfig: MarketingConfig = {
       href: siteConfig.links.developer,
     },
     {
+      title: "Resources",
+      href: "/resources",
+    },
+    {
       title: "About",
       href: siteConfig.links.about,
     },

@@ -15,6 +15,10 @@ export const dashboardConfig: DashboardConfig = {
       title: "About",
       href: siteConfig.links.about,
     },
+    {
+      title: "Resources",
+      href: "/resources",
+    },
   ],
   sidebarNav: [
     {

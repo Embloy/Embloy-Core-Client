@@ -48,7 +48,6 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
   }, [refreshToken, lang]);
 
   if (isLoading) {
-    // You can return a loading spinner here
     return <Loading/>;
   }
 

@@ -5,6 +5,7 @@
     "employers": "Arbeitgeber",
     "developers": "Entwickler",
     "about": "Über uns",
+    "resources": "Ressourcen",
     "login": "Anmelden"
   },
   "marketing": {
@@ -82,6 +83,11 @@
     }
   },
   "auth": {
+    "oauth": {
+      "success": "Authentifizierung erfolgreich. Bitte schließen Sie dieses Fenster.",
+      "error": "Authentifizierung fehlgeschlagen. Bitte schließen Sie dieses Fenster und versuchen Sie es erneut.",
+      "errorOccured": "Ein Fehler ist aufgetreten: {error}. Bitte schließen Sie dieses Fenster und versuchen Sie es erneut."
+    },
     "login": {
       "back": "Zurück",
       "welcomeback": "Willkommen zurück",
@@ -398,6 +404,7 @@
       "features": "Features",
       "pricing": "Preise",
       "employers": "Arbeitgeber",
+      "resources": "Ressourcen",
       "developers": "Entwickler",
       "about": "Über"
     },
@@ -471,6 +478,54 @@
     "generic": {
       "title": "Etwas ist schief gelaufen.",
       "description": "Bitte versuche es erneut. Wenn das Problem weiterhin besteht, wende dich an den Support."
+    }
+  },
+  "resources": {
+    "Overview": {
+      "title": "Ressourcen"
+    },
+    "Privacy Policy": {
+      "title": "Datenschutz"
+    },
+    "Terms of Service": {
+      "title": "Nutzungsbedingungen"
+    },
+    "Resources": {
+      "title": "Ressourcen"
+    },
+    "Introduction": {
+      "title": "Einführung"
+    },
+    "Cookies": {
+      "title": "導入"
+    },
+    "sidebar": {
+      "onThisPage": "Auf Dieser Seite",
+      "OVERVIEW": {
+        "title": "ÜBERSICHT",
+        "Introduction": "Einführung"
+      },
+      "LEGAL RESOURCES": {
+        "title": "RECHTLICHE RESSOURCEN",
+        "Terms of Service": "Nutzungsbedingungen",
+        "Privacy Policy": "Datenschutzrichtlinie",
+        "Cookies": "Cookies"
+      },
+      "DOCUMENTATION": {
+        "title": "DOKUMENTATION",
+        "Developer documentation": "Entwicklerdokumentation",
+        "API documentation": "API-Dokumentation",
+        "Postman collection": "Postman-Sammlung"
+      },
+      "CONTACT US": {
+        "title": "KONTAKTIERE UNS",
+        "Contact Forms": "Kontaktformulare",
+        "Help overview": "Hilfeübersicht",
+        "GitHub": "GitHub",
+        "LinkedIn": "LinkedIn",
+        "Twitter": "Twitter",
+        "Instagram": "Instagram"
+      }
     }
   }
 }

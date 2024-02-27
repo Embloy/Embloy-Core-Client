@@ -5,6 +5,7 @@
     "employers": "Datori di lavoro",
     "developers": "Sviluppatori",
     "about": "Informazioni",
+    "resources": "Risorse",
     "login": "Accedi"
   },
   "marketing": {
@@ -82,6 +83,11 @@
     }
   },
   "auth": {
+    "oauth": {
+      "success": "Autenticazione riuscita. Si prega di chiudere questa finestra.",
+      "error": "Autenticazione fallita. Si prega di chiudere questa finestra e riprovare.",
+      "errorOccured": "Si è verificato un errore: {error}. Si prega di chiudere questa finestra e riprovare."
+    },
     "login": {
       "back": "Indietro",
       "welcomeback": "Bentornato",
@@ -399,6 +405,7 @@
       "pricing": "Prezzi",
       "employers": "Datori di lavoro",
       "developers": "Sviluppatori",
+      "resources": "Risorse",
       "about": "Di"
     },
     "side": {
@@ -471,6 +478,54 @@
     "generic": {
       "title": "Qualcosa è andato storto.",
       "description": "Si prega di riprovare. Se il problema persiste, contattare il supporto."
+    }
+  },
+  "resources": {
+    "Overview": {
+      "title": "Risorse"
+    },
+    "Privacy Policy": {
+      "title": "Privacy"
+    },
+    "Terms of Service": {
+      "title": "Termini e condizioni"
+    },
+    "Resources": {
+      "title": "Risorse"
+    },
+    "Introduction": {
+      "title": "Introduzione"
+    },
+    "Cookies": {
+      "title": "Cookie"
+    },
+    "sidebar": {
+      "onThisPage": "Su Questa Pagina",
+      "OVERVIEW": {
+        "title": "INFORMAZIONI GENERALI",
+        "Introduction": "Introduzione"
+      },
+      "LEGAL RESOURCES": {
+        "title": "RISORSE LEGALI",
+        "Terms of Service": "Termini di servizio",
+        "Privacy Policy": "Informativa sulla privacy",
+        "Cookies": "Cookie"
+      },
+      "DOCUMENTATION": {
+        "title": "DOCUMENTAZIONE",
+        "Developer documentation": "Documentazione sviluppatore",
+        "API documentation": "Documentazione API",
+        "Postman collection": "Collezione Postman"
+      },
+      "CONTACT US": {
+        "title": "CONTATTACI",
+        "Contact Forms": "Moduli di contatto",
+        "Help overview": "Panoramica dell'aiuto",
+        "GitHub": "GitHub",
+        "LinkedIn": "LinkedIn",
+        "Twitter": "Twitter",
+        "Instagram": "Instagram"
+      }
     }
   }
 }

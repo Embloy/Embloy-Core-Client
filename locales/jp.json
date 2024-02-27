@@ -5,6 +5,7 @@
       "employers": "雇用者",
       "developers": "開発者",
       "about": "について",
+      "resources": "リソース",
       "login": "ログイン"
   },
   "marketing": {
@@ -82,6 +83,11 @@
       }
   },
   "auth": {
+    "oauth": {
+      "success": "認証に成功しました。このウィンドウを閉じてください。",
+      "error": "認証に失敗しました。このウィンドウを閉じて、もう一度やり直してください。",
+      "errorOccured": "エラーが発生しました：{error}。このウィンドウを閉じて、もう一度やり直してください。"
+    },
     "login": {
       "back": "戻る",
       "welcomeback": "お帰りなさい",
@@ -398,6 +404,7 @@
       "features": "機能",
       "pricing": "価格設定",
       "employers": "雇用主",
+      "resources": "リソース",
       "developers": "開発者",
       "about": "約"
     },
@@ -471,6 +478,54 @@
     "generic": {
       "title": "何かがうまくいかなかった。",
       "description": "もう一度お試しください。問題が解決しない場合は、サポートに連絡してください。"
+    }
+  },
+  "resources": {
+    "Overview": {
+      "title": "リソース"
+    },
+    "Privacy Policy": {
+      "title": "プライバシー"
+    },
+    "Terms of Service": {
+      "title": "利用規約"
+    },
+    "Resources": {
+      "title": "リソース"
+    },
+    "Introduction": {
+      "title": "導入"
+    },
+    "Cookies": {
+      "title": "クッキー"
+    },
+    "sidebar": {
+      "onThisPage": "このページについて",
+      "OVERVIEW": {
+        "title": "概要",
+        "Introduction": "導入"
+      },
+      "LEGAL RESOURCES": {
+        "title": "法的資料",
+        "Terms of Service": "利用規約",
+        "Privacy Policy": "プライバシーポリシー",
+        "Cookies": "クッキー"
+      },
+      "DOCUMENTATION": {
+        "title": "ドキュメンテーション",
+        "Developer documentation": "開発者向けドキュメント",
+        "API documentation": "API ドキュメント",
+        "Postman collection": "Postman コレクション"
+      },
+      "CONTACT US": {
+        "title": "お問い合わせ",
+        "Contact Forms": "お問い合わせフォーム",
+        "Help overview": "ヘルプ概要",
+        "GitHub": "GitHub",
+        "LinkedIn": "LinkedIn",
+        "Twitter": "Twitter",
+        "Instagram": "Instagram"
+      }
     }
   }
 }

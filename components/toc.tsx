@@ -5,12 +5,29 @@ import * as React from "react"
 import { TableOfContents } from "@/lib/toc"
 import { cn } from "@/lib/utils"
 import { useMounted } from "@/hooks/use-mounted"
+import { Locale } from "@/i18n-config"
+import { useEffect, useState } from "react"
+import { getDictionary } from "@/app/[lang]/dictionaries"
 
 interface TocProps {
   toc: TableOfContents
+  params: {
+    lang: Locale
+  }
 }
 
-export function DashboardTableOfContents({ toc }: TocProps) {
+export function DashboardTableOfContents({ toc, params: {lang} }: TocProps) {
+  const [dict, setDict] = useState<Record<string, any> | null>(null);
+  
+  useEffect(() => {
+    const fetchDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+      setDict(dictionary);
+    };
+
+    fetchDictionary();
+  }, [lang]);
+
   const itemIds = React.useMemo(
     () =>
       toc.items
@@ -29,9 +46,9 @@ export function DashboardTableOfContents({ toc }: TocProps) {
     return null
   }
 
-  return mounted ? (
+  return dict && mounted ? (
     <div className="space-y-2">
-      <p className="font-medium">On This Page</p>
+      <p className="font-medium">{dict.resources.sidebar.onThisPage}</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   ) : null

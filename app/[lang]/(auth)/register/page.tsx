@@ -57,13 +57,15 @@ export default function RegisterPage({ params: { lang } }) {
           <p className="px-8 text-center text-sm text-muted-foreground">
           {dict.auth.register.agreeToTerms}
             <Link
-              href={`/${lang}/terms`}
+              href={`/${lang}/resources/terms`}
+              target="_blank"
               className="hover:text-brand underline underline-offset-4"
             >
               {dict.auth.register.terms}
             </Link>{dict.auth.register.and}
             <Link
-              href={`/${lang}/privacy`}
+              href={`/${lang}/resources/privacy`}
+              target="_blank"
               className="hover:text-brand underline underline-offset-4"
             >
               {dict.auth.register.privacyPolicy}
