@@ -12,12 +12,12 @@ export const dashboardConfig: DashboardConfig = {
       href: siteConfig.links.developer,
     },
     {
-      title: "About",
-      href: siteConfig.links.about,
-    },
-    {
       title: "Resources",
       href: "/resources",
+    },
+    {
+      title: "About",
+      href: siteConfig.links.about,
     },
   ],
   sidebarNav: [
