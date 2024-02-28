@@ -73,7 +73,7 @@ export async function verify(email: string, password: string): Promise<number | 
 }
 
 export async function activationToken(email: string): Promise<number | null> {
-  const response = await fetch(`${siteConfig.api_url}/user/activation`, {
+  const response = await fetch(`${siteConfig.api_url}/user/activate`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
