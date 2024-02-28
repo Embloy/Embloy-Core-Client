@@ -126,6 +126,14 @@
       "setPassword": "Définir le mot de passe",
       "email": "e-mail"
     },
+    "activation": {
+      "back": "Retour",
+      "title": "Demander un nouveau lien d'activation",
+      "enterEmail": "Entrez votre email pour demander un nouveau lien d'activation pour activer votre compte",
+      "dontHaveAccount": "Vous n'avez pas de compte ? S'inscrire",
+      "request": "Demander le lien",
+      "email": "e-mail"
+    },
     "errors": {
       "login": {
         "title": "Quelque chose s'est mal passé.",
@@ -159,6 +167,10 @@
         "title": "Quelque chose s'est mal passé.",
         "description": "Votre demande de réinitialisation de mot de passe a échoué. Veuillez réessayer."
       },
+      "activation": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande de lien d'activation a échoué. Veuillez réessayer."
+      },
       "First name is required": "Prénom est requis",
       "Last name is required": "Nom est requis",
       "Email must be a valid email": "Email doit être un email valide",
@@ -181,6 +193,10 @@
       "pwresetsuccess": {
         "title": "Succès",
         "description": "Votre mot de passe a été réinitialisé avec succès."
+      },
+      "activation":{
+        "title": "Succès",
+        "description": "Un lien d'activation a été envoyé à votre email."
       }
     }
   },

@@ -118,12 +118,20 @@
       "privacyPolicy": "Informativa sulla privacy"
     },
     "pwreset": {
-      "back": "Torna indietro",
+      "back": "Indietro",
       "title": "Reimposta la tua password",
       "enterEmail": "Inserisci la tua email per reimpostare la password",
       "dontHaveAccount": "Non hai un account? Registrati",
       "reset": "Reimposta password",
       "setPassword": "Imposta password",
+      "email": "Email"
+    },
+    "activation": {
+      "back": "Indietro",
+      "title": "Richiedi un nuovo link di attivazione",
+      "enterEmail": "Inserisci la tua email per richiedere un nuovo link di attivazione per attivare il tuo account",
+      "dontHaveAccount": "Non hai un account? Registrati",
+      "request": "Richiedi link",
       "email": "Email"
     },
     "errors": {
@@ -159,6 +167,10 @@
         "title": "Qualcosa è andato storto.",
         "description": "La richiesta di reimpostazione della password è fallita. Si prega di riprovare."
       },
+      "activation": {
+        "title": "Qualcosa è andato storto.",
+        "description": "La tua richiesta di link di attivazione non è riuscita. Per favore, riprova."
+      },
       "First name is required": "Nome è richiesto",
       "Last name is required": "Cognome è richiesto",
       "Email must be a valid email": "Email deve essere un'email valida",
@@ -181,6 +193,10 @@
       "pwresetsuccess": {
         "title": "Successo",
         "description": "La tua password è stata reimpostata con successo."
+      },
+      "activation": {
+        "title": "Successo",
+        "description": "Un link di attivazione è stato inviato alla tua email."
       }
     }
   },

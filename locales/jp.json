@@ -126,6 +126,14 @@
       "setPassword": "パスワードを設定する",
       "email": "Eメール"
     },
+    "activation": {
+      "back": "戻る",
+      "title": "新しいアクティベーションリンクをリクエストする",
+      "enterEmail": "アカウントを有効化するための新しいアクティベーションリンクをリクエストするためにメールを入力してください",
+      "dontHaveAccount": "アカウントをお持ちでないですか？サインアップ",
+      "request": "リンクをリクエストする",
+      "Email": "Eメール"
+      },
     "errors": {
       "login": {
         "title": "エラーが発生しました。",
@@ -159,6 +167,10 @@
         "title": "何かがうまくいきませんでした。",
         "description": "パスワードリセットリクエストが失敗しました。 もう一度お試しください。"
       },
+      "activation": {
+        "title": "何かがうまくいきませんでした。",
+        "description": "アクティベーションリンクのリクエストが失敗しました。 もう一度お試しください。"
+      },
       "First name is required": "名前が必要です",
       "Last name is required": "姓が必要です",
       "Email must be a valid email": "メールは有効なメールでなければなりません",
@@ -181,6 +193,10 @@
       "pwresetsuccess": {
         "title": "成功",
         "description": "パスワードが正常にリセットされました。"
+      },
+      "activation": {
+        "title": "成功",
+        "description": "アクティベーションリンクがあなたのメールに送信されました。"
       }
     }
   },

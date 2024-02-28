@@ -12,7 +12,7 @@
     "workInProgress": "Diese Seite ist noch in Bearbeitung - Folge uns auf GitHub",
     "mainHeader": "Embloy.",
     "subHeader": "Lösungen, die das HR-Management verbessern.",
-    "recruitmentSteps": "Alle Rekrutierungsschritte an einem Ort: Vereinfachen Sie das Leben für Organisationen und Jobsuchende, indem Sie die Rekrutierungsprozesse zentralisieren.",
+    "recruitmentSteps": "Alle Rekrutierungsschritte an einem Ort: Vereinfache den Prozess für Organisationen und Jobsuchende, indem die Rekrutierungsprozesse zentral gemanaged werden.",
     "getStarted": "Loslegen",
     "forCompanies": "Für Unternehmen",
     "features": "Funktionen",
@@ -20,7 +20,7 @@
     "smartHiring": "Intelligente Bewebungen",
     "smartHiringDescription": "10x schnellere HR-Prozesse durch Automatisierung.",
     "endToEndRecruitment": "End-to-End-Rekrutierungshosting",
-    "endToEndRecruitmentDescription": "Beseitigen Sie die Notwendigkeit für lange E-Mail- und Telefonwechsel.",
+    "endToEndRecruitmentDescription": "Beseitige die Notwendigkeit für lange E-Mail- und Telefonwechsel.",
     "easyToIntegrate": "Einfache Integration",
     "easyToIntegrateDescription": "Mit weniger als 10 Zeilen Code integrierbar.",
     "oneClickToApply": "Ein Klick zum Bewerben",
@@ -126,6 +126,14 @@
       "setPassword": "Passwort festlegen",
       "email": "E-Mail"
     },
+    "activation": {
+      "back": "Zurück",
+      "title": "Fordere einen neuen Aktivierungslink an",
+      "enterEmail": "Gib Deine E-Mail ein, um einen neuen Aktivierungslink zur Aktivierung Deines Kontos anzufordern",
+      "dontHaveAccount": "Du hast noch kein Konto? Jetzt registrieren",
+      "request": "Link anfordern",
+      "Email": "E-Mail"
+      },
     "errors": {
       "login": {
         "title": "Etwas ist schief gelaufen.",
@@ -159,6 +167,10 @@
         "title": "Etwas ist schief gelaufen.",
         "description": "Der Passwortrücksetzungsantrag ist fehlgeschlagen. Bitte versuche es erneut."
       },
+      "activation": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Deine Anfrage für einen neuen Aktivierungslink ist fehlgeschlagen. Bitte versuche es erneut."
+      },
       "First name is required": "Vorname ist erforderlich",
       "Last name is required": "Nachname ist erforderlich",
       "Email must be a valid email": "E-Mail muss eine gültige E-Mail sein",
@@ -181,6 +193,10 @@
       "pwresetsuccess": {
         "title": "Erfolgrech abgeschlossen",
         "description": "Dein Passwort wurde erfolgreich zurückgesetzt."
+      },
+      "activation": {
+        "title": "Erfolgrech abgeschlossen",
+        "description": "Ein Aktivierungslink wurde an Deine E-Mail gesendet."
       }
     }
   },

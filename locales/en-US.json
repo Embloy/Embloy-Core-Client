@@ -126,6 +126,14 @@
       "setPassword": "Set Password",
       "Email": "email"
     },
+    "activation": {
+      "back": "Back",
+      "title": "Request a new activation link",
+      "enterEmail": "Enter your email to request a new activation link to activate your account",
+      "dontHaveAccount": "Don't have an account? Sign Up",
+      "request": "Request Link",
+      "Email": "email"
+    },
     "errors": {
       "login": {
         "title": "Something went wrong.",
@@ -159,6 +167,10 @@
         "title": "Something went wrong.",
         "description": "Your password reset request failed. Please try again."
       },
+      "activation": {
+        "title": "Something went wrong.",
+        "description": "Your activation link request failed. Please try again."
+      },
       "First name is required": "First name is required",
       "Last name is required": "Last name is required",
       "Email must be a valid email": "Email must be a valid email",
@@ -181,6 +193,10 @@
       "pwresetsuccess": {
         "title": "Success",
         "description": "Your password has been successfully reset."
+      },
+      "activation": {
+        "title": "Success",
+        "description": "An activation link has been sent to your email."
       }
     }
   },

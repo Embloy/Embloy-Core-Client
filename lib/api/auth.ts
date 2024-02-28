@@ -72,6 +72,24 @@ export async function verify(email: string, password: string): Promise<number | 
   return null;
 }
 
+export async function activationToken(email: string): Promise<number | null> {
+  const response = await fetch(`${siteConfig.api_url}/user/activation`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "email": email,
+    })
+  })
+
+  if (!response.ok) {
+    return response.status;
+  }
+
+  return null;
+}
+
 // TODO: ERROR HANDLING
 export async function getAccessToken(): Promise<string | null> {
   
