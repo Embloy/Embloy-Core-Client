@@ -126,6 +126,14 @@
       "setPassword": "Set Password",
       "Email": "email"
     },
+    "pwupdate": {
+      "back": "Back",
+      "title": "Update Your Password",
+      "enterPassword": "Enter your new password",
+      "oauthReset": "If you signed up using OAuth, you first have to set a password by requesting a new reset link here.",
+      "update": "Update Password",
+      "setPassword": "Set Password"
+    },
     "activation": {
       "back": "Back",
       "title": "Request a new activation link",
@@ -165,7 +173,7 @@
       },
       "pwreset": {
         "title": "Something went wrong.",
-        "description": "Your password reset request failed. Please try again."
+        "description": "Token has either expired, has a purpose mismatch, is for another record, or has been tampered with."
       },
       "activation": {
         "title": "Something went wrong.",
@@ -193,6 +201,10 @@
       "pwresetsuccess": {
         "title": "Success",
         "description": "Your password has been successfully reset."
+      },
+      "pwupdatesuccess": {
+        "title": "Success",
+        "description": "Your password has been successfully updated."
       },
       "activation": {
         "title": "Success",

@@ -13,6 +13,8 @@ import {Locale} from "../../../../i18n-config";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageToggle } from "@/components/language-toggle";
 import { Separator } from "@radix-ui/react-select";
+import { toast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation"
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -25,37 +27,37 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [dict, setDict] = useState<Record<string, any> | null>(null);
+  const router = useRouter()
 
   useEffect(() => {
-    const fetchDictionary = async () => {
+    const fetchDictionaryAndUser = async () => {
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
-    };
 
-    fetchDictionary();
-
-    const fetchUser = async () => {
-      const currentUser = await getCurrentUser();
+      setIsLoading(true);  
+      const {response, err} = await getCurrentUser();
       setIsLoading(false);  
-      if (currentUser) {
-        setUser(currentUser);
+
+      if (dict && (err || !response)) {
+        router.push(`/${lang}/login`);
+        return toast({
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
+          variant: "destructive",
+        })
+      } else {
+        setUser(response);
       }
     };
 
-    fetchUser();
-  }, [lang]);
+    fetchDictionaryAndUser();
+  }, [lang, dict, router]);
 
   if (isLoading) {
-    // You can return a loading spinner here
     return null;
   }
 
-  if (!user) {
-    redirect(`/${lang}/login`);
-  }
-
-
-  return dict && (
+  return dict && user && (
     <div className="flex min-h-screen flex-col space-y-6">
       <header className="sticky top-0 z-40 border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">

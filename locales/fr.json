@@ -134,6 +134,14 @@
       "request": "Demander le lien",
       "email": "e-mail"
     },
+    "pwupdate": {
+      "back": "Retour",
+      "title": "Mettez à jour votre mot de passe",
+      "enterPassword": "Entrez votre nouveau mot de passe",
+      "oauthReset": "Si vous vous êtes inscrit en utilisant OAuth, vous devez d'abord définir un mot de passe en demandant un nouveau lien de réinitialisation ici.",
+      "update": "Mettre à jour le mot de passe",
+      "setPassword": "Définir le mot de passe"
+    },
     "errors": {
       "login": {
         "title": "Quelque chose s'est mal passé.",
@@ -165,7 +173,7 @@
       },
       "pwreset": {
         "title": "Quelque chose s'est mal passé.",
-        "description": "Votre demande de réinitialisation de mot de passe a échoué. Veuillez réessayer."
+        "description": "Le jeton a expiré, son objectif ne correspond pas, est destiné à un autre enregistrement ou a été falsifié."
       },
       "activation": {
         "title": "Quelque chose s'est mal passé.",
@@ -193,6 +201,10 @@
       "pwresetsuccess": {
         "title": "Succès",
         "description": "Votre mot de passe a été réinitialisé avec succès."
+      },
+      "pwupdatesuccess": {
+        "title": "Succès",
+        "description": "Votre mot de passe a été mis à jour avec succès."
       },
       "activation":{
         "title": "Succès",

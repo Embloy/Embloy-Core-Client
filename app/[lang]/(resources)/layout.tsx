@@ -33,51 +33,26 @@ export default function ResourcesLayout({ children, params: {lang} }: ResourcesL
   const [dict, setDict] = useState<Record<string, any> | null>(null);
 
   useEffect(() => {
-    const fetchUserAndDictionary = async () => {
-      const currentUser = await getCurrentUser(undefined);
+    const fetchDictionaryAndUser = async () => {
       const dictionary = await getDictionary(lang);
-      setIsLoading(false);
-      if (currentUser) {
-        setUser(currentUser);
-      }
       setDict(dictionary);
+
+      setIsLoading(true);  
+      const {response} = await getCurrentUser();
+      setIsLoading(false);  
+
+      if (response) {
+        setUser(response)
+      }
+
     };
 
-    fetchUserAndDictionary();
-  }, [lang]);
+    fetchDictionaryAndUser();
+  }, [lang, dict]);
 
   if (isLoading) {
     return <Loading/>;
   }
-
- /* return (
-    <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-40 w-full border-b bg-background">
-        <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-          <MainNav items={resourcesConfig.mainNav} params={{lang: lang}}>
-            <ResourcesSidebarNav items={resourcesConfig.sidebarNav} params={{lang: lang}}/>
-          </MainNav>
-          <div className="flex flex-1 items-center space-x-4 sm:justify-end">
-            <div className="flex-1 sm:grow-0">
-              <DocsSearch />
-            </div>
-            <nav className="flex space-x-4">
-              <Link
-                href={siteConfig.links.github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Icons.gitHub className="h-7 w-7" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-      <div className="container flex-1">{children}</div>
-      <SiteFooter className="border-t" params={{lang: lang}}/>
-    </div>
-  )*/
 
   if (user) {
     return dict && (

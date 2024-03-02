@@ -158,7 +158,7 @@ export function clearUserSession(): void {
   Cookies.remove('refresh_token', { sameSite: 'Strict', secure: false });
 }
 
-export async function resetPassword(email: string): Promise<void> {
+export async function resetPassword(email: string): Promise<number | null> {
   const response = await fetch(`${siteConfig.api_url}/user/password/reset?email=${email}`, {
     method: 'POST',
     headers: {
@@ -167,15 +167,19 @@ export async function resetPassword(email: string): Promise<void> {
   })
 
   if (!response.ok) {
-    throw new Error('Failed to send password reset email');
+    return response.status
   }
+
+  return null
 }
 
-export async function setPassword(password: string, password_confirmation: string, reset_token: string): Promise<void> {
-  const response = await fetch(`${siteConfig.api_url}/user/password/reset?token=${reset_token}`, {
+export async function setPassword(password: string, password_confirmation: string, reset_token: string| null): Promise<number | null> {
+  const route = reset_token ? `${siteConfig.api_url}/user/password/reset?token=${reset_token}` : `${siteConfig.api_url}/user/password`
+  const response = await fetch(route, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      'access-token': reset_token ? '' :  await getAccessToken() || ''
     },
     body: JSON.stringify({
       user: {
@@ -186,8 +190,10 @@ export async function setPassword(password: string, password_confirmation: strin
   })
 
   if (!response.ok) {
-    throw new Error('Failed to update password');
+    return response.status
   }
+
+  return null
 }
 
 export function signInWithGithub() {

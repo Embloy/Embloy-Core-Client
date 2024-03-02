@@ -423,7 +423,7 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
           </CardContent>
         </Card>
         <CardFooter>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           <button
             type="submit"
             className={cn(buttonVariants(), className)}
@@ -433,6 +433,14 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             <span>{dict.dashboard.settings.save}</span>
+          </button>
+          <button
+            type="button"
+            className={cn(buttonVariants({ variant: "secondary"}), className)}
+            disabled={isSaving}
+            onClick={() => router.push("/dashboard/settings/password?origin=/dashboard/settings")}
+          >
+            <span>{dict.auth.pwupdate.update}</span>
           </button>
           <button
             type="button"

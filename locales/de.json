@@ -126,6 +126,14 @@
       "setPassword": "Passwort festlegen",
       "email": "E-Mail"
     },
+    "pwupdate": {
+      "back": "Zurück",
+      "title": "Aktualisiere Dein Passwort",
+      "enterPassword": "Gib Dein neues Passwort ein",
+      "oauthReset": "Wenn Du dich mit OAuth angemeldet hast, musst Du zuerst ein Passwort festlegen, indem Du hier einen neuen Reset-Link anforderst.",
+      "update": "Passwort aktualisieren",
+      "setPassword": "Passwort festlegen"
+    },
     "activation": {
       "back": "Zurück",
       "title": "Fordere einen neuen Aktivierungslink an",
@@ -165,7 +173,7 @@
       },
       "pwreset": {
         "title": "Etwas ist schief gelaufen.",
-        "description": "Der Passwortrücksetzungsantrag ist fehlgeschlagen. Bitte versuche es erneut."
+        "description": "Das Token ist entweder abgelaufen, weist einen Zweckkonflikt auf, ist für einen anderen Datensatz bestimmt oder wurde manipuliert."
       },
       "activation": {
         "title": "Etwas ist schief gelaufen.",
@@ -193,6 +201,10 @@
       "pwresetsuccess": {
         "title": "Erfolgrech abgeschlossen",
         "description": "Dein Passwort wurde erfolgreich zurückgesetzt."
+      },
+      "pwupdatesuccess": {
+        "title": "Erfolgrech abgeschlossen",
+        "description": "Dein Passwort wurde erfolgreich aktualisiert."
       },
       "activation": {
         "title": "Erfolgrech abgeschlossen",

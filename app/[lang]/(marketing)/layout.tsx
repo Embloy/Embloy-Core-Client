@@ -18,6 +18,7 @@ import {Locale} from "../../../i18n-config";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Separator } from "@radix-ui/react-select";
 import { LanguageToggle } from "@/components/language-toggle";
+import { toast } from "@/components/ui/use-toast";
 
 
 interface MarketingLayoutProps {
@@ -34,18 +35,22 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
   const refreshToken = useSearchParams().get('refresh_token');
 
   useEffect(() => {
-    const fetchUserAndDictionary = async () => {
-      const currentUser = await getCurrentUser(refreshToken ?? undefined);
+    const fetchDictionaryAndUser = async () => {
       const dictionary = await getDictionary(lang);
-      setIsLoading(false);
-      if (currentUser) {
-        setUser(currentUser);
-      }
       setDict(dictionary);
+
+      setIsLoading(true);  
+      const {response, err} = await getCurrentUser(refreshToken ?? undefined);
+      setIsLoading(false);  
+
+      if (response) {
+        setUser(response)
+      }
+
     };
 
-    fetchUserAndDictionary();
-  }, [refreshToken, lang]);
+    fetchDictionaryAndUser();
+  }, [lang, dict, refreshToken]);
 
   if (isLoading) {
     return <Loading/>;

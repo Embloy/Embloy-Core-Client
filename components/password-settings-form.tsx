@@ -15,9 +15,8 @@ import { Icons } from "@/components/icons"
 import { pwResetSchema } from "@/lib/validations/auth"
 import { Locale } from "@/i18n-config"
 import { getDictionary } from "@/app/[lang]/dictionaries"
-import { useSearchParams, useRouter } from "next/navigation"
 
-interface PasswordFormProps extends React.HTMLAttributes<HTMLDivElement> {
+interface PasswordSettingsFormProps extends React.HTMLAttributes<HTMLDivElement> {
   params: {
     lang: Locale
   }
@@ -26,27 +25,17 @@ interface PasswordFormProps extends React.HTMLAttributes<HTMLDivElement> {
 
 type FormData = z.infer<typeof pwResetSchema>
 
-export function PasswordForm({ className, params: {lang}, ...props }: PasswordFormProps) {
+export function PasswordSettingsForm({ className, params: {lang}, ...props }: PasswordSettingsFormProps) {
   const [dict, setDict] = React.useState<Record<string, any> | null>(null);
-  const searchParams = useSearchParams();
-  const reset_token = searchParams.get("reset_token");
-  const router = useRouter();
 
   React.useEffect(() => {
-    if (!searchParams.has("reset_token") || !reset_token || reset_token.length <= 0) {
-      router.back();
-      // TODO: Redirect to other page
-      return;
-    }
-
     const fetchDictionary = async () => {
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
     };
 
     fetchDictionary();
-
-  }, [lang, searchParams, router, reset_token]);
+  }, [lang]);
 
   const {
     register,
@@ -60,24 +49,23 @@ export function PasswordForm({ className, params: {lang}, ...props }: PasswordFo
   async function onSubmit(data: FormData) {
     if (dict) {
       setIsLoading(true)
-      const err = await setPassword(data.password, data.passwordConfirmation, reset_token ?? "");
+      const err = await setPassword(data.password, data.passwordConfirmation, null);
       setIsLoading(false)
-      
+ 
       if (err) {
         return toast({
-          title: err == 400 ? dict.auth.errors.pwreset.title : dict.errors[err || "500"].title || dict.errors.generic.title,
-          description: err == 400 ? dict.auth.errors.pwreset.description : dict.errors[err || "500"].description || dict.errors.generic.description,
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
           variant: "destructive",
         })
       }
-
+      
       toast({
-        title: dict.auth.success.pwresetsuccess.title,
-        description: dict.auth.success.pwresetsuccess.description,
+        title: dict.auth.success.pwupdatesuccess.title,
+        description: dict.auth.success.pwupdatesuccess.description,
       })
     }
   }
-  
   return dict && (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -123,7 +111,7 @@ export function PasswordForm({ className, params: {lang}, ...props }: PasswordFo
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            {dict.auth.pwreset.setPassword}
+            {dict.auth.pwupdate.setPassword}
           </button>
         </div>
       </form>

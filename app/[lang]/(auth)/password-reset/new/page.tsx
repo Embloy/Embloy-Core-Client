@@ -43,9 +43,6 @@ export default function PasswordResetPage({ params: { lang } }) {
           <h1 className="text-2xl font-semibold tracking-tight">
           {dict.auth.pwreset.title}
           </h1>
-          <p className="text-sm text-muted-foreground">
-          {dict.auth.pwreset.enterEmail}
-          </p>
         </div>
         <PasswordForm params={{lang: lang}} />
         <p className="px-8 text-center text-sm text-muted-foreground">

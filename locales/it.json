@@ -126,6 +126,14 @@
       "setPassword": "Imposta password",
       "email": "Email"
     },
+    "pwupdate": {
+      "back": "Indietro",
+      "title": "Aggiorna la tua password",
+      "enterPassword": "Inserisci la tua nuova password",
+      "oauthReset": "Se ti sei iscritto utilizzando OAuth, devi prima impostare una password richiedendo un nuovo link di reset qui.",
+      "update": "Aggiorna password",
+      "setPassword": "Imposta password"
+    },
     "activation": {
       "back": "Indietro",
       "title": "Richiedi un nuovo link di attivazione",
@@ -165,7 +173,7 @@
       },
       "pwreset": {
         "title": "Qualcosa è andato storto.",
-        "description": "La richiesta di reimpostazione della password è fallita. Si prega di riprovare."
+        "description": "Il token è scaduto, ha uno scopo non corrispondente, è per un altro record o è stato manomesso."
       },
       "activation": {
         "title": "Qualcosa è andato storto.",
@@ -193,6 +201,10 @@
       "pwresetsuccess": {
         "title": "Successo",
         "description": "La tua password è stata reimpostata con successo."
+      },
+      "pwupdatesuccess": {
+        "title": "Successo",
+        "description": "La tua password è stata aggiornata con successo."
       },
       "activation": {
         "title": "Successo",

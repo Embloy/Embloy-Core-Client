@@ -133,7 +133,15 @@
       "dontHaveAccount": "アカウントをお持ちでないですか？サインアップ",
       "request": "リンクをリクエストする",
       "Email": "Eメール"
-      },
+    },
+    "pwupdate": {
+      "back": "バック",
+      "title": "パスワードを更新する",
+      "enterPassword": "新しいパスワードを入力してください",
+      "oauthReset": "OAuthを使用してサインアップした場合、まずここで新しいリセットリンクをリクエストしてパスワードを設定する必要があります。",
+      "update": "パスワードを更新する",
+      "setPassword": "パスワードを設定する"
+    },
     "errors": {
       "login": {
         "title": "エラーが発生しました。",
@@ -165,7 +173,7 @@
       },
       "pwreset": {
         "title": "何かがうまくいきませんでした。",
-        "description": "パスワードリセットリクエストが失敗しました。 もう一度お試しください。"
+        "description": "トークンの有効期限が切れているか、目的が一致していないか、別のレコード用であるか、または改ざんされています。"
       },
       "activation": {
         "title": "何かがうまくいきませんでした。",
@@ -193,6 +201,10 @@
       "pwresetsuccess": {
         "title": "成功",
         "description": "パスワードが正常にリセットされました。"
+      },
+      "pwupdatesuccess": {
+        "title": "成功",
+        "description": "パスワードが正常に更新されました。"
       },
       "activation": {
         "title": "成功",

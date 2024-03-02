@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import { useRouter } from "next/navigation"
 import { getCurrentUser, User } from "@/lib/api/session"
 import { DashboardHeader } from "@/components/header"
 import { DashboardShell } from "@/components/shell"
@@ -13,39 +12,30 @@ export default function SettingsPage({ params: { lang } }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
   const [dict, setDict] = useState<Record<string, any> | null>(null);
-  const router = useRouter()
 
   useEffect(() => {
-    const fetchDictionary = async () => {
+    const fetchDictionaryAndUser = async () => {
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
-    };
 
-    fetchDictionary();
-    const fetchUser = async () => {
-      setIsLoading(true);
-      const currentUser = await getCurrentUser();
-      if (!currentUser) {
-        router.push(`/${lang}/login`);
-      } else {
-        setUser(currentUser);
+      setIsLoading(true);  
+      const {response} = await getCurrentUser();
+      setIsLoading(false);  
+
+      if (response) {
+        setUser(response);
       }
-      setIsLoading(false);
     };
 
-    fetchUser();
-  }, [router, lang]);
+    fetchDictionaryAndUser();
+  }, [lang, dict]);
 
   if (isLoading) {
     return <DashboardSettingsLoading params={{lang: lang}}/>
   }
 
-  if (!user && !isLoading) {
-    return null;
-  }
-
   if (user && !isLoading) {
-    return dict && (
+    return dict && user && (
       <DashboardShell>
         <DashboardHeader
           heading={dict.dashboard.settings.title}
@@ -56,5 +46,5 @@ export default function SettingsPage({ params: { lang } }) {
         </div>
       </DashboardShell>
     )
-}
+  }
 }

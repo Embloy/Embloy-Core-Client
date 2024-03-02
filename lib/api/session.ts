@@ -34,35 +34,30 @@ export interface User {
   linkedin_url: string | null;
 }
 
-export async function getSessionUser(): Promise<{ user: User } | null> {
-  try {
+export async function getSessionUser(): Promise<{ response: User | null, err: number | null }> {
     const accessToken = await getAccessToken();
     if (accessToken) {
-      const userData = await getUserData(accessToken);
-      return { user: userData.user };
+      const {response, err} = await getUserData(accessToken);
+      if (err || !response) {
+        clearUserSession()
+        return {response: null, err: err || 500}
+      }
+      return { response: response.user, err: null  };
+    } else {
+      return {response: null, err: 401}
     }
-  } catch (error) {
-    console.error("Error getting user data:", error);
-    clearUserSession();
-  }
-  return null;
 }
 
-export async function getCurrentUser(refreshToken?: string): Promise<User | null> {
-  let session: { user: User; } | null;
-  try {
-    if (refreshToken) Cookies.set('refresh_token', refreshToken, { sameSite: 'Strict', secure: false });
-    session = await getSessionUser();
-  } catch (error) {
-    console.error("Error getting session:", error);
-    return null;
+export async function getCurrentUser(refreshToken?: string): Promise<{response: User | null, err: number | null}> {
+  if (refreshToken) Cookies.set('refresh_token', refreshToken, { sameSite: 'Strict', secure: false });
+
+  const {response, err} = await getSessionUser();
+  if (err || !response) {
+    clearUserSession()
+    return {response: null, err: err || 500}
   }
 
-  if (session) {
-    return session.user;
-  }
-
-  return null;
+  return {response: response, err: null};
 }
 
 export async function getSession(refreshToken?: string): Promise<{ session: Boolean }> {

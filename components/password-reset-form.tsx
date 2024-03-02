@@ -51,21 +51,21 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
   async function onSubmit(data: FormData) {
     setIsLoading(true)
     if (dict) {
-      try {
-        await resetPassword(data.email);
-        setIsLoading(false)
-        toast({
-          title: dict.auth.success.pwreset.title,
-          description: dict.auth.success.pwreset.description,
-        })
-      } catch (error) {
-        setIsLoading(false)
-        toast({
-          title: dict.auth.errors.pwreset.title,
-          description: dict.auth.errors.pwreset.description,
+      const err = await resetPassword(data.email);
+      setIsLoading(false)
+      
+      if (err) {
+        return toast({
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
           variant: "destructive",
         })
       }
+      
+      toast({
+        title: dict.auth.success.pwreset.title,
+        description: dict.auth.success.pwreset.description,
+      })
     }
   }
 
