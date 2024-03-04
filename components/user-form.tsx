@@ -51,6 +51,10 @@ interface UserFormProps extends React.HTMLAttributes<HTMLFormElement> {
   };
 }
 
+function parsePhone(phone: string | null) {
+  return phone ? String(parseFloat(phone)) : "";
+}
+
 type FormData = z.infer<typeof userSchema>;
 
 export function UserForm({ user, className, params: { lang }, ...props }: UserFormProps) {
@@ -67,7 +71,7 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
-      phone: user.phone,
+      phone: parsePhone(user.phone),
       address: user.address,
       twitter_url: user.twitter_url,
       linkedin_url: user.linkedin_url,
@@ -93,35 +97,39 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
 
   async function onSubmit(data: FormData) {
     setIsSaving(true);
-
-    const success = await updateUser(JSON.stringify({ user: data }));
+  
+    // Parse phone number to a number
+    const formattedData = {
+      ...data,
+      phone: data.phone ? parseFloat(data.phone.replace(/[^\d]/g, "")) : null,
+    };
+  
+    const err = await updateUser(JSON.stringify({ user: formattedData }));
     setIsSaving(false);
-
-    if (!success) {
+  
+    if (err) {
       return dict && toast({
-        title: dict.dashboard.settings.errors.updateAccount.title,
-        description: dict.dashboard.settings.errors.updateAccount.description,
+        title: dict.errors[err || "500"].title || dict.errors.generic.title,
+        description: dict.errors[err || "500"].description || dict.errors.generic.description,
         variant: "destructive",
       });
     }
-
+  
     dict && toast({
       description: dict.dashboard.settings.success.updateAccount.description,
     });
-
-    // router.refresh()
   }
 
   async function onDelete() {
     setIsDeleting(true);
 
-    const success = await deleteUser();
+    const err = await deleteUser();
     setIsDeleting(false);
 
-    if (!success) {
+    if (err) {
       return dict && toast({
-        title: dict.dashboard.settings.errors.deleteAccount.title,
-        description: dict.dashboard.settings.errors.deleteAccount.description,
+        title: dict.errors[err || "500"].title || dict.errors.generic.title,
+        description: dict.errors[err || "500"].description || dict.errors.generic.description,
         variant: "destructive",
       });
     }
@@ -135,11 +143,11 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
 
   async function uploadImage() {
     if (selectedImage) {
-      const success = await uploadUserImage(selectedImage);
-      if (!success) {
+      const err = await uploadUserImage(selectedImage);
+      if (err) {
         return dict && toast({
-          title: dict.dashboard.settings.errors.uploadImage.title,
-          description: dict.dashboard.settings.errors.uploadImage.description,
+          title: dict.errors[err || "500"].title || dict.errors.generic.title,
+          description: dict.errors[err || "500"].description || dict.errors.generic.description,
           variant: "destructive",
         });
       }
@@ -151,11 +159,11 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
   }
 
   async function removeImage() {
-    const success = await deleteImage();
-    if (!success) {
+    const err = await deleteImage();
+    if (err) {
       return dict && toast({
-        title: dict.dashboard.settings.errors.deleteImage.title,
-        description: dict.dashboard.settings.errors.deleteImage.description,
+        title: dict.errors[err || "500"].title || dict.errors.generic.title,
+        description: dict.errors[err || "500"].description || dict.errors.generic.description,
         variant: "destructive",
       });
     }
@@ -222,7 +230,7 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                   />
                   {errors?.first_name?.message && (
                     <p className="px-1 text-xs text-red-600">
-                      {dict.dashboard.settings.errors.validations[errors.first_name.message] || errors.first_name.message}
+                      {dict.auth.errors[errors.first_name.message] || errors.first_name.message}
                     </p>
                   )}
                 </div>
@@ -242,7 +250,7 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                   />
                   {errors?.last_name?.message && (
                     <p className="px-1 text-xs text-red-600">
-                      {dict.dashboard.settings.errors.validations[errors.last_name.message] || errors.last_name.message}
+                      {dict.auth.errors[errors.last_name.message] || errors.last_name.message}
                     </p>
                   )}
                 </div>
@@ -306,7 +314,7 @@ export function UserForm({ user, className, params: { lang }, ...props }: UserFo
                 />
                   {errors?.email?.message && (
                     <p className="px-1 text-xs text-red-600">
-                      {dict.dashboard.settings.errors.validations[errors.email.message] || errors.email.message}
+                      {dict.auth.errors[errors.email.message] || errors.email.message}
                     </p>
                   )}
               </div>

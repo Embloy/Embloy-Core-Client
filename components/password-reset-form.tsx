@@ -14,16 +14,13 @@ import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { Locale } from "@/i18n-config"
 import { getDictionary } from "@/app/[lang]/dictionaries"
+import { passwordResetSchema } from "@/lib/validations/auth"
 
 interface PasswordResetFormProps extends React.HTMLAttributes<HTMLDivElement> {
   params: {
     lang: Locale
   }
 }
-
-const passwordResetSchema = z.object({
-  email: z.string().email({ message: 'Email must be a valid email' }),
-});
 
 type FormData = z.infer<typeof passwordResetSchema>
 

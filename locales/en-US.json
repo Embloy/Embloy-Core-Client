@@ -180,8 +180,11 @@
         "description": "Your activation link request failed. Please try again."
       },
       "First name is required": "First name is required",
+      "First name must be at most 128 characters": "First name must be at most 128 characters",
       "Last name is required": "Last name is required",
+      "Last name must be at most 128 characters": "Last name must be at most 128 characters",
       "Email must be a valid email": "Email must be a valid email",
+      "Email must be at most 500 characters": "Email must be at most 500 characters",
       "Password must be at least 8 characters": "Password must be at least 8 characters",
       "Password must be at most 72 characters": "Password must be at most 72 characters",
       "Passwords must match": "Passwords must match"

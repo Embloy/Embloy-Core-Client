@@ -19,7 +19,6 @@ export async function getUserData(accessToken: string): Promise<{response: Recor
 
 export async function updateUser(userJson: string): Promise<number | null > {
   const accessToken = await getAccessToken();
-  console.log(`accessToken=${accessToken}`)
   const response = await fetch(`${siteConfig.api_url}/user`, {
     method: 'PATCH',
     headers: {

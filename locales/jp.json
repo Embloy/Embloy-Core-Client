@@ -179,12 +179,15 @@
         "title": "何かがうまくいきませんでした。",
         "description": "アクティベーションリンクのリクエストが失敗しました。 もう一度お試しください。"
       },
-      "First name is required": "名前が必要です",
-      "Last name is required": "姓が必要です",
+      "First name is required": "名前は必須です",
+      "First name must be at most 128 characters": "名前は最大128文字でなければなりません",
+      "Last name is required": "姓は必須です",
+      "Last name must be at most 128 characters": "姓は最大128文字でなければなりません",
       "Email must be a valid email": "メールは有効なメールでなければなりません",
-      "Password must be at least 8 characters": "パスワードは8文字以上でなければなりません",
+      "Email must be at most 500 characters": "メールは最大500文字でなければなりません",
+      "Password must be at least 8 characters": "パスワードは最低8文字でなければなりません",
       "Password must be at most 72 characters": "パスワードは最大72文字でなければなりません",
-      "Passwords must match": "パスワードが一致しなければなりません"    
+      "Passwords must match": "パスワードが一致しなければなりません"
     },
     "success": {
       "login": {

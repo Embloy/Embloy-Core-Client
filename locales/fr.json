@@ -180,8 +180,11 @@
         "description": "Votre demande de lien d'activation a échoué. Veuillez réessayer."
       },
       "First name is required": "Prénom est requis",
+      "First name must be at most 128 characters": "Prénom doit comporter au maximum 128 caractères",
       "Last name is required": "Nom est requis",
+      "Last name must be at most 128 characters": "Nom doit comporter au maximum 128 caractères",
       "Email must be a valid email": "Email doit être un email valide",
+      "Email must be at most 500 characters": "Email doit comporter au maximum 500 caractères",
       "Password must be at least 8 characters": "Le mot de passe doit comporter au moins 8 caractères",
       "Password must be at most 72 characters": "Le mot de passe doit comporter au maximum 72 caractères",
       "Passwords must match": "Les mots de passe doivent correspondre"    
