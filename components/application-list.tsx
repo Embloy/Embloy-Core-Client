@@ -11,12 +11,13 @@ import { getDictionary } from "@/app/[lang]/dictionaries";
 import React from "react";
 interface ApplicationListProps {
   items: Application[]
+  unreadIDs: number[]
   params: {
     lang: Locale
   }
 }
 
-export function ApplicationList({ items, params: {lang} }: ApplicationListProps) {
+export function ApplicationList({ items, unreadIDs, params: {lang} }: ApplicationListProps) {
   const [application, setApplication] = useApplication(items);
   const [dict, setDict] = React.useState<Record<string, any> | null>(null);
   
@@ -50,7 +51,7 @@ export function ApplicationList({ items, params: {lang} }: ApplicationListProps)
                 <div className="flex items-center">
                   <div className="flex items-center gap-2">
                     <div className="font-semibold">{item.job?.title || item.job?.job_slug || `Job#${item.job_id}`}</div>
-                    {!true && (
+                    {unreadIDs.includes(item.job_id) && (
                       <span className="flex h-2 w-2 rounded-full bg-blue-600" />
                     )}
                   </div>

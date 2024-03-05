@@ -65,40 +65,25 @@ export async function getLatestNotifications(): Promise<{response: Notification[
 }
 
 export async function getUnreadApplications(): Promise<{response: number[] | null, err: number | null}> {
-    const accessToken = await getAccessToken();
-    const response = await fetch(`${siteConfig.api_url}/user/notifications/unread`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        "access_token": `${accessToken}`,
-      },
-    });
-  
-    if (!response.ok) {
-       return { response: null, err: response.status };
-    }
+  const accessToken = await getAccessToken();
+  const response = await fetch(`${siteConfig.api_url}/user/notifications/unread`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      "access_token": `${accessToken}`,
+    },
+  });
 
-    if (response.status === 204) {
-        return { response: [], err: null };
-    }
+  if (!response.ok) {
+     return { response: null, err: response.status };
+  }
 
-    let data: { notifications: any[]; };
-    try {
-        data = await response.json();
-    } catch (error) {
-        console.error('Failed to parse JSON response:', error);
-        return { response: null, err: 500 };
-    }
+  if (response.status === 204) {
+      return { response: [], err: null };
+  }
 
-    const notifications = data.notifications.map((notification: any) => {
-        return {
-            ...notification,
-        };
-    });
-
-    const result = notifications.length > 0 ? notifications : null
-
-    return {response: result , err: null };
+  const data = await response.json();
+  return { response: data.job_ids, err: null };
 }
 
 export async function markAsRead(notification_id: number, status: number): Promise<number | null> {

@@ -224,7 +224,11 @@
       "subtitle": "See what's next.",
       "noUpcomingJobs": "No upcoming jobs.",
       "startApply": "You don't have jobs yet. Start applying now.",
-      "apply": "Apply for job"
+      "apply": "Apply for job",
+      "applyWith": "Apply to a job using either a given Quicklink request token or Genius Query.",
+      "cancel": "Cancel",
+      "gq": "Genius Query",
+      "quicklink": "Quicklink"
     },
     "applications": {
       "title": "Applications",

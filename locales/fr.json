@@ -224,7 +224,11 @@
       "subtitle": "Voir ce qui vient.",
       "noUpcomingJobs": "Pas d'emplois à venir.",
       "startApply": "Vous n'avez pas encore d'emplois. Commencez dès maintenant à postuler.",
-      "apply": "Postuler pour un travail"
+      "apply": "Postuler pour un travail",
+      "applyWith": "Postulez à un emploi en utilisant soit un jeton de demande Quicklink donné, soit une Genius Query.",
+      "cancel": "Annuler",
+      "gq": "Genius Query",
+      "quicklink": "Quicklink"    
     },
     "applications": {
       "title": "Candidatures",

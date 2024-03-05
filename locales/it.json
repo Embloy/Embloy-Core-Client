@@ -224,7 +224,11 @@
       "subtitle": "Vedi cosa c'è di nuovo.",
       "noUpcomingJobs": "Nessun lavoro in arrivo.",
       "startApply": "Non hai ancora lavori. Inizia a candidarti adesso.",
-      "apply": "Candidati ora"
+      "apply": "Candidati ora",
+      "applyWith": "Candidati per un lavoro utilizzando un token di richiesta Quicklink o una Genius Query.",
+      "cancel": "Annulla",
+      "gq": "Genius Query",
+      "quicklink": "Quicklink"    
     },
     "applications": {
       "title": "Applicazioni",

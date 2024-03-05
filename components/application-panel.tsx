@@ -22,6 +22,7 @@ import { getDictionary } from "@/app/[lang]/dictionaries"
 
 interface ApplicationPanelProps {
   applications: Application[]
+  unreadIDs: number[]
   params: {
     lang: Locale
   }
@@ -29,6 +30,7 @@ interface ApplicationPanelProps {
 
 export function ApplicationPanel({
   applications,
+  unreadIDs,
   params: {lang}
 }: ApplicationPanelProps) {
   const [application] = useApplication(applications)
@@ -87,10 +89,10 @@ export function ApplicationPanel({
               </form>
             </div>
             <TabsContent value="all" className="m-0">
-              <ApplicationList items={filteredApplications} params={{lang: lang}}/>
+              <ApplicationList items={filteredApplications} params={{ lang: lang }} unreadIDs={unreadIDs}/>
             </TabsContent>
             <TabsContent value="accepted" className="m-0">
-              <ApplicationList items={filteredApplications.filter((item) => item.status === 'accepted')} params={{lang: lang}}/>
+              <ApplicationList items={filteredApplications.filter((item) => item.status === 'accepted')} params={{ lang: lang }} unreadIDs={unreadIDs}/>
             </TabsContent>
           </Tabs>
         </ResizablePanel>

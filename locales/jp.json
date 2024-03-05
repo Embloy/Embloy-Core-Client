@@ -224,7 +224,11 @@
       "subtitle": "次に何があるかを見る。",
       "noUpcomingJobs": "今後のジョブはありません。",
       "startApply": "まだジョブがありません。今すぐ応募を開始してください。",
-      "apply": "仕事に応募する"
+      "apply": "仕事に応募する",
+      "applyWith": "与えられたQuicklinkリクエストトークンまたはGenius Queryを使用してジョブに応募します。",
+      "cancel": "キャンセル",
+      "gq": "Genius Query",
+      "quicklink": "Quicklink"    
     },
     "applications": {
       "title": "応募",

@@ -224,7 +224,11 @@
       "subtitle": "Sehe, was als nächstes kommt.",
       "noUpcomingJobs": "Keine bevorstehenden Stellenangebote.",
       "startApply": "Du hast noch keine aktiven Jobs. Starte jetzt mit der Bewerbung.",
-      "apply": "Neue Bewerbung"
+      "apply": "Neue Bewerbung",
+      "applyWith": "Bewirb dich für einen Job mit einem Quicklink oder einer Genius Query.",
+      "cancel": "Abbrechen",
+      "gq": "Genius Query",
+      "quicklink": "Quicklink"    
     },
     "applications": {
       "title": "Bewerbungen",

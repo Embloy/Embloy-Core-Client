@@ -14,9 +14,11 @@ import { ApplicationItem } from "@/components/ui/application-item";
 import { useMediaQuery } from '@react-hook/media-query';
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { toast } from "@/components/ui/use-toast";
+import { getUnreadApplications } from "@/lib/api/notifications";
 
 export default function ApplicationsPage({ params: { lang } }) {
   const [applications, setApplications] = useState<Application[] | null>(null);
+  const [unreadIDs, setUnreadIDs] = useState<number[] | null>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
   const [dict, setDict] = useState<Record<string, any> | null>(null);
   const router = useRouter()
@@ -48,9 +50,28 @@ export default function ApplicationsPage({ params: { lang } }) {
           setApplications(response);
         }
       }
+      setIsLoading(false);
     };
-
     fetchApplications();
+
+    const fetchUnreadApplicationNotifications = async () => {
+      setIsLoading(true);
+      if (dict) {
+        const {response, err} = await getUnreadApplications();
+
+        if (err || !response) {
+          return toast({
+            title: dict.errors[err || "500"].title || dict.errors.generic.title,
+            description: dict.errors[err || "500"].description || dict.errors.generic.description,
+            variant: "destructive",
+          })
+        } else {
+          setUnreadIDs(response);
+        }
+      }
+      setIsLoading(false);
+    };
+    fetchUnreadApplicationNotifications();
   }, [router, lang, dict] );
 
   if (isLoading) {
@@ -77,7 +98,7 @@ export default function ApplicationsPage({ params: { lang } }) {
     );
   }
 
-  if (applications && !isLoading) {
+  if (applications && unreadIDs && !isLoading) {
     return dict && (
       <div>
         {isMobile ? (
@@ -92,7 +113,7 @@ export default function ApplicationsPage({ params: { lang } }) {
         ) : (
           <DashboardShell>
             <div className="hidden md:flex">
-              <ApplicationPanel applications={applications} params={{lang: lang}} />
+              <ApplicationPanel applications={applications} params={{ lang: lang }} unreadIDs={[]} />
             </div>
           </DashboardShell>
         )}
