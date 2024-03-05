@@ -435,7 +435,7 @@
     "goToDashboard": "Aller au tableau de bord",
     "notFoundTitle": "Oups ! Non trouvé",
     "notFoundSubtitle": "Cette offre d'emploi n'a pas pu être trouvée. Veuillez réessayer.",
-    "applyFor": "Postuler pour",
+    "applyFor": "Postuler pour ",
     "thisJob": "cette offre d'emploi",
     "enterDetails": "Entrez vos coordonnées ci-dessous pour postuler",
     "enterApplicationText": "* Saisissez votre texte de candidature ici... (max. 500 caractères)",
