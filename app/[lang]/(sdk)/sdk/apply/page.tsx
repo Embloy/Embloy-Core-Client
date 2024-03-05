@@ -43,9 +43,9 @@ export default function ApplyPage({ params: { lang } }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true)
       const dictionary = await getDictionary(lang);
       setDict(dictionary);
-      setIsLoading(true)
       if (!searchParams.has("request_token") && !searchParams.has("gq")) {
         router.back();
         return;
@@ -66,7 +66,8 @@ export default function ApplyPage({ params: { lang } }) {
           setJob(requestData.job);
           setSession(requestData.session);
         } else {
-          toast({
+          setIsLoading(false)
+          return toast({
             title: dict.sdk.errors.request.title,
             description: dict.sdk.errors.request.description,
             variant: "destructive",
@@ -79,7 +80,8 @@ export default function ApplyPage({ params: { lang } }) {
             setJob(requestData.job);
             setSession(requestData.session);
           } else {
-            toast({
+            setIsLoading(false)
+            return toast({
               title: dict.sdk.errors.request.title,
               description: dict.sdk.errors.request.description,
               variant: "destructive",
@@ -180,16 +182,21 @@ export default function ApplyPage({ params: { lang } }) {
       const file = event.target.files[0];
       const validTypes = job.allowed_cv_formats;
       const validSize = 2 * 1024 * 1024; // 2MB in bytes
-    
-      if (!validTypes.includes(file.type)) {
+  
+      const fileExtension = '.' + file.name.split('.').pop();
+  
+      console.log("fileExtension=", fileExtension)
+      console.log("validTypes=", validTypes)
+  
+      if (!validTypes.includes(fileExtension)) {
         toast({
-          title: dict.dashboard.settings.errors.invalidFileType.title,
-          description: dict.invalidFileType.description.replace('{formats}', job.allowed_cv_formats.join(", ")),
+          title: dict.sdk.errors.invalidFileType.title,
+          description: dict.sdk.errors.invalidFileType.description.replace('{formats}', job.allowed_cv_formats.join(", ")),
           variant: "destructive",
         });
         return;
       }
-    
+  
       if (file.size > validSize) {
         toast({
           title: dict.dashboard.settings.errors.largeFile.title,
@@ -198,7 +205,7 @@ export default function ApplyPage({ params: { lang } }) {
         });
         return;
       }
-    
+  
       setCvFile(file);
     }
   };
@@ -310,49 +317,8 @@ export default function ApplyPage({ params: { lang } }) {
     return <LoadingScreen />;
   }
 
-  if (!isLoading && (!job || !session)) {
-    return dict && (
-      <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-1 lg:px-0">
-        <Link
-          href="/.."
-          className={cn(
-            buttonVariants({ variant: "ghost" }),
-            "absolute left-4 top-4 md:left-8 md:top-8"
-          )}
-        >
-          <>
-            <Icons.chevronLeft className="mr-2 h-4 w-4" />
-            {dict.sdk.backToHomepage}
-          </>
-        </Link>
-
-        <Link
-          href={`/${lang}`}
-          className={cn(
-            buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8"
-          )}
-        >
-          {dict.sdk.goToEmbloy}
-        </Link>
-        <EmptyPlaceholder className="mx-auto mt-5 max-w-[800px]">
-          <EmptyPlaceholder.Icon name="warning" />
-          <EmptyPlaceholder.Title>{dict.sdk.notFoundTitle}</EmptyPlaceholder.Title>
-          <EmptyPlaceholder.Description>
-            {dict.sdk.notFoundSubtitle}
-          </EmptyPlaceholder.Description>
-          <Link
-            href={`/${lang}/dashboard`}
-            className={buttonVariants({ variant: "ghost" })}
-          >
-            {dict.sdk.goToDashboard}
-          </Link>
-        </EmptyPlaceholder>
-      </div>
-    );
-  }
-  if (!isLoading && job && session) {
-  return dict && (
+  if (!isLoading) {
+  return dict && job && session && (
     <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0">
       <Link
         href="/.."
@@ -575,6 +541,47 @@ export default function ApplyPage({ params: { lang } }) {
       </div>
     </div>
   );
+} else {
+  return dict && (
+    <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-1 lg:px-0">
+      <Link
+        href="/.."
+        className={cn(
+          buttonVariants({ variant: "ghost" }),
+          "absolute left-4 top-4 md:left-8 md:top-8"
+        )}
+      >
+        <>
+          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          {dict.sdk.backToHomepage}
+        </>
+      </Link>
+
+      <Link
+        href={`/${lang}`}
+        className={cn(
+          buttonVariants({ variant: "ghost" }),
+          "absolute right-4 top-4 md:right-8 md:top-8"
+        )}
+      >
+        {dict.sdk.goToEmbloy}
+      </Link>
+      <EmptyPlaceholder className="mx-auto mt-5 max-w-[800px]">
+        <EmptyPlaceholder.Icon name="warning" />
+        <EmptyPlaceholder.Title>{dict.sdk.notFoundTitle}</EmptyPlaceholder.Title>
+        <EmptyPlaceholder.Description>
+          {dict.sdk.notFoundSubtitle}
+        </EmptyPlaceholder.Description>
+        <Link
+          href={`/${lang}/dashboard`}
+          className={buttonVariants({ variant: "ghost" })}
+        >
+          {dict.sdk.goToDashboard}
+        </Link>
+      </EmptyPlaceholder>
+    </div>
+  );
+
 }}
 
 
