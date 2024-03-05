@@ -1,6 +1,5 @@
 "use client"
 
-import { redirect } from "next/navigation"
 import { dashboardConfig } from "@/config/dashboard"
 import { useEffect, useState } from 'react';
 import { getCurrentUser, User } from '@/lib/api/session';
@@ -15,6 +14,7 @@ import { LanguageToggle } from "@/components/language-toggle";
 import { Separator } from "@radix-ui/react-select";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation"
+import NotificationBell from "@/components/notification-bell";
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -63,10 +63,14 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
         <div className="container flex h-16 items-center justify-between py-4">
           <MainNav items={dashboardConfig.mainNav} params={{lang: lang}} />
           <div className="flex items-center">
-            <div className="mx-6 hidden md:flex">
+          <div className="mx-6 md:flex">
+            <div className="hidden md:flex">
               <LanguageToggle />
               <Separator className="mx-1"/>
               <ModeToggle params={{lang: lang}}/>
+            </div>
+              <Separator className="mx-1"/>
+              <NotificationBell params={{lang: lang}}/>
             </div>
             <UserAccountNav
               user={{

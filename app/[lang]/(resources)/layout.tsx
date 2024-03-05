@@ -19,6 +19,7 @@ import { UserAccountNav } from "@/components/user-account-nav"
 import { marketingConfig } from "@/config/marketing"
 import { cn } from "@/lib/utils"
 import { Separator } from "@radix-ui/react-dropdown-menu"
+import NotificationBell from "@/components/notification-bell"
 
 interface ResourcesLayoutProps {
   children: React.ReactNode
@@ -63,11 +64,15 @@ export default function ResourcesLayout({ children, params: {lang} }: ResourcesL
               <ResourcesSidebarNav items={resourcesConfig.sidebarNav} params={{lang: lang}}/> 
             </MainNav>
             <div className="flex items-center">
-              <div className="mx-6 hidden md:flex">
-                <LanguageToggle />
-                <Separator className="mx-1"/>
-                <ModeToggle params={{lang: lang}}/>
-              </div>
+          <div className="mx-6 md:flex">
+            <div className="hidden md:flex">
+              <LanguageToggle />
+              <Separator className="mx-1"/>
+              <ModeToggle params={{lang: lang}}/>
+            </div>
+              <Separator className="mx-1"/>
+              <NotificationBell params={{lang: lang}}/>
+            </div>
               <UserAccountNav
                 user={{
                   first_name: `${user.first_name}`,

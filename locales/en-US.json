@@ -340,14 +340,14 @@
         "directMessages": "Direct messages and mentions",
         "nothing": "Nothing",
         "emailNotifications": "Email Notifications",
-        "applicationNotifications": "Application Notifications",
+        "applicationNotifications": "Application notifications",
         "applicationNotificationsDescription": "Receive emails for status updates on submitted applications.",
         "communicationEmails": "Communication emails",
         "communicationEmailsDescription": "Receive emails about your account activity.",
         "marketingEmails": "Marketing emails",
-        "marketingEmailsDescription": "Receive emails about new products, features, and more.",
-        "securityEmails": "Security Emails",
-        "securityEmailsDescription": "Receive emails about your account activity and security.",
+        "marketingEmailsDescription": "Stay updated with our new products, features, and more.",
+        "securityEmails": "Security emails",
+        "securityEmailsDescription": "Receive alerts about suspicious account activity such as password changes, login from new devices, and more.",
         "updateNotifications": "Update Notifications"
       },
       "errors": {
@@ -483,6 +483,12 @@
       "light": "Light",
       "dark": "Dark",
       "system": "System"
+    },
+    "notifications": {
+      "latestNotifications": "Latest Notifications",
+      "ApplicationStatusNotification": "You have a status update on your application.",
+      "ApplicationNotification": "You have a new application notification.",
+      "noNotifications": "You have no new notifications."
     }
   }, 
   "errors" : {

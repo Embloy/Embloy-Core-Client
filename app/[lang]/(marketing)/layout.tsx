@@ -15,10 +15,10 @@ import { SiteFooter } from "@/components/site-footer"
 import Loading from "../(sdk)/sdk/apply/loading";
 import { getDictionary } from "../dictionaries";
 import {Locale} from "../../../i18n-config";
-import { ModeToggle } from "@/components/mode-toggle";
 import { Separator } from "@radix-ui/react-select";
 import { LanguageToggle } from "@/components/language-toggle";
-import { toast } from "@/components/ui/use-toast";
+import { ModeToggle } from "@/components/mode-toggle";
+import NotificationBell from "@/components/notification-bell";
 
 
 interface MarketingLayoutProps {
@@ -43,9 +43,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
       const {response, err} = await getCurrentUser(refreshToken ?? undefined);
       setIsLoading(false);  
 
-      if (response) {
-        setUser(response)
-      }
+      if (response) setUser(response)
 
     };
 
@@ -57,16 +55,20 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
   }
 
   if (user) {
-    return dict && (
+    return dict && user && (
       <div className="flex min-h-screen flex-col">
         <header className="container top-0 z-40">
           <div className="flex h-20 items-center justify-between py-6">
             <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
             <div className="flex items-center">
-              <div className="mx-6 hidden md:flex">
-                <LanguageToggle />
-                <Separator className="mx-1"/>
-                <ModeToggle params={{lang: lang}}/>
+              <div className="mx-6 md:flex">
+                <div className="hidden md:flex">
+                  <LanguageToggle />
+                  <Separator className="mx-1"/>
+                  <ModeToggle params={{lang: lang}}/>
+                </div>
+                  <Separator className="mx-1"/>
+                  <NotificationBell params={{lang: lang}}/>
               </div>
               <UserAccountNav
                 user={{

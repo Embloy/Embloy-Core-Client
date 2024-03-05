@@ -483,6 +483,12 @@
       "light": "Clair",
       "dark": "Sombre",
       "system": "Système"
+    },
+    "notifications": {
+      "latestNotifications": "Dernières notifications",
+      "ApplicationStatusNotification": "Vous avez une mise à jour de statut pour votre application.",
+      "ApplicationNotification": "Vous avez une nouvelle notification d'application.",
+      "noNotifications": "Vous n'avez pas de nouvelles notifications."
     }  
   },
   "errors": {

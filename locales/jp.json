@@ -483,6 +483,12 @@
       "light": "ライト",
       "dark": "ダーク",
       "system": "システム"
+    },
+    "notifications": {
+      "latestNotifications": "最新の通知",
+      "ApplicationStatusNotification": "あなたのアプリケーションのステータスが更新されました。",
+      "ApplicationNotification": "新しいアプリケーションの通知があります。",
+      "noNotifications": "新しい通知はありません。"
     }  
   },
   "errors": {

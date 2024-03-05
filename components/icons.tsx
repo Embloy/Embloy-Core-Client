@@ -29,6 +29,10 @@ import {
   Flag,
   Globe,
   Globe2,
+  Bell,
+  MailWarning,
+  BellRing,
+  MailCheck,
 } from "lucide-react"
 
 import { Logo } from './ui/command'
@@ -60,6 +64,10 @@ export const Icons = {
   laptop: Laptop,
   flag: Flag,
   globe: Globe,
+  bell: Bell,
+  bellRing: BellRing,
+  mailWarning: MailWarning,
+  mailCheck: MailCheck,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

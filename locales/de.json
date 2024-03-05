@@ -483,6 +483,12 @@
       "light": "Hell",
       "dark": "Dunkel",
       "system": "System"
+    },
+    "notifications": {
+      "latestNotifications": "Neueste Benachrichtigungen",
+      "ApplicationStatusNotification": "Neue Antwort auf eine Deiner Bewerbungen",
+      "ApplicationNotification": "Du hast eine neue Bewerbungsbenachrichtigung.",
+      "noNotifications": "Du hast keine neuen Benachrichtigungen."
     }  
   },
   "errors": {

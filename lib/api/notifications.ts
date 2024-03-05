@@ -1,11 +1,33 @@
 import { siteConfig } from "@/config/site";
 import { getAccessToken } from "./auth";
 
-export interface Notification {
+export interface ApplicationLink {
+    job_id: number;
+    user_id: number;
+  }
+  
+  export interface Params {
+    job_title: string;
+    application: ApplicationLink;
+    job_notifications?: number;
+    status?: number;
+    response?: string;
+    user_email?: string;
+    user_first_name?: string;
+  }
+  
+  export interface Notification {
     id: number;
-}
+    recipient_type: string;
+    recipient_id: number;
+    type: string;
+    params: Params;
+    read_at: string | null;
+    created_at: string;
+    updated_at: string;
+  }
 
-export async function getNotifications(): Promise<{response: Notification[] | null, err: number | null}> {
+export async function getLatestNotifications(): Promise<{response: Notification[] | null, err: number | null}> {
     const accessToken = await getAccessToken();
     const response = await fetch(`${siteConfig.api_url}/user/notifications`, {
       method: 'GET',
