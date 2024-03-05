@@ -318,6 +318,38 @@
       "deleteAccount": "Supprimer le compte",
       "deleteAccountConfirmation": "Êtes-vous sûr de vouloir supprimer votre compte ?",
       "deleteAccountWarning": "Cette action ne peut pas être annulée.",
+      "nav": {
+        "Profile": "Profil",
+        "Account": "Compte",
+        "Appearance": "Apparence",
+        "Notifications": "Notifications",
+        "Security": "Sécurité"
+      },
+      "appearance": {
+        "title": "Apparence",
+        "description": "Personnalisez l'apparence de l'application. Basculer automatiquement entre les thèmes jour et nuit.",
+        "theme": "Thème",
+        "selectTheme": "Sélectionnez le thème pour le tableau de bord.",
+        "updatePreferences": "Mettre à jour les préférences"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Configurez comment vous recevez des notifications.",
+        "notifyAbout": "Me notifier de...",
+        "allNewMessages": "Tous les nouveaux messages",
+        "directMessages": "Messages directs et mentions",
+        "nothing": "Rien",
+        "emailNotifications": "Notifications par email",
+        "applicationNotifications": "Notifications d'application",
+        "applicationNotificationsDescription": "Recevez des emails pour les mises à jour de statut sur les applications soumises.",
+        "communicationEmails": "Emails de communication",
+        "communicationEmailsDescription": "Recevez des emails sur l'activité de votre compte.",
+        "marketingEmails": "Emails marketing",
+        "marketingEmailsDescription": "Recevez des emails sur les nouveaux produits, fonctionnalités, et plus encore.",
+        "securityEmails": "Emails de sécurité",
+        "securityEmailsDescription": "Recevez des emails sur l'activité de votre compte et la sécurité.",
+        "updateNotifications": "Mettre à jour les notifications"
+      },    
       "errors": {
         "updateAccount": {
           "title": "Quelque chose s'est mal passé.",

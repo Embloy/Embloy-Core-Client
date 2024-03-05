@@ -318,6 +318,38 @@
       "deleteAccount": "Elimina account",
       "deleteAccountConfirmation": "Sei sicuro di voler eliminare il tuo account?",
       "deleteAccountWarning": "Questa azione non può essere annullata.",
+      "nav": {
+        "Profile": "Profilo",
+        "Account": "Account",
+        "Appearance": "Aspetto",
+        "Notifications": "Notifiche",
+        "Security": "Sicurezza"
+      },
+      "appearance": {
+        "title": "Aspetto",
+        "description": "Personalizza l'aspetto dell'app. Passa automaticamente tra i temi giorno e notte.",
+        "theme": "Tema",
+        "selectTheme": "Seleziona il tema per il dashboard.",
+        "updatePreferences": "Aggiorna preferenze"
+      },
+      "notifications": {
+        "title": "Notifiche",
+        "description": "Configura come ricevi le notifiche.",
+        "notifyAbout": "Notificami su...",
+        "allNewMessages": "Tutti i nuovi messaggi",
+        "directMessages": "Messaggi diretti e menzioni",
+        "nothing": "Niente",
+        "emailNotifications": "Notifiche email",
+        "applicationNotifications": "Notifiche dell'applicazione",
+        "applicationNotificationsDescription": "Ricevi email per gli aggiornamenti di stato sulle applicazioni inviate.",
+        "communicationEmails": "Email di comunicazione",
+        "communicationEmailsDescription": "Ricevi email sull'attività del tuo account.",
+        "marketingEmails": "Email di marketing",
+        "marketingEmailsDescription": "Ricevi email su nuovi prodotti, funzionalità e altro ancora.",
+        "securityEmails": "Email di sicurezza",
+        "securityEmailsDescription": "Ricevi email sull'attività del tuo account e sulla sicurezza.",
+        "updateNotifications": "Aggiorna notifiche"
+      },
       "errors": {
         "updateAccount": {
           "title": "Qualcosa è andato storto.",

@@ -318,6 +318,38 @@
       "deleteAccount": "Konto löschen",
       "deleteAccountConfirmation": "Bist du sicher, dass Du Dein Konto löschen möchtest?",
       "deleteAccountWarning": "Diese Aktion kann nicht rückgängig gemacht werden.",
+      "nav": {
+        "Profile": "Profil",
+        "Account": "Konto",
+        "Appearance": "Erscheinungsbild",
+        "Notifications": "Benachrichtigungen",
+        "Security": "Sicherheit"
+      },
+      "appearance": {
+        "title": "Erscheinungsbild",
+        "description": "Passe das Erscheinungsbild der App an.",
+        "theme": "Thema",
+        "selectTheme": "Wähle das Thema für das Dashboard.",
+        "updatePreferences": "Einstellungen aktualisieren"
+      },
+      "notifications": {
+        "title": "Benachrichtigungen",
+        "description": "Konfiguriere, wie Du Benachrichtigungen erhalten möchtest.",
+        "notifyAbout": "Benachrichtige mich über...",
+        "allNewMessages": "Alle neuen Nachrichten",
+        "directMessages": "Direktnachrichten und Erwähnungen",
+        "nothing": "Nichts",
+        "emailNotifications": "E-Mail-Benachrichtigungen",
+        "applicationNotifications": "Anwendungsbenachrichtigungen",
+        "applicationNotificationsDescription": "Erhalte E-Mails zu Statusupdates für eingereichte Anwendungen.",
+        "communicationEmails": "Kommunikationsemails",
+        "communicationEmailsDescription": "Erhalte E-Mails zu Deiner Kontenaktivität.",
+        "marketingEmails": "Marketing-E-Mails",
+        "marketingEmailsDescription": "Erhalte E-Mails zu neuen Produkten, Funktionen und mehr.",
+        "securityEmails": "Sicherheits-E-Mails",
+        "securityEmailsDescription": "Erhalte E-Mails zu Deiner Kontenaktivität und Sicherheit.",
+        "updateNotifications": "Benachrichtigungen aktualisieren"
+      },
       "errors": {
         "updateAccount": {
           "title": "Etwas ist schief gelaufen.",

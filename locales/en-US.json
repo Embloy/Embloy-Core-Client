@@ -318,6 +318,38 @@
       "deleteAccount": "Delete Account",
       "deleteAccountConfirmation": "Are you sure you want to delete your account?",
       "deleteAccountWarning": "This action cannot be undone.",
+      "nav": {
+        "Profile": "Profile",
+        "Account": "Account",
+        "Appearance": "Appearance",
+        "Notifications": "Notifications",
+        "Security": "Security"
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Customize the appearance of the app. Automatically switch between day and night themes.",
+        "theme": "Theme",
+        "selectTheme": "Select the theme for the dashboard.",
+        "updatePreferences": "Update Preferences"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Configure how you receive notifications.",
+        "notifyAbout": "Notify me about...",
+        "allNewMessages": "All new messages",
+        "directMessages": "Direct messages and mentions",
+        "nothing": "Nothing",
+        "emailNotifications": "Email Notifications",
+        "applicationNotifications": "Application Notifications",
+        "applicationNotificationsDescription": "Receive emails for status updates on submitted applications.",
+        "communicationEmails": "Communication emails",
+        "communicationEmailsDescription": "Receive emails about your account activity.",
+        "marketingEmails": "Marketing emails",
+        "marketingEmailsDescription": "Receive emails about new products, features, and more.",
+        "securityEmails": "Security Emails",
+        "securityEmailsDescription": "Receive emails about your account activity and security.",
+        "updateNotifications": "Update Notifications"
+      },
       "errors": {
         "updateAccount": {
           "title": "Something went wrong.",

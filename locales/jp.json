@@ -318,6 +318,38 @@
       "deleteAccount": "アカウントを削除",
       "deleteAccountConfirmation": "本当にアカウントを削除しますか？",
       "deleteAccountWarning": "この操作は取り消せません。",
+      "nav": {
+        "Profile": "プロフィール",
+        "Account": "アカウント",
+        "Appearance": "外観",
+        "Notifications": "通知",
+        "Security": "セキュリティ"
+      },
+      "appearance": {
+        "title": "外観",
+        "description": "アプリの外観をカスタマイズします。昼と夜のテーマを自動的に切り替えます。",
+        "theme": "テーマ",
+        "selectTheme": "ダッシュボードのテーマを選択します。",
+        "updatePreferences": "設定を更新"
+      },
+      "notifications": {
+        "title": "通知",
+        "description": "通知の受け取り方を設定します。",
+        "notifyAbout": "次のことを通知...",
+        "allNewMessages": "すべての新しいメッセージ",
+        "directMessages": "ダイレクトメッセージとメンション",
+        "nothing": "何もなし",
+        "emailNotifications": "メール通知",
+        "applicationNotifications": "アプリケーションの通知",
+        "applicationNotificationsDescription": "提出したアプリケーションのステータス更新に関するメールを受け取ります。",
+        "communicationEmails": "コミュニケーションメール",
+        "communicationEmailsDescription": "アカウントのアクティビティに関するメールを受け取ります。",
+        "marketingEmails": "マーケティングメール",
+        "marketingEmailsDescription": "新製品、新機能などに関するメールを受け取ります。",
+        "securityEmails": "セキュリティメール",
+        "securityEmailsDescription": "アカウントのアクティビティとセキュリティに関するメールを受け取ります。",
+        "updateNotifications": "通知を更新"
+      },    
       "errors": {
         "updateAccount": {
           "title": "エラーが発生しました。",

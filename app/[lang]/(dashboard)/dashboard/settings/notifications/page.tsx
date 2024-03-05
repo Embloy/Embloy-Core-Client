@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect } from 'react';
 import { getCurrentUser, User } from "@/lib/api/session"
-import { UserForm } from "@/components/user-form"
-import { getDictionary } from '@/app/[lang]/dictionaries';
-import DashboardSettingsLoading from './loading';
+import DashboardSettingsLoading from './../loading';
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import { Separator } from "@/components/new-york/ui/separator"
+import { useEffect, useState } from "react";
+import { NotificationsForm } from "./notifications-form"
 
-export default function SettingsProfilePage({ params: {lang} }) {
+export default function SettingsNotificationsPage({ params: {lang} }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
   const [dict, setDict] = useState<Record<string, any> | null>(null);
@@ -31,10 +32,16 @@ export default function SettingsProfilePage({ params: {lang} }) {
   if (isLoading) {
     return <DashboardSettingsLoading params={{lang: lang}}/>
   }
-
-  return user && !isLoading && dict && (
+  return dict && (
     <div className="space-y-6">
-      <UserForm user={user} params={{ lang: lang }} />
+      <div>
+        <h3 className="text-lg font-medium">{dict.dashboard.settings.notifications.title}</h3>
+        <p className="text-sm text-muted-foreground">
+          {dict.dashboard.settings.notifications.description}
+        </p>
+      </div>
+      <Separator />
+      <NotificationsForm params={{ lang: lang }} user={user}/>
     </div>
   )
 }

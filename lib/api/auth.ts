@@ -126,6 +126,7 @@ export async function getAccessToken(): Promise<string | null> {
   const atResult = await responseAt.json()
 
   if (!atResult || !atResult?.access_token) {
+    clearUserSession();
     throw new Error('Failed to refresh access token');
   }
 

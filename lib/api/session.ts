@@ -26,6 +26,9 @@ export interface User {
   jobs_count: number;
   user_role: string;
   application_notifications: boolean;
+  marketing_notifications: boolean;
+  communication_notifications: boolean;
+  security_notifications: boolean;
   twitter_url: string | null;
   facebook_url: string | null;
   instagram_url: string | null;
