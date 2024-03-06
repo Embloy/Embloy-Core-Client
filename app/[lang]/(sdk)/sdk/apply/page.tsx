@@ -407,9 +407,9 @@ export default function ApplyPage({ params: { lang } }) {
                   </p>
                 </div>
               </div>
+              {errorMessages['cvFile'] && <div className="text-sm text-red-500">{errorMessages['cvFile']}</div>}
             </div>
           )}
-          {errorMessages['cvFile'] && <div className="text-sm text-red-500">{errorMessages['cvFile']}</div>}
           {job.application_options.map((option, index) => {
             const label = option.required
               ? `${option.question} *`
@@ -485,7 +485,7 @@ export default function ApplyPage({ params: { lang } }) {
                         }}
                       >
                       <SelectTrigger>{label}</SelectTrigger>
-                        <SelectContent className="relative max-h-60 overflow-auto">
+                        <SelectContent>
                           {option.options.map((opt, optIndex) => (
                             <SelectItem key={optIndex} value={opt}>
                               {opt}
