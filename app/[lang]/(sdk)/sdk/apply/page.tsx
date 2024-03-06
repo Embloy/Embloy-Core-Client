@@ -98,6 +98,11 @@ export default function ApplyPage({ params: { lang } }) {
   function validateFields() {
     let isValid = true;
 
+    if (job?.cv_required && !cvFile && dict) {
+      setErrorMessages((prevMessages) => ({ ...prevMessages, 'cvFile': dict.sdk.required }));
+      isValid = false;
+    }
+
     if (applicationText.trim() === '' && dict) {
       setErrorMessages((prevMessages) => ({ ...prevMessages, 'applicationText': dict.sdk.required }));
       isValid = false;
@@ -479,7 +484,7 @@ export default function ApplyPage({ params: { lang } }) {
                         }}
                       >
                         <SelectTrigger>{label}</SelectTrigger>
-                        <SelectContent>
+                          <SelectContent className="max-h-60 overflow-auto">
                           {option.options.map((opt, optIndex) => (
                             <SelectItem key={optIndex} value={opt}>
                               {opt}
