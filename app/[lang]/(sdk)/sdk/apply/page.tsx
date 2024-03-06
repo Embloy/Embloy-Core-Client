@@ -326,7 +326,7 @@ export default function ApplyPage({ params: { lang } }) {
   return dict && job && session && (
     <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0">
       <Link
-        href="/.."
+        href={job.referrer_url || '/'}
         onClick={handleBackClick}
         className={cn(
           buttonVariants({ variant: "outline" }),
