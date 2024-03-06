@@ -326,7 +326,7 @@ export default function ApplyPage({ params: { lang } }) {
   return dict && job && session && (
     <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0">
       <Link
-        href={job.referrer_url || '/'}
+        href={job.referrer_url || '/..'}
         onClick={handleBackClick}
         className={cn(
           buttonVariants({ variant: "outline" }),
@@ -484,13 +484,13 @@ export default function ApplyPage({ params: { lang } }) {
                         }}
                       >
                       <SelectTrigger>{label}</SelectTrigger>
-                        <SelectContent className="max-h-60 overflow-auto relative">
+                        <SelectContent className="relative max-h-60 overflow-auto">
                           {option.options.map((opt, optIndex) => (
                             <SelectItem key={optIndex} value={opt}>
                               {opt}
                             </SelectItem>
                           ))}
-                          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white to-transparent"></div>
+                          <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent"></div>
                         </SelectContent>
                       </Select>
                       {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
