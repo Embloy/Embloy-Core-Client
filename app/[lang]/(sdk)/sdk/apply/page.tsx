@@ -483,13 +483,14 @@ export default function ApplyPage({ params: { lang } }) {
                           handleSingleChoiceChange(option.id, value);
                         }}
                       >
-                        <SelectTrigger>{label}</SelectTrigger>
-                          <SelectContent className="max-h-60 overflow-auto">
+                      <SelectTrigger>{label}</SelectTrigger>
+                        <SelectContent className="max-h-60 overflow-auto relative">
                           {option.options.map((opt, optIndex) => (
                             <SelectItem key={optIndex} value={opt}>
                               {opt}
                             </SelectItem>
                           ))}
+                          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white to-transparent"></div>
                         </SelectContent>
                       </Select>
                       {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
