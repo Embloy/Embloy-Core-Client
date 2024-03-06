@@ -409,6 +409,7 @@ export default function ApplyPage({ params: { lang } }) {
               </div>
             </div>
           )}
+          {errorMessages['cvFile'] && <div className="text-sm text-red-500">{errorMessages['cvFile']}</div>}
           {job.application_options.map((option, index) => {
             const label = option.required
               ? `${option.question} *`
@@ -490,7 +491,6 @@ export default function ApplyPage({ params: { lang } }) {
                               {opt}
                             </SelectItem>
                           ))}
-                          <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent"></div>
                         </SelectContent>
                       </Select>
                       {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}
