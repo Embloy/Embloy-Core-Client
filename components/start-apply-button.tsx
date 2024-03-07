@@ -68,7 +68,7 @@ if (isDesktop) {
   return dict && (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">{dict.dashboard.upcoming.apply}</Button>
+        <Button variant="default">{dict.dashboard.upcoming.apply}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -96,7 +96,7 @@ if (isDesktop) {
 return dict && (
   <Drawer open={open} onOpenChange={setOpen}>
     <DrawerTrigger asChild>
-      <Button variant="outline">{dict.dashboard.upcoming.apply}</Button>
+      <Button variant="default">{dict.dashboard.upcoming.apply}</Button>
     </DrawerTrigger>
     <DrawerContent>
       <DrawerHeader className="text-left">

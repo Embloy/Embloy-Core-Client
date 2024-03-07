@@ -12,6 +12,7 @@ import { Job } from "@/lib/api/sdk";
 import Image from "next/image";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { toast } from "@/components/ui/use-toast";
+import Loading from "@/app/[lang]/(sdk)/sdk/apply/loading";
 
 export default function UpcomingJobsPage({ params: { lang } }) {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
@@ -51,6 +52,10 @@ export default function UpcomingJobsPage({ params: { lang } }) {
     fetchJobs();
   }, [router, lang, dict]);
 
+  if (isLoading) {
+    return Loading
+  }
+
   return dict && (
     <DashboardShell>
       <DashboardHeader heading={dict.dashboard.upcoming.title} text={dict.dashboard.upcoming.subtitle}>
@@ -79,7 +84,7 @@ export default function UpcomingJobsPage({ params: { lang } }) {
           <EmptyPlaceholder.Description>
             {dict.dashboard.upcoming.startApply}
           </EmptyPlaceholder.Description>
-          <StartApplyButton params={{lang: lang}} variant="outline" />
+          <StartApplyButton params={{lang: lang}}/>
         </EmptyPlaceholder>
       )}
     </DashboardShell>
