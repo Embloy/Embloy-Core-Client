@@ -28,7 +28,7 @@ export default async function IndexPage({ params: { lang } }) {
           <p className="hidden max-w-[42rem] leading-normal text-muted-foreground sm:block sm:text-xl sm:leading-8">
           {dict.marketing.recruitmentSteps}
           </p>
-          <div className="space-x-4">
+          <div className="hidden lg:block space-x-4">
             <Link href={`/${lang}/login`} className={cn(buttonVariants({ size: "lg" }))}>
             {dict.marketing.getStarted}
             </Link>
@@ -37,8 +37,13 @@ export default async function IndexPage({ params: { lang } }) {
               target="_blank"
               rel="noreferrer"
               className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-            >
+              >
               {dict.marketing.forCompanies}
+            </Link>
+          </div>
+          <div className="lg:hidden space-x-4">
+            <Link href={`/${lang}/login`} className={cn(buttonVariants({ size: "lg" }))}>
+              {dict.marketing.getStarted}
             </Link>
           </div>
         </div>
