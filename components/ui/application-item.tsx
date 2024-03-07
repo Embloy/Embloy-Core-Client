@@ -64,7 +64,7 @@ export function ApplicationItem({ application, params: {lang} }: ApplicationItem
     case "-1":
       statusIcon = statusIcon = (
         <Tooltip title="Your application was rejected.">
-          <XOctagon className="h-5 w-5" />
+          <XOctagon className="size-5" />
         </Tooltip>
       );
       statusColor = "bg-destructive";
@@ -73,7 +73,7 @@ export function ApplicationItem({ application, params: {lang} }: ApplicationItem
     case "0":
       statusIcon = statusIcon = (
         <Tooltip title="Your application is being processed.">
-          <HelpCircle className="h-5 w-5" />
+          <HelpCircle className="size-5" />
         </Tooltip>
       );
       statusColor = "bg-muted-foreground";
@@ -82,7 +82,7 @@ export function ApplicationItem({ application, params: {lang} }: ApplicationItem
     case "1":
       statusIcon = statusIcon = (
         <Tooltip title="Your application has been accepted.">
-          <CheckCircle className="h-5 w-5" />
+          <CheckCircle className="size-5" />
         </Tooltip>
       );
       statusColor = "bg-success";
@@ -152,7 +152,7 @@ export function ApplicationItem({ application, params: {lang} }: ApplicationItem
         >
           <h2 className="mb-4 text-2xl font-bold">Application Details</h2>
           <div className="mb-2 flex items-center">
-            <FileText className="mr-2 h-5 w-5" />
+            <FileText className="mr-2 size-5" />
             <p className="font-medium">Application Text:</p>
           </div>
           <p className="mb-4 italic">{application.application_text}</p>
@@ -163,7 +163,7 @@ export function ApplicationItem({ application, params: {lang} }: ApplicationItem
           {application.application_attachment &&
             application.application_attachment.url && (
               <div className="my-4 flex items-center">
-                <FileCheck className="mr-2 h-5 w-5" />
+                <FileCheck className="mr-2 size-5" />
                 <p className="font-medium">
                   {"CV: "}
                   <a

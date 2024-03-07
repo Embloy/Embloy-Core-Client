@@ -52,7 +52,7 @@ export function ApplicationList({ items, unreadIDs, params: {lang} }: Applicatio
                   <div className="flex items-center gap-2">
                     <div className="font-semibold">{item.job?.title || item.job?.job_slug || `Job#${item.job_id}`}</div>
                     {unreadIDs.includes(item.job_id) && (
-                      <span className="flex h-2 w-2 rounded-full bg-blue-600" />
+                      <span className="flex size-2 rounded-full bg-blue-600" />
                     )}
                   </div>
                   <div

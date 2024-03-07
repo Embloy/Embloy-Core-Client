@@ -77,9 +77,9 @@ export function SubscribeButton({
       {...props}
     >
       {isLoading ? (
-        <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        <Icons.spinner className="mr-2 size-4 animate-spin" />
       ) : (
-        <Icons.laptop className="mr-2 h-4 w-4" />
+        <Icons.laptop className="mr-2 size-4" />
       )}
       {dict.dashboard.billing.subscribeTo}{subscriptionType.toUpperCase()}
     </button>

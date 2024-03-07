@@ -72,6 +72,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
       const link = document.createElement('a');
       link.href = cvUrl;
       link.setAttribute('download', `${application.user_id}_${application.job_id}_CV}`);
+      link.setAttribute('target', '_blank');
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -89,7 +90,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!!application}>
-                <Archive className="h-4 w-4" />
+                <Archive className="size-4" />
                 <span className="sr-only">{dict.dashboard.applications.archive}</span>
               </Button>
             </TooltipTrigger>
@@ -98,7 +99,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!!application}>
-                <Trash2 className="h-4 w-4" />
+                <Trash2 className="size-4" />
                 <span className="sr-only">{dict.dashboard.applications.moveToTrash}</span>
               </Button>
             </TooltipTrigger>
@@ -110,7 +111,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
               <PopoverTrigger asChild>
                 <TooltipTrigger asChild>
                   <Button variant="ghost" size="icon" disabled={!application}>
-                    <Clock className="h-4 w-4" />
+                    <Clock className="size-4" />
                     <span className="sr-only">{dict.dashboard.applications.snooze}</span>
                   </Button>
                 </TooltipTrigger>
@@ -178,7 +179,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
               disabled={!application?.application_attachment?.url}
               onClick={() => downloadAttachment(application)}
             >
-              <DownloadCloud className="h-4 w-4" />
+              <DownloadCloud className="size-4" />
               <span className="sr-only">{dict.dashboard.applications.downloadAttachment}</span>
             </Button>
                 </TooltipTrigger>
@@ -189,7 +190,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" disabled={!application}>
-              <MoreVertical className="h-4 w-4" />
+              <MoreVertical className="size-4" />
               <span className="sr-only">More</span>
             </Button>
           </DropdownMenuTrigger>
@@ -208,10 +209,10 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
               {
               <Avatar >
               {application.job?.employer_image_url ? (
-                <AvatarImage alt="Picture" src={application.job?.employer_image_url} className="h-12 w-12 rounded-full border-2 border-muted-foreground text-muted-foreground"/>
+                <AvatarImage alt="Picture" src={application.job?.employer_image_url} className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"/>
               ) : (
                 <AvatarFallback>
-                  <Icons.user className="h-12 w-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
+                  <Icons.user className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
                 </AvatarFallback>
               )}
             </Avatar>

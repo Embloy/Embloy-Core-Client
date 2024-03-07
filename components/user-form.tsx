@@ -506,7 +506,7 @@ export function UserForm({
                 disabled={isSaving}
               >
                 {isSaving && (
-                  <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                  <Icons.spinner className="mr-2 size-4 animate-spin" />
                 )}
                 <span>{dict.dashboard.settings.save}</span>
               </button>
@@ -520,7 +520,7 @@ export function UserForm({
                 onClick={() => setShowDeleteAlert(true)}
               >
                 {isDeleting && (
-                  <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                  <Icons.spinner className="mr-2 size-4 animate-spin" />
                 )}
                 <span>{dict.dashboard.settings.deleteAccount}</span>
               </button>
@@ -552,9 +552,9 @@ export function UserForm({
                   className={cn(buttonVariants({ variant: "destructive" }))}
                 >
                   {isDeleting ? (
-                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                    <Icons.spinner className="mr-2 size-4 animate-spin" />
                   ) : (
-                    <Icons.trash className="mr-2 h-4 w-4" />
+                    <Icons.trash className="mr-2 size-4" />
                   )}
                   <span>{dict.dashboard.settings.delete}</span>
                 </AlertDialogAction>

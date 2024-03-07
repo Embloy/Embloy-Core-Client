@@ -190,7 +190,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
           </div>
           <button className={cn(buttonVariants())} disabled={isLoading}>
             {isLoading && (
-              <Icons.spinner className="mr-2 h-8 w-8 animate-spin" />
+              <Icons.spinner className="mr-2 size-8 animate-spin" />
             )}
             {dict.auth.login.signIn}
           </button>
@@ -214,9 +214,9 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
           disabled={isLoading || isGitHubLoading}
         >
           {isGitHubLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.gitHub className="h-8 w-8" />
+            <Icons.gitHub className="size-8" />
           )}
         </button>
         <button
@@ -226,9 +226,9 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
           disabled={isLoading || isGoogleLoading}
         >
           {isGoogleLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.google className="h-8 w-8" />
+            <Icons.google className="size-8" />
           )}
         </button>
         <button
@@ -238,9 +238,9 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
           disabled={isLoading || isLinkedinLoading}
         >
           {isLinkedinLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.linkedin className="h-8 w-8" />
+            <Icons.linkedin className="size-8" />
           )}
         </button>      
         <button
@@ -250,9 +250,9 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
           disabled={isLoading || isMicrosoftLoading}
         >
           {isMicrosoftLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.microsoft className="h-8 w-8" />
+            <Icons.microsoft className="size-8" />
           )}
         </button>
       </div>    

@@ -27,7 +27,7 @@ export default function RegisterPage({ params: { lang } }) {
   return dict && (
     <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
       <Link
-        href={origin ? `${lang}/login?origin=${origin}` : `/${lang}/login`}
+        href={origin ? `/${lang}/login?origin=${origin}` : `/${lang}/login`}
         className={cn(
           buttonVariants({ variant: "ghost" }),
           "absolute right-4 top-4 md:right-8 md:top-8"
@@ -40,12 +40,12 @@ export default function RegisterPage({ params: { lang } }) {
         alt="Description of the image" 
         width={842}
         height={842}
-        className="hidden h-full w-full object-cover lg:block" 
+        className="hidden size-full object-cover lg:block" 
       />
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
-            <Icons.logo className="mx-auto h-6 w-6" />
+            <Icons.logo className="mx-auto size-6" />
             <h1 className="text-2xl font-semibold tracking-tight">
               {dict.auth.register.createAccount}
             </h1>

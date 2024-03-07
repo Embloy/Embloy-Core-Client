@@ -64,7 +64,7 @@ export default function NotificationBell({params: { lang} }: NotificationBellPro
   return dict && notifications && (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
+        <Button variant="ghost" size="sm" className="size-8 px-0">
           {notifications.length > 0 ? <Icons.bellRing className="rotate-0 scale-100 transition-all" /> : <Icons.bell className="rotate-0 scale-100 transition-all" />}
           <span className="sr-only">{dict.nav.notifications.latestNotifications}</span>
         </Button>
@@ -80,9 +80,9 @@ export default function NotificationBell({params: { lang} }: NotificationBellPro
               <DropdownMenuItem key={notification.id} className="my-1 p-2 hover:bg-gray-200">
                 {
                   notification.read_at ?
-                  <Icons.mailCheck className='mr-2 h-4 w-4 text-muted-foreground' />
+                  <Icons.mailCheck className='mr-2 size-4 text-muted-foreground' />
                   : 
-                  <Icons.mailWarning className='mr-2 h-4 w-4 text-blue-600' />
+                  <Icons.mailWarning className='mr-2 size-4 text-blue-600' />
                 }
                 <span>{dict.nav.notifications[notification.type]}</span>
               </DropdownMenuItem>

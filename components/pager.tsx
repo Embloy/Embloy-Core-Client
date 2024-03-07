@@ -42,7 +42,7 @@ export function ResourcesPager({ resource, params: {lang} }: ResourcesPagerProps
           href={pager.prev.href}
           className={cn(buttonVariants({ variant: "ghost" }))}
         >
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <Icons.chevronLeft className="mr-2 size-4" />
           {dict.resources[pager.prev.title].title}
         </Link>
       )}
@@ -52,7 +52,7 @@ export function ResourcesPager({ resource, params: {lang} }: ResourcesPagerProps
           className={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
         >
           {dict.resources[pager.next.title].title}
-          <Icons.chevronRight className="ml-2 h-4 w-4" />
+          <Icons.chevronRight className="ml-2 size-4" />
         </Link>
       )}
     </div>

@@ -121,7 +121,7 @@ export function PasswordForm({ className, params: {lang}, ...props }: PasswordFo
           </div>
           <button className={cn(buttonVariants())} disabled={isLoading}>
             {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              <Icons.spinner className="mr-2 size-4 animate-spin" />
             )}
             {dict.auth.pwreset.setPassword}
           </button>

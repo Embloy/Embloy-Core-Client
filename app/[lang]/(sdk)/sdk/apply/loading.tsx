@@ -6,7 +6,7 @@ import Image from "next/image"; export default function Loading() { return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className="ml-6 inline h-10 w-10 animate-spin fill-white text-gray-500"
+        className="ml-6 inline size-10 animate-spin fill-white text-gray-500"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

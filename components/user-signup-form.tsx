@@ -250,7 +250,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
           </div>
           <button className={cn(buttonVariants())} disabled={isLoading}>
             {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              <Icons.spinner className="mr-2 size-4 animate-spin" />
             )}
             {dict.auth.register.signUp}
           </button>
@@ -274,9 +274,9 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
           disabled={isLoading || isGitHubLoading}
         >
           {isGitHubLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.gitHub className="h-8 w-8" />
+            <Icons.gitHub className="size-8" />
           )}
         </button>
         <button
@@ -286,9 +286,9 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
           disabled={isLoading || isGoogleLoading}
         >
           {isGoogleLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.google className="h-8 w-8" />
+            <Icons.google className="size-8" />
           )}
         </button>
         <button
@@ -298,9 +298,9 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
           disabled={isLoading || isLinkedinLoading}
         >
           {isLinkedinLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.linkedin className="h-8 w-8" />
+            <Icons.linkedin className="size-8" />
           )}
         </button>      
         <button
@@ -310,9 +310,9 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
           disabled={isLoading || isMicrosoftLoading}
         >
           {isMicrosoftLoading ? (
-            <Icons.spinner className="h-8 w-8 animate-spin" />
+            <Icons.spinner className="size-8 animate-spin" />
           ) : (
-            <Icons.microsoft className="h-8 w-8" />
+            <Icons.microsoft className="size-8" />
           )}
         </button>
       </div>   

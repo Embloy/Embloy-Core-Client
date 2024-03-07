@@ -343,7 +343,7 @@ export default function ApplyPage({ params: { lang } }) {
         )}
       >
         <>
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <Icons.chevronLeft className="mr-2 size-4" />
           {dict.sdk.backToHomepage}
         </>
       </Link>
@@ -361,7 +361,7 @@ export default function ApplyPage({ params: { lang } }) {
         alt="Description of the image"
         width={842}
         height={842}
-        className="hidden h-full w-full lg:col-span-1 lg:block"
+        className="hidden size-full lg:col-span-1 lg:block"
       />
       <div className="mt-10 lg:col-span-2 lg:p-8">
         {/* Job Information 
@@ -382,7 +382,7 @@ export default function ApplyPage({ params: { lang } }) {
         {/* Application Form */}
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[650px]">
           <div className="flex flex-col space-y-2 text-center">
-            <Icons.logo className="mx-auto h-6 w-6" />
+            <Icons.logo className="mx-auto size-6" />
             <h1 className="text-2xl font-semibold tracking-tight">
             {dict.sdk.applyFor}{job.title ?? dict.sdk.thisJob}
             </h1>
@@ -546,9 +546,9 @@ export default function ApplyPage({ params: { lang } }) {
             disabled={isLoading || Object.values(errorMessages).some(message => message !== null)}
           >
             {isLoading ? (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              <Icons.spinner className="mr-2 size-4 animate-spin" />
             ) : (
-              <Icons.add className="mr-2 h-4 w-4" />
+              <Icons.add className="mr-2 size-4" />
             )}
             {dict.sdk.newApplication}
           </button>
@@ -567,7 +567,7 @@ export default function ApplyPage({ params: { lang } }) {
         )}
       >
         <>
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <Icons.chevronLeft className="mr-2 size-4" />
           {dict.sdk.backToHomepage}
         </>
       </Link>

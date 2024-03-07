@@ -34,15 +34,15 @@ export function FileInput({ id, className, onFileChange, currentUserImageUrl }: 
             src={selectedImage ? URL.createObjectURL(selectedImage) : (currentUserImageUrl!)} 
             alt="Profile" 
             title={selectedImage ? "This will be your new image" : "Click here to update your image"}
-            className="h-40 w-40 rounded-full object-cover" 
+            className="size-40 rounded-full object-cover" 
             width={160}
             height={160}
           />
           :
-          <Avatar className="h-40 w-40">
-          <AvatarFallback className="h-40 w-40">
+          <Avatar className="size-40">
+          <AvatarFallback className="size-40">
             <span className="sr-only"></span>
-            <Icons.user className="h-40 w-40" />
+            <Icons.user className="size-40" />
           </AvatarFallback>
           </Avatar>
         }

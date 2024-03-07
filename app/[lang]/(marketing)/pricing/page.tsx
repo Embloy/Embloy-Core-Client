@@ -31,22 +31,22 @@ export default async function PricingPage({ params: { lang } }) {
           </h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyFree.features[0]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyFree.features[0]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyFree.features[1]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyFree.features[1]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyFree.features[2]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyFree.features[2]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyFree.features[3]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyFree.features[3]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyFree.features[4]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyFree.features[4]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyFree.features[5]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyFree.features[5]}
             </li>
           </ul>
         </div>
@@ -70,16 +70,16 @@ export default async function PricingPage({ params: { lang } }) {
           </h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
           <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloySmart.features[0]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloySmart.features[0]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloySmart.features[1]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloySmart.features[1]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloySmart.features[2]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloySmart.features[2]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloySmart.features[3]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloySmart.features[3]}
             </li>
           </ul>
         </div>
@@ -103,16 +103,16 @@ export default async function PricingPage({ params: { lang } }) {
           </h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
           <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyGenius.features[0]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyGenius.features[0]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyGenius.features[1]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyGenius.features[1]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyGenius.features[2]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyGenius.features[2]}
             </li>
             <li className="flex items-center">
-              <Icons.check className="mr-2 h-4 w-4" /> {dict.marketing.pricing.embloyGenius.features[3]}
+              <Icons.check className="mr-2 size-4" /> {dict.marketing.pricing.embloyGenius.features[3]}
             </li>
           </ul>
         </div>
