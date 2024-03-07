@@ -184,7 +184,7 @@
       "Last name is required": "Cognome è richiesto",
       "Last name must be at most 128 characters": "Cognome deve contenere al massimo 128 caratteri",
       "Email must be a valid email": "Email deve essere un'email valida",
-      "Email must be at most 500 characters": "Email deve contenere al massimo 500 caratteri",
+      "Email must be at most 150 characters": "Email deve contenere al massimo 150 caratteri",
       "Password must be at least 8 characters": "La password deve contenere almeno 8 caratteri",
       "Password must be at most 72 characters": "La password deve contenere al massimo 72 caratteri",
       "Passwords must match": "Le password devono corrispondere"    
@@ -401,7 +401,7 @@
           "first_name": "Il nome è obbligatorio",
           "last_name": "Il cognome è obbligatorio",
           "email": "L'email deve essere un'email valida",
-          "address": "L'indirizzo deve essere inferiore a 500 caratteri",
+          "address": "L'indirizzo deve essere inferiore a 150 caratteri",
           "phone": "Il numero di telefono deve essere un numero di telefono valido",
           "twitter_url": "L'URL deve essere un URL Twitter",
           "facebook_url": "L'URL deve essere un URL Facebook",

@@ -184,7 +184,7 @@
       "Last name is required": "Nachname ist erforderlich",
       "Last name must be at most 128 characters": "Nachname darf höchstens 128 Zeichen lang sein",
       "Email must be a valid email": "E-Mail muss eine gültige E-Mail sein",
-      "Email must be at most 500 characters": "E-Mail darf höchstens 500 Zeichen lang sein",
+      "Email must be at most 150 characters": "E-Mail darf höchstens 150 Zeichen lang sein",
       "Password must be at least 8 characters": "Passwort muss mindestens 8 Zeichen lang sein",
       "Password must be at most 72 characters": "Passwort darf höchstens 72 Zeichen lang sein",
       "Passwords must match": "Passwörter müssen übereinstimmen"    
@@ -401,7 +401,7 @@
           "first_name": "Vorname ist erforderlich",
           "last_name": "Nachname ist erforderlich",
           "email": "E-Mail muss eine gültige E-Mail sein",
-          "address": "Adresse muss weniger als 500 Zeichen sein",
+          "address": "Adresse muss weniger als 150 Zeichen sein",
           "phone": "Telefonnummer muss eine gültige Telefonnummer sein",
           "twitter_url": "URL muss eine Twitter-URL sein",
           "facebook_url": "URL muss eine Facebook-URL sein",

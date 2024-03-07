@@ -184,7 +184,7 @@
       "Last name is required": "Last name is required",
       "Last name must be at most 128 characters": "Last name must be at most 128 characters",
       "Email must be a valid email": "Email must be a valid email",
-      "Email must be at most 500 characters": "Email must be at most 500 characters",
+      "Email must be at most 150 characters": "Email must be at most 150 characters",
       "Password must be at least 8 characters": "Password must be at least 8 characters",
       "Password must be at most 72 characters": "Password must be at most 72 characters",
       "Passwords must match": "Passwords must match"
@@ -401,7 +401,7 @@
           "first_name": "First name is required",
           "last_name": "Last name is required",
           "email": "Email must be a valid email",
-          "address": "Address must be less than 500 characters",
+          "address": "Address must be less than 150 characters",
           "phone": "Phone number must be a valid phone number",
           "twitter_url": "URL must be a Twitter URL",
           "facebook_url": "URL must be a Facebook URL",

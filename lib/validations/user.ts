@@ -21,25 +21,25 @@ export const userSchema = z.object({
   application_notifications: z.boolean().refine(value => value, { message: 'application_notifications' }),
   first_name: z.string().nonempty({ message: 'First name is required' }).max(128, { message: 'First name must be at most 128 characters'}),
   last_name: z.string().nonempty({ message: 'Last name is required' }).max(128, { message: 'Last name must be at most 128 characters'}),
-  email: z.string().email({ message: 'Email must be a valid email' }).max(500, { message: 'Email must be at most 500 characters'}),
-  address: z.string().max(500, { message: 'address' }).nullable(),
+  email: z.string().email({ message: 'Email must be a valid email' }).max(150, { message: 'Email must be at most 150 characters'}),
+  address: z.string().max(150, { message: 'address' }).nullable(),
   phone: z.string().max(100, { message: 'phone' }).refine(
     phone => /^(\+\d{1,3}[- ]?)?(\d[- ]?)*\d$/.test(phone) || phone === '',
     { message: 'phone' }
   ).nullable(),
-  twitter_url: z.string().max(500, { message: 'twitter_url'}).url({message: 'twitter_url'}).refine(
+  twitter_url: z.string().max(150, { message: 'twitter_url'}).url({message: 'twitter_url'}).refine(
     url => /^https?:\/\/(www\.)?twitter\.com(\/.*)?$/.test(url),
     { message: 'twitter_url' }
   ).nullable(),
-  facebook_url: z.string().max(500, { message: 'facebook_url'}).url({message: 'facebook_url'}).refine(
+  facebook_url: z.string().max(150, { message: 'facebook_url'}).url({message: 'facebook_url'}).refine(
     url => /^https?:\/\/(www\.)?facebook\.com(\/.*)?$/.test(url),
     { message: 'facebook_url' }
   ).nullable(),
-  instagram_url: z.string().max(500, { message: 'instagram_url'}).url({message: 'instagram_url'}).refine(
+  instagram_url: z.string().max(150, { message: 'instagram_url'}).url({message: 'instagram_url'}).refine(
     url => /^https?:\/\/(www\.)?instagram\.com(\/.*)?$/.test(url),
     { message: 'instagram_url' }
   ).nullable(),
-  linkedin_url: z.string().max(500, { message: 'linkedin_url'}).url({message: 'linkedin_url'}).refine(
+  linkedin_url: z.string().max(150, { message: 'linkedin_url'}).url({message: 'linkedin_url'}).refine(
     url => /^https?:\/\/(www\.)?linkedin\.com(\/.*)?$/.test(url),
     { message: 'linkedin_url' }
   ).nullable(),

@@ -184,7 +184,7 @@
       "Last name is required": "姓は必須です",
       "Last name must be at most 128 characters": "姓は最大128文字でなければなりません",
       "Email must be a valid email": "メールは有効なメールでなければなりません",
-      "Email must be at most 500 characters": "メールは最大500文字でなければなりません",
+      "Email must be at most 150 characters": "メールは最大150文字でなければなりません",
       "Password must be at least 8 characters": "パスワードは最低8文字でなければなりません",
       "Password must be at most 72 characters": "パスワードは最大72文字でなければなりません",
       "Passwords must match": "パスワードが一致しなければなりません"
@@ -401,7 +401,7 @@
           "first_name": "名前は必須です",
           "last_name": "苗字は必須です",
           "email": "メールアドレスは有効なメールアドレスでなければなりません",
-          "address": "住所は500文字以下でなければなりません",
+          "address": "住所は150文字以下でなければなりません",
           "phone": "電話番号は有効な電話番号でなければなりません",
           "twitter_url": "URLはTwitterのURLでなければなりません",
           "facebook_url": "URLはFacebookのURLでなければなりません",
