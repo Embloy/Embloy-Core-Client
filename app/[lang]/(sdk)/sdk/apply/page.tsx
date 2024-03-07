@@ -385,7 +385,7 @@ export default function ApplyPage({ params: { lang } }) {
             maxLength={500}
             onChange={handleInputChange}
             value={applicationText}
-            className="h-32 w-full resize-none rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="h-32 w-full resize-none rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
             placeholder={dict.sdk.enterApplicationText}
           />
           {errorMessages['applicationText'] && <div className="text-sm text-red-500">{errorMessages['applicationText']}</div>}
@@ -445,7 +445,7 @@ export default function ApplyPage({ params: { lang } }) {
                         }
                         maxLength={200}
                         style={{ resize: 'none', overflow: 'auto' }}
-                        className="h-20 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="h-20 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
                         placeholder={dict.sdk.enterResponse}
                       />
                     {errorMessages[option.id] && <div className="text-sm text-red-500">{errorMessages[option.id]}</div>}

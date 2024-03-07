@@ -5,7 +5,7 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 import { Check, ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const Select = SelectPrimitive.Root
 
@@ -38,7 +38,9 @@ const SelectContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >(({ className, children, position = "popper", ...props }, ref) => {
   const [atBottom, setAtBottom] = useState(false);
-
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  
   const handleScroll = (e) => {
     const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
     setAtBottom(bottom);
@@ -46,6 +48,9 @@ const SelectContent = React.forwardRef<
 
   useEffect(() => {
     setAtBottom(false);
+    if (viewportRef.current) {
+      setIsOverflowing(viewportRef.current.scrollHeight > viewportRef.current.clientHeight);
+    }
   }, [children]);
 
   return (
@@ -61,6 +66,7 @@ const SelectContent = React.forwardRef<
         {...props}
       >
           <SelectPrimitive.Viewport
+            ref={viewportRef}
             onScroll={handleScroll}
             className={cn(
               "relative max-h-60 overflow-auto p-1",
@@ -70,12 +76,13 @@ const SelectContent = React.forwardRef<
           >
             {children}
           </SelectPrimitive.Viewport>
-          {!atBottom && <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-muted to-transparent"></div>}
+          {isOverflowing && !atBottom && <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-muted to-transparent"></div>}
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   )
 })
 SelectContent.displayName = SelectPrimitive.Content.displayName
+
 const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>

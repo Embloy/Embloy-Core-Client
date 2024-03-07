@@ -45,11 +45,11 @@ export function ApplicationResponse({ application, params: {lang} }: Application
       <div className="grid gap-4">
         <div className="grid gap-4">
         {application.response ? (
-          <div className={`rounded-lg bg-secondary p-4 text-primary ${statusColor}`}>
+          <div className={`rounded-lg bg-secondary p-4 text-secondary-foreground ${statusColor}`}>
             {application.response}
           </div>
         ) : (
-          <div className={`rounded-lg bg-secondary p-4 text-primary ${statusColor}`}>
+          <div className={`rounded-lg bg-secondary p-4 text-secondary-foreground ${statusColor}`}>
             {dict.dashboard.applications.noResponseYet}
           </div>
         )}
