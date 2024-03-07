@@ -14,6 +14,11 @@ import Image from 'next/image';
 export function LanguageToggle() {
   const [language, setLanguage] = useLanguage()
 
+  const handleLanguageChange = (code) => {
+    setLanguage(code);
+    location.reload();
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -31,7 +36,7 @@ export function LanguageToggle() {
           { code: "it", label: "Italiano", src: "/flags/itFlag.svg" },
           { code: "jp", label: "日本語", src: "/flags/jpFlag.svg" },
         ].map(({ code, label, src }) => (
-          <DropdownMenuItem key={code} onClick={() => setLanguage(code)}>
+          <DropdownMenuItem key={code} onClick={() => handleLanguageChange(code)}>
             <Image src={src} alt="flag" className="mr-2 size-4" width="10" height="10"/>
             <span>{label}</span>
             {language === code && <Icons.check className="ml-2 size-4" />}
