@@ -157,8 +157,8 @@ export default function ApplyPage({ params: { lang } }) {
   
     const err = await submitApplication(applicationText, searchParams.get("request_token"), job?.job_id || 0, cvFile, options)
   
-    setIsLoading(false)
     if (err && dict) {
+      setIsLoading(false)
       return toast({
         title: dict.errors[err || "500"].title || dict.errors.generic.title,
         description: dict.errors[err || "500"].description || dict.errors.generic.description,
@@ -166,8 +166,7 @@ export default function ApplyPage({ params: { lang } }) {
       })
     } else {
       // This forces a cache invalidation.
-      router.refresh()
-    
+      router.refresh()      
       router.push(`/${lang}/dashboard/applications`)
     }
   }
@@ -183,35 +182,45 @@ export default function ApplyPage({ params: { lang } }) {
   };
 
   const handleFileChange = (event) => {
-    if (job && dict) {
-      const file = event.target.files[0];
-      const validTypes = job.allowed_cv_formats;
-      const validSize = 2 * 1024 * 1024; // 2MB in bytes
-  
-      const fileExtension = '.' + file.name.split('.').pop();
-  
-      console.log("fileExtension=", fileExtension)
-      console.log("validTypes=", validTypes)
-  
-      if (!validTypes.includes(fileExtension)) {
-        toast({
-          title: dict.sdk.errors.invalidFileType.title,
-          description: dict.sdk.errors.invalidFileType.description.replace('{formats}', job.allowed_cv_formats.join(", ")),
-          variant: "destructive",
-        });
-        return;
+    try {
+      setErrorMessages((prevMessages) => {
+        const newMessages = { ...prevMessages };
+        delete newMessages['cvFile'];
+        return newMessages;
+      });
+      
+      if (job && dict) {
+        const file = event.target.files[0];
+        const validTypes = job.allowed_cv_formats;
+        const validSize = 2 * 1024 * 1024; // 2MB in bytes
+    
+        const fileExtension = '.' + file.name.split('.').pop();
+    
+        console.log("fileExtension=", fileExtension)
+        console.log("validTypes=", validTypes)
+    
+        if (!validTypes.includes(fileExtension)) {
+          toast({
+            title: dict.sdk.errors.invalidFileType.title,
+            description: dict.sdk.errors.invalidFileType.description.replace('{formats}', job.allowed_cv_formats.join(", ")),
+            variant: "destructive",
+          });
+          return;
+        }
+    
+        if (file.size > validSize) {
+          toast({
+            title: dict.dashboard.settings.errors.largeFile.title,
+            description: dict.dashboard.settings.errors.largeFile.description,
+            variant: "destructive",
+          });
+          return;
+        }
+    
+        setCvFile(file);
       }
-  
-      if (file.size > validSize) {
-        toast({
-          title: dict.dashboard.settings.errors.largeFile.title,
-          description: dict.dashboard.settings.errors.largeFile.description,
-          variant: "destructive",
-        });
-        return;
-      }
-  
-      setCvFile(file);
+    } catch (error) {
+      setErrorMessages((prevMessages) => ({ ...prevMessages, ['cvFile']: error.message }));
     }
   };
 
