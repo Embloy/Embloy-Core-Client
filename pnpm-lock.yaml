@@ -244,9 +244,6 @@ dependencies:
   stripe:
     specifier: ^11.18.0
     version: 11.18.0
-  table:
-    specifier: github:tanstack/react-table
-    version: github.com/tanstack/react-table/2ec0d292583510d912758e4360678fcc03108ed0
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -11626,10 +11623,3 @@ packages:
 
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
-
-  github.com/tanstack/react-table/2ec0d292583510d912758e4360678fcc03108ed0:
-    resolution: {commit: 2ec0d292583510d912758e4360678fcc03108ed0, repo: git+ssh://git@github.com/tanstack/react-table.git, type: git}
-    name: table
-    version: 0.0.0
-    requiresBuild: true
-    dev: false
