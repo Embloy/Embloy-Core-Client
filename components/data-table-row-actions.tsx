@@ -46,7 +46,7 @@ export function DataTableRowActions<TData>({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
         <Link href={`/dashboard/applications?id=${row.getValue("job_id")}&slug=${row.getValue("job_slug")}`}>
-            <DropdownMenuItem>{dict.dashboard.upcoming.t.rowActions.goToApplications}</DropdownMenuItem>
+            <DropdownMenuItem>{dict.dashboard.upcoming.t.rowActions.goToApplication}</DropdownMenuItem>
         </Link>
         <DropdownMenuItem disabled>{dict.dashboard.upcoming.t.rowActions.labels}</DropdownMenuItem>
         <DropdownMenuItem disabled>{dict.dashboard.upcoming.t.rowActions.favorites}</DropdownMenuItem>
