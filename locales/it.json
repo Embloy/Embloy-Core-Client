@@ -228,7 +228,81 @@
       "applyWith": "Candidati per un lavoro utilizzando un token di richiesta Quicklink o una Genius Query.",
       "cancel": "Annulla",
       "gq": "Genius Query",
-      "quicklink": "Quicklink"    
+      "quicklink": "Quicklink",
+      "t": {
+        "noResults": "Nessun risultato.",
+        "toolBar": {
+          "filterJobs": "Filtra lavori...",
+          "status": "Stato",
+          "jobType": "Tipo di lavoro",
+          "employerRating": "Valutazione del datore di lavoro",
+          "reset": "Ripristina"
+        },
+        "facetedFilters": {
+          "noResults": "Nessun risultato trovato.",
+          "clearFilters": "Cancella filtri"
+        },
+        "columns": {
+          "selectAll": "Seleziona tutto",
+          "selectRow": "Seleziona riga",
+          "id": "ID",
+          "jobSlug": "Slug del lavoro",
+          "title": "Titolo",
+          "status": "Stato",
+          "jobType": "Tipo di lavoro",
+          "employerURL": "URL del datore di lavoro",
+          "employerPhone": "Telefono del datore di lavoro",
+          "employerEmail": "Email del datore di lavoro",
+          "employerName": "Nome del datore di lavoro",
+          "employerRating": "Valutazione del datore di lavoro",
+          "keySkills": "Competenze chiave"
+        },
+        "rowActions": {
+          "openMenu": "Apri menu",
+          "goToApplication": "Vai all'applicazione",
+          "labels": "Etichette",
+          "favorites": "Preferiti",
+          "share": "Condividi",
+          "linkedIn": "LinkedIn",
+          "instagram": "Instagram",
+          "twitter": "Twitter",
+          "email": "Email",
+          "delete": "Elimina"
+        },
+        "viewOptions": {
+          "view": "Visualizzazione",
+          "toggleColumns": "Attiva/disattiva colonne",
+          "options": {
+            "job_slug": "ID",
+            "title": "Titolo",
+            "status": "Stato",
+            "job_type": "Tipo di lavoro",
+            "referrer_url": "URL del referrer",
+            "employer_phone": "Telefono del datore di lavoro",
+            "employer_name": "Nome del datore di lavoro",
+            "employer_email": "Email del datore di lavoro",
+            "employer_rating": "Valutazione del datore di lavoro",
+            "key_skills": "Competenze chiave"
+          }
+        },
+        "pagination": {
+          "rows": "riga(e) selezionata(e).",
+          "rowsPerPage": "Righe per pagina",
+          "page" : "Pagina ",
+          "of": " di ",
+          "goToFirstPage": "Vai alla prima pagina",
+          "goToPreviousPage": "Vai alla pagina precedente",
+          "goToNextPage": "Vai alla pagina successiva",
+          "goToLastPage": "Vai all'ultima pagina"
+        },
+        "columnHeader": {
+          "desc": "discendente",
+          "asc": "ascendente",
+          "desc2": "Discendente",
+          "asc2": "Ascendente",
+          "hide": "Nascondi"
+        }
+      } 
     },
     "applications": {
       "title": "Applicazioni",

@@ -228,7 +228,81 @@
       "applyWith": "Apply to a job using either a given Quicklink request token or Genius Query.",
       "cancel": "Cancel",
       "gq": "Genius Query",
-      "quicklink": "Quicklink"
+      "quicklink": "Quicklink",
+      "t": {
+        "noResults": "No results.",
+        "toolBar": {
+          "filterJobs": "Filter jobs...",
+          "status": "Status",
+          "jobType": "Job Type",
+          "employerRating": "Employer Rating",
+          "reset": "Reset"
+        },
+        "facetedFilters": {
+          "noResults": "No results found.",
+          "clearFilters": "Clear filters"
+        },
+        "columns": {
+          "selectAll": "Select all",
+          "selectRow": "Select row",
+          "id": "ID",
+          "jobSlug": "Job Slug",
+          "title": "Title",
+          "status": "Status",
+          "jobType": "Job Type",
+          "employerURL": "Employer URL",
+          "employerPhone": "Employer Phone",
+          "employerEmail": "Employer Email",
+          "employerName": "Employer Name",
+          "employerRating": "Employer Rating",
+          "keySkills": "Key Skills"
+        },
+        "rowActions": {
+          "openMenu": "Open menu",
+          "goToApplication": "Go to application",
+          "labels": "Lables",
+          "favorites": "Favorites",
+          "share": "Share",
+          "linkedIn": "LinkedIn",
+          "instagram": "Instagram",
+          "twitter": "Twitter",
+          "email": "Email",
+          "delete": "Delete"
+        },
+        "viewOptions": {
+          "view": "View",
+          "toggleColumns": "Toggle columns",
+          "options": {
+            "job_slug": "ID",
+            "title": "Title",
+            "status": "Status",
+            "job_type": "Job Type",
+            "referrer_url": "Referrer URL",
+            "employer_phone": "Employer Phone",
+            "employer_name": "Employer Name",
+            "employer_email": "Employer Email",
+            "employer_rating": "Employer Rating",
+            "key_skills": "Key Skills"
+          }
+        },
+        "pagination": {
+          "rows": "row(s) selected.",
+          "rowsPerPage": "Rows per page",
+          "page" : "Page ",
+          "of": " of ",
+          "goToFirstPage": "Go to first page",
+          "goToPreviousPage": "Go to previous page",
+          "goToNextPage": "Go to next page",
+          "goToLastPage": "Go to last page"
+        },
+        "columnHeader": {
+          "desc": "desc",
+          "asc": "asc",
+          "desc2": "Desc",
+          "asc2": "Asc",
+          "hide": "Hide"
+        }
+      }
     },
     "applications": {
       "title": "Applications",

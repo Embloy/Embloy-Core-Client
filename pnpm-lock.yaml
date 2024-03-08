@@ -130,6 +130,9 @@ dependencies:
   '@t3-oss/env-nextjs':
     specifier: ^0.2.2
     version: 0.2.2(zod@3.22.4)
+  '@tanstack/react-table':
+    specifier: ^8.13.2
+    version: 8.13.2(react-dom@18.2.0)(react@18.2.0)
   '@typescript-eslint/parser':
     specifier: ^5.62.0
     version: 5.62.0(eslint@8.57.0)(typescript@4.7.4)
@@ -241,6 +244,9 @@ dependencies:
   stripe:
     specifier: ^11.18.0
     version: 11.18.0
+  table:
+    specifier: github:tanstack/react-table
+    version: github.com/tanstack/react-table/2ec0d292583510d912758e4360678fcc03108ed0
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -5695,6 +5701,23 @@ packages:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.1(ts-node@10.9.2)
     dev: true
+
+  /@tanstack/react-table@8.13.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-b6mR3mYkjRtJ443QZh9sc7CvGTce81J35F/XMr0OoWbx0KIM7TTTdyNP2XKObvkLpYnLpCrYDwI3CZnLezWvpg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.13.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/table-core@8.13.2:
+    resolution: {integrity: sha512-/2saD1lWBUV6/uNAwrsg2tw58uvMJ07bO2F1IWMxjFRkJiXKQRuc3Oq2aufeobD3873+4oIM/DRySIw7+QsPPw==}
+    engines: {node: '>=12'}
+    dev: false
 
   /@tsconfig/node10@1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
@@ -11603,3 +11626,10 @@ packages:
 
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
+
+  github.com/tanstack/react-table/2ec0d292583510d912758e4360678fcc03108ed0:
+    resolution: {commit: 2ec0d292583510d912758e4360678fcc03108ed0, repo: git+ssh://git@github.com/tanstack/react-table.git, type: git}
+    name: table
+    version: 0.0.0
+    requiresBuild: true
+    dev: false

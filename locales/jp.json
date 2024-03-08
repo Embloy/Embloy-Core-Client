@@ -228,7 +228,81 @@
       "applyWith": "与えられたQuicklinkリクエストトークンまたはGenius Queryを使用してジョブに応募します。",
       "cancel": "キャンセル",
       "gq": "Genius Query",
-      "quicklink": "Quicklink"    
+      "quicklink": "Quicklink",
+      "t": {
+        "noResults": "結果がありません。",
+        "toolBar": {
+          "filterJobs": "仕事をフィルター...",
+          "status": "ステータス",
+          "jobType": "仕事の種類",
+          "employerRating": "雇用主評価",
+          "reset": "リセット"
+        },
+        "facetedFilters": {
+          "noResults": "結果が見つかりませんでした。",
+          "clearFilters": "フィルターをクリア"
+        },
+        "columns": {
+          "selectAll": "すべて選択",
+          "selectRow": "行を選択",
+          "id": "ID",
+          "jobSlug": "ジョブスラッグ",
+          "title": "タイトル",
+          "status": "ステータス",
+          "jobType": "仕事の種類",
+          "employerURL": "雇用主URL",
+          "employerPhone": "雇用主電話",
+          "employerEmail": "雇用主メール",
+          "employerName": "雇用主名",
+          "employerRating": "雇用主評価",
+          "keySkills": "主要スキル"
+        },
+        "rowActions": {
+          "openMenu": "メニューを開く",
+          "goToApplication": "応募する",
+          "labels": "ラベル",
+          "favorites": "お気に入り",
+          "share": "共有",
+          "linkedIn": "LinkedIn",
+          "instagram": "Instagram",
+          "twitter": "Twitter",
+          "email": "電子メール",
+          "delete": "削除"
+        },
+        "viewOptions": {
+          "view": "ビュー",
+          "toggleColumns": "列を切り替える",
+          "options": {
+            "job_slug": "ID",
+            "title": "タイトル",
+            "status": "ステータス",
+            "job_type": "仕事の種類",
+            "referrer_url": "リファラURL",
+            "employer_phone": "雇用主電話",
+            "employer_name": "雇用主名",
+            "employer_email": "雇用主メール",
+            "employer_rating": "雇用主評価",
+            "key_skills": "主要スキル"
+          }
+        },
+        "pagination": {
+          "rows": "行が選択されました。",
+          "rowsPerPage": "ページごとの行数",
+          "page" : "ページ ",
+          "of": "/ ",
+          "goToFirstPage": "最初のページへ",
+          "goToPreviousPage": "前のページへ",
+          "goToNextPage": "次のページへ",
+          "goToLastPage": "最後のページへ"
+        },
+        "columnHeader": {
+          "desc": "降順",
+          "asc": "昇順",
+          "desc2": "降順",
+          "asc2": "昇順",
+          "hide": "非表示"
+        }
+      } 
     },
     "applications": {
       "title": "応募",

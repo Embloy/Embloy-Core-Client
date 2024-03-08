@@ -228,7 +228,81 @@
       "applyWith": "Bewirb dich für einen Job mit einem Quicklink oder einer Genius Query.",
       "cancel": "Abbrechen",
       "gq": "Genius Query",
-      "quicklink": "Quicklink"    
+      "quicklink": "Quicklink",
+      "t": {
+        "noResults": "Keine Ergebnisse.",
+        "toolBar": {
+          "filterJobs": "Jobs filtern...",
+          "status": "Status",
+          "jobType": "Art der Stelle",
+          "employerRating": "Arbeitgeberbewertung",
+          "reset": "Zurücksetzen"
+        },
+        "facetedFilters": {
+          "noResults": "Keine Ergebnisse gefunden.",
+          "clearFilters": "Filter zurücksetzen"
+        },
+        "columns": {
+          "selectAll": "Alle auswählen",
+          "selectRow": "Zeile auswählen",
+          "id": "ID",
+          "jobSlug": "Job-Bezeichnung",
+          "title": "Titel",
+          "status": "Status",
+          "jobType": "Art der Stelle",
+          "employerURL": "Arbeitgeber-URL",
+          "employerPhone": "Arbeitgeber-Telefon",
+          "employerEmail": "Arbeitgeber-E-Mail",
+          "employerName": "Arbeitgebername",
+          "employerRating": "Arbeitgeberbewertung",
+          "keySkills": "Schlüsselkompetenzen"
+        },
+        "rowActions": {
+          "openMenu": "Menü öffnen",
+          "goToApplication": "Zur Bewerbung gehen",
+          "labels": "Etiketten",
+          "favorites": "Favoriten",
+          "share": "Teilen",
+          "linkedIn": "LinkedIn",
+          "instagram": "Instagram",
+          "twitter": "Twitter",
+          "email": "E-Mail",
+          "delete": "Löschen"
+        },
+        "viewOptions": {
+          "view": "Ansicht",
+          "toggleColumns": "Spalten umschalten",
+          "options": {
+            "job_slug": "ID",
+            "title": "Titel",
+            "status": "Status",
+            "job_type": "Art der Stelle",
+            "referrer_url": "Referrer-URL",
+            "employer_phone": "Arbeitgeber-Telefon",
+            "employer_name": "Arbeitgebername",
+            "employer_email": "Arbeitgeber-E-Mail",
+            "employer_rating": "Arbeitgeberbewertung",
+            "key_skills": "Schlüsselkompetenzen"
+          }
+        },
+        "pagination": {
+          "rows": "Zeile(n) ausgewählt.",
+          "rowsPerPage": "Zeilen pro Seite",
+          "page" : "Seite ",
+          "of": " von ",
+          "goToFirstPage": "Zur ersten Seite gehen",
+          "goToPreviousPage": "Zurück zur vorherigen Seite",
+          "goToNextPage": "Zur nächsten Seite gehen",
+          "goToLastPage": "Zur letzten Seite gehen"
+        },
+        "columnHeader": {
+          "desc": "absteigend",
+          "asc": "aufsteigend",
+          "desc2": "Absteigend",
+          "asc2": "Aufsteigend",
+          "hide": "Ausblenden"
+        }
+      }
     },
     "applications": {
       "title": "Bewerbungen",

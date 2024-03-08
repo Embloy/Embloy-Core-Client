@@ -13,6 +13,7 @@ import Image from "next/image";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { toast } from "@/components/ui/use-toast";
 import Loading from "@/app/[lang]/(sdk)/sdk/apply/loading";
+import { JobTable } from "@/components/job-table";
 
 export default function UpcomingJobsPage({ params: { lang } }) {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
@@ -57,26 +58,12 @@ export default function UpcomingJobsPage({ params: { lang } }) {
   }
 
   return dict && (
-    <DashboardShell>
+    <div>
       <DashboardHeader heading={dict.dashboard.upcoming.title} text={dict.dashboard.upcoming.subtitle}>
         <StartApplyButton params={{lang: lang}} />
       </DashboardHeader>
       {jobs.length > 0 ? (
-        jobs.map((job) => (
-          <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-            <div className="grid grid-cols-3 gap-4">
-              <div key={job.job_id}>
-                <Image
-                  className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110"
-                  src="/images/mobile_button_page.png"
-                  alt="Description of Image 1"
-                  width={842}
-                  height={842}
-                />
-              </div>
-            </div>
-          </div>
-        ))
+        <JobTable jobs={jobs} params={{lang: lang}}/>
       ) : (
         <EmptyPlaceholder>
           <EmptyPlaceholder.Icon name="timer" />
@@ -87,6 +74,6 @@ export default function UpcomingJobsPage({ params: { lang } }) {
           <StartApplyButton params={{lang: lang}}/>
         </EmptyPlaceholder>
       )}
-    </DashboardShell>
+    </div>
   );
 }

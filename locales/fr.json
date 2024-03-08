@@ -228,7 +228,81 @@
       "applyWith": "Postulez à un emploi en utilisant soit un jeton de demande Quicklink donné, soit une Genius Query.",
       "cancel": "Annuler",
       "gq": "Genius Query",
-      "quicklink": "Quicklink"    
+      "quicklink": "Quicklink",
+      "t": {
+        "noResults": "Aucun résultat.",
+        "toolBar": {
+          "filterJobs": "Filtrer les emplois...",
+          "status": "Statut",
+          "jobType": "Type d'emploi",
+          "employerRating": "Évaluation de l'employeur",
+          "reset": "Réinitialiser"
+        },
+        "facetedFilters": {
+          "noResults": "Aucun résultat trouvé.",
+          "clearFilters": "Effacer les filtres"
+        },
+        "columns": {
+          "selectAll": "Sélectionner tout",
+          "selectRow": "Sélectionner une ligne",
+          "id": "ID",
+          "jobSlug": "Slug de l'emploi",
+          "title": "Titre",
+          "status": "Statut",
+          "jobType": "Type d'emploi",
+          "employerURL": "URL de l'employeur",
+          "employerPhone": "Téléphone de l'employeur",
+          "employerEmail": "E-mail de l'employeur",
+          "employerName": "Nom de l'employeur",
+          "employerRating": "Évaluation de l'employeur",
+          "keySkills": "Compétences clés"
+        },
+        "rowActions": {
+          "openMenu": "Ouvrir le menu",
+          "goToApplication": "Aller à l'application",
+          "labels": "Étiquettes",
+          "favorites": "Favoris",
+          "share": "Partager",
+          "linkedIn": "LinkedIn",
+          "instagram": "Instagram",
+          "twitter": "Twitter",
+          "email": "E-mail",
+          "delete": "Supprimer"
+        },
+        "viewOptions": {
+          "view": "Vue",
+          "toggleColumns": "Basculer les colonnes",
+          "options": {
+            "job_slug": "ID",
+            "title": "Titre",
+            "status": "Statut",
+            "job_type": "Type d'emploi",
+            "referrer_url": "URL de référence",
+            "employer_phone": "Téléphone de l'employeur",
+            "employer_name": "Nom de l'employeur",
+            "employer_email": "E-mail de l'employeur",
+            "employer_rating": "Évaluation de l'employeur",
+            "key_skills": "Compétences clés"
+          }
+        },
+        "pagination": {
+          "rows": "ligne(s) sélectionnée(s).",
+          "rowsPerPage": "Lignes par page",
+          "page" : "Page ",
+          "of": " sur ",
+          "goToFirstPage": "Aller à la première page",
+          "goToPreviousPage": "Aller à la page précédente",
+          "goToNextPage": "Aller à la page suivante",
+          "goToLastPage": "Aller à la dernière page"
+        },
+        "columnHeader": {
+          "desc": "descendant",
+          "asc": "ascendant",
+          "desc2": "Descendant",
+          "asc2": "Ascendant",
+          "hide": "Masquer"
+        }
+      }
     },
     "applications": {
       "title": "Candidatures",
