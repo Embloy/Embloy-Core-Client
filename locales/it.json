@@ -239,7 +239,8 @@
         },
         "facetedFilters": {
           "noResults": "Nessun risultato trovato.",
-          "clearFilters": "Cancella filtri"
+          "clearFilters": "Cancella filtri",
+          "selected": " selezionati"
         },
         "columns": {
           "selectAll": "Seleziona tutto",

@@ -1,12 +1,24 @@
 import * as React from "react"
 import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons"
 import { Column } from "@tanstack/react-table"
-import { Button } from "./new-york/ui/button"
+
 import { cn } from "@/lib/utils"
-import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover"
-import { Command } from "lucide-react"
 import { Badge } from "./new-york/ui/badge"
-import { CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator } from "./new-york/ui/command"
+import { Button } from "./new-york/ui/button"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+} from "./new-york/ui/command"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "./new-york/ui/popover"
 import { Separator } from "./new-york/ui/separator"
 import { TableDictContext } from "./data-table"
 
@@ -27,13 +39,14 @@ export function DataTableFacetedFilter<TData, TValue>({
 }: DataTableFacetedFilterProps<TData, TValue>) {
   const facets = column?.getFacetedUniqueValues()
   const selectedValues = new Set(column?.getFilterValue() as string[])
+
   const { dict } = React.useContext(TableDictContext)
 
   return dict && (
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="outline" size="sm" className="h-8 border-dashed">
-          <PlusCircledIcon className="mr-2 size-4" />
+        <PlusCircledIcon className="mr-2 size-4" />
           {title}
           {selectedValues?.size > 0 && (
             <>
@@ -50,7 +63,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                     variant="secondary"
                     className="rounded-sm px-1 font-normal"
                   >
-                    {selectedValues.size} selected
+                    {selectedValues.size}{dict.dashboard.upcoming.t.facetedFilters.selected}
                   </Badge>
                 ) : (
                   options
@@ -74,9 +87,9 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>
-            <CommandEmpty>{dict.dashboard.upcoming.t.facetedFilters.noResults}</CommandEmpty>
+          <CommandEmpty>{dict.dashboard.upcoming.t.facetedFilters.noResults}</CommandEmpty>
             <CommandGroup>
-              {options?.map((option) => {
+              {options.map((option) => {
                 const isSelected = selectedValues.has(option.value)
                 return (
                   <CommandItem

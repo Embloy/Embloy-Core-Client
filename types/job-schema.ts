@@ -14,7 +14,7 @@ export const applicationOptionSchema = z.object({
 
 export const jobSchema = z.object({
   job_id: z.number(),
-  job_type: z.string(),
+  job_type: z.string().optional(),
   job_slug: z.string(),
   job_type_value: z.number(),
   job_status: z.string().optional(),

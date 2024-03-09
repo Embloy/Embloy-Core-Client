@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 
 import { Checkbox } from "./new-york/ui/checkbox"
 
-import { statuses } from "./table-data"
+import { jobTypeColorClasses, jobTypes, statuses } from "./table-data"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 import { Job } from "@/types/job-schema"
@@ -80,7 +80,7 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.title} />
       ),
-      cell: ({ row }) => <div className="w-[170px] font-bold">{row.getValue("title")}</div>,
+      cell: ({ row }) => <div className="w-[170px]">{row.getValue("title")}</div>,
       enableSorting: true,
       enableHiding: true,
     },
@@ -122,25 +122,34 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.jobType} />
       ),
       cell: ({ row }) => {
-        const job_type = row.getValue("job_type");
-        let colorClasses = "bg-blue-200 text-blue-800";
-    
-        // TODO: Use external function for all job_types & sync with genius
-        if (job_type === "Marketin1g") {
-          colorClasses = "cursor-text px-4 py-1 bg-red-950 rounded-full border border-red-500 font-normal text-red-500 text-xs";
-        } else if (job_type === "Marketing2") {
-          colorClasses = "cursor-text px-4 py-1 bg-blue-950 rounded-full border border-embloy-blue font-normal text-embloy-blue text-xs";
-        } else if (job_type === "Marketing") {
-          colorClasses = "cursor-text px-4 py-1 bg-red-950 rounded-full border border-red-500 font-normal text-red-500 text-xs";
+        const jobType = jobTypes.find(
+          (jobType) => jobType.value === row.getValue("job_type")
+        )
+
+        if (!jobType) {
+          return (
+            <div className="flex w-[100px] items-center text-muted-foreground">
+                <QuestionMarkCircledIcon className="mr-2 size-4 text-muted-foreground" />
+                <span>Unknown</span>
+            </div>
+          )
+        }
+        let colorClasses = jobTypeColorClasses[jobType.value];
+
+        if (!colorClasses) {
+          colorClasses = "cursor-text px-4 py-1 bg-gray-100 dark:bg-gray-950 rounded-full border border-gray-600 dark:border-gray-500 font-normal text-gray-600 dark:text-gray-500 text-xs";
         }
     
         return (
           <div className="flex space-x-2">
             <span className={`inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium ${colorClasses}`}>
-              {row.getValue("job_type")}
+              {jobType.label}
             </span>
           </div>
         )
+      },
+      filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id))
       },
     },
     {
@@ -149,11 +158,11 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerURL} />
       ),
       cell: ({ row }) => (
-        <div className="flex items-center justify-center">
-          <a href={row.getValue("referrer_url")} target="_blank" rel="noopener noreferrer" className="mr-5 flex max-w-[80px] items-center">
-            <ExternalLink/>
-          </a>
-        </div>
+        row.getValue("referrer_url") 
+          ? <a href={row.getValue("referrer_url")} target="_blank" rel="noopener noreferrer" className="flex max-w-[80px] items-center justify-center">
+              <ExternalLink/>
+            </a>
+          : <div className="flex max-w-[80px] items-center justify-center text-gray-500">N/A</div>
       ),
       enableSorting: true,
       enableHiding: true,

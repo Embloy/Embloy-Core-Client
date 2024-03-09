@@ -239,7 +239,8 @@
         },
         "facetedFilters": {
           "noResults": "結果が見つかりませんでした。",
-          "clearFilters": "フィルターをクリア"
+          "clearFilters": "フィルターをクリア",
+          "selected": " 件が選択されました"
         },
         "columns": {
           "selectAll": "すべて選択",
