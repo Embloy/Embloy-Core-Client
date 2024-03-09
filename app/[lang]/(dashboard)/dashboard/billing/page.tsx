@@ -65,7 +65,7 @@ export default function BillingPage({ params: { lang } }) {
           <p>
           {dict.dashboard.billing.noActiveSubscriptionsText}
           </p>
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-3">
             <SubscribeButton variant="default" subscriptionType="Free" params={{lang: lang}} className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" />
             <SubscribeButton variant="default" subscriptionType="Smart" params={{lang: lang}} className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" />
             <SubscribeButton variant="default" subscriptionType="Genius" params={{lang: lang}} className="duration-400 rounded-xl transition-transform ease-in-out hover:scale-110" />

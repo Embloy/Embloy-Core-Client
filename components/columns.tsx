@@ -15,6 +15,22 @@ import { QuestionMarkCircledIcon } from "@radix-ui/react-icons"
 
 export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
   
+  const JobSlugCell = ({ row }) => {
+    const [copied, setCopied] = useState(false);
+  
+    const copyToClipboard = async () => {
+      await navigator.clipboard.writeText(row.getValue("job_slug"));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+    };
+  
+    return (
+      <div onClick={copyToClipboard} className="w-[80px] cursor-pointer truncate text-xs text-muted-foreground">
+        {copied ? 'Copied!' : row.getValue("job_slug")}
+      </div>
+    );
+  };
+  
   return [
       {
         id: "select",
@@ -55,21 +71,7 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.jobSlug} />
       ),
-      cell: ({ row }) => {
-        const [copied, setCopied] = useState(false);
-    
-        const copyToClipboard = async () => {
-          await navigator.clipboard.writeText(row.getValue("job_slug"));
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
-        };
-    
-        return (
-          <div onClick={copyToClipboard} className="w-[80px] text-muted-foreground text-xs truncate cursor-pointer">
-            {copied ? 'Copied!' : row.getValue("job_slug")}
-          </div>
-        );
-      },
+      cell: JobSlugCell,
       enableSorting: true,
       enableHiding: true,
     },
@@ -134,7 +136,7 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
     
         return (
           <div className="flex space-x-2">
-            <span className={`inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium ${colorClasses}`}>
+            <span className={`inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium ${colorClasses}`}>
               {row.getValue("job_type")}
             </span>
           </div>
@@ -147,8 +149,8 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerURL} />
       ),
       cell: ({ row }) => (
-        <div className="flex justify-center items-center">
-          <a href={row.getValue("referrer_url")} target="_blank" rel="noopener noreferrer" className="max-w-[80px] mr-5 flex items-center">
+        <div className="flex items-center justify-center">
+          <a href={row.getValue("referrer_url")} target="_blank" rel="noopener noreferrer" className="mr-5 flex max-w-[80px] items-center">
             <ExternalLink/>
           </a>
         </div>

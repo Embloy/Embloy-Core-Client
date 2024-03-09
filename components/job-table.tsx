@@ -15,7 +15,7 @@ export function JobTable({jobs, params: {lang}}) {
   }, [lang, dict]);
   
   return dict && (
-    <><div className="md:hidden overflow-x-auto">
+    <><div className="overflow-x-auto md:hidden">
     <DataTable data={jobs} params={{ lang: lang }} columns={columns(dict)} />
   </div>
       <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
