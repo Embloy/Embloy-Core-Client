@@ -33,6 +33,7 @@ import {
   MailWarning,
   BellRing,
   MailCheck,
+  ExternalLink,
 } from "lucide-react"
 
 import { Logo } from './ui/command'
@@ -68,6 +69,7 @@ export const Icons = {
   bellRing: BellRing,
   mailWarning: MailWarning,
   mailCheck: MailCheck,
+  externalLink: ExternalLink,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

@@ -232,7 +232,7 @@
         "noResults": "結果がありません。",
         "toolBar": {
           "filterJobs": "仕事をフィルター...",
-          "status": "ステータス",
+          "jobStatus": "ステータス",
           "jobType": "仕事の種類",
           "employerRating": "雇用主評価",
           "reset": "リセット"
@@ -274,7 +274,7 @@
           "options": {
             "job_slug": "ID",
             "title": "タイトル",
-            "status": "ステータス",
+            "job_status": "ステータス",
             "job_type": "仕事の種類",
             "referrer_url": "リファラURL",
             "employer_phone": "雇用主電話",

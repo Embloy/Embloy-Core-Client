@@ -30,10 +30,10 @@ export function DataTableToolbar<TData>({
           onChange={(event) => setGlobalFilter(event.target.value)}
           className="h-8 w-[150px] lg:w-[250px]"
         />
-        {table.getColumn("status") && (
+        {table.getColumn("job_status") && (
           <DataTableFacetedFilter
-            column={table.getColumn("status")}
-            title={dict.dashboard.upcoming.t.toolBar.status}
+            column={table.getColumn("job_status")}
+            title={dict.dashboard.upcoming.t.toolBar.jobStatus}
             options={statuses}
           />
         )}

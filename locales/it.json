@@ -232,7 +232,7 @@
         "noResults": "Nessun risultato.",
         "toolBar": {
           "filterJobs": "Filtra lavori...",
-          "status": "Stato",
+          "jobStatus": "Stato",
           "jobType": "Tipo di lavoro",
           "employerRating": "Valutazione del datore di lavoro",
           "reset": "Ripristina"
@@ -274,7 +274,7 @@
           "options": {
             "job_slug": "ID",
             "title": "Titolo",
-            "status": "Stato",
+            "job_status": "Stato",
             "job_type": "Tipo di lavoro",
             "referrer_url": "URL del referrer",
             "employer_phone": "Telefono del datore di lavoro",

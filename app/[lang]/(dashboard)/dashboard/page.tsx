@@ -21,12 +21,12 @@ import { useRouter } from "next/navigation";
 import { getSession } from "@/lib/api/session";
 import { useEffect, useState } from "react";
 import { UpcomingJobs } from "@/components/upcoming-jobs";
-import Loading from "../../(sdk)/sdk/apply/loading";
 import { toast } from "@/components/ui/use-toast";
 import { getUpcomingJobs } from "@/lib/api/jobs";
 import { getDictionary } from "../../dictionaries";
 import { Job } from "@/lib/api/sdk";
 import { JobTable } from "@/components/job-table";
+import Loading from "../../(sdk)/sdk/apply/loading";
 
 export default function DashboardPage({ params: { lang } }) {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
@@ -50,7 +50,6 @@ export default function DashboardPage({ params: { lang } }) {
         router.push(`/${lang}/dashboard/upcoming-jobs`);
 
         const {response, err} = await getUpcomingJobs()
-        setIsLoading(false)
   
         if (err || !response) {
           return toast({
@@ -68,11 +67,11 @@ export default function DashboardPage({ params: { lang } }) {
     fetchJobs();
   }, [router, lang, dict]);
 
-  if (isLoading) {
-    return Loading
+  if (isLoading || !jobs ) {
+    return <Loading/>
   }
 
-  return jobs && dict && (
+  return !isLoading && jobs && dict && (
     <>
       <div className="hidden flex-col md:flex">
         <div className="flex-1 space-y-4 p-8 pt-6">

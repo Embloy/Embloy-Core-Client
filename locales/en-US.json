@@ -232,7 +232,7 @@
         "noResults": "No results.",
         "toolBar": {
           "filterJobs": "Filter jobs...",
-          "status": "Status",
+          "jobStatus": "Status",
           "jobType": "Job Type",
           "employerRating": "Employer Rating",
           "reset": "Reset"
@@ -274,7 +274,7 @@
           "options": {
             "job_slug": "ID",
             "title": "Title",
-            "status": "Status",
+            "job_status": "Status",
             "job_type": "Job Type",
             "referrer_url": "Referrer URL",
             "employer_phone": "Employer Phone",

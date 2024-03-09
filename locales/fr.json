@@ -232,7 +232,7 @@
         "noResults": "Aucun résultat.",
         "toolBar": {
           "filterJobs": "Filtrer les emplois...",
-          "status": "Statut",
+          "jobStatus": "Statut",
           "jobType": "Type d'emploi",
           "employerRating": "Évaluation de l'employeur",
           "reset": "Réinitialiser"
@@ -274,7 +274,7 @@
           "options": {
             "job_slug": "ID",
             "title": "Titre",
-            "status": "Statut",
+            "job_status": "Statut",
             "job_type": "Type d'emploi",
             "referrer_url": "URL de référence",
             "employer_phone": "Téléphone de l'employeur",

@@ -5,25 +5,24 @@ import {
     CheckCircledIcon,
     CircleIcon,
     CrossCircledIcon,
-    QuestionMarkCircledIcon,
-    StopwatchIcon,
+    CircleBackslashIcon,
   } from "@radix-ui/react-icons"
   
   export const statuses = [
     {
       value: "archived",
       label: "Archived",
-      icon: QuestionMarkCircledIcon,
+      icon: CircleBackslashIcon,
     },
     {
       value: "listed",
       label: "Listed",
-      icon: CircleIcon,
+      icon: CheckCircledIcon,
     },
     {
       value: "unlisted",
       label: "Unlisted",
-      icon: StopwatchIcon,
+      icon: CrossCircledIcon,
     },
   ]
   

@@ -54,7 +54,7 @@ export default function UpcomingJobsPage({ params: { lang } }) {
   }, [router, lang, dict]);
 
   if (isLoading) {
-    return Loading
+    return <Loading/>
   }
 
   return dict && (

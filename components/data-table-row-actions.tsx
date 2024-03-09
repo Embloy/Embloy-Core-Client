@@ -54,7 +54,7 @@ export function DataTableRowActions<TData>({
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>{dict.dashboard.upcoming.t.rowActions.share}</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
-            <DropdownMenuRadioGroup value={task.job_slug}>
+            <DropdownMenuRadioGroup value={task.job_slug} className="ml-0 mr-5">
               <DropdownMenuRadioItem disabled value={"LinkedIn"}>{dict.dashboard.upcoming.t.rowActions.linkedIn}</DropdownMenuRadioItem>
               <DropdownMenuRadioItem disabled value={"Instagram"}>{dict.dashboard.upcoming.t.rowActions.instagram}</DropdownMenuRadioItem>
               <DropdownMenuRadioItem disabled value={"Twitter"}>{dict.dashboard.upcoming.t.rowActions.twitter}</DropdownMenuRadioItem>

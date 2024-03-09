@@ -2,14 +2,15 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 
-import { Badge } from "./new-york/ui/badge"
 import { Checkbox } from "./new-york/ui/checkbox"
 
-import { employerRatings, jobTypes, statuses } from "./table-data"
+import { statuses } from "./table-data"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 import { Job } from "@/types/job-schema"
-import React from "react"
+import React, { useState } from "react"
+import { ExternalLink } from "lucide-react"
+import { QuestionMarkCircledIcon } from "@radix-ui/react-icons"
 
 
 export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
@@ -45,7 +46,7 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.id} />
       ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("job_id")}</div>,
+      cell: ({ row }) => <div className="w-[20px] truncate text-muted-foreground">{row.getValue("job_id")}</div>,
       enableSorting: false,
       enableHiding: false,
     },
@@ -54,7 +55,21 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.jobSlug} />
       ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("job_slug")}</div>,
+      cell: ({ row }) => {
+        const [copied, setCopied] = useState(false);
+    
+        const copyToClipboard = async () => {
+          await navigator.clipboard.writeText(row.getValue("job_slug"));
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+        };
+    
+        return (
+          <div onClick={copyToClipboard} className="w-[80px] text-muted-foreground text-xs truncate cursor-pointer">
+            {copied ? 'Copied!' : row.getValue("job_slug")}
+          </div>
+        );
+      },
       enableSorting: true,
       enableHiding: true,
     },
@@ -63,22 +78,27 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.title} />
       ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("title")}</div>,
+      cell: ({ row }) => <div className="w-[170px] font-bold">{row.getValue("title")}</div>,
       enableSorting: true,
       enableHiding: true,
     },
     {
-      accessorKey: "status",
+      accessorKey: "job_status",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.status} />
       ),
       cell: ({ row }) => {
         const status = statuses.find(
-          (status) => status.value === row.getValue("status")
+          (status) => status.value === row.getValue("job_status")
         )
 
         if (!status) {
-          return null
+          return (
+            <div className="flex w-[100px] items-center text-muted-foreground">
+                <QuestionMarkCircledIcon className="mr-2 size-4 text-muted-foreground" />
+                <span>Unknown</span>
+            </div>
+          )
         }
 
         return (
@@ -100,12 +120,21 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.jobType} />
       ),
       cell: ({ row }) => {
-        const job_type = jobTypes.find((label) => label.value === row.original.status)
-
+        const job_type = row.getValue("job_type");
+        let colorClasses = "bg-blue-200 text-blue-800";
+    
+        // TODO: Use external function for all job_types & sync with genius
+        if (job_type === "Marketin1g") {
+          colorClasses = "cursor-text px-4 py-1 bg-red-950 rounded-full border border-red-500 font-normal text-red-500 text-xs";
+        } else if (job_type === "Marketing2") {
+          colorClasses = "cursor-text px-4 py-1 bg-blue-950 rounded-full border border-embloy-blue font-normal text-embloy-blue text-xs";
+        } else if (job_type === "Marketing") {
+          colorClasses = "cursor-text px-4 py-1 bg-red-950 rounded-full border border-red-500 font-normal text-red-500 text-xs";
+        }
+    
         return (
           <div className="flex space-x-2">
-            {job_type && <Badge variant="outline">{job_type.label}</Badge>}
-            <span className="max-w-[500px] truncate font-medium">
+            <span className={`inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium ${colorClasses}`}>
               {row.getValue("job_type")}
             </span>
           </div>
@@ -116,8 +145,14 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       accessorKey: "referrer_url",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerURL} />
-        ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("referrer_url")}</div>,
+      ),
+      cell: ({ row }) => (
+        <div className="flex justify-center items-center">
+          <a href={row.getValue("referrer_url")} target="_blank" rel="noopener noreferrer" className="max-w-[80px] mr-5 flex items-center">
+            <ExternalLink/>
+          </a>
+        </div>
+      ),
       enableSorting: true,
       enableHiding: true,
     },
@@ -126,7 +161,11 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerPhone} />
       ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("employer_phone")}</div>,
+      cell: ({ row }) => (
+        <div className="max-w-[80px] text-center">
+          {row.getValue("employer_phone") ? row.getValue("employer_phone") : "N/A"}
+        </div>
+      ),
       enableSorting: true,
       enableHiding: true,
     },
@@ -135,7 +174,11 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerEmail} />
       ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("employer_email")}</div>,
+      cell: ({ row }) => (
+        <a href={`mailto:${row.getValue("employer_email")}`} className="max-w-[80px] text-blue-500 hover:text-blue-700">
+          {row.getValue("employer_email")}
+        </a>
+      ),
       enableSorting: true,
       enableHiding: true,
     },
@@ -144,11 +187,11 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerName} />
       ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("employer_name")}</div>,
+      cell: ({ row }) => <div className="max-w-[170px] font-bold">{row.getValue("employer_name")}</div>,
       enableSorting: true,
       enableHiding: true,
     },
-    {
+/*    {
       accessorKey: "employer_rating",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerRating} />
@@ -174,13 +217,17 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       filterFn: (row, id, value) => {
         return value.includes(row.getValue(id))
       },
-    },
+    },*/
     {
       accessorKey: "key_skills",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.keySkills} />
       ),
-      cell: ({ row }) => <div className="w-[80px]">{row.getValue("key_skills")}</div>,
+      cell: ({ row }) => (
+        <div className="max-w-[180px] truncate" title={row.getValue("key_skills")}>
+          {row.getValue("key_skills")}
+        </div>
+      ),
       enableSorting: true,
       enableHiding: true,
     },

@@ -18,7 +18,7 @@ export const jobSchema = z.object({
   job_slug: z.string(),
   job_type_value: z.number(),
   job_status: z.string().optional(),
-  status: z.string().optional(),
+  activity_status: z.number(),
   user_id: z.number(),
   referrer_url: z.string().optional(),
   duration: z.number(),
