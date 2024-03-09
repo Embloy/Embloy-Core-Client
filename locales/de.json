@@ -130,7 +130,6 @@
       "back": "Zurück",
       "title": "Aktualisiere Dein Passwort",
       "enterPassword": "Gib Dein neues Passwort ein",
-      "oauthReset": "Wenn Du dich mit OAuth angemeldet hast, musst Du zuerst ein Passwort festlegen, indem Du hier einen neuen Reset-Link anforderst.",
       "update": "Passwort aktualisieren",
       "setPassword": "Passwort festlegen"
     },

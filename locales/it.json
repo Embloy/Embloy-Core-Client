@@ -130,7 +130,6 @@
       "back": "Indietro",
       "title": "Aggiorna la tua password",
       "enterPassword": "Inserisci la tua nuova password",
-      "oauthReset": "Se ti sei iscritto utilizzando OAuth, devi prima impostare una password richiedendo un nuovo link di reset qui.",
       "update": "Aggiorna password",
       "setPassword": "Imposta password"
     },

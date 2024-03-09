@@ -130,7 +130,6 @@
       "back": "Back",
       "title": "Update Your Password",
       "enterPassword": "Enter your new password",
-      "oauthReset": "If you signed up using OAuth, you first have to set a password by requesting a new reset link here.",
       "update": "Update Password",
       "setPassword": "Set Password"
     },

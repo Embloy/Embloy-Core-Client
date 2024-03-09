@@ -138,7 +138,6 @@
       "back": "Retour",
       "title": "Mettez à jour votre mot de passe",
       "enterPassword": "Entrez votre nouveau mot de passe",
-      "oauthReset": "Si vous vous êtes inscrit en utilisant OAuth, vous devez d'abord définir un mot de passe en demandant un nouveau lien de réinitialisation ici.",
       "update": "Mettre à jour le mot de passe",
       "setPassword": "Définir le mot de passe"
     },

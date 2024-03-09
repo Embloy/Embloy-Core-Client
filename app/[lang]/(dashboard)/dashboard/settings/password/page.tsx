@@ -54,7 +54,6 @@ export default function PasswordResetPage({ params: { lang } }) {
               href={origin ? `/${lang}/password-reset?origin=${origin}` : `/${lang}/password-reset?origin=/dashboard/settings`}
               className="hover:text-brand underline underline-offset-4"
             >
-              {dict.auth.pwupdate.oauthReset}
             </Link>
           </p>
         </div>
