@@ -10,7 +10,7 @@ import ApplicationsLoading from './loading';
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { DashboardHeader } from "@/components/header";
 import { StartApplyButton } from "@/components/start-apply-button";
-import { ApplicationItem } from "@/components/ui/application-item";
+import { ApplicationMobileList } from "@/components/ui/application-mobile-list";
 import { useMediaQuery } from '@react-hook/media-query';
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { toast } from "@/components/ui/use-toast";
@@ -104,11 +104,7 @@ export default function ApplicationsPage({ params: { lang } }) {
         {isMobile ? (
           <DashboardShell>
             <DashboardHeader heading={dict.dashboard.applications.title} text={dict.dashboard.applications.subtitle}/>
-            <div>
-              {applications.map((application) => (
-                <ApplicationItem key={application.job_id} application={application} params={{lang: lang}} />
-              ))}
-            </div>
+            <ApplicationMobileList applications={applications} params={{lang: lang}} />
           </DashboardShell>
         ) : (
           <DashboardShell>

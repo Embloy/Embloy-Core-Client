@@ -87,7 +87,7 @@ export function ApplicationList({ items, unreadIDs, params: {lang} }: Applicatio
   );
 }
 
-function getBadgeVariantFromLabel(
+export function getBadgeVariantFromLabel(
   label: string
 ): ComponentProps<typeof Badge>["variant"] {
   if (["accepted"].includes(label.toLowerCase())) {
@@ -106,7 +106,7 @@ function getBadgeVariantFromLabel(
   return "secondary";
 }
 
-function getTextFromLabel(
+export function getTextFromLabel(
   label: string, dict: Record<string, any>
 ) {
   if (["rejected"].includes(label.toLowerCase())) {

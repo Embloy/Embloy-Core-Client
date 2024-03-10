@@ -27,29 +27,29 @@ export function ApplicationResponse({ application, params: {lang} }: Application
 
 
   switch (application.status) {
-    case '0':
-      statusColor =  'border-2 border-muted';
+    case 'pending':
+      statusColor =  'border-2 border-muted-foreground';
       break;
-    case '1':
+    case 'accepted':
       statusColor = "border-2 border-success";
       break;
-    case '-1':
+    case 'rejected':
       statusColor = "border-2 border-destructive";
       break;
     default:
-      statusColor = 'border-2 border-gray-500';
+      statusColor = 'border-2 border-muted-foreground';
   }
 
   return dict && statusColor ? (
-    <div className="p-4">
+    <div className="md:p-4">
       <div className="grid gap-4">
         <div className="grid gap-4">
         {application.response ? (
-          <div className={`rounded-lg bg-secondary p-4 text-secondary-foreground ${statusColor}`}>
+          <div className={`rounded-lg bg-secondary p-4 text-xs sm:text-base text-secondary-foreground ${statusColor}`}>
             {application.response}
           </div>
         ) : (
-          <div className={`rounded-lg bg-secondary p-4 text-secondary-foreground ${statusColor}`}>
+          <div className={`rounded-lg bg-secondary p-4 text-xs sm:text-base text-secondary-foreground ${statusColor}`}>
             {dict.dashboard.applications.noResponseYet}
           </div>
         )}
@@ -57,7 +57,7 @@ export function ApplicationResponse({ application, params: {lang} }: Application
       <div className="flex items-center">
         <Label
           htmlFor="mute"
-          className="flex items-center gap-2 text-xs font-normal"
+          className="gap-2 text-xs sm:text-base font-normal"
         >
           <Switch id="mute" aria-label="Mute thread" /> {dict.dashboard.applications.muteJobNotifications}
         </Label>

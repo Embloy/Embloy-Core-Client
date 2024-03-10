@@ -250,7 +250,7 @@
           "title": "Titre",
           "status": "Statut",
           "jobType": "Type d'emploi",
-          "employerURL": "URL de l'employeur",
+          "employerURL": "URL",
           "employerPhone": "Téléphone de l'employeur",
           "employerEmail": "E-mail de l'employeur",
           "employerName": "Nom de l'employeur",

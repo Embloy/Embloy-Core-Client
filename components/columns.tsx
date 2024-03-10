@@ -125,23 +125,23 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
         const jobType = jobTypes.find(
           (jobType) => jobType.value === row.getValue("job_type")
         )
-
+    
         if (!jobType) {
           return (
-            <div className="flex w-[100px] items-center text-muted-foreground">
+            <div className="flex w-[100px] items-center justify-center text-muted-foreground">
                 <QuestionMarkCircledIcon className="mr-2 size-4 text-muted-foreground" />
                 <span>Unknown</span>
             </div>
           )
         }
         let colorClasses = jobTypeColorClasses[jobType.value];
-
+    
         if (!colorClasses) {
           colorClasses = "cursor-text px-4 py-1 bg-gray-100 dark:bg-gray-950 rounded-full border border-gray-600 dark:border-gray-500 font-normal text-gray-600 dark:text-gray-500 text-xs";
         }
     
         return (
-          <div className="flex space-x-2">
+          <div className="flex justify-center space-x-2">
             <span className={`inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium ${colorClasses}`}>
               {jobType.label}
             </span>
@@ -186,7 +186,7 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerEmail} />
       ),
       cell: ({ row }) => (
-        <a href={`mailto:${row.getValue("employer_email")}`} className="max-w-[80px] text-blue-500 hover:text-blue-700">
+        <a href={`mailto:${row.getValue("employer_email")}`} className="max-w-[80px] hover:text-blue-500 hover:underline">
           {row.getValue("employer_email")}
         </a>
       ),
@@ -198,7 +198,7 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.employerName} />
       ),
-      cell: ({ row }) => <div className="max-w-[170px] font-bold">{row.getValue("employer_name")}</div>,
+      cell: ({ row }) => <div className="max-w-[160px] font-bold">{row.getValue("employer_name")}</div>,
       enableSorting: true,
       enableHiding: true,
     },

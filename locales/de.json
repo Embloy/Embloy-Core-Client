@@ -250,12 +250,12 @@
           "title": "Titel",
           "status": "Status",
           "jobType": "Art der Stelle",
-          "employerURL": "Arbeitgeber-URL",
+          "employerURL": "URL",
           "employerPhone": "Arbeitgeber-Telefon",
           "employerEmail": "Arbeitgeber-E-Mail",
-          "employerName": "Arbeitgebername",
+          "employerName": "Arbeitgeber",
           "employerRating": "Arbeitgeberbewertung",
-          "keySkills": "Schlüsselkompetenzen"
+          "keySkills": "Key-Skills"
         },
         "rowActions": {
           "openMenu": "Menü öffnen",
@@ -279,10 +279,10 @@
             "job_type": "Art der Stelle",
             "referrer_url": "Referrer-URL",
             "employer_phone": "Arbeitgeber-Telefon",
-            "employer_name": "Arbeitgebername",
+            "employer_name": "Arbeitgeber",
             "employer_email": "Arbeitgeber-E-Mail",
             "employer_rating": "Arbeitgeberbewertung",
-            "key_skills": "Schlüsselkompetenzen"
+            "key_skills": "Key-Skills"
           }
         },
         "pagination": {

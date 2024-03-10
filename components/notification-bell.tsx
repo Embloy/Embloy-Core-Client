@@ -70,11 +70,13 @@ export default function NotificationBell({params: { lang} }: NotificationBellPro
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="border p-2">
-      <DropdownMenuLabel className="p-2">
-            <span>{dict.nav.notifications.latestNotifications}</span>
-      </DropdownMenuLabel>
 
-        {notifications.length > 0 ? (
+      {notifications.length > 0 && (
+        <DropdownMenuLabel className="p-2">
+          <span>{dict.nav.notifications.latestNotifications}</span>
+        </DropdownMenuLabel>
+      )}   
+     {notifications.length > 0 ? (
           notifications.map((notification) => (
             <Link href={getNotificationLink(notification.type)} passHref>
               <DropdownMenuItem key={notification.id} className="my-1 p-2 hover:bg-gray-200">
