@@ -45,11 +45,11 @@ export function ApplicationResponse({ application, params: {lang} }: Application
       <div className="grid gap-4">
         <div className="grid gap-4">
         {application.response ? (
-          <div className={`rounded-lg bg-secondary p-4 text-xs sm:text-base text-secondary-foreground ${statusColor}`}>
+          <div className={`rounded-lg bg-secondary p-4 text-base text-secondary-foreground ${statusColor}`}>
             {application.response}
           </div>
         ) : (
-          <div className={`rounded-lg bg-secondary p-4 text-xs sm:text-base text-secondary-foreground ${statusColor}`}>
+          <div className={`rounded-lg bg-secondary p-4 text-xs text-secondary-foreground sm:text-base ${statusColor}`}>
             {dict.dashboard.applications.noResponseYet}
           </div>
         )}
@@ -57,7 +57,7 @@ export function ApplicationResponse({ application, params: {lang} }: Application
       <div className="flex items-center">
         <Label
           htmlFor="mute"
-          className="gap-2 text-xs sm:text-base font-normal"
+          className="gap-2 text-xs font-normal sm:text-base"
         >
           <Switch id="mute" aria-label="Mute thread" /> {dict.dashboard.applications.muteJobNotifications}
         </Label>

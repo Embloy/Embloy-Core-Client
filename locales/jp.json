@@ -336,6 +336,8 @@
       "noMessageSelected": "メッセージが選択されていません",
       "noResponseYet": "まだ返信がありません...",
       "muteJobNotifications": "すべてのジョブ通知をミュート",
+      "noAnswerProvided": "回答が提供されていません",
+      "youWrote": "あなたが書いた:",    
       "reviewEmployer": "雇用主をレビュー"
     },
     "billing": {

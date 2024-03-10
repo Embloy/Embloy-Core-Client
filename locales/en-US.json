@@ -336,6 +336,8 @@
       "noMessageSelected": "No message selected",
       "noResponseYet": "No response yet ...",
       "muteJobNotifications": "Mute all job notifications",
+      "noAnswerProvided": "No answer provided",
+      "youWrote": "You wrote:",
       "reviewEmployer": "Review employer"
     },
     "billing": {

@@ -21,6 +21,8 @@ import { DataTableToolbar } from "./data-table-toolbar"
 import { Locale } from "@/i18n-config"
 import { useEffect } from "react"
 import { getDictionary } from "@/app/[lang]/dictionaries"
+import { TooltipProvider } from "./new-york/ui/tooltip"
+import { Skeleton } from "./ui/skeleton"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -28,6 +30,7 @@ interface DataTableProps<TData, TValue> {
     lang: Locale
   }
   data: TData[]
+  isLoading: boolean
 }
 
 export const GlobalFilterContext = React.createContext<{
@@ -50,6 +53,7 @@ export function DataTable<TData, TValue>({
   columns,
   params: {lang},
   data,
+  isLoading,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
@@ -93,10 +97,62 @@ export function DataTable<TData, TValue>({
     fetchDictionary();
     }, [lang, dict]);
   
-
+    if (isLoading) {
+      return dict && (
+        <div className="space-y-4">
+        <TooltipProvider delayDuration={0}>
+         <TableDictContext.Provider value={{ dict, setDict }}>
+          <GlobalFilterContext.Provider value={{ globalFilter, setGlobalFilter }}>
+            <div className="space-y-4">
+              <DataTableToolbar
+                table={table}
+              />
+            </div>
+          </GlobalFilterContext.Provider>
+          <div className="rounded-md border">
+            <Table>
+          <TableHeader>
+              {table?.getHeaderGroups()?.map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id} colSpan={header.colSpan}>
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    )
+                  })}
+                </TableRow>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {Array.from({ length: 7 }).map((_, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  {columns.map((_, cellIndex) => (
+                    <TableCell key={cellIndex} className="h-12 text-center">
+                      {/* Placeholder content */}
+                      <Skeleton className="h-5" />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          </div>
+        <DataTablePagination table={table} />
+      </TableDictContext.Provider>
+      </TooltipProvider>
+    </div>
+      );
+    } else {
   return dict && (
     <div className="space-y-4">
-      <TableDictContext.Provider value={{ dict, setDict }}>
+      <TooltipProvider delayDuration={0}>
+       <TableDictContext.Provider value={{ dict, setDict }}>
         <GlobalFilterContext.Provider value={{ globalFilter, setGlobalFilter }}>
           <div className="space-y-4">
             <DataTableToolbar
@@ -156,6 +212,8 @@ export function DataTable<TData, TValue>({
         </div>
         <DataTablePagination table={table} />
       </TableDictContext.Provider>
+      </TooltipProvider>
     </div>
-  )
+    )
+  }
 }

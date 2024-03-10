@@ -328,7 +328,7 @@ export default function DashboardPage({ params: { lang } }) {
                   <CardHeader>
                     <CardTitle>Next Job</CardTitle>
                     <CardDescription>
-                    <JobTable jobs={jobs} params={{lang: lang}}/>
+                    <JobTable jobs={jobs} params={{lang: lang}} isLoading={false}/>
 
                     </CardDescription>
                   </CardHeader>

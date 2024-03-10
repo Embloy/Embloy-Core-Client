@@ -336,6 +336,8 @@
       "noMessageSelected": "Nessun messaggio selezionato",
       "noResponseYet": "Ancora nessuna risposta...",
       "muteJobNotifications": "Disattiva le notifiche dei lavori",
+      "noAnswerProvided": "Nessuna risposta fornita",
+      "youWrote": "Hai scritto:",    
       "reviewEmployer": "Recensisci il datore di lavoro"
     },
     "billing": {

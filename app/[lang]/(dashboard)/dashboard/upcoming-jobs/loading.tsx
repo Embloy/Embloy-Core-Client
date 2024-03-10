@@ -1,16 +1,16 @@
 "use client"
 
-import { DashboardHeader } from "@/components/header"
-import { StartApplyButton } from "@/components/start-apply-button"
-import { DashboardShell } from "@/components/shell"
+import * as React from "react";
+import { DashboardHeader } from "@/components/header";
+import { JobTable } from "@/components/job-table";
+import { StartApplyButton } from "@/components/start-apply-button";
 import { getDictionary } from "@/app/[lang]/dictionaries";
-import React, { useEffect, useState } from "react";
 
 export default function UpcomingJobsLoading({params}) {
   const { lang } = params || {};
-  const [dict, setDict] = useState<Record<string, any> | null>(null);
+  const [dict, setDict] = React.useState<Record<string, any> | null>(null);
  
-  useEffect(() => {
+  React.useEffect(() => {
     if (!params) {
       return;
     }
@@ -22,13 +22,12 @@ export default function UpcomingJobsLoading({params}) {
     fetchDictionary();
   }, [lang, params]);
 
-  return dict && (
-    <DashboardShell>
-      <DashboardHeader heading={dict.dashboard.upcoming.title} text={dict.dashboard.upcoming.subtitle}>
-      <StartApplyButton params={{lang: lang}} />
+  return (
+    <>
+      <DashboardHeader heading={dict?.dashboard.upcoming.title} text={dict?.dashboard.upcoming.subtitle}>
+        <StartApplyButton params={{ lang: lang }} />
       </DashboardHeader>
-      <div className="divide-border-200 divide-y rounded-md border">
-      </div>
-    </DashboardShell>
-  )
+      <JobTable jobs={[]} params={{ lang: lang }} isLoading={true}/>
+    </>
+  );
 }

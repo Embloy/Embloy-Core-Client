@@ -6,14 +6,12 @@ import { getUpcomingJobs } from "@/lib/api/jobs";
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { DashboardHeader } from "@/components/header";
 import { StartApplyButton } from "@/components/start-apply-button";
-import { DashboardShell } from "@/components/shell";
 import { useEffect, useState } from "react";
 import { Job } from "@/lib/api/sdk";
-import Image from "next/image";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { toast } from "@/components/ui/use-toast";
-import Loading from "@/app/[lang]/(sdk)/sdk/apply/loading";
 import { JobTable } from "@/components/job-table";
+import UpcomingJobsLoading from "./loading";
 
 export default function UpcomingJobsPage({ params: { lang } }) {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
@@ -54,7 +52,7 @@ export default function UpcomingJobsPage({ params: { lang } }) {
   }, [router, lang, dict]);
 
   if (isLoading) {
-    return <Loading/>
+    return <UpcomingJobsLoading params={{lang: lang}}/>
   }
 
   return dict && (
@@ -63,7 +61,7 @@ export default function UpcomingJobsPage({ params: { lang } }) {
         <StartApplyButton params={{lang: lang}} />
       </DashboardHeader>
       {jobs.length > 0 ? (
-        <JobTable jobs={jobs} params={{lang: lang}}/>
+        <JobTable jobs={jobs} params={{lang: lang}} isLoading={false}/>
       ) : (
         <EmptyPlaceholder>
           <EmptyPlaceholder.Icon name="timer" />

@@ -65,7 +65,7 @@ export function ApplicationPanel({
         }}
         className="h-full max-h-[800px] items-stretch"
       >
-        <ResizablePanel defaultSize={[270, 440][0]} minSize={30}>
+        <ResizablePanel defaultSize={[270, 440][0]} minSize={26}>
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
               <h1 className="text-xl font-bold">{dict.dashboard.applications.submittedApplications}</h1>

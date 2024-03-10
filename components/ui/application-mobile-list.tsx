@@ -22,6 +22,8 @@ import { ApplicationResponse } from "../application-response";
 import { Icons } from "../icons";
 import { Badge } from "@/components/new-york/ui/badge";
 import { getBadgeVariantFromLabel, getTextFromLabel } from "../application-list";
+import { Button } from "../new-york/ui/button";
+import { DownloadCloud } from "lucide-react";
 
 interface ApplicationItemProps {
   applications: Application[];
@@ -44,6 +46,19 @@ export function ApplicationMobileList({
     fetchDictionary();
   }, [lang]);
 
+  const downloadAttachment = (application: Application | null) => {
+    if (application && application.application_attachment && application.application_attachment.url) {
+      const cvUrl = application.application_attachment.url;
+      const link = document.createElement('a');
+      link.href = cvUrl;
+      link.setAttribute('download', `${application.user_id}_${application.job_id}_CV}`);
+      link.setAttribute('target', '_blank');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
     dict && (
       <div>
@@ -52,19 +67,19 @@ export function ApplicationMobileList({
             align: "start",
           }}
           orientation="vertical"
-          className="w-full mt-5"
+          className="mt-5 w-full"
         >
           <CarouselContent className="-mt-1" style={{ height: 'calc(100vh - 520px)' }}>
             {applications.map((application, index) => (
               <Drawer key={index}>
                 <DrawerTrigger asChild>
-                  <CarouselItem className="pt-1 my-1 basis-1/5">
+                  <CarouselItem className="my-1 basis-1/5 pt-1">
                     <Card>
                     <CardContent className="flex items-center justify-start py-4">
-                      <div className="flex w-1/4 items-center mr-2">
+                      <div className="mr-2 flex w-1/4 items-center">
                         <Avatar>
                           {application.job?.employer_image_url ? (
-                            <div className="overflow-hidden rounded-full w-12 h-12">
+                            <div className="size-12 overflow-hidden rounded-full">
                               <AvatarImage
                                 alt="Picture"
                                 src={application.job?.employer_image_url}
@@ -92,7 +107,6 @@ export function ApplicationMobileList({
                   <div className="flex flex-1 flex-col">
                     <div className="flex items-start p-4">
                       <div className="flex items-start gap-4 text-sm">
-                        {
                           <Avatar >
                           {application.job?.employer_image_url ? (
                             <AvatarImage alt="Picture" src={application.job?.employer_image_url} className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"/>
@@ -102,7 +116,6 @@ export function ApplicationMobileList({
                             </AvatarFallback>
                           )}
                         </Avatar>
-                        }
                         <div className="grid gap-1">
                           <div className="font-semibold">
                             {application.job?.employer_name ||
@@ -126,12 +139,23 @@ export function ApplicationMobileList({
                           </div>
                         </div>
                       </div>
+                      <div className="ml-auto flex items-center gap-2 p-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          disabled={!application?.application_attachment?.url}
+                          onClick={() => downloadAttachment(application)}
+                        >
+                          <DownloadCloud className="size-6" />
+                          <span className="sr-only">{dict.dashboard.applications.downloadAttachment}</span>
+                        </Button>
+                      </div>
                     </div>
                     <Separator />
-                    <div className="flex-1 space-y-2 whitespace-pre-wrap p-4 text-xs">
+                    <div className="flex-1 space-y-2 whitespace-pre-wrap p-4 text-sm">
+                      <p className="text-xs text-muted-foreground">{dict.dashboard.applications.youWrote}</p>
                       {application.application_text}
                     </div>
-                    <Separator />
                     <Separator className="mt-auto" />
                     <div className="overflow-auto p-2">
                       <ApplicationResponse

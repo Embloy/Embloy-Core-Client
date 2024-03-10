@@ -336,6 +336,8 @@
       "noMessageSelected": "Keine Nachricht ausgewählt",
       "noResponseYet": "Noch keine Antwort ...",
       "muteJobNotifications": "Alle Jobbenachrichtigungen stummschalten",
+      "noAnswerProvided": "Keine Antwort angegeben",
+      "youWrote": "Du hast geschrieben:",    
       "reviewEmployer": "Arbeitgeber bewerten"
     },
     "billing": {

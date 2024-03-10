@@ -38,7 +38,6 @@ export default function ApplicationsPage({ params: { lang } }) {
         router.push(`/${lang}/login`)
       } else if (dict) {
         const {response, err} = await getApplications();
-        setIsLoading(false);
 
         if (err || !response) {
           return toast({
@@ -50,12 +49,11 @@ export default function ApplicationsPage({ params: { lang } }) {
           setApplications(response);
         }
       }
-      setIsLoading(false);
+      setIsLoading(false)
     };
     fetchApplications();
 
     const fetchUnreadApplicationNotifications = async () => {
-      setIsLoading(true);
       if (dict) {
         const {response, err} = await getUnreadApplications();
 
@@ -69,7 +67,6 @@ export default function ApplicationsPage({ params: { lang } }) {
           setUnreadIDs(response);
         }
       }
-      setIsLoading(false);
     };
     fetchUnreadApplicationNotifications();
   }, [router, lang, dict] );

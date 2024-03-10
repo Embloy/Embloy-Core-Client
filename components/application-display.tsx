@@ -20,15 +20,12 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "@/components/new-york/ui/dropdown-menu"
-import { Label } from "@/components/new-york/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/new-york/ui/popover"
 import { Separator } from "@/components/new-york/ui/separator"
-import { Switch } from "@/components/new-york/ui/switch"
-import { Textarea } from "@/components/new-york/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
@@ -203,7 +200,7 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
       </div>
       <Separator />
       {application ? (
-        <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col overflow-auto">
           <div className="flex items-start p-4">
             <div className="flex items-start gap-4 text-sm">
               {
@@ -233,10 +230,11 @@ export function ApplicationDisplay({ application, params: {lang} }: ApplicationD
           </div>
           <Separator />
           <div className="flex-1 space-y-2 whitespace-pre-wrap p-4 text-sm">
+            <p className="text-xs text-muted-foreground">{dict.dashboard.applications.youWrote}</p>
             {application.application_text}
           </div>
           <Separator />
-          <ApplicationAnswerList application={application}/>
+          <ApplicationAnswerList application={application} params={{lang: lang}}/>
           <Separator className="mt-auto" />
           <ApplicationResponse application={application} params={{lang: lang}}/>
         </div>
