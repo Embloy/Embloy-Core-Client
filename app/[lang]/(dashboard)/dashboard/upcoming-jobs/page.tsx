@@ -7,11 +7,11 @@ import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { DashboardHeader } from "@/components/header";
 import { StartApplyButton } from "@/components/start-apply-button";
 import { useEffect, useState } from "react";
-import { Job } from "@/lib/api/sdk";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { toast } from "@/components/ui/use-toast";
 import { JobTable } from "@/components/job-table";
 import UpcomingJobsLoading from "./loading";
+import { Job } from "@/types/job-schema";
 
 export default function UpcomingJobsPage({ params: { lang } }) {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
