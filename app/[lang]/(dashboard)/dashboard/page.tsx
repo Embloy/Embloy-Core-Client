@@ -34,6 +34,7 @@ export default function DashboardPage({ params: { lang } }) {
   const router = useRouter();
   const [dict, setDict] = useState<Record<string, any> | null>(null);
   
+  
   useEffect(() => {
     const fetchDictionary = async () => {
       const dictionary = await getDictionary(lang);
