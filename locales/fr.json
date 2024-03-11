@@ -216,7 +216,20 @@
   },
   "dashboard": {
     "dashboard": {
-      "": ""
+      "export": "Exporter",
+      "overview": "Aperçu",
+      "analytics": "Analytique",
+      "integrations": "Intégrations",
+      "dashboard": "Tableau de bord",
+      "upcomingJobs": "Emplois à venir",
+      "nextJob": "Prochain emploi",
+      "youHaveUpcomingJobs": "Vous avez {number} emplois à venir",
+      "summary": {
+        "yourJobs": "Vos emplois",
+        "applications": "Applications",
+        "acceptanceRate": "Taux d'acceptation",
+        "profileViews": "Vues de profil"
+      }
     },
     "upcoming": {
       "title": "Prochains emplois",
@@ -267,7 +280,9 @@
           "instagram": "Instagram",
           "twitter": "Twitter",
           "email": "E-mail",
-          "delete": "Supprimer"
+          "delete": "Supprimer",
+          "calendar": "Exporter vers le calendrier"
+
         },
         "viewOptions": {
           "view": "Vue",

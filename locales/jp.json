@@ -216,7 +216,20 @@
   },
   "dashboard": {
     "dashboard": {
-      "": ""
+      "export": "エクスポート",
+      "overview": "概要",
+      "analytics": "分析",
+      "integrations": "統合",
+      "dashboard": "ダッシュボード",
+      "upcomingJobs": "今後の仕事",
+      "nextJob": "次の仕事",
+      "youHaveUpcomingJobs": "{number}の今後の仕事があります",
+      "summary": {
+        "yourJobs": "あなたの仕事",
+        "applications": "アプリケーション",
+        "acceptanceRate": "受け入れ率",
+        "profileViews": "プロフィールビュー"
+      }
     },
     "upcoming": {
       "title": "今後のジョブ",
@@ -267,7 +280,8 @@
           "instagram": "Instagram",
           "twitter": "Twitter",
           "email": "電子メール",
-          "delete": "削除"
+          "delete": "削除",
+          "calendar": "カレンダーにエクスポート"
         },
         "viewOptions": {
           "view": "ビュー",

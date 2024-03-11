@@ -216,7 +216,20 @@
   },
   "dashboard": {
     "dashboard": {
-      "": ""
+      "export": "Esporta",
+      "overview": "Panoramica",
+      "analytics": "Analitica",
+      "integrations": "Integrazioni",
+      "dashboard": "Cruscotto",
+      "upcomingJobs": "Lavori imminenti",
+      "nextJob": "Prossimo lavoro",
+      "youHaveUpcomingJobs": "Hai {number} lavori imminenti",
+      "summary": {
+        "yourJobs": "I tuoi lavori",
+        "applications": "Applicazioni",
+        "acceptanceRate": "Tasso di accettazione",
+        "profileViews": "Visualizzazioni del profilo"
+      }
     },
     "upcoming": {
       "title": "Prossimi lavori",
@@ -267,7 +280,8 @@
           "instagram": "Instagram",
           "twitter": "Twitter",
           "email": "Email",
-          "delete": "Elimina"
+          "delete": "Elimina",
+          "calendar": "Esporta nel calendario"
         },
         "viewOptions": {
           "view": "Visualizzazione",

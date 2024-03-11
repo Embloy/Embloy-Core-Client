@@ -85,6 +85,15 @@ export const columns = (dict: Record<string, any>): ColumnDef<Job>[] => {
       enableHiding: true,
     },
     {
+      accessorKey: "start_slot",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.title} />
+      ),
+      cell: ({ row }) => <div className="w-[0px]">{row.getValue("start_slot")}</div>,
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
       accessorKey: "job_status",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={dict.dashboard.upcoming.t.columns.status} />

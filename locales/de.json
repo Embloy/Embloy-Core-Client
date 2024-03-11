@@ -216,7 +216,20 @@
   },
   "dashboard": {
     "dashboard": {
-      "": ""
+      "export": "Exportieren",
+      "overview": "Übersicht",
+      "analytics": "Analytik",
+      "integrations": "Integrationen",
+      "dashboard": "Dashboard",
+      "upcomingJobs": "Bevorstehende Jobs",
+      "nextJob": "Nächster Job",
+      "youHaveUpcomingJobs": "Du hast {number} bevorstehende Jobs",
+      "summary": {
+        "yourJobs": "Deine Jobs",
+        "applications": "Bewerbungen",
+        "acceptanceRate": "Annahmequote",
+        "profileViews": "Profilansichten"
+      }
     },
     "upcoming": {
       "title": "Bevorstehende Stellenangebote",
@@ -267,7 +280,9 @@
           "instagram": "Instagram",
           "twitter": "Twitter",
           "email": "E-Mail",
-          "delete": "Löschen"
+          "delete": "Löschen",
+          "calendar": "In den Kalender exportieren"
+
         },
         "viewOptions": {
           "view": "Ansicht",

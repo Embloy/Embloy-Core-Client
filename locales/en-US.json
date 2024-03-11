@@ -216,7 +216,20 @@
   },
   "dashboard": {
     "dashboard": {
-      "": ""
+      "export": "Export",
+      "overview": "Overview",
+      "analytics": "Analytics",
+      "integrations": "Integrations",
+      "dashboard": "Dashboard",
+      "upcomingJobs": "Upcoming Jobs",
+      "nextJob": "Next Job",
+      "youHaveUpcomingJobs": "You have {number} upcoming jobs",
+      "summary": {
+        "yourJobs": "Your Jobs",
+        "applications": "Applications",
+        "acceptanceRate": "Acceptance Rate",
+        "profileViews": "Profile Views"
+      }
     },
     "upcoming": {
       "title": "Upcoming Jobs",
@@ -267,7 +280,8 @@
           "instagram": "Instagram",
           "twitter": "Twitter",
           "email": "Email",
-          "delete": "Delete"
+          "delete": "Delete",
+          "calendar": "Export to calendar"
         },
         "viewOptions": {
           "view": "View",

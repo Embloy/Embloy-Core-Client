@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site";
+import { Job } from "@/types/job-schema";
 import { getAccessToken } from "./auth";
-import { Job } from "./sdk";
 
 export async function getUpcomingJobs(): Promise<{response: Job[] | null, err: number | null}> {
     const accessToken = await getAccessToken();
@@ -27,7 +27,6 @@ export async function getUpcomingJobs(): Promise<{response: Job[] | null, err: n
       return { response: null, err: 500 };
     }
   
-    // Parse each job in data.jobs
     const jobs = data.jobs.map((job: any) => {
       return {
         ...job,

@@ -22,6 +22,7 @@ import {
 import Link from "next/link"
 import { TableDictContext } from "./data-table"
 import React from "react"
+import { exportToCalendar } from "./upcoming-jobs"
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
@@ -48,6 +49,9 @@ export function DataTableRowActions<TData>({
         <Link href={`/dashboard/applications?id=${row.getValue("job_id")}&slug=${row.getValue("job_slug")}`}>
             <DropdownMenuItem>{dict.dashboard.upcoming.t.rowActions.goToApplication}</DropdownMenuItem>
         </Link>
+        <DropdownMenuItem onClick={() => exportToCalendar(row.getValue("start_slot"), row.getValue("title"))}>
+          {dict.dashboard.upcoming.t.rowActions.calendar}
+        </DropdownMenuItem>
         <DropdownMenuItem disabled>{dict.dashboard.upcoming.t.rowActions.labels}</DropdownMenuItem>
         <DropdownMenuItem disabled>{dict.dashboard.upcoming.t.rowActions.favorites}</DropdownMenuItem>
         <DropdownMenuSeparator />
