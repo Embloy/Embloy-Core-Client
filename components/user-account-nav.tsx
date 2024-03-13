@@ -59,7 +59,7 @@ export function UserAccountNav({ user, params: {lang} }: UserAccountNavProps ) {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href={`/${lang}/dashboard`}>{dict.nav.side.dashboard}</Link>
+          <Link href={`/${lang}/dashboard/overview`}>{dict.nav.side.dashboard}</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link href={`/${lang}/dashboard/upcoming-jobs`}>{dict.nav.side["upcoming jobs"]}</Link>

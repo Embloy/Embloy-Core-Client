@@ -222,13 +222,17 @@
       "integrations": "Integrations",
       "dashboard": "Dashboard",
       "upcomingJobs": "Upcoming Jobs",
-      "nextJob": "Next Job",
+      "nextJob": "Next Jobs",
       "youHaveUpcomingJobs": "You have {number} upcoming jobs",
       "summary": {
         "yourJobs": "Your Jobs",
         "applications": "Applications",
         "acceptanceRate": "Acceptance Rate",
-        "profileViews": "Profile Views"
+        "profileViews": "Profile Views",
+        "yourJobsDescription": "Total number of upcoming jobs",
+        "applicationsDescription": "Total number of applications",
+        "acceptanceRateDescription": "Acceptance rate (jobs / applications)",
+        "profileViewsDescription": "Total number of profile views"
       }
     },
     "upcoming": {
@@ -268,7 +272,8 @@
           "employerEmail": "Employer Email",
           "employerName": "Employer Name",
           "employerRating": "Employer Rating",
-          "keySkills": "Key Skills"
+          "keySkills": "Key Skills",
+          "startSlot": "Start Date"
         },
         "rowActions": {
           "openMenu": "Open menu",

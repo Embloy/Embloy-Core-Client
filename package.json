@@ -70,6 +70,7 @@
     "cookie": "^0.6.0",
     "date-fns": "^2.30.0",
     "embla-carousel-react": "8.0.0-rc22",
+    "file-saver": "^2.0.5",
     "ics": "^3.7.2",
     "jotai": "^2.7.0",
     "js-cookie": "^3.0.5",

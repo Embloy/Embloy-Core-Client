@@ -228,7 +228,11 @@
         "yourJobs": "あなたの仕事",
         "applications": "アプリケーション",
         "acceptanceRate": "受け入れ率",
-        "profileViews": "プロフィールビュー"
+        "profileViews": "プロフィール閲覧数",
+        "yourJobsDescription": "今後の仕事の総数",
+        "applicationsDescription": "申し込みの総数",
+        "acceptanceRateDescription": "受け入れ率（仕事 / 申し込み）",
+        "profileViewsDescription": "プロフィール閲覧数の総数"
       }
     },
     "upcoming": {
@@ -268,7 +272,8 @@
           "employerEmail": "雇用主メール",
           "employerName": "雇用主名",
           "employerRating": "雇用主評価",
-          "keySkills": "主要スキル"
+          "keySkills": "主要スキル",
+          "startSlot": "開始日"
         },
         "rowActions": {
           "openMenu": "メニューを開く",

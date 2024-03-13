@@ -65,7 +65,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
         })
       }
       router.refresh()
-      router.push(origin || `/${lang}/dashboard`)  
+      router.push(origin || `/${lang}/dashboard/overview`)  
     } catch (error) {
       setIsLoading(false)
       return dict && toast({
@@ -82,7 +82,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
     try {
       await signInWithGithub();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsGitHubLoading(false);
       return dict && toast({
@@ -99,7 +99,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
     try {
       await signInWithGoogle();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsGoogleLoading(false);
       return dict && toast({
@@ -116,7 +116,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
     try {
       await signInWithMicrosoft();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsMicrosoftLoading(false);
       return dict && toast({
@@ -133,7 +133,7 @@ export function UserAuthForm({ className, params: {lang}, ...props }: UserAuthFo
     try {
       await signInWithLinkedin();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsLinkedinLoading(false);
       return dict && toast({

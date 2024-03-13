@@ -68,7 +68,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
 
       // This forces a cache invalidation.
       // router.refresh()
-      // router.push(origin || `/${lang}/dashboard`)  
+      // router.push(origin || `/${lang}/dashboard/overview`)  
       return dict && toast({
         title: dict.auth.success.register.title,
         description: dict.auth.success.register.description,
@@ -90,7 +90,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
     try {
       await signInWithGithub();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsGitHubLoading(false);
       return dict && toast({
@@ -107,7 +107,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
     try {
       await signInWithGoogle();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsGoogleLoading(false);
       return dict && toast({
@@ -124,7 +124,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
     try {
       await signInWithMicrosoft();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsMicrosoftLoading(false);
       return dict && toast({
@@ -141,7 +141,7 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
     try {
       await signInWithLinkedin();
       router.refresh();
-      router.push(origin || `/${lang}/dashboard`);
+      router.push(origin || `/${lang}/dashboard/overview`);
     } catch (error) {
       setIsLinkedinLoading(false);
       return dict && toast({

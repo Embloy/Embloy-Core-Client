@@ -228,7 +228,11 @@
         "yourJobs": "I tuoi lavori",
         "applications": "Applicazioni",
         "acceptanceRate": "Tasso di accettazione",
-        "profileViews": "Visualizzazioni del profilo"
+        "profileViews": "Visualizzazioni del profilo",
+        "yourJobsDescription": "Numero totale di lavori imminenti",
+        "applicationsDescription": "Numero totale di domande",
+        "acceptanceRateDescription": "Tasso di accettazione (lavori / domande)",
+        "profileViewsDescription": "Numero totale di visualizzazioni del profilo"
       }
     },
     "upcoming": {
@@ -268,7 +272,8 @@
           "employerEmail": "Email",
           "employerName": "Nome",
           "employerRating": "Valutazione del datore di lavoro",
-          "keySkills": "Competenze chiave"
+          "keySkills": "Competenze chiave",
+          "startSlot": "Data d'inizio"
         },
         "rowActions": {
           "openMenu": "Apri menu",

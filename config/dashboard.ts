@@ -21,11 +21,11 @@ export const dashboardConfig: DashboardConfig = {
     },
   ],
   sidebarNav: [
-    /*{
+    {
       title: "Dashboard",
-      href: "/dashboard",
+      href: "/dashboard/overview",
       icon: "laptop",
-    },*/
+    },
     {
       title: "Upcoming Jobs",
       href: "/dashboard/upcoming-jobs",

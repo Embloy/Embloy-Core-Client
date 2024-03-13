@@ -222,13 +222,17 @@
       "integrations": "Integrationen",
       "dashboard": "Dashboard",
       "upcomingJobs": "Bevorstehende Jobs",
-      "nextJob": "Nächster Job",
+      "nextJob": "Nächste Jobs",
       "youHaveUpcomingJobs": "Du hast {number} bevorstehende Jobs",
       "summary": {
         "yourJobs": "Deine Jobs",
         "applications": "Bewerbungen",
         "acceptanceRate": "Annahmequote",
-        "profileViews": "Profilansichten"
+        "profileViews": "Profilaufrufe",
+        "yourJobsDescription": "Gesamtzahl der anstehenden Jobs",
+        "applicationsDescription": "Gesamtzahl der Bewerbungen",
+        "acceptanceRateDescription": "Akzeptanzrate (Jobs / Bewerbungen)",
+        "profileViewsDescription": "Gesamtzahl der Profilaufrufe"
       }
     },
     "upcoming": {
@@ -268,7 +272,8 @@
           "employerEmail": "Arbeitgeber-E-Mail",
           "employerName": "Arbeitgeber",
           "employerRating": "Arbeitgeberbewertung",
-          "keySkills": "Key-Skills"
+          "keySkills": "Key-Skills",
+          "startSlot": "Startdatum"
         },
         "rowActions": {
           "openMenu": "Menü öffnen",
@@ -282,7 +287,6 @@
           "email": "E-Mail",
           "delete": "Löschen",
           "calendar": "In den Kalender exportieren"
-
         },
         "viewOptions": {
           "view": "Ansicht",

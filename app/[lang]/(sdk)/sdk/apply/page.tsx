@@ -588,7 +588,7 @@ export default function ApplyPage({ params: { lang } }) {
           {dict.sdk.notFoundSubtitle}
         </EmptyPlaceholder.Description>
         <Link
-          href={`/${lang}/dashboard`}
+          href={`/${lang}/dashboard/overview`}
           className={buttonVariants({ variant: "ghost" })}
         >
           {dict.sdk.goToDashboard}

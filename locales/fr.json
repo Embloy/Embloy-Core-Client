@@ -228,7 +228,11 @@
         "yourJobs": "Vos emplois",
         "applications": "Applications",
         "acceptanceRate": "Taux d'acceptation",
-        "profileViews": "Vues de profil"
+        "profileViews": "Vues de profil",
+        "yourJobsDescription": "Nombre total de jobs à venir",
+        "applicationsDescription": "Nombre total de candidatures",
+        "acceptanceRateDescription": "Taux d'acceptation (jobs / candidatures)",
+        "profileViewsDescription": "Nombre total de vues de profil"
       }
     },
     "upcoming": {
@@ -268,7 +272,8 @@
           "employerEmail": "E-mail de l'employeur",
           "employerName": "Nom de l'employeur",
           "employerRating": "Évaluation de l'employeur",
-          "keySkills": "Compétences clés"
+          "keySkills": "Compétences clés",
+          "startSlot": "Date de début"
         },
         "rowActions": {
           "openMenu": "Ouvrir le menu",
@@ -282,7 +287,6 @@
           "email": "E-mail",
           "delete": "Supprimer",
           "calendar": "Exporter vers le calendrier"
-
         },
         "viewOptions": {
           "view": "Vue",
