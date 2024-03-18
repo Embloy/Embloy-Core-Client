@@ -147,10 +147,10 @@ export default async function IndexPage({ params: { lang } }) {
           </p>
         </div>
       </section>
-      <section id="open-source" className="bg-background md:bg-[url('/images/bg-2.png')] md:dark:bg-[url('/images/bg-2-dark.png')] bg-cover bg-center container py-8 md:py-12 lg:py-24">
-        <div className="mx-auto flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center my-12">
+      <section id="open-source" className="container bg-background bg-cover bg-center py-8 md:bg-[url('/images/bg-2.png')] md:py-12 md:dark:bg-[url('/images/bg-2-dark.png')] lg:py-24">
+        <div className="mx-auto my-12 flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center">
         </div>
-        <div className="container py-8 md:py-12 lg:py-24 mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+        <div className="container mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 py-8 text-center md:py-12 lg:py-24">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
           {dict.marketing.openSource}
           </h2>
