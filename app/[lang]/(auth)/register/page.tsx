@@ -40,7 +40,14 @@ export default function RegisterPage({ params: { lang } }) {
         alt="Description of the image" 
         width={842}
         height={842}
-        className="hidden size-full object-cover lg:block" 
+        className="hidden size-full object-cover dark:hidden lg:block" 
+      />
+      <Image 
+        src="/images/register-dark.png" 
+        alt="Description of the image" 
+        width={842}
+        height={842}
+        className="hidden size-full object-cover dark:lg:block" 
       />
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
