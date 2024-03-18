@@ -6,7 +6,7 @@ import "./env.mjs"
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["avatars.githubusercontent.com", "f005.backblazeb2.com", "embloy.blob.core.windows.net"],
+    domains: ["avatars.githubusercontent.com", "f005.backblazeb2.com", "embloy2.blob.core.windows.net"],
   },
   experimental: {
     appDir: true,

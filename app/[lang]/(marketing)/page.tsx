@@ -11,7 +11,7 @@ export default async function IndexPage({ params: { lang } }) {
   return (
     <>
       {/* eslint-disable-next-line */}
-      <section className="space-y-6 bg-background bg-[url('/images/bg-1-muted.png')] bg-cover bg-center pb-8 pt-6 dark:bg-[url('/images/bg-1-muted-dark.png')] md:pb-12 md:pt-10 lg:py-32">
+      <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.png')] md:pb-12 md:pt-10 lg:py-32">
       
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <Link
@@ -147,16 +147,10 @@ export default async function IndexPage({ params: { lang } }) {
           </p>
         </div>
       </section>
-      <section id="open-source" className="container py-8 md:py-12 lg:py-24">
-        <div className="mx-auto flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center">
-          <video width="auto" height="auto" loop autoPlay muted preload="none" style={{ borderRadius: '30px' }}>
-            <source src="/videos/vod.mp4" type="video/mp4" />
-            {dict.marketing.videoNotSupported}
-          </video>
+      <section id="open-source" className="bg-background md:bg-[url('/images/bg-2.png')] md:dark:bg-[url('/images/bg-2-dark.png')] bg-cover bg-center container py-8 md:py-12 lg:py-24">
+        <div className="mx-auto flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center my-12">
         </div>
-      </section>
-      <section id="open-source" className="container py-8 md:py-12 lg:py-24">
-        <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+        <div className="container py-8 md:py-12 lg:py-24 mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
           {dict.marketing.openSource}
           </h2>
