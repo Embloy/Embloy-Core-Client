@@ -40,6 +40,7 @@ export type SiteConfig = {
     developer: string
     about: string
     genius: string
+    calendy: string
   }
 }
 

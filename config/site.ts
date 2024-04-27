@@ -17,5 +17,6 @@ export const siteConfig: SiteConfig = {
     twitter: "https://twitter.com/embloy",
     linkedin: "https://linkedin.com/company/embloy",
     github: "https://github.com/embloy",
+    calendy: "https://calendly.com/jan-p-hummel/embloy-demo"
   },
 }

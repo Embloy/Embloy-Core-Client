@@ -13,19 +13,19 @@ export default async function IndexPage({ params: { lang } }) {
       {/* eslint-disable-next-line */}
       <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.png')] md:pb-12 md:pt-10 lg:py-32">
       
-        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+        <div className="container flex max-w-5xl flex-col items-center gap-4 text-center">
           <Link
-            href={siteConfig.links.github}
-            className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
+            href={siteConfig.links.calendy}
+            className="rounded-2xl bg-destructive px-4 py-1.5 text-sm font-medium text-white"
             target="_blank"
           >
-          {dict.marketing.workInProgress}
+          {dict.marketing.notLaunchedYet}
           </Link>
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
           <p>{dict.marketing.mainHeader}</p>
           {dict.marketing.subHeader}
           </h1>
-          <p className="hidden max-w-[42rem] leading-normal text-muted-foreground sm:block sm:text-xl sm:leading-8">
+          <p className="hidden max-w-2xl leading-normal text-muted-foreground sm:block sm:text-xl sm:leading-8">
           {dict.marketing.recruitmentSteps}
           </p>
           <div className="hidden space-x-4 lg:block">
@@ -61,7 +61,7 @@ export default async function IndexPage({ params: { lang } }) {
           {dict.marketing.featureDescription}
           </p>
         </div>
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-5xl md:grid-cols-3">
         <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:opacity-100">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <svg viewBox="0 0 24 24" className="size-12" fill="none">

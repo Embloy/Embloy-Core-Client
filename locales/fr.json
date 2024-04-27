@@ -10,6 +10,7 @@
   },
   "marketing": {
     "workInProgress": "Cette page est toujours en cours de développement - Suivez-nous sur GitHub",
+    "notLaunchedYet": "Veuillez noter qu'Embloy n'est pas encore actif et que vous ne pourrez pas vous inscrire. Contactez-nous pour accéder à notre version bêta.",
     "mainHeader": "Embloy.",
     "subHeader": "Solutions qui stimulent les RH.",
     "recruitmentSteps": "Toutes les étapes de recrutement en un seul endroit : Facilitez la vie des organisations et des chercheurs d'emploi en centralisant les processus de recrutement.",
