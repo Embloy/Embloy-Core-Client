@@ -16,6 +16,8 @@ export default function OAuthRedirect({ params: { lang } }) {
         const session = await getSession(refreshToken ?? undefined);
         if (session.session) {
           setMessage(dictionary.auth.oauth.success);
+          console.log("Closing window")
+          window.close();
         } else {
           setMessage(dictionary.auth.oauth.error);
         }
