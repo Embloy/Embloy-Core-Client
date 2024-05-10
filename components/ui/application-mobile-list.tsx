@@ -46,7 +46,7 @@ export function ApplicationMobileList({
   React.useEffect(() => {
     if (searchParams.has("slug") && applications) {
       const application = applications.find(
-        (app) => app.job?.jobSlug === jobSlug
+        (app) => app.job?.job_slug === jobSlug
       )
 
       if (application) {
@@ -61,7 +61,7 @@ export function ApplicationMobileList({
       setDict(dictionary)
     }
     fetchDictionary()
-  }, [lang, searchParams, jobSlug])
+  }, [lang, searchParams, jobSlug, applications])
 
   const downloadAttachment = (application: Application | null) => {
     if (
@@ -93,9 +93,9 @@ export function ApplicationMobileList({
 
   return (
     dict && (
-      <div className="h-full overflow-y-auto space-y-2">
+      <div className="h-full space-y-2 overflow-y-auto">
         {applications.map((application, index) => (
-          <div classname="h-full overflow-y-auto mt-5">
+          <div className="mt-5 h-full overflow-y-auto">
             <Drawer key={index}>
               <DrawerTrigger asChild>
                 <Card>

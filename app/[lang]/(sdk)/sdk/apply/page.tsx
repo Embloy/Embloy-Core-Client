@@ -334,13 +334,13 @@ export default function ApplyPage({ params: { lang } }) {
 
   if (!isLoading) {
   return dict && job && session && (
-    <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0 pt-10 lg:pt-0">
+    <div className="container grid h-screen w-screen flex-col items-center justify-center pt-10 lg:max-w-none lg:grid-cols-3 lg:px-0 lg:pt-0">
       <Link
         href={job.referrer_url || '/..'}
         onClick={handleBackClick}
         className={cn(
           buttonVariants({ variant: "ghost" }),
-          "absolute left-4 top-4 md:text-white md:left-8 md:top-8"
+          "absolute left-4 top-4 md:left-8 md:top-8 md:text-white"
         )}
       >
         <>
@@ -553,7 +553,7 @@ export default function ApplyPage({ params: { lang } }) {
             )}
             {dict.sdk.newApplication}
           </button>
-          <Separator classname="mt-10 lg:mt-0"/>
+          <Separator className="mt-10 lg:mt-0"/>
         </div>
       </div>
     </div>
