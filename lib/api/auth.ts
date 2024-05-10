@@ -4,7 +4,7 @@ import { getSession } from "./session";
 import { decode } from 'jsonwebtoken';
 
 export async function login(email: string, password: string): Promise<number | null> {
-  const encodedCredentials = btoa(`${email}:${password}`);
+  const encodedCredentials = btoa(`${email.trim().toLowerCase()}:${password}`);
 
   const responseRt = await fetch(`${siteConfig.api_url}/auth/token/refresh`, {
     method: 'POST',
@@ -12,7 +12,6 @@ export async function login(email: string, password: string): Promise<number | n
       'Content-Type': 'application/json',
       'Authorization': `Basic ${encodedCredentials}`
     },
-    body: JSON.stringify({ email: email, password: password })
   })
 
   const rtResult = await responseRt.json()
@@ -36,7 +35,7 @@ export async function signup(email: string, firstName: string, lastName: string,
     },
     body: JSON.stringify({
       user: {
-        email: email,
+        email: email.trim().toLowerCase(),
         first_name: firstName,
         last_name: lastName,
         password: password,
@@ -53,7 +52,7 @@ export async function signup(email: string, firstName: string, lastName: string,
 }
 
 export async function verify(email: string, password: string): Promise<number | null> {
-  const encodedCredentials = btoa(`${email}:${password}`);
+  const encodedCredentials = btoa(`${email.trim().toLowerCase()}:${password}`);
 
   const responseRt = await fetch(`${siteConfig.api_url}/user/verify`, {
     method: 'GET',
@@ -79,7 +78,7 @@ export async function activationToken(email: string): Promise<number | null> {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      "email": email,
+      "email": email.trim().toLowerCase(),
     })
   })
 
@@ -92,7 +91,7 @@ export async function activationToken(email: string): Promise<number | null> {
 
 // TODO: ERROR HANDLING
 export async function getAccessToken(): Promise<string | null> {
-  
+
   // Check if a valid access token is already set
   const existingAccessToken = Cookies.get('access_token');
   if (existingAccessToken) {
@@ -160,7 +159,7 @@ export function clearUserSession(): void {
 }
 
 export async function resetPassword(email: string): Promise<number | null> {
-  const response = await fetch(`${siteConfig.api_url}/user/password/reset?email=${email}`, {
+  const response = await fetch(`${siteConfig.api_url}/user/password/reset?email=${email.trim().toLowerCase()}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -174,13 +173,13 @@ export async function resetPassword(email: string): Promise<number | null> {
   return null
 }
 
-export async function setPassword(password: string, password_confirmation: string, reset_token: string| null): Promise<number | null> {
+export async function setPassword(password: string, password_confirmation: string, reset_token: string | null): Promise<number | null> {
   const route = reset_token ? `${siteConfig.api_url}/user/password/reset?token=${reset_token}` : `${siteConfig.api_url}/user/password`
   const response = await fetch(route, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      'access-token': reset_token ? '' :  await getAccessToken() || ''
+      'access-token': reset_token ? '' : await getAccessToken() || ''
     },
     body: JSON.stringify({
       user: {
