@@ -94,7 +94,7 @@ export default function DashboardPage({ params: { lang } }) {
   return !isLoading && jobs && dict && (
     <>
       <div className="flex flex-col">
-        <div className="flex-1 space-y-4 p-8 pt-6">
+        <div className="flex-1 space-y-4 md:p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">{dict.dashboard.dashboard.dashboard}</h2>
             <div className="flex items-center space-x-2">
@@ -229,7 +229,7 @@ export default function DashboardPage({ params: { lang } }) {
                   </CardContent>
                 </Card>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <div className="grid gap-4 grid-cols-2 2xl:grid-cols-7">
                 <Card className="col-span-4 hidden md:block">
                 <CardHeader>
                   <CardTitle>{dict.dashboard.dashboard.upcomingJobs}</CardTitle>

@@ -13,6 +13,7 @@ import { Icons } from "@/components/icons";
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { Input } from "@/components/ui/input";
 import { z } from 'zod';
+import { Separator } from "@radix-ui/react-select";
 
 import {
   Select,
@@ -333,13 +334,13 @@ export default function ApplyPage({ params: { lang } }) {
 
   if (!isLoading) {
   return dict && job && session && (
-    <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0">
+    <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-3 lg:px-0 pt-10 lg:pt-0">
       <Link
         href={job.referrer_url || '/..'}
         onClick={handleBackClick}
         className={cn(
-          buttonVariants({ variant: "outline" }),
-          "absolute left-4 top-4 text-white md:left-8 md:top-8"
+          buttonVariants({ variant: "ghost" }),
+          "absolute left-4 top-4 md:text-white md:left-8 md:top-8"
         )}
       >
         <>
@@ -350,7 +351,7 @@ export default function ApplyPage({ params: { lang } }) {
       <Link
         href={`/${lang}`}
         className={cn(
-          buttonVariants({ variant: "ghost" }),
+          buttonVariants({ variant: "outline"}),
           "absolute right-4 top-4 md:right-8 md:top-8"
         )}
       >
@@ -552,6 +553,7 @@ export default function ApplyPage({ params: { lang } }) {
             )}
             {dict.sdk.newApplication}
           </button>
+          <Separator classname="mt-10 lg:mt-0"/>
         </div>
       </div>
     </div>
