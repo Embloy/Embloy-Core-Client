@@ -174,7 +174,7 @@ export default function DashboardLoading({params}) {
                   </CardContent>
                 </Card>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <div className="grid grid-cols-2 gap-4 2xl:grid-cols-7">
                 <Card className="col-span-4 hidden md:block">
                 <CardHeader>
                   <CardTitle>{dict.dashboard.dashboard.upcomingJobs}</CardTitle>

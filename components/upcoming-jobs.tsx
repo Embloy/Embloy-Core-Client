@@ -124,13 +124,16 @@ export function UpcomingJobs({ jobs, params: { lang } }: UpcomingJobsProps) {
                 <div className="flex items-center space-x-2">
                   <CalendarIcon className="size-5 text-gray-400" />
                   <p className="text-sm text-muted-foreground">
-                    {formatDate(lang, job.start_slot)}
+                    {formatDate(
+                      lang,
+                      job.start_slot ?? new Date().toISOString()
+                    )}
                   </p>
                   <button
                     className="text-sm text-blue-500 underline"
                     onClick={() =>
                       exportToCalendar(
-                        job.start_slot,
+                        job.start_slot ?? new Date().toISOString(),
                         job.position ??
                           job.title ??
                           job.employer_name ??

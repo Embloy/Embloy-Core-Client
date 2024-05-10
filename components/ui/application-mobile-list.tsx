@@ -95,30 +95,32 @@ export function ApplicationMobileList({
     dict && (
       <div className="h-full space-y-2 overflow-y-auto">
         {applications.map((application, index) => (
-          <div className="mt-5 h-full overflow-y-auto">
+          <div className="mt-5 overflow-y-auto">
             <Drawer key={index}>
               <DrawerTrigger asChild>
                 <Card>
-                  <CardContent className="flex items-center justify-start py-4">
-                    <div className="mr-2 flex w-1/4 items-center">
-                      <Avatar>
-                        {application.job?.employer_image_url ? (
-                          <div className="size-12 overflow-hidden rounded-full">
-                            <AvatarImage
-                              alt="Picture"
-                              src={application.job?.employer_image_url}
-                              className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
-                            />
-                          </div>
-                        ) : (
-                          <AvatarFallback>
-                            <Icons.user className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
-                          </AvatarFallback>
-                        )}
-                      </Avatar>
-                    </div>
-                    <div className="flex w-3/4 items-center">
-                      <p className="text-sm">{application.job?.title}</p>
+                  <CardContent className="flex items-center justify-between overflow-x-hidden px-2 py-4">
+                    <div className="grid grid-cols-3 items-center">
+                      <div className="col-span-1 mr-2">
+                        <Avatar>
+                          {application.job?.employer_image_url ? (
+                            <div className="size-12 overflow-hidden rounded-full">
+                              <AvatarImage
+                                alt="Picture"
+                                src={application.job?.employer_image_url}
+                                className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
+                              />
+                            </div>
+                          ) : (
+                            <AvatarFallback>
+                              <Icons.user className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
+                            </AvatarFallback>
+                          )}
+                        </Avatar>
+                      </div>
+                      <p className="col-span-2 text-sm">
+                        {application.job?.title}
+                      </p>
                     </div>
                     <Badge
                       className="ml-2"
