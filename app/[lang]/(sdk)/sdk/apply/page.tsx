@@ -306,10 +306,10 @@ export default function ApplyPage({ params: { lang } }) {
         if (index !== -1) {
           const newOptions = [...prevOptions];
           if (isChecked) {
-            newOptions[index].answer += `, ${value}`;
+            newOptions[index].answer += `||| ${value}`;
           } else {
             newOptions[index].answer = newOptions[index].answer.replace(
-              `, ${value}`,
+              `||| ${value}`,
               ""
             );
           }
