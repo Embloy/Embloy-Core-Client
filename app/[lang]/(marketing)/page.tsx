@@ -15,11 +15,11 @@ export default async function IndexPage({ params: { lang } }) {
       
         <div className="container flex max-w-5xl flex-col items-center gap-4 text-center">
           <Link
-            href={siteConfig.links.calendy}
-            className="rounded-2xl bg-destructive px-4 py-1.5 text-sm font-medium text-white"
+            href={siteConfig.links.github}
+            className="rounded-2xl bg-secondary px-4 py-1.5 text-sm font-medium"
             target="_blank"
           >
-          {dict.marketing.notLaunchedYet}
+          {dict.marketing.workInProgress}
           </Link>
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
           <p>{dict.marketing.mainHeader}</p>

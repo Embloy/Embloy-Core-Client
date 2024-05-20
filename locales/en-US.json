@@ -79,6 +79,7 @@
             "billing": "Billed Monthly",
             "getStarted": "Get Started"
           },
+          "priceCustom": "Please note that the cost of Embloy integrations is determined on a case-by-case basis. If you're interested in partnering with us, please schedule a meeting.",
           "partnershipWithStripe1": "partners with ",
           "partnershipWithStripe2": " for simplified billing." 
       }
