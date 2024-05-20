@@ -358,7 +358,7 @@ export default function ApplyPage({ params: { lang } }) {
         {dict.sdk.goToEmbloy}
       </Link>
       <Image
-        src="/images/banner-5.png"
+        src="/images/banner-5c.png"
         alt="Description of the image"
         width={842}
         height={842}
