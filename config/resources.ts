@@ -45,7 +45,7 @@ export const resourcesConfig: ResourcesConfig = {
         },
         {
           title: "API documentation",
-          href: "https://documenter.getpostman.com/view/24977803/2s9YRB2rkE",
+          href: "https://docs.embloy.com",
           external: true,
         },
         {
