@@ -55,7 +55,7 @@ export const resourcesConfig: ResourcesConfig = {
         },
         {
           title: "System Status",
-          href: "https://postman.com/embloy",
+          href: "https://status.embloy.com",
           external: true,
         }
       ],
