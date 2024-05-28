@@ -685,7 +685,8 @@
         "title": "DOKUMENTATION",
         "Developer documentation": "Entwicklerdokumentation",
         "API documentation": "API-Dokumentation",
-        "Postman collection": "Postman-Sammlung"
+        "Postman collection": "Postman-Collection",
+        "System Status": "Systemstatus"
       },
       "CONTACT US": {
         "title": "KONTAKTIERE UNS",

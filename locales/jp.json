@@ -685,7 +685,8 @@
         "title": "ドキュメンテーション",
         "Developer documentation": "開発者向けドキュメント",
         "API documentation": "API ドキュメント",
-        "Postman collection": "Postman コレクション"
+        "Postman collection": "Postman コレクション",
+        "System Status": "システムステータス"
       },
       "CONTACT US": {
         "title": "お問い合わせ",

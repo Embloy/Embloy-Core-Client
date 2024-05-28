@@ -683,9 +683,10 @@
       },
       "DOCUMENTATION": {
         "title": "DOCUMENTAZIONE",
-        "Developer documentation": "Documentazione sviluppatore",
-        "API documentation": "Documentazione API",
-        "Postman collection": "Collezione Postman"
+        "Developer documentation": "Documentazione per svillupatori",
+        "API documentation": "API docs",
+        "Postman collection": "Postman",
+        "System Status": "Stato del sistema"
       },
       "CONTACT US": {
         "title": "CONTATTACI",

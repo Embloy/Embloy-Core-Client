@@ -683,14 +683,15 @@
       },
       "DOCUMENTATION": {
         "title": "DOCUMENTATION",
-        "Developer documentation": "Developer documentation",
-        "API documentation": "API documentation",
-        "Postman collection": "Postman collection"
+        "Developer documentation": "Developer Documentation",
+        "API documentation": "API Documentation",
+        "Postman collection": "Postman Collection",
+        "System Status": "System Status"
       },
       "CONTACT US": {
         "title": "CONTACT US",
         "Contact Forms": "Contact Forms",
-        "Help overview": "Help overview",
+        "Help overview": "Help Overview",
         "GitHub": "GitHub",
         "LinkedIn": "LinkedIn",
         "Twitter": "Twitter",
