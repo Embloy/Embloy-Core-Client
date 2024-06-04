@@ -46,10 +46,49 @@ export default function ApplyPage({ params: { lang } }) {
     .int()
     .positive({ message: "ID must be a positive integer" })
   const [options, setOptions] = useState<
-    Array<{ application_option_id: number; answer: string }>
+    Array<{ application_option_id: number; answer: string; file: File | null }>
   >([])
   const [dict, setDict] = useState<Record<string, any> | null>(null)
-
+  const mimeTypes = {
+    pdf: "application/pdf",
+    doc: "application/msword",
+    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    txt: "text/plain",
+    rtf: "application/rtf",
+    odt: "application/vnd.oasis.opendocument.text",
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    gif: "image/gif",
+    bmp: "image/bmp",
+    tiff: "image/tiff",
+    tif: "image/tiff",
+    svg: "image/svg+xml",
+    mp4: "video/mp4",
+    avi: "video/x-msvideo",
+    mov: "video/quicktime",
+    wmv: "video/x-ms-wmv",
+    flv: "video/x-flv",
+    mkv: "video/x-matroska",
+    webm: "video/webm",
+    ogg: "audio/ogg",
+    mp3: "audio/mpeg",
+    wav: "audio/wav",
+    wma: "audio/x-ms-wma",
+    aac: "audio/aac",
+    m4a: "audio/mp4",
+    zip: "application/zip",
+    rar: "application/x-rar-compressed",
+    tar: "application/x-tar",
+    "7z": "application/x-7z-compressed",
+    gz: "application/gzip",
+    bz2: "application/x-bzip2",
+    xls: "application/vnd.ms-excel",
+    xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ods: "application/vnd.oasis.opendocument.spreadsheet",
+    ppt: "application/vnd.ms-powerpoint",
+    pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  }
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
@@ -107,7 +146,7 @@ export default function ApplyPage({ params: { lang } }) {
     }
 
     fetchData()
-  }, [searchParams, router, origin, pathName, lang, dict, validateFields])
+  }, [searchParams, router, origin, pathName, lang, dict])
 
   function validateFields() {
     let isValid = true
@@ -129,13 +168,14 @@ export default function ApplyPage({ params: { lang } }) {
     }
 
     job?.application_options.forEach((option) => {
-      const optionExists = options.some(
-        (opt) => opt.application_option_id === option.id && opt.answer !== ""
+      const userOption = options.find(
+        (opt) => opt.application_option_id === option.id
       )
-      if (optionExists || option.required) {
-        //        const optionExists = options.some(
-        //          (opt) => opt.application_option_id === option.id && opt.answer !== ""
-        //        )
+      if (
+        (option.question_type == "file" && userOption?.file) ||
+        (option.question_type != "file" && userOption?.answer != "") ||
+        option.required
+      ) {
         switch (option.question_type) {
           case "yes_no":
           case "date":
@@ -144,7 +184,7 @@ export default function ApplyPage({ params: { lang } }) {
           case "long_text":
           case "number":
           case "multiple_choice":
-            if (!optionExists && dict) {
+            if (userOption?.answer != "" && dict) {
               setErrorMessages((prevMessages) => ({
                 ...prevMessages,
                 [option.id]: dict.sdk.required,
@@ -152,8 +192,43 @@ export default function ApplyPage({ params: { lang } }) {
               isValid = false
             }
             break
+          case "file":
+            if (!userOption?.file && option.required && dict) {
+              setErrorMessages((prevMessages) => ({
+                ...prevMessages,
+                [option.id]: dict.sdk.required,
+              }))
+              isValid = false
+            } else if (
+              userOption?.file &&
+              userOption?.file.size > 2 * 1024 * 1024
+            ) {
+              setErrorMessages((prevMessages) => ({
+                ...prevMessages,
+                [option.id]: dict?.sdk.errors.invalidFileSize.description,
+              }))
+              isValid = false
+            } else if (userOption?.file) {
+              const fileExtension = Object.keys(mimeTypes).find(
+                (key) => mimeTypes[key] === userOption?.file?.type
+              )
+
+              if (!fileExtension || !option.options.includes(fileExtension)) {
+                console.log("file type", userOption?.file.type)
+                setErrorMessages((prevMessages) => ({
+                  ...prevMessages,
+                  [option.id]:
+                    dict?.sdk.errors.invalidFileType.description.replace(
+                      "{formats}",
+                      fileExtension || "unknown"
+                    ),
+                }))
+                isValid = false
+              }
+            }
+            break
           case "link":
-            if (!optionExists && dict) {
+            if (!userOption && dict) {
               setErrorMessages((prevMessages) => ({
                 ...prevMessages,
                 [option.id]: dict.sdk.required,
@@ -228,7 +303,7 @@ export default function ApplyPage({ params: { lang } }) {
     setApplicationText(value)
   }
 
-  const handleFileChange = (event) => {
+  const handleCVChange = (event) => {
     try {
       setErrorMessages((prevMessages) => {
         const newMessages = { ...prevMessages }
@@ -260,8 +335,8 @@ export default function ApplyPage({ params: { lang } }) {
 
         if (file.size > validSize) {
           toast({
-            title: dict.dashboard.settings.errors.largeFile.title,
-            description: dict.dashboard.settings.errors.largeFile.description,
+            title: dict.sdk.errors.invalidFileSize.title,
+            description: dict.sdk.errors.invalidFileSize.description,
             variant: "destructive",
           })
           return
@@ -312,7 +387,10 @@ export default function ApplyPage({ params: { lang } }) {
           newOptions[index].answer = value
           return newOptions
         } else {
-          return [...prevOptions, { application_option_id: id, answer: value }]
+          return [
+            ...prevOptions,
+            { application_option_id: id, answer: value, file: null },
+          ]
         }
       })
     } catch (error) {
@@ -335,7 +413,10 @@ export default function ApplyPage({ params: { lang } }) {
           newOptions[index].answer = value
           return newOptions
         } else {
-          return [...prevOptions, { application_option_id: id, answer: value }]
+          return [
+            ...prevOptions,
+            { application_option_id: id, answer: value, file: null },
+          ]
         }
       })
 
@@ -373,7 +454,38 @@ export default function ApplyPage({ params: { lang } }) {
         } else {
           return [
             ...prevOptions,
-            { application_option_id: id, answer: isChecked ? value : "" },
+            {
+              application_option_id: id,
+              answer: isChecked ? value : "",
+              file: null,
+            },
+          ]
+        }
+      })
+
+      setErrorMessages((prevMessages) => ({ ...prevMessages, [id]: null }))
+    } catch (error) {
+      setErrorMessages((prevMessages) => ({
+        ...prevMessages,
+        [id]: error.message,
+      }))
+    }
+  }
+
+  const handleFileChange = (id: number, file: File | null) => {
+    try {
+      setOptions((prevOptions) => {
+        const index = prevOptions.findIndex(
+          (option) => option.application_option_id === id
+        )
+        if (index !== -1) {
+          const newOptions = [...prevOptions]
+          newOptions[index].file = file
+          return newOptions
+        } else {
+          return [
+            ...prevOptions,
+            { application_option_id: id, answer: "", file: file },
           ]
         }
       })
@@ -475,7 +587,7 @@ export default function ApplyPage({ params: { lang } }) {
                     <div className="space-y-1 text-center">
                       <input
                         type="file"
-                        onChange={handleFileChange}
+                        onChange={handleCVChange}
                         accept={job.allowed_cv_formats.join(",")}
                         className="w-full focus:border-indigo-500 focus:ring-indigo-500"
                       />
@@ -754,6 +866,45 @@ export default function ApplyPage({ params: { lang } }) {
                           </div>
                         )}
                       </fieldset>
+                    )
+                  case "file":
+                    return (
+                      <div className="flex flex-col space-y-2">
+                        <legend className="text-lg font-semibold">
+                          {label}
+                        </legend>
+                        <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
+                          <div className="space-y-1 text-center">
+                            <input
+                              type="file"
+                              onChange={(event) => {
+                                const file = event.target.files
+                                  ? event.target.files[0]
+                                  : null
+                                console.log(
+                                  "uploading file for option",
+                                  option.id,
+                                  file
+                                )
+                                handleFileChange(option.id, file)
+                              }}
+                              accept={option.options
+                                .map((opt) => mimeTypes[opt])
+                                .join(",")}
+                              className="w-full focus:border-indigo-500 focus:ring-indigo-500"
+                            />
+                            <p className="text-xs text-gray-500">
+                              {dict.sdk.allowedFormats}
+                              {option.options.join(", ")}
+                            </p>
+                          </div>
+                        </div>
+                        {errorMessages[option.id] && (
+                          <div className="text-sm text-red-500">
+                            {errorMessages[option.id]}
+                          </div>
+                        )}
+                      </div>
                     )
                   default:
                     return null

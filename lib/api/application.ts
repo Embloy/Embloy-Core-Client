@@ -1,125 +1,144 @@
-import { siteConfig } from "@/config/site";
-import { getAccessToken } from "./auth";
-import { Job } from "./sdk";
+import { siteConfig } from "@/config/site"
+
+import { getAccessToken } from "./auth"
+import { Job } from "./sdk"
 
 export interface ApplicationAttachment {
   attachment: {
-    id: number;
-    user_id: number;
-    job_id: number;
-    created_at: string;
-    updated_at: string;
-  };
-  url: string;
+    id: number
+    user_id: number
+    job_id: number
+    created_at: string
+    updated_at: string
+  }
+  url: string
 }
 
 export interface ApplicationAnswer {
-  id: number;
-  job_id: number;
-  user_id: number;
-  application_option_id: number;
-  answer: string;
+  id: number
+  job_id: number
+  user_id: number
+  application_option_id: number
+  answer: string
+  attachment: null | ApplicationAttachment
 }
 
 export interface Application {
-  job_id: number;
-  user_id: number;
-  updated_at: string;
-  created_at: string;
-  status: string;
-  application_text: string;
-  response: string;
-  application_attachment: null | ApplicationAttachment;
-  application_answers: null | ApplicationAnswer[];
-  job: null | Job;
+  job_id: number
+  user_id: number
+  updated_at: string
+  created_at: string
+  status: string
+  application_text: string
+  response: string
+  application_attachment: null | ApplicationAttachment
+  application_answers: null | ApplicationAnswer[]
+  job: null | Job
 }
-  
-export async function getApplications(): Promise<{response: Application[] | null, err: number | null}> {
-  const accessToken = await getAccessToken();
+
+export async function getApplications(): Promise<{
+  response: Application[] | null
+  err: number | null
+}> {
+  const accessToken = await getAccessToken()
   const response = await fetch(`${siteConfig.api_url}/user/applications`, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      "access_token": `${accessToken}`,
+      access_token: `${accessToken}`,
     },
-  });
+  })
 
   if (!response.ok) {
-    return { response: null, err: response.status };
+    return { response: null, err: response.status }
   }
-  
+
   if (response.status === 204) {
-    return { response: [], err: null };
+    return { response: [], err: null }
   }
 
-  const text = await response.text();
+  const text = await response.text()
   if (!text) {
-    return { response: null, err: 500 };
+    return { response: null, err: 500 }
   }
 
-  const data = JSON.parse(text);
-  const result = data.map((item: any) => ({
-    ...item.application,
-    application_attachment: item.application_attachment,
-    application_answers: item.application_answers,
-    job: JSON.parse(item.job),
-  })) || [];
+  const data = JSON.parse(text)
+  const result =
+    data.map((item: any) => ({
+      ...item.application,
+      application_attachment: item.application_attachment,
+      application_answers: item.application_answers,
+      job: JSON.parse(item.job),
+    })) || []
 
-  return { response: result, err: null };
+  return { response: result, err: null }
 }
 
 export async function submitApplication(
-  application_text: string, 
-  request_token: string | null, 
+  application_text: string,
+  request_token: string | null,
   gq_job_id: number | null,
   cv_file?: File,
-  answers?: { [key: string]: any }
+  options?: Array<{
+    application_option_id: number
+    answer: string
+    file: File | null
+  }>
 ): Promise<number | null> {
+  const accessToken = await getAccessToken()
 
-  const accessToken = await getAccessToken();
+  const formData = new FormData()
+  formData.append("application_text", application_text)
 
-  const formData = new FormData();
-  formData.append('application_text', application_text);
-
-  if (answers) {
-    answers.forEach((answerObj, index) => {
-      formData.append(`application_answers[${index}][application_option_id]`, answerObj.application_option_id.toString());
-      formData.append(`application_answers[${index}][answer]`, answerObj.answer);
-    });
+  if (options) {
+    options.forEach((optionObj, index) => {
+      formData.append(
+        `application_answers[${index}][application_option_id]`,
+        optionObj.application_option_id.toString()
+      )
+      formData.append(`application_answers[${index}][answer]`, optionObj.answer)
+      if (optionObj.file) {
+        formData.append(`application_answers[${index}][file]`, optionObj.file)
+      }
+    })
   }
 
-  let response: Response;
+  let response: Response
 
-  if (cv_file) { // If a CV file is provided, append it to the form data
-    formData.append('application_attachment', cv_file);
+  if (cv_file) {
+    // If a CV file is provided, append it to the form data
+    formData.append("application_attachment", cv_file)
   }
 
   if (request_token) {
     response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        "access_token": `${accessToken}`,
-        "request_token": `${request_token}`,
+        access_token: `${accessToken}`,
+        request_token: `${request_token}`,
       },
-      body: formData
-    });
+      body: formData,
+    })
   } else {
-    response = await fetch(`${siteConfig.api_url}/jobs/${gq_job_id}/applications`, {
-      method: 'POST',
-      headers: {
-        "access_token": `${accessToken}`,
-      },
-      body: formData
-    });
+    response = await fetch(
+      `${siteConfig.api_url}/jobs/${gq_job_id}/applications`,
+      {
+        method: "POST",
+        headers: {
+          access_token: `${accessToken}`,
+        },
+        body: formData,
+      }
+    )
   }
 
   if (!response.ok) {
-    return response.status;
+    return response.status
   }
 
-  const text = await response.text();
+  const text = await response.text()
   if (!text) {
-    return 500;
+    return 500
   }
 
-  return null;
+  return null
 }
