@@ -111,7 +111,7 @@ export function ApplicationPlaceholder({ params: { lang } }) {
                 maxLength={200}
                 style={{ resize: "none", overflow: "auto" }}
                 className="h-20 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
-                placeholder={dict.sdk.enterResponse}
+                placeholder={dict.sdk.enterShortText}
               />
             </div>
             <fieldset className="flex flex-col space-y-2">
