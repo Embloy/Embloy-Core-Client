@@ -72,8 +72,15 @@ export function ApplicationAnswerList({
                         </Tooltip>
                       </div>
                     ) : (
-                      <div className="rounded-lg border bg-secondary p-2 text-sm font-semibold">
-                        <div>{answer.answer}</div>
+                      <div
+                        className="rounded-lg border bg-secondary p-2 text-sm font-semibold"
+                        style={{
+                          maxWidth:
+                            answer.answer.length < 100 ? "none" : "1100px",
+                          overflowWrap: "break-word",
+                        }}
+                      >
+                        {answer.answer}
                       </div>
                     )}
                   </div>

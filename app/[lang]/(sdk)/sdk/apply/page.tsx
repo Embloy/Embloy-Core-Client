@@ -184,7 +184,7 @@ export default function ApplyPage({ params: { lang } }) {
           case "long_text":
           case "number":
           case "multiple_choice":
-            if (userOption?.answer != "" && dict) {
+            if (userOption?.answer == "" && dict) {
               setErrorMessages((prevMessages) => ({
                 ...prevMessages,
                 [option.id]: dict.sdk.required,
@@ -228,7 +228,7 @@ export default function ApplyPage({ params: { lang } }) {
             }
             break
           case "link":
-            if (!userOption && dict) {
+            if (userOption?.answer == "" && dict) {
               setErrorMessages((prevMessages) => ({
                 ...prevMessages,
                 [option.id]: dict.sdk.required,
@@ -703,6 +703,7 @@ export default function ApplyPage({ params: { lang } }) {
                         <Input
                           type="number"
                           key={index}
+                          maxLength={100}
                           required={option.required}
                           onKeyPress={(event) => {
                             if (!/[0-9]/.test(event.key)) {
@@ -765,6 +766,7 @@ export default function ApplyPage({ params: { lang } }) {
                         <Input
                           type="text"
                           key={index}
+                          maxLength={1000}
                           required={option.required}
                           onChange={(event) =>
                             handleTextChange(
