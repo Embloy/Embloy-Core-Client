@@ -173,7 +173,6 @@ export default function ApplyPage({ params: { lang } }) {
       )
       if (
         (option.question_type == "file" && userOption?.file) ||
-        (option.question_type != "file" && userOption?.answer) ||
         option.required
       ) {
         switch (option.question_type) {
@@ -183,8 +182,9 @@ export default function ApplyPage({ params: { lang } }) {
           case "short_text":
           case "long_text":
           case "number":
+          case "single_choice":
           case "multiple_choice":
-            if (userOption?.answer == "" && dict) {
+            if ((!userOption?.answer || userOption.answer == "") && dict) {
               setErrorMessages((prevMessages) => ({
                 ...prevMessages,
                 [option.id]: dict.sdk.required,
