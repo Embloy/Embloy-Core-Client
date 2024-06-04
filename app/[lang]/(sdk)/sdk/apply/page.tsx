@@ -173,7 +173,7 @@ export default function ApplyPage({ params: { lang } }) {
       )
       if (
         (option.question_type == "file" && userOption?.file) ||
-        (option.question_type != "file" && userOption?.answer != "") ||
+        (option.question_type != "file" && userOption?.answer) ||
         option.required
       ) {
         switch (option.question_type) {
@@ -228,7 +228,7 @@ export default function ApplyPage({ params: { lang } }) {
             }
             break
           case "link":
-            if (userOption?.answer == "" && dict) {
+            if (userOption?.answer && dict) {
               setErrorMessages((prevMessages) => ({
                 ...prevMessages,
                 [option.id]: dict.sdk.required,
