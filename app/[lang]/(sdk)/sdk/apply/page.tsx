@@ -228,7 +228,7 @@ export default function ApplyPage({ params: { lang } }) {
             }
             break
           case "link":
-            if (userOption?.answer && dict) {
+            if ((!userOption?.answer || userOption.answer == "") && dict) {
               setErrorMessages((prevMessages) => ({
                 ...prevMessages,
                 [option.id]: dict.sdk.required,
