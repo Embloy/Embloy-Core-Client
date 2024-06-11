@@ -76,11 +76,13 @@ export function ApplicationAnswerList({
                         className="rounded-lg border bg-secondary p-2 text-sm font-semibold"
                         style={{
                           maxWidth:
-                            answer.answer.length < 100 ? "none" : "1100px",
+                            answer?.answer && answer.answer.length < 100
+                              ? "none"
+                              : "1100px",
                           overflowWrap: "break-word",
                         }}
                       >
-                        {answer.answer}
+                        {answer?.answer || dict.dashboard.applications.noAnswerProvided}
                       </div>
                     )}
                   </div>
