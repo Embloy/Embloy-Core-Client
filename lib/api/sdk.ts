@@ -87,7 +87,7 @@ export async function makeRequest(requestToken: string): Promise<ResponseData | 
   const response = await fetch(`${siteConfig.api_url}/sdk/request/handle`, {
       method: 'POST',
       headers: {
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
         "request_token": `${requestToken}`
       },
   });

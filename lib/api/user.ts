@@ -5,7 +5,7 @@ export async function getUserData(accessToken: string): Promise<{response: Recor
     const apiResponse = await fetch(`${siteConfig.api_url}/user`, {
       method: 'GET',
       headers: {
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
     });
   
@@ -23,7 +23,7 @@ export async function updateUser(userJson: string): Promise<number | null > {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      "access_token": `${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
     },
     body: userJson
   });
@@ -42,7 +42,7 @@ export async function uploadUserImage(selectedImage: File): Promise<number | nul
     const response = await fetch(`${siteConfig.api_url}/user/image`, {
       method: 'POST',
       headers: {
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
       body: formData
     });
@@ -58,7 +58,7 @@ export async function deleteUser(): Promise<number | null> {
     const response = await fetch(`${siteConfig.api_url}/user`, {
       method: 'DELETE',
       headers: {
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
     });
   
@@ -74,7 +74,7 @@ export async function deleteImage(): Promise<number | null> {
     const response = await fetch(`${siteConfig.api_url}/user/image`, {
       method: 'DELETE',
       headers: {
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
     });
   

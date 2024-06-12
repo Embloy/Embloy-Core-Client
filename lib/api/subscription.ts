@@ -87,7 +87,7 @@ export async function getActiveSubscription(): Promise<{response: Subscription |
   const response = await fetch(`${siteConfig.api_url}/client/subscriptions/active?info=0`, {
     method: 'GET',
     headers: {
-      "access_token": `${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
     },
   });
 
@@ -112,7 +112,7 @@ export async function getAllSubscriptions(): Promise<{response: SubscriptionsRes
   const response = await fetch(`${siteConfig.api_url}/client/subscriptions`, {
     method: 'GET',
     headers: {
-      "access_token": `${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
     },
   });
 
@@ -134,7 +134,7 @@ export async function postCheckout(tier: string, payment_mode: string): Promise<
   const response = await fetch(`${siteConfig.api_url}/checkout`, {
     method: 'POST',
     headers: {
-      "access_token": `${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ tier, payment_mode, origin }),
@@ -153,7 +153,7 @@ export async function getPortalSession(): Promise<{response: Checkout | null, er
   const response = await fetch(`${siteConfig.api_url}/checkout/portal?origin=core`, {
     method: 'GET',
     headers: {
-      "access_token": `${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
       
     },
   });

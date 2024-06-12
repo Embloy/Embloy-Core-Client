@@ -33,7 +33,7 @@ export async function getLatestNotifications(): Promise<{response: Notification[
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
     });
   
@@ -70,7 +70,7 @@ export async function getUnreadApplications(): Promise<{response: number[] | nul
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      "access_token": `${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
     },
   });
 
@@ -92,7 +92,7 @@ export async function markAsRead(notification_id: number, status: number): Promi
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
     });
   

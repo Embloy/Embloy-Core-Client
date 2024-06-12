@@ -7,7 +7,7 @@ export async function getUpcomingJobs(): Promise<{response: Job[] | null, err: n
     const response = await fetch(`${siteConfig.api_url}/user/upcoming`, {
       method: 'GET',
       headers: {
-        "access_token": `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
     });
   
