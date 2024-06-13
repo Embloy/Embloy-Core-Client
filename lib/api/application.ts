@@ -44,7 +44,7 @@ export async function getApplications(): Promise<{
   const response = await fetch(`${siteConfig.api_url}/user/applications`, {
     method: "GET",
     headers: {
-      access_token: `${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
     },
   })
 
@@ -113,7 +113,7 @@ export async function submitApplication(
     response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
       method: "POST",
       headers: {
-        access_token: `${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
         request_token: `${request_token}`,
       },
       body: formData,
@@ -124,7 +124,7 @@ export async function submitApplication(
       {
         method: "POST",
         headers: {
-          access_token: `${accessToken}`,
+          "Authorization": `Bearer ${accessToken}`,
         },
         body: formData,
       }
