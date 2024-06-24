@@ -53,8 +53,6 @@ export const jobSchema = z.object({
   employer_rating: z.number(),
   job_notifications: z.string(),
   boost: z.number(),
-  cv_required: z.boolean(),
-  allowed_cv_formats: z.array(z.string()),
   deleted_at: z.string().nullable(),
   job_value: z.string().nullable(),
   application_options: z.array(applicationOptionSchema),

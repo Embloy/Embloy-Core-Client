@@ -29,7 +29,6 @@ export interface Application {
   updated_at: string
   created_at: string
   status: string
-  application_text: string
   response: string
   application_attachment: null | ApplicationAttachment
   application_answers: null | ApplicationAnswer[]
@@ -44,7 +43,7 @@ export async function getApplications(): Promise<{
   const response = await fetch(`${siteConfig.api_url}/user/applications`, {
     method: "GET",
     headers: {
-      "Authorization": `Bearer ${accessToken}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   })
 
@@ -74,10 +73,8 @@ export async function getApplications(): Promise<{
 }
 
 export async function submitApplication(
-  application_text: string,
   request_token: string | null,
   gq_job_id: number | null,
-  cv_file?: File,
   options?: Array<{
     application_option_id: number
     answer: string
@@ -87,7 +84,6 @@ export async function submitApplication(
   const accessToken = await getAccessToken()
 
   const formData = new FormData()
-  formData.append("application_text", application_text)
 
   if (options) {
     options.forEach((optionObj, index) => {
@@ -104,16 +100,11 @@ export async function submitApplication(
 
   let response: Response
 
-  if (cv_file) {
-    // If a CV file is provided, append it to the form data
-    formData.append("application_attachment", cv_file)
-  }
-
   if (request_token) {
     response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         request_token: `${request_token}`,
       },
       body: formData,
@@ -124,7 +115,7 @@ export async function submitApplication(
       {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
         },
         body: formData,
       }

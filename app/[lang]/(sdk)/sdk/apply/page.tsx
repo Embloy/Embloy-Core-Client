@@ -32,10 +32,8 @@ export default function ApplyPage({ params: { lang } }) {
   const [session, setSession] = useState<Session | null>(null)
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [applicationText, setApplicationText] = useState("")
   const pathName = usePathname() as string
   const origin = useSearchParams()
-  const [cvFile, setCvFile] = useState<File | undefined>()
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
   const [errorMessages, setErrorMessages] = useState<{
     [key: number]: string | null
@@ -88,6 +86,7 @@ export default function ApplyPage({ params: { lang } }) {
     ods: "application/vnd.oasis.opendocument.spreadsheet",
     ppt: "application/vnd.ms-powerpoint",
     pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    xml: "application/xml",
   }
   useEffect(() => {
     const fetchData = async () => {
@@ -128,17 +127,21 @@ export default function ApplyPage({ params: { lang } }) {
       } else {
         if (typeof request_token === "string" && dict) {
           const requestData = await makeRequest(request_token)
-          if (requestData !== null) {
+
+          if (requestData instanceof Error) {
+            setIsLoading(false)
+            var title = requestData.message
+            var description = dict.sdk.errors.request.description
+
+            return toast({
+              title: title,
+              description: description,
+              variant: "destructive",
+            })
+          } else {
             setJob(requestData.job)
             setSession(requestData.session)
             validateFields()
-          } else {
-            setIsLoading(false)
-            return toast({
-              title: dict.sdk.errors.request.title,
-              description: dict.sdk.errors.request.description,
-              variant: "destructive",
-            })
           }
         }
       }
@@ -150,22 +153,6 @@ export default function ApplyPage({ params: { lang } }) {
 
   function validateFields() {
     let isValid = true
-
-    if (job?.cv_required && !cvFile && dict) {
-      setErrorMessages((prevMessages) => ({
-        ...prevMessages,
-        cvFile: dict.sdk.required,
-      }))
-      isValid = false
-    }
-
-    if (applicationText.trim() === "" && dict) {
-      setErrorMessages((prevMessages) => ({
-        ...prevMessages,
-        applicationText: dict.sdk.required,
-      }))
-      isValid = false
-    }
 
     job?.application_options.forEach((option) => {
       const userOption = options.find(
@@ -264,10 +251,8 @@ export default function ApplyPage({ params: { lang } }) {
     setIsLoading(true)
 
     const err = await submitApplication(
-      applicationText,
       searchParams.get("request_token"),
       job?.job_id || 0,
-      cvFile,
       options
     )
 
@@ -284,71 +269,6 @@ export default function ApplyPage({ params: { lang } }) {
       // This forces a cache invalidation.
       router.refresh()
       router.push(`/${lang}/dashboard/applications`)
-    }
-  }
-
-  const handleInputChange = (event) => {
-    const value = event.target.value
-    if (value.trim() === "" && dict) {
-      setErrorMessages((prevMessages) => ({
-        ...prevMessages,
-        applicationText: dict.sdk.required,
-      }))
-    } else {
-      setErrorMessages((prevMessages) => ({
-        ...prevMessages,
-        applicationText: null,
-      }))
-    }
-    setApplicationText(value)
-  }
-
-  const handleCVChange = (event) => {
-    try {
-      setErrorMessages((prevMessages) => {
-        const newMessages = { ...prevMessages }
-        delete newMessages["cvFile"]
-        return newMessages
-      })
-
-      if (job && dict) {
-        const file = event.target.files[0]
-        const validTypes = job.allowed_cv_formats
-        const validSize = 2 * 1024 * 1024 // 2MB in bytes
-
-        const fileExtension = "." + file.name.split(".").pop()
-
-        console.log("fileExtension=", fileExtension)
-        console.log("validTypes=", validTypes)
-
-        if (!validTypes.includes(fileExtension)) {
-          toast({
-            title: dict.sdk.errors.invalidFileType.title,
-            description: dict.sdk.errors.invalidFileType.description.replace(
-              "{formats}",
-              job.allowed_cv_formats.join(", ")
-            ),
-            variant: "destructive",
-          })
-          return
-        }
-
-        if (file.size > validSize) {
-          toast({
-            title: dict.sdk.errors.invalidFileSize.title,
-            description: dict.sdk.errors.invalidFileSize.description,
-            variant: "destructive",
-          })
-          return
-        }
-
-        setCvFile(file)
-      }
-    } catch (error) {
-      setErrorMessages((prevMessages) => ({
-        ...prevMessages,
-        ["cvFile"]: error.message,
-      }))
     }
   }
 
@@ -442,13 +362,19 @@ export default function ApplyPage({ params: { lang } }) {
         )
         if (index !== -1) {
           const newOptions = [...prevOptions]
+          const answersArray = newOptions[index].answer
+            .split("|||")
+            .map((answer) => answer.trim())
           if (isChecked) {
-            newOptions[index].answer += `||| ${value}`
+            // Only add if the value isn't already in the answer
+            if (!answersArray.includes(value)) {
+              newOptions[index].answer += `||| ${value}`
+            }
           } else {
-            newOptions[index].answer = newOptions[index].answer.replace(
-              `||| ${value}`,
-              ""
-            )
+            // Remove the value if unchecked
+            newOptions[index].answer = answersArray
+              .filter((answer) => answer !== value)
+              .join("||| ")
           }
           return newOptions
         } else {
@@ -566,44 +492,6 @@ export default function ApplyPage({ params: { lang } }) {
                   {dict.sdk.enterDetails}
                 </p>
               </div>
-              <textarea
-                maxLength={500}
-                onChange={handleInputChange}
-                value={applicationText}
-                className="border-input-border flex h-32 w-full rounded-md border bg-secondary px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder={dict.sdk.enterApplicationText}
-              />
-              {errorMessages["applicationText"] && (
-                <div className="text-sm text-red-500">
-                  {errorMessages["applicationText"]}
-                </div>
-              )}
-              {job.cv_required && (
-                <div>
-                  <legend className="text-lg font-semibold">
-                    {dict.sdk.uploadCV}
-                  </legend>
-                  <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
-                    <div className="space-y-1 text-center">
-                      <input
-                        type="file"
-                        onChange={handleCVChange}
-                        accept={job.allowed_cv_formats.join(",")}
-                        className="w-full focus:border-indigo-500 focus:ring-indigo-500"
-                      />
-                      <p className="text-xs text-gray-500">
-                        {dict.sdk.allowedFormats}
-                        {job.allowed_cv_formats.join(", ")}
-                      </p>
-                    </div>
-                  </div>
-                  {errorMessages["cvFile"] && (
-                    <div className="text-sm text-red-500">
-                      {errorMessages["cvFile"]}
-                    </div>
-                  )}
-                </div>
-              )}
               {job.application_options.map((option, index) => {
                 const label = option.required
                   ? `${option.question} *`
@@ -619,6 +507,11 @@ export default function ApplyPage({ params: { lang } }) {
                         <Input
                           key={index}
                           type="text"
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                           required={option.required}
                           placeholder="https://example.com"
                           className="h-12 text-blue-500 underline"
@@ -645,6 +538,12 @@ export default function ApplyPage({ params: { lang } }) {
                         </legend>
                         <Input
                           key={index}
+                          type="text"
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                           required={option.required}
                           onChange={(event) =>
                             handleTextChange(
@@ -653,7 +552,6 @@ export default function ApplyPage({ params: { lang } }) {
                               option.required
                             )
                           }
-                          type="text"
                           maxLength={200}
                           style={{ resize: "none", overflow: "auto" }}
                           className="h-12 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
@@ -674,6 +572,11 @@ export default function ApplyPage({ params: { lang } }) {
                         </legend>
                         <textarea
                           key={index}
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                           required={option.required}
                           onChange={(event) =>
                             handleTextChange(
@@ -701,8 +604,13 @@ export default function ApplyPage({ params: { lang } }) {
                           {label}
                         </legend>
                         <Input
-                          type="number"
                           key={index}
+                          type="number"
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                           maxLength={100}
                           required={option.required}
                           onKeyPress={(event) => {
@@ -737,8 +645,13 @@ export default function ApplyPage({ params: { lang } }) {
                           {label}
                         </legend>
                         <Input
-                          type="date"
                           key={index}
+                          type="date"
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                           required={option.required}
                           onChange={(event) =>
                             handleTextChange(
@@ -764,8 +677,13 @@ export default function ApplyPage({ params: { lang } }) {
                           {label}
                         </legend>
                         <Input
-                          type="text"
                           key={index}
+                          type="text"
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                           maxLength={1000}
                           required={option.required}
                           onChange={(event) =>
@@ -790,6 +708,11 @@ export default function ApplyPage({ params: { lang } }) {
                       <div className="flex flex-col space-y-2">
                         <Select
                           key={index}
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                           required={option.required}
                           onValueChange={(value) => {
                             handleSingleChoiceChange(option.id, value)
@@ -821,6 +744,11 @@ export default function ApplyPage({ params: { lang } }) {
                           onValueChange={(value) => {
                             handleSingleChoiceChange(option.id, value)
                           }}
+                          value={
+                            options.find(
+                              (opt) => opt.application_option_id === option.id
+                            )?.answer
+                          }
                         >
                           <SelectTrigger>{label}</SelectTrigger>
                           <SelectContent>
@@ -851,6 +779,9 @@ export default function ApplyPage({ params: { lang } }) {
                           >
                             <Checkbox
                               value={opt}
+                              checked={options[option.id]?.answer?.includes(
+                                opt
+                              )}
                               onCheckedChange={(isChecked) => {
                                 handleMultipleChoiceChange(
                                   option.id,

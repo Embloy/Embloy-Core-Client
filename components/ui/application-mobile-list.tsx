@@ -193,7 +193,6 @@ export function ApplicationMobileList({
                     <p className="text-xs text-muted-foreground">
                       {dict.dashboard.applications.youWrote}
                     </p>
-                    {application.application_text}
                   </div>
                   <Separator className="mt-auto" />
                   <div className="overflow-auto p-2">

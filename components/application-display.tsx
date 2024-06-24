@@ -287,7 +287,6 @@ export function ApplicationDisplay({
               <p className="text-xs text-muted-foreground">
                 {dict.dashboard.applications.youWrote}
               </p>
-              {application.application_text}
             </div>
             <Separator />
             <ApplicationAnswerList

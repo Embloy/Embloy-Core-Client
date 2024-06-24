@@ -536,8 +536,6 @@
     "applyFor": "応募する ",
     "thisJob": "この仕事",
     "enterDetails": "応募するには以下に詳細を入力してください",
-    "enterApplicationText": "* ここに応募テキストを入力してください...（最大500文字）",
-    "uploadCV": "CVをアップロードする *",
     "allowedFormats": "許可されている形式：",
     "enterShortText": "あなたの回答を入力してください（最大200文字）",
     "enterLongText": "あなたの回答を入力してください（最大1000文字）",

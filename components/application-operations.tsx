@@ -42,7 +42,7 @@ async function deleteApplication(postId: Number) {
 }
 
 interface ApplicationOperationsProps {
-    application: Pick<Application, "job_id" | "application_text">
+    application: Pick<Application, "job_id">
 }
 
 export function ApplicationOperations({ application }: ApplicationOperationsProps) {
