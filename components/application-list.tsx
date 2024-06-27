@@ -38,65 +38,71 @@ export function ApplicationList({
       <>
         <ScrollArea className="h-screen" style={{ height: "70vh" }}>
           <div className="flex flex-col gap-2 p-4 pt-0">
-            {items.map((item) => (
-              <button
-                key={item.job_id}
-                className={cn(
-                  "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
-                  application.selected === item.job_id && "bg-muted"
-                )}
-                onClick={() =>
-                  setApplication({
-                    ...application,
-                    selected: item.job_id,
-                  })
-                }
-              >
-                <div className="flex w-full flex-col gap-1">
-                  <div className="flex items-center">
-                    <div className="flex items-center gap-2">
-                      <div className="font-semibold">
-                        {item.job?.title ||
-                          item.job?.job_slug ||
-                          `Job#${item.job_id}`}
+            {items
+              .sort(
+                (a, b) =>
+                  new Date(b.updated_at).getTime() -
+                  new Date(a.updated_at).getTime()
+              )
+              .map((item) => (
+                <button
+                  key={item.job_id}
+                  className={cn(
+                    "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+                    application.selected === item.job_id && "bg-muted"
+                  )}
+                  onClick={() =>
+                    setApplication({
+                      ...application,
+                      selected: item.job_id,
+                    })
+                  }
+                >
+                  <div className="flex w-full flex-col gap-1">
+                    <div className="flex items-center">
+                      <div className="flex items-center gap-2">
+                        <div className="font-semibold">
+                          {item.job?.title ||
+                            item.job?.job_slug ||
+                            `Job#${item.job_id}`}
+                        </div>
+                        {unreadIDs.includes(item.job_id) && (
+                          <span className="flex size-2 rounded-full bg-blue-600" />
+                        )}
                       </div>
-                      {unreadIDs.includes(item.job_id) && (
-                        <span className="flex size-2 rounded-full bg-blue-600" />
-                      )}
+                      <div
+                        className={cn(
+                          "ml-auto text-xs",
+                          application.selected === item.job_id
+                            ? "text-foreground"
+                            : "text-muted-foreground"
+                        )}
+                      >
+                        {formatDistanceToNow(new Date(item.updated_at), {
+                          addSuffix: true,
+                          locale: parseLocale(lang),
+                        })}
+                      </div>
                     </div>
-                    <div
-                      className={cn(
-                        "ml-auto text-xs",
-                        application.selected === item.job_id
-                          ? "text-foreground"
-                          : "text-muted-foreground"
-                      )}
+                    <div className="text-xs font-medium">
+                      {item.job?.employer_name ||
+                        item.job?.employer_email ||
+                        `User#${item.job?.user_id}`}
+                    </div>
+                  </div>
+                  <div className="line-clamp-2 text-xs text-muted-foreground">
+                    {item.job?.position?.substring(0, 300)}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge
+                      key={item.status}
+                      variant={getBadgeVariantFromLabel(item.status)}
                     >
-                      {formatDistanceToNow(new Date(item.updated_at), {
-                        addSuffix: true,
-                        locale: parseLocale(lang),
-                      })}
-                    </div>
+                      {getTextFromLabel(item.status, dict)}
+                    </Badge>
                   </div>
-                  <div className="text-xs font-medium">
-                    {item.job?.employer_name ||
-                      item.job?.employer_email ||
-                      `User#${item.job?.user_id}`}
-                  </div>
-                </div>
-                <div className="line-clamp-2 text-xs text-muted-foreground">
-                  {item.job?.position?.substring(0, 300)}
-                </div>
-                <div className="flex items-center gap-2">
-                  <Badge
-                    key={item.status}
-                    variant={getBadgeVariantFromLabel(item.status)}
-                  >
-                    {getTextFromLabel(item.status, dict)}
-                  </Badge>
-                </div>
-              </button>
-            ))}
+                </button>
+              ))}
           </div>
         </ScrollArea>
       </>

@@ -94,118 +94,124 @@ export function ApplicationMobileList({
   return (
     dict && (
       <div className="h-full space-y-2 overflow-y-auto">
-        {applications.map((application, index) => (
-          <div className="mt-5 overflow-y-auto">
-            <Drawer key={index}>
-              <DrawerTrigger asChild>
-                <Card>
-                  <CardContent className="flex items-center justify-between overflow-x-hidden px-2 py-4">
-                    <div className="grid grid-cols-3 items-center">
-                      <div className="col-span-1 mr-2">
+        {applications
+          .sort(
+            (a, b) =>
+              new Date(b.updated_at).getTime() -
+              new Date(a.updated_at).getTime()
+          )
+          .map((application, index) => (
+            <div className="mt-5 overflow-y-auto">
+              <Drawer key={index}>
+                <DrawerTrigger asChild>
+                  <Card>
+                    <CardContent className="flex items-center justify-between overflow-x-hidden px-2 py-4">
+                      <div className="grid grid-cols-3 items-center">
+                        <div className="col-span-1 mr-2">
+                          <Avatar>
+                            {application.job?.employer_image_url ? (
+                              <div className="size-12 overflow-hidden rounded-full">
+                                <AvatarImage
+                                  alt="Picture"
+                                  src={application.job?.employer_image_url}
+                                  className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
+                                />
+                              </div>
+                            ) : (
+                              <AvatarFallback>
+                                <Icons.user className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
+                              </AvatarFallback>
+                            )}
+                          </Avatar>
+                        </div>
+                        <p className="col-span-2 text-sm">
+                          {application.job?.title}
+                        </p>
+                      </div>
+                      <Badge
+                        className="ml-2"
+                        key={application.status}
+                        variant={getBadgeVariantFromLabel(application.status)}
+                      >
+                        {getTextFromLabel(application.status, dict)}
+                      </Badge>
+                    </CardContent>
+                  </Card>
+                </DrawerTrigger>
+                <DrawerContent>
+                  <div className="flex flex-1 flex-col">
+                    <div className="flex items-start p-4">
+                      <div className="flex items-start gap-4 text-sm">
                         <Avatar>
                           {application.job?.employer_image_url ? (
-                            <div className="size-12 overflow-hidden rounded-full">
-                              <AvatarImage
-                                alt="Picture"
-                                src={application.job?.employer_image_url}
-                                className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
-                              />
-                            </div>
+                            <AvatarImage
+                              alt="Picture"
+                              src={application.job?.employer_image_url}
+                              className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
+                            />
                           ) : (
                             <AvatarFallback>
                               <Icons.user className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
                             </AvatarFallback>
                           )}
                         </Avatar>
+                        <div className="grid gap-1">
+                          <div className="font-semibold">
+                            {application.job?.employer_name ||
+                              `User#${application.job?.user_id}`}
+                          </div>
+                          <div className="line-clamp-1 text-xs">
+                            {application.job?.employer_email ||
+                              application.job?.employer_phone ||
+                              dict.dashboard.applications.noContact}
+                          </div>
+                          <div className="line-clamp-1 text-xs">
+                            {application.updated_at && (
+                              <div className="ml-auto text-xs text-muted-foreground">
+                                {format(
+                                  new Date(application.updated_at),
+                                  "PPpp",
+                                  {
+                                    locale: parseLocale(lang),
+                                  }
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                      <p className="col-span-2 text-sm">
-                        {application.job?.title}
+                      <div className="ml-auto flex items-center gap-2 p-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          disabled={!application?.application_attachment?.url}
+                          onClick={() => downloadAttachment(application)}
+                        >
+                          <DownloadCloud className="size-6" />
+                          <span className="sr-only">
+                            {dict.dashboard.applications.downloadAttachment}
+                          </span>
+                        </Button>
+                      </div>
+                    </div>
+                    <Separator />
+                    <div className="flex-1 space-y-2 whitespace-pre-wrap p-4 text-sm">
+                      <p className="text-xs text-muted-foreground">
+                        {dict.dashboard.applications.youWrote}
                       </p>
                     </div>
-                    <Badge
-                      className="ml-2"
-                      key={application.status}
-                      variant={getBadgeVariantFromLabel(application.status)}
-                    >
-                      {getTextFromLabel(application.status, dict)}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              </DrawerTrigger>
-              <DrawerContent>
-                <div className="flex flex-1 flex-col">
-                  <div className="flex items-start p-4">
-                    <div className="flex items-start gap-4 text-sm">
-                      <Avatar>
-                        {application.job?.employer_image_url ? (
-                          <AvatarImage
-                            alt="Picture"
-                            src={application.job?.employer_image_url}
-                            className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
-                          />
-                        ) : (
-                          <AvatarFallback>
-                            <Icons.user className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground" />
-                          </AvatarFallback>
-                        )}
-                      </Avatar>
-                      <div className="grid gap-1">
-                        <div className="font-semibold">
-                          {application.job?.employer_name ||
-                            `User#${application.job?.user_id}`}
-                        </div>
-                        <div className="line-clamp-1 text-xs">
-                          {application.job?.employer_email ||
-                            application.job?.employer_phone ||
-                            dict.dashboard.applications.noContact}
-                        </div>
-                        <div className="line-clamp-1 text-xs">
-                          {application.updated_at && (
-                            <div className="ml-auto text-xs text-muted-foreground">
-                              {format(
-                                new Date(application.updated_at),
-                                "PPpp",
-                                {
-                                  locale: parseLocale(lang),
-                                }
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="ml-auto flex items-center gap-2 p-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        disabled={!application?.application_attachment?.url}
-                        onClick={() => downloadAttachment(application)}
-                      >
-                        <DownloadCloud className="size-6" />
-                        <span className="sr-only">
-                          {dict.dashboard.applications.downloadAttachment}
-                        </span>
-                      </Button>
+                    <Separator className="mt-auto" />
+                    <div className="overflow-auto p-2">
+                      <ApplicationResponse
+                        application={application}
+                        params={{ lang: lang }}
+                      />
                     </div>
                   </div>
-                  <Separator />
-                  <div className="flex-1 space-y-2 whitespace-pre-wrap p-4 text-sm">
-                    <p className="text-xs text-muted-foreground">
-                      {dict.dashboard.applications.youWrote}
-                    </p>
-                  </div>
-                  <Separator className="mt-auto" />
-                  <div className="overflow-auto p-2">
-                    <ApplicationResponse
-                      application={application}
-                      params={{ lang: lang }}
-                    />
-                  </div>
-                </div>
-              </DrawerContent>
-            </Drawer>
-          </div>
-        ))}
+                </DrawerContent>
+              </Drawer>
+            </div>
+          ))}
       </div>
     )
   )
