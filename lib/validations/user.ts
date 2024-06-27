@@ -27,20 +27,20 @@ export const userSchema = z.object({
     phone => /^(\+\d{1,3}[- ]?)?(\d[- ]?)*\d$/.test(phone) || phone === '',
     { message: 'phone' }
   ).nullable(),
-  twitter_url: z.string().max(150, { message: 'twitter_url'}).url({message: 'twitter_url'}).refine(
-    url => /^https?:\/\/(www\.)?twitter\.com(\/.*)?$/.test(url),
+  twitter_url: z.string().max(150, { message: 'twitter_url'}).refine(
+    url => /^https?:\/\/(www\.)?twitter\.com(\/.*)?$/.test(url) || url === '',
     { message: 'twitter_url' }
   ).nullable(),
-  facebook_url: z.string().max(150, { message: 'facebook_url'}).url({message: 'facebook_url'}).refine(
-    url => /^https?:\/\/(www\.)?facebook\.com(\/.*)?$/.test(url),
+  facebook_url: z.string().max(150, { message: 'facebook_url'}).refine(
+    url => /^https?:\/\/(www\.)?facebook\.com(\/.*)?$/.test(url) || url === '',
     { message: 'facebook_url' }
   ).nullable(),
-  instagram_url: z.string().max(150, { message: 'instagram_url'}).url({message: 'instagram_url'}).refine(
-    url => /^https?:\/\/(www\.)?instagram\.com(\/.*)?$/.test(url),
+  instagram_url: z.string().max(150, { message: 'instagram_url'}).refine(
+    url => /^https?:\/\/(www\.)?instagram\.com(\/.*)?$/.test(url) || url === '',
     { message: 'instagram_url' }
   ).nullable(),
-  linkedin_url: z.string().max(150, { message: 'linkedin_url'}).url({message: 'linkedin_url'}).refine(
-    url => /^https?:\/\/(www\.)?linkedin\.com(\/.*)?$/.test(url),
+  linkedin_url: z.string().max(150, { message: 'linkedin_url'}).refine(
+    url => /^https?:\/\/(www\.)?linkedin\.com(\/.*)?$/.test(url) || url === '',
     { message: 'linkedin_url' }
   ).nullable(),
 })

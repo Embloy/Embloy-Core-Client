@@ -9,7 +9,7 @@ import { z } from "zod"
 
 import { submitApplication } from "@/lib/api/application"
 import { Job, Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
-import { getSession } from "@/lib/api/session"
+import { User, getCurrentUser, getSession } from "@/lib/api/session"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -25,6 +25,7 @@ import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { Icons } from "@/components/icons"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
+import { getUserPropertyValue, isUrlLabel, normalizeLabel } from "./labelizer"
 import LoadingScreen from "./loading"
 
 export default function ApplyPage({ params: { lang } }) {
@@ -35,6 +36,7 @@ export default function ApplyPage({ params: { lang } }) {
   const pathName = usePathname() as string
   const origin = useSearchParams()
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
+  const [currentUser, setCurrentUser] = React.useState<User>()
   const [errorMessages, setErrorMessages] = useState<{
     [key: number]: string | null
   }>({})
@@ -106,6 +108,9 @@ export default function ApplyPage({ params: { lang } }) {
             : `/${lang}/login`
         )
         return
+      } else {
+        const { response } = await getCurrentUser()
+        if (response) setCurrentUser(response)
       }
 
       const request_token = searchParams.get("request_token")
@@ -242,6 +247,43 @@ export default function ApplyPage({ params: { lang } }) {
     })
     return isValid
   }
+
+  useEffect(() => {
+    if (!currentUser || !job) return
+
+    const defaultOptions = job.application_options.map((option) => {
+      let defaultAnswer = ""
+      switch (option.question_type) {
+        case "short_text" || "long_text":
+          defaultAnswer = getUserPropertyValue(currentUser, option.question)
+          break
+        case "link":
+          defaultAnswer = isUrlLabel(option.question)
+            ? (() => {
+                const normalizedLabel = normalizeLabel(option.question).replace(
+                  /url|profile|link/gi,
+                  ""
+                )
+                if (normalizedLabel.includes("linkedin")) {
+                  return currentUser.linkedin_url || ""
+                }
+                return currentUser[`${normalizedLabel}Url`] || ""
+              })()
+            : ""
+          break
+        default:
+          break
+      }
+
+      return {
+        application_option_id: option.id,
+        answer: defaultAnswer,
+        file: null,
+      }
+    })
+
+    setOptions(defaultOptions)
+  }, [currentUser, job])
 
   async function onClick() {
     if (!validateFields()) {
