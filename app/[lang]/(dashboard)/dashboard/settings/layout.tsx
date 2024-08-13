@@ -62,7 +62,7 @@ export default function SettingsLayout({ children, params: { lang } }: SettingsL
           heading={dict.dashboard.settings.title}
           text={dict.dashboard.settings.subtitle}
         />
-        <Card>
+        <Card className='bg-muted'>
           <CardContent className="mt-4">
             <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
               <aside className="-mx-4 lg:w-1/5">

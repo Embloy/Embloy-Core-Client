@@ -36,7 +36,8 @@
     "openSourceDescription": "Embloy est open source et alimenté par des logiciels open source.",
     "sourceCodeAvailableOnGitHub": "Le code est disponible sur ",
     "logo": "Logo",
-    "copyright": "Droits d'auteur © 2024 Embloy, GbR. Le code source est disponible sur ",
+    "copyright": "©2024 Embloy Platforms UG (haftungsbeschränkt).",
+    "copyrightGithub": "©2024 Embloy Platforms UG (haftungsbeschränkt). Le code source est disponible sur ",
     "pricing": {
       "simpleTransparentPricing": "Tarification simple et transparente",
       "freeForApplicants": "Pour les candidats, Embloy est 100% gratuit.",
@@ -525,7 +526,7 @@
   },
   "sdk": {
     "loading": "Chargement...",
-    "byEmbloy": "par Embloy Platforms GbR",
+    "byEmbloy": "par Embloy Platforms UG (haftungsbeschränkt)",
     "required": "Ce champ est requis",
     "validURL": "Ce champ doit être une URL valide",
     "backToHomepage": "Retour à la page d'accueil",
@@ -654,6 +655,7 @@
     }
   },
   "resources": {
+    "aboutEmbloy": "À propos d'Embloy",
     "Overview": {
       "title": "Ressources"
     },

@@ -24,7 +24,7 @@ import Image from "next/image"; export default function Loading() { return (
     </div>
   
     <p className=" absolute bottom-5 text-sm font-normal">
-      by Embloy Platforms GbR
+      by Embloy Platforms UG (haftungsbeschränkt)
     </p>
   </div>
   ) }

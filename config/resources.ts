@@ -65,7 +65,7 @@ export const resourcesConfig: ResourcesConfig = {
       items: [
         {
           title: "Contact Forms",
-          href: "https://embloy-platforms.involve.me/beta",
+          href: "https://about.embloy.com/en/contact",
           external: true,
         },
         {
