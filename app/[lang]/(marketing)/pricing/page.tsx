@@ -35,7 +35,7 @@ export default async function PricingPage({ params: { lang } }) {
         </p>
       </div>
 
-      <div className="grid dark:bg-muted w-full items-start gap-10 rounded-lg light:border dark:hover:border p-10 md:grid-cols-[1fr_200px]">
+      <div className="grid w-full items-start gap-10 rounded-lg border p-10 dark:border-0 dark:bg-muted dark:hover:border md:grid-cols-[1fr_200px]">
         <div className="grid gap-6">
           <h3 className="text-xl font-bold sm:text-2xl">
             {dict.marketing.pricing.embloyFree.title}
@@ -85,7 +85,7 @@ export default async function PricingPage({ params: { lang } }) {
         </div>
       </div>
 
-      <div className="grid dark:bg-muted w-full items-start gap-10 rounded-lg light:border dark:hover:border p-10 md:grid-cols-[1fr_200px]">
+      <div className="grid w-full items-start gap-10 rounded-lg border p-10 dark:border-0 dark:bg-muted dark:hover:border md:grid-cols-[1fr_200px]">
         <div className="grid gap-6">
           <h3 className="text-xl font-bold sm:text-2xl">
             {dict.marketing.pricing.embloySmart.title}
@@ -127,7 +127,7 @@ export default async function PricingPage({ params: { lang } }) {
         </div>
       </div>
 
-      <div className="grid dark:bg-muted w-full items-start gap-10 rounded-lg light:border dark:hover:border p-10 md:grid-cols-[1fr_200px]">
+      <div className="grid w-full items-start gap-10 rounded-lg border p-10 dark:border-0 dark:bg-muted dark:hover:border md:grid-cols-[1fr_200px]">
         <div className="grid gap-6">
           <h3 className="text-xl font-bold sm:text-2xl">
             {dict.marketing.pricing.embloyGenius.title}

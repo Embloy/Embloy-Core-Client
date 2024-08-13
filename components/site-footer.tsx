@@ -45,22 +45,22 @@ export function SiteFooter({ className, params: { lang } }: FooterProps) {
               gap: "10px",
             }}
           >
-            <p className="text-center text-sm leading-loose md:text-left m-1">
+            <p className="m-1 text-center text-sm leading-loose md:text-left">
               <a href={`/${lang}/resources/terms#cookies`} className="text-muted-foreground hover:text-foreground">
               {dict.resources["Cookies"].title}
               </a>
             </p>
-            <p className="text-center text-sm leading-loose md:text-left m-1">
+            <p className="m-1 text-center text-sm leading-loose md:text-left">
               <a href={`/${lang}/resources/privacy`} className="text-muted-foreground hover:text-foreground">
               {dict.resources["Privacy Policy"].title}
               </a>
             </p>
-            <p className="text-center text-sm leading-loose md:text-left m-1">
+            <p className="m-1 text-center text-sm leading-loose md:text-left">
               <a href={`/${lang}/resources/terms`} className="text-muted-foreground hover:text-foreground">
               {dict.resources["Terms of Service"].title}
               </a>
             </p>
-            <p className="text-center text-sm leading-loose md:text-left m-1">
+            <p className="m-1 text-center text-sm leading-loose md:text-left">
               <a href={siteConfig.links.about} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground">
               {dict.resources.aboutEmbloy}
               </a>
