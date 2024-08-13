@@ -36,24 +36,24 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
   }, [lang]);
 
   return dict && (
-    <div className="flex gap-6 md:gap-10">
-    <Link href={`/${lang}`} className="mb-1 hidden items-center space-x-2  md:flex">
+    <div className="flex md:gap-10">
+    <Link href={`/${lang}`} className="mb-1 hidden items-center space-x-1  md:flex">
       <Icons.logo />
-      <span className="underline-gradient hidden text-xl font-bold sm:inline-block">
+      <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
         {siteConfig.name.toLowerCase()}
       </span>
     </Link>
       {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
+        <nav className="mb-1 hidden gap-6 md:flex">
           {items?.map((item, index) => (
             <Link
               key={index}
               href={item.disabled ? "#" : `${item.href.startsWith('/') ? `/${lang}` : ''}${item.href}`}
               className={cn(
-                "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
+                "text-md flex items-center transition-colors hover:rounded hover:bg-muted ",
                 item.href.startsWith(`/${segment}`)
-                  ? "text-foreground"
-                  : "text-foreground/60",
+                  ? "rounded bg-muted p-1 font-bold text-foreground"
+                  : "p-1 text-foreground",
                 item.disabled && "cursor-not-allowed opacity-80"
               )}
             >

@@ -41,7 +41,7 @@
 
   .dark {
     --background: 254 32% 8%; 
-    --foreground: 207.69 35.14% 92.75%;
+    --foreground: 207.69 35.14% 100%;
     
     --muted: 259 27% 14%;
     --muted-foreground: 215 8% 70%;
@@ -50,13 +50,13 @@
     --accent-foreground: 210 40% 98%;
 
     --popover: 254 32% 8%;
-    --popover-foreground: 207.69 35.14% 92.75;
+    --popover-foreground: 207.69 35.14% 100%;
 
     --border: 256 78% 79%;
     --input: 256 78% 79%;
 
     --card: 254 32% 8%;
-    --card-foreground: 207.69 35.14% 92.75%;
+    --card-foreground: 207.69 35.14% 100%;
 
     --primary: 260 25% 51%;
     --primary-foreground: 0 0% 100%;
@@ -86,7 +86,7 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: -100%;
+  left: 0%;
   width: 100%;
   height: 3px;
   background: linear-gradient(to right, #99F7CB, #99FFFF);
@@ -95,7 +95,7 @@
 }
 
 .underline-gradient:hover::after {
-  left: 0;
+  left: -100%;
 }
 
 @layer base {

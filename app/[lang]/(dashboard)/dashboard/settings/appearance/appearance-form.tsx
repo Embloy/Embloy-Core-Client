@@ -110,16 +110,16 @@ export function AppearanceForm({params: { lang} }: AppearanceFormProps)  {
                       <RadioGroupItem value="dark" className="sr-only" />
                     </FormControl>
                     <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:text-accent-foreground">
-                        <div className="space-y-2 rounded-sm bg-[#09090b] p-2">
-                          <div className="space-y-2 rounded-md bg-[#161b22] p-2 shadow-sm">
+                        <div className="space-y-2 rounded-sm bg-[#110e1b] p-2">
+                          <div className="space-y-2 rounded-md bg-[#201a2d] p-2 shadow-sm">
                             <div className="h-2 w-[80px] rounded-lg bg-slate-400" />
                             <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                           </div>
-                          <div className="flex items-center space-x-2 rounded-md bg-[#161b22] p-2 shadow-sm">
+                          <div className="flex items-center space-x-2 rounded-md bg-[#201a2d] p-2 shadow-sm">
                             <div className="size-4 rounded-full bg-slate-400" />
                             <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                           </div>
-                          <div className="flex items-center space-x-2 rounded-md bg-[#161b22] p-2 shadow-sm">
+                          <div className="flex items-center space-x-2 rounded-md bg-[#201a2d] p-2 shadow-sm">
                             <div className="size-4 rounded-full bg-slate-400" />
                             <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                           </div>
@@ -163,16 +163,16 @@ export function AppearanceForm({params: { lang} }: AppearanceFormProps)  {
                         <RadioGroupItem value="system" className="sr-only" />
                       </FormControl>
                       <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:text-accent-foreground">
-                        <div className="space-y-2 rounded-sm bg-[#09090b] p-2">
-                          <div className="space-y-2 rounded-md bg-[#161b22] p-2 shadow-sm">
+                        <div className="space-y-2 rounded-sm bg-[#110e1b] p-2">
+                          <div className="space-y-2 rounded-md bg-[#201a2d] p-2 shadow-sm">
                             <div className="h-2 w-[80px] rounded-lg bg-slate-400" />
                             <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                           </div>
-                          <div className="flex items-center space-x-2 rounded-md bg-[#161b22] p-2 shadow-sm">
+                          <div className="flex items-center space-x-2 rounded-md bg-[#201a2d] p-2 shadow-sm">
                             <div className="size-4 rounded-full bg-slate-400" />
                             <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                           </div>
-                          <div className="flex items-center space-x-2 rounded-md bg-[#161b22] p-2 shadow-sm">
+                          <div className="flex items-center space-x-2 rounded-md bg-[#201a2d] p-2 shadow-sm">
                             <div className="size-4 rounded-full bg-slate-400" />
                             <div className="h-2 w-[100px] rounded-lg bg-slate-400" />
                           </div>

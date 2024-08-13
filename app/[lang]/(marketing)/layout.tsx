@@ -58,7 +58,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
     return dict && user && (
       <div className="flex min-h-screen flex-col">
         <header className="container top-0 z-40">
-          <div className="flex h-20 items-center justify-between py-6">
+          <div className="flex h-16 items-center justify-between py-6">
             <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
             <div className="flex items-center">
               <div className="mx-6 md:flex">
@@ -90,7 +90,7 @@ export default function MarketingLayout({ children, params: { lang } }: Marketin
     return dict && (
       <div className="flex min-h-screen flex-col">
         <header className="container z-40">
-        <div className="flex h-20 items-center justify-between py-4">
+        <div className="flex h-16 items-center justify-between py-4">
           <MainNav items={marketingConfig.mainNav} params={{lang: lang}} />
           <div className="flex items-center">
             <div className="mx-6 hidden md:flex">
