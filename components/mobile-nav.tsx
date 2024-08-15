@@ -48,6 +48,7 @@ export function MobileNav({ items, children, params: { lang } }: MobileNavProps)
           {items.map((item, index) => (
             <Link
               key={index}
+              target={item.external ? "_blank" : undefined}
               href={item.disabled ? "#" : `${item.href.startsWith('/') ? `/${lang}` : ''}${item.href}`}
               className={cn(
                 "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline",

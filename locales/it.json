@@ -569,12 +569,15 @@
   "nav": {
     "menu": "Menu",
     "main": {
+      "why embloy?": "Perché Embloy?",
+      "small business": "Per SMB",
+      "enterprise": "Per grandi aziende",
       "features": "Funzionalità",
       "pricing": "Prezzi",
       "employers": "Datori di lavoro",
       "developers": "Sviluppatori",
       "resources": "Risorse",
-      "about": "Di"
+      "about": "Su Embloy"
     },
     "side": {
       "dashboard": "Dashboard",

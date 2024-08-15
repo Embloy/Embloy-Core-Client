@@ -48,6 +48,7 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
           {items?.map((item, index) => (
             <Link
               key={index}
+              target={item.external ? "_blank" : undefined}
               href={item.disabled ? "#" : `${item.href.startsWith('/') ? `/${lang}` : ''}${item.href}`}
               className={cn(
                 "text-md flex items-center transition-colors hover:rounded hover:bg-muted ",

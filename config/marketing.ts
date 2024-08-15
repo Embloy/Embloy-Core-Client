@@ -1,8 +1,22 @@
 import { MarketingConfig } from "types"
+
 import { siteConfig } from "./site"
 
 export const marketingConfig: MarketingConfig = {
   mainNav: [
+    {
+      title: "Why Embloy?",
+      href: "https://about.embloy.com/en/why-embloy",
+    },
+    {
+      title: "Small Business",
+      href: "https://about.embloy.com/en/business/qr-applications",
+    },
+    {
+      title: "Enterprise",
+      href: "https://about.embloy.com/en/business/application-gateway",
+    },
+    /*   
     {
       title: "Features",
       href: "/#features",
@@ -15,6 +29,7 @@ export const marketingConfig: MarketingConfig = {
       title: "Employers",
       href: siteConfig.links.genius,
     },
+  */
     {
       title: "Developers",
       href: siteConfig.links.developer,

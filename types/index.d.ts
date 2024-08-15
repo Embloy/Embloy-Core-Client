@@ -5,6 +5,7 @@ import { Icons } from "@/components/icons"
 export type NavItem = {
   title: string
   href: string
+  external?: boolean
   disabled?: boolean
 }
 

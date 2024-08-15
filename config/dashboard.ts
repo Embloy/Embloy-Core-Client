@@ -6,10 +6,12 @@ export const dashboardConfig: DashboardConfig = {
     {
       title: "Employers",
       href: siteConfig.links.genius,
+      external: true,
     },
     {
       title: "Developers",
       href: siteConfig.links.developer,
+      external: true,
     },
     {
       title: "Resources",
@@ -17,6 +19,7 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: "About",
+      external: true,
       href: siteConfig.links.about,
     },
   ],
