@@ -3,7 +3,20 @@ export const normalizeLabel = (label) => label.toLowerCase().replace(/\s+/g, "")
 
 export const isNameLabel = (label) => {
   const normalized = normalizeLabel(label)
-  return normalized.includes("username") || normalized.includes("yourname")
+  return (
+    normalized.includes("name") ||
+    normalized.includes("full") ||
+    normalized.includes("first") ||
+    normalized.includes("last") ||
+    normalized.includes("middle") ||
+    normalized.includes("prefix") ||
+    normalized.includes("suffix") ||
+    normalized.includes("nickname") ||
+    normalized.includes("username") ||
+    normalized.includes("display") ||
+    normalized.includes("preferred") ||
+    normalized.includes("screen")
+  )
 }
 
 export const isEmailLabel = (label) => normalizeLabel(label).includes("email")
