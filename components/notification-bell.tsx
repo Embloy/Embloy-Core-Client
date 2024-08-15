@@ -13,7 +13,6 @@ import { Icons } from "@/components/icons"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 import { useEffect, useState } from "react"
 import { Locale } from "@/i18n-config"
-import { redirect } from "next/navigation"
 import { getLatestNotifications, Notification } from "@/lib/api/notifications"
 import { toast } from "./ui/use-toast"
 import Link from 'next/link';

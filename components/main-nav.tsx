@@ -37,7 +37,7 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
 
   return dict && (
     <div className="flex md:gap-10">
-    <Link href={`/${lang}`} className="mb-1 hidden items-center space-x-1  md:flex">
+    <Link href={`/${lang}?noredirect=1`} className="mb-1 hidden items-center space-x-1  md:flex">
       <Icons.logo />
       <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
         {siteConfig.name.toLowerCase()}
