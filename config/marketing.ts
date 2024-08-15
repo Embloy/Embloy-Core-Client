@@ -28,11 +28,13 @@ export const marketingConfig: MarketingConfig = {
     {
       title: "Employers",
       href: siteConfig.links.genius,
+      external: true,
     },
   */
     {
       title: "Developers",
       href: siteConfig.links.developer,
+      external: true,
     },
     {
       title: "Resources",

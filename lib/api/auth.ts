@@ -213,8 +213,10 @@ export async function setPassword(
   const response = await fetch(route, {
     method: "PATCH",
     headers: {
+      Authorization: `Bearer ${
+        reset_token ? "" : (await getAccessToken()) || ""
+      }`,
       "Content-Type": "application/json",
-      "access-token": reset_token ? "" : (await getAccessToken()) || "",
     },
     body: JSON.stringify({
       user: {

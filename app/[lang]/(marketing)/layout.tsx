@@ -1,6 +1,5 @@
 "use client"
 
-import { dashboardConfig } from "@/config/dashboard"
 import { useEffect, useState } from 'react';
 import { getCurrentUser, User } from '@/lib/api/session';
 import { UserAccountNav } from "@/components/user-account-nav"
