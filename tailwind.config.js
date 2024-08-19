@@ -55,6 +55,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        embloy: {
+          DEFAULT: "hsl(var(--embloy))",
+          foreground: "hsl(var(--embloy-foreground))",
+        },
       },
       borderRadius: {
         lg: `var(--radius)`,

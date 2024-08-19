@@ -105,7 +105,7 @@ export default function ResourcesLayout({ children, params: {lang} }: ResourcesL
               <Link
                 href={`/${lang}/login`}
                 className={cn(
-                  buttonVariants({ variant: "secondary", size: "sm" }),
+                  buttonVariants({ variant: "bold", size: "bold" }),
                   "px-4"
                 )}
               >

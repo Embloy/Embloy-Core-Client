@@ -10,7 +10,8 @@
   },
   "marketing": {
     "workInProgress": "Diese Seite ist noch in Bearbeitung - Folge uns auf GitHub",
-    "notLaunchedYet": "Embloy ist noch nicht aktiv. Kontaktiere uns, um Zugang zu unserer Beta-Version zu erhalten.",
+      "developerDocsLaunched": "Unsere neue Entwicklerdokumentation ist jetzt veröffentlicht!",
+"notLaunchedYet": "Embloy ist noch nicht aktiv. Kontaktiere uns, um Zugang zu unserer Beta-Version zu erhalten.",
     "mainHeader": "Embloy.",
     "subHeader": "Lösungen, die das HR-Management verbessern.",
     "recruitmentSteps": "Alle Rekrutierungsschritte an einem Ort: Vereinfache den Prozess für Organisationen und Bewerber, indem die Rekrutierungsprozesse zentral gemanaged werden.",

@@ -33,6 +33,8 @@ export const metadata = {
     "Genius",
     "Integrations",
     "Lightweight",
+    "Embloy",
+    "Embloy Platforms",
   ],
   authors: [
     {
@@ -42,7 +44,7 @@ export const metadata = {
   ],
   creator: "embloy",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: light)", color: "black" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
   openGraph: {

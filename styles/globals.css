@@ -37,6 +37,9 @@
     --ring: 218.67 100% 26.47%;
 
     --radius: 1rem;
+
+    --embloy: 210 40% 96.1%;
+    --embloy-foreground: 222.2 47.4% 11.2%;
   }
 
   .dark {
@@ -46,8 +49,8 @@
     --muted: 259 27% 14%;
     --muted-foreground: 215 8% 70%;
 
-    --accent: 256 78% 79%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 259 27% 14%;
+    --accent-foreground: 256 90% 88%;
 
     --popover: 254 32% 8%;
     --popover-foreground: 207.69 35.14% 100%;
@@ -73,6 +76,9 @@
     --ring: 260 25% 31%;
 
     --radius: 1rem;
+
+    --embloy: 152, 85%, 78%;
+    --embloy-foreground: 152, 85%, 78%;
   }
 }
 

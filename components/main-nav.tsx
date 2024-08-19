@@ -53,7 +53,7 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
               className={cn(
                 "text-md flex items-center transition-colors hover:rounded hover:bg-muted ",
                 item.href.startsWith(`/${segment}`)
-                  ? "rounded bg-muted p-1 font-bold text-foreground"
+                  ? "rounded bg-muted p-1 text-accent-foreground"
                   : "p-1 text-foreground",
                 item.disabled && "cursor-not-allowed opacity-80"
               )}

@@ -10,6 +10,7 @@
   },
   "marketing": {
       "workInProgress": "このページはまだ作業中です - GitHub でフォローしてください",
+      "developerDocsLaunched": "開発者向けドキュメントが公開されました - ご覧ください！",
       "notLaunchedYet": "Embloy はまだ稼働しておらず、サインアップすることはできません。ベータ版にアクセスするにはお問い合わせください。",
       "mainHeader": "Embloy.",
       "subHeader": "HRを脳力アップするソリューション。",
