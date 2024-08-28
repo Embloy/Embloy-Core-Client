@@ -12,7 +12,7 @@ export default async function IndexPage({ params: { lang } }) {
   return (
     <>
       {/* eslint-disable-next-line */}
-      <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1a-dark.png')] md:pb-12 md:pt-10 lg:py-32">
+      <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-5xl flex-col items-center gap-4 text-center">
           <Link
             href={`${siteConfig.links.developer}/docs/sdks/overview`}
@@ -208,7 +208,7 @@ export default async function IndexPage({ params: { lang } }) {
       </section>
       <section
         id="open-source"
-        className="container bg-background bg-cover bg-center py-8 md:bg-[url('/images/bg-2.png')] md:py-12 md:dark:bg-[url('/images/bg-2a-dark.png')] lg:py-24"
+        className="container bg-background bg-cover bg-center py-8 md:bg-[url('/images/bg-2.png')] md:py-12 md:dark:bg-[url('/images/bg-2-dark.jpg')] lg:py-24"
       >
         <div className="mx-auto my-12 flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center"></div>
         <div className="container mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 py-8 text-center md:py-12 lg:py-24">
