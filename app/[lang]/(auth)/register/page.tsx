@@ -43,7 +43,7 @@ export default function RegisterPage({ params: { lang } }) {
         className="hidden size-full object-cover dark:hidden lg:block" 
       />
       <Image 
-        src="/images/register-a-dark.png" 
+        src="/images/register-dark.jpg" 
         alt="Description of the image" 
         width={842}
         height={842}
