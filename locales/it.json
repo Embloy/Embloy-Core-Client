@@ -525,6 +525,13 @@
       }
     }
   },
+  "proxy": {
+    "applyWith": "Candidati per un lavoro con il tuo account Embloy utilizzando un URL o una Posting ID.",
+    "url": "URL del posting esterno",
+    "slug": "Posting ID esterna",
+    "paste": "Incolla l'URL dell'annuncio di lavoro a cui vuoi candidarti.",
+    "apply": "Candidati ora"
+  },
   "sdk": {
     "loading": "Caricamento...",
     "byEmbloy": "da Embloy Platforms UG (haftungsbeschränkt)",

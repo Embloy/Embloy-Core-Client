@@ -525,6 +525,13 @@
       }
     }
   },
+  "proxy": {
+    "applyWith": "Bewirb dich mit deinem Embloy-Konto für einen Job, indem du eine URL oder eine Posting-ID unten einfügst.",
+    "url": "Externe Posting-URL",
+    "slug": "Job-Slug oder externe Posting-ID",
+    "paste": "Füge die URL der Stellenanzeige ein, auf die du dich bewerben möchtest.",
+    "apply": "Jetzt bewerben"
+  },
   "sdk": {
     "loading": "Laden...",
     "byEmbloy": "von Embloy Platforms UG (haftungsbeschränkt)",

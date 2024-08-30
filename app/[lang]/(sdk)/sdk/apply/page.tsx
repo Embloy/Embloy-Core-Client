@@ -26,7 +26,7 @@ import { Icons } from "@/components/icons"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
 import { getUserPropertyValue, isUrlLabel, normalizeLabel } from "./labelizer"
-import LoadingScreen from "./loading"
+import LoadingScreen from "../../../loading"
 
 export default function ApplyPage({ params: { lang } }) {
   const [job, setJob] = useState<Job | null>(null)

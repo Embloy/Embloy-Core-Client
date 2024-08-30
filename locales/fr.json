@@ -525,6 +525,13 @@
       }
     }
   },
+  "proxy": {
+    "applyWith": "Postulez à un emploi avec votre compte Embloy en utilisant une URL ou un identifiant de publication.",
+    "url": "URL de publication externe",
+    "slug": "Identifiant de l'emploi ou identifiant de publication externe",
+    "paste": "Collez l'URL de l'offre d'emploi à laquelle vous souhaitez postuler.",
+    "apply": "Postuler maintenant"
+  },
   "sdk": {
     "loading": "Chargement...",
     "byEmbloy": "par Embloy Platforms UG (haftungsbeschränkt)",

@@ -525,6 +525,13 @@
       }
     }
   },
+  "proxy": {
+    "applyWith": "URLまたは投稿IDを使用して、Embloyアカウントで仕事に応募します。",
+    "url": "外部投稿URL",
+    "slug": "仕事のスラッグまたは外部投稿ID",
+    "paste": "応募したい求人のURLを貼り付けてください。",
+    "apply": "今すぐ応募"
+  },
   "sdk": {
     "loading": "読み込み中...",
     "byEmbloy": "by Embloy Platforms UG (haftungsbeschränkt)",

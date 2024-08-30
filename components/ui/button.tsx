@@ -15,6 +15,8 @@ const buttonVariants = cva(
           "border border-input hover:bg-accent bg-accent/50 hover:text-accent-foreground",
         bold: 
           "border border-2 border-ring dark:border-primary-foreground rounded rounded-xl text-ring dark:text-primary-foreground bg-background hover:text-embloy-foreground hover:border-embloy-foreground dark:hover:text-embloy-foreground dark:hover:border-embloy-foreground",
+        filled: 
+          "border border-2 rounded rounded-xl border-foreground bg-foreground text-background hover:border-embloy-foreground hover:bg-embloy-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
@@ -22,7 +24,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-10 py-2 px-4",
-        bold: "h-9 w-20 px-6 rounded-full",
+        bold: "h-9 w-30 px-6 rounded-full",
         sm: "h-9 px-3 rounded-md",
         lg: "h-11 px-8 rounded-md",
         xl: "h-20 px-20 rounded-lg text-3xl",

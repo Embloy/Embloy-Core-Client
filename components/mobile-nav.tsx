@@ -34,10 +34,10 @@ export function MobileNav({ items, children, params: { lang } }: MobileNavProps)
   return dict && (
     <div
       className={cn(
-        "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden"
+        "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto bg-background/80 p-6 pb-32 shadow-md backdrop-blur-sm animate-in slide-in-from-bottom-80 md:hidden",
       )}
     >
-      <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
+      <div className="relative z-20 grid gap-6 rounded-md border bg-popover p-4 text-popover-foreground shadow-md">
       <Link href={`/${lang}?noredirect=1`} className="flex items-center space-x-2">
         <Icons.logo />
         <span className="underline-gradient text-xl font-bold">

@@ -525,6 +525,13 @@
       }
     }
   },
+  "proxy": {
+    "applyWith": "Apply to a job with your Embloy account using a URL or Posting ID.",
+    "url": "External Posting URL",
+    "slug": "Job Slug or external Posting ID",
+    "paste": "Paste the URL of the job posting you want to apply to.",
+    "apply": "Apply Now"
+  },
   "sdk": {
     "loading": "Loading ...",
     "byEmbloy": "by Embloy Platforms UG (haftungsbeschränkt)",
