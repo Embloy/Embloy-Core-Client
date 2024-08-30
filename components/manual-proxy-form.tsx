@@ -143,7 +143,7 @@ export function ManualProxyForm({
             <Input
               type="url"
               id="url"
-              placeholder="https://jobs.sandbox.lever.co/de/05157a89-..."
+              placeholder={urlPlaceholders[mode || "default"]}
               value={url}
               onChange={(e) => setURL(e.target.value)}
               disabled={!!slug}
