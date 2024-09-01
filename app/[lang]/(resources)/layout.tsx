@@ -78,7 +78,12 @@ export default function ResourcesLayout({
               <div className="flex items-center">
                 <div className="mx-6 md:flex">
                   <div className="hidden md:flex">
-                    <LanguageToggle />
+                    {
+                      //TODO: Uncomment to enable language modes
+                      /*
+                      <LanguageToggle />
+                      */
+                    }
                     <Separator className="mx-1" />
                     <ModeToggle params={{ lang: lang }} />
                   </div>
@@ -114,7 +119,12 @@ export default function ResourcesLayout({
               />
               <div className="flex items-center">
                 <div className="mx-6 hidden md:flex">
-                  <LanguageToggle />
+                  {
+                    //TODO: Uncomment to enable language modes
+                    /*
+                    <LanguageToggle />
+                    */
+                  }
                   <Separator className="mx-1" />
                   <ModeToggle params={{ lang: lang }} />
                 </div>

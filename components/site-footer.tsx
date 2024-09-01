@@ -65,7 +65,13 @@ export function SiteFooter({ className, params: { lang } }: FooterProps) {
               {dict.resources.aboutEmbloy}
               </a>
             </p>
-            <LanguageToggle />
+            {
+              //TODO: Uncomment to enable language modes
+              /*
+              <LanguageToggle />
+              */
+            }
+            
             <ModeToggle params={{ lang: lang }} />
           </div>
         </div>

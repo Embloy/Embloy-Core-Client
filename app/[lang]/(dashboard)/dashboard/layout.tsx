@@ -63,12 +63,17 @@ export default function DashboardLayout({ children, params: { lang } }: Dashboar
         <div className="container flex h-16 items-center justify-between py-4">
           <MainNav items={dashboardConfig.mainNav} params={{lang: lang}} />
           <div className="flex items-center">
-          <div className="mx-6 md:flex">
-            <div className="hidden md:flex">
-              <LanguageToggle />
-              <Separator className="mx-1"/>
-              <ModeToggle params={{lang: lang}}/>
-            </div>
+            <div className="mx-6 md:flex">
+              <div className="hidden md:flex">
+                {
+                  //TODO: Uncomment to enable language modes
+                  /*
+                  <LanguageToggle />
+                  */
+                }
+                <Separator className="mx-1"/>
+                <ModeToggle params={{lang: lang}}/>
+              </div>
               <Separator className="mx-1"/>
               <NotificationBell params={{lang: lang}}/>
             </div>
