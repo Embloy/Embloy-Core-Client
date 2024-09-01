@@ -59,7 +59,7 @@ export function MainNav({ className, items, children, params: { lang } }: MainNa
                       }`
                 }
                 className={cn(
-                  "font-medium text-md flex items-center transition-colors hover:rounded hover:bg-muted ",
+                  "text-md flex items-center font-medium transition-colors hover:rounded hover:bg-muted ",
                   item.href.startsWith(`/${segment}`)
                     ? "rounded bg-muted p-1 text-accent-foreground"
                     : "p-1 text-foreground",

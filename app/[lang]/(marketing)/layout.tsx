@@ -113,10 +113,10 @@ export default function MarketingLayout({
       dict && (
         <div className="flex min-h-screen flex-col">
           <header className="container z-40">
-            <div className="flex h-16 items-center justify-between py-4 w-full">
+            <div className="flex h-16 w-full items-center justify-between py-4">
             <Link
               href={`/${lang}?noredirect=1`}
-              className="mb-1 hidden items-center justify-start space-x-1  md:flex w-3/12"
+              className="mb-1 hidden w-3/12 items-center justify-start  space-x-1 md:flex"
             >
               <Icons.logo />
               <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
@@ -128,7 +128,7 @@ export default function MarketingLayout({
                 params={{ lang: lang }}
                 className="w-6/12 items-center justify-center"
               />
-              <div className="flex items-center justify-end w-3/12">
+              <div className="flex w-3/12 items-center justify-end">
                 <div className="mx-6 hidden md:flex">
                 {
                   //TODO: Uncomment to enable language modes
