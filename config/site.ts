@@ -11,6 +11,8 @@ export const siteConfig: SiteConfig = {
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",
   links: {
     developer: "https://developers.embloy.com",
+    //TODO: uncomment main: "https://embloy.com",
+    main: "http://localhost:3000",
     about: "https://about.embloy.com",
     // genius: "https://genius.embloy.com",
     genius: "https://embloy-platforms.involve.me/beta",

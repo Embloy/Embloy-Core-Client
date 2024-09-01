@@ -21,9 +21,10 @@ interface MainNavProps {
   params: {
     lang: Locale
   }
+  className?:string
 }
 
-export function MainNav({ items, children, params: { lang } }: MainNavProps) {
+export function MainNav({ className, items, children, params: { lang } }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
   const [dict, setDict] = useState<Record<string, any> | null>(null)
@@ -42,16 +43,8 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
 
   return (
     dict && (
-      <div className="flex md:gap-10">
-        <Link
-          href={`/${lang}?noredirect=1`}
-          className="mb-1 hidden items-center space-x-1  md:flex"
-        >
-          <Icons.logo />
-          <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
-            {siteConfig.name.toLowerCase()}
-          </span>
-        </Link>
+      <div className={`flex md:gap-10 ${className}`}>
+        
         {items?.length ? (
           <nav className="mb-1 hidden gap-6 md:flex">
             {items?.map((item, index) => (
@@ -66,7 +59,7 @@ export function MainNav({ items, children, params: { lang } }: MainNavProps) {
                       }`
                 }
                 className={cn(
-                  "text-md flex items-center transition-colors hover:rounded hover:bg-muted ",
+                  "font-medium text-md flex items-center transition-colors hover:rounded hover:bg-muted ",
                   item.href.startsWith(`/${segment}`)
                     ? "rounded bg-muted p-1 text-accent-foreground"
                     : "p-1 text-foreground",

@@ -4,6 +4,7 @@ import { siteConfig } from "./site"
 
 export const marketingConfig: MarketingConfig = {
   mainNav: [
+    /*
     {
       title: "Why Embloy?",
       href: "https://about.embloy.com/en/why-embloy",
@@ -16,7 +17,7 @@ export const marketingConfig: MarketingConfig = {
       title: "Enterprise",
       href: "https://about.embloy.com/en/business/application-gateway",
     },
-    /*   
+       
     {
       title: "Features",
       href: "/#features",
@@ -30,7 +31,7 @@ export const marketingConfig: MarketingConfig = {
       href: siteConfig.links.genius,
       external: true,
     },
-  */
+  
     {
       title: "Developers",
       href: siteConfig.links.developer,
@@ -40,9 +41,20 @@ export const marketingConfig: MarketingConfig = {
       title: "Resources",
       href: "/resources",
     },
+    */
     {
-      title: "About",
+      title: "Job Application Portal",
+      href: siteConfig.links.main,
+    },
+    {
+      title: "How it works",
       href: siteConfig.links.about,
+      external: true,
+    },
+    {
+      title: "For Companies",
+      href: siteConfig.links.about,
+      external: true,
     },
   ],
 }

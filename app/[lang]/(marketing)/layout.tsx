@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Separator } from "@radix-ui/react-select"
-
+import { Icons } from "@/components/icons"
 import { marketingConfig } from "@/config/marketing"
 import { User, getCurrentUser } from "@/lib/api/session"
 import { cn } from "@/lib/utils"
@@ -16,7 +16,7 @@ import { ModeToggle } from "@/components/mode-toggle"
 import NotificationBell from "@/components/notification-bell"
 import { SiteFooter } from "@/components/site-footer"
 import { UserAccountNav } from "@/components/user-account-nav"
-
+import { siteConfig } from "@/config/site"
 import { Locale } from "../../../i18n-config"
 import { getDictionary } from "../dictionaries"
 import Loading from "../loading"
@@ -113,12 +113,22 @@ export default function MarketingLayout({
       dict && (
         <div className="flex min-h-screen flex-col">
           <header className="container z-40">
-            <div className="flex h-16 items-center justify-between py-4">
+            <div className="flex h-16 items-center justify-between py-4 w-full">
+            <Link
+              href={`/${lang}?noredirect=1`}
+              className="mb-1 hidden items-center justify-start space-x-1  md:flex w-3/12"
+            >
+              <Icons.logo />
+              <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
+                {siteConfig.name.toLowerCase()}
+              </span>
+            </Link>
               <MainNav
                 items={marketingConfig.mainNav}
                 params={{ lang: lang }}
+                className="w-6/12 items-center justify-center"
               />
-              <div className="flex items-center">
+              <div className="flex items-center justify-end w-3/12">
                 <div className="mx-6 hidden md:flex">
                 {
                   //TODO: Uncomment to enable language modes
@@ -130,9 +140,25 @@ export default function MarketingLayout({
                   <ModeToggle params={{ lang: lang }} />
                 </div>
                 <nav>
-                  <ManualProxyForm
+                  
+                  {
+                  //TODO: put inot marketing page
+                  /*
+                    <ManualProxyForm
                     params={{ lang: lang, mode: mode || "", eType: eType || "manual" }}
                   />
+                  */}
+                  
+                  
+                  <Link
+                    href={`/${lang}/login`}
+                    className={cn(
+                      buttonVariants({ variant: "filled", size: "bold" }),
+                      "ml-4 px-4"
+                    )}
+                  >
+                    {dict.pages.add}
+                  </Link>
                   <Link
                     href={`/${lang}/login`}
                     className={cn(

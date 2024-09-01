@@ -6,7 +6,8 @@
       "developers": "Developers",
       "about": "About",
       "resources": "Resources",
-      "login": "Login"
+      "login": "Log In",
+      "add":"Request Embloy"
   },
   "marketing": {
       "workInProgress": "This page is still a work in progress - Follow along on GitHub",
@@ -530,7 +531,7 @@
     "url": "External Posting URL",
     "slug": "Job Slug or external Posting ID",
     "paste": "Paste the URL of the job posting you want to apply to.",
-    "apply": "Apply Now"
+    "apply": "Enter Quicklink"
   },
   "sdk": {
     "loading": "Loading ...",
@@ -585,7 +586,9 @@
       "employers": "Employers",
       "resources": "Resources",
       "developers": "Developers",
-      "about": "About"
+      "for companies": "For Companies",
+      "how it works": "How it works",
+      "job application portal": "Job Application Portal"
     },
     "side": {
       "dashboard": "Dashboard",
