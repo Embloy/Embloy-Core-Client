@@ -1,6 +1,6 @@
 # Embloy
 
-An open source application built using the new router, server components and everything new in Next.js 13.
+The web client for [www.embloy.com](https://www.embloy.com).
 
 > **Warning**
 > This app is a work in progress. I'm building this in public.
