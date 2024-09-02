@@ -116,31 +116,34 @@ export default function MarketingLayout({
             <div className="flex h-16 w-full items-center justify-between py-4">
             <Link
               href={`/${lang}?noredirect=1`}
-              className="mb-1 hidden w-3/12 items-center justify-start  space-x-1 md:flex"
+              className=" mb-1 hidden w-3/12 items-center justify-start  space-x-1 md:flex"
             >
               <Icons.logo />
               <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
                 {siteConfig.name.toLowerCase()}
               </span>
+              
             </Link>
-              <MainNav
+            <MainNav
                 items={marketingConfig.mainNav}
                 params={{ lang: lang }}
-                className="w-6/12 items-center justify-center"
+                className="w-6/12 portrait:w-4/12 items-center justify-center portrait:justify-start"
               />
-              <div className="flex w-3/12 items-center justify-end">
-                <div className="mx-6 hidden md:flex">
+              
+            <div className="flex flex-row w-4/12 portrait:w-8/12 items-center justify-end">
+                <div className="hidden md:flex">
                 {
                   //TODO: Uncomment to enable language modes
                   /*
                   <LanguageToggle />
+                  <Separator className="mx-1" />
                   */
                 }
-                  <Separator className="mx-1" />
                   <ModeToggle params={{ lang: lang }} />
+                  
+                  
                 </div>
                 <nav>
-                  
                   {
                   //TODO: put inot marketing page
                   /*
@@ -153,11 +156,20 @@ export default function MarketingLayout({
                   <Link
                     href={`/${lang}/login`}
                     className={cn(
+                      buttonVariants({ variant: "bold", size: "bold" }),
+                      "ml-4 px-4 portrait:hidden"
+                    )}
+                  >
+                    {dict.pages.add}
+                  </Link>
+                  <Link
+                    href={`/${lang}/login`}
+                    className={cn(
                       buttonVariants({ variant: "filled", size: "bold" }),
                       "ml-4 px-4"
                     )}
                   >
-                    {dict.pages.add}
+                    {dict.pages.manual}
                   </Link>
                   <Link
                     href={`/${lang}/login`}

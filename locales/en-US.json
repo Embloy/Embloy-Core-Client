@@ -7,9 +7,54 @@
       "about": "About",
       "resources": "Resources",
       "login": "Log In",
-      "add":"Request Embloy"
+      "add":"Request Embloy",
+      "addL":"Request Embloy for your job >",
+      "signup":"Sign Up",
+      "demo": "Learn how Embloy works >",
+      "tutorial": "Tutorials & Help >",
+      "manual": "Apply Now"
   },
   "marketing": {
+      "sec0": {
+        "about": "About",
+        "head": "Join Embloy. Apply to any job with a single profile.",
+        "subHead": "Sign up & Apply for jobs with Venmo-like simplicity.",
+        "try": "or try it >",
+        "disclaimerLink": "Request Embloy",
+        "disclaimer": "  if the job you want to apply for doesn’t offer an option to apply with Embloy yet."
+      },
+
+      "sec1": {
+        "about": "How it works",
+        "how0Head":"Click on 'Apply with Embloy':",
+        "how0": " Use the Embloy button on the job posting and enter your Embloy credentials.",
+        "how1Head":"Submit Application:",
+        "how1": " AI speeds up completing the application. Review suggestions before finalizing.",
+        "how2Head":"Manage Job Hunt:",
+        "how2": " Use your Embloy dashboard to track pending applications and chat directly with recruiters."
+      },
+      "sec2": {
+        "about": "Features",
+        "feature0Head": "Super-Fast AI Applications",
+        "feature0Desc": "Embloy auto-fills repetitive fields on application forms, like Name, Email, and questions you've already answered in previous applications. Perfect for applying to multiple jobs in one go.",
+        "feature1Head": "One Job Application Hub",
+        "feature1Desc": "Manage all your applications in the Embloy dashboard and contact recruiters directly. One Embloy account eliminates the need for emails and maintaining multiple Workday accounts.",
+        "feature2Head": "Connect to LinkedIn",
+        "feature2Desc": "Link external resources to Embloy (like your LinkedIn profile, or your GitHub profile) for smoother job applications, personalized recommendations, and improved auto-fill. Enjoy the ease of an application assistant."
+      },
+      "sec3": {
+        "about": "Useful links",
+        "head": "Discover Embloy:"
+      },
+      "sec4": {
+        "about": "News",
+        "head": "Latest Updates on Embloy:",
+        "link": "Learn more",
+        "news0": "You want to apply with Embloy but the job doesn’t offer it? Don’t worry! Manual 'Apply Now' is live, so you can still apply directly until Embloy is available for the position.",
+        "news0Link":"https://developers.embloy.com/docs/guides/get-started-integrations",
+        "news1": "'How to connect Embloy to your ATS?' Guide is launched!",
+        "news1Link":"https://developers.embloy.com/docs/guides/get-started-integrations"
+      },
       "workInProgress": "This page is still a work in progress - Follow along on GitHub",
       "developerDocsLaunched": "Our Developer Documentation is now live - Check it out!",
       "notLaunchedYet": "Please note that Embloy is not active yet and you won't be able to sign up. Get in touch to access our Beta Version.",

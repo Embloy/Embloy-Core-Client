@@ -47,7 +47,7 @@
     --foreground: 207.69 35.14% 100%;
     
     --muted: 259 27% 14%;
-    --muted-foreground: 215 8% 70%;
+    --muted-foreground: 0, 0%, 81%;
 
     --accent: 259 27% 14%;
     --accent-foreground: 256 90% 88%;
