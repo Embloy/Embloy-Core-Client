@@ -13,8 +13,8 @@ export default async function IndexPage({ params: { lang } }) {
   return (
     <>
       {/* eslint-disable-next-line */}
-      <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 md:pt-10 lg:py-32">
-        <div className="container flex max-w-5xl flex-col items-center gap-16 rounded-lg bg-gray-600 bg-opacity-5 py-4 text-center backdrop-blur dark:bg-white dark:bg-opacity-5 dark:backdrop-blur  portrait:bg-background">
+      <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 md:pt-10 lg:py-12">
+        <div className="container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-gray-600 bg-opacity-5 py-12 text-center backdrop-blur dark:bg-white dark:bg-opacity-5 dark:backdrop-blur  portrait:bg-background">
             <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
               <div className="flex w-[45px] flex-col items-start justify-start">
                 <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
@@ -22,10 +22,10 @@ export default async function IndexPage({ params: { lang } }) {
                 </p>
               </div>
               <div className="flex w-6/12 flex-col items-start justify-start gap-8 portrait:w-full">
-                <h1 className="text-left font-heading text-5xl portrait:text-3xl">
+                <h1 className="text-left font-heading text-6xl portrait:text-3xl">
                   {dict.marketing.sec0.head}
                 </h1>
-                <h1 className="text-left text-lg">
+                <h1 className="text-left text-2xl portrait:text-lg">
                   {dict.marketing.sec0.subHead}
                 </h1>
                 <div className="flex w-full flex-row items-center justify-between gap-2 portrait:flex-col portrait:items-start ">
@@ -33,17 +33,17 @@ export default async function IndexPage({ params: { lang } }) {
                     href={`/${lang}/register`}
                     className={cn(
                       buttonVariants({ variant: "filled", size: "bold" }),
-                      " px-4 portrait:w-full"
+                      " px-9 py-2 portrait:py-0 portrait:px-4 portrait:w-full"
                     )}
                   >
                     {dict.pages.signup}
                   </Link>
 
-                  <p className="text-left text-sm portrait:w-full portrait:text-center">
+                  <p className="text-left landscape:text-lg protrait:text-sm portrait:w-full portrait:text-center">
                     {dict.marketing.sec0.try}
                   </p>
                   <div className="flex w-7/12 items-center portrait:w-full portrait:justify-center">
-                  <Link className="w-full portrait:w-8/12" href="/en-US/login?origin=/en-US/sdk/apply?request_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcsImV4cCI6MTcyNTIzMjA0MCwic2Vzc2lvbiI6eyJtb2RlIjoiYXNoYnkiLCJzdWNjZXNzX3VybCI6Imh0dHBzOi8vam9icy5ici5kZS9jdWkoYkQxa1pTWmpQVFV4TWc9PSkvZGVmYXVsdC5odG0_Y29uZmlndXJhdGlvbklkPVpCUl9TRUFSQ0gjIVpCUl9TRUFSQ0gvUE1fUE9TVElORyZjR2QxYVdROU5EWkVOekpDTlVaQ09URXdNVVZFUlVGRVJFRXhORGxHTlVKQ01UQXdNalElM0QiLCJqb2Jfc2x1ZyI6ImFzaGJ5X18zNTBjYmVkMy0wMTZlLTQ1MzEtOTQzZi01NmM4NjdkZTk5ZWQiLCJ1c2VyX2lkIjo3LCJzdWJzY3JpcHRpb25fdHlwZSI6ImVudGVycHJpc2VfMSJ9LCJpYXQiOjE3MjUyMzAyNDAsImlzcyI6ImFwaS5lbWJsb3kuY29tIn0.J1hwRKJnVHNX1Qr9c2oDqARToMSH2MiB-M4KzL2GL2Y">
+                  <Link className="w-10/12 portrait:w-8/12" href="/en-US/login?origin=/en-US/sdk/apply?request_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcsImV4cCI6MTcyNTIzMjA0MCwic2Vzc2lvbiI6eyJtb2RlIjoiYXNoYnkiLCJzdWNjZXNzX3VybCI6Imh0dHBzOi8vam9icy5ici5kZS9jdWkoYkQxa1pTWmpQVFV4TWc9PSkvZGVmYXVsdC5odG0_Y29uZmlndXJhdGlvbklkPVpCUl9TRUFSQ0gjIVpCUl9TRUFSQ0gvUE1fUE9TVElORyZjR2QxYVdROU5EWkVOekpDTlVaQ09URXdNVVZFUlVGRVJFRXhORGxHTlVKQ01UQXdNalElM0QiLCJqb2Jfc2x1ZyI6ImFzaGJ5X18zNTBjYmVkMy0wMTZlLTQ1MzEtOTQzZi01NmM4NjdkZTk5ZWQiLCJ1c2VyX2lkIjo3LCJzdWJzY3JpcHRpb25fdHlwZSI6ImVudGVycHJpc2VfMSJ9LCJpYXQiOjE3MjUyMzAyNDAsImlzcyI6ImFwaS5lbWJsb3kuY29tIn0.J1hwRKJnVHNX1Qr9c2oDqARToMSH2MiB-M4KzL2GL2Y">
                     <Image 
                       src="https://embloy.com/images/button-black_large.svg" 
                       width={0}
@@ -65,7 +65,7 @@ export default async function IndexPage({ params: { lang } }) {
                   
                 </div>
                 <p className="text-left text-sm">
-                  <a href="" className="text-embloy-foreground hover:underline dark:text-embloy-foreground">{dict.marketing.sec0.disclaimerLink}</a>
+                  <a href="" className="text-sky-500 hover:underline dark:text-embloy-foreground">{dict.marketing.sec0.disclaimerLink}</a>
                   {dict.marketing.sec0.disclaimer}
                 </p>
                 
@@ -82,8 +82,12 @@ export default async function IndexPage({ params: { lang } }) {
 
               </div>
             </div>
-          
-            <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+        </div>
+      </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section className="space-y-6 bg-background">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
+        <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
               <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
                 <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
                   {dict.marketing.sec1.about}
@@ -99,7 +103,7 @@ export default async function IndexPage({ params: { lang } }) {
                   alt="how0"
                   className="w-2/12 rounded-[5px]"
                   />
-                  <p className="w-9/12 text-left text-sm">
+                  <p className="w-9/12 text-left landscape:text-lg protrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how0Head}</strong>
                     <h1 className="text-left font-heading text-xl landscape:hidden ">{dict.marketing.sec1.how0Head}</h1>
                     <br className="portrait:hidden" />
@@ -115,7 +119,7 @@ export default async function IndexPage({ params: { lang } }) {
                   alt="how0"
                   className="w-2/12 rounded-[5px]"
                   />
-                  <p className="w-9/12 text-left text-sm">
+                  <p className="w-9/12 text-left landscape:text-lg protrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how1Head}</strong>
                     <h1 className="text-left font-heading text-xl landscape:hidden">{dict.marketing.sec1.how1Head}</h1>
                     <br className="portrait:hidden"/>
@@ -131,7 +135,7 @@ export default async function IndexPage({ params: { lang } }) {
                   alt="how0"
                   className="w-2/12 rounded-[5px]"
                   />
-                  <p className="w-9/12 text-left text-sm">
+                  <p className="w-9/12 text-left landscape:text-lg protrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how2Head}</strong>
                     <h1 className="text-left font-heading text-xl landscape:hidden">{dict.marketing.sec1.how2Head}</h1>
                     <br className="portrait:hidden" />
@@ -141,11 +145,6 @@ export default async function IndexPage({ params: { lang } }) {
               </div>
             </div>
             
-        </div>
-      </section>
-      <EmbloySpacer className="portrait:hidden" />
-      <section className="space-y-6 bg-background">
-        <div className="container flex max-w-5xl flex-col items-center gap-16 py-4 text-center">
           <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
             <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
               <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
@@ -185,7 +184,7 @@ export default async function IndexPage({ params: { lang } }) {
       </section>
       <EmbloySpacer className="portrait:hidden" />
       <section className="space-y-6 bg-background">
-        <div className="container flex max-w-5xl flex-col items-center gap-16 py-4 text-center">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
           <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
             <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
               <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
@@ -233,7 +232,7 @@ export default async function IndexPage({ params: { lang } }) {
       </section>
       <EmbloySpacer className="portrait:hidden" />
       <section className="space-y-6 bg-background">
-        <div className="container flex max-w-5xl flex-col items-center gap-16 py-4 text-center">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
           <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
             <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
               <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground ">

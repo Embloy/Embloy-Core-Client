@@ -38,7 +38,7 @@
         "feature0Head": "Super-Fast AI Applications",
         "feature0Desc": "Embloy auto-fills repetitive fields on application forms, like Name, Email, and questions you've already answered in previous applications. Perfect for applying to multiple jobs in one go.",
         "feature1Head": "One Job Application Hub",
-        "feature1Desc": "Manage all your applications in the Embloy dashboard and contact recruiters directly. One Embloy account eliminates the need for emails and maintaining multiple Workday accounts.",
+        "feature1Desc": "Manage all your applications in the Embloy dashboard and contact recruiters directly. One Embloy account eliminates the need for writing a bunch of emails back and forth and maintaining multiple Workday accounts.",
         "feature2Head": "Connect to LinkedIn",
         "feature2Desc": "Link external resources to Embloy (like your LinkedIn profile, or your GitHub profile) for smoother job applications, personalized recommendations, and improved auto-fill. Enjoy the ease of an application assistant."
       },
@@ -50,7 +50,7 @@
         "about": "News",
         "head": "Latest Updates on Embloy:",
         "link": "Learn more",
-        "news0": "You want to apply with Embloy but the job doesn’t offer it? Don’t worry! Manual 'Apply Now' is live, so you can still apply directly until Embloy is available for the position.",
+        "news0": "Manual 'Apply Now' is live! ",
         "news0Link":"https://developers.embloy.com/docs/guides/get-started-integrations",
         "news1": "'How to connect Embloy to your ATS?' Guide is launched!",
         "news1Link":"https://developers.embloy.com/docs/guides/get-started-integrations"
