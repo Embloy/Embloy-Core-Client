@@ -39,7 +39,7 @@ export default async function IndexPage({ params: { lang } }) {
                     {dict.pages.signup}
                   </Link>
 
-                  <p className="text-left landscape:text-lg protrait:text-sm portrait:w-full portrait:text-center">
+                  <p className="text-left landscape:text-lg portrait:text-sm portrait:w-full portrait:text-center">
                     {dict.marketing.sec0.try}
                   </p>
                   <div className="flex w-7/12 items-center portrait:w-full portrait:justify-center">
@@ -103,7 +103,7 @@ export default async function IndexPage({ params: { lang } }) {
                   alt="how0"
                   className="w-2/12 rounded-[5px]"
                   />
-                  <p className="w-9/12 text-left landscape:text-lg protrait:text-sm">
+                  <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how0Head}</strong>
                     <h1 className="text-left font-heading text-xl landscape:hidden ">{dict.marketing.sec1.how0Head}</h1>
                     <br className="portrait:hidden" />
@@ -119,7 +119,7 @@ export default async function IndexPage({ params: { lang } }) {
                   alt="how0"
                   className="w-2/12 rounded-[5px]"
                   />
-                  <p className="w-9/12 text-left landscape:text-lg protrait:text-sm">
+                  <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how1Head}</strong>
                     <h1 className="text-left font-heading text-xl landscape:hidden">{dict.marketing.sec1.how1Head}</h1>
                     <br className="portrait:hidden"/>
@@ -135,7 +135,7 @@ export default async function IndexPage({ params: { lang } }) {
                   alt="how0"
                   className="w-2/12 rounded-[5px]"
                   />
-                  <p className="w-9/12 text-left landscape:text-lg protrait:text-sm">
+                  <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how2Head}</strong>
                     <h1 className="text-left font-heading text-xl landscape:hidden">{dict.marketing.sec1.how2Head}</h1>
                     <br className="portrait:hidden" />
@@ -154,26 +154,26 @@ export default async function IndexPage({ params: { lang } }) {
             <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
               <div className="flex w-full flex-row items-start justify-between gap-4 portrait:flex-col">
                 <div className="flex w-4/12 flex-col items-start justify-start gap-3 rounded-lg border-2 border-accent-foreground p-3 dark:border-accent-foreground portrait:w-full">
-                  <h1 className="text-left font-heading text-xl">
+                  <h1 className="text-left font-heading landscape:text-2xl portrait:text-lg">
                     {dict.marketing.sec2.feature0Head}
                   </h1>
-                  <p className="text-left text-sm">
+                  <p className="text-left landscape:text-lg portrait:text-sm">
                     {dict.marketing.sec2.feature0Desc}
                   </p>
                 </div>
                 <div className="flex w-4/12 flex-col items-start justify-start gap-3 rounded-lg border-2 border-accent-foreground p-3 dark:border-accent-foreground portrait:w-full">
-                  <h1 className="text-left font-heading text-xl">
+                  <h1 className="text-left font-heading landscape:text-2xl portrait:text-lg">
                     {dict.marketing.sec2.feature1Head}
                   </h1>
-                  <p className="text-left text-sm">
+                  <p className="text-left landscape:text-lg portrait:text-sm">
                     {dict.marketing.sec2.feature1Desc}
                   </p>
                 </div>
                 <div className="flex w-4/12 flex-col items-start justify-start gap-3 rounded-lg border-2 border-accent-foreground p-3 dark:border-accent-foreground portrait:w-full">
-                  <h1 className="text-left font-heading text-xl">
+                  <h1 className="text-left font-heading landscape:text-2xl portrait:text-lg ">
                     {dict.marketing.sec2.feature2Head}
                   </h1>
-                  <p className="text-left text-sm">
+                  <p className="text-left landscape:text-lg portrait:text-sm">
                     {dict.marketing.sec2.feature2Desc}
                   </p>
                 </div>
@@ -200,7 +200,7 @@ export default async function IndexPage({ params: { lang } }) {
                     href={`/${lang}/register`}
                     className={cn(
                       buttonVariants({ variant: "bold", size: "default" }),
-                      "ml-4 px-4"
+                      "ml-4 landscape:px-6 portrait:px-4 landscape:text-lg portrait:text-sm"
                     )}
                   >
                     {dict.pages.demo}
@@ -210,7 +210,7 @@ export default async function IndexPage({ params: { lang } }) {
                     href={`/${lang}/login`}
                     className={cn(
                       buttonVariants({ variant: "bold", size: "default" }),
-                      "ml-4 px-4"
+                      "ml-4 landscape:px-6 portrait:px-4 landscape:text-lg portrait:text-sm"
                     )}
                   >
                     {dict.pages.addL}
@@ -219,7 +219,7 @@ export default async function IndexPage({ params: { lang } }) {
                     href={`/${lang}/resources`}
                     className={cn(
                       buttonVariants({ variant: "bold", size: "default" }),
-                      "ml-4 px-4"
+                      "ml-4 landscape:px-6 portrait:px-4 landscape:text-lg portrait:text-sm"
                     )}
                   >
                     {dict.pages.tutorial}
@@ -245,17 +245,17 @@ export default async function IndexPage({ params: { lang } }) {
               </h1>
               <ul className="list-disc pl-7">
                 <li>
-                  <p className="text-left text-sm">
+                  <p className="text-left landscape:text-lg portrait:text-sm">
                   {dict.marketing.sec4.news0}
                   <br />
-                  <a target="_blank" href={dict.marketing.sec4.news0Link} className="text-sm text-embloy-foreground hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
+                  <a target="_blank" href={dict.marketing.sec4.news0Link} className="landscape:text-lg portrait:text-sm text-embloy-foreground hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
                   </p>
                 </li>
                 <li>
-                  <p className="text-left text-sm">
+                  <p className="text-left landscape:text-lg portrait:text-sm">
                   {dict.marketing.sec4.news1}
                   <br />
-                  <a target="_blank" href={dict.marketing.sec4.news1Link} className=" text-sm text-embloy-foreground hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
+                  <a target="_blank" href={dict.marketing.sec4.news1Link} className=" landscape:text-lg portrait:text-sm text-embloy-foreground hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
                   </p>
                 </li>
               </ul>
