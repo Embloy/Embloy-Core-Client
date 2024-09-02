@@ -14,7 +14,7 @@ export default async function IndexPage({ params: { lang } }) {
     <>
       {/* eslint-disable-next-line */}
       <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 md:pt-10 lg:py-32">
-        <div className="container flex max-w-5xl flex-col items-center gap-16 rounded-lg bg-white bg-opacity-5 py-4 text-center backdrop-blur portrait:bg-background">
+        <div className="container flex max-w-5xl flex-col items-center gap-16 rounded-lg bg-gray-600 bg-opacity-5 py-4 text-center backdrop-blur dark:bg-white dark:bg-opacity-5 dark:backdrop-blur  portrait:bg-background">
             <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
               <div className="flex w-[45px] flex-col items-start justify-start">
                 <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">

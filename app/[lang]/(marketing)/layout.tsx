@@ -154,7 +154,7 @@ export default function MarketingLayout({
                   
                   
                   <Link
-                    href={`/${lang}/login`}
+                    href={`https://about.embloy.com/en/contact/`}
                     className={cn(
                       buttonVariants({ variant: "bold", size: "bold" }),
                       "ml-4 px-4 portrait:hidden"
