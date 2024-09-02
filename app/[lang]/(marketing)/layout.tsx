@@ -127,10 +127,10 @@ export default function MarketingLayout({
             <MainNav
                 items={marketingConfig.mainNav}
                 params={{ lang: lang }}
-                className="w-6/12 portrait:w-4/12 items-center justify-center portrait:justify-start"
+                className="w-6/12 items-center justify-center portrait:w-4/12 portrait:justify-start"
               />
               
-            <div className="flex flex-row w-4/12 portrait:w-8/12 items-center justify-end">
+            <div className="flex w-4/12 flex-row items-center justify-end portrait:w-8/12">
                 <div className="hidden md:flex">
                 {
                   //TODO: Uncomment to enable language modes
