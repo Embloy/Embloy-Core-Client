@@ -576,7 +576,7 @@
     "url": "External Posting URL",
     "slug": "Job Slug or external Posting ID",
     "paste": "Paste the URL of the job posting you want to apply to.",
-    "apply": "Enter Quicklink"
+    "apply": "Apply Now"
   },
   "sdk": {
     "loading": "Loading ...",

@@ -162,15 +162,13 @@ export default function MarketingLayout({
                   >
                     {dict.pages.add}
                   </Link>
-                  <Link
-                    href={`/${lang}/login`}
-                    className={cn(
-                      buttonVariants({ variant: "filled", size: "bold" }),
-                      "ml-4 px-4"
-                    )}
-                  >
-                    {dict.pages.manual}
-                  </Link>
+                  <ManualProxyForm
+                    params={{
+                      lang: lang,
+                      mode: mode,
+                      eType: eType,
+                    }}
+                  />
                   <Link
                     href={`/${lang}/login`}
                     className={cn(
