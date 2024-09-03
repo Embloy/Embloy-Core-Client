@@ -46,7 +46,7 @@ export function SiteFooter({ className, params: { lang } }: FooterProps) {
             }}
           >
             <p className="m-1 text-center text-sm leading-loose md:text-left">
-              <a href={`/${lang}/resources/terms#cookies`} className="text-muted-foreground hover:text-foreground">
+            <a href={`/${lang}/resources/terms#cookies`} className="text-muted-foreground hover:text-foreground">
               {dict.resources["Cookies"].title}
               </a>
             </p>
@@ -61,17 +61,17 @@ export function SiteFooter({ className, params: { lang } }: FooterProps) {
               </a>
             </p>
             <p className="m-1 text-center text-sm leading-loose md:text-left">
+              <a href={siteConfig.links.genius} rel="noreferrer" className="text-muted-foreground hover:text-foreground">
+              {dict.resources.genius}
+              </a>
+            </p>
+            <p className="m-1 text-center text-sm leading-loose md:text-left">
               <a href={siteConfig.links.about} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground">
               {dict.resources.aboutEmbloy}
               </a>
             </p>
-            {
-              //TODO: Uncomment to enable language modes
-              /*
-              <LanguageToggle />
-              */
-            }
-            
+            {<LanguageToggle />}
+
             <ModeToggle params={{ lang: lang }} />
           </div>
         </div>

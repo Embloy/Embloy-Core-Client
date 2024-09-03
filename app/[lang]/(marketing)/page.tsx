@@ -1,11 +1,12 @@
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
+
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { EmbloySpacer } from "@/components/ui/stuff"
 
 import { getDictionary } from "../dictionaries"
-import {EmbloySpacer} from "@/components/ui/stuff"
 
 export default async function IndexPage({ params: { lang } }) {
   const dict = await getDictionary(lang)
@@ -13,96 +14,93 @@ export default async function IndexPage({ params: { lang } }) {
   return (
     <>
       {/* eslint-disable-next-line */}
-      <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 md:pt-10 lg:py-12">
-        <div className="container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-gray-600 bg-opacity-5 py-12 text-center backdrop-blur dark:bg-white dark:bg-opacity-5 dark:backdrop-blur  portrait:bg-background">
-            <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
-              <div className="flex w-[45px] flex-col items-start justify-start">
-                <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
-                  {dict.marketing.sec0.about}
-                </p>
-              </div>
-              <div className="flex w-6/12 flex-col items-start justify-start gap-8 portrait:w-full">
-                <h1 className="text-left font-heading text-6xl portrait:text-3xl">
-                  {dict.marketing.sec0.head}
-                </h1>
-                <h1 className="text-left text-2xl portrait:text-lg">
-                  {dict.marketing.sec0.subHead}
-                </h1>
-                <div className="flex w-full flex-row items-center justify-between gap-2 portrait:flex-col portrait:items-start ">
-                  <Link
-                    href={`/${lang}/register`}
-                    className={cn(
-                      buttonVariants({ variant: "filled", size: "bold" }),
-                      " px-9 py-2 portrait:py-0 portrait:px-4 portrait:w-full"
-                    )}
-                  >
-                    {dict.pages.signup}
-                  </Link>
+      <section className="space-y-6 md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 portrait:py-0 ">
+        <div className="dark:backdrop-blu container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-white/80 py-12 text-center backdrop-blur dark:bg-[#110e1b]/80 portrait:gap-0">
+          <Link
+            href={`${siteConfig.links.developer}/blog`}
+            className="rounded-2xl border-2 border-primary bg-embloy-foreground px-4 py-1.5 text-2xl font-medium text-primary duration-300 hover:bg-primary hover:text-embloy-foreground dark:border-embloy-foreground dark:text-background dark:hover:text-primary-foreground portrait:text-sm"
+            target="_blank"
+          >
+            {dict.marketing.inviteMessage}
+          </Link>
+          <div className="flex w-full flex-row items-start justify-between px-10 portrait:flex-col portrait:px-0">
+            <div className="flex w-6/12 flex-col items-start justify-start gap-8 pt-5 portrait:w-full portrait:gap-4">
+              <h1 className="text-left font-heading text-5xl md:text-6xl lg:text-8xl">
+                {dict.marketing.landing.head}
+              </h1>
+              <h1 className="text-left text-2xl portrait:text-lg">
+                {dict.marketing.landing.subHead}
+              </h1>
+              <div className="mt-12 flex w-full flex-row items-center justify-between gap-2 portrait:flex-col portrait:items-start">
+                <Link
+                  href={`/${lang}/register`}
+                  className={cn(
+                    buttonVariants({ variant: "filled", size: "boldLg" }),
+                    " px-9 py-2 portrait:w-full portrait:px-4 portrait:py-0"
+                  )}
+                >
+                  {dict.pages.signup}
+                </Link>
 
-                  <p className="text-left landscape:text-lg portrait:text-sm portrait:w-full portrait:text-center">
-                    {dict.marketing.sec0.try}
-                  </p>
-                  <div className="flex w-7/12 items-center portrait:w-full portrait:justify-center">
-                  <Link className="w-10/12 portrait:w-8/12" href="/en-US/login?origin=/en-US/sdk/apply?request_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcsImV4cCI6MTcyNTIzMjA0MCwic2Vzc2lvbiI6eyJtb2RlIjoiYXNoYnkiLCJzdWNjZXNzX3VybCI6Imh0dHBzOi8vam9icy5ici5kZS9jdWkoYkQxa1pTWmpQVFV4TWc9PSkvZGVmYXVsdC5odG0_Y29uZmlndXJhdGlvbklkPVpCUl9TRUFSQ0gjIVpCUl9TRUFSQ0gvUE1fUE9TVElORyZjR2QxYVdROU5EWkVOekpDTlVaQ09URXdNVVZFUlVGRVJFRXhORGxHTlVKQ01UQXdNalElM0QiLCJqb2Jfc2x1ZyI6ImFzaGJ5X18zNTBjYmVkMy0wMTZlLTQ1MzEtOTQzZi01NmM4NjdkZTk5ZWQiLCJ1c2VyX2lkIjo3LCJzdWJzY3JpcHRpb25fdHlwZSI6ImVudGVycHJpc2VfMSJ9LCJpYXQiOjE3MjUyMzAyNDAsImlzcyI6ImFwaS5lbWJsb3kuY29tIn0.J1hwRKJnVHNX1Qr9c2oDqARToMSH2MiB-M4KzL2GL2Y">
-                    <Image 
-                      src="https://embloy.com/images/button-black_large.svg" 
-                      width={0}
-                      height={0}
-                      sizes="100vw"
+                <p className="mx-4 whitespace-nowrap text-center portrait:hidden portrait:text-center portrait:text-sm landscape:text-lg">
+                  {dict.marketing.landing.try}
+                </p>
+                <div className="flex w-8/12 items-center portrait:w-full portrait:justify-center">
+                  <Link
+                    className="portrait:w-8/12"
+                    target="_blank"
+                    href="/en-US/login?origin=/en-US/sdk/apply?request_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcsImV4cCI6MTcyNTIzMjA0MCwic2Vzc2lvbiI6eyJtb2RlIjoiYXNoYnkiLCJzdWNjZXNzX3VybCI6Imh0dHBzOi8vam9icy5ici5kZS9jdWkoYkQxa1pTWmpQVFV4TWc9PSkvZGVmYXVsdC5odG0_Y29uZmlndXJhdGlvbklkPVpCUl9TRUFSQ0gjIVpCUl9TRUFSQ0gvUE1fUE9TVElORyZjR2QxYVdROU5EWkVOekpDTlVaQ09URXdNVVZFUlVGRVJFRXhORGxHTlVKQ01UQXdNalElM0QiLCJqb2Jfc2x1ZyI6ImFzaGJ5X18zNTBjYmVkMy0wMTZlLTQ1MzEtOTQzZi01NmM4NjdkZTk5ZWQiLCJ1c2VyX2lkIjo3LCJzdWJzY3JpcHRpb25fdHlwZSI6ImVudGVycHJpc2VfMSJ9LCJpYXQiOjE3MjUyMzAyNDAsImlzcyI6ImFwaS5lbWJsb3kuY29tIn0.J1hwRKJnVHNX1Qr9c2oDqARToMSH2MiB-M4KzL2GL2Y"
+                  >
+                    <Image
+                      src="https://embloy.com/images/button-black_large.svg"
                       alt="Embloy button"
-                      className="w-full rounded-lg portrait:hidden"
+                      width={300}
+                      height={300}
+                      className="transform-gpu dark:hidden portrait:hidden"
                     />
-                    <Image 
-                      src="https://embloy.com/images/button-purple_large.svg" 
-                      width={0}
-                      height={0}
-                      sizes="100vw"
+                    <Image
+                      src="https://embloy.com/images/button-white_large.svg"
                       alt="Embloy button"
-                      className="w-full rounded-lg landscape:hidden"
+                      width={300}
+                      height={300}
+                      className="hidden transform-gpu dark:block portrait:hidden"
                     />
                   </Link>
-                  </div>
-                  
                 </div>
-                <p className="text-left text-sm">
-                  <a href="" className="text-sky-500 hover:underline dark:text-embloy-foreground">{dict.marketing.sec0.disclaimerLink}</a>
-                  {dict.marketing.sec0.disclaimer}
-                </p>
-                
               </div>
-              <div className="flex w-5/12 flex-col items-start justify-start portrait:hidden ">
-                <Image
-                src="/images/desk.png"
+            </div>
+            <div className="flex w-5/12 flex-col items-start justify-start portrait:hidden ">
+              <Image
+                src="/images/desk-dark-1.png"
                 width={0}
                 height={0}
                 sizes="100vw"
                 alt="Picture of the author"
-                className="w-full rounded-lg hidden dark:block"
-                />
-                <Image
-                src="/images/desk-light.png"
+                className="hidden w-full rounded-lg dark:block"
+              />
+              <Image
+                src="/images/desk-light-1.png"
                 width={0}
                 height={0}
                 sizes="100vw"
                 alt="Picture of the author"
                 className="w-full rounded-lg dark:hidden"
-                />
-
-              </div>
+              />
             </div>
+          </div>
         </div>
       </section>
       <EmbloySpacer className="portrait:hidden" />
-      <section className="space-y-6 bg-background">
+      <section>
         <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
-        <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
-              <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
-                <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
-                  {dict.marketing.sec1.about}
-                </p>
-              </div>
-              <div className="flex w-11/12 flex-row items-start justify-between portrait:w-full portrait:flex-col portrait:gap-4">
-                <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+            <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
+              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
+                {dict.marketing.howItWorks.about}
+              </p>
+            </div>
+            <div className="flex w-11/12 flex-row items-start justify-between portrait:w-full portrait:flex-col portrait:gap-4">
+              <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
                 <Image
                   src="/images/how0-light.png"
                   width={0}
@@ -110,23 +108,27 @@ export default async function IndexPage({ params: { lang } }) {
                   sizes="100vw"
                   alt="how0"
                   className="w-2/12 rounded-[5px] dark:hidden"
-                  />
-                  <Image
+                />
+                <Image
                   src="/images/how0.png"
                   width={0}
                   height={0}
                   sizes="100vw"
                   alt="how0"
-                  className="w-2/12 rounded-[5px] hidden dark:block"
-                  />
-                  <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
-                    <strong className="portrait:hidden">{dict.marketing.sec1.how0Head}</strong>
-                    <h1 className="text-left font-heading text-xl landscape:hidden ">{dict.marketing.sec1.how0Head}</h1>
-                    <br className="portrait:hidden" />
-                    {dict.marketing.sec1.how0}
-                  </p>
-                </div>
-                <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                  className="hidden w-2/12 rounded-[5px] dark:block"
+                />
+                <p className="w-9/12 text-left portrait:text-sm landscape:text-lg">
+                  <strong className="portrait:hidden">
+                    {dict.marketing.howItWorks.how0Head}
+                  </strong>
+                  <h1 className="text-left font-heading text-xl landscape:hidden ">
+                    {dict.marketing.howItWorks.how0Head}
+                  </h1>
+                  <br className="portrait:hidden" />
+                  {dict.marketing.howItWorks.how0}
+                </p>
+              </div>
+              <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
                 <Image
                   src="/images/how1-light.png"
                   width={0}
@@ -134,167 +136,316 @@ export default async function IndexPage({ params: { lang } }) {
                   sizes="100vw"
                   alt="how0"
                   className="w-2/12 rounded-[5px] dark:hidden"
-                  />
-                  <Image
+                />
+                <Image
                   src="/images/how1.png"
                   width={0}
                   height={0}
                   sizes="100vw"
                   alt="how0"
-                  className="w-2/12 rounded-[5px] hidden dark:block"
-                  />
-                  <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
-                    <strong className="portrait:hidden">{dict.marketing.sec1.how1Head}</strong>
-                    <h1 className="text-left font-heading text-xl landscape:hidden">{dict.marketing.sec1.how1Head}</h1>
-                    <br className="portrait:hidden"/>
-                    {dict.marketing.sec1.how1}
-                  </p>
-                </div>
-                <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                  className="hidden w-2/12 rounded-[5px] dark:block"
+                />
+                <p className="w-9/12 text-left portrait:text-sm landscape:text-lg">
+                  <strong className="portrait:hidden">
+                    {dict.marketing.howItWorks.how1Head}
+                  </strong>
+                  <h1 className="text-left font-heading text-xl landscape:hidden">
+                    {dict.marketing.howItWorks.how1Head}
+                  </h1>
+                  <br className="portrait:hidden" />
+                  {dict.marketing.howItWorks.how1}
+                </p>
+              </div>
+              <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
                 <Image
                   src="/images/how2-light.png"
                   width={0}
                   height={0}
                   sizes="100vw"
                   alt="how0"
-                  className="w-2/12 rounded-[5px] block dark:hidden"
-                  />
-                  <Image
+                  className="block w-2/12 rounded-[5px] dark:hidden"
+                />
+                <Image
                   src="/images/how2.png"
                   width={0}
                   height={0}
                   sizes="100vw"
                   alt="how0"
-                  className="w-2/12 rounded-[5px] hidden dark:block"
-                  />
-                  <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
-                    <strong className="portrait:hidden">{dict.marketing.sec1.how2Head}</strong>
-                    <h1 className="text-left font-heading text-xl landscape:hidden">{dict.marketing.sec1.how2Head}</h1>
-                    <br className="portrait:hidden" />
-                    {dict.marketing.sec1.how2}
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
-            <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
-              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
-                {dict.marketing.sec2.about}
-              </p>
-            </div>
-            <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
-              <div className="flex w-full flex-row items-start justify-between gap-4 portrait:flex-col">
-                <div className="flex w-4/12 flex-col items-start justify-start gap-3 rounded-lg border-2 border-accent-foreground p-3 dark:border-accent-foreground portrait:w-full">
-                  <h1 className="text-left font-heading landscape:text-2xl portrait:text-lg">
-                    {dict.marketing.sec2.feature0Head}
+                  className="hidden w-2/12 rounded-[5px] dark:block"
+                />
+                <p className="w-9/12 text-left portrait:text-sm landscape:text-lg">
+                  <strong className="portrait:hidden">
+                    {dict.marketing.howItWorks.how2Head}
+                  </strong>
+                  <h1 className="text-left font-heading text-xl landscape:hidden">
+                    {dict.marketing.howItWorks.how2Head}
                   </h1>
-                  <p className="text-left landscape:text-lg portrait:text-sm">
-                    {dict.marketing.sec2.feature0Desc}
-                  </p>
-                </div>
-                <div className="flex w-4/12 flex-col items-start justify-start gap-3 rounded-lg border-2 border-accent-foreground p-3 dark:border-accent-foreground portrait:w-full">
-                  <h1 className="text-left font-heading landscape:text-2xl portrait:text-lg">
-                    {dict.marketing.sec2.feature1Head}
-                  </h1>
-                  <p className="text-left landscape:text-lg portrait:text-sm">
-                    {dict.marketing.sec2.feature1Desc}
-                  </p>
-                </div>
-                <div className="flex w-4/12 flex-col items-start justify-start gap-3 rounded-lg border-2 border-accent-foreground p-3 dark:border-accent-foreground portrait:w-full">
-                  <h1 className="text-left font-heading landscape:text-2xl portrait:text-lg ">
-                    {dict.marketing.sec2.feature2Head}
-                  </h1>
-                  <p className="text-left landscape:text-lg portrait:text-sm">
-                    {dict.marketing.sec2.feature2Desc}
-                  </p>
-                </div>
+                  <br className="portrait:hidden" />
+                  {dict.marketing.howItWorks.how2}
+                </p>
               </div>
             </div>
           </div>
-        </div>        
+        </div>
       </section>
       <EmbloySpacer className="portrait:hidden" />
-      <section className="space-y-6 bg-background">
+      <section className="space-y-6">
         <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
           <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
             <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
               <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
-                {dict.marketing.sec3.about}
+                {dict.marketing.usefulLinks.about}
               </p>
             </div>
             <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
               <div className="flex w-full flex-row items-start justify-start portrait:flex-col portrait:gap-4">
                 <h1 className="text-left font-heading text-3xl">
-                  {dict.marketing.sec3.head}
+                  {dict.marketing.usefulLinks.head}
                 </h1>
                 <Link
-                    href={`/${lang}/register`}
-                    className={cn(
-                      buttonVariants({ variant: "bold", size: "default" }),
-                      "ml-4 landscape:px-6 portrait:px-4 landscape:text-lg portrait:text-sm"
-                    )}
-                  >
-                    {dict.pages.demo}
-                  </Link>
-               
+                  href={siteConfig.links.calendy}
+                  target="_blank"
+                  className={cn(
+                    buttonVariants({ variant: "bold", size: "default" }),
+                    "ml-4 portrait:px-4 portrait:text-sm landscape:px-6 landscape:text-lg"
+                  )}
+                >
+                  {dict.pages.demo}
+                </Link>
+
                 <Link
-                    href={`/${lang}/login`}
-                    className={cn(
-                      buttonVariants({ variant: "bold", size: "default" }),
-                      "ml-4 landscape:px-6 portrait:px-4 landscape:text-lg portrait:text-sm"
-                    )}
-                  >
-                    {dict.pages.addL}
+                  href={siteConfig.links.about + "/en/contact"}
+                  target="_blank"
+                  className={cn(
+                    buttonVariants({ variant: "bold", size: "default" }),
+                    "ml-4 portrait:px-4 portrait:text-sm landscape:px-6 landscape:text-lg"
+                  )}
+                >
+                  {dict.pages.addL}
                 </Link>
                 <Link
-                    href={`/${lang}/resources`}
-                    className={cn(
-                      buttonVariants({ variant: "bold", size: "default" }),
-                      "ml-4 landscape:px-6 portrait:px-4 landscape:text-lg portrait:text-sm"
-                    )}
-                  >
-                    {dict.pages.tutorial}
+                  href={siteConfig.links.developer + "/docs/category/guides"}
+                  target="_blank"
+                  className={cn(
+                    buttonVariants({ variant: "bold", size: "default" }),
+                    "ml-4 portrait:px-4 portrait:text-sm landscape:px-6 landscape:text-lg"
+                  )}
+                >
+                  {dict.pages.tutorial}
                 </Link>
-                  
-              </div>              
+              </div>
             </div>
           </div>
-        </div>        
+        </div>
       </section>
       <EmbloySpacer className="portrait:hidden" />
-      <section className="space-y-6 bg-background">
+      <section className="space-y-6">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
+          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+            <div className="flex w-[45px] flex-col items-start justify-start portrait:mb-2 portrait:w-full">
+              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
+                {dict.marketing.newFeatures.about}
+              </p>
+            </div>
+            <div className="grid w-11/12 flex-col items-start justify-start gap-8 md:grid-cols-3 portrait:w-full">
+              <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature0Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature0Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature1Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature1Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature2Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature2Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature3Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature3Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature4Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature4Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature5Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature5Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature6Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature6Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature7Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature7Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature8Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature8Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section className="space-y-6">
         <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
           <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
             <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
               <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground ">
-                {dict.marketing.sec4.about}
+                {dict.marketing.news.about}
               </p>
             </div>
             <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
               <h1 className="text-left font-heading text-3xl">
-                {dict.marketing.sec4.head}
+                {dict.marketing.news.head}
               </h1>
               <ul className="list-disc pl-7">
                 <li>
-                  <p className="text-left landscape:text-lg portrait:text-sm">
-                  {dict.marketing.sec4.news0}
-                  <br />
-                  <a target="_blank" href={dict.marketing.sec4.news0Link} className="landscape:text-lg portrait:text-sm text-sky-500 hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
+                  <p className="text-left portrait:text-sm landscape:text-lg">
+                    {dict.marketing.news.news0}
+                    <br />
+                    <a
+                      target="_blank"
+                      href={dict.marketing.news.news0Link}
+                      className="text-sky-500 hover:underline dark:text-embloy-foreground portrait:text-sm landscape:text-lg"
+                      rel="noreferrer"
+                    >
+                      {dict.marketing.news.link}
+                    </a>
                   </p>
                 </li>
                 <li>
-                  <p className="text-left landscape:text-lg portrait:text-sm">
-                  {dict.marketing.sec4.news1}
-                  <br />
-                  <a target="_blank" href={dict.marketing.sec4.news1Link} className=" landscape:text-lg portrait:text-sm text-sky-500 hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
+                  <p className="text-left portrait:text-sm landscape:text-lg">
+                    {dict.marketing.news.news1}
+                    <br />
+                    <a
+                      target="_blank"
+                      href={dict.marketing.news.news1Link}
+                      className=" text-sky-500 hover:underline dark:text-embloy-foreground portrait:text-sm landscape:text-lg"
+                      rel="noreferrer"
+                    >
+                      {dict.marketing.news.link}
+                    </a>
                   </p>
                 </li>
               </ul>
             </div>
           </div>
-        </div>        
+        </div>
       </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section
+        id="open-source"
+        className="container bg-background bg-cover bg-center md:bg-[url('/images/bg-2.png')] md:dark:bg-[url('/images/bg-2-dark.jpg')] lg:py-12"
+      >
+        <div className="mx-auto my-12 flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center"></div>
+        <div className="container mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+            {dict.marketing.qrApplications}
+          </h2>
+          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-2xl sm:leading-7">
+            {dict.marketing.qrApplicationsDescription}
+          </p>
+          <Image
+            src="/images/qr-code.png"
+            width={200}
+            height={200}
+            alt="QR code"
+            className="mx-auto my-10 rounded-sm"
+          />
+          <Link
+            href={`${lang}/register`}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ variant: "filled", size: "boldLg" }),
+              "portrait:w-full portrait:px-4 portrait:py-0"
+            )}
+          >
+            {dict.marketing.getStarted}
+          </Link>
+        </div>
+      </section>{" "}
     </>
   )
 }

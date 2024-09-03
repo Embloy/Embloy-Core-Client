@@ -6,14 +6,70 @@
     "developers": "Sviluppatori",
     "about": "Informazioni",
     "resources": "Risorse",
-    "login": "Accedi"
+    "login": "Accedi",
+    "add": "Richiedi Embloy",
+    "addL": "🠶 Richiedi Embloy per il tuo lavoro",
+    "signup": "Iscriviti",
+    "demo": "🠶 Scopri come funziona Embloy",
+    "tutorial": "🠶 Tutorial e aiuto",
+    "manual": "Candidati ora"
   },
   "marketing": {
-    "workInProgress": "Questa pagina è ancora in fase di sviluppo - Seguici su GitHub",
-    "developerDocsLaunched": "La nostra documentazione per sviluppatori è ora disponibile - Dai un'occhiata!",
+    "landing": {
+      "about": "Informazioni",
+      "head": "Candidati a qualsiasi lavoro con solo 1 profilo",
+      "subHead": "Smetti di perdere tempo con account Workday o lunghe conversazioni via email! Iscriviti a Embloy e candidati per lavori con la semplicità di PayPal. Crea un account una volta, usalo per candidarti con un clic e gestisci le tue candidature in un unico posto - per i candidati, Embloy è completamente gratuito.",
+      "try": "o provalo",
+      "disclaimerLink": "Richiedi Embloy",
+      "disclaimer": "se il lavoro per cui vuoi candidarti non offre ancora un'opzione per candidarsi con Embloy."
+    },
+    "howItWorks": {
+      "about": "Come funziona",
+      "how0Head": "Clicca su 'Candidati con Embloy':",
+      "how0": "Usa il pulsante Embloy nell'annuncio di lavoro e inserisci le tue credenziali Embloy.",
+      "how1Head": "Invia candidatura:",
+      "how1": "L'IA accelera il completamento della candidatura. Rivedi i suggerimenti prima di finalizzare.",
+      "how2Head": "Gestisci la ricerca di lavoro:",
+      "how2": "Usa la tua dashboard Embloy per tracciare le candidature in sospeso e chattare direttamente con i reclutatori."
+    },
+    "newFeatures": {
+      "about": "Funzionalità",
+      "feature0Head": "Candidature AI super veloci",
+      "feature0Desc": "Embloy compila automaticamente i campi ripetitivi nei moduli di candidatura, come Nome, Email e domande a cui hai già risposto in precedenti candidature. Perfetto per candidarsi a più lavori contemporaneamente.",
+      "feature1Head": "Collegati a LinkedIn",
+      "feature1Desc": "Collega risorse esterne a Embloy (come il tuo profilo LinkedIn o il tuo profilo GitHub) per candidature più fluide, raccomandazioni personalizzate e miglioramento dell'auto-compilazione.",
+      "feature2Head": "Candidature con codice QR",
+      "feature2Desc": "Candidati ai lavori con un solo tocco sul tuo telefono. Non c'è bisogno di compilare moduli o caricare CV. Basta scansionare il codice QR e hai finito.",
+      "feature3Head": "Un unico hub di candidature",
+      "feature3Desc": "Gestisci tutte le tue candidature nella dashboard di Embloy e contatta direttamente i reclutatori. Un account Embloy elimina la necessità di scrivere un sacco di email avanti e indietro e mantenere più account Workday.",
+      "feature4Head": "Rimani aggiornato",
+      "feature4Desc": "Ricevi notifiche sullo stato delle tue candidature e promemoria su colloqui o scadenze imminenti.",
+      "feature5Head": "Usa i tuoi account esistenti",
+      "feature5Desc": "Se non vuoi creare un account Embloy, puoi usare il tuo account LinkedIn, Google, Microsoft o GitHub per candidarti ai lavori.",
+      "feature6Head": "Candidatura con un clic",
+      "feature6Desc": "Goditi la comodità di una piattaforma unica, dove tutto è a portata di clic.",
+      "feature7Head": "AI potenziata",
+      "feature7Desc": "Dalla lettura del CV alle candidature automatiche basate sulle tue competenze, interessi e aspettative. Goditi la facilità di un copilota di candidatura che non solo ti aiuta a candidarti più velocemente, ma anche meglio.",
+      "feature8Head": "X-Piattaforma",
+      "feature8Desc": "Sistema altamente modulare, accessibile su web, iOS e Android, consente integrazioni personalizzate tramite API."
+    },
+    "usefulLinks": {
+      "about": "Link utili",
+      "head": "Scopri Embloy:"
+    },
+    "news": {
+      "about": "Notizie",
+      "head": "Ultimi aggiornamenti su Embloy:",
+      "link": "Scopri di più",
+      "news0": "La funzione 'Candidati ora' è live!",
+      "news0Link": "https://developers.embloy.com/docs/guides/get-started-integrations",
+      "news1": "La guida 'Come collegare Embloy al tuo ATS?' è stata pubblicata!",
+      "news1Link": "https://developers.embloy.com/docs/guides/get-started-integrations"
+    },
+    "workInProgress": "Questa pagina è ancora in lavorazione - Segui su GitHub",
+    "developerDocsLaunched": "La nostra documentazione per sviluppatori è ora live - Dai un'occhiata!",
+    "inviteMessage": "In arrivo: Tracciamento delle candidature assistito dall'IA e altro ancora!",
     "notLaunchedYet": "Embloy non è ancora attivo e non è possibile registrarsi. Contattaci per accedere alla nostra versione beta.",
-    "mainHeader": "Embloy.",
-    "subHeader": "Soluzioni che potenziano l'HR.",
     "recruitmentSteps": "Tutti i passaggi della selezione in un unico posto: semplifica la vita sia alle organizzazioni che ai cercatori di lavoro centralizzando i processi di selezione.",
     "getStarted": "Inizia",
     "forCompanies": "Per le aziende",
@@ -36,6 +92,8 @@
     "openSource": "Orgogliosamente open source",
     "openSourceDescription": "Embloy è open source e alimentato da software open source.",
     "sourceCodeAvailableOnGitHub": "Il codice è disponibile su ",
+    "qrApplications": "Lo sapevi?",
+    "qrApplicationsDescription": "Con Embloy puoi anche candidarti per lavori con un solo tocco sul tuo telefono: Non è necessario compilare moduli o caricare CV. Basta scansionare il codice QR e il gioco è fatto.",
     "logo": "Logo",
     "copyright": "©2024 • Embloy Platforms UG (haftungsbeschränkt).",
     "copyrightGithub": "©2024 Embloy Platforms UG (haftungsbeschränkt). Il codice sorgente è disponibile su ",
@@ -523,6 +581,32 @@
           "description": "La tua immagine del profilo è stata rimossa. Ricarica la pagina per vedere il cambiamento."
         }
       }
+    },
+    "reportIssue": {
+      "title": "Segnala un problema",
+      "description": "In quale area hai trovato dei problemi?",
+      "areaLabel": "Area",
+      "securityLevelLabel": "Livello di sicurezza (stima)",
+      "subjectLabel": "Oggetto",
+      "subjectPlaceholder": "Ho bisogno di aiuto con...",
+      "descriptionLabel": "Descrizione",
+      "descriptionPlaceholder": "Si prega di includere tutte le informazioni rilevanti per il problema.",
+      "goBack": "Indietro",
+      "submit": "Invia",
+      "areaOptions": {
+        "application": "Applicazione",
+        "billing": "Fatturazione",
+        "account": "Account",
+        "security": "Sicurezza",
+        "support": "Supporto"
+      },
+      "securityLevelOptions": {
+        "1": "Gravità 1 (Massima)",
+        "2": "Gravità 2",
+        "3": "Gravità 3",
+        "4": "Gravità 4 (Minima)"
+      },
+      "emailBody": "Ciao Team di Supporto,\n\nSto riscontrando un problema nella seguente area: {area}.\nIl livello di sicurezza stimato di questo problema è: {securityLevel}.\n\nEcco una breve descrizione del problema:\n{description}\n\n---------------------\nSi prega di aggiungere ulteriori informazioni sotto questa linea:\n"
     }
   },
   "proxy": {
@@ -583,6 +667,8 @@
       "features": "Funzionalità",
       "pricing": "Prezzi",
       "employers": "Datori di lavoro",
+      "help": "Aiuto",
+      "report an issue": "Segnala un problema",
       "developers": "Sviluppatori",
       "resources": "Risorse",
       "about": "Su Embloy"

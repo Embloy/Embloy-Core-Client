@@ -6,19 +6,16 @@ export const siteConfig: SiteConfig = {
   url: "https://embloy.com",
   api_url: "https://api.embloy.com/api/v0",
   api_root_url: "https://api.embloy.com",
-  // api_url: "http://localhost:3000/api/v0",
-  // api_root_url: "http://localhost:3000",
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",
   links: {
     developer: "https://developers.embloy.com",
     main: "https://embloy.com",
-    //main: "http://localhost:3000",
     about: "https://about.embloy.com",
-    // genius: "https://genius.embloy.com",
     genius: "https://embloy-platforms.involve.me/beta",
     twitter: "https://twitter.com/embloy",
     linkedin: "https://linkedin.com/company/embloy",
     github: "https://github.com/embloy",
-    calendy: "https://calendly.com/jan-p-hummel/embloy-demo"
+    calendy: "https://calendly.com/jan-p-hummel/embloy-demo",
+    help: "https://about.embloy.com/en/contact",
   },
 }

@@ -6,14 +6,70 @@
     "developers": "Développeurs",
     "about": "À propos",
     "resources": "Ressources",
-    "login": "Connexion"
+    "login": "Connexion",
+    "add": "Demander Embloy",
+    "addL": "🠶 Demander Embloy pour votre emploi",
+    "signup": "S'inscrire",
+    "demo": "🠶 Apprenez comment fonctionne Embloy",
+    "tutorial": "🠶 Tutoriels & Aide",
+    "manual": "Postuler maintenant"
   },
   "marketing": {
-    "workInProgress": "Cette page est toujours en cours de développement - Suivez-nous sur GitHub",
-      "developerDocsLaunched": "Notre documentation développeur est maintenant en ligne - Découvrez-la!",
-"notLaunchedYet": "Veuillez noter qu'Embloy n'est pas encore actif et que vous ne pourrez pas vous inscrire. Contactez-nous pour accéder à notre version bêta.",
-    "mainHeader": "Embloy.",
-    "subHeader": "Solutions qui stimulent les RH.",
+    "landing": {
+      "about": "À propos",
+      "head": "Postulez avec un seul profil Embloy.",
+      "subHead": "Arrêtez de perdre votre temps avec des comptes Workday ou de longs fils de discussion par e-mail ! Inscrivez-vous à Embloy et postulez à des emplois avec la simplicité de PayPal. Créez un compte une fois, utilisez-le pour postuler en un clic et gérez vos candidatures en un seul endroit - pour les candidats, Embloy est 100% gratuit.",
+      "try": "ou essayez-le",
+      "disclaimerLink": "Demander Embloy",
+      "disclaimer": "si l'emploi pour lequel vous souhaitez postuler n'offre pas encore d'option pour postuler avec Embloy."
+    },
+    "howItWorks": {
+      "about": "Comment ça marche",
+      "how0Head": "Cliquez sur 'Postuler avec Embloy' :",
+      "how0": "Utilisez le bouton Embloy sur l'annonce d'emploi et entrez vos identifiants Embloy.",
+      "how1Head": "Soumettre la candidature :",
+      "how1": "L'IA accélère le remplissage de la candidature. Vérifiez les suggestions avant de finaliser.",
+      "how2Head": "Gérer la recherche d'emploi :",
+      "how2": "Utilisez votre tableau de bord Embloy pour suivre les candidatures en attente et discuter directement avec les recruteurs."
+    },
+    "newFeatures": {
+      "about": "Fonctionnalités",
+      "feature0Head": "Candidatures AI ultra-rapides",
+      "feature0Desc": "Embloy remplit automatiquement les champs répétitifs sur les formulaires de candidature, comme le nom, l'e-mail et les questions auxquelles vous avez déjà répondu dans des candidatures précédentes. Parfait pour postuler à plusieurs emplois en une seule fois.",
+      "feature1Head": "Connectez-vous à LinkedIn",
+      "feature1Desc": "Liez des ressources externes à Embloy (comme votre profil LinkedIn ou votre profil GitHub) pour des candidatures plus fluides, des recommandations personnalisées et une auto-complétion améliorée.",
+      "feature2Head": "Candidatures par code QR",
+      "feature2Desc": "Postulez à des emplois en un seul clic sur votre téléphone. Pas besoin de remplir des formulaires ou de télécharger des CV. Il suffit de scanner le code QR et c'est fait.",
+      "feature3Head": "Un hub de candidatures",
+      "feature3Desc": "Gérez toutes vos candidatures dans le tableau de bord Embloy et contactez directement les recruteurs. Un compte Embloy élimine la nécessité d'écrire une multitude d'e-mails et de maintenir plusieurs comptes Workday.",
+      "feature4Head": "Restez informé",
+      "feature4Desc": "Recevez des notifications sur l'état de vos candidatures et des rappels sur les entretiens ou les échéances à venir.",
+      "feature5Head": "Utilisez vos comptes existants",
+      "feature5Desc": "Si vous ne souhaitez pas créer un compte Embloy, vous pouvez utiliser votre compte LinkedIn, Google, Microsoft ou GitHub pour postuler à des emplois.",
+      "feature6Head": "Postuler en un clic",
+      "feature6Desc": "Profitez de la commodité d'une plateforme unique, où tout est à portée de clic.",
+      "feature7Head": "Propulsé par l'IA",
+      "feature7Desc": "De l'analyse de CV aux candidatures automatiques basées sur vos compétences, intérêts et attentes. Profitez de la facilité d'un copilote de candidature qui vous aide non seulement à postuler plus rapidement, mais aussi mieux.",
+      "feature8Head": "X-Plateforme",
+      "feature8Desc": "Système hautement modulaire, accessible sur le web, iOS et Android, permet des intégrations personnalisées via API."
+    },
+    "usefulLinks": {
+      "about": "Liens utiles",
+      "head": "Découvrez Embloy :"
+    },
+    "news": {
+      "about": "Actualités",
+      "head": "Dernières mises à jour sur Embloy :",
+      "link": "En savoir plus",
+      "news0": "Le manuel 'Postuler maintenant' est en ligne !",
+      "news0Link": "https://developers.embloy.com/docs/guides/get-started-integrations",
+      "news1": "'Comment connecter Embloy à votre ATS ?' Le guide est lancé !",
+      "news1Link": "https://developers.embloy.com/docs/guides/get-started-integrations"
+    },
+    "workInProgress": "Cette page est encore en cours de réalisation - Suivez-nous sur GitHub",
+    "developerDocsLaunched": "Notre documentation pour développeurs est maintenant en ligne - Consultez-la !",
+    "inviteMessage": "À venir : Suivi des candidatures assisté par l'IA, et plus encore !",
+    "notLaunchedYet": "Veuillez noter qu'Embloy n'est pas encore actif et que vous ne pourrez pas vous inscrire. Contactez-nous pour accéder à notre version bêta.",
     "recruitmentSteps": "Toutes les étapes de recrutement en un seul endroit : Facilitez la vie des organisations et des chercheurs d'emploi en centralisant les processus de recrutement.",
     "getStarted": "Commencer",
     "forCompanies": "Pour les entreprises",
@@ -36,6 +92,8 @@
     "openSource": "Fièrement open source",
     "openSourceDescription": "Embloy est open source et alimenté par des logiciels open source.",
     "sourceCodeAvailableOnGitHub": "Le code est disponible sur ",
+    "qrApplications": "Le saviez-vous ?",
+    "qrApplicationsDescription": "Avec Embloy, vous pouvez également postuler à des emplois en un seul clic sur votre téléphone : Pas besoin de remplir des formulaires ou de télécharger des CV. Il suffit de scanner le code QR et c'est fait.",
     "logo": "Logo",
     "copyright": "©2024 • Embloy Platforms UG (haftungsbeschränkt).",
     "copyrightGithub": "©2024 Embloy Platforms UG (haftungsbeschränkt). Le code source est disponible sur ",
@@ -523,6 +581,32 @@
           "description": "Votre image de profil a été supprimée. Rechargez la page pour voir le changement."
         }
       }
+    },
+    "reportIssue": {
+      "title": "Signaler un problème",
+      "description": "Dans quel domaine rencontrez-vous des problèmes ?",
+      "areaLabel": "Domaine",
+      "securityLevelLabel": "Niveau de sécurité (estimation)",
+      "subjectLabel": "Objet",
+      "subjectPlaceholder": "J'ai besoin d'aide pour...",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Veuillez inclure toutes les informations pertinentes concernant votre problème.",
+      "goBack": "Retour",
+      "submit": "Soumettre",
+      "areaOptions": {
+        "application": "Application",
+        "billing": "Facturation",
+        "account": "Compte",
+        "security": "Sécurité",
+        "support": "Support"
+      },
+      "securityLevelOptions": {
+        "1": "Gravité 1 (La plus élevée)",
+        "2": "Gravité 2",
+        "3": "Gravité 3",
+        "4": "Gravité 4 (La plus basse)"
+      },
+      "emailBody": "Bonjour équipe de support,\n\nJe rencontre un problème dans le domaine suivant : {area}.\nLe niveau de sécurité estimé de ce problème est : {securityLevel}.\n\nVoici une brève description du problème :\n{description}\n\n---------------------\nVeuillez ajouter toute information supplémentaire ci-dessous :\n"
     }
   },
   "proxy": {
@@ -583,6 +667,8 @@
       "features": "Fonctionnalités",
       "pricing": "Prix",
       "employers": "Employeurs",
+      "help": "Aide",
+      "report an issue": "Signaler un problème",
       "resources": "Ressources",
       "developers": "Développeurs",
       "about": "À propos"

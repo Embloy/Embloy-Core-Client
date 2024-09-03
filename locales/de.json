@@ -1,19 +1,75 @@
 {
   "pages": {
     "features": "Funktionen",
-    "pricing": "Preisgestaltung",
+    "pricing": "Preise",
     "employers": "Arbeitgeber",
     "developers": "Entwickler",
     "about": "Über uns",
     "resources": "Ressourcen",
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "add": "Embloy anfordern",
+    "addL": "🠶 Embloy für einen Job anfordern",
+    "signup": "Registrieren",
+    "demo": "🠶 Erfahre, wie Embloy funktioniert",
+    "tutorial": "🠶 Tutorials & Hilfe",
+    "manual": "Jetzt bewerben"
   },
   "marketing": {
-    "workInProgress": "Diese Seite ist noch in Bearbeitung - Folge uns auf GitHub",
-      "developerDocsLaunched": "Unsere neue Entwicklerdokumentation ist jetzt veröffentlicht!",
-"notLaunchedYet": "Embloy ist noch nicht aktiv. Kontaktiere uns, um Zugang zu unserer Beta-Version zu erhalten.",
-    "mainHeader": "Embloy.",
-    "subHeader": "Lösungen, die das HR-Management verbessern.",
+    "landing": {
+      "about": "Über",
+      "head": "Bewirb dich mit einem einzigen Profil auf jeden Job.",
+      "subHead": "Verschwende keine Zeit mehr mit Workday-Konten oder langen E-Mail-Threads! Melde dich bei Embloy an und bewirb dich mit PayPal-ähnlicher Einfachheit auf Jobs. Erstelle einmal ein Konto, verwende es, um dich mit einem Klick zu bewerben und verwalten deine Bewerbungen an einem Ort - für Bewerber ist Embloy 100% kostenlos.",
+      "try": "oder probiere es",
+      "disclaimerLink": "Embloy anfordern",
+      "disclaimer": "wenn die Stelle, auf die du dich bewerben möchten, noch keine Option zur Bewerbung mit Embloy bietet."
+    },
+    "howItWorks": {
+      "about": "Wie es funktioniert",
+      "how0Head": "Klicke auf 'Embloy Apply':",
+      "how0": "Verwende den Embloy-Knopf in der Stellenanzeige und melde dich mit deinem Embloy-Account an.",
+      "how1Head": "Bewerbung einreichen:",
+      "how1": "KI beschleunigt das Ausfüllen deiner Bewerbung.",
+      "how2Head": "Jobsuche verwalten:",
+      "how2": "Nutze dein Embloy-Dashboard, um ausstehende Bewerbungen zu verfolgen und direkt mit Personalvermittlern zu chatten."
+    },
+    "newFeatures": {
+      "about": "Funktionen",
+      "feature0Head": "KI-Bewerbungen",
+      "feature0Desc": "Embloy füllt wiederholte Felder in Bewerbungsformularen automatisch aus, wie Name, E-Mail und Fragen, die du bereits in früheren Bewerbungen beantwortet hast. Perfekt, um dich auf mehrere Jobs gleichzeitig zu bewerben.",
+      "feature1Head": "Mit LinkedIn verbinden",
+      "feature1Desc": "Verknüpfe externe Ressourcen mit Embloy (wie dein LinkedIn- oder GitHub-Profil) für schnellere Bewerbungen, personalisierte Empfehlungen und verbesserte automatische Antworten.",
+      "feature2Head": "QR-Code-Bewerbungen",
+      "feature2Desc": "Bewirb dich mit einem einzigen Klick auf deinem Handy ohne Formulare auszufüllen oder Lebensläufe hochzuladen. Einfach den QR-Code scannen und fertig.",
+      "feature3Head": "Ein Job-Bewerbungs-Hub",
+      "feature3Desc": "Verwalte alle deine Bewerbungen im Embloy-Dashboard und kontaktieren Personalvermittler direkt. Ein Embloy-Konto eliminiert die Notwendigkeit, viele E-Mails hin und her zu schreiben und mehrere Workday-Konten zu organisieren.",
+      "feature4Head": "Bleibe auf dem Laufenden",
+      "feature4Desc": "Erhalte Benachrichtigungen über den Status deiner Bewerbungen und Erinnerungen an bevorstehende Interviews oder Fristen.",
+      "feature5Head": "Verwende deine bestehenden Konten",
+      "feature5Desc": "Falls du kein Embloy-Konto erstellen möchten, kannst du dein LinkedIn-, Google-, Microsoft- oder GitHub-Konto verwenden, um dich auf Jobs zu bewerben.",
+      "feature6Head": "Ein-Klick-Bewerbung",
+      "feature6Desc": "Genieße die Bequemlichkeit einer einzigen Plattform, auf der alles nur einen Klick entfernt ist.",
+      "feature7Head": "KI-gestützt",
+      "feature7Desc": "Von der CV-Analyse bis zu automatischen Bewerbungen basierend auf deinen Fähigkeiten, Interessen und Erwartungen. Genieße die Leichtigkeit eines Bewerbungs-Copiloten, der dir nicht nur hilft, dich schneller, sondern auch besser zu bewerben.",
+      "feature8Head": "X-Plattform",
+      "feature8Desc": "Hochmodulares System, zugänglich im Web, auf iOS und Android, ermöglicht benutzerdefinierte Integrationen über API."
+    },
+    "usefulLinks": {
+      "about": "Nützliche Links",
+      "head": "Entdecke Embloy:"
+    },
+    "news": {
+      "about": "Nachrichten",
+      "head": "Neueste Updates zu Embloy:",
+      "link": "Mehr erfahren",
+      "news0": "Manuelle 'Jetzt bewerben'-Funktion ist live!",
+      "news0Link": "https://developers.embloy.com/docs/guides/get-started-integrations",
+      "news1": "'Wie verbinde ich Embloy mit einem ATS?' Guide ist veröffentlicht!",
+      "news1Link": "https://developers.embloy.com/docs/guides/get-started-integrations"
+    },
+    "workInProgress": "Diese Seite ist noch in Arbeit - Folge uns auf GitHub",
+    "developerDocsLaunched": "Unsere Entwicklerdokumentation ist jetzt live!",
+    "inviteMessage": "Demnächst: KI-unterstütztes Bewerbungs-Tracking und mehr!",
+    "notLaunchedYet": "Embloy ist noch nicht aktiv. Kontaktiere uns, um Zugang zu unserer Beta-Version zu erhalten.",
     "recruitmentSteps": "Alle Rekrutierungsschritte an einem Ort: Vereinfache den Prozess für Organisationen und Bewerber, indem die Rekrutierungsprozesse zentral gemanaged werden.",
     "getStarted": "Loslegen",
     "forCompanies": "Für Unternehmen",
@@ -36,6 +92,8 @@
     "openSource": "Open Source",
     "openSourceDescription": "Embloy ist Open Source und wird von Open Source-Software unterstützt.",
     "sourceCodeAvailableOnGitHub": "Der Code ist verfügbar auf ",
+    "qrApplications": "Wusstest du schon?",
+    "qrApplicationsDescription": "Mit Embloy kannst du dich auch mit einem einzigen Klick auf deinem Telefon auf Jobs bewerben ohne Formular auszufüllen oder Lebensläufen hochzuladen. Einfach den QR-Code scannen und fertig.",
     "logo": "Logo",
     "copyright": "©2024 • Embloy Platforms UG (haftungsbeschränkt).",
     "copyrightGithub": "©2024 Embloy Platforms UG (haftungsbeschränkt). Der Quellcode ist verfügbar auf ",
@@ -523,6 +581,32 @@
           "description": "Dein Profilbild wurde entfernt. Lade die Seite neu, um die Änderung zu sehen."
         }
       }
+    },
+    "reportIssue": {
+      "title": "Ein Problem melden",
+      "description": "In welchem Bereich hast du Probleme gefunden?",
+      "areaLabel": "Bereich",
+      "securityLevelLabel": "Sicherheitsstufe (geschätzt)",
+      "subjectLabel": "Betreff",
+      "subjectPlaceholder": "Ich brauche Hilfe bei...",
+      "descriptionLabel": "Beschreibung",
+      "descriptionPlaceholder": "Bitte gib alle relevanten Informationen zu deinem Problem an.",
+      "goBack": "Zurück",
+      "submit": "Absenden",
+      "areaOptions": {
+        "application": "Anwendung",
+        "billing": "Abrechnung",
+        "account": "Konto",
+        "security": "Sicherheit",
+        "support": "Unterstützung"
+      },
+      "securityLevelOptions": {
+        "1": "Schweregrad 1 (Höchste)",
+        "2": "Schweregrad 2",
+        "3": "Schweregrad 3",
+        "4": "Schweregrad 4 (Niedrigste)"
+      },
+      "emailBody": "Hallo Support-Team,\n\nIch habe ein Problem im folgenden Bereich: {area}.\nDie geschätzte Sicherheitsstufe dieses Problems ist: {securityLevel}.\n\nHier ist eine kurze Beschreibung des Problems:\n{description}\n\n---------------------\nFalls nötig, füge bitte unten weitere Informationen hinzu:\n"
     }
   },
   "proxy": {
@@ -583,6 +667,8 @@
       "features": "Features",
       "pricing": "Preise",
       "employers": "Arbeitgeber",
+      "help": "Hilfe",
+      "report an issue": "Problem melden",
       "resources": "Ressourcen",
       "developers": "Entwickler",
       "about": "Über Embloy"

@@ -1,26 +1,28 @@
 import { DashboardConfig } from "types"
+
 import { siteConfig } from "./site"
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
-      title: "Employers",
-      href: siteConfig.links.genius,
+      title: "Resources",
+      href: "/resources",
+      external: false,
+    },
+    {
+      title: "Report an Issue",
+      href: "/dashboard/report-an-issue",
+      external: false,
+    },
+    {
+      title: "Help",
+      href: siteConfig.links.help,
       external: true,
     },
     {
       title: "Developers",
       href: siteConfig.links.developer,
       external: true,
-    },
-    {
-      title: "Resources",
-      href: "/resources",
-    },
-    {
-      title: "About",
-      external: true,
-      href: siteConfig.links.about,
     },
   ],
   sidebarNav: [
