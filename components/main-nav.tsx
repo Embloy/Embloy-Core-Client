@@ -53,7 +53,7 @@ export function MainNav({
         {!excludeLogo && (
           <Link
             href={`/${lang}?noredirect=1`}
-            className="mb-1 hidden justify-center portrait:justify-start space-x-1 md:flex"
+            className="mb-1 hidden justify-center space-x-1 md:flex portrait:justify-start"
           >
             <Icons.logo />
             <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">

@@ -60,7 +60,7 @@ export default function ReportAnIssuePage({ params: { lang } }) {
   return (
     dict && (
       <div className="container w-full items-start">
-        <Card className="col-span-2 mx-10 w-3/4 portrait:w-full portrait:mx-0">
+        <Card className="col-span-2 mx-10 w-3/4 portrait:mx-0 portrait:w-full">
           <CardHeader>
             <CardTitle>{dict.dashboard.reportIssue.title}</CardTitle>
             <CardDescription>
