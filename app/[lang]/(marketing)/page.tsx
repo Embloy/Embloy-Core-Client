@@ -63,7 +63,7 @@ export default async function IndexPage({ params: { lang } }) {
                       alt="Embloy button"
                       width={300}
                       height={300}
-                      className="hidden transform-gpu dark:block portrait:hidden"
+                      className="hidden transform-gpu dark:block dark:portrait:hidden"
                     />
                   </Link>
                 </div>
