@@ -84,7 +84,7 @@ export default function DashboardLayout({
                 </span>
               </Link>
             </div>
-            <div className="flex flex-1 justify-center">
+            <div className="flex flex-1 justify-center portrait:justify-start">
               <MainNav
                 items={dashboardConfig.mainNav}
                 params={{ lang: lang }}
@@ -111,7 +111,7 @@ export default function DashboardLayout({
                 params={{ lang: lang }}
               />
             </div>
-          </div>{" "}
+          </div>
         </header>
         <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
           <aside className="hidden w-[200px] flex-col md:flex">

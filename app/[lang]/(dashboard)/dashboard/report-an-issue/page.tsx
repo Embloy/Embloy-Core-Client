@@ -60,7 +60,7 @@ export default function ReportAnIssuePage({ params: { lang } }) {
   return (
     dict && (
       <div className="container w-full items-start">
-        <Card className="col-span-2 mx-10 hidden w-3/4 md:block">
+        <Card className="col-span-2 mx-10 w-3/4 portrait:w-full portrait:mx-0">
           <CardHeader>
             <CardTitle>{dict.dashboard.reportIssue.title}</CardTitle>
             <CardDescription>
@@ -68,7 +68,7 @@ export default function ReportAnIssuePage({ params: { lang } }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 portrait:grid-cols-1 portrait:gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="area">{dict.dashboard.reportIssue.areaLabel}</Label>
                 <Select defaultValue="billing" onValueChange={setArea}>

@@ -38,41 +38,54 @@ export function SiteFooter({ className, params: { lang } }: FooterProps) {
               {dict.marketing.copyright}
             </p>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              gap: "10px",
-            }}
-          >
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-2 md:gap-4">
             <p className="m-1 text-center text-sm leading-loose md:text-left">
-            <a href={`/${lang}/resources/terms#cookies`} className="text-muted-foreground hover:text-foreground">
-              {dict.resources["Cookies"].title}
+              <a
+                href={`/${lang}/resources/terms#cookies`}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {dict.resources["Cookies"].title}
               </a>
             </p>
             <p className="m-1 text-center text-sm leading-loose md:text-left">
-              <a href={`/${lang}/resources/privacy`} className="text-muted-foreground hover:text-foreground">
-              {dict.resources["Privacy Policy"].title}
+              <a
+                href={`/${lang}/resources/privacy`}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {dict.resources["Privacy Policy"].title}
               </a>
             </p>
             <p className="m-1 text-center text-sm leading-loose md:text-left">
-              <a href={`/${lang}/resources/terms`} className="text-muted-foreground hover:text-foreground">
-              {dict.resources["Terms of Service"].title}
+              <a
+                href={`/${lang}/resources/terms`}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {dict.resources["Terms of Service"].title}
               </a>
             </p>
             <p className="m-1 text-center text-sm leading-loose md:text-left">
-              <a href={siteConfig.links.genius} rel="noreferrer" className="text-muted-foreground hover:text-foreground">
-              {dict.resources.genius}
+              <a
+                href={siteConfig.links.genius}
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {dict.resources.genius}
               </a>
             </p>
             <p className="m-1 text-center text-sm leading-loose md:text-left">
-              <a href={siteConfig.links.about} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground">
-              {dict.resources.aboutEmbloy}
+              <a
+                href={siteConfig.links.about}
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {dict.resources.aboutEmbloy}
               </a>
             </p>
-            {<LanguageToggle />}
-
-            <ModeToggle params={{ lang: lang }} />
+            <div className="flex gap-2">
+              <LanguageToggle />
+              <ModeToggle params={{ lang: lang }} />
+            </div>
           </div>
         </div>
       </footer>

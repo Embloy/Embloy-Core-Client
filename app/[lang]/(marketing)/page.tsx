@@ -439,7 +439,7 @@ export default async function IndexPage({ params: { lang } }) {
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "filled", size: "boldLg" }),
-              "portrait:w-full portrait:px-4 portrait:py-0"
+              "portrait:w-full portrait:px-4 portrait:py-0 portrait:mb-10"
             )}
           >
             {dict.marketing.getStarted}
