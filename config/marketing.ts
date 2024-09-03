@@ -59,5 +59,10 @@ export const marketingConfig: MarketingConfig = {
       external: true,
       default: "about",
     },
+    {
+      title: "Resources",
+      href: "/resources",
+      default: "about",
+    },
   ],
 }

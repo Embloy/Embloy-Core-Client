@@ -114,9 +114,10 @@ export default function MarketingLayout({
         <div className="flex min-h-screen flex-col">
           <header className="container z-40">
             <div className="flex h-16 w-full items-center justify-between py-4">
+            <div className="flex w-8/12 flex-row items-center justify-start portrait:w-4/12">
             <Link
               href={`/${lang}?noredirect=1`}
-              className=" mb-1 hidden w-3/12 items-center justify-start  space-x-1 md:flex"
+              className=" mb-1 hidden w-2/12 items-center justify-start  space-x-1 md:flex"
             >
               <Icons.logo />
               <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
@@ -127,8 +128,9 @@ export default function MarketingLayout({
             <MainNav
                 items={marketingConfig.mainNav}
                 params={{ lang: lang }}
-                className="w-6/12 items-center justify-center portrait:w-4/12 portrait:justify-start"
+                className="w-9/12 items-center justify-start portrait:w-4/12 portrait:justify-start"
               />
+            </div >
               
             <div className="flex w-4/12 flex-row items-center justify-end portrait:w-8/12">
                 <div className="hidden md:flex">
