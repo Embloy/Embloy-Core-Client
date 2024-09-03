@@ -45,16 +45,19 @@ export const marketingConfig: MarketingConfig = {
     {
       title: "Job Application Portal",
       href: siteConfig.links.main,
+      default: "",
     },
     {
       title: "How it works",
       href: siteConfig.links.about,
       external: true,
+      default: "about",
     },
     {
       title: "For Companies",
       href: siteConfig.links.about,
       external: true,
+      default: "about",
     },
   ],
 }

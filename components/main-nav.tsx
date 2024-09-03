@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { useSearchParams, useSelectedLayoutSegment } from "next/navigation"
+import { useSearchParams, useSelectedLayoutSegment, usePathname } from "next/navigation"
 
 import { MainNavItem } from "types"
 import { siteConfig } from "@/config/site"
@@ -15,6 +15,7 @@ import { getDictionary } from "@/app/[lang]/dictionaries"
 import { Locale } from "../i18n-config"
 import { ManualProxyForm } from "./manual-proxy-form"
 
+
 interface MainNavProps {
   items?: MainNavItem[]
   children?: React.ReactNode
@@ -25,6 +26,7 @@ interface MainNavProps {
 }
 
 export function MainNav({ className, items, children, params: { lang } }: MainNavProps) {
+  const pathname = usePathname()
   const segment = useSelectedLayoutSegment()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
   const [dict, setDict] = useState<Record<string, any> | null>(null)
@@ -60,8 +62,8 @@ export function MainNav({ className, items, children, params: { lang } }: MainNa
                 }
                 className={cn(
                   "text-md flex items-center font-medium transition-colors hover:rounded hover:bg-muted ",
-                  item.href.startsWith(`/${segment}`)
-                    ? "rounded bg-muted p-1 text-accent-foreground"
+                  pathname.toLowerCase().endsWith(item.default?.toLowerCase() || "")
+                    ? "rounded bg-muted p-1 text-accent-foreground pointer-events-none cursor-default"
                     : "p-1 text-foreground",
                   item.disabled && "cursor-not-allowed opacity-80"
                 )}
