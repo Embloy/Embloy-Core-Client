@@ -77,7 +77,15 @@ export default async function IndexPage({ params: { lang } }) {
                 height={0}
                 sizes="100vw"
                 alt="Picture of the author"
-                className="w-full rounded-lg"
+                className="w-full rounded-lg hidden dark:block"
+                />
+                <Image
+                src="/images/desk-light.png"
+                width={0}
+                height={0}
+                sizes="100vw"
+                alt="Picture of the author"
+                className="w-full rounded-lg dark:hidden"
                 />
 
               </div>
@@ -95,13 +103,21 @@ export default async function IndexPage({ params: { lang } }) {
               </div>
               <div className="flex w-11/12 flex-row items-start justify-between portrait:w-full portrait:flex-col portrait:gap-4">
                 <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                <Image
+                  src="/images/how0-light.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="w-2/12 rounded-[5px] dark:hidden"
+                  />
                   <Image
                   src="/images/how0.png"
                   width={0}
                   height={0}
                   sizes="100vw"
                   alt="how0"
-                  className="w-2/12 rounded-[5px]"
+                  className="w-2/12 rounded-[5px] hidden dark:block"
                   />
                   <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how0Head}</strong>
@@ -111,13 +127,21 @@ export default async function IndexPage({ params: { lang } }) {
                   </p>
                 </div>
                 <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                <Image
+                  src="/images/how1-light.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="w-2/12 rounded-[5px] dark:hidden"
+                  />
                   <Image
                   src="/images/how1.png"
                   width={0}
                   height={0}
                   sizes="100vw"
                   alt="how0"
-                  className="w-2/12 rounded-[5px]"
+                  className="w-2/12 rounded-[5px] hidden dark:block"
                   />
                   <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how1Head}</strong>
@@ -127,13 +151,21 @@ export default async function IndexPage({ params: { lang } }) {
                   </p>
                 </div>
                 <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                <Image
+                  src="/images/how2-light.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="w-2/12 rounded-[5px] block dark:hidden"
+                  />
                   <Image
                   src="/images/how2.png"
                   width={0}
                   height={0}
                   sizes="100vw"
                   alt="how0"
-                  className="w-2/12 rounded-[5px]"
+                  className="w-2/12 rounded-[5px] hidden dark:block"
                   />
                   <p className="w-9/12 text-left landscape:text-lg portrait:text-sm">
                     <strong className="portrait:hidden">{dict.marketing.sec1.how2Head}</strong>
@@ -248,14 +280,14 @@ export default async function IndexPage({ params: { lang } }) {
                   <p className="text-left landscape:text-lg portrait:text-sm">
                   {dict.marketing.sec4.news0}
                   <br />
-                  <a target="_blank" href={dict.marketing.sec4.news0Link} className="landscape:text-lg portrait:text-sm text-embloy-foreground hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
+                  <a target="_blank" href={dict.marketing.sec4.news0Link} className="landscape:text-lg portrait:text-sm text-sky-500 hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
                   </p>
                 </li>
                 <li>
                   <p className="text-left landscape:text-lg portrait:text-sm">
                   {dict.marketing.sec4.news1}
                   <br />
-                  <a target="_blank" href={dict.marketing.sec4.news1Link} className=" landscape:text-lg portrait:text-sm text-embloy-foreground hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
+                  <a target="_blank" href={dict.marketing.sec4.news1Link} className=" landscape:text-lg portrait:text-sm text-sky-500 hover:underline dark:text-embloy-foreground" rel="noreferrer">{dict.marketing.sec4.link}</a>
                   </p>
                 </li>
               </ul>
