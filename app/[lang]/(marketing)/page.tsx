@@ -49,7 +49,7 @@ export default async function IndexPage({ params: { lang } }) {
                   <Link
                     className="portrait:w-8/12"
                     target="_blank"
-                    href="/en-US/login?origin=/en-US/sdk/apply?request_token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcsImV4cCI6MTcyNTIzMjA0MCwic2Vzc2lvbiI6eyJtb2RlIjoiYXNoYnkiLCJzdWNjZXNzX3VybCI6Imh0dHBzOi8vam9icy5ici5kZS9jdWkoYkQxa1pTWmpQVFV4TWc9PSkvZGVmYXVsdC5odG0_Y29uZmlndXJhdGlvbklkPVpCUl9TRUFSQ0gjIVpCUl9TRUFSQ0gvUE1fUE9TVElORyZjR2QxYVdROU5EWkVOekpDTlVaQ09URXdNVVZFUlVGRVJFRXhORGxHTlVKQ01UQXdNalElM0QiLCJqb2Jfc2x1ZyI6ImFzaGJ5X18zNTBjYmVkMy0wMTZlLTQ1MzEtOTQzZi01NmM4NjdkZTk5ZWQiLCJ1c2VyX2lkIjo3LCJzdWJzY3JpcHRpb25fdHlwZSI6ImVudGVycHJpc2VfMSJ9LCJpYXQiOjE3MjUyMzAyNDAsImlzcyI6ImFwaS5lbWJsb3kuY29tIn0.J1hwRKJnVHNX1Qr9c2oDqARToMSH2MiB-M4KzL2GL2Y"
+                    href="https://embloy.com/sdk/apply?gq=eyJhbGciOiJIUzI1NiJ9°eyJzdWIiOjEzLCJleHAiOjE3MjgwMjYyNDUsImp0aSI6IjkzN2FhZGQyOGYwNDcyNGNmZjEwZGEyNzY3Nzc0YzZhIiwiaWF0IjoxNzI1Mzk2NDk5LCJqb2JfaWQiOiI3IiwiaXNzIjoiYXBpLmVtYmxveS5jb20ifQ°352KDBcCKTnkxRawgzrsei8r2Ii769lV1WPaxfUxaiI"
                   >
                     <Image
                       src="https://embloy.com/images/button-black_large.svg"
