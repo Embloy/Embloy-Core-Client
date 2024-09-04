@@ -25,7 +25,7 @@ export default async function IndexPage({ params: { lang } }) {
           </Link>
           <div className="flex w-full flex-row items-start justify-between px-10 portrait:flex-col portrait:px-0">
             <div className="flex w-6/12 flex-col items-start justify-start gap-8 pt-5 portrait:w-full portrait:gap-4">
-              <h1 className="text-left font-heading text-5xl md:text-6xl lg:text-8xl">
+              <h1 className="text-left font-heading text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
                 {dict.marketing.landing.head}
               </h1>
               <h1 className="text-left text-2xl portrait:text-lg">
@@ -423,7 +423,7 @@ export default async function IndexPage({ params: { lang } }) {
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             {dict.marketing.qrApplications}
           </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-2xl sm:leading-7">
+          <p className="leading-normal text-muted-foreground sm:text-2xl sm:leading-7 md:max-w-[60%] xl:max-w-[70%] 2xl:max-w-[85%]">
             {dict.marketing.qrApplicationsDescription}
           </p>
           <Image

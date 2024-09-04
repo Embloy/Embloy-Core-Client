@@ -54,15 +54,20 @@ export default function MarketingLayout({
 
       if (response) {
         setUser(response)
-        if (!noRedirect) {
-          router.push(`/${lang}/dashboard/overview?mode=${mode}&eType=${eType}`)
-        }
       }
       setIsLoading(false)
     }
 
     fetchDictionaryAndUser()
-  }, [lang, refreshToken, noRedirect, router, mode, eType])
+  }, [lang, refreshToken])
+
+  useEffect(() => {
+    if (!noRedirect) {
+      // TODO: Black magic here, need to refactor
+      console.log("redirecting")
+      router.replace(`/${lang}/dashboard/overview?eType=${eType}&mode=${mode}`)
+    }
+  }, [noRedirect, lang, eType, mode])
 
   if (isLoading) {
     return <Loading />
@@ -115,6 +120,7 @@ export default function MarketingLayout({
                 <MainNav
                   items={marketingConfig.mainNav}
                   params={{ lang: lang }}
+                  retractHeader={true}
                 />
               </div>
               <div className="flex w-4/12 flex-row items-center justify-end portrait:w-8/12">
@@ -123,12 +129,12 @@ export default function MarketingLayout({
                   <Separator className="mx-1" />
                   <ModeToggle params={{ lang: lang }} />
                 </div>
-                <nav>
+                <nav className="flex items-center space-x-4">
                   <Link
                     href={`https://about.embloy.com/en/contact/`}
                     className={cn(
                       buttonVariants({ variant: "bold", size: "bold" }),
-                      "ml-4 px-4 portrait:hidden"
+                      "ml-4 hidden px-4 text-center md:flex"
                     )}
                   >
                     {dict.pages.add}
@@ -144,7 +150,7 @@ export default function MarketingLayout({
                     href={`/${lang}/login`}
                     className={cn(
                       buttonVariants({ variant: "bold", size: "bold" }),
-                      "ml-4 px-4"
+                      "px-4"
                     )}
                   >
                     {dict.pages.login}

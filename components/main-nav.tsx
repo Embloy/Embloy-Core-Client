@@ -14,7 +14,6 @@ import { getDictionary } from "@/app/[lang]/dictionaries"
 
 import { Locale } from "../i18n-config"
 import { ManualProxyForm } from "./manual-proxy-form"
-import { ReportAnIssue } from "./report-an-issue"
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -23,6 +22,7 @@ interface MainNavProps {
     lang: Locale
   }
   excludeLogo?: boolean
+  retractHeader?: boolean
 }
 
 export function MainNav({
@@ -30,6 +30,7 @@ export function MainNav({
   children,
   params: { lang },
   excludeLogo = false,
+  retractHeader = false,
 }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
@@ -53,7 +54,10 @@ export function MainNav({
         {!excludeLogo && (
           <Link
             href={`/${lang}?noredirect=1`}
-            className="mb-1 hidden justify-center space-x-1 md:flex portrait:justify-start"
+            className={cn(
+              "mb-1 hidden justify-center space-x-1 portrait:justify-start",
+              retractHeader ? "xl:flex" : "md:flex"
+            )}
           >
             <Icons.logo />
             <span className="underline-gradient mb-1 hidden text-xl font-bold sm:inline-block">
@@ -62,7 +66,12 @@ export function MainNav({
           </Link>
         )}
         {items?.length ? (
-          <nav className="mb-1 hidden gap-6 md:flex">
+          <nav
+            className={cn(
+              "mb-1 hidden gap-6",
+              retractHeader ? "xl:flex" : "md:flex"
+            )}
+          >
             {items?.map((item, index) => (
               <Link
                 key={index}
@@ -95,7 +104,10 @@ export function MainNav({
           </nav>
         ) : null}
         <button
-          className="flex items-center space-x-2 md:hidden"
+          className={cn(
+            "flex items-center space-x-2",
+            retractHeader ? "xl:hidden" : "md:hidden"
+          )}
           onClick={() => setShowMobileMenu(!showMobileMenu)}
         >
           {showMobileMenu ? <Icons.close /> : <Icons.logo />}
@@ -106,12 +118,12 @@ export function MainNav({
             items={items}
             params={{ lang: lang }}
             excludeLogo={excludeLogo}
+            retractHeader={retractHeader}
           >
             {children}
             <ManualProxyForm
               params={{ lang: lang, mode: mode, eType: eType }}
             />
-            <ReportAnIssue />
           </MobileNav>
         )}
       </div>
