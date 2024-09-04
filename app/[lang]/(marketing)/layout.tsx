@@ -61,55 +61,51 @@ export default function MarketingLayout({
     fetchDictionaryAndUser()
   }, [lang, refreshToken])
 
-  useEffect(() => {
-    if (!noRedirect) {
-      // TODO: Black magic here, need to refactor
-      console.log("redirecting")
-      router.replace(`/${lang}/dashboard/overview?eType=${eType}&mode=${mode}`)
-    }
-  }, [noRedirect, lang, eType, mode])
-
   if (isLoading) {
     return <Loading />
   }
 
   if (user) {
-    return (
-      dict && (
-        <div className="flex min-h-screen flex-col">
-          <header className="container top-0 z-40">
-            <div className="flex h-16 items-center justify-between py-6">
-              <MainNav
-                items={marketingConfig.mainNav}
-                params={{ lang: lang }}
-              />
-              <div className="flex items-center">
-                <div className="mx-6 md:flex">
-                  <div className="hidden md:flex">
-                    <LanguageToggle />
-                    <Separator className="mx-1" />
-                    <ModeToggle params={{ lang: lang }} />
-                  </div>
-                  <Separator className="mx-1" />
-                  <NotificationBell params={{ lang: lang }} />
-                </div>
-                <UserAccountNav
-                  user={{
-                    first_name: `${user.first_name}`,
-                    last_name: `${user.last_name}`,
-                    image_url: user.image_url,
-                    email: user.email,
-                  }}
+    if (!noRedirect) {
+      router.replace(`/${lang}/dashboard/overview?eType=${eType}&mode=${mode}`)
+    } else {
+      return (
+        dict && (
+          <div className="flex min-h-screen flex-col">
+            <header className="container top-0 z-40">
+              <div className="flex h-16 items-center justify-between py-6">
+                <MainNav
+                  items={marketingConfig.mainNav}
                   params={{ lang: lang }}
                 />
+                <div className="flex items-center">
+                  <div className="mx-6 md:flex">
+                    <div className="hidden md:flex">
+                      <LanguageToggle />
+                      <Separator className="mx-1" />
+                      <ModeToggle params={{ lang: lang }} />
+                    </div>
+                    <Separator className="mx-1" />
+                    <NotificationBell params={{ lang: lang }} />
+                  </div>
+                  <UserAccountNav
+                    user={{
+                      first_name: `${user.first_name}`,
+                      last_name: `${user.last_name}`,
+                      image_url: user.image_url,
+                      email: user.email,
+                    }}
+                    params={{ lang: lang }}
+                  />
+                </div>
               </div>
-            </div>
-          </header>
-          <main className="flex-1">{children}</main>
-          <SiteFooter className="border-t" params={{ lang: lang }} />
-        </div>
+            </header>
+            <main className="flex-1">{children}</main>
+            <SiteFooter className="border-t" params={{ lang: lang }} />
+          </div>
+        )
       )
-    )
+    }
   } else {
     return (
       dict && (
