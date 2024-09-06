@@ -52,6 +52,7 @@ export function ManualProxyForm({
     workable: "https://embloy.workable.com/jobs/...",
     smartrecruiters: "https://careers.smartrecruiters.com/...",
     default: "https://jobs.example.com/05157a89-...",
+    job: "https://jobs.example.com/05157a89-...",
   }
 
   React.useEffect(() => {
@@ -127,7 +128,9 @@ export function ManualProxyForm({
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="filled" size="bold">{dict.proxy.apply}</Button>
+        <Button variant="filled" size="bold">
+          {dict.proxy.apply}
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
