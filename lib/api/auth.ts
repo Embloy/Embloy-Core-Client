@@ -27,7 +27,9 @@ export async function login(
 
   Cookies.set("refresh_token", rtResult.refresh_token, {
     sameSite: "Strict",
-    secure: false,
+    secure: true,
+    domain: ".embloy.com",
+    path: "/",
   })
 
   await getAccessToken()
@@ -153,7 +155,9 @@ export async function getAccessToken(): Promise<string | null> {
   const accessToken = atResult.access_token
   Cookies.set("access_token", accessToken, {
     sameSite: "Strict",
-    secure: false,
+    secure: true,
+    domain: ".embloy.com",
+    path: "/",
   })
 
   return accessToken
@@ -178,8 +182,8 @@ export async function logout(): Promise<void> {
 }
 
 export function clearUserSession(): void {
-  Cookies.remove("access_token", { sameSite: "Strict", secure: false })
-  Cookies.remove("refresh_token", { sameSite: "Strict", secure: false })
+  Cookies.remove("access_token", { sameSite: "Strict", secure: true })
+  Cookies.remove("refresh_token", { sameSite: "Strict", secure: true })
 }
 
 export async function resetPassword(email: string): Promise<number | null> {
