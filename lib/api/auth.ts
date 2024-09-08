@@ -185,10 +185,14 @@ export function clearUserSession(): void {
   Cookies.remove("access_token", {
     sameSite: "Strict",
     secure: siteConfig.url.startsWith("https://"),
+    domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+    path: "/",
   })
   Cookies.remove("refresh_token", {
     sameSite: "Strict",
     secure: siteConfig.url.startsWith("https://"),
+    domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+    path: "/",
   })
 }
 
