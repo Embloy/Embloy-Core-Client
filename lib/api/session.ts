@@ -1,5 +1,7 @@
 import Cookies from "js-cookie"
 
+import { siteConfig } from "@/config/site"
+
 import { clearUserSession, getAccessToken } from "./auth"
 import { getUserData } from "./user"
 
@@ -61,8 +63,8 @@ export async function getCurrentUser(
   if (refreshToken) {
     Cookies.set("refresh_token", refreshToken, {
       sameSite: "Strict",
-      secure: true,
-      domain: ".embloy.com",
+      secure: siteConfig.url.startsWith("https://"),
+      domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
       path: "/",
     })
   }
@@ -82,8 +84,8 @@ export async function getSession(
     if (refreshToken) {
       Cookies.set("refresh_token", refreshToken, {
         sameSite: "Strict",
-        secure: true,
-        domain: ".embloy.com",
+        secure: siteConfig.url.startsWith("https://"),
+        domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
         path: "/",
       })
     }
