@@ -1,5 +1,10 @@
 {
   "pages": {
+      "sandbox": {
+        "title": "Sandbox Mode",
+        "header": "You're currently using Embloy in sandbox mode 🏖 - access to some features may be limited.", 
+        "description": "Sandbox mode is a safe environment where you can test Embloy's features without affecting your account. Please note that some features such as subscriptions and billing may be limited or disabled in this mode."
+      },
       "features": "Features",
       "pricing": "Pricing",
       "employers": "Employers",

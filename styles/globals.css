@@ -40,6 +40,9 @@
 
     --embloy: 53 99% 65%;
     --embloy-foreground: 53 99% 65%;
+
+    --sandbox: 22.06, 100%, 40%;
+    --sandbox-foreground: 0, 0%, 100%;
   }
 
   .dark {
@@ -79,6 +82,9 @@
 
     --embloy: 152, 85%, 78%;
     --embloy-foreground: 152, 85%, 78%;
+
+    --sandbox: 22.06, 100%, 40%;
+    --sandbox-foreground: 0, 0%, 100%;
   }
 }
 
@@ -112,4 +118,24 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+.inverted-border-radius {
+  position: relative;
+  background-color: hsl(var(--sandbox));
+}
+
+.inverted-border-radius::before {
+  content: "";
+  position: absolute;
+  
+  background-color: transparent;
+  bottom: -50px;
+  z-index: -1;
+  height: 50px;
+  width: 100%;
+  left: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 0 -25px 0 0 hsl(var(--sandbox));
 }

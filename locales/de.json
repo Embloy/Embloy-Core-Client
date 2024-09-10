@@ -1,5 +1,10 @@
 {
   "pages": {
+    "sandbox": {
+      "title": "Sandbox-Modus",
+      "header": "Du verwendest Embloy derzeit im Sandbox-Modus 🏖 - der Zugriff auf einige Funktionen kann eingeschränkt sein.",
+      "description": "Der Sandbox-Modus ist eine sichere Umgebung, in der du die Funktionen von Embloy testen kannst, ohne dein Konto zu beeinträchtigen. Bitte beachte, dass einige Funktionen in diesem Modus eingeschränkt oder deaktiviert sein können. Um auf alle Funktionen zuzugreifen, upgrade bitte zu einem kostenpflichtigen Konto."
+    },  
     "features": "Funktionen",
     "pricing": "Preise",
     "employers": "Arbeitgeber",

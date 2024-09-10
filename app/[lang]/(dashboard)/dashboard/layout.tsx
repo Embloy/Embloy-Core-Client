@@ -20,6 +20,7 @@ import { UserAccountNav } from "@/components/user-account-nav"
 
 import { Locale } from "../../../../i18n-config"
 import { getDictionary } from "../../dictionaries"
+import { SandboxBanner } from "@/components/sandbox-banner"
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -34,6 +35,7 @@ export default function DashboardLayout({
 }: DashboardLayoutProps) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [sandboxd, setSandboxd] = useState(false)
   const [dict, setDict] = useState<Record<string, any> | null>(null)
   const router = useRouter()
 
@@ -57,6 +59,7 @@ export default function DashboardLayout({
         })
       } else {
         setUser(response)
+        setSandboxd(response?.user_type === "sandbox")
       }
     }
 
@@ -72,6 +75,7 @@ export default function DashboardLayout({
     user && (
       <div className="flex min-h-screen flex-col space-y-6">
         <header className="sticky top-0 z-40  bg-background">
+          {sandboxd && <SandboxBanner params={{ lang: lang }} />}
           <div className="container flex h-16 items-center justify-between py-4">
             <div className="flex items-center">
               <Link
