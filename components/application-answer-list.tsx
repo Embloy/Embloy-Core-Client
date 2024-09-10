@@ -46,7 +46,7 @@ export function ApplicationAnswerList({
                 <div className="text-xs text-muted-foreground">
                   {option.question}
                 </div>
-                {answer ? (
+                {answer && answer?.answer && answer.answer !== "null" ? (
                   <div>
                     {answer.attachment ? (
                       <div className="ml-auto flex items-center gap-2">
@@ -76,13 +76,11 @@ export function ApplicationAnswerList({
                         className="rounded-lg border bg-secondary p-2 text-sm font-semibold"
                         style={{
                           maxWidth:
-                            answer?.answer && answer.answer.length < 100
-                              ? "none"
-                              : "1100px",
+                            answer.answer.length < 100 ? "none" : "1100px",
                           overflowWrap: "break-word",
                         }}
                       >
-                        {answer?.answer || dict.dashboard.applications.noAnswerProvided}
+                        {answer.answer}
                       </div>
                     )}
                   </div>

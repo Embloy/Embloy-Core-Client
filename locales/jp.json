@@ -630,6 +630,7 @@
     "thisJob": "この仕事",
     "enterDetails": "応募するには以下に詳細を入力してください",
     "allowedFormats": "許可されている形式：",
+    "removeFile": "ファイルを削除",
     "enterShortText": "あなたの回答を入力してください（最大200文字）",
     "enterLongText": "あなたの回答を入力してください（最大1000文字）",
     "enterNumber": "番号を入力してください",

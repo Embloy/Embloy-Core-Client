@@ -11,7 +11,7 @@ import { submitApplication } from "@/lib/api/application"
 import { Job, Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
 import { User, getCurrentUser, getSession } from "@/lib/api/session"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import {
@@ -20,13 +20,19 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { toast } from "@/components/ui/use-toast"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { Icons } from "@/components/icons"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
-import { getUserPropertyValue, isUrlLabel, normalizeLabel } from "./labelizer"
 import LoadingScreen from "../../../loading"
+import { getUserPropertyValue, isUrlLabel, normalizeLabel } from "./labelizer"
 
 export default function ApplyPage({ params: { lang } }) {
   const [job, setJob] = useState<Job | null>(null)
@@ -332,14 +338,6 @@ export default function ApplyPage({ params: { lang } }) {
         return newMessages
       })
 
-      if (required) {
-        idSchema.parse(id)
-        if (required && value.trim() === "" && dict) {
-          throw new Error(dict.sdk.required)
-        }
-        textSchema.parse(value)
-      }
-
       setOptions((prevOptions) => {
         const index = prevOptions.findIndex(
           (option) => option.application_option_id === id
@@ -355,6 +353,14 @@ export default function ApplyPage({ params: { lang } }) {
           ]
         }
       })
+
+      if (required) {
+        idSchema.parse(id)
+        if (required && value.trim() === "" && dict) {
+          throw new Error(dict.sdk.required)
+        }
+        textSchema.parse(value)
+      }
     } catch (error) {
       setErrorMessages((prevMessages) => ({
         ...prevMessages,
@@ -467,6 +473,22 @@ export default function ApplyPage({ params: { lang } }) {
     }
   }
 
+  const handleFileRemove = (id: number) => {
+    console.log("removing file for option", id)
+    const option = options.find((opt) => opt.application_option_id === id)
+    if (option) {
+      option.file = null
+      handleFileChange(id, null)
+      const fileInput = window.document.getElementById(
+        `file-${id}`
+      ) as HTMLInputElement
+      if (fileInput) {
+        fileInput.value = ""
+        fileInput.dispatchEvent(new Event("change", { bubbles: true }))
+      }
+    }
+  }
+
   if (isLoading) {
     return <LoadingScreen />
   }
@@ -478,11 +500,11 @@ export default function ApplyPage({ params: { lang } }) {
       session && (
         <div className="container grid h-screen w-screen flex-col items-center justify-center pt-10 lg:max-w-none lg:grid-cols-3 lg:px-0 lg:pt-0">
           <Link
-            href={job.referrer_url || "/.."}
-            onClick={handleBackClick}
+            href={job.referrer_url || session.cancel_url || "/.."}
+            target="_blank"
             className={cn(
-              buttonVariants({ variant: "ghost" }),
-              "absolute left-4 top-4 md:left-8 md:top-8 md:text-white"
+              buttonVariants({ variant: "filled" }),
+              "absolute left-4 top-4 md:left-8 md:top-8"
             )}
           >
             <>
@@ -492,8 +514,9 @@ export default function ApplyPage({ params: { lang } }) {
           </Link>
           <Link
             href={`/${lang}`}
+            target="_blank"
             className={cn(
-              buttonVariants({ variant: "outline" }),
+              buttonVariants({ variant: "filled" }),
               "absolute right-4 top-4 md:right-8 md:top-8"
             )}
           >
@@ -850,24 +873,54 @@ export default function ApplyPage({ params: { lang } }) {
                         </legend>
                         <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
                           <div className="space-y-1 text-center">
-                            <input
-                              type="file"
-                              onChange={(event) => {
-                                const file = event.target.files
-                                  ? event.target.files[0]
-                                  : null
-                                console.log(
-                                  "uploading file for option",
-                                  option.id,
-                                  file
-                                )
-                                handleFileChange(option.id, file)
-                              }}
-                              accept={option.options
-                                .map((opt) => mimeTypes[opt])
-                                .join(",")}
-                              className="w-full focus:border-indigo-500 focus:ring-indigo-500"
-                            />
+                            <div className="flex items-center justify-center space-x-2">
+                              <input
+                                id={`file-${option.id}`}
+                                type="file"
+                                onChange={(event) => {
+                                  const file = event.target.files
+                                    ? event.target.files[0]
+                                    : null
+                                  console.log(
+                                    "uploading file for option",
+                                    option.id,
+                                    file
+                                  )
+                                  handleFileChange(option.id, file)
+                                }}
+                                accept={option.options
+                                  .map((opt) => mimeTypes[opt])
+                                  .join(",")}
+                                className="w-full focus:border-indigo-500 focus:ring-indigo-500"
+                              />
+                              {options.find(
+                                (opt) => opt.application_option_id === option.id
+                              )?.file && (
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <Button
+                                        variant="ghost"
+                                        type="button"
+                                        onClick={() =>
+                                          handleFileRemove(option.id)
+                                        }
+                                        className="text-muted-foreground hover:text-secondary-foreground"
+                                        aria-label="Remove file"
+                                      >
+                                        <Icons.trash />
+                                      </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      {dict.sdk.removeFile}
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              )}
+                            </div>
+                            <div className="mt-2">
+                              <p className="text-sm text-gray-700"></p>
+                            </div>
                             <p className="text-xs text-gray-500">
                               {dict.sdk.allowedFormats}
                               {option.options.join(", ")}
@@ -928,7 +981,7 @@ export default function ApplyPage({ params: { lang } }) {
           <Link
             href="/.."
             className={cn(
-              buttonVariants({ variant: "ghost" }),
+              buttonVariants({ variant: "default" }),
               "absolute left-4 top-4 md:left-8 md:top-8"
             )}
           >

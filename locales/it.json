@@ -630,6 +630,7 @@
     "thisJob": "questo lavoro",
     "enterDetails": "Inserisci i tuoi dettagli di seguito per candidarti",
     "allowedFormats": "Formati consentiti: ",
+    "removeFile": "Rimuovi file",
     "enterShortText": "Inserisci la tua risposta (max. 200 caratteri)",
     "enterLongText": "Inserisci la tua risposta (max. 1000 caratteri)",
     "enterNumber": "Inserisci un numero",
