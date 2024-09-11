@@ -43,4 +43,12 @@ export const userSchema = z.object({
     url => /^https?:\/\/(www\.)?linkedin\.com(\/.*)?$/.test(url) || url === '',
     { message: 'linkedin_url' }
   ).nullable(),
+  github_url: z.string().max(150, { message: 'github_url'}).refine(
+    url => /^https?:\/\/(www\.)?github\.com(\/.*)?$/.test(url) || url === '',
+    { message: 'github_url' }
+  ).nullable(),
+  portfolio_url: z.string().max(150, { message: 'portfolio_url'}).refine(
+    url => /^https?:\/\/(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(\/.*)?$/.test(url) || url === '',
+    { message: 'portfolio_url' }
+  ).nullable(),
 })

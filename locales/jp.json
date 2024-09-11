@@ -479,6 +479,8 @@
       "linkedIn": "LinkedIn",
       "instagram": "Instagram",
       "facebook": "Facebook",
+      "github": "GitHub",
+      "portfolio": "ポートフォリオ",    
       "save": "保存",
       "cancel": "キャンセル",
       "delete": "削除",
@@ -569,7 +571,9 @@
           "twitter_url": "URLはTwitterのURLでなければなりません",
           "facebook_url": "URLはFacebookのURLでなければなりません",
           "instagram_url": "URLはInstagramのURLでなければなりません",
-          "linkedin_url": "URLはLinkedInのURLでなければなりません"
+          "linkedin_url": "URLはLinkedInのURLでなければなりません",
+          "github_url": "URLはGitHubのURLである必要があります",
+          "portfolio_url": "URLは有効なURLである必要があります"        
         }
       },
       "success": {

@@ -3,7 +3,7 @@ import { SiteConfig } from "types"
 export const siteConfig: SiteConfig = {
   name: "Embloy",
   description: "Solutions that brain-boost HR.",
-  url: "https://embloy.com",
+  url: "http://localhost",
   api_url: "https://api.embloy.com/api/v0",
   api_root_url: "https://api.embloy.com",
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",

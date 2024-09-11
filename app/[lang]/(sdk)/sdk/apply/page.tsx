@@ -270,9 +270,17 @@ export default function ApplyPage({ params: { lang } }) {
                   /url|profile|link/gi,
                   ""
                 )
-                // if (normalizedLabel.includes("linkedin")) {
-                //   return currentUser.linkedin_url || ""
-                // }
+                console.log("normalizedLabel", normalizedLabel)
+                console.log(
+                  "currentUserSlabel",
+                  currentUser[`${normalizedLabel}_url`]
+                )
+                if (
+                  normalizedLabel.includes("linkedin") ||
+                  normalizedLabel.includes("edin")
+                ) {
+                  return currentUser.linkedin_url || ""
+                }
                 return currentUser[`${normalizedLabel}_url`] || ""
               })()
             : ""

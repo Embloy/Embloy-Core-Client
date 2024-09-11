@@ -1,28 +1,21 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { User } from "@/lib/api/session";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { FileInput } from "@/components/ui/file-input";
+import * as React from "react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+import { User } from "@/lib/api/session"
 import {
+  deleteImage,
   deleteUser,
   updateUser,
   uploadUserImage,
-  deleteImage,
-} from "@/lib/api/user";
-import { cn } from "@/lib/utils";
-import { AvatarLarge, AvatarImage } from "@/components/ui/avatar";
-
-import { userSchema } from "@/lib/validations/user";
-import { buttonVariants } from "@/components/ui/button";
-import { CardFooter } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { toast } from "@/components/ui/use-toast";
-import { Icons } from "@/components/icons";
+} from "@/lib/api/user"
+import { cn } from "@/lib/utils"
+import { userSchema } from "@/lib/validations/user"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -32,24 +25,31 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { getDictionary } from "@/app/[lang]/dictionaries";
-import { useState } from "react";
-import { Locale } from "../i18n-config";
-import { Separator } from "./new-york/ui/separator";
+} from "@/components/ui/alert-dialog"
+import { AvatarImage, AvatarLarge } from "@/components/ui/avatar"
+import { buttonVariants } from "@/components/ui/button"
+import { FileInput } from "@/components/ui/file-input"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { toast } from "@/components/ui/use-toast"
+import { Icons } from "@/components/icons"
+import { getDictionary } from "@/app/[lang]/dictionaries"
+
+import { Locale } from "../i18n-config"
+import { Separator } from "./new-york/ui/separator"
 
 interface UserFormProps extends React.HTMLAttributes<HTMLFormElement> {
-  user: User;
+  user: User
   params: {
-    lang: Locale;
-  };
+    lang: Locale
+  }
 }
 
 function parsePhone(phone: string | null) {
-  return phone ? String(parseFloat(phone)) : "";
+  return phone ? String(parseFloat(phone)) : ""
 }
 
-type FormData = z.infer<typeof userSchema>;
+type FormData = z.infer<typeof userSchema>
 
 export function UserForm({
   user,
@@ -57,7 +57,7 @@ export function UserForm({
   params: { lang },
   ...props
 }: UserFormProps) {
-  const router = useRouter();
+  const router = useRouter()
 
   const {
     handleSubmit,
@@ -76,35 +76,37 @@ export function UserForm({
       linkedin_url: user.linkedin_url,
       instagram_url: user.instagram_url,
       facebook_url: user.facebook_url,
+      portfolio_url: user.portfolio_url,
+      github_url: user.github_url,
     },
-  });
+  })
 
-  const [isSaving, setIsSaving] = React.useState<boolean>(false);
-  const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = React.useState<File | null>(null);
-  const [showDeleteAlert, setShowDeleteAlert] = React.useState(false);
-  const [dict, setDict] = useState<Record<string, any> | null>(null);
+  const [isSaving, setIsSaving] = React.useState<boolean>(false)
+  const [isDeleting, setIsDeleting] = React.useState<boolean>(false)
+  const [selectedImage, setSelectedImage] = React.useState<File | null>(null)
+  const [showDeleteAlert, setShowDeleteAlert] = React.useState(false)
+  const [dict, setDict] = useState<Record<string, any> | null>(null)
 
   React.useEffect(() => {
     const fetchDictionary = async () => {
-      const dictionary = await getDictionary(lang);
-      setDict(dictionary);
-    };
+      const dictionary = await getDictionary(lang)
+      setDict(dictionary)
+    }
 
-    fetchDictionary();
-  }, [lang]);
+    fetchDictionary()
+  }, [lang])
 
   async function onSubmit(data: FormData) {
-    setIsSaving(true);
+    setIsSaving(true)
 
     // Parse phone number to a number
     const formattedData = {
       ...data,
       phone: data.phone ? parseFloat(data.phone.replace(/[^\d]/g, "")) : null,
-    };
+    }
 
-    const err = await updateUser(JSON.stringify({ user: formattedData }));
-    setIsSaving(false);
+    const err = await updateUser(JSON.stringify({ user: formattedData }))
+    setIsSaving(false)
 
     if (err) {
       return (
@@ -116,20 +118,20 @@ export function UserForm({
             dict.errors.generic.description,
           variant: "destructive",
         })
-      );
+      )
     }
 
     dict &&
       toast({
         description: dict.dashboard.settings.success.updateAccount.description,
-      });
+      })
   }
 
   async function onDelete() {
-    setIsDeleting(true);
+    setIsDeleting(true)
 
-    const err = await deleteUser();
-    setIsDeleting(false);
+    const err = await deleteUser()
+    setIsDeleting(false)
 
     if (err) {
       return (
@@ -141,20 +143,20 @@ export function UserForm({
             dict.errors.generic.description,
           variant: "destructive",
         })
-      );
+      )
     }
 
     dict &&
       toast({
         description: dict.dashboard.settings.success.deleteAccount.description,
-      });
+      })
 
     // router.refresh()
   }
 
   async function uploadImage() {
     if (selectedImage) {
-      const err = await uploadUserImage(selectedImage);
+      const err = await uploadUserImage(selectedImage)
       if (err) {
         return (
           dict &&
@@ -165,18 +167,18 @@ export function UserForm({
               dict.errors.generic.description,
             variant: "destructive",
           })
-        );
+        )
       }
 
       dict &&
         toast({
           description: dict.dashboard.settings.success.uploadImage.description,
-        });
+        })
     }
   }
 
   async function removeImage() {
-    const err = await deleteImage();
+    const err = await deleteImage()
     if (err) {
       return (
         dict &&
@@ -187,19 +189,19 @@ export function UserForm({
             dict.errors.generic.description,
           variant: "destructive",
         })
-      );
+      )
     }
 
     dict &&
       toast({
         description: dict.dashboard.settings.success.deleteImage.description,
-      });
+      })
   }
 
   function onFileChange(file: File | null) {
     if (file && dict) {
-      const validTypes = ["image/jpeg", "image/png", "image/jpg"];
-      const validSize = 2 * 1024 * 1024; // 2MB in bytes
+      const validTypes = ["image/jpeg", "image/png", "image/jpg"]
+      const validSize = 2 * 1024 * 1024 // 2MB in bytes
 
       if (!validTypes.includes(file.type)) {
         toast({
@@ -207,8 +209,8 @@ export function UserForm({
           description:
             dict.dashboard.settings.errors.invalidImageType.description,
           variant: "destructive",
-        });
-        return;
+        })
+        return
       }
 
       if (file.size > validSize) {
@@ -217,19 +219,19 @@ export function UserForm({
           description:
             dict.dashboard.settings.errors.invalidImageSize.description,
           variant: "destructive",
-        });
-        return;
+        })
+        return
       }
     }
 
-    setSelectedImage(file);
+    setSelectedImage(file)
   }
 
   return (
     dict && (
       <form
         onSubmit={handleSubmit((data) => {
-          onSubmit(data);
+          onSubmit(data)
         })}
         className={cn(className)}
         {...props}
@@ -459,6 +461,44 @@ export function UserForm({
                 )}
               </div>
               <div className="grid gap-1">
+                <Label className="mt-2" htmlFor="linkedin">
+                  {dict.dashboard.settings.github}
+                </Label>
+                <Input
+                  id="github"
+                  className="w-full"
+                  size={32}
+                  placeholder="https://github.com/embloy"
+                  {...register("github_url")}
+                />
+                {errors?.github_url?.message && (
+                  <p className="px-1 text-xs text-red-600">
+                    {dict.dashboard.settings.errors.validations[
+                      errors.github_url.message
+                    ] || errors.github_url.message}
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-1">
+                <Label className="mt-2" htmlFor="portfolio">
+                  {dict.dashboard.settings.portfolio}
+                </Label>
+                <Input
+                  id="portfolio"
+                  className="w-full"
+                  size={32}
+                  placeholder="https://about.embloy.com"
+                  {...register("portfolio_url")}
+                />
+                {errors?.portfolio_url?.message && (
+                  <p className="px-1 text-xs text-red-600">
+                    {dict.dashboard.settings.errors.validations[
+                      errors.portfolio_url.message
+                    ] || errors.portfolio_url.message}
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-1">
                 <Label className="mt-2" htmlFor="instagram">
                   {dict.dashboard.settings.instagram}
                 </Label>
@@ -542,12 +582,12 @@ export function UserForm({
                 </AlertDialogCancel>
                 <AlertDialogAction
                   onClick={async (event) => {
-                    event.preventDefault();
-                    setIsDeleting(true);
-                    await onDelete();
-                    setIsDeleting(false);
-                    setShowDeleteAlert(false);
-                    router.push(`/${lang}/login`);
+                    event.preventDefault()
+                    setIsDeleting(true)
+                    await onDelete()
+                    setIsDeleting(false)
+                    setShowDeleteAlert(false)
+                    router.push(`/${lang}/login`)
                   }}
                   className={cn(buttonVariants({ variant: "destructive" }))}
                 >
@@ -564,5 +604,5 @@ export function UserForm({
         </div>
       </form>
     )
-  );
+  )
 }

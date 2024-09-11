@@ -479,6 +479,8 @@
       "linkedIn": "LinkedIn",
       "instagram": "Instagram",
       "facebook": "Facebook",
+      "github": "GitHub",
+      "portfolio": "Portfolio",    
       "save": "Salva",
       "cancel": "Annulla",
       "delete": "Elimina",
@@ -569,7 +571,9 @@
           "twitter_url": "L'URL deve essere un URL Twitter",
           "facebook_url": "L'URL deve essere un URL Facebook",
           "instagram_url": "L'URL deve essere un URL Instagram",
-          "linkedin_url": "L'URL deve essere un URL LinkedIn"
+          "linkedin_url": "L'URL deve essere un URL LinkedIn",
+          "github_url": "L'URL deve essere un URL GitHub",
+          "portfolio_url": "L'URL deve essere un URL valido"        
         }
       },
       "success": {

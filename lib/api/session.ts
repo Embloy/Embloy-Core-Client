@@ -35,6 +35,8 @@ export interface User {
   twitter_url: string | null
   facebook_url: string | null
   instagram_url: string | null
+  github_url: string | null
+  portfolio_url: string | null
   phone: string | null
   degree: string | null
   linkedin_url: string | null
