@@ -270,10 +270,10 @@ export default function ApplyPage({ params: { lang } }) {
                   /url|profile|link/gi,
                   ""
                 )
-                if (normalizedLabel.includes("linkedin")) {
-                  return currentUser.linkedin_url || ""
-                }
-                return currentUser[`${normalizedLabel}Url`] || ""
+                // if (normalizedLabel.includes("linkedin")) {
+                //   return currentUser.linkedin_url || ""
+                // }
+                return currentUser[`${normalizedLabel}_url`] || ""
               })()
             : ""
           break
