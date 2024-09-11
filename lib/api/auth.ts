@@ -167,11 +167,7 @@ export async function getAccessToken(): Promise<string | null> {
 function checkIfTokenExpired(token: string): boolean {
   try {
     const decodedToken: any = decode(token)
-    if (Date.now() >= decodedToken.exp * 1000) {
-      return true
-    } else {
-      return false
-    }
+    return Date.now() >= decodedToken.exp * 1000
   } catch {
     return true
   }
