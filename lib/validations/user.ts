@@ -18,7 +18,7 @@ export const userSchema = z.object({
   city: z.string().nullable(),
   user_type: z.string().max(100, { message: 'user_type' }),
   user_role: z.string().max(100, { message: 'user_role' }),
-  application_notifications: z.boolean().refine(value => value, { message: 'application_notifications' }),
+  // application_notifications: z.boolean().nullable().refine(value => value, { message: 'application_notifications' }),
   first_name: z.string().nonempty({ message: 'First name is required' }).max(128, { message: 'First name must be at most 128 characters'}),
   last_name: z.string().nonempty({ message: 'Last name is required' }).max(128, { message: 'Last name must be at most 128 characters'}),
   email: z.string().email({ message: 'Email must be a valid email' }).max(150, { message: 'Email must be at most 150 characters'}),

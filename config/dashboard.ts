@@ -52,4 +52,33 @@ export const dashboardConfig: DashboardConfig = {
       icon: "settings",
     },
   ],
+  sandboxSidebarNav: [
+    {
+      title: "Dashboard",
+      href: "/dashboard/overview",
+      icon: "laptop",
+    },
+    {
+      title: "Upcoming Jobs",
+      href: "/dashboard/upcoming-jobs",
+      icon: "timer",
+    },
+    {
+      title: "Applications",
+      href: "/dashboard/applications",
+      icon: "post",
+    },
+    {
+      title: "Billing",
+      href: "/dashboard/billing",
+      icon: "billing",
+      disabled: true,
+    },
+    {
+      title: "Settings",
+      href: "/dashboard/settings",
+      icon: "settings",
+    },
+  ],
+
 }

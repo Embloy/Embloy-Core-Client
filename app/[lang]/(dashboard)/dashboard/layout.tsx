@@ -15,12 +15,12 @@ import { MainNav } from "@/components/main-nav"
 import { ModeToggle } from "@/components/mode-toggle"
 import { DashboardNav } from "@/components/nav"
 import NotificationBell from "@/components/notification-bell"
+import { SandboxBanner } from "@/components/sandbox-banner"
 import { SiteFooter } from "@/components/site-footer"
 import { UserAccountNav } from "@/components/user-account-nav"
 
 import { Locale } from "../../../../i18n-config"
 import { getDictionary } from "../../dictionaries"
-import { SandboxBanner } from "@/components/sandbox-banner"
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -120,7 +120,11 @@ export default function DashboardLayout({
         <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
           <aside className="hidden w-[200px] flex-col md:flex">
             <DashboardNav
-              items={dashboardConfig.sidebarNav}
+              items={
+                sandboxd
+                  ? dashboardConfig.sandboxSidebarNav
+                  : dashboardConfig.sidebarNav
+              }
               params={{ lang: lang }}
             />
           </aside>
