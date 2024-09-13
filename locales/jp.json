@@ -425,6 +425,8 @@
       "muteJobNotifications": "すべてのジョブ通知をミュート",
       "noAnswerProvided": "回答が提供されていません",
       "youWrote": "あなたが書いた:",
+      "selectApplication": "アプリケーションを選択:",
+      "applicationNr": "アプリケーション",
       "reviewEmployer": "雇用主をレビュー"
     },
     "billing": {

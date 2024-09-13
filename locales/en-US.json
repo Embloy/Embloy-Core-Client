@@ -425,6 +425,8 @@
       "muteJobNotifications": "Mute all job notifications",
       "noAnswerProvided": "No answer provided",
       "youWrote": "You wrote:",
+      "selectApplication": "Select Application:",    
+      "applicationNr": "Application",    
       "reviewEmployer": "Review employer"
     },
     "billing": {

@@ -10,7 +10,7 @@ import { useApplication } from "@/app/[lang]/(dashboard)/dashboard/applications/
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
 interface ApplicationListProps {
-  items: Application[]
+  applications: Application[]
   unreadIDs: number[]
   params: {
     lang: Locale
@@ -18,11 +18,11 @@ interface ApplicationListProps {
 }
 
 export function ApplicationList({
-  items,
+  applications,
   unreadIDs,
   params: { lang },
 }: ApplicationListProps) {
-  const [application, setApplication] = useApplication(items)
+  const [application, setApplication] = useApplication(applications)
   const [dict, setDict] = React.useState<Record<string, any> | null>(null)
 
   React.useEffect(() => {
@@ -38,7 +38,7 @@ export function ApplicationList({
       <>
         <ScrollArea className="h-screen" style={{ height: "70vh" }}>
           <div className="flex flex-col gap-2 p-4 pt-0">
-            {items
+            {applications
               .sort(
                 (a, b) =>
                   new Date(b.updated_at).getTime() -
@@ -48,7 +48,7 @@ export function ApplicationList({
                 <button
                   key={item.job_id}
                   className={cn(
-                    "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+                    "applications-start flex flex-col gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
                     application.selected === item.job_id && "bg-muted"
                   )}
                   onClick={() =>
@@ -59,8 +59,8 @@ export function ApplicationList({
                   }
                 >
                   <div className="flex w-full flex-col gap-1">
-                    <div className="flex items-center">
-                      <div className="flex items-center gap-2">
+                    <div className="applications-center flex">
+                      <div className="applications-center flex gap-2">
                         <div className="font-semibold">
                           {item.job?.title ||
                             item.job?.job_slug ||
@@ -93,7 +93,7 @@ export function ApplicationList({
                   <div className="line-clamp-2 text-xs text-muted-foreground">
                     {item.job?.position?.substring(0, 300)}
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="applications-center flex gap-2">
                     <Badge
                       key={item.status}
                       variant={getBadgeVariantFromLabel(item.status)}

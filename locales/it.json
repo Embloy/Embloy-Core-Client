@@ -425,6 +425,8 @@
       "muteJobNotifications": "Disattiva le notifiche dei lavori",
       "noAnswerProvided": "Nessuna risposta fornita",
       "youWrote": "Hai scritto:",    
+      "selectApplication": "Seleziona Applicazione:",
+      "applicationNr": "Applicazione",
       "reviewEmployer": "Recensisci il datore di lavoro"
     },
     "billing": {

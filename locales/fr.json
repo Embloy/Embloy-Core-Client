@@ -424,7 +424,9 @@
       "noResponseYet": "Aucune réponse pour le moment ...",
       "muteJobNotifications": "Muter toutes les notifications d'emploi",
       "noAnswerProvided": "Aucune réponse fournie",
-      "youWrote": "Vous avez écrit:",    
+      "youWrote": "Vous avez écrit:",  
+      "selectApplication": "Sélectionner l'application:",
+      "applicationNr": "Application",
       "reviewEmployer": "Évaluer l'employeur"
     },
     "billing": {

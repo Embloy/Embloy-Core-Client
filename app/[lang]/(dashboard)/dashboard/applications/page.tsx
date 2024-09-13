@@ -10,7 +10,7 @@ import ApplicationsLoading from './loading';
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { DashboardHeader } from "@/components/header";
 import { StartApplyButton } from "@/components/start-apply-button";
-import { ApplicationMobileList } from "@/components/ui/application-mobile-list";
+import { ApplicationMobileList } from "@/components/application-mobile-list";
 import { useMediaQuery } from '@react-hook/media-query';
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { toast } from "@/components/ui/use-toast";
