@@ -587,7 +587,7 @@ export default function ApplyPage({ params: { lang } }) {
                           }
                           required={option.required}
                           placeholder="https://example.com"
-                          className="h-12 text-blue-500 underline"
+                          className="h-12 text-blue-500 underline dark:bg-secondary"
                           onChange={(event) =>
                             handleTextChange(
                               option.id,
@@ -627,7 +627,7 @@ export default function ApplyPage({ params: { lang } }) {
                           }
                           maxLength={200}
                           style={{ resize: "none", overflow: "auto" }}
-                          className="h-12 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
+                          className="h-12 w-full rounded-md border p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground dark:bg-secondary"
                           placeholder={dict.sdk.enterShortText}
                         />
                         {errorMessages[option.id] && (
@@ -660,7 +660,7 @@ export default function ApplyPage({ params: { lang } }) {
                           }
                           maxLength={1000}
                           style={{ resize: "none", overflow: "auto" }}
-                          className="flex h-32 w-full rounded-md border border-input bg-secondary px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          className="flex h-32 w-full rounded-md border border-input bg-border/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-secondary dark:placeholder:text-input"
                           placeholder={dict.sdk.enterLongText}
                         />
                         {errorMessages[option.id] && (
@@ -701,7 +701,7 @@ export default function ApplyPage({ params: { lang } }) {
                               )
                             }
                           }}
-                          className="h-12 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
+                          className="h-12 w-full rounded-md border p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground dark:bg-secondary"
                           placeholder={dict.sdk.enterNumber}
                         />
                         {errorMessages[option.id] && (
@@ -733,7 +733,7 @@ export default function ApplyPage({ params: { lang } }) {
                               option.required
                             )
                           }
-                          className="h-12 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
+                          className="h-12 w-full rounded-md border p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground dark:bg-secondary"
                           placeholder={dict.sdk.enterDate}
                         />
                         {errorMessages[option.id] && (
@@ -766,7 +766,7 @@ export default function ApplyPage({ params: { lang } }) {
                               option.required
                             )
                           }
-                          className="h-12 w-full rounded-md border bg-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground"
+                          className="h-12 w-full rounded-md border p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground dark:bg-secondary"
                           placeholder={dict.sdk.enterLocation}
                         />
                         {errorMessages[option.id] && (

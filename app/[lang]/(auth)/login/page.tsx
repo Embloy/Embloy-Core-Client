@@ -60,7 +60,7 @@ export default function LoginPage({ params: { lang } }) {
               </>
             </Link>
           )}
-          <div className="mx-auto flex w-full flex-col justify-center space-y-6 rounded-xl border bg-background p-10 dark:bg-muted sm:w-[450px]">
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 rounded-xl border border-border bg-background p-10 dark:bg-muted sm:w-[450px]">
             <div className="flex flex-col space-y-2 text-center">
               <Icons.logo className="mx-auto size-6" />
               <h1 className="text-2xl font-semibold tracking-tight">

@@ -116,7 +116,7 @@ export function ManualProxyForm({
                 disabled={!!url}
               />
             </div>
-            <Button type="submit" disabled={isLoading || (!url && !slug)}>
+            <Button type="submit" variant="filled" disabled={isLoading || (!url && !slug)}>
               {dict.dashboard.upcoming.apply}
             </Button>
           </form>
