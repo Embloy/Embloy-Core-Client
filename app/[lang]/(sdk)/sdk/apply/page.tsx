@@ -508,7 +508,7 @@ export default function ApplyPage({ params: { lang } }) {
       session && (
         <div className="container grid h-screen w-screen flex-col items-center justify-center pt-10 lg:max-w-none lg:grid-cols-3 lg:px-0 lg:pt-0">
           <Link
-            href={job.referrer_url || session.cancel_url || "/.."}
+            href={session.cancel_url || job.referrer_url || "/.."}
             target="_blank"
             className={cn(
               buttonVariants({ variant: "filled" }),
