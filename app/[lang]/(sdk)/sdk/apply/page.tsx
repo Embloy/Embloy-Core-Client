@@ -585,14 +585,14 @@ export default function ApplyPage({ params: { lang } }) {
                               (opt) => opt.application_option_id === option.id
                             )?.answer
                           }
-                          required={option.required}
+                          required={!!option.required}
                           placeholder="https://example.com"
                           className="h-12 text-blue-500 underline dark:bg-secondary"
                           onChange={(event) =>
                             handleTextChange(
                               option.id,
                               event.target.value,
-                              option.required
+                              !!option.required 
                             )
                           }
                         />
@@ -617,12 +617,12 @@ export default function ApplyPage({ params: { lang } }) {
                               (opt) => opt.application_option_id === option.id
                             )?.answer
                           }
-                          required={option.required}
+                          required={!!option.required}
                           onChange={(event) =>
                             handleTextChange(
                               option.id,
                               event.target.value,
-                              option.required
+                              !!option.required
                             )
                           }
                           maxLength={200}
@@ -650,12 +650,12 @@ export default function ApplyPage({ params: { lang } }) {
                               (opt) => opt.application_option_id === option.id
                             )?.answer
                           }
-                          required={option.required}
+                          required={!!option.required}
                           onChange={(event) =>
                             handleTextChange(
                               option.id,
                               event.target.value,
-                              option.required
+                              !!option.required
                             )
                           }
                           maxLength={1000}
@@ -685,7 +685,7 @@ export default function ApplyPage({ params: { lang } }) {
                             )?.answer
                           }
                           maxLength={100}
-                          required={option.required}
+                          required={!!option.required}
                           onKeyPress={(event) => {
                             if (!/[0-9]/.test(event.key)) {
                               event.preventDefault()
@@ -697,7 +697,7 @@ export default function ApplyPage({ params: { lang } }) {
                               handleTextChange(
                                 option.id,
                                 value,
-                                option.required
+                                !!option.required
                               )
                             }
                           }}
@@ -725,12 +725,12 @@ export default function ApplyPage({ params: { lang } }) {
                               (opt) => opt.application_option_id === option.id
                             )?.answer
                           }
-                          required={option.required}
+                          required={!!option.required}
                           onChange={(event) =>
                             handleTextChange(
                               option.id,
                               event.target.value,
-                              option.required
+                              !!option.required
                             )
                           }
                           className="h-12 w-full rounded-md border p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground dark:bg-secondary"
@@ -758,12 +758,12 @@ export default function ApplyPage({ params: { lang } }) {
                             )?.answer
                           }
                           maxLength={1000}
-                          required={option.required}
+                          required={!!option.required}
                           onChange={(event) =>
                             handleTextChange(
                               option.id,
                               event.target.value,
-                              option.required
+                              !!option.required
                             )
                           }
                           className="h-12 w-full rounded-md border p-2 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-foreground dark:bg-secondary"
@@ -786,7 +786,7 @@ export default function ApplyPage({ params: { lang } }) {
                               (opt) => opt.application_option_id === option.id
                             )?.answer
                           }
-                          required={option.required}
+                          required={!!option.required}
                           onValueChange={(value) => {
                             handleSingleChoiceChange(option.id, value)
                           }}
@@ -813,7 +813,7 @@ export default function ApplyPage({ params: { lang } }) {
                       <div className="flex flex-col space-y-2">
                         <Select
                           key={index}
-                          required={option.required}
+                          required={!!option.required}
                           onValueChange={(value) => {
                             handleSingleChoiceChange(option.id, value)
                           }}
