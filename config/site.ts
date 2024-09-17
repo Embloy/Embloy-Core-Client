@@ -11,7 +11,7 @@ export const siteConfig: SiteConfig = {
     developer: "https://developers.embloy.com",
     main: "https://embloy.com",
     about: "https://about.embloy.com",
-    genius: "https://embloy-platforms.involve.me/beta",
+    genius: "https://genius.embloy.com",
     twitter: "https://twitter.com/embloy",
     linkedin: "https://linkedin.com/company/embloy",
     github: "https://github.com/embloy",
