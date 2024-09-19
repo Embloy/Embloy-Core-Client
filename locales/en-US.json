@@ -787,6 +787,12 @@
     "Cookies": {
       "title": "Cookies"
     },
+    "AUP": {
+      "title": "Acceptable Use Policy"
+    },
+    "Security": {
+      "title": "Security & Compliance"
+    },
     "sidebar": {
       "onThisPage": "On This Page",
       "OVERVIEW": {
@@ -795,6 +801,9 @@
       },
       "LEGAL RESOURCES": {
         "title": "LEGAL RESOURCES",
+        "Security": "Security & Compliance",
+        "Imprint": "Imprint",
+        "AUP": "Acceptable Use Policy",
         "Terms of Service": "Terms of Service",
         "Privacy Policy": "Privacy Policy",
         "Cookies": "Cookies"

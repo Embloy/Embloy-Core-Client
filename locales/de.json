@@ -786,6 +786,12 @@
     "Cookies": {
       "title": "Cookies"
     },
+    "AUP": {
+      "title": "Nutzungsrichtlinien"
+    },
+    "Security": {
+      "title": "Sicherheit & Compliance"
+    },
     "sidebar": {
       "onThisPage": "Auf Dieser Seite",
       "OVERVIEW": {
@@ -794,6 +800,9 @@
       },
       "LEGAL RESOURCES": {
         "title": "RECHTLICHE RESSOURCEN",
+        "Security": "Sicherheit & Compliance",
+        "Imprint": "Impressum",
+        "AUP": "Nutzungsrichtlinien",
         "Terms of Service": "Nutzungsbedingungen",
         "Privacy Policy": "Datenschutzrichtlinie",
         "Cookies": "Cookies"

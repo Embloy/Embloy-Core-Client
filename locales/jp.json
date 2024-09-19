@@ -786,6 +786,12 @@
     "Cookies": {
       "title": "クッキー"
     },
+    "AUP": {
+      "title": "利用規定"
+    },
+    "Security": {
+      "title": "セキュリティとコンプライアンス"
+    },
     "sidebar": {
       "onThisPage": "このページについて",
       "OVERVIEW": {
@@ -794,6 +800,9 @@
       },
       "LEGAL RESOURCES": {
         "title": "法的資料",
+        "Security": "セキュリティとコンプライアンス",
+        "Imprint": "法的刻印",
+        "AUP": "利用規定",
         "Terms of Service": "利用規約",
         "Privacy Policy": "プライバシーポリシー",
         "Cookies": "クッキー"
