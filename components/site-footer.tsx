@@ -41,7 +41,7 @@ export function SiteFooter({ className, params: { lang } }: FooterProps) {
           <div className="flex flex-col items-center justify-start gap-2 md:flex-row md:items-start md:gap-4">
             <p className="m-1 text-center text-sm leading-loose md:text-left">
               <a
-                href={`/${lang}/resources/terms#cookies`}
+                href={`/${lang}/resources/cookies`}
                 className="text-muted-foreground hover:text-foreground"
               >
                 {dict.resources["Cookies"].title}
