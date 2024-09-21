@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Locale, parseLocale } from "@/i18n-config"
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
 import { isBefore, isToday } from "date-fns"
@@ -44,6 +44,7 @@ import { Icons } from "./icons"
 
 interface ApplicationDisplayProps {
   application: Application | null
+  defaultVersion: number
   params: {
     lang: Locale
   }
@@ -51,21 +52,31 @@ interface ApplicationDisplayProps {
 
 export function ApplicationDisplay({
   application,
+  defaultVersion,
   params: { lang },
 }: ApplicationDisplayProps) {
   const [deadline, setDeadline] = useState<Date | null>(null)
+  const [versionMap, setVersionMap] = useState<Map<number, number>>(new Map())
+  const [version, setVersion] = useState<number>(defaultVersion)
   const today = new Date()
   const disabledPastDates = (date) =>
     isBefore(date, new Date()) && !isToday(date)
-  const [dict, setDict] = React.useState<Record<string, any> | null>(null)
+  const [dict, setDict] = useState<Record<string, any> | null>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchDictionary = async () => {
       const dictionary = await getDictionary(lang)
       setDict(dictionary)
     }
     fetchDictionary()
   }, [lang])
+
+  useEffect(() => {
+    if (application) {
+      const appVersion = versionMap.get(application.job_id) || defaultVersion
+      setVersion(appVersion)
+    }
+  }, [application, versionMap, defaultVersion])
 
   const downloadAttachment = (application: Application | null) => {
     if (
@@ -285,12 +296,31 @@ export function ApplicationDisplay({
             <Separator />
             <div className="flex-1 space-y-2 whitespace-pre-wrap p-4 text-sm">
               <p className="text-xs text-muted-foreground">
-                {dict.dashboard.applications.youWrote}
+                {dict.dashboard.applications.selectApplication}
+                {Array.from({ length: application.version }, (_, i) => (
+                  <Button
+                    variant={i + 1 == version ? "default" : "outline"}
+                    size="sm"
+                    className="mx-2"
+                    key={i}
+                    onClick={() => {
+                      setVersionMap((prevVersionMap) => {
+                        const newVersionMap = new Map(prevVersionMap)
+                        newVersionMap.set(application.job_id, i + 1)
+                        return newVersionMap
+                      })
+                      setVersion(i + 1)
+                    }}
+                  >
+                    {dict.dashboard.applications.applicationNr} #{i + 1}
+                  </Button>
+                ))}
               </p>
             </div>
             <Separator />
             <ApplicationAnswerList
               application={application}
+              version={version}
               params={{ lang: lang }}
             />
             <Separator className="mt-auto" />

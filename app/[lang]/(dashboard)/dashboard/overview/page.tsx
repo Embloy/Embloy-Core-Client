@@ -115,7 +115,6 @@ export default function DashboardPage({ params: { lang } }) {
                   {dict.dashboard.dashboard.dashboard}
                 </h2>
                 <div className="flex items-center space-x-2">
-                  <Search className="hidden md:block" />
                   <CalendarDateRangePicker
                     className="hidden md:block"
                     onSelect={setSelectedTimeFrame}
@@ -232,7 +231,9 @@ export default function DashboardPage({ params: { lang } }) {
                       <CardContent>
                         <div className="text-2xl font-bold">
                           {user?.applications_count
-                            ? jobs.length / user?.applications_count
+                            ? (jobs.length / user?.applications_count).toFixed(
+                                4
+                              )
                             : "N/A"}
                         </div>
                         <p className="text-xs text-muted-foreground">

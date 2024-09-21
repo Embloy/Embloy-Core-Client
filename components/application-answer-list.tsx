@@ -14,6 +14,7 @@ import { getDictionary } from "@/app/[lang]/dictionaries"
 
 interface ApplicationAnswerListProps {
   application: Application
+  version: Number
   params: {
     lang: Locale
   }
@@ -21,6 +22,7 @@ interface ApplicationAnswerListProps {
 
 export function ApplicationAnswerList({
   application,
+  version,
   params: { lang },
 }: ApplicationAnswerListProps) {
   const [dict, setDict] = useState<Record<string, any> | null>(null)
@@ -39,14 +41,16 @@ export function ApplicationAnswerList({
         <div className="space-y-4 p-4">
           {application?.job?.application_options?.map((option) => {
             const answer = application?.application_answers?.find(
-              (answer) => answer.application_option_id === option.id
+              (answer) =>
+                answer.application_option_id === option.id &&
+                answer.version === version
             )
             return (
               <div key={option.id} className="flex flex-col space-y-2">
                 <div className="text-xs text-muted-foreground">
                   {option.question}
                 </div>
-                {answer ? (
+                {answer && answer?.answer && answer.answer !== "null" ? (
                   <div>
                     {answer.attachment ? (
                       <div className="ml-auto flex items-center gap-2">
@@ -76,13 +80,15 @@ export function ApplicationAnswerList({
                         className="rounded-lg border bg-secondary p-2 text-sm font-semibold"
                         style={{
                           maxWidth:
-                            answer?.answer && answer.answer.length < 100
-                              ? "none"
-                              : "1100px",
+                            answer.answer.length < 100 ? "none" : "1100px",
                           overflowWrap: "break-word",
                         }}
                       >
-                        {answer?.answer || dict.dashboard.applications.noAnswerProvided}
+                        {option.question_type === "multiple_choice"
+                          ? Array.isArray(JSON.parse(answer.answer))
+                            ? JSON.parse(answer.answer).join("; ")
+                            : answer.answer
+                          : answer.answer}{" "}
                       </div>
                     )}
                   </div>

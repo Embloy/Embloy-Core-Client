@@ -7,7 +7,7 @@ export interface ApplicationOption {
   job_id: number
   question: string
   question_type: string
-  required: boolean
+  required: boolean | null
   options: string[]
   created_at: string
   updated_at: string

@@ -1,90 +1,153 @@
 {
   "pages": {
-      "features": "特長",
-      "pricing": "価格設定",
-      "employers": "雇用者",
-      "developers": "開発者",
-      "about": "について",
-      "resources": "リソース",
-      "login": "ログイン"
+    "sandbox": {
+      "title": "サンドボックスモード",
+      "header": "現在、Embloyをサンドボックスモードで使用しています 🏖 - 一部の機能へのアクセスが制限される場合があります。",
+      "description": "サンドボックスモードは、アカウントに影響を与えることなくEmbloyの機能をテストできる安全な環境です。このモードでは一部の機能が制限または無効になる場合があることに注意してください。すべての機能にアクセスするには、有料プランにアップグレードしてください。"
+    },
+    "features": "特長",
+    "pricing": "価格設定",
+    "employers": "雇用者",
+    "developers": "開発者",
+    "about": "について",
+    "resources": "リソース",
+    "login": "ログイン",
+    "add": "Embloyをリクエスト",
+    "addL": "🠶 Embloyをあなたの仕事にリクエスト",
+    "signup": "サインアップ",
+    "demo": "🠶 Embloyの使い方を学ぶ",
+    "tutorial": "🠶 チュートリアルとヘルプ",
+    "manual": "今すぐ応募"
   },
   "marketing": {
-      "workInProgress": "このページはまだ作業中です - GitHub でフォローしてください",
-      "developerDocsLaunched": "開発者向けドキュメントが公開されました - ご覧ください！",
-      "notLaunchedYet": "Embloy はまだ稼働しておらず、サインアップすることはできません。ベータ版にアクセスするにはお問い合わせください。",
-      "mainHeader": "Embloy.",
-      "subHeader": "HRを脳力アップするソリューション。",
-      "recruitmentSteps": "すべての採用ステップを1か所に：採用プロセスを集約することで、組織と求職者の両方の生活を楽にします。",
-      "getStarted": "はじめる",
-      "forCompanies": "企業向け",
-      "features": "特長",
-      "featureDescription": "Embloyは、組織と見込み求職者を結び付ける架け橋として機能します。デジタル時代にカスタマイズされたミドルウェアソリューションとして機能し、Embloyが採用プロセスをどのように向上させるかを探ってみてください：",
-      "smartHiring": "エンタープライズグレード",
-      "smartHiringDescription": "求職者がEmbloyアカウントを1つで任意のジョブに応募できるようにします。",
-      "endToEndRecruitment": "中小企業を支援",
-      "endToEndRecruitmentDescription": "求職者が電話で1タップで応募できるQRコードアプリケーション。",
-      "easyToIntegrate": "統合が簡単",
-      "easyToIntegrateDescription": "10行未満のコードで使用可能。",
-      "oneClickToApply": "ワンクリックで応募",
-      "oneClickToApplyDescription": "すべてがクリック1つで手の届くシングルプラットフォームの利便性をお楽しみください。",
-      "xPlatform": "X-プラットフォーム",
-      "xPlatformDescription": "Web、iOS、Androidで利用可能な高度にモジュール化されたシステムは、APIを通じたカスタムインテグレーションを可能にします",
-      "socialTools": "AIパワード",
-      "socialToolsDescription": "CVのパースから、応募者のスキル、興味、期待に基づく自動応募まで。",
-      "smarterFasterBetter": "よりスマートで、より速く、より良い：ワークフォースマネジメント2.0",
-      "videoNotSupported": "お使いのブラウザはビデオタグをサポートしていません。",
-      "openSource": "誇らしくオープンソース",
-      "openSourceDescription": "Embloyはオープンソースであり、オープンソースソフトウェアで動作しています。",
-      "sourceCodeAvailableOnGitHub": "コードはこちらで入手できます ",
-      "logo": "ロゴ",
-      "copyright": "©2024 • Embloy Platforms UG (haftungsbeschränkt)。",
-      "copyrightGithub": "©2024 Embloy Platforms UG (haftungsbeschränkt)。ソースコードは ",
-      "pricing": {
-          "simpleTransparentPricing": "シンプルで透明な価格設定",
-          "freeForApplicants": "応募者にとって、Embloyは100％無料です。",
-          "basicSubscriptionForProviders": "求人プロバイダーは、ユーザーが「本物」であることを確認する場合、申請に基本的なサブスクリプションを要求できます。その場合、応募者はEmbloy-Freeに登録する必要があります。",
-          "embloyFree": {
-            "title": "EMBLOY FREEに含まれるもの",
-            "features": [
-              "ワンクリック応募",
-              "希望する仕事に応募できます",
-              "CV、追加ドキュメントなどのアップロード",
-              "公開された求人の共有",
-              "3つの求人ポストの作成（サンドボックスモード）",
-              "広告なし"
-            ],
-            "price": "€0",
-            "billing": "月額請求",
-            "getStarted": "はじめる"
-          },
-          "embloySmart": {
-            "title": "EMBLOY SMARTに含まれるもの",
-            "features": [
-              "最大50件のアクティブな求人ポスト",
-              "無制限のクライアントトークン",
-              "クライアントトークンのカスタマイズ",
-              "広告なし"
-            ],
-            "price": "€50",
-            "billing": "月額請求",
-            "getStarted": "はじめる"
-          },
-          "embloyGenius": {
-            "title": "EMBLOY GENIUSに含まれるもの",
-            "features": [
-              "無制限のアクティブな求人ポスト",
-              "ジーニアスクエリへのアクセス",
-              "第三者統合の完全アクセス",
-              "パーソナルサポート"
-            ],
-            "price": "€500",
-            "billing": "月額請求",
-            "getStarted": "はじめる"
-          },
-          "partnershipWithStripe1": "が提携しています ",
-          "priceCustom": "Embloyの統合のコストはケースバイケースで決定されることに注意してください。パートナーシップに興味がある場合は、ミーティングをスケジュールしてください。",
-          "partnershipWithStripe2": " 簡素化された請求のために。" 
-      }
+    "landing": {
+      "about": "概要",
+      "head": "Embloyに参加しよう。1つのプロフィールでどんな仕事にも応募できます。",
+      "subHead": "Workdayアカウントや長いメールのやり取りに時間を無駄にしないでください！Embloyにサインアップして、PayPalのような簡単さで仕事に応募しましょう。一度アカウントを作成すれば、ワンクリックで応募し、応募を一元管理できます。応募者にとって、Embloyは完全に無料です。",
+      "try": "または試してみる",
+      "disclaimerLink": "Embloyをリクエスト",
+      "disclaimer": "  応募したい仕事がまだEmbloyでの応募オプションを提供していない場合は。"
+    },
+    "howItWorks": {
+      "about": "使い方",
+      "how0Head": "'Embloyで応募'をクリック:",
+      "how0": " 求人情報にあるEmbloyボタンを使用し、Embloyの資格情報を入力します。",
+      "how1Head": "応募を送信:",
+      "how1": " AIが応募の完了を迅速化します。最終確認前に提案を確認してください。",
+      "how2Head": "仕事探しを管理:",
+      "how2": " Embloyダッシュボードを使用して、保留中の応募を追跡し、採用担当者と直接チャットできます。"
+    },
+    "newFeatures": {
+      "about": "機能",
+      "feature0Head": "超高速AI応募",
+      "feature0Desc": "Embloyは、名前、メール、以前の応募で既に回答した質問など、応募フォームの繰り返しフィールドを自動入力します。複数の仕事に一度に応募するのに最適です。",
+      "feature1Head": "LinkedInに接続",
+      "feature1Desc": "外部リソース（LinkedInプロフィールやGitHubプロフィールなど）をEmbloyにリンクして、スムーズな仕事応募、パーソナライズされた推奨事項、改善された自動入力を実現します。",
+      "feature2Head": "QRコード応募",
+      "feature2Desc": "電話でワンタップで仕事に応募できます。フォームに記入したり、履歴書をアップロードする必要はありません。QRコードをスキャンするだけで完了です。",
+      "feature3Head": "一つの仕事応募ハブ",
+      "feature3Desc": "Embloyダッシュボードで全ての応募を管理し、採用担当者と直接連絡を取ることができます。複数のWorkdayアカウントを維持したり、多くのメールを書いたりする必要がなくなります。",
+      "feature4Head": "最新情報を受け取る",
+      "feature4Desc": "応募のステータスに関する通知を受け取り、面接や締め切りのリマインダーを受け取ります。",
+      "feature5Head": "既存のアカウントを使用",
+      "feature5Desc": "Embloyアカウントを作成したくない場合は、LinkedIn、Google、Microsoft、またはGitHubアカウントを使用して仕事に応募できます。",
+      "feature6Head": "ワンクリックで応募",
+      "feature6Desc": "全てがワンクリックでできる便利なプラットフォームをお楽しみください。",
+      "feature7Head": "AI搭載",
+      "feature7Desc": "CV解析からスキル、興味、期待に基づいた自動応募まで。より速く、より良く応募するのを助けるアプリケーションコパイロットの使いやすさをお楽しみください。",
+      "feature8Head": "クロスプラットフォーム",
+      "feature8Desc": "ウェブ、iOS、Androidでアクセス可能な高度にモジュール化されたシステムで、APIを通じたカスタム統合が可能です。"
+    },
+    "usefulLinks": {
+      "about": "便利なリンク",
+      "head": "Embloyを発見する:"
+    },
+    "news": {
+      "about": "ニュース",
+      "head": "Embloyの最新情報:",
+      "link": "詳細はこちら",
+      "news0": "手動の'今すぐ応募'がライブです！",
+      "news0Link": "https://developers.embloy.com/docs/guides/get-started-integrations",
+      "news1": "'EmbloyをあなたのATSに接続する方法'ガイドが公開されました！",
+      "news1Link": "https://developers.embloy.com/docs/guides/get-started-integrations"
+    },
+    "workInProgress": "このページはまだ作業中です - GitHubでフォローしてください",
+    "developerDocsLaunched": "開発者ドキュメントが公開されました - チェックしてください！",
+    "inviteMessage": "近日公開: AI支援の応募追跡など！",
+    "notLaunchedYet": "Embloy はまだ稼働しておらず、サインアップすることはできません。ベータ版にアクセスするにはお問い合わせください。",
+    "recruitmentSteps": "すべての採用ステップを1か所に：採用プロセスを集約することで、組織と求職者の両方の生活を楽にします。",
+    "getStarted": "はじめる",
+    "forCompanies": "企業向け",
+    "features": "特長",
+    "featureDescription": "Embloyは、組織と見込み求職者を結び付ける架け橋として機能します。デジタル時代にカスタマイズされたミドルウェアソリューションとして機能し、Embloyが採用プロセスをどのように向上させるかを探ってみてください：",
+    "smartHiring": "エンタープライズグレード",
+    "smartHiringDescription": "求職者がEmbloyアカウントを1つで任意のジョブに応募できるようにします。",
+    "endToEndRecruitment": "中小企業を支援",
+    "endToEndRecruitmentDescription": "求職者が電話で1タップで応募できるQRコードアプリケーション。",
+    "easyToIntegrate": "統合が簡単",
+    "easyToIntegrateDescription": "10行未満のコードで使用可能。",
+    "oneClickToApply": "ワンクリックで応募",
+    "oneClickToApplyDescription": "すべてがクリック1つで手の届くシングルプラットフォームの利便性をお楽しみください。",
+    "xPlatform": "X-プラットフォーム",
+    "xPlatformDescription": "Web、iOS、Androidで利用可能な高度にモジュール化されたシステムは、APIを通じたカスタムインテグレーションを可能にします",
+    "socialTools": "AIパワード",
+    "socialToolsDescription": "CVのパースから、応募者のスキル、興味、期待に基づく自動応募まで。",
+    "smarterFasterBetter": "よりスマートで、より速く、より良い：ワークフォースマネジメント2.0",
+    "videoNotSupported": "お使いのブラウザはビデオタグをサポートしていません。",
+    "openSource": "誇らしくオープンソース",
+    "openSourceDescription": "Embloyはオープンソースであり、オープンソースソフトウェアで動作しています。",
+    "sourceCodeAvailableOnGitHub": "コードはこちらで入手できます ",
+    "qrApplications": "知っていましたか？",
+    "qrApplicationsDescription": "Embloyを使えば、電話でワンタップで仕事に応募することもできます。フォームに記入したり、履歴書をアップロードする必要はありません。QRコードをスキャンするだけで完了です。",
+    "logo": "ロゴ",
+    "copyright": "©2024 • Embloy Platforms UG (haftungsbeschränkt)。",
+    "copyrightGithub": "©2024 Embloy Platforms UG (haftungsbeschränkt)。ソースコードは ",
+    "pricing": {
+      "simpleTransparentPricing": "シンプルで透明な価格設定",
+      "freeForApplicants": "応募者にとって、Embloyは100％無料です。",
+      "basicSubscriptionForProviders": "求人プロバイダーは、ユーザーが「本物」であることを確認する場合、申請に基本的なサブスクリプションを要求できます。その場合、応募者はEmbloy-Freeに登録する必要があります。",
+      "embloyFree": {
+        "title": "EMBLOY FREEに含まれるもの",
+        "features": [
+          "ワンクリック応募",
+          "希望する仕事に応募できます",
+          "CV、追加ドキュメントなどのアップロード",
+          "公開された求人の共有",
+          "3つの求人ポストの作成（サンドボックスモード）",
+          "広告なし"
+        ],
+        "price": "€0",
+        "billing": "月額請求",
+        "getStarted": "はじめる"
+      },
+      "embloySmart": {
+        "title": "EMBLOY SMARTに含まれるもの",
+        "features": [
+          "最大50件のアクティブな求人ポスト",
+          "無制限のクライアントトークン",
+          "クライアントトークンのカスタマイズ",
+          "広告なし"
+        ],
+        "price": "€50",
+        "billing": "月額請求",
+        "getStarted": "はじめる"
+      },
+      "embloyGenius": {
+        "title": "EMBLOY GENIUSに含まれるもの",
+        "features": [
+          "無制限のアクティブな求人ポスト",
+          "ジーニアスクエリへのアクセス",
+          "第三者統合の完全アクセス",
+          "パーソナルサポート"
+        ],
+        "price": "€500",
+        "billing": "月額請求",
+        "getStarted": "はじめる"
+      },
+      "partnershipWithStripe1": "が提携しています ",
+      "priceCustom": "Embloyの統合のコストはケースバイケースで決定されることに注意してください。パートナーシップに興味がある場合は、ミーティングをスケジュールしてください。",
+      "partnershipWithStripe2": " 簡素化された請求のために。"
+    }
   },
   "auth": {
     "oauth": {
@@ -311,7 +374,7 @@
         "pagination": {
           "rows": "行が選択されました。",
           "rowsPerPage": "ページごとの行数",
-          "page" : "ページ ",
+          "page": "ページ ",
           "of": "/ ",
           "goToFirstPage": "最初のページへ",
           "goToPreviousPage": "前のページへ",
@@ -325,7 +388,7 @@
           "asc2": "昇順",
           "hide": "非表示"
         }
-      } 
+      }
     },
     "applications": {
       "title": "応募",
@@ -361,7 +424,9 @@
       "noResponseYet": "まだ返信がありません...",
       "muteJobNotifications": "すべてのジョブ通知をミュート",
       "noAnswerProvided": "回答が提供されていません",
-      "youWrote": "あなたが書いた:",    
+      "youWrote": "あなたが書いた:",
+      "selectApplication": "アプリケーションを選択:",
+      "applicationNr": "アプリケーション",
       "reviewEmployer": "雇用主をレビュー"
     },
     "billing": {
@@ -390,7 +455,7 @@
       "enterprise_1": {
         "name": "EMBLOYジーニアス",
         "description": "無制限の求人投稿とその他多くの機能。"
-      } 
+      }
     },
     "settings": {
       "title": "設定",
@@ -416,6 +481,8 @@
       "linkedIn": "LinkedIn",
       "instagram": "Instagram",
       "facebook": "Facebook",
+      "github": "GitHub",
+      "portfolio": "ポートフォリオ",    
       "save": "保存",
       "cancel": "キャンセル",
       "delete": "削除",
@@ -453,7 +520,7 @@
         "securityEmails": "セキュリティメール",
         "securityEmailsDescription": "アカウントのアクティビティとセキュリティに関するメールを受け取ります。",
         "updateNotifications": "通知を更新"
-      },    
+      },
       "errors": {
         "updateAccount": {
           "title": "エラーが発生しました。",
@@ -506,7 +573,9 @@
           "twitter_url": "URLはTwitterのURLでなければなりません",
           "facebook_url": "URLはFacebookのURLでなければなりません",
           "instagram_url": "URLはInstagramのURLでなければなりません",
-          "linkedin_url": "URLはLinkedInのURLでなければなりません"
+          "linkedin_url": "URLはLinkedInのURLでなければなりません",
+          "github_url": "URLはGitHubのURLである必要があります",
+          "portfolio_url": "URLは有効なURLである必要があります"        
         }
       },
       "success": {
@@ -523,6 +592,32 @@
           "description": "プロフィール画像が削除されました。変更を確認するには、ページをリロードしてください。"
         }
       }
+    },
+    "reportIssue": {
+      "title": "問題を報告する",
+      "description": "どの分野で問題が発生していますか？",
+      "areaLabel": "エリア",
+      "securityLevelLabel": "セキュリティレベル（推定）",
+      "subjectLabel": "件名",
+      "subjectPlaceholder": "助けが必要です...",
+      "descriptionLabel": "説明",
+      "descriptionPlaceholder": "問題に関連するすべての情報を含めてください。",
+      "goBack": "戻る",
+      "submit": "送信",
+      "areaOptions": {
+        "application": "アプリケーション",
+        "billing": "請求",
+        "account": "アカウント",
+        "security": "セキュリティ",
+        "support": "サポート"
+      },
+      "securityLevelOptions": {
+        "1": "重大度 1（最高）",
+        "2": "重大度 2",
+        "3": "重大度 3",
+        "4": "重大度 4（最低）"
+      },
+      "emailBody": "サポートチームの皆様へ、\n\n次のエリアで問題が発生しています: {area}。\nこの問題の推定セキュリティレベルは: {securityLevel} です。\n\n問題の簡単な説明は次のとおりです:\n{description}\n\n---------------------\nこの行の下に追加情報を記入してください:\n"
     }
   },
   "proxy": {
@@ -546,6 +641,7 @@
     "thisJob": "この仕事",
     "enterDetails": "応募するには以下に詳細を入力してください",
     "allowedFormats": "許可されている形式：",
+    "removeFile": "ファイルを削除",
     "enterShortText": "あなたの回答を入力してください（最大200文字）",
     "enterLongText": "あなたの回答を入力してください（最大1000文字）",
     "enterNumber": "番号を入力してください",
@@ -583,6 +679,8 @@
       "features": "機能",
       "pricing": "価格設定",
       "employers": "雇用主",
+      "help": "ヘルプ",
+      "report an issue": "問題を報告",
       "resources": "リソース",
       "developers": "開発者",
       "about": "約"
@@ -605,7 +703,7 @@
       "ApplicationStatusNotification": "あなたのアプリケーションのステータスが更新されました。",
       "ApplicationNotification": "新しいアプリケーションの通知があります。",
       "noNotifications": "新しい通知はありません。"
-    }  
+    }
   },
   "errors": {
     "400": {
@@ -679,11 +777,20 @@
     "Resources": {
       "title": "リソース"
     },
+    "Imprint": {
+      "title": "法的刻印"
+    },
     "Introduction": {
       "title": "導入"
     },
     "Cookies": {
       "title": "クッキー"
+    },
+    "AUP": {
+      "title": "利用規定"
+    },
+    "Security": {
+      "title": "セキュリティとコンプライアンス"
     },
     "sidebar": {
       "onThisPage": "このページについて",
@@ -693,6 +800,9 @@
       },
       "LEGAL RESOURCES": {
         "title": "法的資料",
+        "Security": "セキュリティとコンプライアンス",
+        "Imprint": "法的刻印",
+        "AUP": "利用規定",
         "Terms of Service": "利用規約",
         "Privacy Policy": "プライバシーポリシー",
         "Cookies": "クッキー"

@@ -21,6 +21,7 @@ export interface ApplicationAnswer {
   application_option_id: number
   answer: string
   attachment: null | ApplicationAttachment
+  version: number
 }
 
 export interface Application {
@@ -33,6 +34,7 @@ export interface Application {
   application_attachment: null | ApplicationAttachment
   application_answers: null | ApplicationAnswer[]
   job: null | Job
+  version: number
 }
 
 export async function getApplications(): Promise<{

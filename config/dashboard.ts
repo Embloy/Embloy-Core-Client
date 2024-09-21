@@ -1,26 +1,28 @@
 import { DashboardConfig } from "types"
+
 import { siteConfig } from "./site"
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
-      title: "Employers",
-      href: siteConfig.links.genius,
+      title: "Resources",
+      href: "/resources",
+      external: false,
+    },
+    {
+      title: "Report an Issue",
+      href: "/dashboard/report-an-issue",
+      external: false,
+    },
+    {
+      title: "Help",
+      href: siteConfig.links.help,
       external: true,
     },
     {
       title: "Developers",
       href: siteConfig.links.developer,
       external: true,
-    },
-    {
-      title: "Resources",
-      href: "/resources",
-    },
-    {
-      title: "About",
-      external: true,
-      href: siteConfig.links.about,
     },
   ],
   sidebarNav: [
@@ -50,4 +52,33 @@ export const dashboardConfig: DashboardConfig = {
       icon: "settings",
     },
   ],
+  sandboxSidebarNav: [
+    {
+      title: "Dashboard",
+      href: "/dashboard/overview",
+      icon: "laptop",
+    },
+    {
+      title: "Upcoming Jobs",
+      href: "/dashboard/upcoming-jobs",
+      icon: "timer",
+    },
+    {
+      title: "Applications",
+      href: "/dashboard/applications",
+      icon: "post",
+    },
+    {
+      title: "Billing",
+      href: "/dashboard/billing",
+      icon: "billing",
+      disabled: true,
+    },
+    {
+      title: "Settings",
+      href: "/dashboard/settings",
+      icon: "settings",
+    },
+  ],
+
 }

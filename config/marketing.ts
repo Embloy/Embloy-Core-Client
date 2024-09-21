@@ -16,7 +16,7 @@ export const marketingConfig: MarketingConfig = {
       title: "Enterprise",
       href: "https://about.embloy.com/en/business/application-gateway",
     },
-    /*   
+    /*
     {
       title: "Features",
       href: "/#features",
@@ -24,13 +24,7 @@ export const marketingConfig: MarketingConfig = {
     {
       title: "Pricing",
       href: "/pricing",
-    },
-    {
-      title: "Employers",
-      href: siteConfig.links.genius,
-      external: true,
-    },
-  */
+    },*/
     {
       title: "Developers",
       href: siteConfig.links.developer,
@@ -44,5 +38,28 @@ export const marketingConfig: MarketingConfig = {
       title: "About",
       href: siteConfig.links.about,
     },
+    /*    {
+      title: "Job Application Portal",
+      href: siteConfig.links.main,
+      default: "",
+    },
+    {
+      title: "How it works",
+      href: siteConfig.links.about,
+      external: true,
+      default: "about",
+    },
+    {
+      title: "For Companies",
+      href: siteConfig.links.about,
+      external: true,
+      default: "about",
+    },
+    {
+      title: "Resources",
+      href: "/resources",
+      default: "about",
+    },
+  */
   ],
 }

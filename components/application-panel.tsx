@@ -111,14 +111,14 @@ export function ApplicationPanel({
               </div>
               <TabsContent value="all" className="m-0">
                 <ApplicationList
-                  items={filteredApplications}
+                  applications={filteredApplications}
                   params={{ lang: lang }}
                   unreadIDs={unreadIDs}
                 />
               </TabsContent>
               <TabsContent value="accepted" className="m-0">
                 <ApplicationList
-                  items={filteredApplications.filter(
+                  applications={filteredApplications.filter(
                     (item) => item.status === "accepted"
                   )}
                   params={{ lang: lang }}
@@ -134,6 +134,11 @@ export function ApplicationPanel({
                 filteredApplications.find(
                   (item) => item.job_id === application.selected
                 ) || null
+              }
+              defaultVersion={
+                filteredApplications.find(
+                  (item) => item.job_id === application.selected
+                )?.version || 1
               }
               params={{ lang: lang }}
             />

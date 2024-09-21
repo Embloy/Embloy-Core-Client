@@ -52,82 +52,99 @@ export default function MarketingLayout({
 
       if (response) {
         setUser(response)
-        if (!noRedirect) {
-          router.push(`/${lang}/dashboard/overview?mode=${mode}&eType=${eType}`)
-        }
       }
       setIsLoading(false)
     }
 
     fetchDictionaryAndUser()
-  }, [lang, refreshToken, noRedirect, router, mode, eType])
+  }, [lang, refreshToken])
 
   if (isLoading) {
     return <Loading />
   }
 
   if (user) {
-    return (
-      dict && (
-        <div className="flex min-h-screen flex-col">
-          <header className="container top-0 z-40">
-            <div className="flex h-16 items-center justify-between py-6">
-              <MainNav
-                items={marketingConfig.mainNav}
-                params={{ lang: lang }}
-              />
-              <div className="flex items-center">
-                <div className="mx-6 md:flex">
-                  <div className="hidden md:flex">
-                    <LanguageToggle />
-                    <Separator className="mx-1" />
-                    <ModeToggle params={{ lang: lang }} />
-                  </div>
-                  <Separator className="mx-1" />
-                  <NotificationBell params={{ lang: lang }} />
-                </div>
-                <UserAccountNav
-                  user={{
-                    first_name: `${user.first_name}`,
-                    last_name: `${user.last_name}`,
-                    image_url: user.image_url,
-                    email: user.email,
-                  }}
+    if (!noRedirect) {
+      router.replace(`/${lang}/dashboard/overview?eType=${eType}&mode=${mode}`)
+    } else {
+      return (
+        dict && (
+          <div className="flex min-h-screen flex-col">
+            <header className="container top-0 z-40">
+              <div className="flex h-16 items-center justify-between py-6">
+                <MainNav
+                  items={marketingConfig.mainNav}
                   params={{ lang: lang }}
                 />
+                <div className="flex items-center">
+                  <div className="mx-6 md:flex">
+                    <div className="hidden md:flex">
+                      <LanguageToggle />
+                      <Separator className="mx-1" />
+                      <ModeToggle params={{ lang: lang }} />
+                    </div>
+                    <Separator className="mx-1" />
+                    <NotificationBell params={{ lang: lang }} />
+                  </div>
+                  <UserAccountNav
+                    user={{
+                      first_name: `${user.first_name}`,
+                      last_name: `${user.last_name}`,
+                      image_url: user.image_url,
+                      email: user.email,
+                    }}
+                    params={{ lang: lang }}
+                  />
+                </div>
               </div>
-            </div>
-          </header>
-          <main className="flex-1">{children}</main>
-          <SiteFooter className="border-t" params={{ lang: lang }} />
-        </div>
+            </header>
+            <main className="flex-1">{children}</main>
+            <SiteFooter className="border-t" params={{ lang: lang }} />
+          </div>
+        )
       )
-    )
+    }
   } else {
     return (
       dict && (
         <div className="flex min-h-screen flex-col">
           <header className="container z-40">
-            <div className="flex h-16 items-center justify-between py-4">
-              <MainNav
-                items={marketingConfig.mainNav}
-                params={{ lang: lang }}
-              />
-              <div className="flex items-center">
-                <div className="mx-6 hidden md:flex">
+            <div className="flex h-16 w-full items-center justify-between py-4">
+              <div className="flex w-8/12 flex-row items-center justify-start portrait:w-4/12">
+                <MainNav
+                  items={marketingConfig.mainNav}
+                  params={{ lang: lang }}
+                  retractHeader={true}
+                />
+              </div>
+              <div className="flex w-4/12 flex-row items-center justify-end portrait:w-8/12">
+                <div className="hidden md:flex">
                   <LanguageToggle />
                   <Separator className="mx-1" />
                   <ModeToggle params={{ lang: lang }} />
                 </div>
-                <nav>
+                <nav className="flex items-center space-x-4">
+                  <Link
+                    href={`https://about.embloy.com/en/contact/`}
+                    className={cn(
+                      buttonVariants({ variant: "bold", size: "bold" }),
+                      "ml-4 hidden px-4 text-center md:flex"
+                    )}
+                  >
+                    {dict.pages.add}
+                  </Link>
                   <ManualProxyForm
-                    params={{ lang: lang, mode: mode || "", eType: eType || "manual" }}
+                    params={{
+                      lang: lang,
+                      mode: mode,
+                      eType: eType,
+                    }}
                   />
                   <Link
                     href={`/${lang}/login`}
                     className={cn(
                       buttonVariants({ variant: "bold", size: "bold" }),
-                      "ml-4 px-4"
+                      "px-4"
                     )}
                   >
                     {dict.pages.login}

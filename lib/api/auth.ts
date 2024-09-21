@@ -27,7 +27,9 @@ export async function login(
 
   Cookies.set("refresh_token", rtResult.refresh_token, {
     sameSite: "Strict",
-    secure: false,
+    secure: siteConfig.url.startsWith("https://"),
+    domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+    path: "/",
   })
 
   await getAccessToken()
@@ -153,7 +155,9 @@ export async function getAccessToken(): Promise<string | null> {
   const accessToken = atResult.access_token
   Cookies.set("access_token", accessToken, {
     sameSite: "Strict",
-    secure: false,
+    secure: siteConfig.url.startsWith("https://"),
+    domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+    path: "/",
   })
 
   return accessToken
@@ -163,11 +167,7 @@ export async function getAccessToken(): Promise<string | null> {
 function checkIfTokenExpired(token: string): boolean {
   try {
     const decodedToken: any = decode(token)
-    if (Date.now() >= decodedToken.exp * 1000) {
-      return true
-    } else {
-      return false
-    }
+    return Date.now() >= decodedToken.exp * 1000
   } catch {
     return true
   }
@@ -178,8 +178,18 @@ export async function logout(): Promise<void> {
 }
 
 export function clearUserSession(): void {
-  Cookies.remove("access_token", { sameSite: "Strict", secure: false })
-  Cookies.remove("refresh_token", { sameSite: "Strict", secure: false })
+  Cookies.remove("access_token", {
+    sameSite: "Strict",
+    secure: siteConfig.url.startsWith("https://"),
+    domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+    path: "/",
+  })
+  Cookies.remove("refresh_token", {
+    sameSite: "Strict",
+    secure: siteConfig.url.startsWith("https://"),
+    domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+    path: "/",
+  })
 }
 
 export async function resetPassword(email: string): Promise<number | null> {

@@ -13,9 +13,8 @@ const buttonVariants = cva(
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
           "border border-input hover:bg-accent bg-accent/50 hover:text-accent-foreground",
-        bold: 
-          "border border-2 border-ring dark:border-primary-foreground rounded rounded-xl text-ring dark:text-primary-foreground bg-background hover:text-embloy-foreground hover:border-embloy-foreground dark:hover:text-embloy-foreground dark:hover:border-embloy-foreground",
-        filled: 
+        bold: "border border-2 border-ring dark:border-primary-foreground rounded rounded-xl text-ring dark:text-primary-foreground bg-background hover:text-embloy-foreground hover:border-embloy-foreground dark:hover:text-embloy-foreground dark:hover:border-embloy-foreground",
+        filled:
           "border border-2 rounded rounded-xl border-foreground bg-foreground text-background hover:border-embloy-foreground hover:bg-embloy-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
@@ -24,7 +23,9 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-10 py-2 px-4",
-        bold: "h-9 w-30 px-6 rounded-full",
+        bold: "h-9 px-6 rounded-full lg:w-40 xl:w-auto",
+        boldLg:
+          "h-12 md:h-6 lg:h-10 xl:h-11 2xl:h-12 w-auto 2xl:w-60 lg:px-6 rounded-full text-2xl md:text-sm lg:text-lg 2xl:text-2xl whitespace-nowrap",
         sm: "h-9 px-3 rounded-md",
         lg: "h-11 px-8 rounded-md",
         xl: "h-20 px-20 rounded-lg text-3xl",

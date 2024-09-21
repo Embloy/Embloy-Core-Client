@@ -1,0 +1,118 @@
+---
+lang: "jp"
+title: Security
+description: The security policy of Embloy.
+---
+
+_Last updated on September 19, 2024_
+
+Security and compliance are top priorities for Embloy because they are fundamental to your experience with the product. Embloy is committed to securing your application’s data, eliminating systems vulnerability, and ensuring continuity of access.
+
+Embloy uses a variety of industry-standard technologies and services to secure your data from unauthorized access, disclosure, use, and loss.
+
+Security is directed by Embloy’s Chief Technology Officer and maintained by Embloy’s Security & Operations team.
+
+## Infrastructure and Network Security
+
+### Physical Access Control
+
+Embloy is hosted on [Microsoft Azure](https://azure.microsoft.com/en-us). Microsoft data centers feature a layered security model, including extensive safeguards such as:
+
+- Custom-designed electronic access cards
+- Alarms
+- Vehicle access barriers
+- Perimeter fencing
+- Metal detectors
+- Biometrics
+
+Embloy employees do not have physical access to Microsoft data centers, servers, network equipment, or storage.
+
+### Logical Access Control
+
+Embloy is the assigned administrator of its infrastructure on [Microsoft Azure Cloud Services](https://learn.microsoft.com/en-us/azure/compliance/), and only designated authorized Embloy operations team members have access to configure the infrastructure on an as-needed basis behind a two-factor authenticated virtual private network. Specific private keys are required for individual servers, and keys are stored in a secure and encrypted location.
+
+### Third-Party Audit
+
+[Microsoft Azure Cloud Services](https://learn.microsoft.com/en-us/azure/compliance/) undergo various third-party independent audits regularly and can provide verification of compliance controls for its data centers, infrastructure, and operations. This includes, but is not limited to, the SSAE 18-compliant SOC 2 certification and ISO 27001 certification.
+
+### Intrusion Detection and Prevention
+
+Unusual network patterns or suspicious behavior are among Embloy’s most significant concerns for infrastructure hosting and management. Embloy and [Microsoft Azure Cloud Services](https://learn.microsoft.com/en-us/azure/compliance/)’s intrusion detection and prevention systems (IDS/IPS) rely on both signature-based security and algorithm-based security to identify traffic patterns that are similar to known attack methods.
+
+IDS/IPS involves tightly controlling the size and make-up of the attack surface, employing intelligent detection controls at data entry points, and developing and deploying technologies that automatically remedy dangerous situations, as well as preventing known threats from accessing the system in the first place.
+
+Embloy does not provide direct access to security event forensics but does provide access to the engineering and customer support teams during and after any unscheduled downtime.
+
+## Business Continuity and Disaster Recovery
+
+### High Availability
+
+Every part of the Embloy service uses properly-provisioned, redundant servers (e.g., multiple load balancers, web servers, replica databases) in the case of failure. As part of regular maintenance, servers are taken out of operation without impacting availability. You can find the current system status at https://status.embloy.com/.
+
+### Business Continuity
+
+Embloy keeps encrypted backups of data in multiple regions on Microsoft Azure. While never expected, in the case of production data loss (i.e., primary data stores lost), we will restore organizational data from these backups.
+
+### Disaster Recovery
+
+In the event of a region-wide outage, Embloy will bring up a duplicate environment in a different Microsoft Azure region.
+
+## Data Flow
+
+### Data into System
+
+SDKs securely send events, containing information on application sessions, job postings and additional metadata, to the Embloy server, which processes and stores the events. Audit data of processing and storing is transmitted to our in-house logging infrastructure through encrypted connections.
+
+### Data through System
+
+Data is sent securely to Embloy via TLS to an [HTTPS endpoint](https://api.embloy.com/). All data is AES-256bit encrypted, both in transit and at rest. Embloy aggregates events along with contextual data related to the user’s environment, preceding events, and the release and deployment changeset. Events data is also enriched with artifacts like source maps or symbols uploaded by the user or sourced externally.
+
+Embloy’s latest SSL Labs Report can be found [here](https://www.ssllabs.com/ssltest/analyze.html?d=embloy.com&latest).
+
+### Data out of System
+
+Once the event is processed, it can then be accessed via Embloy’s user interface and REST APIs. Embloy integrates with a variety of third-party tools so developers can combine data from Embloy with data from other systems and manage application workflows efficiently. Therefore, Embloy’s high standards for security and compliance also extend to its partner network.
+
+## Data Security and Privacy
+
+### Data Encryption
+
+All data in Embloy servers is encrypted at rest. Microsoft Azure stores and manages data cryptography keys in its redundant and globally distributed Key Management Service. So, if an intruder were ever able to access any of the physical storage devices, the Embloy data contained therein would still be impossible to decrypt without the keys, rendering the information a useless jumble of random characters.
+
+Encryption at rest also enables continuity measures like backup and infrastructure management without compromising data security and privacy.
+
+Embloy exclusively sends data over HTTPS transport layer security (TLS) encrypted connections for additional security as data transits to and from the application.
+
+### Data Removal
+
+When a customer terminates their subscription and deletes their account by selecting the option in their Embloy settings, all event data stored in the account becomes inaccessible to the customer within 24 hours. The event data associated with the account will be deleted from production within 30 days. Data can also be deleted upon request and via Embloy’s REST API and UI.
+
+### PII Scrubbing
+
+We recommend that users do not send any personally identifiable information (PII) to Embloy. 
+
+## Application Security
+
+### Multi-Factor Authentication
+
+In addition to password login, multi-factor authentication (MFA) provides an added layer of security to Embloy. We encourage MFA as an important step towards securing data access from intruders. Embloy users can deploy universal second-factor devices like YubiKeys (which can also be used to confirm the sudo prompt) or time-based one-time password (TOTP) apps like Google Authenticator as additional factors. This also applies to sign-in with an SSO provider.
+
+Embloy’s organization list also displays who has MFA enabled so users can vet their own organization’s security.
+
+### Single Sign-On
+
+Embloy’s single sign-on (SSO) implementation prioritizes security. We aggressively monitor linked accounts and disable them with any reasonable sign that the account’s access has been revoked. SSO also improves user experience by streamlining login and improving access from trusted domains. Embloy currently offers SSO via Google, LinkedIn, Microsoft and GitHub.
+
+### REST API Authentication (Access and Refresh Tokens)
+
+Embloy’s REST API uses a two token system for authentication. Authentication tokens are passed using the auth header and are used to authenticate a user account with the API. More information can be found in our [developer docs](https://developers.embloy.com/docs/core/tokens/token_info).
+
+## Disclosure Policy
+
+Embloy follows the incident handling and response process recommended by [SANS](https://www.sans.org/reading-room/whitepapers/incident/incident-handlers-handbook-33901), which includes identifying, containing, eradicating, recovering from, communicating, and documenting security events. Embloy notifies customers of any data breaches as soon as possible via email and phone call, followed by multiple periodic updates throughout each day addressing progress and impact. Embloy Enterprise plans include a dedicated customer success manager who holds responsibility for customer communication, as well as regular check-ins and escalations.
+
+Embloy maintains a live report of operational uptime and issues on our status page. Anyone can subscribe to updates via email from the [status page](https://status.embloy.com/).
+
+### Vulnerability Disclosure
+
+Anyone can report a vulnerability or security concern with a Embloy product by contacting [feedback@embloy.com](feedback@embloy.com) and including a proof of concept, a list of tools used (including versions), and the output of the tools. We take all disclosures very seriously, and once we receive a disclosure we rapidly verify each vulnerability before taking the necessary steps to fix it. Once verified, we periodically send status updates as problems are fixed.

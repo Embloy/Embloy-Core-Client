@@ -21,6 +21,14 @@ export const resourcesConfig: ResourcesConfig = {
       title: "LEGAL RESOURCES",
       items: [
         {
+          title: "Security",
+          href: "/resources/security",
+        },
+        {
+          title: "AUP",
+          href: "/resources/aup",
+        },
+        {
           title: "Terms of Service",
           href: "/resources/terms",
         },
@@ -31,7 +39,10 @@ export const resourcesConfig: ResourcesConfig = {
         {
           title: "Cookies",
           href: "/resources/cookies",
-          disabled: true,
+        },
+        {
+          title: "Imprint",
+          href: "/resources/imprint",
         },
       ],
     },

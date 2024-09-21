@@ -13,18 +13,11 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
 import { Badge } from "@/components/new-york/ui/badge"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
-import { getBadgeVariantFromLabel, getTextFromLabel } from "../application-list"
-import { ApplicationResponse } from "../application-response"
-import { Icons } from "../icons"
-import { Button } from "../new-york/ui/button"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../new-york/ui/carousel"
-import { Card, CardContent } from "./card"
+import { getBadgeVariantFromLabel, getTextFromLabel } from "./application-list"
+import { ApplicationResponse } from "./application-response"
+import { Icons } from "./icons"
+import { Button } from "./new-york/ui/button"
+import { Card, CardContent } from "./ui/card"
 
 interface ApplicationItemProps {
   applications: Application[]

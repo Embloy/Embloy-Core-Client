@@ -4,7 +4,12 @@ let locales = ['en-US', 'de', 'fr', 'it', 'jp']
 
 export function middleware(request) {
   let { pathname } = request.nextUrl
-  
+
+  // Only proceed if the request method is GET
+  if (request.method !== 'GET') {
+    return
+  }
+
   // Parse the cookies from the request
   const cookies = cookie.parse(request.headers.get('Cookie') || '')
   const cookieLocale = cookies.lang || 'en-US'
@@ -18,7 +23,8 @@ export function middleware(request) {
 
   if (requestLocale && requestLocale !== cookieLocale) {
     request.nextUrl.pathname = pathname.replace(`/${requestLocale}`, `/${cookieLocale}`)
-    return Response.redirect(request.nextUrl)  }
+    return Response.redirect(request.nextUrl)
+  }
 
   if (!requestLocale) {
     request.nextUrl.pathname = `/${cookieLocale}${pathname}`
@@ -27,5 +33,5 @@ export function middleware(request) {
 }
  
 export const config = {
-    matcher: ['/((?!_next).*)']
+  matcher: ['/((?!_next).*)']
 }

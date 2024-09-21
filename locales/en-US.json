@@ -1,19 +1,80 @@
 {
   "pages": {
+      "sandbox": {
+        "title": "Sandbox Mode",
+        "header": "You're currently using Embloy in sandbox mode 🏖 - access to some features may be limited.", 
+        "description": "Sandbox mode is a safe environment where you can test Embloy's features without affecting your account. Please note that some features such as subscriptions and billing may be limited or disabled in this mode."
+      },
       "features": "Features",
       "pricing": "Pricing",
       "employers": "Employers",
       "developers": "Developers",
       "about": "About",
       "resources": "Resources",
-      "login": "Login"
+      "login": "Log In",
+      "add":"Request Embloy",
+      "addL":"🠶 Request Embloy for your job",
+      "signup":"Sign Up",
+      "demo": "🠶 Learn how Embloy works",
+      "tutorial": "🠶 Tutorials & Help",
+      "manual": "Apply Now"
   },
   "marketing": {
+      "landing": {
+        "about": "About",
+        "head": "Join Embloy. Apply to any job with a single profile.",
+        "subHead": "Stop wasting your time with Workday accounts or long email threads! Sign up to Embloy and apply for jobs with Venmo-like simplicity. Create an account once, use it to apply with one click and manage your applications in one place - for applicants, Embloy is 100% free.",
+        "try": "or try it",
+        "disclaimerLink": "Request Embloy",
+        "disclaimer": "  if the job you want to apply for doesn’t offer an option to apply with Embloy yet."
+      },
+      "howItWorks": {
+        "about": "How it works",
+        "how0Head":"Click on 'Apply with Embloy':",
+        "how0": " Use the Embloy button on the job posting and enter your Embloy credentials.",
+        "how1Head":"Submit Application:",
+        "how1": " AI speeds up completing the application. Review suggestions before finalizing.",
+        "how2Head":"Manage Job Hunt:",
+        "how2": " Use your Embloy dashboard to track pending applications and chat directly with recruiters."
+      },
+      "newFeatures": {
+        "about": "Features",
+        "feature0Head": "Super-Fast AI Applications",
+        "feature0Desc": "Embloy auto-fills repetitive fields on application forms, like Name, Email, and questions you've already answered in previous applications. Perfect for applying to multiple jobs in one go.",
+        "feature1Head": "Connect to LinkedIn",
+        "feature1Desc": "Link external resources to Embloy (like your LinkedIn profile, or your GitHub profile) for smoother job applications, personalized recommendations, and improved auto-fill.",
+        "feature2Head": "QR Code Applications",
+        "feature2Desc": "Apply to jobs with a single tap on your phone. No need to fill out forms or upload CVs. Just scan the QR code and you're done.",
+        "feature3Head": "One Job Application Hub",
+        "feature3Desc": "Manage all your applications in the Embloy dashboard and contact recruiters directly. One Embloy account eliminates the need for writing a bunch of emails back and forth and maintaining multiple Workday accounts.",
+        "feature4Head": "Stay Updated",
+        "feature4Desc": "Get notifications about the status of your applications, and receive reminders about upcoming interviews or deadlines.",
+        "feature5Head": "Use Your Existing Accounts",
+        "feature5Desc": "If you don't want to create an Embloy account, you can use your LinkedIn, Google, Microsoft or GitHub account to apply for jobs.",
+        "feature6Head": "One-Click-To-Apply",
+        "feature6Desc": "Enjoy the convenience of a single platform, where everything is just a click away.",
+        "feature7Head": "AI Powered",
+        "feature7Desc": "From CV parsing to automatic applications based on your skills, interests and expectations. Enjoy the ease of an application copilot that not only helps you apply faster, but also better.",
+        "feature8Head": "X-Platform",
+        "feature8Desc": "Highly modular system, accessible on web, iOS, and Android. Allows for custom integrations through API."
+      },
+      "usefulLinks": {
+        "about": "Useful links",
+        "head": "Discover Embloy:"
+      },
+      "news": {
+        "about": "News",
+        "head": "Latest Updates on Embloy:",
+        "link": "Learn more",
+        "news0": "Manual 'Apply Now' is live! ",
+        "news0Link":"https://developers.embloy.com/docs/guides/get-started-integrations",
+        "news1": "'How to connect Embloy to your ATS?' Guide is launched!",
+        "news1Link":"https://developers.embloy.com/docs/guides/get-started-integrations"
+      },
       "workInProgress": "This page is still a work in progress - Follow along on GitHub",
       "developerDocsLaunched": "Our Developer Documentation is now live - Check it out!",
+      "inviteMessage": "Coming soon: AI-Assisted Application Tracking, and more!",
       "notLaunchedYet": "Please note that Embloy is not active yet and you won't be able to sign up. Get in touch to access our Beta Version.",
-      "mainHeader": "Embloy.",
-      "subHeader": "Solutions that brain-boost HR.",
       "recruitmentSteps": "All Recruitment Steps in One Place: Make life easier for both organizations and job seekers by centralizing recruitment processes.",
       "getStarted": "Get Started",
       "forCompanies": "For Companies",
@@ -36,6 +97,8 @@
       "openSource": "Proudly Open Source",
       "openSourceDescription": "Embloy is open source and powered by open source software.",
       "sourceCodeAvailableOnGitHub": "The code is available on ",
+      "qrApplications": "Did you know?",
+      "qrApplicationsDescription": "With Embloy, you can also apply to jobs with a single tap on your phone: No need to fill out forms or upload CVs. Just scan the QR code and you're done.",
       "logo": "Logo",
       "copyright": "©2024 • Embloy Platforms UG (haftungsbeschränkt).",
       "copyrightGithub": "©2024 Embloy Platforms UG (haftungsbeschränkt). The source code is available on ",
@@ -105,7 +168,7 @@
       "orContinueWith": "Or continue with"
     },
     "register": {
-      "login": "Login",
+      "login": "Log In",
       "signUp": "Sign Up",
       "description": "Description of the image",
       "createAccount": "Create an account",
@@ -362,6 +425,8 @@
       "muteJobNotifications": "Mute all job notifications",
       "noAnswerProvided": "No answer provided",
       "youWrote": "You wrote:",
+      "selectApplication": "Select Application:",    
+      "applicationNr": "Application",    
       "reviewEmployer": "Review employer"
     },
     "billing": {
@@ -416,6 +481,8 @@
       "linkedIn": "LinkedIn",
       "instagram": "Instagram",
       "facebook": "Facebook",
+      "github": "GitHub",
+      "portfolio": "Portfolio",    
       "save": "Save",
       "cancel": "Cancel",
       "delete": "Delete",
@@ -451,7 +518,7 @@
         "marketingEmails": "Marketing emails",
         "marketingEmailsDescription": "Stay updated with our new products, features, and more.",
         "securityEmails": "Security emails",
-        "securityEmailsDescription": "Receive alerts about suspicious account activity such as password changes, login from new devices, and more.",
+        "securityEmailsDescription": "Receive alerts about suspicious account activity such as password changes, logins from new devices, and more.",
         "updateNotifications": "Update Notifications"
       },
       "errors": {
@@ -506,7 +573,9 @@
           "twitter_url": "URL must be a Twitter URL",
           "facebook_url": "URL must be a Facebook URL",
           "instagram_url": "URL must be an Instagram URL",
-          "linkedin_url": "URL must be a LinkedIn URL"
+          "linkedin_url": "URL must be a LinkedIn URL",
+          "github_url": "URL must be a GitHub URL",
+          "portfolio_url": "URL must be a Portfolio URL"
         }
       },
       "success": {
@@ -523,6 +592,32 @@
           "description": "Your profile image has been removed. Reload the page to see the change."
         }
       }
+    },
+    "reportIssue": {
+      "title": "Report an issue",
+      "description": "What area are you having problems with?",
+      "areaLabel": "Area",
+      "securityLevelLabel": "Security Level (estimate)",
+      "subjectLabel": "Subject",
+      "subjectPlaceholder": "I need help with...",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Please include all information relevant to your issue.",
+      "goBack": "Go Back",
+      "submit": "Submit",
+      "areaOptions": {
+        "application": "Application",
+        "billing": "Billing",
+        "account": "Account",
+        "security": "Security",
+        "support": "Support"
+      },
+      "securityLevelOptions": {
+        "1": "Severity 1 (Highest)",
+        "2": "Severity 2",
+        "3": "Severity 3",
+        "4": "Severity 4 (Lowest)"
+      },
+      "emailBody": "Hello Support Team,\n\nI am experiencing an issue in the following area: {area}.\nThe estimated security level of this issue is: {securityLevel}.\n\nHere is a brief description of the issue:\n{description}\n\n---------------------\nPlease feel free to add any additional information below this line:\n"
     }
   },
   "proxy": {
@@ -537,7 +632,7 @@
     "byEmbloy": "by Embloy Platforms UG (haftungsbeschränkt)",
     "required": "This field is required",
     "validURL": "This field must be a valid URL",
-    "backToHomepage": "Back to Homepage",
+    "backToHomepage": "Back to Job Posting",
     "goToEmbloy": "Go To Embloy",
     "goToDashboard": "Go to Dashboard",
     "notFoundTitle": "Uh oh! Not Found",
@@ -546,6 +641,7 @@
     "thisJob": "this job",
     "enterDetails": "Enter your details below to apply",
     "allowedFormats": "Allowed formats: ",
+    "removeFile": "Remove file",
     "enterShortText": "Enter your response (max. 200 characters)",
     "enterLongText": "Enter your response (max. 1000 characters)",
     "enterNumber": "Enter a number",
@@ -582,7 +678,9 @@
       "enterprise": "Enterprise",
       "features": "Features",
       "pricing": "Pricing",
-      "employers": "Employers",
+      "employers": "Recruiter Dashboard",
+      "help": "Help",
+      "report an issue": "Report an Issue",
       "resources": "Resources",
       "developers": "Developers",
       "about": "About"
@@ -667,6 +765,7 @@
   },
   "resources": {
     "aboutEmbloy": "About Embloy",
+    "genius": "Recruiter Dashboard",
     "Overview": {
       "title": "Resources"
     },
@@ -679,11 +778,20 @@
     "Resources": {
       "title": "Resources"
     },
+    "Imprint": {
+      "title": "Imprint"
+    },
     "Introduction": {
       "title": "Introduction"
     },
     "Cookies": {
       "title": "Cookies"
+    },
+    "AUP": {
+      "title": "Acceptable Use Policy"
+    },
+    "Security": {
+      "title": "Security & Compliance"
     },
     "sidebar": {
       "onThisPage": "On This Page",
@@ -693,6 +801,9 @@
       },
       "LEGAL RESOURCES": {
         "title": "LEGAL RESOURCES",
+        "Security": "Security & Compliance",
+        "Imprint": "Imprint",
+        "AUP": "Acceptable Use Policy",
         "Terms of Service": "Terms of Service",
         "Privacy Policy": "Privacy Policy",
         "Cookies": "Cookies"

@@ -1,8 +1,10 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { EmbloySpacer } from "@/components/ui/stuff"
 
 import { getDictionary } from "../dictionaries"
 
@@ -12,224 +14,438 @@ export default async function IndexPage({ params: { lang } }) {
   return (
     <>
       {/* eslint-disable-next-line */}
-      <section className="space-y-6 bg-background md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 md:pt-10 lg:py-32">
-        <div className="container flex max-w-5xl flex-col items-center gap-4 text-center">
+      <section className="space-y-6 md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 portrait:py-0 ">
+        <div className="dark:backdrop-blu container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-white/80 py-12 text-center backdrop-blur dark:bg-[#110e1b]/80 portrait:gap-0">
           <Link
-            href={`${siteConfig.links.developer}/docs/sdks/overview`}
-            className="rounded-2xl border-2 bg-secondary px-4 py-1.5 text-sm font-medium transition-colors duration-300 hover:border-embloy-foreground hover:text-embloy-foreground"
+            href={`${siteConfig.links.developer}/blog`}
+            className="rounded-2xl border-2 border-primary bg-embloy-foreground px-4 py-1.5 text-2xl font-medium text-primary duration-300 hover:bg-primary hover:text-embloy-foreground dark:border-embloy-foreground dark:text-background dark:hover:text-primary-foreground portrait:text-sm"
             target="_blank"
           >
-            {dict.marketing.developerDocsLaunched}
+            {dict.marketing.inviteMessage}
           </Link>
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-            <p>{dict.marketing.mainHeader}</p>
-            {dict.marketing.subHeader}
-          </h1>
-          <p className="hidden max-w-2xl leading-normal text-muted-foreground sm:block sm:text-xl sm:leading-8">
-            {dict.marketing.recruitmentSteps}
-          </p>
-          <div className="hidden space-x-4 lg:block">
-            <Link
-              href={`/${lang}/login`}
-              className={cn(buttonVariants({ size: "lg" }))}
-            >
-              {dict.marketing.getStarted}
-            </Link>
-            <Link
-              href={siteConfig.links.genius}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-            >
-              {dict.marketing.forCompanies}
-            </Link>
-          </div>
-          <div className="space-x-4 lg:hidden">
-            <Link
-              href={`/${lang}/login`}
-              className={cn(buttonVariants({ size: "lg" }))}
-            >
-              {dict.marketing.getStarted}
-            </Link>
-          </div>
-        </div>
-      </section>
+          <div className="flex w-full flex-row items-start justify-between px-10 portrait:flex-col portrait:px-0">
+            <div className="flex w-6/12 flex-col items-start justify-start gap-8 pt-5 portrait:w-full portrait:gap-4">
+              <h1 className="text-left font-heading text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
+                {dict.marketing.landing.head}
+              </h1>
+              <h1 className="text-left text-2xl portrait:text-lg">
+                {dict.marketing.landing.subHead}
+              </h1>
+              <div className="mt-12 flex w-full flex-row items-center justify-between gap-2 portrait:flex-col portrait:items-start">
+                <Link
+                  href={`/${lang}/register`}
+                  className={cn(
+                    buttonVariants({ variant: "filled", size: "boldLg" }),
+                    " px-9 py-2 portrait:w-full portrait:px-4 portrait:py-0"
+                  )}
+                >
+                  {dict.pages.signup}
+                </Link>
 
-      <section
-        id="features"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
-      >
-        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            {dict.marketing.features}
-          </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            {dict.marketing.featureDescription}
-          </p>
-        </div>
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-5xl md:grid-cols-3">
-          <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:opacity-100 dark:bg-muted">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" className="size-12" fill="none">
-                <path
-                  d="M5 12C5 8.13401 8.13401 5 12 5M16.4999 7.5L11.9999 12M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="space-y-2">
-                <h3 className="font-bold">{dict.marketing.smartHiring}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {dict.marketing.smartHiringDescription}
+                <p className="mx-4 whitespace-nowrap text-center portrait:hidden portrait:text-center portrait:text-sm landscape:text-lg">
+                  {dict.marketing.landing.try}
                 </p>
+                <div className="flex w-8/12 items-center portrait:w-full portrait:justify-center">
+                  <Link
+                    className="portrait:w-8/12"
+                    target="_blank"
+                    href="https://embloy.com/sdk/apply?gq=eyJhbGciOiJIUzI1NiJ9°eyJzdWIiOjEsImV4cCI6MTcyODcyNjUxNSwianRpIjoiMmY1NjM1ZDQ4Y2I2YjU3ZGM1YzJkN2VlY2IyZTk3NGMiLCJpYXQiOjE3MjYwOTY3NjksImpvYl9pZCI6IjIwIiwiaXNzIjoiYXBpLmVtYmxveS5jb20ifQ°1dbyRkPEQwQg-xpzt2cfRiqLaT36YmnB4yyQM-eilrE"
+                  >
+                    <Image
+                      src="https://embloy.com/images/button-black_large.svg"
+                      alt="Embloy button"
+                      width={300}
+                      height={300}
+                      className="transform-gpu dark:hidden portrait:hidden"
+                    />
+                    <Image
+                      src="https://embloy.com/images/button-white_large.svg"
+                      alt="Embloy button"
+                      width={300}
+                      height={300}
+                      className="hidden transform-gpu dark:block dark:portrait:hidden"
+                    />
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:opacity-100 dark:bg-muted">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg
-                className="fill-currentColor size-12"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11 4.5H18.3C19.4201 4.5 19.9802 4.5 20.408 4.71799C20.7843 4.90973 21.0903 5.21569 21.282 5.59202C21.5 6.01984 21.5 6.57989 21.5 7.7V9C21.5 9.93188 21.5 10.3978 21.3478 10.7654C21.1448 11.2554 20.7554 11.6448 20.2654 11.8478C19.8978 12 19.4319 12 18.5 12M13 19.5H5.7C4.5799 19.5 4.01984 19.5 3.59202 19.282C3.21569 19.0903 2.90973 18.7843 2.71799 18.408C2.5 17.9802 2.5 17.4201 2.5 16.3V15C2.5 14.0681 2.5 13.6022 2.65224 13.2346C2.85523 12.7446 3.24458 12.3552 3.73463 12.1522C4.10218 12 4.56812 12 5.5 12M10.3 14.5H13.7C13.98 14.5 14.12 14.5 14.227 14.4455C14.3211 14.3976 14.3976 14.3211 14.4455 14.227C14.5 14.12 14.5 13.98 14.5 13.7V10.3C14.5 10.02 14.5 9.87996 14.4455 9.773C14.3976 9.67892 14.3211 9.60243 14.227 9.5545C14.12 9.5 13.98 9.5 13.7 9.5H10.3C10.02 9.5 9.87996 9.5 9.773 9.5545C9.67892 9.60243 9.60243 9.67892 9.5545 9.773C9.5 9.87996 9.5 10.02 9.5 10.3V13.7C9.5 13.98 9.5 14.12 9.5545 14.227C9.60243 14.3211 9.67892 14.3976 9.773 14.4455C9.87996 14.5 10.02 14.5 10.3 14.5ZM17.8 22H21.2C21.48 22 21.62 22 21.727 21.9455C21.8211 21.8976 21.8976 21.8211 21.9455 21.727C22 21.62 22 21.48 22 21.2V17.8C22 17.52 22 17.38 21.9455 17.273C21.8976 17.1789 21.8211 17.1024 21.727 17.0545C21.62 17 21.48 17 21.2 17H17.8C17.52 17 17.38 17 17.273 17.0545C17.1789 17.1024 17.1024 17.1789 17.0545 17.273C17 17.38 17 17.52 17 17.8V21.2C17 21.48 17 21.62 17.0545 21.727C17.1024 21.8211 17.1789 21.8976 17.273 21.9455C17.38 22 17.52 22 17.8 22ZM2.8 7H6.2C6.48003 7 6.62004 7 6.727 6.9455C6.82108 6.89757 6.89757 6.82108 6.9455 6.727C7 6.62004 7 6.48003 7 6.2V2.8C7 2.51997 7 2.37996 6.9455 2.273C6.89757 2.17892 6.82108 2.10243 6.727 2.0545C6.62004 2 6.48003 2 6.2 2H2.8C2.51997 2 2.37996 2 2.273 2.0545C2.17892 2.10243 2.10243 2.17892 2.0545 2.273C2 2.37996 2 2.51997 2 2.8V6.2C2 6.48003 2 6.62004 2.0545 6.727C2.10243 6.82108 2.17892 6.89757 2.273 6.9455C2.37996 7 2.51997 7 2.8 7Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="space-y-2">
-                <h3 className="font-bold">
-                  {dict.marketing.endToEndRecruitment}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {dict.marketing.endToEndRecruitmentDescription}
-                </p>
-              </div>
+            <div className="flex w-5/12 flex-col items-start justify-start portrait:hidden ">
+              <Image
+                src="/images/desk-dark-1.png"
+                width={0}
+                height={0}
+                sizes="100vw"
+                alt="Picture of the author"
+                className="hidden w-full rounded-lg dark:block"
+              />
+              <Image
+                src="/images/desk-light-1.png"
+                width={0}
+                height={0}
+                sizes="100vw"
+                alt="Picture of the author"
+                className="w-full rounded-lg dark:hidden"
+              />
             </div>
           </div>
-          <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:opacity-100 dark:bg-muted">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg
-                className="size-12"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.5 4.5C7.5 3.11929 8.61929 2 10 2C11.3807 2 12.5 3.11929 12.5 4.5V6H13.5C14.8978 6 15.5967 6 16.1481 6.22836C16.8831 6.53284 17.4672 7.11687 17.7716 7.85195C18 8.40326 18 9.10218 18 10.5H19.5C20.8807 10.5 22 11.6193 22 13C22 14.3807 20.8807 15.5 19.5 15.5H18V17.2C18 18.8802 18 19.7202 17.673 20.362C17.3854 20.9265 16.9265 21.3854 16.362 21.673C15.7202 22 14.8802 22 13.2 22H12.5V20.25C12.5 19.0074 11.4926 18 10.25 18C9.00736 18 8 19.0074 8 20.25V22H6.8C5.11984 22 4.27976 22 3.63803 21.673C3.07354 21.3854 2.6146 20.9265 2.32698 20.362C2 19.7202 2 18.8802 2 17.2V15.5H3.5C4.88071 15.5 6 14.3807 6 13C6 11.6193 4.88071 10.5 3.5 10.5H2C2 9.10218 2 8.40326 2.22836 7.85195C2.53284 7.11687 3.11687 6.53284 3.85195 6.22836C4.40326 6 5.10218 6 6.5 6H7.5V4.5Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="space-y-2">
-                <h3 className="font-bold">{dict.marketing.easyToIntegrate}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {dict.marketing.easyToIntegrateDescription}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:opacity-100 dark:bg-muted">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" className="size-12">
-                <path
-                  d="M9 3.5V2M5.06066 5.06066L4 4M5.06066 13L4 14.0607M13 5.06066L14.0607 4M3.5 9H2M8.5 8.5L12.6111 21.2778L15.5 18.3889L19.1111 22L22 19.1111L18.3889 15.5L21.2778 12.6111L8.5 8.5Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="space-y-2">
-                <h3 className="font-bold">{dict.marketing.oneClickToApply}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {dict.marketing.oneClickToApplyDescription}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:opacity-100 dark:bg-muted">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg
-                className="size-12"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M22 9H2M14 17.5L16.5 15L14 12.5M10 12.5L7.5 15L10 17.5M2 7.8L2 16.2C2 17.8802 2 18.7202 2.32698 19.362C2.6146 19.9265 3.07354 20.3854 3.63803 20.673C4.27976 21 5.11984 21 6.8 21H17.2C18.8802 21 19.7202 21 20.362 20.673C20.9265 20.3854 21.3854 19.9265 21.673 19.362C22 18.7202 22 17.8802 22 16.2V7.8C22 6.11984 22 5.27977 21.673 4.63803C21.3854 4.07354 20.9265 3.6146 20.362 3.32698C19.7202 3 18.8802 3 17.2 3L6.8 3C5.11984 3 4.27976 3 3.63803 3.32698C3.07354 3.6146 2.6146 4.07354 2.32698 4.63803C2 5.27976 2 6.11984 2 7.8Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="space-y-2">
-                <h3 className="font-bold">{dict.marketing.xPlatform}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {dict.marketing.xPlatformDescription}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:opacity-100 dark:bg-muted">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" fill="none" className="size-12">
-                <path
-                  d="M9.99999 13C10.4294 13.5741 10.9773 14.0491 11.6065 14.3929C12.2357 14.7367 12.9315 14.9411 13.6466 14.9923C14.3618 15.0435 15.0796 14.9403 15.7513 14.6897C16.4231 14.4392 17.0331 14.047 17.54 13.54L20.54 10.54C21.4508 9.59695 21.9547 8.33394 21.9434 7.02296C21.932 5.71198 21.4061 4.45791 20.4791 3.53087C19.552 2.60383 18.298 2.07799 16.987 2.0666C15.676 2.0552 14.413 2.55918 13.47 3.46997L11.75 5.17997M14 11C13.5705 10.4258 13.0226 9.95078 12.3934 9.60703C11.7642 9.26327 11.0685 9.05885 10.3533 9.00763C9.63819 8.95641 8.9204 9.0596 8.24864 9.31018C7.57688 9.56077 6.96687 9.9529 6.45999 10.46L3.45999 13.46C2.5492 14.403 2.04522 15.666 2.05662 16.977C2.06801 18.288 2.59385 19.542 3.52089 20.4691C4.44793 21.3961 5.702 21.9219 7.01298 21.9333C8.32396 21.9447 9.58697 21.4408 10.53 20.53L12.24 18.82"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <div className="space-y-2">
-                <h3 className="font-bold">{dict.marketing.socialTools}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {dict.marketing.socialToolsDescription}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mx-auto text-center md:max-w-[58rem]">
-          <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            {dict.marketing.smarterFasterBetter}
-          </p>
         </div>
       </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section>
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
+          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+            <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
+              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
+                {dict.marketing.howItWorks.about}
+              </p>
+            </div>
+            <div className="flex w-11/12 flex-row items-start justify-between portrait:w-full portrait:flex-col portrait:gap-4">
+              <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                <Image
+                  src="/images/how0-light.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="w-2/12 rounded-[5px] dark:hidden"
+                />
+                <Image
+                  src="/images/how0.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="hidden w-2/12 rounded-[5px] dark:block"
+                />
+                <p className="w-9/12 text-left portrait:text-sm landscape:text-lg">
+                  <strong className="portrait:hidden">
+                    {dict.marketing.howItWorks.how0Head}
+                  </strong>
+                  <h1 className="text-left font-heading text-xl landscape:hidden ">
+                    {dict.marketing.howItWorks.how0Head}
+                  </h1>
+                  <br className="portrait:hidden" />
+                  {dict.marketing.howItWorks.how0}
+                </p>
+              </div>
+              <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                <Image
+                  src="/images/how1-light.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="w-2/12 rounded-[5px] dark:hidden"
+                />
+                <Image
+                  src="/images/how1.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="hidden w-2/12 rounded-[5px] dark:block"
+                />
+                <p className="w-9/12 text-left portrait:text-sm landscape:text-lg">
+                  <strong className="portrait:hidden">
+                    {dict.marketing.howItWorks.how1Head}
+                  </strong>
+                  <h1 className="text-left font-heading text-xl landscape:hidden">
+                    {dict.marketing.howItWorks.how1Head}
+                  </h1>
+                  <br className="portrait:hidden" />
+                  {dict.marketing.howItWorks.how1}
+                </p>
+              </div>
+              <div className="flex w-4/12 flex-row items-start justify-start gap-2 portrait:w-full portrait:gap-4">
+                <Image
+                  src="/images/how2-light.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="block w-2/12 rounded-[5px] dark:hidden"
+                />
+                <Image
+                  src="/images/how2.png"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="how0"
+                  className="hidden w-2/12 rounded-[5px] dark:block"
+                />
+                <p className="w-9/12 text-left portrait:text-sm landscape:text-lg">
+                  <strong className="portrait:hidden">
+                    {dict.marketing.howItWorks.how2Head}
+                  </strong>
+                  <h1 className="text-left font-heading text-xl landscape:hidden">
+                    {dict.marketing.howItWorks.how2Head}
+                  </h1>
+                  <br className="portrait:hidden" />
+                  {dict.marketing.howItWorks.how2}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section className="space-y-6">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
+          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+            <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
+              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
+                {dict.marketing.usefulLinks.about}
+              </p>
+            </div>
+            <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
+              <div className="flex w-full flex-row items-start justify-start portrait:flex-col portrait:gap-4">
+                <h1 className="text-left font-heading text-3xl">
+                  {dict.marketing.usefulLinks.head}
+                </h1>
+                <Link
+                  href={siteConfig.links.calendy}
+                  target="_blank"
+                  className={cn(
+                    buttonVariants({ variant: "bold", size: "default" }),
+                    "ml-4 portrait:px-4 portrait:text-sm landscape:px-6 landscape:text-lg"
+                  )}
+                >
+                  {dict.pages.demo}
+                </Link>
+
+                <Link
+                  href={siteConfig.links.about + "/en/contact"}
+                  target="_blank"
+                  className={cn(
+                    buttonVariants({ variant: "bold", size: "default" }),
+                    "ml-4 portrait:px-4 portrait:text-sm landscape:px-6 landscape:text-lg"
+                  )}
+                >
+                  {dict.pages.addL}
+                </Link>
+                <Link
+                  href={siteConfig.links.developer + "/docs/category/guides"}
+                  target="_blank"
+                  className={cn(
+                    buttonVariants({ variant: "bold", size: "default" }),
+                    "ml-4 portrait:px-4 portrait:text-sm landscape:px-6 landscape:text-lg"
+                  )}
+                >
+                  {dict.pages.tutorial}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section className="space-y-6">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
+          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+            <div className="flex w-[45px] flex-col items-start justify-start portrait:mb-2 portrait:w-full">
+              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
+                {dict.marketing.newFeatures.about}
+              </p>
+            </div>
+            <div className="grid w-11/12 flex-col items-start justify-start gap-8 md:grid-cols-3 portrait:w-full">
+              <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature0Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature0Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature1Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature1Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature2Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature2Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature3Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature3Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature4Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature4Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature5Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature5Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature6Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature6Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature7Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature7Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
+                  <div className="flex flex-col justify-between rounded-md p-6">
+                    <div className="space-y-2">
+                      <h3 className="font-bold">
+                        {dict.marketing.newFeatures.feature8Head}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {dict.marketing.newFeatures.feature8Desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section className="space-y-6">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
+          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+            <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
+              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground ">
+                {dict.marketing.news.about}
+              </p>
+            </div>
+            <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
+              <h1 className="text-left font-heading text-3xl">
+                {dict.marketing.news.head}
+              </h1>
+              <ul className="list-disc pl-7">
+                <li>
+                  <p className="text-left portrait:text-sm landscape:text-lg">
+                    {dict.marketing.news.news0}
+                    <br />
+                    <a
+                      target="_blank"
+                      href={dict.marketing.news.news0Link}
+                      className="text-sky-500 hover:underline dark:text-embloy-foreground portrait:text-sm landscape:text-lg"
+                      rel="noreferrer"
+                    >
+                      {dict.marketing.news.link}
+                    </a>
+                  </p>
+                </li>
+                <li>
+                  <p className="text-left portrait:text-sm landscape:text-lg">
+                    {dict.marketing.news.news1}
+                    <br />
+                    <a
+                      target="_blank"
+                      href={dict.marketing.news.news1Link}
+                      className=" text-sky-500 hover:underline dark:text-embloy-foreground portrait:text-sm landscape:text-lg"
+                      rel="noreferrer"
+                    >
+                      {dict.marketing.news.link}
+                    </a>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <EmbloySpacer className="portrait:hidden" />
       <section
         id="open-source"
-        className="container bg-background bg-cover bg-center py-8 md:bg-[url('/images/bg-2.png')] md:py-12 md:dark:bg-[url('/images/bg-2-dark.jpg')] lg:py-24"
+        className="container bg-background bg-cover bg-center md:bg-[url('/images/bg-2.png')] md:dark:bg-[url('/images/bg-2-dark.jpg')] lg:py-12"
       >
         <div className="mx-auto my-12 flex max-w-[65rem] flex-col items-center justify-center gap-4 text-center"></div>
-        <div className="container mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 py-8 text-center md:py-12 lg:py-24">
+        <div className="container mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            {dict.marketing.openSource}
+            {dict.marketing.qrApplications}
           </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            {dict.marketing.openSourceDescription} <br />{" "}
-            {dict.marketing.sourceCodeAvailableOnGitHub}{" "}
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-4"
-            >
-              GitHub
-            </Link>
-            .{" "}
+          <p className="leading-normal text-muted-foreground sm:text-2xl sm:leading-7 md:max-w-[60%] xl:max-w-[70%] 2xl:max-w-[85%]">
+            {dict.marketing.qrApplicationsDescription}
           </p>
+          <Image
+            src="/images/qr-code.png"
+            width={200}
+            height={200}
+            alt="QR code"
+            className="mx-auto my-10 rounded-sm"
+          />
+          <Link
+            href={`${lang}/register`}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ variant: "filled", size: "boldLg" }),
+              "portrait:mb-10 portrait:w-full portrait:px-4 portrait:py-0"
+            )}
+          >
+            {dict.marketing.getStarted}
+          </Link>
         </div>
-      </section>
+      </section>{" "}
     </>
   )
 }

@@ -1,14 +1,16 @@
 import { Lexend } from "next/font/google"
 import localFont from "next/font/local"
-import { i18n, type Locale } from "../../i18n-config";
+
+import { i18n, type Locale } from "../../i18n-config"
 import "@/styles/globals.css"
+import Head from "next/head"
+
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import Head from "next/head"
 
 const fontSans = Lexend({
   subsets: ["latin"],
@@ -78,10 +80,16 @@ export const metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default function RootLayout({ children, params }: {
-  children: React.ReactNode;
-  params: { lang: Locale };
+export default function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: { lang: Locale }
 }) {
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("access_token") : null
+
   return (
     <html lang={params.lang} suppressHydrationWarning>
       <Head>
@@ -91,15 +99,27 @@ export default function RootLayout({ children, params }: {
         <meta property="og:url" content="https://embloy.com" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Embloy" />
-        <meta property="og:description" content="Solutions that brain-boost HR." />
-        <meta property="og:image" content="https://embloy.com/opengraph-image.jpg?5669f67eac8f9423" />
+        <meta
+          property="og:description"
+          content="Solutions that brain-boost HR."
+        />
+        <meta
+          property="og:image"
+          content="https://embloy.com/opengraph-image.jpg?5669f67eac8f9423"
+        />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="embloy.com" />
         <meta property="twitter:url" content="https://embloy.com" />
         <meta name="twitter:title" content="Embloy" />
-        <meta name="twitter:description" content="Solutions that brain-boost HR." />
-        <meta name="twitter:image" content="https://embloy.com/opengraph-image.jpg?5669f67eac8f9423" />
+        <meta
+          name="twitter:description"
+          content="Solutions that brain-boost HR."
+        />
+        <meta
+          name="twitter:image"
+          content="https://embloy.com/opengraph-image.jpg?5669f67eac8f9423"
+        />
       </Head>
       <body
         className={cn(

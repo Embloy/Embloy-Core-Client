@@ -1,0 +1,122 @@
+---
+lang: "de"
+title: Security
+description: Die Sicherheitsrichtlinie von Embloy.
+---
+
+<Callout>
+_Für Ihre Bequemlichkeit haben wir die dieser Seite ins Deutsche übersetzt. Diese Übersetzung dient nur zu Informationszwecken und die endgültige Version dieser Seite ist die englische Version._
+</Callout>
+
+_Letzte Aktualisierung am 19. September 2024_
+
+Sicherheit und Compliance haben bei Embloy höchste Priorität, da sie grundlegend für Ihre Erfahrung mit dem Produkt sind. Embloy verpflichtet sich, die Daten Ihrer Anwendung zu sichern, Schwachstellen in den Systemen zu beseitigen und die kontinuierliche Zugänglichkeit zu gewährleisten.
+
+Embloy verwendet eine Vielzahl von branchenüblichen Technologien und Diensten, um Ihre Daten vor unbefugtem Zugriff, Offenlegung, Nutzung und Verlust zu schützen.
+
+Die Sicherheit wird von Embloys Chief Technology Officer geleitet und vom Security & Operations Team von Embloy aufrechterhalten.
+
+## Infrastruktur- und Netzwerksicherheit
+
+### Physische Zugangskontrolle
+
+Embloy wird auf [Microsoft Azure](https://azure.microsoft.com/de-de) gehostet. Die Rechenzentren von Microsoft verfügen über ein mehrschichtiges Sicherheitsmodell, das umfassende Schutzmaßnahmen wie folgende beinhaltet:
+
+- Speziell entwickelte elektronische Zugangskarten
+- Alarme
+- Fahrzeugzugangsbarrieren
+- Umzäunungen
+- Metalldetektoren
+- Biometrische Scanner
+
+Mitarbeiter von Embloy haben keinen physischen Zugang zu Microsoft-Rechenzentren, Servern, Netzwerkausrüstung oder Speicher.
+
+### Logische Zugangskontrolle
+
+Embloy ist der zugewiesene Administrator seiner Infrastruktur auf [Microsoft Azure Cloud Services](https://learn.microsoft.com/de-de/azure/compliance/), und nur autorisierte Mitglieder des Embloy-Operations-Teams haben auf einer Bedarfsbasis Zugang zur Konfiguration der Infrastruktur über ein zweifaktorauthentifiziertes virtuelles privates Netzwerk. Für einzelne Server sind spezielle private Schlüssel erforderlich, die an einem sicheren und verschlüsselten Ort gespeichert werden.
+
+### Externe Prüfung
+
+[Microsoft Azure Cloud Services](https://learn.microsoft.com/de-de/azure/compliance/) unterliegt regelmäßigen externen unabhängigen Prüfungen, die die Einhaltung von Kontrollmaßnahmen für Rechenzentren, Infrastruktur und Betrieb verifizieren. Dazu gehören unter anderem die SOC 2-Zertifizierung gemäß SSAE 18 und die ISO 27001-Zertifizierung.
+
+### Eindringungserkennung und -verhinderung
+
+Ungewöhnliche Netzwerkaktivitäten oder verdächtiges Verhalten zählen zu den größten Sicherheitsbedenken von Embloy im Hinblick auf das Hosting und das Management der Infrastruktur. Die Eindringungserkennungs- und -verhinderungssysteme (IDS/IPS) von Embloy und [Microsoft Azure Cloud Services](https://learn.microsoft.com/de-de/azure/compliance/) basieren sowohl auf signaturbasierten als auch algorithmusbasierten Sicherheitsmechanismen, um Datenverkehrsmuster zu erkennen, die bekannten Angriffsmethoden ähneln.
+
+Das IDS/IPS-System umfasst die strikte Kontrolle der Angriffsfläche, den Einsatz intelligenter Erkennungsmechanismen an den Dateneingangspunkten sowie die Entwicklung und Bereitstellung von Technologien, die gefährliche Situationen automatisch beheben, sowie die Verhinderung bekannter Bedrohungen.
+
+Embloy bietet keinen direkten Zugriff auf Sicherheitsereignisforensik, aber das Engineering- und das Kundenservice-Team stehen während und nach ungeplanten Ausfallzeiten zur Verfügung.
+
+## Geschäftskontinuität und Notfallwiederherstellung
+
+### Hohe Verfügbarkeit
+
+Jeder Teil des Embloy-Dienstes nutzt redundant ausgestattete Server (z. B. mehrere Lastenausgleicher, Webserver, Replikationsdatenbanken) für den Fall eines Ausfalls. Im Rahmen der regelmäßigen Wartung werden Server außer Betrieb genommen, ohne die Verfügbarkeit zu beeinträchtigen. Den aktuellen Systemstatus finden Sie unter https://status.embloy.com/.
+
+### Geschäftskontinuität
+
+Embloy bewahrt verschlüsselte Backups der Daten in mehreren Regionen auf Microsoft Azure auf. Im Falle eines Verlusts von Produktionsdaten (z. B. Verlust primärer Datenspeicher) stellen wir die organisatorischen Daten aus diesen Backups wieder her.
+
+### Notfallwiederherstellung
+
+Im Falle eines ausgedehnten regionalen Ausfalls wird Embloy eine duplizierte Umgebung in einer anderen Microsoft Azure-Region hochfahren.
+
+## Datenfluss
+
+### Eingehende Daten
+
+SDKs senden sicher Ereignisse, die Informationen zu Anwendungssitzungen, Stellenanzeigen und zusätzlichen Metadaten enthalten, an den Embloy-Server, der die Ereignisse verarbeitet und speichert. Auditdaten der Verarbeitung und Speicherung werden über verschlüsselte Verbindungen an unsere interne Protokollierungsinfrastruktur übertragen.
+
+### Daten im System
+
+Daten werden sicher über TLS an Embloy an einen [HTTPS-Endpunkt](https://api.embloy.com/) gesendet. Alle Daten werden sowohl während der Übertragung als auch im Ruhezustand mit AES-256-Bit verschlüsselt. Embloy aggregiert Ereignisse zusammen mit Kontextdaten zur Umgebung des Benutzers, zu vorhergehenden Ereignissen sowie zu Release- und Bereitstellungsänderungen. Ereignisdaten werden außerdem mit Artefakten wie Quellkarten oder von Benutzern hochgeladenen oder extern beschafften Symbolen angereichert.
+
+Der neueste SSL Labs Report von Embloy kann [hier](https://www.ssllabs.com/ssltest/analyze.html?d=embloy.com&latest) eingesehen werden.
+
+### Ausgehende Daten
+
+Sobald das Ereignis verarbeitet wurde, kann es über die Benutzeroberfläche von Embloy und die REST-APIs abgerufen werden. Embloy integriert sich mit einer Vielzahl von Drittanbieter-Tools, sodass Entwickler Daten aus Embloy mit Daten aus anderen Systemen kombinieren und Anwendungs-Workflows effizient verwalten können. Daher erstrecken sich die hohen Sicherheits- und Compliance-Standards von Embloy auch auf sein Partnernetzwerk.
+
+## Datensicherheit und Datenschutz
+
+### Datenverschlüsselung
+
+Alle Daten auf Embloy-Servern werden im Ruhezustand verschlüsselt. Microsoft Azure speichert und verwaltet kryptografische Schlüssel in seinem redundanten und global verteilten Schlüsselverwaltungssystem. Wenn ein Eindringling jemals physischen Zugriff auf Speichermedien hätte, wären die darin enthaltenen Embloy-Daten dennoch nicht zu entschlüsseln, da die Schlüssel fehlen, wodurch die Informationen zu einem nutzlosen Wirrwarr zufälliger Zeichen würden.
+
+Die Verschlüsselung im Ruhezustand ermöglicht auch Kontinuitätsmaßnahmen wie Backup und Infrastrukturmanagement, ohne die Datensicherheit und den Datenschutz zu gefährden.
+
+Embloy sendet Daten ausschließlich über HTTPS-Transport-Layer-Security (TLS)-verschlüsselte Verbindungen, um zusätzliche Sicherheit zu gewährleisten, während die Daten zwischen der Anwendung und dem Server übertragen werden.
+
+### Datenlöschung
+
+Wenn ein Kunde sein Abonnement kündigt und sein Konto durch Auswahl der entsprechenden Option in den Embloy-Einstellungen löscht, werden alle im Konto gespeicherten Ereignisdaten innerhalb von 24 Stunden für den Kunden unzugänglich. Die mit dem Konto verknüpften Ereignisdaten werden innerhalb von 30 Tagen aus der Produktion gelöscht. Daten können auch auf Anfrage und über die REST-API und Benutzeroberfläche von Embloy gelöscht werden.
+
+### Bereinigung personenbezogener Daten
+
+Wir empfehlen Benutzern, keine personenbezogenen Daten (PII) an Embloy zu senden.
+
+## Anwendungssicherheit
+
+### Multi-Faktor-Authentifizierung
+
+Zusätzlich zum Passwort-Login bietet die Multi-Faktor-Authentifizierung (MFA) eine zusätzliche Sicherheitsebene für Embloy. Wir empfehlen MFA als wichtigen Schritt zur Sicherung des Datenzugriffs vor Eindringlingen. Embloy-Benutzer können universelle Zweitfaktor-Geräte wie YubiKeys (die auch zur Bestätigung des sudo-Prompts verwendet werden können) oder zeitbasierte Einmalkennwort-Apps (TOTP) wie Google Authenticator als zusätzliche Faktoren einsetzen. Dies gilt auch für die Anmeldung mit einem SSO-Anbieter.
+
+Die Organisationsliste von Embloy zeigt auch an, wer MFA aktiviert hat, sodass Benutzer die Sicherheit ihrer eigenen Organisation überprüfen können.
+
+### Single Sign-On
+
+Die Implementierung von Single Sign-On (SSO) bei Embloy priorisiert die Sicherheit. Wir überwachen verknüpfte Konten aggressiv und deaktivieren sie bei jedem vernünftigen Anzeichen dafür, dass der Zugang des Kontos widerrufen wurde. SSO verbessert auch die Benutzererfahrung, indem es die Anmeldung vereinfacht und den Zugriff von vertrauenswürdigen Domains erleichtert. Derzeit bietet Embloy SSO über Google, LinkedIn, Microsoft und GitHub an.
+
+### REST-API-Authentifizierung (Zugriffs- und Aktualisierungstokens)
+
+Die REST-API von Embloy verwendet ein Zwei-Token-System zur Authentifizierung. Authentifizierungstoken werden über den Auth-Header übermittelt und dienen zur Authentifizierung eines Benutzerkontos mit der API. Weitere Informationen finden Sie in unserer [Entwicklerdokumentation](https://developers.embloy.com/docs/core/tokens/token_info).
+
+## Offenlegungspolitik
+
+Embloy folgt dem empfohlenen Vorfallbearbeitungs- und Reaktionsprozess von [SANS](https://www.sans.org/reading-room/whitepapers/incident/incident-handlers-handbook-33901), der die Identifizierung, Eindämmung, Beseitigung, Wiederherstellung, Kommunikation und Dokumentation von Sicherheitsereignissen umfasst. Embloy benachrichtigt Kunden so schnell wie möglich per E-Mail und Telefonanruf über Datenverletzungen und gibt mehrere tägliche Updates zum Fortschritt und zur Auswirkung. Enterprise-Kundenpläne von Embloy umfassen einen dedizierten Customer Success Manager, der für die Kommunikation mit den Kunden verantwortlich ist, sowie regelmäßige Check-ins und Eskalationen.
+
+Embloy führt einen Live-Bericht über Betriebszeiten und Probleme auf unserer Statusseite. Jeder kann Updates per E-Mail von der [Statusseite](https://status.embloy.com/) abonnieren.
+
+### Schwachstellenoffenlegung
+
+Jeder kann eine Schwachstelle oder ein Sicherheitsproblem mit einem Embloy-Produkt melden, indem er [feedback@embloy.com](mailto:feedback@embloy.com) kontaktiert und einen Proof of Concept, eine Liste der verwendeten Tools (einschließlich Versionen) und die Ausgabe der Tools beifügt. Wir nehmen alle Offenlegungen sehr ernst, und sobald wir eine Offenlegung erhalten, überprüfen wir jede Schwachstelle schnell und ergreifen die erforderlichen Maßnahmen zur Behebung. Nach der Bestätigung senden wir regelmäßig Statusaktualisierungen, während die Probleme behoben werden.

@@ -7,6 +7,7 @@ export type NavItem = {
   href: string
   external?: boolean
   disabled?: boolean
+  default?: string
 }
 
 export type MainNavItem = NavItem
@@ -41,7 +42,9 @@ export type SiteConfig = {
     developer: string
     about: string
     genius: string
-    calendy: string
+    calendy: string,
+    main: string,
+    help: string
   }
 }
 
@@ -52,6 +55,7 @@ export type MarketingConfig = {
 export type DashboardConfig = {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
+  sandboxSidebarNav: SidebarNavItem[]
 }
 
 export type SubscriptionPlan = {

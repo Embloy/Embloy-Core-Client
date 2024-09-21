@@ -29,7 +29,8 @@ export function LanguageToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {[
+
+      {[
           { code: "en-US", label: "English", src: "/flags/usFlag.svg" },
           { code: "de", label: "Deutsch", src: "/flags/deFlag.svg" },
           { code: "fr", label: "Française", src: "/flags/frFlag.svg" },
@@ -42,6 +43,8 @@ export function LanguageToggle() {
             {language === code && <Icons.check className="ml-2 size-4" />}
           </DropdownMenuItem>
         ))}
+
+   
       </DropdownMenuContent>
     </DropdownMenu>
   )

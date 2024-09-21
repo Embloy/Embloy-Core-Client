@@ -29,6 +29,7 @@ export const isUrlLabel = (label) => {
   const normalized = normalizeLabel(label)
   return (
     normalized.includes("github") ||
+    normalized.includes("portfolio") ||
     normalized.includes("facebook") ||
     normalized.includes("instagram") ||
     normalized.includes("linkedin") ||
@@ -53,6 +54,12 @@ export const getUserPropertyValue = (user, label) => {
     }
     if (normalizeLabel(label).toLowerCase().includes("twitter")) {
       return user.twitter_url || ""
+    }
+    if (normalizeLabel(label).toLowerCase().includes("github")) {
+      return user.github_url || ""
+    }
+    if (normalizeLabel(label).toLowerCase().includes("portfolio")) {
+      return user.portfolio_url || ""
     }
     const key = `${normalizeLabel(label).replace(/url|profile|link/g, "")}_url`
     return user[key] || ""
