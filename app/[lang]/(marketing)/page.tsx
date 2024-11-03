@@ -265,14 +265,14 @@ export default async function IndexPage({ params: { lang } }) {
             <div className="grid w-11/12 flex-col items-start justify-start gap-8 md:grid-cols-3 portrait:w-full">
               <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
                 <FeatureItem params={{title: dict.marketing.newFeatures.feature0Head, desc: dict.marketing.newFeatures.feature0Desc}} />
-                <FeatureItem params={{title: dict.marketing.newFeatures.feature4Head, desc: dict.marketing.newFeatures.feature4Desc}} />
+                <FeatureItem params={{title: dict.marketing.newFeatures.feature6Head, desc: dict.marketing.newFeatures.feature6Desc}} />
               </div>
               <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
                 <FeatureItem params={{title: dict.marketing.newFeatures.feature3Head, desc: dict.marketing.newFeatures.feature3Desc}} />
                 <FeatureItem params={{title: dict.marketing.newFeatures.feature5Head, desc: dict.marketing.newFeatures.feature5Desc}} />
               </div>
               <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
-                <FeatureItem params={{title: dict.marketing.newFeatures.feature6Head, desc: dict.marketing.newFeatures.feature6Desc}} />
+                <FeatureItem params={{title: dict.marketing.newFeatures.feature4Head, desc: dict.marketing.newFeatures.feature4Desc}} />
                 <FeatureItem params={{title: dict.marketing.newFeatures.feature2Head, desc: dict.marketing.newFeatures.feature2Desc}} />
                 
               </div>
