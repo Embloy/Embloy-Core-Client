@@ -32,7 +32,7 @@ export default function RegisterPage({ params: { lang }, mode}) {
       {mode === undefined && 
         <>
         <Link
-          href={origin ? `/${lang}/login?origin=${origin}` : `/${lang}/login`}
+          href={origin ? `/login?origin=${origin}` : `/login`}
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "absolute right-4 top-4 md:right-8 md:top-8"
@@ -80,14 +80,14 @@ export default function RegisterPage({ params: { lang }, mode}) {
           <p className={mode=== undefined ? "px-8 text-center text-sm text-muted-foreground" : "px-8 text-center text-sm text-black dark:text-muted-foreground"}>
           {dict.auth.register.agreeToTerms}
             <Link
-              href={`/${lang}/resources/terms`}
+              href={`/resources/terms`}
               target="_blank"
               className="hover:text-brand underline underline-offset-4"
             >
               {dict.auth.register.terms}
             </Link>{dict.auth.register.and}
             <Link
-              href={`/${lang}/resources/privacy`}
+              href={`/resources/privacy`}
               target="_blank"
               className="hover:text-brand underline underline-offset-4"
             >
