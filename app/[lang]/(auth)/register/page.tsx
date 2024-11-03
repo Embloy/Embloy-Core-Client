@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation"
 import Image from 'next/image';
 import { useState, useEffect } from "react"
 import { getDictionary } from "../../dictionaries"
+import { EmbloySpacer } from "@/components/ui/stuff"
 
 
 
@@ -27,7 +28,7 @@ export default function RegisterPage({ params: { lang }, mode}) {
   }, [lang]);
 
   return dict && (
-    <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
+    <div className={mode === undefined ? "w-screen container grid h-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0" : "border-2 bg-low rounded-lg flex flex-col items-center justify-center lg:px-16 "}>
       <Link
         href={origin ? `/${lang}/login?origin=${origin}` : `/${lang}/login`}
         className={cn(
@@ -58,7 +59,7 @@ export default function RegisterPage({ params: { lang }, mode}) {
       
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-          <div className="flex flex-col space-y-2 text-center">
+          {mode === undefined ? <div className="flex flex-col space-y-2 text-center">
             <Icons.logo className="mx-auto size-6" />
             <h1 className="text-2xl font-semibold tracking-tight">
               {dict.auth.register.createAccount}
@@ -66,9 +67,15 @@ export default function RegisterPage({ params: { lang }, mode}) {
             <p className="text-sm text-muted-foreground">
             {dict.auth.register.enterDetails}
             </p>
-          </div>
-          <UserSignUpForm params={{lang: lang}}  />
-          <p className="px-8 text-center text-sm text-muted-foreground">
+          </div>:
+          <h1 className="text-2xl lg:text-5xl text-high font-semibold tracking-tight">
+            {dict.marketing.signup.head}
+          </h1>
+          }
+          
+         {mode !== undefined && <EmbloySpacer className={"h-3"} />}
+          <UserSignUpForm params={{lang: lang, mode:mode}}  />
+          <p className={mode=== undefined ? "px-8 text-center text-sm text-muted-foreground" : "px-8 text-center text-sm text-black dark:text-muted-foreground"}>
           {dict.auth.register.agreeToTerms}
             <Link
               href={`/${lang}/resources/terms`}

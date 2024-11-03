@@ -3,7 +3,7 @@ import { SiteConfig } from "types"
 export const siteConfig: SiteConfig = {
   name: "Embloy",
   description: "Apply to any job in the world using one single account: You press the button, we do the rest.",
-  url: "https://embloy.com",
+  url: "localhost:3000",
   api_url: "https://api.embloy.com/api/v0",
   api_root_url: "https://api.embloy.com",
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",
@@ -17,5 +17,6 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/embloy",
     calendy: "https://calendly.com/jan-p-hummel/embloy-demo",
     help: "https://about.embloy.com/en/contact",
+    signup: "https://www.embloy.com/en-US/register",
   },
 }

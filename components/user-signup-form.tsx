@@ -152,9 +152,7 @@ export function UserSignUpForm({ className, params: {lang, mode}, ...props }: Us
       });
     }
   }
-  React.useEffect(() => {
-    console.log("linkedin", mode === 'linkedin' || mode === undefined )
-  }, [mode])
+
   return dict && (
     <div className={cn("grid gap-6", className)} {...props}>
       {mode === undefined && 
@@ -329,8 +327,7 @@ export function UserSignUpForm({ className, params: {lang, mode}, ...props }: Us
   <button
     type="button"
     className={cn(
-      buttonVariants({ variant: mode === "linkedin" ? "ghost" : "outline" }),
-      "rounded-full border-none p-2 px-1 hover:bg-secondary"
+      buttonVariants({ variant: "oauth" }), "h-full w-full rounded-full"
     )}
     onClick={
       mode === "linkedin"
@@ -353,15 +350,15 @@ export function UserSignUpForm({ className, params: {lang, mode}, ...props }: Us
     (mode === "google" && isGoogleLoading) ||
     (mode === "microsoft" && isMicrosoftLoading) ||
     (mode === "github" && isGitHubLoading) ? (
-      <Icons.spinner className="size-8 animate-spin" />
+      <Icons.spinner className="size-12 animate-spin" />
     ) : mode === "linkedin" ? (
-      <Icons.linkedin className="size-8" />
+      <Icons.linkedin className="size-12 lg:size-20" />
     ) : mode === "google" ? (
-      <Icons.google className="size-8" />
+      <Icons.google className="size-12 lg:size-20" />
     ) : mode === "microsoft" ? (
-      <Icons.microsoft className="size-8" />
+      <Icons.microsoft className="size-12 lg:size-20" />
     ) : (
-      <Icons.gitHub className="size-8" />
+      <Icons.gitHub className="size-12 lg:size-20" />
     )}
   </button>
 )}
