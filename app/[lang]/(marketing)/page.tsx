@@ -211,7 +211,9 @@ export default async function IndexPage({ params: { lang } }) {
             </div>
             <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
               <div className="flex w-full flex-row items-start justify-start portrait:flex-col gap-12">
-                <RegisterPage params={lang} mode='linkedin' />
+                <div className="hidden lg:block ">
+                  <RegisterPage params={lang} mode='linkedin' />
+                </div>
                 <div className="flex flex-col items-start justify-start gap-4">
                   <h1 className="text-left font-heading text-3xl">
                     {dict.marketing.usefulLinks.head}
