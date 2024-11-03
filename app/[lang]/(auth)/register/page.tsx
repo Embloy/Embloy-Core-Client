@@ -11,7 +11,9 @@ import Image from 'next/image';
 import { useState, useEffect } from "react"
 import { getDictionary } from "../../dictionaries"
 
-export default function RegisterPage({ params: { lang } }) {
+
+
+export default function RegisterPage({ params: { lang }, mode}) {
   const origin = useSearchParams().get("origin") as string
   const [dict, setDict] = useState<Record<string, any> | null>(null);
 
@@ -35,7 +37,9 @@ export default function RegisterPage({ params: { lang } }) {
       >
         {dict.auth.register.login}
       </Link>
-      <Image 
+      {mode === undefined && 
+        <>
+        <Image 
         src="/images/register.png" 
         alt="Description of the image" 
         width={842}
@@ -49,6 +53,9 @@ export default function RegisterPage({ params: { lang } }) {
         height={842}
         className="hidden size-full object-cover dark:lg:block" 
       />
+      </>
+      }
+      
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
@@ -60,7 +67,7 @@ export default function RegisterPage({ params: { lang } }) {
             {dict.auth.register.enterDetails}
             </p>
           </div>
-          <UserSignUpForm params={{lang: lang}} />
+          <UserSignUpForm params={{lang: lang}}  />
           <p className="px-8 text-center text-sm text-muted-foreground">
           {dict.auth.register.agreeToTerms}
             <Link

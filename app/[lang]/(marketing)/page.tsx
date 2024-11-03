@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { EmbloySpacer } from "@/components/ui/stuff"
 
 import { getDictionary } from "../dictionaries"
+import RegisterPage from "../(auth)/register/page"
 
 export default async function IndexPage({ params: { lang } }) {
   const dict = await getDictionary(lang)
@@ -16,13 +17,6 @@ export default async function IndexPage({ params: { lang } }) {
       {/* eslint-disable-next-line */}
       <section className="space-y-6 md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 portrait:py-0 ">
         <div className="dark:backdrop-blu container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-white/80 py-12 text-center backdrop-blur dark:bg-[#110e1b]/80 portrait:gap-0">
-          <Link
-            href={`${siteConfig.links.developer}/blog`}
-            className="rounded-2xl border-2 border-primary bg-embloy-foreground px-4 py-1.5 text-2xl font-medium text-primary duration-300 hover:bg-primary hover:text-embloy-foreground dark:border-embloy-foreground dark:text-background dark:hover:text-primary-foreground portrait:text-sm"
-            target="_blank"
-          >
-            {dict.marketing.inviteMessage}
-          </Link>
           <div className="flex w-full flex-row items-start justify-between px-10 portrait:flex-col portrait:px-0">
             <div className="flex w-6/12 flex-col items-start justify-start gap-8 pt-5 portrait:w-full portrait:gap-4">
               <h1 className="text-left font-heading text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
@@ -203,7 +197,7 @@ export default async function IndexPage({ params: { lang } }) {
                   {dict.marketing.usefulLinks.head}
                 </h1>
                 <Link
-                  href={siteConfig.links.calendy}
+                  href={siteConfig.links.signup}
                   target="_blank"
                   className={cn(
                     buttonVariants({ variant: "bold", size: "default" }),
@@ -233,6 +227,26 @@ export default async function IndexPage({ params: { lang } }) {
                 >
                   {dict.pages.tutorial}
                 </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <EmbloySpacer className="portrait:hidden" />
+      <section className="space-y-6">
+        <div className="container flex w-11/12 flex-col items-center gap-16 py-4 text-center">
+          <div className="flex w-full flex-row items-start justify-between portrait:flex-col">
+            <div className="flex w-[45px] flex-col items-start justify-start portrait:w-full">
+              <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground text-transparent dark:text-transparent select-none">
+                {dict.marketing.signup.about}
+              </p>
+            </div>
+            <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
+              <div className="flex w-full flex-row items-start justify-between portrait:justify-start portrait:flex-col portrait:gap-4">
+                <h1 className="text-left font-heading text-3xl">
+                  {dict.marketing.signup.head}
+                </h1>
+                <RegisterPage params={lang} mode="linkedin" />
               </div>
             </div>
           </div>

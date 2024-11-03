@@ -15,15 +15,15 @@
       "add":"Request Embloy",
       "addL":"🠶 Request Embloy for your job",
       "signup":"Sign Up",
-      "demo": "🠶 Learn how Embloy works",
+      "demo": "🠶 Invite a friend",
       "tutorial": "🠶 Tutorials & Help",
       "manual": "Apply Now"
   },
   "marketing": {
       "landing": {
         "about": "About",
-        "head": "Join Embloy. Apply to any job with a single profile.",
-        "subHead": "Stop wasting your time with Workday accounts or long email threads! Sign up to Embloy and apply for jobs with Venmo-like simplicity. Create an account once, use it to apply with one click and manage your applications in one place - for applicants, Embloy is 100% free.",
+        "head": "Apply to jobs with a single Embloy account.",
+        "subHead": "Sign up once and use your Embloy account to apply for any job & Manage all your applications in one place.",
         "try": "or try it",
         "disclaimerLink": "Request Embloy",
         "disclaimer": "  if the job you want to apply for doesn’t offer an option to apply with Embloy yet."
@@ -31,11 +31,11 @@
       "howItWorks": {
         "about": "How it works",
         "how0Head":"Click on 'Apply with Embloy':",
-        "how0": " Use the Embloy button on the job posting and enter your Embloy credentials.",
+        "how0": " Sign in and fill out the application form fields that are not auto-filled by Embloy.",
         "how1Head":"Submit Application:",
-        "how1": " AI speeds up completing the application. Review suggestions before finalizing.",
+        "how1": " Appreciate Embloy's AI for filling out repetitive fields and submit your application.",
         "how2Head":"Manage Job Hunt:",
-        "how2": " Use your Embloy dashboard to track pending applications and chat directly with recruiters."
+        "how2": " Track pending applications in your Embloy dashboard and chat with recruiters directly."
       },
       "newFeatures": {
         "about": "Features",
@@ -62,6 +62,11 @@
         "about": "Useful links",
         "head": "Discover Embloy:"
       },
+      "signup": {
+        "about": "Useful links",
+        "head": "Sign up now:"
+      },
+      
       "news": {
         "about": "News",
         "head": "Latest Updates on Embloy:",
@@ -73,7 +78,7 @@
       },
       "workInProgress": "This page is still a work in progress - Follow along on GitHub",
       "developerDocsLaunched": "Our Developer Documentation is now live - Check it out!",
-      "inviteMessage": "Coming soon: AI-Assisted Application Tracking, and more!",
+      "inviteMessage": "!",
       "notLaunchedYet": "Please note that Embloy is not active yet and you won't be able to sign up. Get in touch to access our Beta Version.",
       "recruitmentSteps": "All Recruitment Steps in One Place: Make life easier for both organizations and job seekers by centralizing recruitment processes.",
       "getStarted": "Get Started",

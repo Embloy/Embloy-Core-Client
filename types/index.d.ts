@@ -44,7 +44,8 @@ export type SiteConfig = {
     genius: string
     calendy: string,
     main: string,
-    help: string
+    help: string,
+    signup: string
   }
 }
 
