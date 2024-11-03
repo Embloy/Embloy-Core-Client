@@ -29,17 +29,19 @@ export default function RegisterPage({ params: { lang }, mode}) {
 
   return dict && (
     <div className={mode === undefined ? "w-screen container grid h-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0" : "border-2 bg-low rounded-lg flex flex-col items-center justify-center lg:px-16 "}>
-      <Link
-        href={origin ? `/${lang}/login?origin=${origin}` : `/${lang}/login`}
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute right-4 top-4 md:right-8 md:top-8"
-        )}
-      >
-        {dict.auth.register.login}
-      </Link>
       {mode === undefined && 
         <>
+        <Link
+          href={origin ? `/${lang}/login?origin=${origin}` : `/${lang}/login`}
+          className={cn(
+            buttonVariants({ variant: "ghost" }),
+            "absolute right-4 top-4 md:right-8 md:top-8"
+          )}
+        >
+          {dict.auth.register.login}
+        </Link>
+      
+        
         <Image 
         src="/images/register.png" 
         alt="Description of the image" 
