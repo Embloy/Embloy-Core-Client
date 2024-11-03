@@ -15,8 +15,8 @@ function FeatureItem({params: {title, desc}}) {
     <div className="relative scale-100 transform-gpu overflow-hidden rounded-lg border bg-background p-2 opacity-90 transition-all duration-500 ease-in-out hover:scale-105 hover:border-primary hover:opacity-100 dark:bg-muted">
       <div className="flex flex-col justify-between rounded-md px-4 py-2">
         <div className="space-y-2">
-          <h3 className="font-semibold text-2xl">{title}</h3>
-          <p className="text-sm text-left">{desc}</p>
+          <h3 className="text-2xl font-semibold">{title}</h3>
+          <p className="text-left text-sm">{desc}</p>
         </div>
       </div>
     </div>
@@ -210,7 +210,7 @@ export default async function IndexPage({ params: { lang } }) {
               </p>
             </div>
             <div className="flex w-11/12 flex-col items-start justify-start gap-8 portrait:w-full">
-              <div className="flex w-full flex-row items-start justify-start portrait:flex-col gap-12">
+              <div className="flex w-full flex-row items-start justify-start gap-12 portrait:flex-col">
                 <div className="hidden lg:block ">
                   <RegisterPage params={lang} mode='linkedin' />
                 </div>

@@ -327,7 +327,7 @@ export function UserSignUpForm({ className, params: {lang, mode}, ...props }: Us
   <button
     type="button"
     className={cn(
-      buttonVariants({ variant: "oauth" }), "h-full w-full rounded-full"
+      buttonVariants({ variant: "oauth" }), "size-full rounded-full"
     )}
     onClick={
       mode === "linkedin"

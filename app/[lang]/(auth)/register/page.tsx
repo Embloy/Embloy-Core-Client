@@ -28,7 +28,7 @@ export default function RegisterPage({ params: { lang }, mode}) {
   }, [lang]);
 
   return dict && (
-    <div className={mode === undefined ? "w-screen container grid h-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0" : "border-2 bg-low rounded-lg flex flex-col items-center justify-center lg:px-16 "}>
+    <div className={mode === undefined ? "container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0" : "flex flex-col items-center justify-center rounded-lg border-2 bg-low lg:px-16 "}>
       {mode === undefined && 
         <>
         <Link
@@ -70,7 +70,7 @@ export default function RegisterPage({ params: { lang }, mode}) {
             {dict.auth.register.enterDetails}
             </p>
           </div>:
-          <h1 className="text-2xl lg:text-5xl text-high font-semibold tracking-tight">
+          <h1 className="text-2xl font-semibold tracking-tight text-high lg:text-5xl">
             {dict.marketing.signup.head}
           </h1>
           }
