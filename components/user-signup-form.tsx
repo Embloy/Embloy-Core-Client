@@ -19,13 +19,14 @@ import { Locale } from "../i18n-config"
 
 interface UserSignUpFormProps extends React.HTMLAttributes<HTMLDivElement> {
   params: {
-    lang: Locale
+    lang: Locale,
+    mode?: string
   }
 }
 
 type FormData = z.infer<typeof userSignUpSchema>
 
-export function UserSignUpForm({ className, params: {lang}, ...props }: UserSignUpFormProps) {
+export function UserSignUpForm({ className, params: {lang, mode}, ...props }: UserSignUpFormProps) {
   const {
     register,
     handleSubmit,
@@ -154,168 +155,214 @@ export function UserSignUpForm({ className, params: {lang}, ...props }: UserSign
 
   return dict && (
     <div className={cn("grid gap-6", className)} {...props}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid gap-2">
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
-              {dict.auth.register.email}
-            </Label>
-            <Input
-              id="email"
-              placeholder="name@example.com"
-              type="email"
-              autoCapitalize="none"
-              autoComplete="email"
-              autoCorrect="off"
-              disabled={isLoading || isGitHubLoading}
-              {...register("email")}
-            />
-            {errors?.email?.message && (
-              <p className="px-1 text-xs text-red-600">
-                {dict.auth.errors[errors.email.message] || errors.email.message}
-              </p>
-            )}
-          </div>
+      {mode === undefined && 
+        <>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid gap-2">
+              <div className="grid gap-1">
+                <Label className="sr-only" htmlFor="email">
+                  {dict.auth.register.email}
+                </Label>
+                <Input
+                  id="email"
+                  placeholder="name@example.com"
+                  type="email"
+                  autoCapitalize="none"
+                  autoComplete="email"
+                  autoCorrect="off"
+                  disabled={isLoading || isGitHubLoading}
+                  {...register("email")}
+                />
+                {errors?.email?.message && (
+                  <p className="px-1 text-xs text-red-600">
+                    {dict.auth.errors[errors.email.message] || errors.email.message}
+                  </p>
+                )}
+              </div>
 
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="firstName">
-            {dict.auth.register.firstName}
-            </Label>
-            <Input
-              id="firstName"
-              placeholder={dict.auth.register.firstName}
-              type="text"
-              disabled={isLoading || isGitHubLoading}
-              {...register("firstName")}
-            />
-            {errors?.firstName?.message && (
-              <p className="px-1 text-xs text-red-600">
-                {dict.auth.errors[errors.firstName.message] || errors.firstName.message}
-              </p>
-            )}
+              <div className="grid gap-1">
+                <Label className="sr-only" htmlFor="firstName">
+                {dict.auth.register.firstName}
+                </Label>
+                <Input
+                  id="firstName"
+                  placeholder={dict.auth.register.firstName}
+                  type="text"
+                  disabled={isLoading || isGitHubLoading}
+                  {...register("firstName")}
+                />
+                {errors?.firstName?.message && (
+                  <p className="px-1 text-xs text-red-600">
+                    {dict.auth.errors[errors.firstName.message] || errors.firstName.message}
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-1">
+                <Label className="sr-only" htmlFor="lastName">
+                {dict.auth.register.lastName}
+                </Label>
+                <Input
+                  id="lastName"
+                  placeholder={dict.auth.register.lastName}
+                  type="text"
+                  disabled={isLoading || isGitHubLoading}
+                  {...register("lastName")}
+                />
+                {errors?.lastName?.message && (
+                  <p className="px-1 text-xs text-red-600">
+                    {dict.auth.errors[errors.lastName.message] || errors.lastName.message}
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-1">
+                <Label className="sr-only" htmlFor="password">
+                {dict.auth.register.password}
+                </Label>
+                <Input
+                  id="password"
+                  placeholder={dict.auth.register.password}
+                  type="password"
+                  autoCapitalize="none"
+                  autoComplete="password"
+                  autoCorrect="off"
+                  disabled={isLoading || isGitHubLoading}
+                  {...register("password")}
+                />
+              {errors?.password?.message && (
+                <p className="px-1 text-xs text-red-600">
+                  {dict.auth.errors[errors.password.message] || errors.password.message}
+                </p>
+              )}
+              </div>
+              <div className="grid gap-1">
+                <Label className="sr-only" htmlFor="passwordConfirmation">
+                {dict.auth.register.confirmPassword}
+                </Label>
+                <Input
+                  id="passwordConfirmation"
+                  placeholder={dict.auth.register.confirmPassword}
+                  type="password"
+                  disabled={isLoading || isGitHubLoading}
+                  {...register("passwordConfirmation")}
+                />
+              {errors?.passwordConfirmation?.message && (
+                <p className="px-1 text-xs text-red-600">
+                  {dict.auth.errors[errors.passwordConfirmation.message] || errors.passwordConfirmation.message}
+                </p>
+              )}
+              </div>
+              <button className={cn(buttonVariants())} disabled={isLoading}>
+                {isLoading && (
+                  <Icons.spinner className="mr-2 size-4 animate-spin" />
+                )}
+                {dict.auth.register.signUp}
+              </button>
+            </div>
+          </form>
+        
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+              {dict.auth.register.orContinueWith}
+              </span>
+            </div>
           </div>
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="lastName">
-            {dict.auth.register.lastName}
-            </Label>
-            <Input
-              id="lastName"
-              placeholder={dict.auth.register.lastName}
-              type="text"
-              disabled={isLoading || isGitHubLoading}
-              {...register("lastName")}
-            />
-            {errors?.lastName?.message && (
-              <p className="px-1 text-xs text-red-600">
-                {dict.auth.errors[errors.lastName.message] || errors.lastName.message}
-              </p>
-            )}
-          </div>
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="password">
-            {dict.auth.register.password}
-            </Label>
-            <Input
-              id="password"
-              placeholder={dict.auth.register.password}
-              type="password"
-              autoCapitalize="none"
-              autoComplete="password"
-              autoCorrect="off"
-              disabled={isLoading || isGitHubLoading}
-              {...register("password")}
-            />
-          {errors?.password?.message && (
-            <p className="px-1 text-xs text-red-600">
-              {dict.auth.errors[errors.password.message] || errors.password.message}
-            </p>
-          )}
-          </div>
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="passwordConfirmation">
-            {dict.auth.register.confirmPassword}
-            </Label>
-            <Input
-              id="passwordConfirmation"
-              placeholder={dict.auth.register.confirmPassword}
-              type="password"
-              disabled={isLoading || isGitHubLoading}
-              {...register("passwordConfirmation")}
-            />
-          {errors?.passwordConfirmation?.message && (
-            <p className="px-1 text-xs text-red-600">
-              {dict.auth.errors[errors.passwordConfirmation.message] || errors.passwordConfirmation.message}
-            </p>
-          )}
-          </div>
-          <button className={cn(buttonVariants())} disabled={isLoading}>
-            {isLoading && (
-              <Icons.spinner className="mr-2 size-4 animate-spin" />
-            )}
-            {dict.auth.register.signUp}
-          </button>
-        </div>
-      </form>
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-          {dict.auth.register.orContinueWith}
-          </span>
-        </div>
-      </div>
-      <div className="flex justify-center space-x-4">
-        <button
-          type="button"
-          className={cn(buttonVariants({ variant: "outline" }), "rounded-full border-none p-2 px-1 hover:bg-secondary")}
-          onClick={handleGithubSignIn}
-          disabled={isLoading || isGitHubLoading}
-        >
-          {isGitHubLoading ? (
-            <Icons.spinner className="size-8 animate-spin" />
-          ) : (
-            <Icons.gitHub className="size-8" />
-          )}
-        </button>
-        <button
-          type="button"
-          className={cn(buttonVariants({ variant: "outline" }), "rounded-full border-none p-2 px-1 hover:bg-secondary")}
-          onClick={handleGoogleSignIn}
-          disabled={isLoading || isGoogleLoading}
-        >
-          {isGoogleLoading ? (
-            <Icons.spinner className="size-8 animate-spin" />
-          ) : (
-            <Icons.google className="size-8" />
-          )}
-        </button>
-        <button
-          type="button"
-          className={cn(buttonVariants({ variant: "ghost" }), "border-none p-2 px-1 hover:bg-secondary")}
-          onClick={handleLinkedinSignIn}
-          disabled={isLoading || isLinkedinLoading}
-        >
-          {isLinkedinLoading ? (
-            <Icons.spinner className="size-8 animate-spin" />
-          ) : (
-            <Icons.linkedin className="size-8" />
-          )}
-        </button>      
-        <button
-          type="button"
-          className={cn(buttonVariants({ variant: "outline" }), "border-none p-2 px-1 hover:bg-secondary")}
-          onClick={handleMicrosoftSignIn}
-          disabled={isLoading || isMicrosoftLoading}
-        >
-          {isMicrosoftLoading ? (
-            <Icons.spinner className="size-8 animate-spin" />
-          ) : (
-            <Icons.microsoft className="size-8" />
-          )}
-        </button>
-      </div>   
+        </>
+      }
+      {!mode ? (
+  <div className="flex justify-center space-x-4">
+    <button
+      type="button"
+      className={cn(buttonVariants({ variant: "outline" }), "rounded-full border-none p-2 px-1 hover:bg-secondary")}
+      onClick={handleGithubSignIn}
+      disabled={isLoading || isGitHubLoading}
+    >
+      {isGitHubLoading ? (
+        <Icons.spinner className="size-8 animate-spin" />
+      ) : (
+        <Icons.gitHub className="size-8" />
+      )}
+    </button>
+    <button
+      type="button"
+      className={cn(buttonVariants({ variant: "outline" }), "rounded-full border-none p-2 px-1 hover:bg-secondary")}
+      onClick={handleGoogleSignIn}
+      disabled={isLoading || isGoogleLoading}
+    >
+      {isGoogleLoading ? (
+        <Icons.spinner className="size-8 animate-spin" />
+      ) : (
+        <Icons.google className="size-8" />
+      )}
+    </button>
+    <button
+      type="button"
+      className={cn(buttonVariants({ variant: "ghost" }), "border-none p-2 px-1 hover:bg-secondary")}
+      onClick={handleLinkedinSignIn}
+      disabled={isLoading || isLinkedinLoading}
+    >
+      {isLinkedinLoading ? (
+        <Icons.spinner className="size-8 animate-spin" />
+      ) : (
+        <Icons.linkedin className="size-8" />
+      )}
+    </button>
+    <button
+      type="button"
+      className={cn(buttonVariants({ variant: "outline" }), "border-none p-2 px-1 hover:bg-secondary")}
+      onClick={handleMicrosoftSignIn}
+      disabled={isLoading || isMicrosoftLoading}
+    >
+      {isMicrosoftLoading ? (
+        <Icons.spinner className="size-8 animate-spin" />
+      ) : (
+        <Icons.microsoft className="size-8" />
+      )}
+    </button>
+  </div>
+) : (
+  <button
+    type="button"
+    className={cn(
+      buttonVariants({ variant: "oauth" }), "size-full py-4 rounded-full"
+    )}
+    onClick={
+      mode === "linkedin"
+        ? handleLinkedinSignIn
+        : mode === "google"
+        ? handleGoogleSignIn
+        : mode === "microsoft"
+        ? handleMicrosoftSignIn
+        : handleGithubSignIn
+    }
+    disabled={
+      isLoading ||
+      (mode === "linkedin" && isLinkedinLoading) ||
+      (mode === "google" && isGoogleLoading) ||
+      (mode === "microsoft" && isMicrosoftLoading) ||
+      (mode === "github" && isGitHubLoading)
+    }
+  >
+    {(mode === "linkedin" && isLinkedinLoading) ||
+    (mode === "google" && isGoogleLoading) ||
+    (mode === "microsoft" && isMicrosoftLoading) ||
+    (mode === "github" && isGitHubLoading) ? (
+      <Icons.spinner className="size-12 animate-spin" />
+    ) : mode === "linkedin" ? (
+      <Icons.linkedin className="size-12 lg:size-20" />
+    ) : mode === "google" ? (
+      <Icons.google className="size-12 lg:size-20" />
+    ) : mode === "microsoft" ? (
+      <Icons.microsoft className="size-12 lg:size-20" />
+    ) : (
+      <Icons.gitHub className="size-12 lg:size-20" />
+    )}
+  </button>
+)}
+
   </div>
   )
 }

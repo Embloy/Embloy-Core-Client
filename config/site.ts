@@ -17,5 +17,6 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/embloy",
     calendy: "https://calendly.com/jan-p-hummel/embloy-demo",
     help: "https://about.embloy.com/en/contact",
+    signup: "https://www.embloy.com/en-US/register",
   },
 }
