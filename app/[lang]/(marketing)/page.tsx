@@ -226,7 +226,7 @@ export default async function IndexPage({ params: { lang } }) {
                     {dict.marketing.usefulLinks.head}
                   </h1>
                   <Link
-                    href={siteConfig.links.signup}
+                    href={siteConfig.links.signup + "/referral"}
                     target="_blank"
                     className={cn(
                       buttonVariants({ variant: "bold", size: "default" }),
