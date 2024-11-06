@@ -35,6 +35,13 @@ export default async function IndexPage({ params: { lang } }) {
       {/* eslint-disable-next-line */}
       <section className="space-y-6 md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 portrait:py-0 ">
         <div className="dark:backdrop-blu container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-white/80 py-12 text-center backdrop-blur dark:bg-[#110e1b]/80 portrait:gap-0">
+          <Link
+              href={`${siteConfig.links.signup}/referral`}
+              className="rounded-full border-2 border-primary bg-low px-4 py-2 text-md font-medium text-high duration-300 hover:bg-primary hover:text-embloy-foreground portrait:text-sm"
+              target="_blank"
+            >
+            {dict.marketing.inviteMessage}
+          </Link>
           <div className="flex w-full flex-row items-start justify-between px-10 portrait:flex-col portrait:px-0">
             <div className="flex w-6/12 flex-col items-start justify-start gap-8 pt-5 portrait:w-full portrait:gap-4">
               <h1 className="text-left font-heading text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
