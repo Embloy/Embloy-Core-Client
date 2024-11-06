@@ -37,7 +37,7 @@ export default async function IndexPage({ params: { lang } }) {
         <div className="dark:backdrop-blu container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-white/80 py-12 text-center backdrop-blur dark:bg-[#110e1b]/80 portrait:gap-0">
           <Link
               href={`${siteConfig.links.signup}/referral`}
-              className="rounded-full border-2 border-primary bg-low px-4 py-2 text-md font-medium text-high duration-300 hover:bg-primary hover:text-embloy-foreground portrait:text-sm"
+              className="text-md rounded-full border-2 border-primary bg-low px-4 py-2 font-medium text-high duration-300 hover:bg-primary hover:text-embloy-foreground portrait:text-sm"
               target="_blank"
             >
             {dict.marketing.inviteMessage}
