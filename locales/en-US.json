@@ -47,10 +47,10 @@
         "feature3Desc": "Manage applications and connect with recruiters directly from your Embloy dashboard.",
         "feature4Head": "Always up-to-date",
         "feature4Desc": "With Embloy, you’re guaranteed a response. Get real-time updates on your application status and reminders for interviews and deadlines.",
-        "feature5Head": "Connected with LinkedIn",
-        "feature5Desc": "Sign up for Embloy with LinkedIn for improved auto-fill and easy job hunt updates to your network.",
+        "feature5Head": "LinkedIn & GitHub",
+        "feature5Desc": "Sign up for Embloy with LinkedIn for improved auto-fill and easy job hunt updates to your network. If you’re a developer, connect your GitHub account to showcase your projects.",
         "feature6Head": "One Account",
-        "feature6Desc": "Apply to jobs instantly with Embloy—just scan a QR code, no forms or CV uploads required."
+        "feature6Desc": "Apply to any job with Embloy as easily as checking out with PayPal, Venmo, or Apple Pay."
       },
       "usefulLinks": {
         "about": "Useful links",
