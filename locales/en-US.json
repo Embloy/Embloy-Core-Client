@@ -22,8 +22,8 @@
   "marketing": {
       "landing": {
         "about": "About",
-        "head": "Apply to jobs with a single Embloy account.",
-        "subHead": "Sign up once and use your Embloy account to apply for any job & Manage all your applications in one place.",
+        "head": "Join Embloy. Apply to any job with a single profile.",
+        "subHead": "Stop wasting time with Workday accounts and long email threads! Sign up to Embloy and apply for jobs with Venmo-like simplicity. Create an account once, use it to apply with one click and manage your applications in one place.",
         "try": "or try it",
         "disclaimerLink": "Request Embloy",
         "disclaimer": "  if the job you want to apply for doesn’t offer an option to apply with Embloy yet."
@@ -41,16 +41,22 @@
         "about": "Features",
         "feature0Head": "Fast AI Applications",
         "feature0Desc": "Embloy auto-fills repetitive fields and previously answered questions on application forms.",
+        "feature1Head": "Connect to LinkedIn",
+        "feature1Desc": "Link external resources to Embloy (like your LinkedIn profile, or your GitHub profile) for smoother job applications, personalized recommendations, and improved auto-fill.",
         "feature2Head": "QR Code Applications",
-        "feature2Desc": "Apply to jobs instantly by scanning Embloy QR tags on your phone.",
+        "feature2Desc": "Apply to jobs with a single tap on your phone. Just scan the QR code and you're done.",
         "feature3Head": "Application Hub",
         "feature3Desc": "Manage applications and connect with recruiters directly from your Embloy dashboard.",
         "feature4Head": "Always up-to-date",
-        "feature4Desc": "With Embloy, you’re guaranteed a response. Get real-time updates on your application status and reminders for interviews and deadlines.",
+        "feature4Desc": "Get real-time updates on your application status and reminders for interviews and deadlines.",
         "feature5Head": "LinkedIn & GitHub",
         "feature5Desc": "Sign up for Embloy with LinkedIn for improved auto-fill and easy job hunt updates to your network. If you’re a developer, connect your GitHub account to showcase your projects.",
-        "feature6Head": "One Account",
-        "feature6Desc": "Apply to any job with Embloy as easily as checking out with PayPal, Venmo, or Apple Pay."
+        "feature6Head": "One-Click-To-Apply",
+        "feature6Desc": "Apply to any job with Embloy as easily as checking out with PayPal, Venmo, or Apple Pay.",
+        "feature7Head": "AI Powered",
+        "feature7Desc": "From CV parsing to automatic applications based on your skills, interests and expectations. Enjoy the ease of an application copilot that not only helps you apply faster, but also better.",
+        "feature8Head": "X-Platform",
+        "feature8Desc": "Highly modular system, accessible on web, iOS, and Android. Allows for custom integrations through API."
       },
       "usefulLinks": {
         "about": "Useful links",
@@ -60,7 +66,6 @@
         "about": "Useful links",
         "head": "Sign up in just 10 seconds!"
       },
-      
       "news": {
         "about": "News",
         "head": "Latest Updates on Embloy:",
@@ -72,7 +77,7 @@
       },
       "workInProgress": "This page is still a work in progress - Follow along on GitHub",
       "developerDocsLaunched": "Our Developer Documentation is now live - Check it out!",
-      "inviteMessage": "Invite a friend to Embloy and get a $10 Embloy credit for each friend that signs up.",
+      "inviteMessage": "Want to connect Embloy to your existing ATS? Schedule a meeting and we'll help you get started.",
       "notLaunchedYet": "Please note that Embloy is not active yet and you won't be able to sign up. Get in touch to access our Beta Version.",
       "recruitmentSteps": "All Recruitment Steps in One Place: Make life easier for both organizations and job seekers by centralizing recruitment processes.",
       "getStarted": "Get Started",
@@ -164,7 +169,8 @@
       "dontHaveAccount": "Don't have an account? Sign Up",
       "forgotPassword": "Forgot password?",
       "signIn": "Sign In",
-      "orContinueWith": "Or continue with"
+      "orContinueWith": "Or continue with",
+      "skipAccount": "Don't want to create an account? Skip ahead to the application."
     },
     "register": {
       "login": "Log In",
@@ -182,6 +188,21 @@
       "terms": "Terms of Service",
       "and": " and ",
       "privacyPolicy": "Privacy Policy"
+    },
+    "otp": {
+      "back": "Back",
+      "title": "Continue without creating an account.",
+      "enterEmail": "Enter your contact information to apply for this job. Employers will use these details to contact you.", 
+      "oAuth": "Want to apply with your LinkedIn, GitHub, Google or Microsoft account?",
+      "requestOTP": "Request One-Time Passcode",
+      "setOTP": "Enter Verification Code (e.g., 123456)",
+      "Email": "email",
+      "steps":  {
+        "Input Name": "Input Name",
+        "Input Email": "Input Email",
+        "Verify": "Verify",
+        "Apply": "Apply"
+      }
     },
     "pwreset": {
       "back": "Back",
@@ -244,6 +265,10 @@
         "title": "Something went wrong.",
         "description": "Your activation link request failed. Please try again."
       },
+      "otp": {
+        "title": "Something went wrong.",
+        "description": "Your OTP verification request failed. Keep in mind that the code is only valid for 10 minutes."
+      },
       "First name is required": "First name is required",
       "First name must be at most 128 characters": "First name must be at most 128 characters",
       "Last name is required": "Last name is required",
@@ -252,7 +277,8 @@
       "Email must be at most 150 characters": "Email must be at most 150 characters",
       "Password must be at least 8 characters": "Password must be at least 8 characters",
       "Password must be at most 72 characters": "Password must be at most 72 characters",
-      "Passwords must match": "Passwords must match"
+      "Passwords must match": "Passwords must match",
+      "OTP code must be 6 digits": "OTP code must be 6 digits"
     },
     "success": {
       "login": {
@@ -277,6 +303,10 @@
       "activation": {
         "title": "Success",
         "description": "An activation link has been sent to your email."
+      },
+      "otp": {
+        "title": "Success",
+        "description": "A verification code has been sent to your email."
       }
     }
   },
