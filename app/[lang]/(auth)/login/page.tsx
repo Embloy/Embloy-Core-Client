@@ -5,7 +5,8 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Callout } from "@/components/callout"
 import { Icons } from "@/components/icons"
 import { UserAuthForm } from "@/components/user-auth-form"
 
@@ -25,6 +26,10 @@ export default function LoginPage({ params: { lang } }) {
     fetchDictionary()
   }, [lang])
 
+  const handleCalloutClick = () => {
+    window.location.href = `/sdk/apply/onboard?origin=${origin}`
+  }
+
   return (
     dict && (
       <div>
@@ -37,9 +42,7 @@ export default function LoginPage({ params: { lang } }) {
         <div
           className={cn(
             "container flex h-screen w-screen flex-col items-center justify-center",
-            origin?.includes("/sdk/apply")
-              ? "bg-black/25 backdrop-blur-sm"
-              : ""
+            origin?.includes("/sdk/apply") ? "bg-black/25 backdrop-blur-sm" : ""
           )}
         >
           {!origin?.includes("/sdk/apply") && (
@@ -59,6 +62,18 @@ export default function LoginPage({ params: { lang } }) {
                 {dict.auth.login.back}
               </>
             </Link>
+          )}
+          {origin?.includes("/sdk/apply") && (
+            <Button
+              variant="filled"
+              onClick={handleCalloutClick}
+              className="absolute right-4 top-4 md:right-8 md:top-8 ml-2"
+            >
+              <div className="flex items-center space-x-2">
+                {dict.auth.login.skipAccount}
+                <Icons.chevronRight className="ml-2 size-8" />
+              </div>
+            </Button>
           )}
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 rounded-xl border border-border bg-background p-10 dark:bg-muted sm:w-[450px]">
             <div className="flex flex-col space-y-2 text-center">

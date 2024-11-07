@@ -212,6 +212,71 @@ export async function resetPassword(email: string): Promise<number | null> {
   return null
 }
 
+export async function requestOTP(
+  email: string,
+  request_token?: string,
+  first_name?: string,
+  last_name?: string
+): Promise<number | null> {
+  const formData = new FormData()
+  formData.append("email", email.trim().toLowerCase())
+  if (request_token) {
+    formData.append("request_token", request_token)
+  }
+  if (first_name) {
+    formData.append("first_name", first_name)
+  }
+  if (last_name) {
+    formData.append("last_name", last_name)
+  }
+
+  const response = await fetch(`${siteConfig.api_url}/auth/token/otp`, {
+    method: "POST",
+    body: formData,
+  })
+
+  if (!response.ok) {
+    return response.status
+  }
+
+  return null
+}
+
+export async function validateOTP(
+  email: string,
+  otp_code: string
+): Promise<number | null> {
+  const formData = new FormData()
+  formData.append("email", email.trim().toLowerCase())
+  formData.append("otp_code", otp_code)
+
+  const response = await fetch(`${siteConfig.api_url}/auth/token/otp`, {
+    method: "PATCH",
+    body: formData,
+  })
+
+  if (!response.ok) {
+    return response.status
+  }
+
+  const rtResult = await response.json()
+
+  if (!rtResult || !rtResult?.refresh_token) {
+    return response.status
+  }
+
+  Cookies.set("refresh_token", rtResult.refresh_token, {
+    sameSite: "Strict",
+    secure: siteConfig.url.startsWith("https://"),
+    domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+    path: "/",
+  })
+
+  await getAccessToken()
+
+  return null
+}
+
 export async function setPassword(
   password: string,
   password_confirmation: string,
