@@ -19,19 +19,19 @@ export function ProgressBar({ currentStep, steps, className, onStepClick }: Prog
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
-      <div className="flex justify-between mt-4">
+      <div className="mt-4 flex justify-between">
         {steps.map((step, index) => (
           <div
             key={index}
             className={cn(
-              "flex flex-col items-center flex-1",
+              "flex flex-1 flex-col items-center",
               index < currentStep && "cursor-pointer"
             )}
             onClick={() => index < currentStep && onStepClick(index)}
           >
             <div
               className={cn(
-                "w-8 h-8 rounded-full flex items-center justify-center mb-2",
+                "mb-2 flex size-8 items-center justify-center rounded-full",
                 index <= currentStep ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
               )}
             >

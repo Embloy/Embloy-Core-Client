@@ -67,7 +67,7 @@ export default function LoginPage({ params: { lang } }) {
             <Button
               variant="filled"
               onClick={handleCalloutClick}
-              className="absolute right-4 top-4 md:right-8 md:top-8 ml-2"
+              className="absolute right-4 top-4 ml-2 md:right-8 md:top-8"
             >
               <div className="flex items-center space-x-2">
                 {dict.auth.login.skipAccount}

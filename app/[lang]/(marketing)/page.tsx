@@ -37,7 +37,7 @@ export default async function IndexPage({ params: { lang } }) {
         <div className="dark:backdrop-blu container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-white/80 py-12 text-center backdrop-blur dark:bg-[#110e1b]/80 portrait:gap-0">
           <Link
               href={`${siteConfig.links.calendy}`}
-              className="text-md rounded-full border-2 hover:border-primary bg-embloy px-4 py-2 font-medium dark:text-secondary duration-300 hover:bg-primary hover:text-embloy-foreground dark:hover:text-embloy-foreground portrait:text-sm"
+              className="text-md rounded-full border-2 bg-embloy px-4 py-2 font-medium duration-300 hover:border-primary hover:bg-primary hover:text-embloy-foreground dark:text-secondary dark:hover:text-embloy-foreground portrait:text-sm"
               target="_blank"
             >
             {dict.marketing.inviteMessage}
