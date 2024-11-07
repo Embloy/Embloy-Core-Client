@@ -2,7 +2,8 @@ import Image from "next/image"; export default function Loading() { return (
   <div
     className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
   >
-    <Image src="/embloy.svg" alt="Logo" height="20" width="120" />
+    <Image src="/embloy_light.svg" alt="Logo" height="20" width="120" className="block dark:hidden" />
+    <Image src="/embloy_dark.svg" alt="Logo" height="20" width="120" className="hidden dark:block" />
     <div role="status">
       <svg
         aria-hidden="true"
