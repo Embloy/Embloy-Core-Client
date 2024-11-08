@@ -1,5 +1,3 @@
-"use client"
-
 import React, { useEffect, useRef, useState } from "react"
 import {
   DownloadIcon,
@@ -10,7 +8,6 @@ import {
 import html2canvas from "html2canvas"
 import { Legend, ResponsiveContainer, Sankey, Tooltip } from "recharts"
 
-import { cn } from "@/lib/utils"
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
 import Filter from "./filter-option"
@@ -34,8 +31,8 @@ interface Link {
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
+    width: 0,
+    height: 0,
   })
 
   useEffect(() => {
@@ -55,7 +52,13 @@ function useWindowSize() {
   return windowSize
 }
 
-export function Overview({ applications, params: { lang } }) {
+export function Overview({
+  applications,
+  params: { lang },
+}: {
+  applications: any
+  params: { lang: any }
+}): JSX.Element | null {
   const [filteredStatus, setFilteredStatus] = useState<string | null>(null)
   const [zoom, setZoom] = useState<number>(1)
   const selectedValues = new Set(filteredStatus ? [filteredStatus] : [])
@@ -88,7 +91,7 @@ export function Overview({ applications, params: { lang } }) {
   const sourceMap = new Map<string, number>()
 
   if (dict != null) {
-    applications.forEach((app) => {
+    applications.forEach((app: any) => {
       if ((!filteredStatus || app.status === filteredStatus) && dict) {
         const jobType =
           app.job?.job_type || dict.dashboard.dashboard.analytics.unknown
@@ -187,6 +190,7 @@ export function Overview({ applications, params: { lang } }) {
         })
       }
     })
+
     const handleExport = () => {
       const dataStr = JSON.stringify({ nodes, links })
       const dataUri =
@@ -229,7 +233,9 @@ export function Overview({ applications, params: { lang } }) {
       setZoom((prevZoom) => Math.max(prevZoom - 0.1, 0.5))
     }
 
-    const availableStatuses = new Set(applications.map((app) => app.status))
+    const availableStatuses = new Set(
+      applications.map((app: any) => app.status)
+    )
     const filterOptions = [
       {
         label: dict.dashboard.applications.status.pending,
@@ -248,7 +254,7 @@ export function Overview({ applications, params: { lang } }) {
       },
     ].filter((option) => availableStatuses.has(option.value))
 
-    const CustomNode = (props: NodeProps): React.ReactElement => {
+    const CustomNode = (props: any): React.ReactElement => {
       return (
         <rect
           x={props.x + 4}
@@ -261,7 +267,7 @@ export function Overview({ applications, params: { lang } }) {
       )
     }
 
-    const CustomLink = (props) => {
+    const CustomLink = (props: any) => {
       const {
         sourceX,
         sourceY,
@@ -335,75 +341,75 @@ export function Overview({ applications, params: { lang } }) {
     }
 
     return (
-      dict && (
-        <div>
-          <div className="flex items-center space-x-2">
-            <Filter
-              title={dict.dashboard.dashboard.analytics.filterStatus}
-              options={filterOptions}
-              selectedValues={selectedValues}
-              onSelect={handleSelect}
-              onClear={handleClear}
-            />
-            <Button onClick={handleExport} variant="ghost" size="sm">
-              <Share1Icon className="mr-2 size-3.5 text-muted-foreground/70" />
-              {dict.dashboard.dashboard.analytics.exportJson}
-            </Button>
-            <Button onClick={handleExportPNG} variant="ghost" size="sm">
-              <DownloadIcon className="mr-2 size-3.5 text-muted-foreground/70" />
-              {dict.dashboard.dashboard.analytics.exportPng}
-            </Button>
-            <Button onClick={handleZoomIn} variant="ghost" size="sm">
-              <ZoomInIcon className="mr-2 size-3.5 text-muted-foreground/70" />
-              {dict.dashboard.dashboard.analytics.zoomIn}
-            </Button>
-            <Button onClick={handleZoomOut} variant="ghost" size="sm">
-              <ZoomOutIcon className="mr-2 size-3.5 text-muted-foreground/70" />
-              {dict.dashboard.dashboard.analytics.zoomOut}
-            </Button>
-          </div>
-          <div ref={chartRef}>
-            <div
-              style={{
-                transform: `scale(${zoom})`,
-                transformOrigin: "top left",
-              }}
-            >
-              <ResponsiveContainer width="100%" height={700}>
-                <Sankey
-                  width={960}
-                  height={500}
-                  data={{ nodes, links }}
-                  node={<CustomNode />}
-                  link={<CustomLink />}
-                  nodePadding={50}
-                  margin={margin}
-                  iterations={32}
-                >
-                  <Tooltip
-                    content={({ payload }) => {
-                      if (!payload || !payload.length) return null
-                      const { source, target, value } = payload[0].payload
-                      return (
-                        <div className="rounded border bg-muted p-2 shadow">
-                          <p>
-                            <strong>{nodes[source]?.name}</strong> to{" "}
-                            <strong>{nodes[target]?.name}</strong>
-                          </p>
-                          <p>
-                            <strong>Value:</strong> {value}
-                          </p>
-                        </div>
-                      )
-                    }}
-                  />
-                  <Legend />
-                </Sankey>
-              </ResponsiveContainer>
-            </div>
+      <div>
+        <div className="flex items-center space-x-2">
+          <Filter
+            title={dict.dashboard.dashboard.analytics.filterStatus}
+            options={filterOptions}
+            selectedValues={selectedValues}
+            onSelect={handleSelect}
+            onClear={handleClear}
+          />
+          <Button onClick={handleExport} variant="ghost" size="sm">
+            <Share1Icon className="mr-2 size-3.5 text-muted-foreground/70" />
+            {dict.dashboard.dashboard.analytics.exportJson}
+          </Button>
+          <Button onClick={handleExportPNG} variant="ghost" size="sm">
+            <DownloadIcon className="mr-2 size-3.5 text-muted-foreground/70" />
+            {dict.dashboard.dashboard.analytics.exportPng}
+          </Button>
+          <Button onClick={handleZoomIn} variant="ghost" size="sm">
+            <ZoomInIcon className="mr-2 size-3.5 text-muted-foreground/70" />
+            {dict.dashboard.dashboard.analytics.zoomIn}
+          </Button>
+          <Button onClick={handleZoomOut} variant="ghost" size="sm">
+            <ZoomOutIcon className="mr-2 size-3.5 text-muted-foreground/70" />
+            {dict.dashboard.dashboard.analytics.zoomOut}
+          </Button>
+        </div>
+        <div ref={chartRef}>
+          <div
+            style={{
+              transform: `scale(${zoom})`,
+              transformOrigin: "top left",
+            }}
+          >
+            <ResponsiveContainer width="100%" height={700}>
+              <Sankey
+                width={960}
+                height={500}
+                data={{ nodes, links }}
+                node={<CustomNode />}
+                link={<CustomLink />}
+                nodePadding={50}
+                margin={margin}
+                iterations={32}
+              >
+                <Tooltip
+                  content={({ payload }) => {
+                    if (!payload || !payload.length) return null
+                    const { source, target, value } = payload[0].payload
+                    return (
+                      <div className="rounded border bg-muted p-2 shadow">
+                        <p>
+                          <strong>{nodes[source]?.name}</strong> to{" "}
+                          <strong>{nodes[target]?.name}</strong>
+                        </p>
+                        <p>
+                          <strong>Value:</strong> {value}
+                        </p>
+                      </div>
+                    )
+                  }}
+                />
+                <Legend />
+              </Sankey>
+            </ResponsiveContainer>
           </div>
         </div>
-      )
+      </div>
     )
   }
+
+  return null
 }
