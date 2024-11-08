@@ -52,7 +52,7 @@ export default function DashboardLoading({params}) {
             <TabsList>
               <TabsTrigger value="overview">{dict.dashboard.dashboard.overview}</TabsTrigger>
               <TabsTrigger value="analytics" disabled>
-              {dict.dashboard.dashboard.analytics}
+              {dict.dashboard.dashboard.analytics.title}
               </TabsTrigger>
               <TabsTrigger value="notifications" disabled>
               {dict.dashboard.dashboard.integrations}
