@@ -23,6 +23,18 @@ export interface ApplicationAnswer {
   attachment: null | ApplicationAttachment
   version: number
 }
+export interface ApplicationEvent {
+  id: number
+  ext_id: string
+  job_id: number
+  user_id: number
+  event_type: string
+  event_details: string
+  previous_event_id: number | null
+  next_event_id: number | null
+  created_at: string
+  updated_at: string
+}
 
 export interface Application {
   job_id: number
@@ -33,6 +45,7 @@ export interface Application {
   response: string
   application_attachment: null | ApplicationAttachment
   application_answers: null | ApplicationAnswer[]
+  application_events: null | ApplicationEvent[]
   job: null | Job
   version: number
 }
@@ -68,6 +81,7 @@ export async function getApplications(): Promise<{
       ...item.application,
       application_attachment: item.application_attachment,
       application_answers: item.application_answers,
+      application_events: item.application_events,
       job: JSON.parse(item.job),
     })) || []
 
