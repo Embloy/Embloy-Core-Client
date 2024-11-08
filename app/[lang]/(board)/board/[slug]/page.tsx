@@ -50,8 +50,8 @@ export default function Page({params}) {
     , [params.slug, router, params.lang, dict]);
 
     return dict && (
-        <div className="px-4 py-1.5 flex flex-col items-start justify-start">
-            <div className="rounded-lg bg-secondary w-full p-4">
+        <div className="flex flex-col items-start justify-start px-4 py-1.5">
+            <div className="w-full rounded-lg bg-secondary p-4">
                 {isLoading ? 
                     <div className="flex flex-row items-center justify-center">
                         <p className="italic text-muted-foreground">
@@ -78,7 +78,7 @@ export default function Page({params}) {
                         </div>
                     </div> : error ? ((error.toString() === "404" || error.toString() === "403")
                                             ? 
-                                                <div className="w-full flex flex-col items-start justify-start">
+                                                <div className="flex w-full flex-col items-start justify-start">
                                                     <h1 className="text-left font-heading text-xl">
                                                         {dict.board.list._404.head}
                                                     </h1>
@@ -87,7 +87,7 @@ export default function Page({params}) {
                                                     </p>
                                                 </div> 
                                             : 
-                                            <div className="w-full flex flex-col items-start justify-start">
+                                            <div className="flex w-full flex-col items-start justify-start">
                                                 <h1 className="text-left font-heading text-xl">
                                                     {dict.board.list._500.head}
                                                 </h1>
@@ -97,7 +97,7 @@ export default function Page({params}) {
                                             </div> 
                                         ) 
                                     : 
-                                        <div className="flex flex-col items-start justify-start w-full">
+                                        <div className="flex w-full flex-col items-start justify-start">
                                             <JobList params={params} jobs={jobs}/>
                                         </div>
                                    
