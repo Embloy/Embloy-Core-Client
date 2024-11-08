@@ -19,6 +19,13 @@
     "tutorial": "🠶 Tutorials & Hilfe",
     "manual": "Apply Now"
   },
+  "board": {
+    "list": {
+      "_404":{"head": "Page not found", "subHead": "Die Seite, die du suchst, existiert nicht."},
+      "_500":{"head": "Ein Fehler ist aufgetreten", "subHead": "Bitte versuche es später erneut."}
+    }
+
+  },
   "marketing": {
     "landing": {
       "about": "Über Embloy",

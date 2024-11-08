@@ -19,6 +19,13 @@
     "tutorial": "🠶 Tutoriels & Aide",
     "manual": "Postuler maintenant"
   },
+  "board": {
+    "list": {
+      "_404":{"head": "Page not found", "subHead": "The page you are looking for does not exist."},
+      "_500":{"head": "An Error occured", "subHead": "Please try again soon."}
+    }
+
+  },
   "marketing": {
     "landing": {
       "about": "À propos",

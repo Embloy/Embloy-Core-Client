@@ -22,7 +22,6 @@ function FeatureItem({params: {title, desc}}) {
     </div>
     </>
   )
-
 }
 
 
