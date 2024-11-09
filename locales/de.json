@@ -22,8 +22,8 @@
   "marketing": {
     "landing": {
       "about": "Über Embloy",
-      "head": "Ein Embloy Account - für alle Jobs.",
-      "subHead": "Verschwende keine Zeit mehr mit Workday-Konten oder langen E-Mail-Threads! Melde dich einmal bei Embloy an, um dich mit einem Klick für Jobs zu bewerben und deine Bewerbungen alle an einem Ort zu verwalten",
+      "head": "Ein Embloy Account für alle Jobs.",
+      "subHead": "Melde dich kostenlos bei Embloy an, um unkompliziert und schnell Bewerbungen zu verschicken. Embloy hilft dir einen Überblick über abgeschickte Bewerbungen, bevorstehende Interviews und angebotene Stellen zu behalten.",
       "try": "oder testen",
       "disclaimerLink": "Embloy anfordern",
       "disclaimer": "wenn die Stelle, auf die du dich bewerben möchten, noch keine Option zur Bewerbung mit Embloy bietet."
@@ -40,17 +40,17 @@
     "newFeatures": {
       "about": "Features",
       "feature0Head": "Schnelle AI-Bewerbungen",
-      "feature0Desc": "Embloy füllt wiederkehrende Feder in Bewerbungsformularen automatisch aus.",
+      "feature0Desc": "Embloy füllt wiederkehrende Felder in Bewerbungsformularen automatisch aus.",
       "feature1Head": "Mit LinkedIn verbinden",
       "feature1Desc": "Verknüpfe externe Ressourcen mit Embloy (wie dein LinkedIn- oder GitHub-Profil) für schnellere Bewerbungen, personalisierte Empfehlungen und verbesserte automatische Antworten.",
       "feature2Head": "QR-Code-Bewerbungen",
-      "feature2Desc": "Scanne die Embloy-QR-Codes und bewirb dich von deinem Handy. (z.B. direkt im Cafe, das einen Barista sucht...)",
+      "feature2Desc": "Im Café, auf der Messe oder in der U-Bahn? Scanne einfach den QR-Code und bewirb dich mit einem Klick auf deinem Handy.",
       "feature3Head": "Bewerbungen verwalten",
-      "feature3Desc": "Verwalte alle deine Bewerbungen und kontaktieren die HR direkt.",
+      "feature3Desc": "Verwalte alle deine Bewerbungen an einem Ort und bleibe mit den Recruitern in Kontakt.",
       "feature4Head": "Bleibe up-to-date",
       "feature4Desc": "Erhalte Benachrichtigungen über den Status deiner Bewerbungen und Erinnerungen an bevorstehende Interviews oder Fristen.",
       "feature5Head": "LinkedIn & GitHub",
-      "feature5Desc": "Melde dich bei Embloy am besten mit deinem LinkedIn an. Für Leute, die sich auf Software Jobs bewerben, ist auch eine GitHub-Integration verfügbar.",
+      "feature5Desc": "Melde dich bei Embloy am besten mit deinem LinkedIn-Profil an. Für Softwarejobs ist auch eine GitHub-Integration verfügbar.",
       "feature6Head": "Ein-Klick-Bewerbung",
       "feature6Desc": "Bewirb dich mit Embloy genauso einfach wie mit PayPal, Venmo oder Apple Pay zu bezahlen.",
       "feature7Head": "KI-gestützt",
@@ -170,7 +170,7 @@
       "forgotPassword": "Passwort vergessen?",
       "signIn": "Anmelden",
       "orContinueWith": "Oder weiter mit",
-      "skipAccount": "Möchtest Du kein Konto erstellen und direkt mit der Bewerbung fortfahren?"
+      "skipAccount": "Direkt mit der Bewerbung fortfahren?"
     },
     "register": {
       "login": "Anmelden",
