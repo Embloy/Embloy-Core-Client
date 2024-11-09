@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site";
 import { Job } from "@/types/job-schema";
 import { getAccessToken } from "./auth";
 
-export async function getListedJobs(company_id): Promise<{response: Job[] | null, err: number | null}> {
+export async function getListedJobs(company_id): Promise<{response: {jobs: Job[], company:Object} | null, err: number | null}> {
   const response = await fetch(`${siteConfig.api_url}/company/${company_id}/feed`, {
     method: 'GET',
   });
@@ -10,11 +10,12 @@ export async function getListedJobs(company_id): Promise<{response: Job[] | null
     return { response: null, err: response.status };
   }
   if (response.status === 204) {
-    return { response: [], err: null };
+    return { response: {jobs:[], company:{}}, err: null };
   }
-  let data: { jobs: any[]; };
+  let data: {company:Object, jobs: any[]; };
   try {
     data = await response.json();
+    
   } catch (error) {
     console.error('Failed to parse JSON response:', error);
     return { response: null, err: 500 };
@@ -24,7 +25,10 @@ export async function getListedJobs(company_id): Promise<{response: Job[] | null
       ...job,
     };
   });
-  const result = jobs.length > 0 ? jobs : null
+  const company = data.company
+
+
+  const result = jobs.length > 0 ? {jobs, company} : null
   return {response: result , err: null };
 }
 
