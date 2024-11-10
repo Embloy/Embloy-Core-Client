@@ -36,8 +36,8 @@ export default async function IndexPage({ params: { lang } }) {
       <section className="space-y-6 md:bg-[url('/images/bg-1.png')] bg-cover bg-center pb-8 pt-6 md:dark:bg-[url('/images/bg-1-dark.jpg')] md:pb-12 portrait:py-0 ">
         <div className="dark:backdrop-blu container flex w-11/12 flex-col items-center gap-16 rounded-lg bg-white/80 py-12 text-center backdrop-blur dark:bg-[#110e1b]/80 portrait:gap-0">
           <Link
-              href={`${siteConfig.links.signup}/referral`}
-              className="text-md rounded-full border-2 border-primary bg-low px-4 py-2 font-medium text-high duration-300 hover:bg-primary hover:text-embloy-foreground portrait:text-sm"
+              href={`${siteConfig.links.calendy}`}
+              className="text-md rounded-full border-2 border-primary bg-low px-4 py-2 font-medium text-high duration-300 hover:border-primary hover:bg-primary hover:text-embloy-foreground dark:bg-embloy dark:text-secondary dark:hover:bg-primary dark:hover:text-embloy-foreground portrait:text-sm"
               target="_blank"
             >
             {dict.marketing.inviteMessage}
@@ -278,12 +278,11 @@ export default async function IndexPage({ params: { lang } }) {
               </div>
               <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
                 <FeatureItem params={{title: dict.marketing.newFeatures.feature3Head, desc: dict.marketing.newFeatures.feature3Desc}} />
-                <FeatureItem params={{title: dict.marketing.newFeatures.feature5Head, desc: dict.marketing.newFeatures.feature5Desc}} />
+                <FeatureItem params={{title: dict.marketing.newFeatures.feature2Head, desc: dict.marketing.newFeatures.feature2Desc}} />
               </div>
               <div className="mb-8 flex w-full flex-col items-start justify-start gap-8 portrait:mb-0">
                 <FeatureItem params={{title: dict.marketing.newFeatures.feature4Head, desc: dict.marketing.newFeatures.feature4Desc}} />
-                <FeatureItem params={{title: dict.marketing.newFeatures.feature2Head, desc: dict.marketing.newFeatures.feature2Desc}} />
-                
+                <FeatureItem params={{title: dict.marketing.newFeatures.feature5Head, desc: dict.marketing.newFeatures.feature5Desc}} />
               </div>
             </div>
           </div>
@@ -358,7 +357,6 @@ export default async function IndexPage({ params: { lang } }) {
           />
           <Link
             href={`${lang}/register`}
-            target="_blank"
             rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "filled", size: "boldLg" }),
