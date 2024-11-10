@@ -658,6 +658,9 @@
   },
   "sdk": {
     "loading": "Loading ...",
+    "remainingTime": "Remaining time: {time}",
+    "expired": "The session has expired. You will need to start the process again.",
+    "timerDisclaimer": "To ensure the security of your data, the session will expire after when the timer runs out. Please submit your application before the timer expires.",
     "byEmbloy": "by Embloy Platforms UG (haftungsbeschränkt)",
     "required": "This field is required",
     "validURL": "This field must be a valid URL",

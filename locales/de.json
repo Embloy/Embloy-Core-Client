@@ -658,7 +658,10 @@
   },
   "sdk": {
     "loading": "Laden...",
-    "byEmbloy": "von Embloy Platforms UG (haftungsbeschränkt)",
+    "remainingTime": "Verbleibende Zeit: {time}",
+    "expired": "Die Sitzung ist abgelaufen. Du musst den Vorgang erneut starten.",
+    "timerDisclaimer": "Um die Sicherheit Deiner Daten zu gewährleisten, läuft die Sitzung ab, wenn der Timer abläuft. Bitte sende Deine Bewerbung ab, bevor der Timer abläuft.",
+      "byEmbloy": "von Embloy Platforms UG (haftungsbeschränkt)",
     "required": "Dieses Feld ist erforderlich",
     "validURL": "Dieses Feld muss eine gültige URL sein",
     "backToHomepage": "Zurück zur Startseite",

@@ -658,6 +658,9 @@
   },
   "sdk": {
     "loading": "Caricamento...",
+    "remainingTime": "Tempo rimanente: {time}",
+    "expired": "La sessione è scaduta. Dovrai ricominciare il processo.",
+    "timerDisclaimer": "Per garantire la sicurezza dei tuoi dati, la sessione scadrà quando il timer si esaurirà. Si prega di inviare la domanda prima che il timer scada.",  
     "byEmbloy": "da Embloy Platforms UG (haftungsbeschränkt)",
     "required": "Questo campo è obbligatorio",
     "validURL": "Questo campo deve essere un URL valido",

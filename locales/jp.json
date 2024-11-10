@@ -658,6 +658,9 @@
   },
   "sdk": {
     "loading": "読み込み中...",
+    "remainingTime": "残り時間: {time}",
+    "expired": "セッションが期限切れになりました。プロセスを再度開始する必要があります。",
+    "timerDisclaimer": "データのセキュリティを確保するために、タイマーが切れるとセッションが期限切れになります。タイマーが切れる前に応募を提出してください。",  
     "byEmbloy": "by Embloy Platforms UG (haftungsbeschränkt)",
     "required": "このフィールドは必須です",
     "validURL": "このフィールドは有効なURLである必要があります",
