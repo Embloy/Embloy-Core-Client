@@ -14,7 +14,14 @@ import { FaPhone, FaAt, FaLink, FaFacebook, FaInstagram, FaLinkedin, FaGithub, F
 function JobItem({ params, job }) {
     return (
         <div className="flex w-full flex-row items-start justify-between rounded-lg border border-input bg-background px-6 py-4 dark:border-background dark:bg-border">
-            <h1 className="text-sm ">{job.title}</h1>
+            <div className="flex flex-row items-start justify-start gap-6">
+                <h1 className="text-sm ">{job.title}</h1>
+                <div className="flex flex-row items-center">
+                    <h1 className="text-xs italic">{job.city}</h1>
+                    {job.country_code && <h1 className="text-sm italic">{", "}{job.country_code}</h1>}
+                </div>
+                
+            </div>
         </div>
     );
 
