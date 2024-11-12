@@ -68,7 +68,7 @@ export default async function IndexPage({ params: { lang } }) {
                   <Link
                     className="portrait:w-8/12"
                     target="_blank"
-                    href="https://embloy.com/sdk/apply?gq=eyJhbGciOiJIUzI1NiJ9°eyJzdWIiOjEsImV4cCI6MTcyODcyNjUxNSwianRpIjoiMmY1NjM1ZDQ4Y2I2YjU3ZGM1YzJkN2VlY2IyZTk3NGMiLCJpYXQiOjE3MjYwOTY3NjksImpvYl9pZCI6IjIwIiwiaXNzIjoiYXBpLmVtYmxveS5jb20ifQ°1dbyRkPEQwQg-xpzt2cfRiqLaT36YmnB4yyQM-eilrE"
+                    href="https://embloy.com/sdk/apply?gq=eyJhbGciOiJIUzI1NiJ9°eyJzdWIiOjEsImV4cCI6MTc2MjgwMTkwNywianRpIjoiMDc3MzZiNTBmNDlkYTU0N2VkNmQxZTg1NDU4MmU0ZWMiLCJpYXQiOjE3MzEyNDQ5NTYsImpvYl9pZCI6IjIwIiwiaXNzIjoiYXBpLmVtYmxveS5jb20ifQ°V7Ml5yWk0xdbq6dE5B3NbHPv6y5O3VnIOkVZS9dVfyQ"
                   >
                     <Image
                       src="https://embloy.com/images/button-black_large.svg"
