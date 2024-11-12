@@ -25,7 +25,13 @@
       "_500":{"head": "An Error occured", "subHead": "Please try again soon."},
       "found": "Found {number} jobs",
       "search": "Search",
-      "loc_search": "City"
+      "loc_search": "City",
+      "more": "Learn more",
+      "apply": "Apply",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "email": "Share via email",
+      "linkedin": "Share on LinkedIn"
     }
 
   },

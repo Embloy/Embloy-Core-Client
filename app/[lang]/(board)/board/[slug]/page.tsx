@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { getDictionary } from "../../../dictionaries";
 import { useRouter } from "next/navigation";
 import { getListedJobs } from "@/lib/api/jobs";
@@ -7,26 +7,124 @@ import { Job } from "@/types/job-schema";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { X } from "lucide-react"; // Assuming you're using Lucide for icons
+import { Bookmark, MapPin, Share2, X, Shapes, AlignEndHorizontal} from "lucide-react"; // Assuming you're using Lucide for icons
 import { EmbloySpacer } from "@/components/ui/stuff";
 import { FaPhone, FaAt, FaLink, FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { cn } from "@/lib/utils";
+import { Button, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { toast } from "@/components/ui/use-toast";
 
 function JobItem({ params, job }) {
+    const [dict, setDict] = useState<Record<string, any> | null>(null);
+    const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const fetchDictionary = async () => {
+            const dictionary = await getDictionary(params.lang);
+            setDict(dictionary);
+        };
+        fetchDictionary();
+    }, [params.lang]);
+
+    // Handle click outside dropdown to close it
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShareDropdownOpen(false);
+            }
+        };
+        if (shareDropdownOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [shareDropdownOpen]);
+
+    const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
+
     return (
-        <div className="flex w-full flex-row items-start justify-between rounded-lg border border-input bg-background px-6 py-4 dark:border-background dark:bg-border">
-            <div className="flex flex-row items-start justify-start gap-6">
-                <h1 className="text-sm ">{job.title}</h1>
-                <div className="flex flex-row items-center">
-                    <h1 className="text-xs italic">{job.city}</h1>
-                    {job.country_code && <h1 className="text-sm italic">{", "}{job.country_code}</h1>}
+        <div className="flex w-full flex-row items-center justify-between rounded-lg border border-input bg-background px-6 py-4 dark:border-background dark:bg-border relative">
+            <div className="flex flex-row items-center justify-start gap-6">
+                <h1 className="text-sm">{job.title}</h1>
+                {job.city && (
+                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
+                        
+                            <h1 className="text-xs flex flex-row items-center justify-start gap-1.5">
+                                <MapPin className="size-3" />
+                                {job.city}
+                            </h1>
+                        
+                        {job.country_code && <h1 className="text-xs">{", "}{job.country_code}</h1>}
+                    </div>
+                )}
+                {job.job_type && (
+                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
+                        
+                            <h1 className="text-xs flex flex-row items-center justify-start gap-1.5">
+                                <AlignEndHorizontal className="size-3" />
+                                {job.job_type}
+                            </h1>
+                        
+                        {job.country_code && <h1 className="text-xs">{", "}{job.country_code}</h1>}
+                    </div>
+                )}
+            </div>
+            <div className="flex flex-row items-center justify-start gap-16">
+            <div className="flex flex-row items-center justify-start gap-3 relative">
+                    <Button
+                        onClick={toggleShareDropdown}
+                        className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}
+                    >
+                        <Share2 strokeWidth={3} className="size-4" />
+                    </Button>
+                    {shareDropdownOpen && (
+                        <div ref={dropdownRef} className="absolute right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
+                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} className="block px-4 py-2 text-sm text-left w-full">
+                                Share via Email
+                            </Button>
+                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} className="block px-4 py-2 text-sm text-left w-full">
+                                Share on LinkedIn
+                                </Button>
+                            <Button variant="ghost" onClick={() => {
+                                navigator.clipboard.writeText(`${window.location.href}/${job.job_slug}`); 
+                                setShareDropdownOpen(false); 
+                                return toast({
+                                    title: dict?.board.list.copied,
+                                    variant: "default",
+                                  })
+                                }} className="block px-4 py-2 text-sm text-left w-full">
+                                {dict?.board.list.copy}
+                            </Button>
+                        </div>
+                    )}
+
+                    <Button className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}>
+                        <Bookmark strokeWidth={3} className="size-4" />
+                    </Button>
+                </div>
+                <div className="flex flex-row items-center justify-start gap-2">
+                    <Link
+                        href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}
+                        className={cn(buttonVariants({ variant: "link", size: "default" }), "p-0 h-fit text-xs text-muted-foreground")}
+                        target="_blank"
+                    >
+                        {dict?.board.list.more}
+                    </Link>
+                    <Link
+                        href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}
+                        className={cn(buttonVariants({ variant: "ghost", size: "default" }), "p-0 h-fit px-2 font-semibold")}
+                    >
+                        {dict?.board.list.apply}
+                    </Link>
                 </div>
                 
             </div>
         </div>
     );
-
 }
-
 
 function FilterItem({ label, onRemove }) {
     return (
@@ -46,7 +144,7 @@ function JobList({ params, jobs }) {
     }
 
     const [dict, setDict] = useState<Record<string, any> | null>(null);
-    const [filteredJobs, setFilteredJobs] = useState<Job[]>(jobs);
+    const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [selectedCity, setSelectedCity] = useState<string | null>(null);
     const [uniqueCities, setUniqueCities] = useState<string[]>([]);
@@ -67,11 +165,18 @@ function JobList({ params, jobs }) {
             )
         );
         setUniqueCities(cities);
-        setFilteredJobs(jobs);
+
+        // Sort jobs by job_type, accounting for possible null values
+        const sortedJobs = [...jobs].sort((a, b) => {
+            if (!a.job_type) return 1; // Treat null job_type as greater (put it last)
+            if (!b.job_type) return -1;
+            return a.job_type.localeCompare(b.job_type);
+        });
+        setFilteredJobs(sortedJobs);
     }, [params.lang, jobs]);
 
     useEffect(() => {
-        let updatedJobs = jobs;
+        let updatedJobs = [...jobs];
 
         if (searchQuery) {
             updatedJobs = updatedJobs.filter((job) =>
@@ -83,6 +188,13 @@ function JobList({ params, jobs }) {
             updatedJobs = updatedJobs.filter((job) => job.city === selectedCity);
         } 
 
+        // Sort filtered jobs by job_type, accounting for possible null values
+        updatedJobs.sort((a, b) => {
+            if (!a.job_type) return 1;
+            if (!b.job_type) return -1;
+            return a.job_type.localeCompare(b.job_type);
+        });
+
         setFilteredJobs(updatedJobs);
     }, [searchQuery, selectedCity, jobs]);
 
@@ -90,7 +202,7 @@ function JobList({ params, jobs }) {
         if (filterType === "searchQuery") {
             setSearchQuery("");
         } else if (filterType === "selectedCity") {
-            setSelectedCity(null); // Reset selected city to ensure placeholder is shown
+            setSelectedCity(null);
         }
     };
 
@@ -107,30 +219,28 @@ function JobList({ params, jobs }) {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="bg-background"
                 />
-            <Select
-                onValueChange={(value) => setSelectedCity(value)}
-                value={selectedCity || ""}
-                
-            >
-                <SelectTrigger className="w-[180px] bg-background dark:bg-border ">
-                    <SelectValue placeholder={dict?.board.list.loc_search} />
-                </SelectTrigger>
-                <SelectContent className="bg-background dark:bg-border">
-                    {selectedCity === null && (
-                        <SelectItem value="" >
-                            <p className="text-accent-foreground/60">
-                                {dict?.board.list.loc_search}
-                            </p>
-                        </SelectItem>
-                    )} 
-                    
-                    {uniqueCities.map((city) => (
-                        <SelectItem key={city} value={city}>
-                            {city}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
-            </Select>
+                <Select
+                    onValueChange={(value) => setSelectedCity(value)}
+                    value={selectedCity || ""}
+                >
+                    <SelectTrigger className="w-[180px] bg-background dark:bg-border ">
+                        <SelectValue placeholder={dict?.board.list.loc_search} />
+                    </SelectTrigger>
+                    <SelectContent className="bg-background dark:bg-border">
+                        {selectedCity === null && (
+                            <SelectItem value="" >
+                                <p className="text-accent-foreground/60">
+                                    {dict?.board.list.loc_search}
+                                </p>
+                            </SelectItem>
+                        )} 
+                        {uniqueCities.map((city) => (
+                            <SelectItem key={city} value={city}>
+                                {city}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
             </div>
             <div className="h-[2px] w-full rounded-full bg-border" />
             <div className="flex w-full flex-row items-start justify-between">
@@ -138,7 +248,6 @@ function JobList({ params, jobs }) {
                     <h1 className="text-left font-heading text-base">
                         {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
                     </h1>
-                    {/* Display applied filters */}
                     <div className="ml-4 flex flex-row items-center gap-2">
                         {searchQuery && (
                             <FilterItem label={`Search: ${searchQuery}`} onRemove={() => handleRemoveFilter("searchQuery")} />
@@ -165,6 +274,7 @@ function JobList({ params, jobs }) {
         </div>
     );
 }
+
 
 export default function Page({ params }) {
     const [dict, setDict] = useState<Record<string, any> | null>(null);
