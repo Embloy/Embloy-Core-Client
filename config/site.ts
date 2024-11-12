@@ -3,9 +3,11 @@ import { SiteConfig } from "types"
 export const siteConfig: SiteConfig = {
   name: "Embloy",
   description: "Apply to any job in the world using one single account: You press the button, we do the rest.",
-  url: "https://embloy.com",
+  //url: "https://embloy.com",
+  url: "http://localhost:3000",
   api_url: "https://api.embloy.com/api/v0",
   api_root_url: "https://api.embloy.com",
+  apply_url: "https://apply.embloy.com",
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",
   links: {
     developer: "https://developers.embloy.com",

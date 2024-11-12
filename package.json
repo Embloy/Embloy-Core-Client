@@ -102,7 +102,8 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.9",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "crypto": "^1.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",

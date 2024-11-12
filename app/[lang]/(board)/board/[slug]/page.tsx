@@ -7,13 +7,14 @@ import { Job } from "@/types/job-schema";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Bookmark, MapPin, Share2, X, Shapes, AlignEndHorizontal} from "lucide-react"; // Assuming you're using Lucide for icons
+import { Bookmark, MapPin, Share2, X, AlignEndHorizontal} from "lucide-react"; // Assuming you're using Lucide for icons
 import { EmbloySpacer } from "@/components/ui/stuff";
 import { FaPhone, FaAt, FaLink, FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
-import { cn } from "@/lib/utils";
+import { cn, replaceNumberWithString } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "@/components/ui/use-toast";
+import { siteConfig } from "@/config/site";
 
 function JobItem({ params, job }) {
     const [dict, setDict] = useState<Record<string, any> | null>(null);
@@ -67,8 +68,6 @@ function JobItem({ params, job }) {
                                 <AlignEndHorizontal className="size-3" />
                                 {job.job_type}
                             </h1>
-                        
-                        {job.country_code && <h1 className="text-xs">{", "}{job.country_code}</h1>}
                     </div>
                 )}
             </div>
@@ -82,17 +81,17 @@ function JobItem({ params, job }) {
                     </Button>
                     {shareDropdownOpen && (
                         <div ref={dropdownRef} className="absolute right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
-                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} className="block px-4 py-2 text-sm text-left w-full">
+                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
                                 Share via Email
                             </Button>
-                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} className="block px-4 py-2 text-sm text-left w-full">
+                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
                                 Share on LinkedIn
                                 </Button>
                             <Button variant="ghost" onClick={() => {
                                 navigator.clipboard.writeText(`${window.location.href}/${job.job_slug}`); 
                                 setShareDropdownOpen(false); 
                                 return toast({
-                                    title: dict?.board.list.copied,
+                                    title: replaceNumberWithString(dict?.board.list.copied, "Link"),
                                     variant: "default",
                                   })
                                 }} className="block px-4 py-2 text-sm text-left w-full">
@@ -109,12 +108,11 @@ function JobItem({ params, job }) {
                     <Link
                         href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}
                         className={cn(buttonVariants({ variant: "link", size: "default" }), "p-0 h-fit text-xs text-muted-foreground")}
-                        target="_blank"
                     >
                         {dict?.board.list.more}
                     </Link>
                     <Link
-                        href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}
+                        href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${params.slug}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job.job_slug}`}
                         className={cn(buttonVariants({ variant: "ghost", size: "default" }), "p-0 h-fit px-2 font-semibold")}
                     >
                         {dict?.board.list.apply}
@@ -136,12 +134,7 @@ function FilterItem({ label, onRemove }) {
 }
 
 function JobList({ params, jobs }) {
-    function replaceNumberWithString(message: string, replacement: string): string {
-        if (!message) {
-            return "";
-        }
-        return message.replace(/\{.*?\}/, replacement);
-    }
+    
 
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
@@ -401,8 +394,11 @@ export default function Page({ params }) {
                                                     <button 
                                                         onClick={() => {
                                                             navigator.clipboard.writeText(company.phone);
-                                                            alert("Phone number copied to clipboard!"); // Optional: Alert to notify the user
-                                                        }}
+                                                            return toast({
+                                                                title: replaceNumberWithString(dict?.board.list.copied, "Phone"),
+                                                                variant: "default",
+                                                              });
+                                                            }}
                                                         className="mx-1 cursor-copy"
                                                     >
                                                         <FaPhone className="text-gray-800 dark:text-gray-200" />
@@ -412,7 +408,10 @@ export default function Page({ params }) {
                                                     <button 
                                                         onClick={() => {
                                                             navigator.clipboard.writeText(company.email);
-                                                            alert("Email copied to clipboard!"); // Optional: Alert to notify the user
+                                                            return toast({
+                                                                title: replaceNumberWithString(dict?.board.list.copied, "Email"),
+                                                                variant: "default",
+                                                            });
                                                         }}
                                                         className="mx-1 cursor-copy"
                                                     >
