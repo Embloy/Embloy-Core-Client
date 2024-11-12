@@ -236,7 +236,7 @@ export default function Page({ params }) {
                                         </div>
                                         
                                         <div className="flex w-5/12 flex-row items-start justify-end">
-                                            <div className="flex flex-col items-start justify-start gap-2">
+                                            <div className="hidden md:block flex flex-col items-start justify-start gap-2">
                                                 {company?.image_url ? (
                                                     <div className="flex flex-row items-center justify-start gap-2">
                                                         <Image
@@ -343,25 +343,25 @@ export default function Page({ params }) {
                                     </div>
                                     <div className="h-[2px] w-full rounded-full bg-border" />
                                     <EmbloySpacer className={"h-4"} />
-                                    <div className="flex flex-row items-start justify-start gap-2">
-                                        {company?.image_url && (
-                                            <div className="flex flex-row items-center justify-start gap-2">
-                                                <Image
-                                                    src={company.image_url}
-                                                    alt="Company Logo"
-                                                    width={75}
-                                                    height={75}
-                                                    className="rounded-full"
-                                                />
-                                                
-                                            </div>
-                                        ) }
+                                    <div className="flex flex-row items-start justify-center md:justify-start gap-2 w-full">
                                         <div className="flex flex-col items-start justify-start">
                                             <h1 className="text-left font-heading text-2xl">
                                                 {company?.first_name}{" "}{company?.last_name}
                                             </h1>
                                             <Socials company={company} dict={dict} />  
                                         </div>
+                                        {company?.image_url && (
+                                            <div className="flex flex-row items-center justify-start gap-2">
+                                                <Image
+                                                    src={company.image_url}
+                                                    alt="Company Logo"
+                                                    width={50}
+                                                    height={50}
+                                                    className="rounded-full"
+                                                />
+                                                
+                                            </div>
+                                        ) }
                                     </div>
                                 </div>
                             </div>
