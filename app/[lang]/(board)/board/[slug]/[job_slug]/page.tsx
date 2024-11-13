@@ -1,6 +1,6 @@
 "use client";
 import { getDictionary } from "@/app/[lang]/dictionaries";
-import { getListedJobs } from "@/lib/api/jobs";
+import { getListedJob, getListedJobs } from "@/lib/api/jobs";
 import { Job } from "@/types/job-schema";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -14,6 +14,28 @@ import { EmbloySpacer } from "@/components/ui/stuff";
 import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
 import { parseLocale } from "@/i18n-config";
+import parse, { domToReact } from 'html-react-parser';
+const JobTitle = ({ children }) => (
+<h1 className="text-xl font-heading ">{children}</h1>
+);
+const JobParagraph = ({ children }) => (
+<p className="text-base">{children}</p>
+);
+const JobList = ({ children }) => (
+    <ul className="list-disc ml-8 text-base">{children}</ul>
+  );
+  
+const JobListItem = ({ children }) => (
+<li className="text-base">{children}</li>
+);
+  
+const JobStrong = ({ children }) => (
+<strong className="text-base font-heading">{children}</strong>
+);
+
+const JobLink = ({ children }) => (
+    <Link className={cn(buttonVariants({ variant: "link", size: "default" }), "w-auto lg:w-auto p-0 h-auto")}target="_blank" rel="noopener noreferrer" href={children}>{children}</Link>
+);
 function Socials ({company, dict}) {
     return (
         <div className="flex w-full flex-row items-start justify-end">
@@ -123,23 +145,49 @@ export default function Page({ params }) {
                 setError(500);
             } else {
                 setError(null);
-                console.log("RESP", response);
                 setJobs(response.jobs || []);
                 setCompany(response.company ? (response.company as Company) : null);
-                
-                const job = response.jobs.find((job) => job.job_slug === params.job_slug);
-                if (job !== undefined) {
-                    console.log("JOB", job);
-                    setJob(job);
+                const res = await getListedJob(params.slug, params.job_slug);
+                if (res.err) {
+                    setError(res.err);
+                } else if (!res.response) {
+                    setError(500);
                 } else {
-                    setError(404);
+                    const job = res.response;
+                    if (job !== undefined && job !== null) {
+                        console.log("job",job);
+                        setJob(job);
+                    } else {
+                        setError(404);
+                    }
                 }
             }
             setIsLoading(false);
         };
         fetchJobs();
     }, [params.job_slug, router, params.lang]);
-
+    const options = {
+        replace: (domNode) => {
+          if (domNode.name === 'h1') {
+            return <JobTitle>{domToReact(domNode.children)}</JobTitle>;
+          }
+          if (domNode.name === 'p') {
+            return <JobParagraph>{domToReact(domNode.children)}</JobParagraph>;
+          }
+          if (domNode.name === 'ul') {
+            return <JobList>{domToReact(domNode.children)}</JobList>;
+          }
+            if (domNode.name === 'li') {
+                return <JobListItem>{domToReact(domNode.children)}</JobListItem>;
+            }
+            if (domNode.name === 'strong') {
+                return <JobStrong>{domToReact(domNode.children)}</JobStrong>;
+            }
+            if (domNode.name === 'a') {
+                return <JobLink>{domToReact(domNode.children)}</JobLink>;
+            }
+        },
+      };
     return (
         dict && (
             <div className="flex flex-col items-start justify-start px-4 py-1.5">
@@ -334,8 +382,7 @@ export default function Page({ params }) {
                                             <div className="h-[2px] w-full rounded-full bg-border dark:bg-input" />
                                         </div>
                                         <div className="flex flex-col items-start justify-start gap-2 w-full">
-
-
+                                        {job && job.description && parse(job.description.body || '', options)}
                                         </div>
                                         <div className="flex flex-row items-center justfy-start gap-2">
                                             {job && <p className="text-xs text-muted-foreground">{dict.board.post.last_updated}{": "}{formatDate(parseLocale(params.lang),job?.updated_at)}</p>}

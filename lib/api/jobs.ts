@@ -2,8 +2,31 @@ import { siteConfig } from "@/config/site";
 import { Job } from "@/types/job-schema";
 import { getAccessToken } from "./auth";
 
+export async function getListedJob(company_id, job_slug): Promise<{response: {job: Job | null} | null, err: number | null}> {
+  const response = await fetch(`${siteConfig.api_url}/company/${company_id}/board/${job_slug}`, {
+    method: 'GET',
+  });
+  if (!response.ok) {
+    return { response: null, err: response.status };
+  }
+  if (response.status === 204) {
+    return { response: {job:null}, err: null };
+  }
+  let data: {job: any; };
+  try {
+    data = await response.json();
+  } catch (error) {
+    console.error('Failed to parse JSON response:', error);
+    return { response: null, err: 500 };
+  }
+  const jobs = data.job
+
+  const result = jobs
+  return {response: result , err: null };
+}
+
 export async function getListedJobs(company_id): Promise<{response: {jobs: Job[], company:Object} | null, err: number | null}> {
-  const response = await fetch(`${siteConfig.api_url}/company/${company_id}/feed`, {
+  const response = await fetch(`${siteConfig.api_url}/company/${company_id}/board`, {
     method: 'GET',
   });
   if (!response.ok) {
