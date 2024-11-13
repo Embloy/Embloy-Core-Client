@@ -286,7 +286,7 @@ function JobList({ params, jobs }) {
                             <SelectValue placeholder={dict?.board.list.cat_search} />
                         </SelectTrigger>
                         <SelectContent className="bg-background dark:bg-border">
-                            {selectedCity === null && (
+                            {selectedCategory === null && (
                                 <SelectItem value="" >
                                     <p className="text-accent-foreground/60">
                                         {dict?.board.list.cat_search}
