@@ -169,7 +169,6 @@ export default function Page({ params }) {
                 } else {
                     const job = res.response;
                     if (job !== undefined && job !== null) {
-                        console.log("job",job);
                         setJob(job);
                     } else {
                         setError(404);
@@ -228,6 +227,7 @@ export default function Page({ params }) {
                             {error === null && jobs && (
                                 <div className="flex flex-col items-start justify-start w-full gap-2">
                                     <h1 className="text-xl font-heading">{dict.board.post.similar}</h1>
+                                    <EmbloySpacer className={"h-4"} />
                                     {jobs.map((job_o) => (
                                         job_o.job_type === job?.job_type && (
                                             <Link

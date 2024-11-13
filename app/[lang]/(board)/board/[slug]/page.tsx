@@ -47,9 +47,9 @@ function JobItem({ params, job }) {
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
 
     return (
-        <div className="flex w-full flex-row items-center justify-between rounded-lg border border-input bg-background px-6 py-4 dark:border-background dark:bg-border relative">
+        <div className="flex w-full flex-row items-center justify-between rounded-sm border border-input bg-background px-6 py-3 dark:border-background dark:bg-border relative">
             <div className="flex flex-row items-center justify-start gap-6">
-                <h1 className="text-sm">{job.title}</h1>
+                <h1 className="text-base font-heading">{job.title}</h1>
                 {job.city && (
                     <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
                         
@@ -72,7 +72,7 @@ function JobItem({ params, job }) {
                 )}
             </div>
             <div className="flex flex-row items-center justify-start gap-16">
-            <div className="flex flex-row items-center justify-start gap-3 relative">
+                <div className="flex flex-row items-center justify-start gap-3 relative">
                     <Button
                         onClick={toggleShareDropdown}
                         className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}
@@ -141,6 +141,8 @@ function JobList({ params, jobs }) {
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [selectedCity, setSelectedCity] = useState<string | null>(null);
     const [uniqueCities, setUniqueCities] = useState<string[]>([]);
+    const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchDictionary = async () => {
@@ -159,6 +161,15 @@ function JobList({ params, jobs }) {
         );
         setUniqueCities(cities);
 
+        const categories = Array.from(
+            new Set(
+                jobs
+                    .filter(job => job.job_type)
+                    .map(job => job.job_type)
+            )
+        );
+        setUniqueCategories(categories);
+
         // Sort jobs by job_type, accounting for possible null values
         const sortedJobs = [...jobs].sort((a, b) => {
             if (!a.job_type) return 1; // Treat null job_type as greater (put it last)
@@ -166,6 +177,7 @@ function JobList({ params, jobs }) {
             return a.job_type.localeCompare(b.job_type);
         });
         setFilteredJobs(sortedJobs);
+
     }, [params.lang, jobs]);
 
     useEffect(() => {
@@ -180,6 +192,10 @@ function JobList({ params, jobs }) {
         if (selectedCity) {
             updatedJobs = updatedJobs.filter((job) => job.city === selectedCity);
         } 
+        
+        if (selectedCategory) {
+            updatedJobs = updatedJobs.filter((job) => job.job_type === selectedCategory);
+        }
 
         // Sort filtered jobs by job_type, accounting for possible null values
         updatedJobs.sort((a, b) => {
@@ -189,59 +205,28 @@ function JobList({ params, jobs }) {
         });
 
         setFilteredJobs(updatedJobs);
-    }, [searchQuery, selectedCity, jobs]);
+    }, [searchQuery, selectedCity, selectedCategory, jobs]);
 
-    const handleRemoveFilter = (filterType: "searchQuery" | "selectedCity") => {
+    const handleRemoveFilter = (filterType: "searchQuery" | "selectedCity" | "selectedCategory") => {
         if (filterType === "searchQuery") {
             setSearchQuery("");
         } else if (filterType === "selectedCity") {
             setSelectedCity(null);
+        } else if (filterType === "selectedCategory") {
+            setSelectedCategory(null);
         }
     };
 
     return (
-        <div className="flex w-full flex-col items-start justify-start gap-2">
-            <div className="flex w-full flex-row items-center justify-between gap-2">
-                <Input
-                    id="qry"
-                    placeholder={dict?.board.list.search}
-                    type="text"
-                    autoCapitalize="none"
-                    autoCorrect="off"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-background"
-                />
-                <Select
-                    onValueChange={(value) => setSelectedCity(value)}
-                    value={selectedCity || ""}
-                >
-                    <SelectTrigger className="w-[180px] bg-background dark:bg-border ">
-                        <SelectValue placeholder={dict?.board.list.loc_search} />
-                    </SelectTrigger>
-                    <SelectContent className="bg-background dark:bg-border">
-                        {selectedCity === null && (
-                            <SelectItem value="" >
-                                <p className="text-accent-foreground/60">
-                                    {dict?.board.list.loc_search}
-                                </p>
-                            </SelectItem>
-                        )} 
-                        {uniqueCities.map((city) => (
-                            <SelectItem key={city} value={city}>
-                                {city}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </div>
-            <div className="h-[2px] w-full rounded-full bg-border" />
-            <div className="flex w-full flex-row items-start justify-between">
-                <div className="flex flex-row items-center justify-start">
-                    <h1 className="text-left font-heading text-base">
+    
+            
+        <div className="flex w-full flex-row items-start justify-between gap-6">
+            <div className="hidden xl:block w-3/12 rounded-lg bg-secondary p-4 flex flex-col items-start justify-start gap-6">
+                <div className="flex flex-col items-start justify-start gap-2">
+                    <h1 className="text-left font-heading text-xl">
                         {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
                     </h1>
-                    <div className="ml-4 flex flex-row items-center gap-2">
+                    <div className="flex flex-col items-start justify-start gap-1.5">
                         {searchQuery && (
                             <FilterItem label={`Search: ${searchQuery}`} onRemove={() => handleRemoveFilter("searchQuery")} />
                         )}
@@ -251,24 +236,148 @@ function JobList({ params, jobs }) {
                                 onRemove={() => handleRemoveFilter("selectedCity")}
                             />
                         )}
+                        {selectedCategory && (
+                            <FilterItem
+                                label={`Location: ${selectedCategory}`}
+                                onRemove={() => handleRemoveFilter("selectedCategory")}
+                            />
+                        )}
                     </div>
                 </div>
-            </div>
-            <div className="flex w-full flex-row items-start justify-between">
-                <div className="flex w-9/12 flex-col items-start justify-start">
-                    {filteredJobs.map((job) => (
-                        <div key={job.job_id} className="my-1.5 w-full">
-                            <JobItem params={params} job={job} />
-                        </div>
-                    ))}
+                <EmbloySpacer className={"h-4"} />
+                <div className="flex flex-col items-start justify-start gap-2 w-full">
+                    <Input
+                        id="qry"
+                        placeholder={dict?.board.list.search}
+                        type="text"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="bg-background focus:ring-0"
+                    />
+                    <Select
+                        onValueChange={(value) => setSelectedCity(value)}
+                        value={selectedCity || ""}
+                    >
+                        <SelectTrigger className="w-full bg-background dark:bg-border focus:ring-0">
+                            <SelectValue placeholder={dict?.board.list.loc_search} />
+                        </SelectTrigger>
+                        <SelectContent className="bg-background dark:bg-border">
+                            {selectedCity === null && (
+                                <SelectItem value="" >
+                                    <p className="text-accent-foreground/60">
+                                        {dict?.board.list.loc_search}
+                                    </p>
+                                </SelectItem>
+                            )} 
+                            {uniqueCities.map((city) => (
+                                <SelectItem key={city} value={city}>
+                                    {city}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <Select
+                        onValueChange={(value) => setSelectedCategory(value)}
+                        value={selectedCategory || ""}
+                    >
+                        <SelectTrigger className="w-full bg-background dark:bg-border focus:ring-0">
+                            <SelectValue placeholder={dict?.board.list.cat_search} />
+                        </SelectTrigger>
+                        <SelectContent className="bg-background dark:bg-border">
+                            {selectedCity === null && (
+                                <SelectItem value="" >
+                                    <p className="text-accent-foreground/60">
+                                        {dict?.board.list.cat_search}
+                                    </p>
+                                </SelectItem>
+                            )} 
+                            {uniqueCategories.map((cat) => (
+                                <SelectItem key={cat} value={cat}>
+                                    {cat}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
                 </div>
-                <div className="min-w-2/12 flex flex-col items-start justify-start"></div>
             </div>
+            <div className="flex w-full xl:w-9/12 flex-col items-start justify-start bg-secondary p-4 rounded-lg">
+                {filteredJobs.map((job) => (
+                    <div key={job.job_id} className="my-1.5 w-full">
+                        <JobItem params={params} job={job} />
+                    </div>
+                ))}
+            </div>
+          
         </div>
     );
 }
 
-
+function Socials ({dict, company}) {
+    return (
+        <div className="flex flex-row items-start justify-start">
+            {company?.phone && (
+                <button 
+                    onClick={() => {
+                        navigator.clipboard.writeText(company.phone);
+                        return toast({
+                            title: replaceNumberWithString(dict?.board.list.copied, "Phone"),
+                            variant: "default",
+                            });
+                        }}
+                    className="mx-1 cursor-copy"
+                >
+                    <FaPhone className="text-gray-800 dark:text-gray-200" />
+                </button>
+            )}
+            {company?.email && (
+                <button 
+                    onClick={() => {
+                        navigator.clipboard.writeText(company.email);
+                        return toast({
+                            title: replaceNumberWithString(dict?.board.list.copied, "Email"),
+                            variant: "default",
+                        });
+                    }}
+                    className="mx-1 cursor-copy"
+                >
+                    <FaAt className="text-gray-800 dark:text-gray-200" />
+                </button>
+            )}
+            {company?.portfolio_url && (
+                <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
+                    <FaLink className="text-gray-800 dark:text-gray-200" />
+                </a>
+            )}
+            {company?.facebook_url && (
+                <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
+                    <FaFacebook className="text-blue-600" />
+                </a>
+            )}
+            {company?.instagram_url && (
+                <a href={company.instagram_url} target="_blank" rel="noopener noreferrer" className="mx-1">
+                    <FaInstagram className="text-pink-500" />
+                </a>
+            )}
+            {company?.linkedin_url && (
+                <a href={company.linkedin_url} target="_blank" rel="noopener noreferrer" className="mx-1">
+                    <FaLinkedin className="text-blue-700" />
+                </a>
+            )}
+            {company?.github_url && (
+                <a href={company.github_url} target="_blank" rel="noopener noreferrer" className="mx-1">
+                    <FaGithub className="text-gray-800 dark:text-gray-200" />
+                </a>
+            )}
+            {company?.twitter_url && (
+                <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" className="mx-1">
+                    <FaTwitter className="text-blue-400" />
+                </a>
+            )}
+        </div>
+    )
+}
 export default function Page({ params }) {
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -321,7 +430,7 @@ export default function Page({ params }) {
     return (
         dict && (
             <div className="flex flex-col items-start justify-start px-4 py-1.5">
-                <div className="w-full rounded-lg bg-secondary p-4">
+                <div className="w-full rounded-lg p-4 bg-background border">
                     {isLoading ? (
                         <div className="flex flex-row items-center justify-center">
                             <p className="italic text-muted-foreground">Loading</p>
@@ -367,95 +476,45 @@ export default function Page({ params }) {
                         )
                     ) : (
                         <div className="flex w-full flex-col items-start justify-start">
-                            <div className="flex w-full flex-col items-start justify-start">
+                            <div className="flex w-full flex-col items-start justify-start  gap-4">
                                 <div className="flex w-full flex-row items-start justify-between">
-                                    <div className="flex w-5/12 flex-row items-start justify-start">
-                                    </div>
-                                    <div className="flex w-2/12 flex-row items-start justify-center">
+                                    
+                                    <div className="flex w-full flex-row items-start justify-between">
                                         {company?.image_url ? (
-                                            <Image
-                                                src={company.image_url}
-                                                alt="Company Logo"
-                                                width={50}
-                                                height={50}
-                                                className="rounded-full"
-                                            />
-                                        ) : (
-                                            <h1 className="text-left font-heading text-2xl">
-                                                {company?.first_name}
-                                            </h1>
-                                        )}
-                                    </div>
-                                    <div className="flex w-5/12 flex-row items-start justify-end">
-                                        <div className="flex flex-col items-start justify-start gap-2">
-                                            <p className="w-full text-right text-xs">{company?.first_name}{" "}{company?.last_name}</p>
-                                            <div className="flex w-full flex-row items-start justify-end">
-                                                {company?.phone && (
-                                                    <button 
-                                                        onClick={() => {
-                                                            navigator.clipboard.writeText(company.phone);
-                                                            return toast({
-                                                                title: replaceNumberWithString(dict?.board.list.copied, "Phone"),
-                                                                variant: "default",
-                                                              });
-                                                            }}
-                                                        className="mx-1 cursor-copy"
-                                                    >
-                                                        <FaPhone className="text-gray-800 dark:text-gray-200" />
-                                                    </button>
-                                                )}
-                                                {company?.email && (
-                                                    <button 
-                                                        onClick={() => {
-                                                            navigator.clipboard.writeText(company.email);
-                                                            return toast({
-                                                                title: replaceNumberWithString(dict?.board.list.copied, "Email"),
-                                                                variant: "default",
-                                                            });
-                                                        }}
-                                                        className="mx-1 cursor-copy"
-                                                    >
-                                                        <FaAt className="text-gray-800 dark:text-gray-200" />
-                                                    </button>
-                                                )}
-                                                {company?.portfolio_url && (
-                                                    <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                                                        <FaLink className="text-gray-800 dark:text-gray-200" />
-                                                    </a>
-                                                )}
-                                                {company?.facebook_url && (
-                                                    <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                                                        <FaFacebook className="text-blue-600" />
-                                                    </a>
-                                                )}
-                                                {company?.instagram_url && (
-                                                    <a href={company.instagram_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                                                        <FaInstagram className="text-pink-500" />
-                                                    </a>
-                                                )}
-                                                {company?.linkedin_url && (
-                                                    <a href={company.linkedin_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                                                        <FaLinkedin className="text-blue-700" />
-                                                    </a>
-                                                )}
-                                                {company?.github_url && (
-                                                    <a href={company.github_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                                                        <FaGithub className="text-gray-800 dark:text-gray-200" />
-                                                    </a>
-                                                )}
-                                                {company?.twitter_url && (
-                                                    <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                                                        <FaTwitter className="text-blue-400" />
-                                                    </a>
-                                                )}
+                                            <div className="flex flex-row items-start justify-start gap-4">
+                                                <Image
+                                                    src={company.image_url}
+                                                    alt="Company Logo"
+                                                    width={100}
+                                                    height={100}
+                                                    className="rounded-full border border-2 border-input"
+                                                />
+                                                <div className="flex flex-col items-start justify-start gap-2">
+                                                    <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
+                                                    <Socials dict={dict} company={company} />
+                                                </div>
                                             </div>
+                                        ) : (
+                                            <div className="flex flex-col items-start justify-start gap-2">
+                                                <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
+                                                <Socials dict={dict} company={company} />
+                                            </div>
+                                        )}
+                                        
+                                        <div className="flex flex-row items-start justify-end gap-2">
+                                            
+                                        </div>
+
                                         </div>
                                     </div>
-                                </div>
+                                    
+                                
                                 <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
                                     {dict.board.list.subHead}
                                 </p>
                             </div>
+                            <EmbloySpacer className={"h-4"} />
+                            <div className="h-[2px] w-full rounded-full bg-border" />
                             <EmbloySpacer className={"h-4"} />
                             <JobList params={params} jobs={jobs} />
                         </div>
