@@ -226,23 +226,6 @@ function JobList({ params, jobs }) {
                     <h1 className="text-left font-heading text-xl">
                         {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
                     </h1>
-                    <div className="flex flex-col items-start justify-start gap-1.5">
-                        {searchQuery && (
-                            <FilterItem label={`Search: ${searchQuery}`} onRemove={() => handleRemoveFilter("searchQuery")} />
-                        )}
-                        {selectedCity && (
-                            <FilterItem
-                                label={`Location: ${selectedCity}`}
-                                onRemove={() => handleRemoveFilter("selectedCity")}
-                            />
-                        )}
-                        {selectedCategory && (
-                            <FilterItem
-                                label={`Location: ${selectedCategory}`}
-                                onRemove={() => handleRemoveFilter("selectedCategory")}
-                            />
-                        )}
-                    </div>
                 </div>
                 <EmbloySpacer className={"h-4"} />
                 <div className="flex flex-col items-start justify-start gap-2 w-full">
@@ -300,6 +283,26 @@ function JobList({ params, jobs }) {
                             ))}
                         </SelectContent>
                     </Select>
+                </div>
+                <EmbloySpacer className={"h-4"} />
+                <div className="flex flex-col items-start justify-start gap-2">
+                    <div className="flex flex-col items-start justify-start gap-1.5">
+                        {searchQuery && (
+                            <FilterItem label={`Search: ${searchQuery}`} onRemove={() => handleRemoveFilter("searchQuery")} />
+                        )}
+                        {selectedCity && (
+                            <FilterItem
+                                label={`Location: ${selectedCity}`}
+                                onRemove={() => handleRemoveFilter("selectedCity")}
+                            />
+                        )}
+                        {selectedCategory && (
+                            <FilterItem
+                                label={`Location: ${selectedCategory}`}
+                                onRemove={() => handleRemoveFilter("selectedCategory")}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
             <div className="flex w-full xl:w-9/12 flex-col items-start justify-start bg-secondary p-4 rounded-lg">
