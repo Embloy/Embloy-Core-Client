@@ -16,26 +16,23 @@ import { siteConfig } from "@/config/site";
 import { parseLocale } from "@/i18n-config";
 import parse, { domToReact } from 'html-react-parser';
 const JobTitle = ({ children }) => (
-<h1 className="text-xl font-heading ">{children}</h1>
+    <h1 className="text-xl font-heading ">{children}</h1>
 );
 const JobParagraph = ({ children }) => (
-<p className="text-base">{children}</p>
+    <p className="text-base">{children}</p>
 );
 const JobList = ({ children }) => (
     <ul className="list-disc ml-8 text-base">{children}</ul>
-  );
+);
   
 const JobListItem = ({ children }) => (
-<li className="text-base">{children}</li>
+    <li className="text-base">{children}</li>
 );
   
 const JobStrong = ({ children }) => (
-<strong className="text-base font-heading">{children}</strong>
+    <strong className="text-base font-heading">{children}</strong>
 );
 
-const JobLink = ({ children }) => (
-    <Link className={cn(buttonVariants({ variant: "link", size: "default" }), "w-auto lg:w-auto p-0 h-auto")}target="_blank" rel="noopener noreferrer" href={children}>{children}</Link>
-);
 function Socials ({company, dict}) {
     return (
         <div className="flex w-full flex-row items-start justify-end">
@@ -130,6 +127,23 @@ export default function Page({ params }) {
     const dropdownRef = useRef(null);
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
     useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShareDropdownOpen(false);
+            }
+        };
+    
+        if (shareDropdownOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [shareDropdownOpen]);
+    useEffect(() => {
         const fetchDictionary = async () => {
             const dictionary = await getDictionary(params.lang);
             setDict(dictionary);
@@ -168,26 +182,43 @@ export default function Page({ params }) {
     }, [params.job_slug, router, params.lang]);
     const options = {
         replace: (domNode) => {
-          if (domNode.name === 'h1') {
-            return <JobTitle>{domToReact(domNode.children)}</JobTitle>;
-          }
-          if (domNode.name === 'p') {
-            return <JobParagraph>{domToReact(domNode.children)}</JobParagraph>;
-          }
-          if (domNode.name === 'ul') {
-            return <JobList>{domToReact(domNode.children)}</JobList>;
-          }
+            if (domNode.name === 'h1') {
+                return (
+                    <JobTitle>
+                        {domToReact(domNode.children, options)}
+                    </JobTitle>
+                );
+            }
+            if (domNode.name === 'p') {
+                return (
+                    <JobParagraph>
+                        {domToReact(domNode.children, options)}
+                    </JobParagraph>
+                );
+            }
+            if (domNode.name === 'ul') {
+                return <JobList>{domToReact(domNode.children, options)}</JobList>;
+            }
             if (domNode.name === 'li') {
-                return <JobListItem>{domToReact(domNode.children)}</JobListItem>;
+                return <JobListItem>{domToReact(domNode.children, options)}</JobListItem>;
             }
             if (domNode.name === 'strong') {
-                return <JobStrong>{domToReact(domNode.children)}</JobStrong>;
+                return <JobStrong>{domToReact(domNode.children, options)}</JobStrong>;
             }
             if (domNode.name === 'a') {
-                return <JobLink>{domToReact(domNode.children)}</JobLink>;
+                return (
+                    <a
+                        href={domNode.attribs.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 underline"
+                    >
+                        {domToReact(domNode.children)}
+                    </a>
+                );
             }
         },
-      };
+    };
     return (
         dict && (
             <div className="flex flex-col items-start justify-start px-4 py-1.5">
