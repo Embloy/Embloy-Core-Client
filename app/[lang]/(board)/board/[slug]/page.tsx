@@ -218,8 +218,6 @@ function JobList({ params, jobs }) {
     };
 
     return (
-    
-            
         <div className="flex w-full flex-row items-start justify-between gap-6">
             <div className="hidden xl:block w-3/12 rounded-lg bg-secondary p-4 flex flex-col items-start justify-start gap-6">
                 <div className="flex flex-col items-start justify-start gap-2">
@@ -382,6 +380,8 @@ function Socials ({dict, company}) {
     )
 }
 export default function Page({ params }) {
+    const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [jobs, setJobs] = useState<Job[]>([]);
@@ -429,6 +429,7 @@ export default function Page({ params }) {
         };
         fetchJobs();
     }, [params.slug, router, params.lang]);
+    const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
 
     return (
         dict && (
@@ -478,49 +479,70 @@ export default function Page({ params }) {
                             </div>
                         )
                     ) : (
-                        <div className="flex w-full flex-col items-start justify-start">
-                            <div className="flex w-full flex-col items-start justify-start  gap-4">
-                                <div className="flex w-full flex-row items-start justify-between">
-                                    
-                                    <div className="flex w-full flex-row items-start justify-between">
-                                        {company?.image_url ? (
-                                            <div className="flex flex-row items-start justify-start gap-4">
-                                                <Image
-                                                    src={company.image_url}
-                                                    alt="Company Logo"
-                                                    width={100}
-                                                    height={100}
-                                                    className="rounded-full border border-2 border-input"
-                                                />
-                                                <div className="flex flex-col items-start justify-start gap-2">
-                                                    <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
-                                                    <Socials dict={dict} company={company} />
-                                                </div>
-                                            </div>
-                                        ) : (
+                    <div className="flex w-full flex-col items-start justify-start">
+                        <div className="flex w-full flex-col items-start justify-start gap-4">
+                            <div className="flex w-full flex-row items-start justify-between">
+                                <div className="flex w-1/2 flex-row items-start justify-between">
+                                    {company?.image_url ? (
+                                        <div className="flex flex-row items-start justify-start gap-4">
+                                            <Image
+                                                src={company.image_url}
+                                                alt="Company Logo"
+                                                width={100}
+                                                height={100}
+                                                className="rounded-full border border-2 border-input"
+                                            />
                                             <div className="flex flex-col items-start justify-start gap-2">
                                                 <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
                                                 <Socials dict={dict} company={company} />
                                             </div>
-                                        )}
-                                        
-                                        <div className="flex flex-row items-start justify-end gap-2">
-                                            
                                         </div>
-
+                                    ) : (
+                                        <div className="flex flex-col items-start justify-start gap-2">
+                                            <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
+                                            <Socials dict={dict} company={company} />
                                         </div>
-                                    </div>
+                                    )}
                                     
-                                
-                                <p className="text-left text-sm text-muted-foreground dark:text-muted-foreground">
-                                    {dict.board.list.subHead}
-                                </p>
+                                    <div className="flex flex-row items-start justify-end gap-2">
+                                        
+                                    </div>
+                                </div>
+                                <div className="flex w-1/2 flex-row items-start justify-end">
+                                    <Button
+                                        onClick={toggleShareDropdown}
+                                        className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}
+                                    >
+                                        <Share2 strokeWidth={3} className="size-4" />
+                                    </Button>
+                                    {shareDropdownOpen && (
+                                        <div ref={dropdownRef} className="absolute right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
+                                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                                                Share via Email
+                                            </Button>
+                                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                                                Share on LinkedIn
+                                                </Button>
+                                            <Button variant="ghost" onClick={() => {
+                                                navigator.clipboard.writeText(`${window.location.href}`); 
+                                                setShareDropdownOpen(false); 
+                                                return toast({
+                                                    title: replaceNumberWithString(dict?.board.list.copied, "Link"),
+                                                    variant: "default",
+                                                })
+                                                }} className="block px-4 py-2 text-sm text-left w-full">
+                                                {dict?.board.list.copy}
+                                            </Button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                            <EmbloySpacer className={"h-4"} />
-                            <div className="h-[2px] w-full rounded-full bg-border" />
-                            <EmbloySpacer className={"h-4"} />
-                            <JobList params={params} jobs={jobs} />
                         </div>
+                        <EmbloySpacer className={"h-4"} />
+                        <div className="h-[2px] w-full rounded-full bg-border" />
+                        <EmbloySpacer className={"h-4"} />
+                        <JobList params={params} jobs={jobs} />
+                    </div>
                     )}
                 </div>
             </div>
