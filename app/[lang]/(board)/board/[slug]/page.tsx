@@ -133,7 +133,7 @@ function FilterItem({ label, onRemove }) {
     );
 }
 
-function JobList({ params, jobs }) {
+function JobList({ params, jobs, excludeHeader, excludeFooter }) {
     
 
     const [dict, setDict] = useState<Record<string, any> | null>(null);
@@ -379,7 +379,7 @@ function Socials ({dict, company}) {
         </div>
     )
 }
-export default function Page({ params }) {
+export default function Page({ params, excludeHeader, excludeFooter }) {
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [dict, setDict] = useState<Record<string, any> | null>(null);
