@@ -21,10 +21,24 @@
   },
   "board": {
     "list": {
-      "_404":{"head": "Page not found", "subHead": "Die Seite, die du suchst, existiert nicht."},
-      "_500":{"head": "Ein Fehler ist aufgetreten", "subHead": "Bitte versuche es später erneut."}
+      "_404": {"head": "Seite nicht gefunden", "subHead": "Die Seite, die Du suchst, existiert nicht."},
+      "_500": {"head": "Ein Fehler ist aufgetreten", "subHead": "Bitte versuche es bald erneut."},
+      "found": "{number} Jobs gefunden",
+      "search": "Suche",
+      "loc_search": "Stadt",
+      "cat_search": "Abteilung/Kategorie",
+      "more": "Mehr erfahren",
+      "apply": "Bewerben",
+      "copy": "Link kopieren",
+      "copied": "{number} kopiert",
+      "email": "Per E-Mail teilen",
+      "linkedin": "Auf LinkedIn teilen"
+    },
+    "post": {
+      "back": "Zurück zu {number} Jobs",
+      "last_updated": "Aktualisiert",
+      "similar": "Ähnliche Jobs"
     }
-
   },
   "marketing": {
     "landing": {

@@ -21,10 +21,24 @@
   },
   "board": {
     "list": {
-      "_404":{"head": "Page not found", "subHead": "The page you are looking for does not exist."},
-      "_500":{"head": "An Error occured", "subHead": "Please try again soon."}
+      "_404": {"head": "Page non trouvée", "subHead": "La page que vous recherchez n'existe pas."},
+      "_500": {"head": "Une erreur s'est produite", "subHead": "Veuillez réessayer bientôt."},
+      "found": "{number} emplois trouvés",
+      "search": "Recherche",
+      "loc_search": "Ville",
+      "cat_search": "Département/Catégorie",
+      "more": "En savoir plus",
+      "apply": "Postuler",
+      "copy": "Copier le lien",
+      "copied": "{number} copié",
+      "email": "Partager par email",
+      "linkedin": "Partager sur LinkedIn"
+    },
+    "post": {
+      "back": "Retour à {number} emplois",
+      "last_updated": "Mis à jour",
+      "similar": "Emplois similaires"
     }
-
   },
   "marketing": {
     "landing": {

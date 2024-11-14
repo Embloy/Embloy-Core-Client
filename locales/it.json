@@ -21,10 +21,24 @@
   },
   "board": {
     "list": {
-      "_404":{"head": "Page not found", "subHead": "The page you are looking for does not exist."},
-      "_500":{"head": "An Error occured", "subHead": "Please try again soon."}
+      "_404": {"head": "Pagina non trovata", "subHead": "La pagina che stai cercando non esiste."},
+      "_500": {"head": "Si è verificato un errore", "subHead": "Per favore riprova presto."},
+      "found": "Trovati {number} lavori",
+      "search": "Cerca",
+      "loc_search": "Città",
+      "cat_search": "Dipartimento/Categoria",
+      "more": "Scopri di più",
+      "apply": "Candidati",
+      "copy": "Copia link",
+      "copied": "{number} copiato",
+      "email": "Condividi via email",
+      "linkedin": "Condividi su LinkedIn"
+    },
+    "post": {
+      "back": "Torna a {number} lavori",
+      "last_updated": "Aggiornato",
+      "similar": "Lavori simili"
     }
-
   },
   "marketing": {
     "landing": {

@@ -21,16 +21,24 @@
   },
   "board": {
     "list": {
-        "_404": {
-          "head": "ページが見つかりません",
-          "subHead": "お探しのページは存在しません。"
-        },
-        "_500": {
-          "head": "エラーが発生しました",
-          "subHead": "しばらくしてから再度お試しください。"
-        }
+      "_404": {"head": "ページが見つかりません", "subHead": "お探しのページは存在しません。"},
+      "_500": {"head": "エラーが発生しました", "subHead": "しばらくしてからもう一度お試しください。"},
+      "found": "{number} 件の求人が見つかりました",
+      "search": "検索",
+      "loc_search": "市",
+      "cat_search": "部門/カテゴリ",
+      "more": "もっと詳しく知る",
+      "apply": "応募する",
+      "copy": "リンクをコピー",
+      "copied": "{number} コピーしました",
+      "email": "メールで共有",
+      "linkedin": "LinkedInで共有"
+    },
+    "post": {
+      "back": "{number} 件の求人に戻る",
+      "last_updated": "更新日",
+      "similar": "類似の求人"
     }
-
   },
   "marketing": {
     "landing": {
