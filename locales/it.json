@@ -83,6 +83,10 @@
       "about": "Link utili",
       "head": "Scopri Embloy:"
     },
+    "signup": {
+      "about": "Link utili",
+      "head": "Iscriviti in soli 10 secondi!"
+    },
     "news": {
       "about": "Notizie",
       "head": "Ultimi aggiornamenti su Embloy:",
@@ -186,7 +190,8 @@
       "dontHaveAccount": "Non hai un account? Registrati",
       "forgotPassword": "Password dimenticata?",
       "signIn": "Accedi",
-      "orContinueWith": "O continua con"
+      "orContinueWith": "O continua con",
+      "skipAccount": "Non vuoi creare un account? Salta avanti all'applicazione."
     },
     "register": {
       "login": "Accedi",
@@ -205,6 +210,21 @@
       "and": " e ",
       "privacyPolicy": "Informativa sulla privacy"
     },
+    "otp": {
+      "back": "Indietro",
+      "title": "Continua senza creare un account.",
+      "enterEmail": "Inserisci l'email che desideri utilizzare per candidarti a questo lavoro. Se cambi idea, puoi creare un account in seguito.",
+      "oAuth": "Vuoi candidarti con il tuo account LinkedIn, GitHub, Google o Microsoft?",
+      "requestOTP": "Richiedi codice monouso",
+      "setOTP": "Inserisci il codice di verifica (es. 123456)",
+      "Email": "E-mail",
+      "steps": {
+        "Input Name": "Inserisci il nome",
+        "Input Email": "Inserisci l'email",
+        "Verify": "Verifica",
+        "Apply": "Candidati"
+      }
+    },  
     "pwreset": {
       "back": "Indietro",
       "title": "Reimposta la tua password",
@@ -266,6 +286,10 @@
         "title": "Qualcosa è andato storto.",
         "description": "La tua richiesta di link di attivazione non è riuscita. Per favore, riprova."
       },
+      "otp": {
+        "title": "Qualcosa è andato storto.",
+        "description": "La tua richiesta di verifica OTP non è riuscita. Tieni presente che il codice è valido solo per 10 minuti."
+      },
       "First name is required": "Nome è richiesto",
       "First name must be at most 128 characters": "Nome deve contenere al massimo 128 caratteri",
       "Last name is required": "Cognome è richiesto",
@@ -274,7 +298,8 @@
       "Email must be at most 150 characters": "Email deve contenere al massimo 150 caratteri",
       "Password must be at least 8 characters": "La password deve contenere almeno 8 caratteri",
       "Password must be at most 72 characters": "La password deve contenere al massimo 72 caratteri",
-      "Passwords must match": "Le password devono corrispondere"    
+      "Passwords must match": "Le password devono corrispondere",
+      "OTP code must be 6 digits": "Il codice OTP deve essere di 6 cifre"
     },
     "success": {
       "login": {
@@ -299,6 +324,10 @@
       "activation": {
         "title": "Successo",
         "description": "Un link di attivazione è stato inviato alla tua email."
+      },
+      "otp": {
+        "title": "Successo",
+        "description": "Un codice di verifica è stato inviato alla tua email."
       }
     }
   },
@@ -650,6 +679,9 @@
   },
   "sdk": {
     "loading": "Caricamento...",
+    "remainingTime": "Tempo rimanente: {time}",
+    "expired": "La sessione è scaduta. Dovrai ricominciare il processo.",
+    "timerDisclaimer": "Per garantire la sicurezza dei tuoi dati, la sessione scadrà quando il timer si esaurirà. Si prega di inviare la domanda prima che il timer scada.",  
     "byEmbloy": "da Embloy Platforms UG (haftungsbeschränkt)",
     "required": "Questo campo è obbligatorio",
     "validURL": "Questo campo deve essere un URL valido",

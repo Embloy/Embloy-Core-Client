@@ -83,6 +83,10 @@
       "about": "便利なリンク",
       "head": "Embloyを発見する:"
     },
+    "signup": {
+      "about": "便利なリンク",
+      "head": "たった10秒でサインアップ！"
+    },
     "news": {
       "about": "ニュース",
       "head": "Embloyの最新情報:",
@@ -186,7 +190,8 @@
       "dontHaveAccount": "アカウントをお持ちでないですか？サインアップ",
       "forgotPassword": "パスワードをお忘れですか？",
       "signIn": "サインイン",
-      "orContinueWith": "または次の方法で続行"
+      "orContinueWith": "または次の方法で続行",
+      "skipAccount": "アカウントを作成せずに進みますか？応募に進んでください。"
     },
     "register": {
       "login": "ログイン",
@@ -205,6 +210,21 @@
       "and": " そして ",
       "privacyPolicy": "プライバシーポリシー に同意する"
     },
+    "otp": {
+      "back": "戻る",
+      "title": "アカウントを作成せずに続行します。",
+      "enterEmail": "この仕事に応募するために使用するメールアドレスを入力してください。気が変わった場合は、後でアカウントを作成することができます。",
+      "oAuth": "LinkedIn、GitHub、Google、Microsoftアカウントで応募しますか？",
+      "requestOTP": "ワンタイムパスコードをリクエスト",
+      "setOTP": "確認コードを入力してください（例：123456）",
+      "Email": "メール",
+      "steps": {
+        "Input Name": "名前を入力",
+        "Input Email": "メールを入力",
+        "Verify": "確認",
+        "Apply": "応募"
+      }
+    },  
     "pwreset": {
       "back": "戻る",
       "title": "パスワードをリセットする",
@@ -266,6 +286,10 @@
         "title": "何かがうまくいきませんでした。",
         "description": "アクティベーションリンクのリクエストが失敗しました。 もう一度お試しください。"
       },
+      "otp": {
+        "title": "何かがうまくいきませんでした。",
+        "description": "OTP認証リクエストに失敗しました。コードは10分間のみ有効であることに注意してください。"
+      },
       "First name is required": "名前は必須です",
       "First name must be at most 128 characters": "名前は最大128文字でなければなりません",
       "Last name is required": "姓は必須です",
@@ -274,7 +298,8 @@
       "Email must be at most 150 characters": "メールは最大150文字でなければなりません",
       "Password must be at least 8 characters": "パスワードは最低8文字でなければなりません",
       "Password must be at most 72 characters": "パスワードは最大72文字でなければなりません",
-      "Passwords must match": "パスワードが一致しなければなりません"
+      "Passwords must match": "パスワードが一致しなければなりません",
+      "OTP code must be 6 digits": "OTPコードは6桁でなければなりません"
     },
     "success": {
       "login": {
@@ -299,6 +324,10 @@
       "activation": {
         "title": "成功",
         "description": "アクティベーションリンクがあなたのメールに送信されました。"
+      },
+      "otp": {
+        "title": "成功",
+        "description": "確認コードがあなたのメールに送信されました。"
       }
     }
   },
@@ -650,6 +679,9 @@
   },
   "sdk": {
     "loading": "読み込み中...",
+    "remainingTime": "残り時間: {time}",
+    "expired": "セッションが期限切れになりました。プロセスを再度開始する必要があります。",
+    "timerDisclaimer": "データのセキュリティを確保するために、タイマーが切れるとセッションが期限切れになります。タイマーが切れる前に応募を提出してください。",  
     "byEmbloy": "by Embloy Platforms UG (haftungsbeschränkt)",
     "required": "このフィールドは必須です",
     "validURL": "このフィールドは有効なURLである必要があります",
