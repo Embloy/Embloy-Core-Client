@@ -111,7 +111,7 @@ export function MainNav({
           onClick={() => setShowMobileMenu(!showMobileMenu)}
         >
           {showMobileMenu ? <Icons.close /> : <Icons.logo />}
-          <span className="font-bold">{dict.nav.menu}</span>
+          <span className="font-heading">{dict.nav.menu}</span>
         </button>
         {showMobileMenu && items && (
           <MobileNav

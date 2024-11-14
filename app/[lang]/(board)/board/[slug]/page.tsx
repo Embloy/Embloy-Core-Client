@@ -47,8 +47,8 @@ function JobItem({ params, job }) {
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
 
     return (
-        <div className="flex w-full flex-row items-center justify-between rounded-sm border border-input bg-background px-6 py-3 dark:border-background dark:bg-border relative">
-            <div className="flex flex-row items-center justify-start gap-6">
+        <div className="flex w-full flex-col md:flex-row items-start md:items-center justify-start md:justify-between rounded-sm border border-input bg-background px-3 md:px-6 py-3 dark:border-background dark:bg-border relative gap-5 md:gap-0">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-0.5 md:gap-6">
                 <h1 className="text-base font-heading">{job.title}</h1>
                 {job.city && (
                     <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
@@ -71,7 +71,7 @@ function JobItem({ params, job }) {
                     </div>
                 )}
             </div>
-            <div className="flex flex-row items-center justify-start gap-16">
+            <div className="flex flex-row items-center justify-between md:justify-start md:gap-16 w-full md:w-fit">
                 <div className="flex flex-row items-center justify-start gap-3 relative">
                     <Button
                         onClick={toggleShareDropdown}
@@ -80,7 +80,7 @@ function JobItem({ params, job }) {
                         <Share2 strokeWidth={3} className="size-4" />
                     </Button>
                     {shareDropdownOpen && (
-                        <div ref={dropdownRef} className="absolute right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
+                        <div ref={dropdownRef} className="absolute md:right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
                             <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
                                 Share via Email
                             </Button>
@@ -296,7 +296,7 @@ function JobList({ params, jobs }) {
                         )}
                         {selectedCategory && (
                             <FilterItem
-                                label={`Location: ${selectedCategory}`}
+                                label={`Category: ${selectedCategory}`}
                                 onRemove={() => handleRemoveFilter("selectedCategory")}
                             />
                         )}
@@ -430,11 +430,27 @@ export default function Page({ params }) {
         fetchJobs();
     }, [params.slug, router, params.lang]);
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
-
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShareDropdownOpen(false);
+            }
+        };
+    
+        if (shareDropdownOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [shareDropdownOpen]);
     return (
         dict && (
-            <div className="flex flex-col items-start justify-start px-4 py-1.5">
-                <div className="w-full rounded-lg p-4 bg-background border">
+            <div className="flex flex-col items-start justify-start px-2 md:px-4 py-1.5">
+                <div className="w-full rounded-lg md:p-4 bg-background md:border">
                     {isLoading ? (
                         <div className="flex flex-row items-center justify-center">
                             <p className="italic text-muted-foreground">Loading</p>
@@ -480,11 +496,11 @@ export default function Page({ params }) {
                         )
                     ) : (
                     <div className="flex w-full flex-col items-start justify-start">
-                        <div className="flex w-full flex-col items-start justify-start gap-4">
+                        <div className="flex w-full flex-col items-start justify-start gap-4 px-3 md:px-0 ">
                             <div className="flex w-full flex-row items-start justify-between">
                                 <div className="flex w-1/2 flex-row items-start justify-between">
                                     {company?.image_url ? (
-                                        <div className="flex flex-row items-start justify-start gap-4">
+                                        <div className="flex flex-col md:flex-row items-start justify-start gap-4">
                                             <Image
                                                 src={company.image_url}
                                                 alt="Company Logo"

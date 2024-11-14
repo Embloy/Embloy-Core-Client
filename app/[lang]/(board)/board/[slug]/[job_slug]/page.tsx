@@ -220,9 +220,9 @@ export default function Page({ params }) {
     };
     return (
         dict && (
-            <div className="flex flex-col items-start justify-start px-4 py-1.5">
+            <div className="flex flex-col items-start justify-start px-2 md:px-4 py-1.5">
                 <div className="flex flex-row items-start justify-between w-full gap-6">
-                {!isLoading && (
+                    {!isLoading && (
                         <div className="sticky hidden xl:block w-3/12 max-h-screen overflow-y-scroll rounded-lg bg-secondary p-4 flex flex-col items-start justify-start gap-2">
                             {error === null && jobs && (
                                 <div className="flex flex-col items-start justify-start w-full gap-2">
@@ -306,28 +306,31 @@ export default function Page({ params }) {
                         ) : (
                             <div className="flex w-full flex-col items-start justify-start">
                                 <div className="flex w-full flex-col items-start justify-start gap-2">
-                                    <div className="flex w-full flex-row items-start justify-between">
-                                        <div className="flex w-5/12 flex-row items-center justify-start gap-16">
+                                    <div className="flex w-full flex-col md:flex-row items-start justify-start md:justify-between">
+                                        <div className="flex w-full md:w-5/12 flex-row items-center justify-start md:gap-16">
                                             <Link href={`/${params.lang}/board/${params.slug}`} className={cn(buttonVariants({ variant: "link", size: "default" }), "rounded-full p-0 text-secondary-foreground dark:text-primary-foreground")}>
                                                 <ArrowLeft />
                                                 {replaceNumberWithString(dict?.board.post.back, company?.first_name)}
                                             </Link>
                                         </div>
-                                        
-                                        <div className="flex w-5/12 flex-row items-start justify-end">
-                                            <div className="hidden md:block flex flex-col items-start justify-start gap-2">
+                                        <EmbloySpacer className={"h-4 md:hidden"} />
+                                        <div className="flex w-full md:w-5/12 flex-row items-start justify-start md:justify-end">
+                                            <div className="flex flex-col items-start justify-start gap-2">
                                                 {company?.image_url ? (
-                                                    <div className="flex flex-row items-center justify-start gap-2">
+                                                    <div className="flex flex-row items-start justify-start gap-2">
                                                         <Image
                                                             src={company.image_url}
                                                             alt="Company Logo"
-                                                            width={25}
-                                                            height={25}
-                                                            className="rounded-full"
+                                                            width={50}
+                                                            height={50}
+                                                            className="rounded-full border border-2 border-input"
                                                         />
-                                                        <h1 className="text-left font-heading text-xl">
-                                                            {company?.first_name}{" "}{company?.last_name}
-                                                        </h1>
+                                                        <div className="flex flex-col items-start justify-start">
+                                                            <h1 className="text-left font-heading text-xl">
+                                                                {company?.first_name}
+                                                            </h1>
+                                                            <Socials company={company} dict={dict} />  
+                                                        </div>  
                                                     </div>
                                                 ) : (
                                                     <h1 className="text-left font-heading text-2xl">
@@ -336,19 +339,80 @@ export default function Page({ params }) {
                                                     
                                                 )}
 
-                                                <Socials company={company} dict={dict} />                                           
+                                                                                       
                                             </div>
                                         </div>
                                     </div>
                                     <EmbloySpacer className={"h-4"} />
                                     <div className="h-[2px] w-full rounded-full bg-border" />
-                                    <div className="flex flex-col items-start justify-start gap-8 bg-background px-6 py-4 border border-input dark:border-background dark:bg-border w-full rounded-lg">
+                                    <div className="flex flex-col items-start justify-start gap-8 bg-background px-3 md:px-6 py-3 md:py-4 border border-input dark:border-background dark:bg-border w-full rounded-lg">
                                         <div className="flex flex-col items-start justify-start gap-2 w-full">
-                                            <div className="flex flex-row items-center justify-between w-full ">
+                                            <div className="flex flex-col md:flex-row items-center justify-between w-full">
                                                 <h1 className="text-left font-heading text-3xl">
                                                     {job?.title}
                                                 </h1>
-                                                <div className="flex flex-row items-center justify-start gap-3 relative">
+                                                <div className="hidden md:flex flex-row items-center justify-start gap-3 relative">
+                                                    <Button
+                                                        onClick={toggleShareDropdown}
+                                                        className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}
+                                                    >
+                                                        <Share2 className="size-5" />
+                                                    </Button>
+                                                    
+                                                    {shareDropdownOpen && job && (
+                                                        <div ref={dropdownRef} className="absolute right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
+                                                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                                                                Share via Email
+                                                            </Button>
+                                                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                                                                Share on LinkedIn
+                                                                </Button>
+                                                            <Button variant="ghost" onClick={() => {
+                                                                navigator.clipboard.writeText(`${window.location.href}`); 
+                                                                setShareDropdownOpen(false); 
+                                                                return toast({
+                                                                    title: replaceNumberWithString(dict?.board.list.copied, "Link"),
+                                                                    variant: "default",
+                                                                })
+                                                                }} className="block px-4 py-2 text-sm text-left w-full">
+                                                                {dict?.board.list.copy}
+                                                            </Button>
+                                                        </div>
+                                                    )}
+                                                    <Button className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}>
+                                                        <Bookmark className="size-5" />
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-row items-center justfy-start gap-2">
+                                                {job?.city && (
+                                                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
+                                                            <h1 className="text-sm flex flex-row items-center justify-start gap-1.5">
+                                                                <MapPin className="size-4" />
+                                                                {job.city}
+                                                            </h1>
+                                                        {job.country_code && <h1 className="text-sm">{", "}{job.country_code}</h1>}
+                                                    </div>
+                                                )}
+                                                {job?.job_type && (
+                                                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
+                                                            <h1 className="text-sm flex flex-row items-center justify-start gap-1.5">
+                                                                <AlignEndHorizontal className="size-4" />
+                                                                {job.job_type}
+                                                            </h1>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col items-start justify-start gap-2 w-full">
+                                            <div className="flex flex-row items-center justify-between md:justfy-start gap-2 w-full md:w-fit">
+                                                <Link
+                                                    href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${params.slug}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job?.job_slug}`}
+                                                    className={cn(buttonVariants({ variant: "filled", size: "bold" }), "w-auto lg:w-auto")}
+                                                >
+                                                    {dict.board.list.apply}
+                                                </Link>
+                                                <div className="block md:hidden flex flex-row items-center justify-end md:justify-start gap-3 relative">
                                                     <Button
                                                         onClick={toggleShareDropdown}
                                                         className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}
@@ -381,35 +445,6 @@ export default function Page({ params }) {
                                                     </Button>
                                                 </div>
                                             </div>
-                                            <div className="flex flex-row items-center justfy-start gap-2">
-                                                {job?.city && (
-                                                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
-                                                            <h1 className="text-sm flex flex-row items-center justify-start gap-1.5">
-                                                                <MapPin className="size-4" />
-                                                                {job.city}
-                                                            </h1>
-                                                        {job.country_code && <h1 className="text-sm">{", "}{job.country_code}</h1>}
-                                                    </div>
-                                                )}
-                                                {job?.job_type && (
-                                                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
-                                                            <h1 className="text-sm flex flex-row items-center justify-start gap-1.5">
-                                                                <AlignEndHorizontal className="size-4" />
-                                                                {job.job_type}
-                                                            </h1>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col items-start justify-start gap-2 w-full">
-                                            <div className="flex flex-row items-center justfy-start gap-2">
-                                                <Link
-                                                    href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${params.slug}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job?.job_slug}`}
-                                                    className={cn(buttonVariants({ variant: "filled", size: "bold" }), "w-auto lg:w-auto")}
-                                                >
-                                                    {dict.board.list.apply}
-                                                </Link>
-                                            </div>
                                             <div className="h-[2px] w-full rounded-full bg-border dark:bg-input" />
                                         </div>
                                         <div className="flex flex-col items-start justify-start gap-2 w-full">
@@ -422,24 +457,25 @@ export default function Page({ params }) {
                                     <div className="h-[2px] w-full rounded-full bg-border" />
                                     <EmbloySpacer className={"h-4"} />
                                     <div className="flex flex-row items-start justify-center md:justify-start gap-2 w-full">
-                                        <div className="flex flex-col items-start justify-start">
-                                            <h1 className="text-left font-heading text-2xl">
-                                                {company?.first_name}{" "}{company?.last_name}
-                                            </h1>
-                                            <Socials company={company} dict={dict} />  
-                                        </div>
-                                        {company?.image_url && (
+                                    {company?.image_url && (
                                             <div className="flex flex-row items-center justify-start gap-2">
                                                 <Image
                                                     src={company.image_url}
                                                     alt="Company Logo"
-                                                    width={50}
-                                                    height={50}
-                                                    className="rounded-full"
+                                                    width={100}
+                                                    height={100}
+                                                    className="rounded-full border border-2 border-input"
                                                 />
                                                 
                                             </div>
                                         ) }
+                                        <div className="flex flex-col items-start justify-start">
+                                            <h1 className="text-left font-heading text-xl">
+                                                {company?.first_name}{" "}{company?.last_name}
+                                            </h1>
+                                            <Socials company={company} dict={dict} />  
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
