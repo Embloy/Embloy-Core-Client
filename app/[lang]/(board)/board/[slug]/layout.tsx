@@ -121,5 +121,5 @@ export default function BoardLayout({ children, params: { lang } }: boardLayoutP
         </div>
       ))
   }
-} in
+} 
   

@@ -47,13 +47,13 @@ function JobItem({ params, job }) {
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
 
     return (
-        <div className="flex w-full flex-col md:flex-row items-start md:items-center justify-start md:justify-between rounded-sm border border-input bg-background px-3 md:px-6 py-3 dark:border-background dark:bg-border relative gap-5 md:gap-0">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-0.5 md:gap-6">
-                <h1 className="text-base font-heading">{job.title}</h1>
+        <div className="relative flex w-full flex-col items-start justify-start gap-5 rounded-sm border border-input bg-background p-3 dark:border-background dark:bg-border md:flex-row md:items-center md:justify-between md:gap-0 md:px-6">
+            <div className="flex flex-col items-start justify-start gap-0.5 md:flex-row md:items-center md:gap-6">
+                <h1 className="font-heading text-base">{job.title}</h1>
                 {job.city && (
-                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
+                    <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
                         
-                            <h1 className="text-xs flex flex-row items-center justify-start gap-1.5">
+                            <h1 className="flex flex-row items-center justify-start gap-1.5 text-xs">
                                 <MapPin className="size-3" />
                                 {job.city}
                             </h1>
@@ -62,29 +62,29 @@ function JobItem({ params, job }) {
                     </div>
                 )}
                 {job.job_type && (
-                    <div className="flex flex-row items-center border dark:border-background rounded-full px-2 dark:text-muted-foreground">
+                    <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
                         
-                            <h1 className="text-xs flex flex-row items-center justify-start gap-1.5">
+                            <h1 className="flex flex-row items-center justify-start gap-1.5 text-xs">
                                 <AlignEndHorizontal className="size-3" />
                                 {job.job_type}
                             </h1>
                     </div>
                 )}
             </div>
-            <div className="flex flex-row items-center justify-between md:justify-start md:gap-16 w-full md:w-fit">
-                <div className="flex flex-row items-center justify-start gap-3 relative">
+            <div className="flex w-full flex-row items-center justify-between md:w-fit md:justify-start md:gap-16">
+                <div className="relative flex flex-row items-center justify-start gap-3">
                     <Button
                         onClick={toggleShareDropdown}
-                        className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}
+                        className={cn(buttonVariants({ variant: "transparent", size: "default" }), "h-fit p-0 font-semibold text-muted-foreground hover:text-secondary-foreground")}
                     >
                         <Share2 strokeWidth={3} className="size-4" />
                     </Button>
                     {shareDropdownOpen && (
-                        <div ref={dropdownRef} className="absolute md:right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
-                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                        <div ref={dropdownRef} className="absolute z-50 mt-2 min-w-48 rounded-md border bg-white p-2 shadow-lg dark:bg-popover md:right-0">
+                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
                                 Share via Email
                             </Button>
-                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
                                 Share on LinkedIn
                                 </Button>
                             <Button variant="ghost" onClick={() => {
@@ -94,26 +94,26 @@ function JobItem({ params, job }) {
                                     title: replaceNumberWithString(dict?.board.list.copied, "Link"),
                                     variant: "default",
                                   })
-                                }} className="block px-4 py-2 text-sm text-left w-full">
+                                }} className="block w-full px-4 py-2 text-left text-sm">
                                 {dict?.board.list.copy}
                             </Button>
                         </div>
                     )}
 
-                    <Button className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}>
+                    <Button className={cn(buttonVariants({ variant: "transparent", size: "default" }), "h-fit p-0 font-semibold text-muted-foreground hover:text-secondary-foreground")}>
                         <Bookmark strokeWidth={3} className="size-4" />
                     </Button>
                 </div>
                 <div className="flex flex-row items-center justify-start gap-2">
                     <Link
                         href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}
-                        className={cn(buttonVariants({ variant: "link", size: "default" }), "p-0 h-fit text-xs text-muted-foreground")}
+                        className={cn(buttonVariants({ variant: "link", size: "default" }), "h-fit p-0 text-xs text-muted-foreground")}
                     >
                         {dict?.board.list.more}
                     </Link>
                     <Link
                         href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${params.slug}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job.job_slug}`}
-                        className={cn(buttonVariants({ variant: "ghost", size: "default" }), "p-0 h-fit px-2 font-semibold")}
+                        className={cn(buttonVariants({ variant: "ghost", size: "default" }), "h-fit p-0 px-2 font-semibold")}
                     >
                         {dict?.board.list.apply}
                     </Link>
@@ -219,14 +219,14 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
 
     return (
         <div className="flex w-full flex-row items-start justify-between gap-6">
-            <div className="hidden xl:block w-3/12 rounded-lg bg-secondary p-4 flex flex-col items-start justify-start gap-6">
+            <div className=" hidden w-3/12 flex-col items-start justify-start gap-6 rounded-lg bg-secondary p-4 xl:flex">
                 <div className="flex flex-col items-start justify-start gap-2">
                     <h1 className="text-left font-heading text-xl">
                         {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
                     </h1>
                 </div>
                 <EmbloySpacer className={"h-4"} />
-                <div className="flex flex-col items-start justify-start gap-2 w-full">
+                <div className="flex w-full flex-col items-start justify-start gap-2">
                     <Input
                         id="qry"
                         placeholder={dict?.board.list.search}
@@ -241,7 +241,7 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
                         onValueChange={(value) => setSelectedCity(value)}
                         value={selectedCity || ""}
                     >
-                        <SelectTrigger className="w-full bg-background dark:bg-border focus:ring-0">
+                        <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
                             <SelectValue placeholder={dict?.board.list.loc_search} />
                         </SelectTrigger>
                         <SelectContent className="bg-background dark:bg-border">
@@ -263,7 +263,7 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
                         onValueChange={(value) => setSelectedCategory(value)}
                         value={selectedCategory || ""}
                     >
-                        <SelectTrigger className="w-full bg-background dark:bg-border focus:ring-0">
+                        <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
                             <SelectValue placeholder={dict?.board.list.cat_search} />
                         </SelectTrigger>
                         <SelectContent className="bg-background dark:bg-border">
@@ -303,7 +303,7 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
                     </div>
                 </div>
             </div>
-            <div className="flex w-full xl:w-9/12 flex-col items-start justify-start bg-secondary p-4 rounded-lg">
+            <div className="flex w-full flex-col items-start justify-start rounded-lg bg-secondary p-4 xl:w-9/12">
                 {filteredJobs.map((job) => (
                     <div key={job.job_id} className="my-1.5 w-full">
                         <JobItem params={params} job={job} />
@@ -449,8 +449,8 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
     }, [shareDropdownOpen]);
     return (
         dict && (
-            <div className="flex flex-col items-start justify-start px-2 md:px-4 py-1.5">
-                <div className="w-full rounded-lg md:p-4 bg-background md:border">
+            <div className="flex flex-col items-start justify-start px-2 py-1.5 md:px-4">
+                <div className="w-full rounded-lg bg-background md:border md:p-4">
                     {isLoading ? (
                         <div className="flex flex-row items-center justify-center">
                             <p className="italic text-muted-foreground">Loading</p>
@@ -500,13 +500,13 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                             <div className="flex w-full flex-row items-start justify-between">
                                 <div className="flex w-1/2 flex-row items-start justify-between">
                                     {company?.image_url ? (
-                                        <div className="flex flex-col md:flex-row items-start justify-start gap-4">
+                                        <div className="flex flex-col items-start justify-start gap-4 md:flex-row">
                                             <Image
                                                 src={company.image_url}
                                                 alt="Company Logo"
                                                 width={100}
                                                 height={100}
-                                                className="rounded-full border border-2 border-input"
+                                                className="rounded-full border-2 border-input"
                                             />
                                             <div className="flex flex-col items-start justify-start gap-2">
                                                 <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
@@ -527,16 +527,16 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                                 <div className="flex w-1/2 flex-row items-start justify-end">
                                     <Button
                                         onClick={toggleShareDropdown}
-                                        className={cn(buttonVariants({ variant: "transparent", size: "default" }), "p-0 h-fit font-semibold text-muted-foreground hover:text-secondary-foreground")}
+                                        className={cn(buttonVariants({ variant: "transparent", size: "default" }), "h-fit p-0 font-semibold text-muted-foreground hover:text-secondary-foreground")}
                                     >
                                         <Share2 strokeWidth={3} className="size-4" />
                                     </Button>
                                     {shareDropdownOpen && (
-                                        <div ref={dropdownRef} className="absolute right-0 mt-2 min-w-48 bg-white dark:bg-popover border rounded-md shadow-lg z-50 p-2">
-                                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                                        <div ref={dropdownRef} className="absolute right-0 z-50 mt-2 min-w-48 rounded-md border bg-white p-2 shadow-lg dark:bg-popover">
+                                            <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
                                                 Share via Email
                                             </Button>
-                                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block px-4 py-2 text-sm text-left w-full">
+                                            <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
                                                 Share on LinkedIn
                                                 </Button>
                                             <Button variant="ghost" onClick={() => {
@@ -546,7 +546,7 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                                                     title: replaceNumberWithString(dict?.board.list.copied, "Link"),
                                                     variant: "default",
                                                 })
-                                                }} className="block px-4 py-2 text-sm text-left w-full">
+                                                }} className="block w-full px-4 py-2 text-left text-sm">
                                                 {dict?.board.list.copy}
                                             </Button>
                                         </div>
