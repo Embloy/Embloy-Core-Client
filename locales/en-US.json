@@ -5,6 +5,11 @@
         "header": "You're currently using Embloy in sandbox mode 🏖 - access to some features may be limited.", 
         "description": "Sandbox mode is a safe environment where you can test Embloy's features without affecting your account. Please note that some features such as subscriptions and billing may be limited or disabled in this mode."
       },
+      "company": {
+        "title": "Personal Account",
+        "header": "Here you can manage your personal account. To manage your company account, please visit the recruiter dashboard.", 
+        "description": "You company account is active. You can manage your personal account here. To manage your company account, please visit the recruiter dashboard (https://genius.embloy.com)."
+      },      
       "features": "Features",
       "pricing": "Pricing",
       "employers": "Employers",

@@ -5,6 +5,11 @@
       "header": "Vous utilisez actuellement Embloy en mode sandbox 🏖 - l'accès à certaines fonctionnalités peut être limité.",
       "description": "Le mode sandbox est un environnement sécurisé où vous pouvez tester les fonctionnalités d'Embloy sans affecter votre compte. Veuillez noter que certaines fonctionnalités peuvent être limitées ou désactivées dans ce mode. Pour accéder à toutes les fonctionnalités, veuillez passer à un plan payant."
     },
+    "company": {
+      "title": "Compte Personnel",
+      "header": "Ici, vous pouvez gérer votre compte personnel. Pour gérer votre compte entreprise, veuillez visiter le tableau de bord des recruteurs.",
+      "description": "Votre compte entreprise est actif. Vous pouvez gérer votre compte personnel ici. Pour gérer votre compte entreprise, veuillez visiter le tableau de bord des recruteurs (https://genius.embloy.com)."
+    },
     "features": "Fonctionnalités",
     "pricing": "Tarification",
     "employers": "Employeurs",

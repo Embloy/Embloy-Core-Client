@@ -9,7 +9,6 @@ import { getUserData } from "./user"
 export interface User {
   id: number
   email: string
-  password_digest: string
   activity_status: number
   image_url: string | null
   first_name: string
@@ -21,7 +20,7 @@ export interface User {
   city: string | null
   address: string | null
   date_of_birth: Date | null
-  user_type: string
+  type: string
   view_count: number
   created_at: Date
   updated_at: Date

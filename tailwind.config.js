@@ -13,8 +13,7 @@ module.exports = {
     container: {
       center: true,
       padding: "1rem",
-      screens: {
-      },
+      screens: {},
     },
     extend: {
       colors: {
@@ -64,6 +63,10 @@ module.exports = {
         sandbox: {
           DEFAULT: "hsl(var(--sandbox))",
           foreground: "hsl(var(--sandbox-foreground))",
+        },
+        company: {
+          DEFAULT: "hsl(var(--company))",
+          foreground: "hsl(var(--company-foreground))",
         },
       },
       borderRadius: {
