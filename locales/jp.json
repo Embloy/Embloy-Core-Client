@@ -398,10 +398,10 @@
             "job_status": "ステータス",
             "job_type": "仕事の種類",
             "referrer_url": "リファラURL",
-            "employer_phone": "雇用主電話",
-            "employer_name": "雇用主名",
-            "employer_email": "雇用主メール",
-            "employer_rating": "雇用主評価",
+            "employer_employer_phone": "雇用主電話",
+            "employer_employer_name": "雇用主名",
+            "employer_employer_email": "雇用主メール",
+            "employer_employer_rating": "雇用主評価",
             "key_skills": "主要スキル"
           }
         },

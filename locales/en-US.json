@@ -398,10 +398,10 @@
             "job_status": "Status",
             "job_type": "Job Type",
             "referrer_url": "Referrer URL",
-            "employer_phone": "Employer Phone",
-            "employer_name": "Employer Name",
-            "employer_email": "Employer Email",
-            "employer_rating": "Employer Rating",
+            "employer_employer_phone": "Employer Phone",
+            "employer_employer_name": "Employer Name",
+            "employer_employer_email": "Employer Email",
+            "employer_employer_rating": "Employer Rating",
             "key_skills": "Key Skills"
           }
         },

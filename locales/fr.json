@@ -398,10 +398,10 @@
             "job_status": "Statut",
             "job_type": "Type d'emploi",
             "referrer_url": "URL de référence",
-            "employer_phone": "Téléphone de l'employeur",
-            "employer_name": "Nom de l'employeur",
-            "employer_email": "E-mail de l'employeur",
-            "employer_rating": "Évaluation de l'employeur",
+            "employer_employer_phone": "Téléphone de l'employeur",
+            "employer_employer_name": "Nom de l'employeur",
+            "employer_employer_email": "E-mail de l'employeur",
+            "employer_employer_rating": "Évaluation de l'employeur",
             "key_skills": "Compétences clés"
           }
         },

@@ -398,10 +398,10 @@
             "job_status": "Stato",
             "job_type": "Tipo di lavoro",
             "referrer_url": "URL del referrer",
-            "employer_phone": "Telefono del datore di lavoro",
-            "employer_name": "Nome del datore di lavoro",
-            "employer_email": "Email del datore di lavoro",
-            "employer_rating": "Valutazione del datore di lavoro",
+            "employer_employer_phone": "Telefono del datore di lavoro",
+            "employer_employer_name": "Nome del datore di lavoro",
+            "employer_employer_email": "Email del datore di lavoro",
+            "employer_employer_rating": "Valutazione del datore di lavoro",
             "key_skills": "Competenze chiave"
           }
         },

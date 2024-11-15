@@ -74,24 +74,24 @@ export function UpcomingJobs({ jobs, params: { lang } }: UpcomingJobsProps) {
     dict && (
       <Accordion type="single" collapsible className="w-full">
         {jobs.map((job) => (
-          <AccordionItem value={job.job_id.toString()} key={job.job_id}>
+          <AccordionItem value={job.id.toString()} key={job.id}>
             <AccordionTrigger>
               <div className="flex items-center justify-start">
                 <Avatar className="size-9">
                   <AvatarImage
-                    src={job.employer_image_url || "/avatars/01.png"}
+                    src={job?.employer?.employer_image_url || "/avatars/01.png"}
                     alt="Avatar"
                   />
                   <AvatarFallback>
-                    {job.employer_name?.substring(0, 2)}
+                    {job?.employer?.employer_name?.substring(0, 2)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="ml-4 space-y-1 text-left">
                   <p className="text-sm font-medium leading-none">
-                    {job.employer_name}
+                    {job?.employer?.employer_name}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {job.employer_email}
+                    {job?.employer?.employer_email}
                   </p>
                 </div>
               </div>
@@ -136,7 +136,7 @@ export function UpcomingJobs({ jobs, params: { lang } }: UpcomingJobsProps) {
                         job.start_slot ?? new Date().toISOString(),
                         job.position ??
                           job.title ??
-                          job.employer_name ??
+                          job?.employer?.employer_name ??
                           job.job_slug
                       )
                     }

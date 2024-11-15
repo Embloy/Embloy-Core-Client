@@ -7,8 +7,9 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { Separator } from "@radix-ui/react-select"
 import { z } from "zod"
 
+import { Job } from "@/types/job-schema"
 import { submitApplication } from "@/lib/api/application"
-import { Job, Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
+import { Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
 import { User, getCurrentUser, getSession } from "@/lib/api/session"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
@@ -193,7 +194,7 @@ export default function ApplyPage({ params: { lang } }) {
   function validateFields() {
     let isValid = true
 
-    job?.application_options.forEach((option) => {
+    job?.application_options?.forEach((option) => {
       const userOption = options.find(
         (opt) => opt.application_option_id === option.id
       )
@@ -285,44 +286,49 @@ export default function ApplyPage({ params: { lang } }) {
   useEffect(() => {
     if (!currentUser || !job) return
 
-    const defaultOptions = job.application_options.map((option) => {
-      let defaultAnswer = ""
-      switch (option.question_type) {
-        case "short_text" || "long_text":
-          defaultAnswer = getUserPropertyValue(currentUser, option.question)
-          break
-        case "link":
-          defaultAnswer = isUrlLabel(option.question)
-            ? (() => {
-                const normalizedLabel = normalizeLabel(option.question).replace(
-                  /url|profile|link/gi,
-                  ""
-                )
-                console.log("normalizedLabel", normalizedLabel)
-                console.log(
-                  "currentUserSlabel",
-                  currentUser[`${normalizedLabel}_url`]
-                )
-                if (
-                  normalizedLabel.includes("linkedin") ||
-                  normalizedLabel.includes("edin")
-                ) {
-                  return currentUser.linkedin_url || ""
-                }
-                return currentUser[`${normalizedLabel}_url`] || ""
-              })()
-            : ""
-          break
-        default:
-          break
-      }
+    const defaultOptions: {
+      application_option_id: number
+      answer: string
+      file: null
+    }[] =
+      job?.application_options?.map((option) => {
+        let defaultAnswer = ""
+        switch (option.question_type) {
+          case "short_text":
+          case "long_text":
+            defaultAnswer = getUserPropertyValue(currentUser, option.question)
+            break
+          case "link":
+            defaultAnswer = isUrlLabel(option.question)
+              ? (() => {
+                  const normalizedLabel = normalizeLabel(
+                    option.question
+                  ).replace(/url|profile|link/gi, "")
+                  console.log("normalizedLabel", normalizedLabel)
+                  console.log(
+                    "currentUserSlabel",
+                    currentUser[`${normalizedLabel}_url`]
+                  )
+                  if (
+                    normalizedLabel.includes("linkedin") ||
+                    normalizedLabel.includes("edin")
+                  ) {
+                    return currentUser.linkedin_url || ""
+                  }
+                  return currentUser[`${normalizedLabel}_url`] || ""
+                })()
+              : ""
+            break
+          default:
+            break
+        }
 
-      return {
-        application_option_id: option.id,
-        answer: defaultAnswer,
-        file: null,
-      }
-    })
+        return {
+          application_option_id: option.id,
+          answer: defaultAnswer,
+          file: null,
+        }
+      }) || []
 
     setOptions(defaultOptions)
   }, [currentUser, job])
@@ -336,7 +342,7 @@ export default function ApplyPage({ params: { lang } }) {
 
     const err = await submitApplication(
       searchParams.get("request_token"),
-      job?.job_id || 0,
+      job?.id || 0,
       options
     )
 
@@ -645,7 +651,7 @@ export default function ApplyPage({ params: { lang } }) {
                   {dict.sdk.enterDetails}
                 </p>
               </div>
-              {job.application_options.map((option, index) => {
+              {job.application_options?.map((option, index) => {
                 const label = option.required
                   ? `${option.question} *`
                   : option.question

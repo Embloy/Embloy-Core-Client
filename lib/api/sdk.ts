@@ -1,69 +1,7 @@
+import { Job } from "@/types/job-schema"
 import { siteConfig } from "@/config/site"
 
 import { getAccessToken } from "./auth"
-
-export interface ApplicationOption {
-  id: number
-  job_id: number
-  question: string
-  question_type: string
-  required: boolean | null
-  options: string[]
-  created_at: string
-  updated_at: string
-  deleted_at: string | null
-}
-
-export interface Job {
-  job_id: number
-  job_type: string
-  job_slug: string
-  job_type_value: number
-  job_status: number
-  status: string
-  user_id: number
-  referrer_url: string | null
-  duration: number
-  code_lang: Locale | null
-  title: string | null
-  position: string | null
-  description: {
-    id: number
-    name: string
-    body: string
-    record_type: string
-    record_id: number
-    created_at: string
-    updated_at: string
-  } | null
-  key_skills: string | null
-  salary: number | null
-  euro_salary: number | null
-  relevance_score: number | null
-  currency: string
-  start_slot: string
-  longitude: number
-  latitude: number
-  country_code: string | null
-  postal_code: string | null
-  city: string | null
-  address: string | null
-  view_count: number
-  created_at: string
-  updated_at: string
-  applications_count: number
-  employer_rating: number
-  job_notifications: string
-  boost: number
-  deleted_at: string | null
-  job_value: string
-  application_options: ApplicationOption[]
-  image_url: string | null
-  employer_email: string | null
-  employer_name: string | null
-  employer_phone: string | null
-  employer_image_url: string | null
-}
 
 export interface Session {
   mode: string
@@ -104,7 +42,7 @@ export async function makeRequest(
   const data = await response.json()
   return {
     session: data.session,
-    job: JSON.parse(data.job),
+    job: data.job,
   }
 }
 
@@ -119,7 +57,7 @@ export async function applyWithGQ(gq: string): Promise<ResponseData | null> {
   }
 
   const data = await response.json()
-  const job = JSON.parse(data.job)
+  const job = data.job
   return {
     session: {
       mode: "job",
