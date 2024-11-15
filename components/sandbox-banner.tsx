@@ -11,7 +11,6 @@ import {
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
 import { Locale } from "../i18n-config"
-import { Icons } from "./icons"
 
 interface SandboxBannerProps {
   params: {
@@ -32,7 +31,7 @@ export function SandboxBanner({ params: { lang } }: SandboxBannerProps) {
 
   return (
     dict && (
-      <div className="inverted-border-radius inset-x-0 top-0 flex items-center justify-between text-ellipsis bg-sandbox px-4 py-1 text-sandbox-foreground">
+      <div className="inverted-border-radius-sandbox inset-x-0 top-0 flex items-center justify-between text-ellipsis bg-sandbox px-4 py-1 text-sandbox-foreground">
         <div className="w-full truncate text-left font-bold lg:w-1/6">
           {dict.pages.sandbox.title}
         </div>
