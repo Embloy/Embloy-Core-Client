@@ -44,6 +44,9 @@
     --sandbox: 22.06, 100%, 40%;
     --sandbox-foreground: 0, 0%, 100%;
 
+    --company: 53 99% 65%;
+    --company-foreground: 222.2 47.4% 11.2%;
+
     --high: 52, 98%, 69%;
     --low: 212, 82%, 47%;
   }
@@ -88,6 +91,10 @@
 
     --sandbox: 22.06, 100%, 40%;
     --sandbox-foreground: 0, 0%, 100%;
+
+    --company: 207.69 35.14% 100%;
+    --company-foreground: 254 32% 8%; 
+
     --high: 333, 100%, 82%;
     --low: 255, 47%, 51%;
   }
@@ -125,12 +132,12 @@
   }
 }
 
-.inverted-border-radius {
+.inverted-border-radius-sandbox {
   position: relative;
   background-color: hsl(var(--sandbox));
 }
 
-.inverted-border-radius::before {
+.inverted-border-radius-sandbox::before {
   content: "";
   position: absolute;
   
@@ -143,4 +150,24 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   box-shadow: 0 -25px 0 0 hsl(var(--sandbox));
+}
+
+.inverted-border-radius-company {
+  position: relative;
+  background-color: hsl(var(--company));
+}
+
+.inverted-border-radius-company::before {
+  content: "";
+  position: absolute;
+  
+  background-color: transparent;
+  bottom: -50px;
+  z-index: -1;
+  height: 50px;
+  width: 100%;
+  left: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 0 -25px 0 0 hsl(var(--company));
 }
