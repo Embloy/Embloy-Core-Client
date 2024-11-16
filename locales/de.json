@@ -398,10 +398,10 @@
             "job_status": "Status",
             "job_type": "Art der Stelle",
             "referrer_url": "Referrer-URL",
-            "employer_phone": "Arbeitgeber-Telefon",
-            "employer_name": "Arbeitgeber",
-            "employer_email": "Arbeitgeber-E-Mail",
-            "employer_rating": "Arbeitgeberbewertung",
+            "employer_employer_phone": "Arbeitgeber-Telefon",
+            "employer_employer_name": "Arbeitgeber",
+            "employer_employer_email": "Arbeitgeber-E-Mail",
+            "employer_employer_rating": "Arbeitgeberbewertung",
             "key_skills": "Key-Skills"
           }
         },
