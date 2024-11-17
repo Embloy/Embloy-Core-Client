@@ -15,9 +15,10 @@ export function Callout({
   return (
     <div
       className={cn("my-6 flex items-start rounded-md border border-l-4 p-4", {
+        "border-red-900 bg-red-50 dark:border-red-400 dark:bg-red-900": type === "danger",
+        "border-yellow-900 bg-yellow-50 dark:border-yellow-400 dark:bg-yellow-900": type === "warning",
+        "border-gray-900 bg-gray-50 dark:border-gray-400 dark:bg-gray-900": type === "default",
         "border-x-4 border-primary bg-embloy-foreground text-primary duration-300 hover:bg-primary hover:text-embloy-foreground dark:border-embloy-foreground dark:text-background dark:hover:text-primary-foreground portrait:text-sm": type === "embloy",
-        "border-red-900 bg-red-50": type === "danger",
-        "border-danger bg-yellow-50": type === "warning",
       })}
       {...props}
     >
