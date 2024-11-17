@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
   name: "Embloy",
   description: "Apply to any job in the world using one single account: You press the button, we do the rest.",
   url: "https://embloy.com",
-  api_url: "https:api.embloy.com/api/v0",
+  api_url: "https://api.embloy.com/api/v0",
   api_root_url: "https://api.embloy.com",
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",
   links: {
