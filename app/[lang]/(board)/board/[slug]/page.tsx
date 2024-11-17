@@ -315,91 +315,250 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
     );
 }
 
-function Socials ({dict, company}) {
-    return (
-        <div className="flex flex-row items-start justify-start">
-            {company?.phone && (
-                <button 
-                    onClick={() => {
-                        navigator.clipboard.writeText(company.phone);
-                        return toast({
-                            title: replaceNumberWithString(dict?.board.list.copied, "Phone"),
-                            variant: "default",
-                            });
-                        }}
-                    className="mx-1 cursor-copy"
-                >
-                    <FaPhone className="text-gray-800 dark:text-gray-200" />
-                </button>
+
+function Socials({ dict, company }) {
+  const facebookRegex = /^(https?:\/\/)?(www\.)?facebook\.com\/[A-Za-z0-9_.-]+\/?$/;
+  const githubRegex = /^(https?:\/\/)?(www\.)?github\.com\/[A-Za-z0-9_.-]+\/?$/;
+  const linkedinRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/(company|in)\/[A-Za-z0-9_-]+\/?$/;
+  const instagramRegex = /^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9_.-]+\/?$/;
+  const twitterRegex = /^(https?:\/\/)?(www\.)?(twitter\.com|x\.com)\/[A-Za-z0-9_.-]+\/?$/;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const urls = company?.company_urls;
+  const categorized = {
+    facebook: [] as string[],
+    github: [] as string[],
+    linkedin: [] as string[],
+    instagram: [] as string[],
+    twitter: [] as string[],
+    other_urls: [] as string[],
+  };
+
+  urls?.forEach((url) => {
+    if (facebookRegex.test(url)) {
+      categorized.facebook.push(url);
+    } else if (githubRegex.test(url)) {
+      categorized.github.push(url);
+    } else if (linkedinRegex.test(url)) {
+      categorized.linkedin.push(url);
+    } else if (instagramRegex.test(url)) {
+      categorized.instagram.push(url);
+    } else if (twitterRegex.test(url)) {
+      categorized.twitter.push(url);
+    } else {
+      categorized.other_urls.push(url);
+    }
+  });
+
+  return (
+    <>
+      <div className="flex flex-wrap items-start justify-start gap-2 md:flex">
+        {company?.company_phone && (
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(company.company_phone);
+              return toast({
+                title: replaceNumberWithString(dict?.board.list.copied, "Phone"),
+                variant: "default",
+              });
+            }}
+            className="mx-1 cursor-copy block md:hidden"
+          >
+            <FaPhone className="text-gray-800 dark:text-gray-200" />
+          </button>
+        )}
+        {company?.company_email && (
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(company.company_email);
+              return toast({
+                title: replaceNumberWithString(dict?.board.list.copied, "Email"),
+                variant: "default",
+              });
+            }}
+            className="mx-1 cursor-copy block md:hidden"
+          >
+            <FaAt className="text-gray-800 dark:text-gray-200" />
+          </button>
+        )}
+        <Button
+            onClick={() => setIsModalOpen(true)}
+            className={cn(buttonVariants({ variant: "transparent", size: "transparent" }), "block md:hidden text-xs underline text-primary-background p-0 h-fit")}
+        >
+            {dict?.board.list.more}
+        </Button>
+ 
+
+        <div className="hidden md:flex flex-wrap items-start justify-start gap-2">
+            {company?.company_phone && (
+            <button
+                onClick={() => {
+                navigator.clipboard.writeText(company.company_phone);
+                return toast({
+                    title: replaceNumberWithString(dict?.board.list.copied, "Phone"),
+                    variant: "default",
+                });
+                }}
+                className="mx-1 cursor-copy"
+            >
+                <FaPhone className="text-gray-800 dark:text-gray-200" />
+            </button>
             )}
-            {company?.email && (
-                <button 
-                    onClick={() => {
-                        navigator.clipboard.writeText(company.email);
-                        return toast({
-                            title: replaceNumberWithString(dict?.board.list.copied, "Email"),
-                            variant: "default",
-                        });
-                    }}
-                    className="mx-1 cursor-copy"
-                >
-                    <FaAt className="text-gray-800 dark:text-gray-200" />
-                </button>
+            {company?.company_email && (
+            <button
+                onClick={() => {
+                navigator.clipboard.writeText(company.company_email);
+                return toast({
+                    title: replaceNumberWithString(dict?.board.list.copied, "Email"),
+                    variant: "default",
+                });
+                }}
+                className="mx-1 cursor-copy"
+            >
+                <FaAt className="text-gray-800 dark:text-gray-200" />
+            </button>
             )}
-            {company?.portfolio_url && (
-                <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaLink className="text-gray-800 dark:text-gray-200" />
-                </a>
-            )}
-            {company?.facebook_url && (
-                <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaFacebook className="text-blue-600" />
-                </a>
-            )}
-            {company?.instagram_url && (
-                <a href={company.instagram_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaInstagram className="text-pink-500" />
-                </a>
-            )}
-            {company?.linkedin_url && (
-                <a href={company.linkedin_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaLinkedin className="text-blue-700" />
-                </a>
-            )}
-            {company?.github_url && (
-                <a href={company.github_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaGithub className="text-gray-800 dark:text-gray-200" />
-                </a>
-            )}
-            {company?.twitter_url && (
-                <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaTwitter className="text-blue-400" />
-                </a>
-            )}
+          {categorized.facebook.length > 0 &&
+            categorized.facebook.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1"
+              >
+                <FaFacebook className="text-blue-600" />
+              </a>
+            ))}
+          {categorized.instagram.length > 0 &&
+            categorized.instagram.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1"
+              >
+                <FaInstagram className="text-pink-500" />
+              </a>
+            ))}
+          {categorized.linkedin.length > 0 &&
+            categorized.linkedin.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1"
+              >
+                <FaLinkedin className="text-blue-700" />
+              </a>
+            ))}
+          {categorized.github.length > 0 &&
+            categorized.github.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1"
+              >
+                <FaGithub className="text-gray-800 dark:text-gray-200" />
+              </a>
+            ))}
+          {categorized.twitter.length > 0 &&
+            categorized.twitter.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1"
+              >
+                <FaTwitter className="text-blue-400" />
+              </a>
+            ))}
+          {categorized.other_urls.length > 0 &&
+            categorized.other_urls.map((url) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-1 flex flex-row gap-0.5 break-all"
+              >
+                <FaLink className="text-gray-800 dark:text-gray-200" />
+                <p className="text-xs">{url}</p>
+              </a>
+            ))}
         </div>
-    )
+      </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-md shadow-md w-11/12 md:w-1/2">
+            <div className="flex flex-row justify-between items-start">
+                <h2 className="text-xl font-semibold mb-4">Links</h2>
+                <button
+                    onClick={() => setIsModalOpen(false)}
+                    className=" text-gray-800 dark:text-gray-200 text-xl font-heading"
+                >
+                    &times;
+                </button>
+            </div>
+            
+            <div className="flex flex-col gap-2">
+              {Object.keys(categorized).map((key) => {
+                if (categorized[key].length > 0) {
+                  return (
+                    <div key={key} className="flex flex-col gap-2">
+                        {categorized[key].map((url) => (
+                          <a
+                            key={url}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center w-fit flex flex-row gap-1.5 items-center"
+                          >
+                            <FaLink className="text-gray-800 dark:text-gray-200 text-xs" />
+                            <p className="text-xs">{url}</p>
+                          </a>
+                        ))}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
+
+
+
 export default function Page({ params, excludeHeader, excludeFooter }) {
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [jobs, setJobs] = useState<Job[]>([]);
+    interface CompanyDescription {
+        id: number;
+        name: string;
+        body: string;
+        record_type: string;
+        record_id: number;
+        created_at: string;
+        updated_at: string;
+    }
+      
     interface Company {
         id: number;
-        first_name: string;
-        last_name: string;
-        email: string;
-        phone: string;
-        user_role: string;
-        user_type: string;
-        portfolio_url: string;
-        facebook_url: string;
-        instagram_url: string;
-        linkedin_url: string;
-        github_url: string;
-        twitter_url: string | null;
-        image_url: string;
+        company_name: string;
+        company_phone: string;
+        company_email: string;
+        company_urls: string[];
+        company_industry: string;
+        company_description: CompanyDescription;
+        company_logo: string;
+        company_slug: string;
     }
 
     const [company, setCompany] = useState<Company | null>(null);
@@ -416,6 +575,7 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
         const fetchJobs = async () => {
             setIsLoading(true);
             const { response, err } = await getListedJobs(params.slug);
+            console.log("RESPONSE", response);
             if (err) {
                 setError(err);
             } else if (!response) {
@@ -498,24 +658,24 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                     <div className="flex w-full flex-col items-start justify-start">
                         <div className="flex w-full flex-col items-start justify-start gap-4 px-3 md:px-0 ">
                             <div className="flex w-full flex-row items-start justify-between">
-                                <div className="flex w-1/2 flex-row items-start justify-between">
-                                    {company?.image_url ? (
+                                <div className="flex w-10/12 flex-row items-start justify-between">
+                                    {company?.company_logo ? (
                                         <div className="flex flex-col items-start justify-start gap-4 md:flex-row">
                                             <Image
-                                                src={company.image_url}
+                                                src={company.company_logo}
                                                 alt="Company Logo"
                                                 width={100}
                                                 height={100}
                                                 className="rounded-full border-2 border-input"
                                             />
-                                            <div className="flex flex-col items-start justify-start gap-2">
-                                                <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
+                                            <div className="flex flex-col items-start justify-start gap-2 ">
+                                                <h1 className="font-heading text-3xl">{company?.company_name}</h1>
                                                 <Socials dict={dict} company={company} />
                                             </div>
                                         </div>
                                     ) : (
                                         <div className="flex flex-col items-start justify-start gap-2">
-                                            <h1 className="font-heading text-3xl">{company?.first_name}{" "}{company?.last_name}</h1>
+                                            <h1 className="font-heading text-3xl">{company?.company_name}</h1>
                                             <Socials dict={dict} company={company} />
                                         </div>
                                     )}
@@ -524,7 +684,7 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                                         
                                     </div>
                                 </div>
-                                <div className="flex w-1/2 flex-row items-start justify-end">
+                                <div className="flex w-2/12 flex-row items-start justify-end">
                                     <Button
                                         onClick={toggleShareDropdown}
                                         className={cn(buttonVariants({ variant: "transparent", size: "default" }), "h-fit p-0 font-semibold text-muted-foreground hover:text-secondary-foreground")}
@@ -557,7 +717,7 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                         <EmbloySpacer className={"h-4"} />
                         <div className="h-[2px] w-full rounded-full bg-border" />
                         <EmbloySpacer className={"h-4"} />
-                        <JobList params={params} jobs={jobs} />
+                        <JobList params={params} jobs={jobs} excludeHeader={undefined} excludeFooter={undefined} />
                     </div>
                     )}
                 </div>
