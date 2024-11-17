@@ -4,7 +4,12 @@
       "title": "Sandbox-Modus",
       "header": "Du verwendest Embloy derzeit im Sandbox-Modus 🏖 - der Zugriff auf einige Funktionen kann eingeschränkt sein.",
       "description": "Der Sandbox-Modus ist eine sichere Umgebung, in der du die Funktionen von Embloy testen kannst, ohne dein Konto zu beeinträchtigen. Bitte beachte, dass einige Funktionen in diesem Modus eingeschränkt oder deaktiviert sein können. Um auf alle Funktionen zuzugreifen, upgrade bitte zu einem kostenpflichtigen Konto."
-    },  
+    }, 
+    "company": {
+      "title": "Persönlicher Account",
+      "header": "Hier kannst du Dein persönliches Konto verwalten. Um Dein Firmenkonto zu verwalten, besuche bitte das Recruiter-Dashboard.",
+      "description": "Dein Firmenkonto ist aktiv. Du können hier Dein persönliches Konto verwalten. Um Dein Firmenkonto zu verwalten, besuche bitte das Recruiter-Dashboard (https://genius.embloy.com)."
+    }, 
     "features": "Funktionen",
     "pricing": "Preise",
     "employers": "Arbeitgeber",
@@ -22,8 +27,8 @@
   "marketing": {
     "landing": {
       "about": "Über Embloy",
-      "head": "Ein Embloy Account - für alle Jobs.",
-      "subHead": "Bewirb dich auf Jobs super einfach direkt mit Embloy.",
+      "head": "Ein Embloy Account für alle Jobs.",
+      "subHead": "Melde dich kostenlos bei Embloy an, um unkompliziert und schnell Bewerbungen zu verschicken. Embloy hilft dir einen Überblick über abgeschickte Bewerbungen, bevorstehende Interviews und angebotene Stellen zu behalten.",
       "try": "oder testen",
       "disclaimerLink": "Embloy anfordern",
       "disclaimer": "wenn die Stelle, auf die du dich bewerben möchten, noch keine Option zur Bewerbung mit Embloy bietet."
@@ -33,28 +38,38 @@
       "how0Head": "Klicke auf 'Apply with Embloy':",
       "how0": " Melde dich an und vervollständige nur die Felder im Bewerbungsformular, die Embloy noch nicht für dich ausgefüllt hat.",
       "how1Head": "Bewerbung einreichen:",
-      "how1": " Embloy AI beantwortet automatisch wiederkehrende Fragen im Bewerbungsformular und hilft dir, deine Bewerbung schnell abzusenden.“",
+      "how1": "Embloy AI beantwortet automatisch wiederkehrende Fragen im Bewerbungsformular und hilft dir, deine Bewerbung schnell abzusenden.",
       "how2Head": "Gesamte Jobsuche verwalten:",
-      "how2": " Manage all deine Bewerbungen im Embloy Dashboard und chatte direkt mit den Recruitern."
+      "how2": "Manage all deine Bewerbungen im Embloy Dashboard und chatte direkt mit den Recruitern."
     },
     "newFeatures": {
       "about": "Features",
       "feature0Head": "Schnelle AI-Bewerbungen",
-      "feature0Desc": "Embloy füllt wiederkehrende Feder in Bewerbungsformularen automatisch aus.",
+      "feature0Desc": "Embloy füllt wiederkehrende Felder in Bewerbungsformularen automatisch aus.",
+      "feature1Head": "Mit LinkedIn verbinden",
+      "feature1Desc": "Verknüpfe externe Ressourcen mit Embloy (wie dein LinkedIn- oder GitHub-Profil) für schnellere Bewerbungen, personalisierte Empfehlungen und verbesserte automatische Antworten.",
       "feature2Head": "QR-Code-Bewerbungen",
-      "feature2Desc": "Scanne die Embloy-QR-Codes und bewirb dich von deinem Handy. (z.B. direkt im Cafe das einen Barista sucht...)",
+      "feature2Desc": "Im Café, auf der Messe oder in der U-Bahn? Scanne einfach den QR-Code und bewirb dich mit einem Klick auf deinem Handy.",
       "feature3Head": "Bewerbungen verwalten",
-      "feature3Desc": "Verwalte alle deine Bewerbungen und kontaktieren die HR direkt.",
+      "feature3Desc": "Verwalte alle deine Bewerbungen an einem Ort und bleibe mit den Recruitern in Kontakt.",
       "feature4Head": "Bleibe up-to-date",
-      "feature4Desc": "Alle Embloy Bewerbungen werden garantiert beantwortet. Sobald dein Bewerbungsstatus aktualisiert worden ist, erhältst du eine Live-Benachrichtigung.",
+      "feature4Desc": "Erhalte Benachrichtigungen über den Status deiner Bewerbungen und Erinnerungen an bevorstehende Interviews oder Fristen.",
       "feature5Head": "LinkedIn & GitHub",
-      "feature5Desc": "Melde dich bei Embloy am besten mit deinem LinkedIn an. Für Leute die sich auf Software Jobs bewerben, ist auch eine GitHub-Integration verfügbar.",
-      "feature6Head": "Ein Account für Alles was mit Jobs zu tun hat",
-      "feature6Desc": "Bewirb dich mit Embloy genauso einfach wie mit PayPal, Venmo oder Apple Pay zu bezahlen."
+      "feature5Desc": "Melde dich bei Embloy am besten mit deinem LinkedIn-Profil an. Für Softwarejobs ist auch eine GitHub-Integration verfügbar.",
+      "feature6Head": "Ein-Klick-Bewerbung",
+      "feature6Desc": "Bewirb dich mit Embloy genauso einfach wie mit PayPal, Venmo oder Apple Pay zu bezahlen.",
+      "feature7Head": "KI-gestützt",
+      "feature7Desc": "Von der CV-Analyse bis zu automatischen Bewerbungen basierend auf deinen Fähigkeiten, Interessen und Erwartungen. Genieße die Leichtigkeit eines Bewerbungs-Copiloten, der dir nicht nur hilft, dich schneller, sondern auch besser zu bewerben.",
+      "feature8Head": "X-Plattform",
+      "feature8Desc": "Hochmodulares System, zugänglich im Web, auf iOS und Android, ermöglicht benutzerdefinierte Integrationen über API."
     },
     "usefulLinks": {
       "about": "Nützliche Links",
       "head": "Entdecke Embloy:"
+    },
+    "signup": {
+      "about": "Nützliche Links",
+      "head": "Melde Dich in weniger als 10 Sekunden an!"
     },
     "news": {
       "about": "News",
@@ -67,11 +82,11 @@
     },
     "workInProgress": "Diese Seite ist noch in Arbeit - Folge uns auf GitHub",
     "developerDocsLaunched": "Unsere Entwicklerdokumentation ist jetzt live!",
-    "inviteMessage": "Lade deine Freunde zu Embloy ein und erhalte Embloy-Credits im Wert von € 10 für jeden Freund, der sich anmeldet.",
+    "inviteMessage": "Embloy mit dem eigenen ATS verbinden? Jetzt ein Sandbox-Konto anfordern!",
     "notLaunchedYet": "Embloy ist noch nicht aktiv. Kontaktiere uns, um Zugang zu unserer Beta-Version zu erhalten.",
     "recruitmentSteps": "Alle Rekrutierungsschritte an einem Ort: Vereinfache den Prozess für Organisationen und Bewerber, indem die Rekrutierungsprozesse zentral gemanaged werden.",
     "getStarted": "Loslegen",
-    "forCompanies": "Für Firmen",
+    "forCompanies": "Für Unternehmen",
     "features": "Funktionen",
     "featureDescription": "Embloy dient als Add-On, das Organisationen mit potenziellen Bewerbern verbindet. Als Middleware-Lösung, maßgeschneidert für das digitale Zeitalter, verbessert Embloy Deinen Bewerbungsprozess:",
     "smartHiring": "Für Großunternehmen",
@@ -159,7 +174,8 @@
       "dontHaveAccount": "Du hast noch kein Konto? Jetzt registrieren",
       "forgotPassword": "Passwort vergessen?",
       "signIn": "Anmelden",
-      "orContinueWith": "Oder weiter mit"
+      "orContinueWith": "Oder weiter mit",
+      "skipAccount": "Direkt mit der Bewerbung fortfahren?"
     },
     "register": {
       "login": "Anmelden",
@@ -177,6 +193,21 @@
       "terms": "Nutzungsbedingungen",
       "and": " und ",
       "privacyPolicy": "Datenschutzbestimmungen zu"
+    },
+    "otp": {
+      "back": "Zurück",
+      "title": "Weiter ohne ein Konto zu erstellen.",
+      "enterEmail": "Gib die E-Mail-Adresse ein, die Du für die Bewerbung verwenden möchten. Fall Du dich umentscheidest, kannst Du später ein Konto erstellen.",
+      "oAuth": "Möchtest Du dich mit Deinem LinkedIn-, GitHub-, Google- oder Microsoft-Konto bewerben?",
+      "requestOTP": "Einmalpasswort anfordern",
+      "setOTP": "Bestätigungscode eingeben (z.B. 123456)",
+      "Email": "E-Mail",
+      "steps": {
+        "Input Name": "Name",
+        "Input Email": "E-Mail",
+        "Verify": "Verifizieren",
+        "Apply": "Bewerben"
+      }    
     },
     "pwreset": {
       "back": "Zurück",
@@ -239,6 +270,10 @@
         "title": "Etwas ist schief gelaufen.",
         "description": "Deine Anfrage für einen neuen Aktivierungslink ist fehlgeschlagen. Bitte versuche es erneut."
       },
+      "otp": {
+        "title": "Etwas ist schief gelaufen.",
+        "description": "Deine OTP-Verifizierungsanfrage ist fehlgeschlagen. Beachte, dass der Code nur 10 Minuten gültig ist."
+      },    
       "First name is required": "Vorname ist erforderlich",
       "First name must be at most 128 characters": "Vorname darf höchstens 128 Zeichen lang sein",
       "Last name is required": "Nachname ist erforderlich",
@@ -247,7 +282,8 @@
       "Email must be at most 150 characters": "E-Mail darf höchstens 150 Zeichen lang sein",
       "Password must be at least 8 characters": "Passwort muss mindestens 8 Zeichen lang sein",
       "Password must be at most 72 characters": "Passwort darf höchstens 72 Zeichen lang sein",
-      "Passwords must match": "Passwörter müssen übereinstimmen"    
+      "Passwords must match": "Passwörter müssen übereinstimmen",
+      "OTP code must be 6 digits": "OTP-Code muss 6 Ziffern lang sein"
     },
     "success": {
       "login": {
@@ -262,16 +298,20 @@
         "description": "Ein Link zum Zurücksetzen des Passworts wurde an Deine E-Mail-Adresse gesendet."
       },
       "pwresetsuccess": {
-        "title": "Erfolgrech abgeschlossen",
+        "title": "Erfolgreich abgeschlossen",
         "description": "Dein Passwort wurde erfolgreich zurückgesetzt."
       },
       "pwupdatesuccess": {
-        "title": "Erfolgrech abgeschlossen",
+        "title": "Erfolgreich abgeschlossen",
         "description": "Dein Passwort wurde erfolgreich aktualisiert."
       },
       "activation": {
-        "title": "Erfolgrech abgeschlossen",
+        "title": "Erfolgreich abgeschlossen",
         "description": "Ein Aktivierungslink wurde an Deine E-Mail gesendet."
+      },
+      "otp": {
+        "title": "Erfolgreich abgeschlossen",
+        "description": "Ein Bestätigungscode wurde an Deine E-Mail gesendet."
       }
     }
   },
@@ -358,10 +398,10 @@
             "job_status": "Status",
             "job_type": "Art der Stelle",
             "referrer_url": "Referrer-URL",
-            "employer_phone": "Arbeitgeber-Telefon",
-            "employer_name": "Arbeitgeber",
-            "employer_email": "Arbeitgeber-E-Mail",
-            "employer_rating": "Arbeitgeberbewertung",
+            "employer_employer_phone": "Arbeitgeber-Telefon",
+            "employer_employer_name": "Arbeitgeber",
+            "employer_employer_email": "Arbeitgeber-E-Mail",
+            "employer_employer_rating": "Arbeitgeberbewertung",
             "key_skills": "Key-Skills"
           }
         },
@@ -627,7 +667,10 @@
   },
   "sdk": {
     "loading": "Laden...",
-    "byEmbloy": "von Embloy Platforms UG (haftungsbeschränkt)",
+    "remainingTime": "Verbleibende Zeit: {time}",
+    "expired": "Die Sitzung ist abgelaufen. Du musst den Vorgang erneut starten.",
+    "timerDisclaimer": "Um die Sicherheit Deiner Daten zu gewährleisten, läuft die Sitzung ab, wenn der Timer abläuft. Bitte sende Deine Bewerbung ab, bevor der Timer abläuft.",
+      "byEmbloy": "von Embloy Platforms UG (haftungsbeschränkt)",
     "required": "Dieses Feld ist erforderlich",
     "validURL": "Dieses Feld muss eine gültige URL sein",
     "backToHomepage": "Zurück zur Startseite",
@@ -672,8 +715,8 @@
     "menu": "Menü",
     "main": {
       "why embloy?": "Warum Embloy?",
-      "small business": "Kleine Firmen",
-      "enterprise": "Große Firmen",
+      "small business": "Für Kleinunternehmen",
+      "enterprise": "Für Unternehmen",
       "features": "Features",
       "pricing": "Preise",
       "employers": "Arbeitgeber",

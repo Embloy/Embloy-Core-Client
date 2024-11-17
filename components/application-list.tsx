@@ -85,8 +85,8 @@ export function ApplicationList({
                       </div>
                     </div>
                     <div className="text-xs font-medium">
-                      {item.job?.employer_name ||
-                        item.job?.employer_email ||
+                      {item.job?.employer?.employer_name ||
+                        item.job?.employer?.employer_email ||
                         `User#${item.job?.user_id}`}
                     </div>
                   </div>

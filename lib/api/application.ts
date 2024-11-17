@@ -1,8 +1,9 @@
+import { z } from "zod"
+
 import { siteConfig } from "@/config/site"
 
 import { getAccessToken } from "./auth"
-import { Job } from "./sdk"
-
+import { Job } from "@/types/job-schema"
 export interface ApplicationAttachment {
   attachment: {
     id: number
@@ -82,7 +83,7 @@ export async function getApplications(): Promise<{
       application_attachment: item.application_attachment,
       application_answers: item.application_answers,
       application_events: item.application_events,
-      job: JSON.parse(item.job),
+      job: item.job,
     })) || []
 
   return { response: result, err: null }
