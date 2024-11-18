@@ -318,12 +318,12 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
     );
 }
 
-function Stats ({ dict, company }) {
+export function Stats ({ dict, company, className }) {
     if (company.company_industry) {
         return (
             <>
             <div className="flex flex-wrap items-start justify-start gap-2">
-                <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
+                <div className={cn("flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground", className)}>
                     <h1 className="flex flex-row items-center justify-start gap-1.5 text-xs">
                         <Building2 className="size-3" />
                         {company.company_industry}
@@ -336,7 +336,7 @@ function Stats ({ dict, company }) {
     return null;
 }
 
-function Socials({ dict, company }) {
+export function Socials({ dict, company }) {
   const facebookRegex = /^(https?:\/\/)?(www\.)?facebook\.com\/[A-Za-z0-9_.-]+\/?$/;
   const githubRegex = /^(https?:\/\/)?(www\.)?github\.com\/[A-Za-z0-9_.-]+\/?$/;
   const linkedinRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/(company|in)\/[A-Za-z0-9_-]+\/?$/;
@@ -575,34 +575,34 @@ export const JobLi = ({ children }) => (
 export const JobStrong = ({ children }) => (
     <strong className="font-heading text-base">{children}</strong>
 );
-
+export interface CompanyDescription {
+    id: number;
+    name: string;
+    body: string;
+    record_type: string;
+    record_id: number;
+    created_at: string;
+    updated_at: string;
+}
+  
+export interface Company {
+    id: number;
+    company_name: string;
+    company_phone: string;
+    company_email: string;
+    company_urls: string[];
+    company_industry: string;
+    company_description: CompanyDescription;
+    company_logo: string;
+    company_slug: string;
+}
 export default function Page({ params, excludeHeader, excludeFooter }) {
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [jobs, setJobs] = useState<Job[]>([]);
-    interface CompanyDescription {
-        id: number;
-        name: string;
-        body: string;
-        record_type: string;
-        record_id: number;
-        created_at: string;
-        updated_at: string;
-    }
-      
-    interface Company {
-        id: number;
-        company_name: string;
-        company_phone: string;
-        company_email: string;
-        company_urls: string[];
-        company_industry: string;
-        company_description: CompanyDescription;
-        company_logo: string;
-        company_slug: string;
-    }
+
 
     const [company, setCompany] = useState<Company | null>(null);
     const [error, setError] = useState<Number | null>(null);
@@ -753,14 +753,14 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                                             />
                                             <div className="flex flex-col items-start justify-start gap-2 ">
                                                 <h1 className="font-heading text-3xl">{company?.company_name}</h1>
-                                                <Stats dict={dict} company={company} />
+                                                <Stats dict={dict} company={company} className={undefined} />
                                                 <Socials dict={dict} company={company} />
                                             </div>
                                         </div>
                                     ) : (
                                         <div className="flex flex-col items-start justify-start gap-2">
                                             <h1 className="font-heading text-3xl">{company?.company_name}</h1>
-                                            <Stats dict={dict} company={company} />
+                                            <Stats dict={dict} company={company} className={undefined} />
                                             <Socials dict={dict} company={company} />
                                         </div>
                                     )}

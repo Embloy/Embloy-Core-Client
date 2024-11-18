@@ -15,7 +15,7 @@ import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
 import { parseLocale } from "@/i18n-config";
 import parse, { domToReact } from 'html-react-parser';
-import { JobLi, JobParagraph, JobStrong, JobTitle, JobUl } from "../page";
+import { Company, JobLi, JobParagraph, JobStrong, JobTitle, JobUl, Socials as MainSocials, Stats } from "../page";
 
 
 function Socials ({company, dict}) {
@@ -92,22 +92,7 @@ export default function Page({ params }) {
     const [error, setError] = useState<Number | null>(null);
     const router = useRouter();
     const [company, setCompany] = useState<Company | null>(null);
-    interface Company {
-        id: number;
-        first_name: string;
-        last_name: string;
-        email: string;
-        phone: string;
-        user_role: string;
-        user_type: string;
-        portfolio_url: string;
-        facebook_url: string;
-        instagram_url: string;
-        linkedin_url: string;
-        github_url: string;
-        twitter_url: string | null;
-        image_url: string;
-    }
+
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
@@ -295,16 +280,16 @@ export default function Page({ params }) {
                                         <div className="flex w-full flex-row items-center justify-start md:w-5/12 md:gap-16">
                                             <Link href={`/${params.lang}/board/${params.slug}`} className={cn(buttonVariants({ variant: "link", size: "default" }), "rounded-full p-0 text-secondary-foreground dark:text-primary-foreground")}>
                                                 <ArrowLeft />
-                                                {replaceNumberWithString(dict?.board.post.back, company?.first_name)}
+                                                {replaceNumberWithString(dict?.board.post.back, company?.company_name)}
                                             </Link>
                                         </div>
                                         <EmbloySpacer className={"h-4 md:hidden"} />
                                         <div className="flex w-full flex-row items-start justify-start md:w-5/12 md:justify-end">
                                             <div className="flex flex-col items-start justify-start gap-2">
-                                                {company?.image_url ? (
+                                                {company?.company_logo ? (
                                                     <div className="flex flex-row items-start justify-start gap-2">
                                                         <Image
-                                                            src={company.image_url}
+                                                            src={company.company_logo}
                                                             alt="Company Logo"
                                                             width={50}
                                                             height={50}
@@ -312,14 +297,14 @@ export default function Page({ params }) {
                                                         />
                                                         <div className="flex flex-col items-start justify-start">
                                                             <h1 className="text-left font-heading text-xl">
-                                                                {company?.first_name}
+                                                                {company?.company_name}
                                                             </h1>
-                                                            <Socials company={company} dict={dict} />  
+                                                            <Stats company={company} dict={dict} className={"bg-white border dark:bg-border dark:border-input "} />  
                                                         </div>  
                                                     </div>
                                                 ) : (
                                                     <h1 className="text-left font-heading text-2xl">
-                                                        {company?.first_name}
+                                                        {company?.company_name}
                                                     </h1>
                                                     
                                                 )}
@@ -440,10 +425,10 @@ export default function Page({ params }) {
                                     <div className="h-[2px] w-full rounded-full bg-border" />
                                     <EmbloySpacer className={"h-4"} />
                                     <div className="flex w-full flex-row items-start justify-center gap-2 md:justify-start">
-                                    {company?.image_url && (
-                                            <div className="flex flex-row items-center justify-start gap-2">
+                                        {company?.company_logo && (
+                                            <div className="w-1/12 flex flex-row items-center justify-start gap-2">
                                                 <Image
-                                                    src={company.image_url}
+                                                    src={company.company_logo}
                                                     alt="Company Logo"
                                                     width={100}
                                                     height={100}
@@ -452,11 +437,11 @@ export default function Page({ params }) {
                                                 
                                             </div>
                                         ) }
-                                        <div className="flex flex-col items-start justify-start">
+                                        <div className="w-11/12 flex flex-col items-start justify-start gap-1.5">
                                             <h1 className="text-left font-heading text-xl">
-                                                {company?.first_name}{" "}{company?.last_name}
+                                                {company?.company_name}
                                             </h1>
-                                            <Socials company={company} dict={dict} />  
+                                            <MainSocials company={company} dict={dict} />  
                                         </div>
                                         
                                     </div>
