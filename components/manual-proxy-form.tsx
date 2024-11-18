@@ -128,7 +128,7 @@ export function ManualProxyForm({
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="filled" size="bold">
+        <Button variant="filled" size="bold" className="text-xs">
           {dict.proxy.apply}
         </Button>
       </DrawerTrigger>

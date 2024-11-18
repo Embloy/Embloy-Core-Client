@@ -35,6 +35,7 @@ export type SiteConfig = {
   api_root_url: string
   api_url: string
   ogImage: string
+  apply_url: string
   links: {
     twitter: string
     linkedin: string
@@ -50,6 +51,10 @@ export type SiteConfig = {
 }
 
 export type MarketingConfig = {
+  mainNav: MainNavItem[]
+}
+
+export type BoardConfig = {
   mainNav: MainNavItem[]
 }
 

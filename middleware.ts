@@ -1,4 +1,4 @@
-import cookie from 'cookie'
+import { parse } from 'cookie'
 
 let locales = ['en-US', 'de', 'fr', 'it', 'jp']
 
@@ -11,7 +11,7 @@ export function middleware(request) {
   }
 
   // Parse the cookies from the request
-  const cookies = cookie.parse(request.headers.get('Cookie') || '')
+  const cookies = parse(request.headers.get('Cookie') || '')
   const cookieLocale = cookies.lang || 'en-US'
 
   const requestLocale = locales.find((reqLocale) => pathname.startsWith(`/${reqLocale}/`) || pathname === `/${reqLocale}`)

@@ -6,6 +6,7 @@ export const siteConfig: SiteConfig = {
   url: "https://embloy.com",
   api_url: "https://api.embloy.com/api/v0",
   api_root_url: "https://api.embloy.com",
+  apply_url: "https://apply.embloy.com",
   ogImage: "https://embloy.com/assets/neu_banner-879ef82b.png",
   links: {
     developer: "https://developers.embloy.com",

@@ -24,6 +24,28 @@
       "tutorial": "🠶 Tutorials & Help",
       "manual": "Apply Now"
   },
+  "board": {
+    "list": {
+      "_404":{"head": "Page not found", "subHead": "The page you are looking for does not exist."},
+      "_500":{"head": "An Error occured", "subHead": "Please try again soon."},
+      "found": "Found {number} jobs",
+      "search": "Search",
+      "loc_search": "City",
+      "cat_search": "Department/Category",
+      "more": "Learn more",
+      "apply": "Apply",
+      "copy": "Copy link",
+      "copied": "{number} copied",
+      "email": "Share via email",
+      "linkedin": "Share on LinkedIn",
+      "noResults": "No active jobs."
+    },
+    "post": {
+      "back": "Back to {number} jobs",
+      "last_updated": "Updated",
+      "similar": "Similar jobs"
+    }
+  },
   "marketing": {
       "landing": {
         "about": "About",

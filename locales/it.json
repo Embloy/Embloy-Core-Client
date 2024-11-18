@@ -24,6 +24,28 @@
     "tutorial": "🠶 Tutorial e aiuto",
     "manual": "Candidati ora"
   },
+  "board": {
+    "list": {
+      "_404": {"head": "Pagina non trovata", "subHead": "La pagina che stai cercando non esiste."},
+      "_500": {"head": "Si è verificato un errore", "subHead": "Per favore riprova presto."},
+      "found": "Trovati {number} lavori",
+      "search": "Cerca",
+      "loc_search": "Città",
+      "cat_search": "Dipartimento/Categoria",
+      "more": "Scopri di più",
+      "apply": "Candidati",
+      "copy": "Copia link",
+      "copied": "{number} copiato",
+      "email": "Condividi via email",
+      "linkedin": "Condividi su LinkedIn",
+      "noResults": "Nessun lavoro attivo."
+    },
+    "post": {
+      "back": "Torna a {number} lavori",
+      "last_updated": "Aggiornato",
+      "similar": "Lavori simili"
+    }
+  },
   "marketing": {
     "landing": {
       "about": "Informazioni",

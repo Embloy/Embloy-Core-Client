@@ -6,7 +6,6 @@ import { useSearchParams } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Callout } from "@/components/callout"
 import { Icons } from "@/components/icons"
 import { UserAuthForm } from "@/components/user-auth-form"
 
