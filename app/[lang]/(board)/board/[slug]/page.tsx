@@ -7,7 +7,7 @@ import { Job } from "@/types/job-schema";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Bookmark, MapPin, Share2, X, AlignEndHorizontal} from "lucide-react"; // Assuming you're using Lucide for icons
+import { Bookmark, MapPin, Share2, X, AlignEndHorizontal, Building2} from "lucide-react"; // Assuming you're using Lucide for icons
 import { EmbloySpacer } from "@/components/ui/stuff";
 import { FaPhone, FaAt, FaLink, FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 import { cn, replaceNumberWithString } from "@/lib/utils";
@@ -15,6 +15,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
+import parse, { domToReact } from 'html-react-parser';
 
 function JobItem({ params, job }) {
     const [dict, setDict] = useState<Record<string, any> | null>(null);
@@ -49,7 +50,9 @@ function JobItem({ params, job }) {
     return (
         <div className="relative flex w-full flex-col items-start justify-start gap-5 rounded-sm border border-input bg-background p-3 dark:border-background dark:bg-border md:flex-row md:items-center md:justify-between md:gap-0 md:px-6">
             <div className="flex flex-col items-start justify-start gap-0.5 md:flex-row md:items-center md:gap-6">
-                <h1 className="font-heading text-base">{job.title}</h1>
+                <Link href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}>
+                    <h1 className="font-heading text-base">{job.title}</h1>
+                </Link>
                 {job.city && (
                     <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
                         
@@ -315,6 +318,23 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
     );
 }
 
+function Stats ({ dict, company }) {
+    if (company.company_industry) {
+        return (
+            <>
+            <div className="flex flex-wrap items-start justify-start gap-2">
+                <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
+                    <h1 className="flex flex-row items-center justify-start gap-1.5 text-xs">
+                        <Building2 className="size-3" />
+                        {company.company_industry}
+                    </h1>
+                </div>
+            </div>
+            <EmbloySpacer className={"h-[4px]"} />
+            </>
+        );} 
+    return null;
+}
 
 function Socials({ dict, company }) {
   const facebookRegex = /^(https?:\/\/)?(www\.)?facebook\.com\/[A-Za-z0-9_.-]+\/?$/;
@@ -531,7 +551,23 @@ function Socials({ dict, company }) {
   );
 }
 
-
+export const JobTitle = ({ children }) => (
+    <h1 className="font-heading text-xl ">{children}</h1>
+);
+export const JobParagraph = ({ children }) => (
+    <p className="text-base">{children}</p>
+);
+export const JobUl = ({ children }) => (
+    <ul className="ml-8 list-disc text-base">{children}</ul>
+);
+  
+export const JobLi = ({ children }) => (
+    <li className="text-base">{children}</li>
+);
+  
+export const JobStrong = ({ children }) => (
+    <strong className="font-heading text-base">{children}</strong>
+);
 
 export default function Page({ params, excludeHeader, excludeFooter }) {
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
@@ -564,6 +600,46 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
     const [company, setCompany] = useState<Company | null>(null);
     const [error, setError] = useState<Number | null>(null);
     const router = useRouter();
+
+    const options = {
+        replace: (domNode) => {
+            if (domNode.name === 'h1') {
+                return (
+                    <JobTitle>
+                        {domToReact(domNode.children, options)}
+                    </JobTitle>
+                );
+            }
+            if (domNode.name === 'p') {
+                return (
+                    <JobParagraph>
+                        {domToReact(domNode.children, options)}
+                    </JobParagraph>
+                );
+            }
+            if (domNode.name === 'ul') {
+                return <JobUl>{domToReact(domNode.children, options)}</JobUl>;
+            }
+            if (domNode.name === 'li') {
+                return <JobLi>{domToReact(domNode.children, options)}</JobLi>;
+            }
+            if (domNode.name === 'strong') {
+                return <JobStrong>{domToReact(domNode.children, options)}</JobStrong>;
+            }
+            if (domNode.name === 'a') {
+                return (
+                    <a
+                        href={domNode.attribs.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 underline"
+                    >
+                        {domToReact(domNode.children)}
+                    </a>
+                );
+            }
+        },
+    };
 
     useEffect(() => {
         const fetchDictionary = async () => {
@@ -670,12 +746,14 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                                             />
                                             <div className="flex flex-col items-start justify-start gap-2 ">
                                                 <h1 className="font-heading text-3xl">{company?.company_name}</h1>
+                                                <Stats dict={dict} company={company} />
                                                 <Socials dict={dict} company={company} />
                                             </div>
                                         </div>
                                     ) : (
                                         <div className="flex flex-col items-start justify-start gap-2">
                                             <h1 className="font-heading text-3xl">{company?.company_name}</h1>
+                                            <Stats dict={dict} company={company} />
                                             <Socials dict={dict} company={company} />
                                         </div>
                                     )}
@@ -717,6 +795,15 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                         <EmbloySpacer className={"h-4"} />
                         <div className="h-[2px] w-full rounded-full bg-border" />
                         <EmbloySpacer className={"h-4"} />
+                        {company?.company_description.body && (
+                            <>
+                                <div className="flex w-full flex-col items-start justify-start gap-2">
+                                    {company?.company_description.body && parse(company.company_description.body || '', options)}
+                                </div>
+                                <div className="h-[2px] w-full rounded-full bg-border" />
+                                <EmbloySpacer className={"h-4"} />
+                            </>
+                        )}
                         <JobList params={params} jobs={jobs} excludeHeader={undefined} excludeFooter={undefined} />
                     </div>
                     )}

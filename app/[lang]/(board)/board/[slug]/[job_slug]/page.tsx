@@ -15,23 +15,8 @@ import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
 import { parseLocale } from "@/i18n-config";
 import parse, { domToReact } from 'html-react-parser';
-const JobTitle = ({ children }) => (
-    <h1 className="font-heading text-xl ">{children}</h1>
-);
-const JobParagraph = ({ children }) => (
-    <p className="text-base">{children}</p>
-);
-const JobList = ({ children }) => (
-    <ul className="ml-8 list-disc text-base">{children}</ul>
-);
-  
-const JobListItem = ({ children }) => (
-    <li className="text-base">{children}</li>
-);
-  
-const JobStrong = ({ children }) => (
-    <strong className="font-heading text-base">{children}</strong>
-);
+import { JobLi, JobParagraph, JobStrong, JobTitle, JobUl } from "../page";
+
 
 function Socials ({company, dict}) {
     return (
@@ -196,10 +181,10 @@ export default function Page({ params }) {
                 );
             }
             if (domNode.name === 'ul') {
-                return <JobList>{domToReact(domNode.children, options)}</JobList>;
+                return <JobUl>{domToReact(domNode.children, options)}</JobUl>;
             }
             if (domNode.name === 'li') {
-                return <JobListItem>{domToReact(domNode.children, options)}</JobListItem>;
+                return <JobLi>{domToReact(domNode.children, options)}</JobLi>;
             }
             if (domNode.name === 'strong') {
                 return <JobStrong>{domToReact(domNode.children, options)}</JobStrong>;
@@ -338,8 +323,6 @@ export default function Page({ params }) {
                                                     </h1>
                                                     
                                                 )}
-
-                                                                                       
                                             </div>
                                         </div>
                                     </div>
@@ -448,7 +431,7 @@ export default function Page({ params }) {
                                             <div className="h-[2px] w-full rounded-full bg-border dark:bg-input" />
                                         </div>
                                         <div className="flex w-full flex-col items-start justify-start gap-2">
-                                        {job && job.description && parse(job.description.body || '', options)}
+                                            {job && job.description && parse(job.description.body || '', options)}
                                         </div>
                                         <div className="justfy-start flex flex-row items-center gap-2">
                                             {job && <p className="text-xs text-muted-foreground">{dict.board.post.last_updated}{": "}{formatDate(parseLocale(params.lang),job?.updated_at)}</p>}
