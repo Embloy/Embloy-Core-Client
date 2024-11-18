@@ -1,48 +1,44 @@
 import { siteConfig } from "@/config/site";
 import { Job } from "@/types/job-schema";
 import { getAccessToken } from "./auth";
+import { Company } from "@/app/[lang]/(board)/board/[slug]/utils";
 
-export async function getListedJob(company_id, job_slug): Promise<{response: {job: Job | null} | null, err: number | null}> {
+export async function getListedJob(company_id, job_slug): Promise<{response: {job: Job, company: Company} | null, err: number | null}> {
   const response = await fetch(`${siteConfig.api_url}/company/${company_id}/board/${job_slug}`, {
     method: 'GET',
   });
   if (!response.ok) {
     return { response: null, err: response.status };
   }
-  if (response.status === 204) {
-    return { response: {job:null}, err: null };
-  }
-  let data: {job: any; };
+  let data: {company:any, job: any; };
   try {
     data = await response.json();
   } catch (error) {
     console.error('Failed to parse JSON response:', error);
     return { response: null, err: 500 };
   }
-  const jobs = data.job
 
-  const result = jobs
-  return {response: result , err: null };
+  return {response: {job: data.job, company: data.company} , err: null };
 }
 
-export async function getListedJobs(company_id): Promise<{response: {jobs: Job[], company:Object} | null, err: number | null}> {
+export async function getListedJobs(company_id): Promise<{response: {jobs: Job[], company:Company} | null, err: number | null}> {
   const response = await fetch(`${siteConfig.api_url}/company/${company_id}/board`, {
     method: 'GET',
   });
   if (!response.ok) {
     return { response: null, err: response.status };
   }
-  if (response.status === 204) {
-    return { response: {jobs:[], company:{}}, err: null };
-  }
-  let data: {company:Object, jobs: any[]; };
+  let data: {company:any, jobs: any[]; };
   try {
     data = await response.json();
-    
+    if (response.status === 204) {
+      return { response: {jobs:[], company: data.company}, err: null };
+    }    
   } catch (error) {
     console.error('Failed to parse JSON response:', error);
     return { response: null, err: 500 };
   }
+
   const jobs = data.jobs.map((job: any) => {
     return {
       ...job,

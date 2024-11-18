@@ -16,9 +16,9 @@ import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
 import parse, { domToReact } from 'html-react-parser';
 import { getCurrentUser, User } from "@/lib/api/session";
-import { Company, JobLi, JobParagraph, JobStrong, JobTitle, JobUl, Socials, Stats } from "./utils";
+import { Company, JobLi, JobParagraph, JobStrong, JobTitle, JobUl, Socials, Stats } from "@/app/[lang]/(board)/board/[slug]/utils";
 
-function JobItem({ params, job, user }) {
+function JobItem({ params, job, user, company }) {
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -48,7 +48,7 @@ function JobItem({ params, job, user }) {
 
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
 
-    return (
+    return dict && (
         <div className="relative flex w-full flex-col items-start justify-start gap-5 rounded-sm border border-input bg-background p-3 dark:border-background dark:bg-border md:flex-row md:items-center md:justify-between md:gap-0 md:px-6">
             <div className="flex flex-col items-start justify-start gap-0.5 md:flex-row md:items-center md:gap-6">
                 <Link href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}>
@@ -86,10 +86,10 @@ function JobItem({ params, job, user }) {
                     {shareDropdownOpen && (
                         <div ref={dropdownRef} className="absolute z-50 mt-2 min-w-48 rounded-md border bg-white p-2 shadow-lg dark:bg-popover md:right-0">
                             <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                Share via Email
+                                {dict.board.list.email}
                             </Button>
                             <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                Share on LinkedIn
+                                {dict.board.list.linkedin}
                                 </Button>
                             <Button variant="ghost" onClick={() => {
                                 navigator.clipboard.writeText(`${window.location.href}/${job.job_slug}`); 
@@ -116,7 +116,7 @@ function JobItem({ params, job, user }) {
                         {dict?.board.list.more}
                     </Link>
                     <Link
-                        href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${params.slug}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job.job_slug}`}
+                        href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${company.id}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job.job_slug}`}
                         className={cn(buttonVariants({ variant: "ghost", size: "default" }), "h-fit p-0 px-2 font-semibold")}
                     >
                         {dict?.board.list.apply}
@@ -137,7 +137,7 @@ function FilterItem({ label, onRemove }) {
     );
 }
 
-function JobList({ params, jobs, excludeHeader, excludeFooter, user }) {
+function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) {
     
 
     const [dict, setDict] = useState<Record<string, any> | null>(null);
@@ -156,7 +156,7 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user }) {
         fetchDictionary();
 
         // Extract unique cities from job data
-        const cities = Array.from(
+        const cities: string[] = Array.from(
             new Set(
                 jobs
                     .filter(job => job.city)
@@ -165,7 +165,7 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user }) {
         );
         setUniqueCities(cities);
 
-        const categories = Array.from(
+        const categories: string[] = Array.from(
             new Set(
                 jobs
                     .filter(job => job.job_type)
@@ -189,7 +189,11 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user }) {
 
         if (searchQuery) {
             updatedJobs = updatedJobs.filter((job) =>
-                job.title?.toLowerCase().includes(searchQuery.toLowerCase())
+                job.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            job.key_skills?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            job.position?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            job.city?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            job.job_type?.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
 
@@ -393,8 +397,8 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user }) {
             </div>
             <div className="flex w-full flex-col items-start justify-start rounded-lg bg-secondary p-4 xl:w-9/12">
                 {filteredJobs.map((job) => (
-                    <div key={job.job_id} className="my-1.5 w-full">
-                        <JobItem user={user} params={params} job={job} />
+                    <div key={job.id} className="my-1.5 w-full">
+                        <JobItem user={user} params={params} job={job} company={company} />
                     </div>
                 ))}
             </div>
@@ -405,15 +409,15 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user }) {
 
 
 export default function Page({ params}) {
-    const [user, setUser] = useState<User | null>(null)
+    const [user, setUser] = useState<User>()
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
-    const dropdownRef = useRef(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [jobs, setJobs] = useState<Job[]>([]);
 
 
-    const [company, setCompany] = useState<Company | null>(null);
+    const [company, setCompany] = useState<Company>();
     const [error, setError] = useState<Number | null>(null);
     const router = useRouter();
 
@@ -467,7 +471,7 @@ export default function Page({ params}) {
         const fetchJobs = async () => {
             setIsLoading(true);
             const { response, err } = await getListedJobs(params.slug);
-            console.log("RESPONSE", response);
+            console.log("RESPONSE", response, err)
             if (err) {
                 setError(err);
             } else if (!response) {
@@ -475,18 +479,15 @@ export default function Page({ params}) {
             } else {
                 setError(null);
                 setJobs(response.jobs || []);
-                setCompany(response.company ? (response.company as Company) : null);
+                setCompany(response.company);
             }
             setIsLoading(false);
         };
         const fetchUser = async () => {
-            setIsLoading(true);
-            const { response, err } = await getCurrentUser()
-  
+            const { response } = await getCurrentUser()
             if (response) {
-            setUser(response)
+                setUser(response)
             }
-            setIsLoading(false)
         };
         fetchUser();
         fetchJobs();
@@ -495,12 +496,12 @@ export default function Page({ params}) {
     }, [params.slug, router, params.lang]);
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setShareDropdownOpen(false);
-            }
+        const handleClickOutside = (event: MouseEvent) => {
+          if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            setShareDropdownOpen(false);
+          }
         };
-    
+              
         if (shareDropdownOpen) {
             document.addEventListener("mousedown", handleClickOutside);
         } else {
@@ -511,6 +512,7 @@ export default function Page({ params}) {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [shareDropdownOpen]);
+
     return (
         dict && (
             <div className="flex flex-col items-start justify-start px-2 py-1.5 md:px-4">
@@ -539,7 +541,7 @@ export default function Page({ params}) {
                             </div>
                         </div>
                     ) : error ? (
-                        (error.toString() === "404" || error.toString() === "403") ? (
+                        (error == 404 || error == 403) ? (
                             <div className="flex w-full flex-col items-start justify-start">
                                 <h1 className="text-left font-heading text-xl">
                                     {dict.board.list._404.head}
@@ -600,10 +602,10 @@ export default function Page({ params}) {
                                     {shareDropdownOpen && (
                                         <div ref={dropdownRef} className="absolute right-0 z-50 mt-2 min-w-48 rounded-md border bg-white p-2 shadow-lg dark:bg-popover">
                                             <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                                Share via Email
+                                                {dict.board.list.email}
                                             </Button>
                                             <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                                Share on LinkedIn
+                                                {dict.board.list.linkedin}
                                                 </Button>
                                             <Button variant="ghost" onClick={() => {
                                                 navigator.clipboard.writeText(`${window.location.href}`); 
@@ -632,7 +634,7 @@ export default function Page({ params}) {
                                 <EmbloySpacer className={"h-4"} />
                             </>
                         )}
-                        <JobList user={user} params={params} jobs={jobs} excludeHeader={undefined} excludeFooter={undefined} />
+                        <JobList user={user} params={params} jobs={jobs} excludeHeader={undefined} excludeFooter={undefined} company={company} />
                     </div>
                     )}
                 </div>

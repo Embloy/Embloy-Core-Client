@@ -204,7 +204,7 @@ return (
   </div>
 
   {isModalOpen && (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800/75">
       <div className="w-11/12 rounded-md bg-white p-6 shadow-md dark:bg-gray-900 md:w-1/2">
         <div className="flex flex-row items-start justify-between">
             <h2 className="mb-4 text-xl font-semibold">Links</h2>

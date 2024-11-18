@@ -4,7 +4,6 @@ import { getListedJob, getListedJobs } from "@/lib/api/jobs";
 import { Job } from "@/types/job-schema";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { FaAt, FaFacebook, FaGithub, FaInstagram, FaLink, FaLinkedin, FaPhone, FaTwitter } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import { AlignEndHorizontal, ArrowLeft, Bookmark, MapPin, Share2 } from "lucide-react";
@@ -15,88 +14,21 @@ import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
 import { parseLocale } from "@/i18n-config";
 import parse, { domToReact } from 'html-react-parser';
-import { Company, JobLi, JobParagraph, JobStrong, JobTitle, JobUl } from "@/app/[lang]/(board)/board/[slug]/utils";
-import { Stats, Socials as MainSocials } from "../utils";
-
-
-function Socials ({company, dict}) {
-    return (
-        <div className="flex w-full flex-row items-start justify-end">
-            {company.phone && (
-                <button 
-                    onClick={() => {
-                        navigator.clipboard.writeText(company.phone);
-                        return toast({
-                            title: replaceNumberWithString(dict?.board.list.copied, "Phone"),
-                            variant: "default",
-                            });
-                    }}
-                    className="mx-1 cursor-copy"
-                >
-                    <FaPhone className="text-gray-800 dark:text-gray-200" />
-                </button>
-            )}
-            {company.email && (
-                <button 
-                    onClick={() => {
-                        navigator.clipboard.writeText(company.email);
-                        return toast({
-                            title: replaceNumberWithString(dict?.board.list.copied, "Email"),
-                            variant: "default",
-                        });
-                    }}
-                    className="mx-1 cursor-copy"
-                >
-                    <FaAt className="text-gray-800 dark:text-gray-200" />
-                </button>
-            )}
-            {company.portfolio_url && (
-                <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaLink className="text-gray-800 dark:text-gray-200" />
-                </a>
-            )}
-            {company.facebook_url && (
-                <a href={company.facebook_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaFacebook className="text-blue-600" />
-                </a>
-            )}
-            {company.instagram_url && (
-                <a href={company.instagram_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaInstagram className="text-pink-500" />
-                </a>
-            )}
-            {company.linkedin_url && (
-                <a href={company.linkedin_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaLinkedin className="text-blue-700" />
-                </a>
-            )}
-            {company.github_url && (
-                <a href={company.github_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaGithub className="text-gray-800 dark:text-gray-200" />
-                </a>
-            )}
-            {company.twitter_url && (
-                <a href={company.twitter_url} target="_blank" rel="noopener noreferrer" className="mx-1">
-                    <FaTwitter className="text-blue-400" />
-                </a>
-            )}
-        </div>
-    );
-}
+import { Company, JobLi, JobParagraph, JobStrong, JobTitle, JobUl, Stats, Socials as MainSocials } from "@/app/[lang]/(board)/board/[slug]/utils";
 
 export default function Page({ params }) {
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [jobs, setJobs] = useState<Job[] | null>(null);
-    const [job, setJob] = useState<Job | null>(null);
-    
+    const [jobs, setJobs] = useState<Job[]>([]);
+    const [job, setJob] = useState<Job>();
     const [error, setError] = useState<Number | null>(null);
     const router = useRouter();
-    const [company, setCompany] = useState<Company | null>(null);
+    const [company, setCompany] = useState<Company>();
 
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null)
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
+    
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -114,13 +46,13 @@ export default function Page({ params }) {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [shareDropdownOpen]);
+    
     useEffect(() => {
         const fetchDictionary = async () => {
             const dictionary = await getDictionary(params.lang);
             setDict(dictionary);
         };
         fetchDictionary();
-        setIsLoading(true);
         const fetchJobs = async () => {
             setIsLoading(true);
             const { response, err } = await getListedJobs(params.slug);
@@ -129,27 +61,24 @@ export default function Page({ params }) {
             } else if (!response) {
                 setError(500);
             } else {
-                setError(null);
-                setJobs(response.jobs || []);
-                setCompany(response.company ? (response.company as Company) : null);
-                const res = await getListedJob(params.slug, params.job_slug);
-                if (res.err) {
-                    setError(res.err);
-                } else if (!res.response) {
-                    setError(500);
-                } else {
-                    const job = res.response;
-                    if (job !== undefined && job !== null) {
-                        setJob(job)
+                setJobs(response.jobs);
+                {
+                    const {response, err} = await getListedJob(params.slug, params.job_slug);
+                    if (err) {
+                        setError(err);
+                    } else if (!response) {
+                        setError(500);
                     } else {
-                        setError(404);
+                        setCompany(response.company);
+                        setJob(response.job);
                     }
                 }
             }
             setIsLoading(false);
         };
         fetchJobs();
-    }, [params.job_slug, router, params.lang]);
+    }, [params.job_slug, params.slug, router, params.lang]);
+
     const options = {
         replace: (domNode) => {
             if (domNode.name === 'h1') {
@@ -195,7 +124,7 @@ export default function Page({ params }) {
                 <div className="flex w-full flex-row items-start justify-between gap-6">
                     {!isLoading && (
                         <div className="sticky hidden max-h-screen w-3/12 flex-col items-start justify-start gap-2 overflow-y-scroll rounded-lg bg-secondary p-4 xl:flex">
-                            {error === null && jobs && (
+                            {error == null && jobs && (
                                 <div className="flex w-full flex-col items-start justify-start gap-2">
                                     <h1 className="font-heading text-xl">{dict.board.post.similar}</h1>
                                     <EmbloySpacer className={"h-4"} />
@@ -222,8 +151,6 @@ export default function Page({ params }) {
                                                     ) : null}
                                                 </span>
                                             </Link>
-
-
                                         )
                                     ))}
                                 </div>
@@ -255,7 +182,7 @@ export default function Page({ params }) {
                                 </div>
                             </div>
                         ) : error ? (
-                            (error.toString() === "404" || error.toString() === "403") ? (
+                            (error == 404 || error == 403) ? (
                                 <div className="flex w-full flex-col items-start justify-start">
                                     <h1 className="text-left font-heading text-xl">
                                         {dict.board.list._404.head}
@@ -274,7 +201,7 @@ export default function Page({ params }) {
                                     </p>
                                 </div>
                             )
-                        ) : (
+                        ) : company && job && (
                             <div className="flex w-full flex-col items-start justify-start">
                                 <div className="flex w-full flex-col items-start justify-start gap-2">
                                     <div className="flex w-full flex-col items-start justify-start md:flex-row md:justify-between">
@@ -331,10 +258,10 @@ export default function Page({ params }) {
                                                     {shareDropdownOpen && job && (
                                                         <div ref={dropdownRef} className="absolute right-0 z-50 mt-2 min-w-48 rounded-md border bg-white p-2 shadow-lg dark:bg-popover">
                                                             <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                                                Share via Email
+                                                                {dict.board.list.email}
                                                             </Button>
                                                             <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                                                Share on LinkedIn
+                                                                {dict.board.list.linkedin}
                                                                 </Button>
                                                             <Button variant="ghost" onClick={() => {
                                                                 navigator.clipboard.writeText(`${window.location.href}`); 
@@ -376,7 +303,7 @@ export default function Page({ params }) {
                                         <div className="flex w-full flex-col items-start justify-start gap-2">
                                             <div className="md:justfy-start flex w-full flex-row items-center justify-between gap-2 md:w-fit">
                                                 <Link
-                                                    href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${params.slug}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job?.job_slug}`}
+                                                    href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${company.id}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job?.job_slug}`}
                                                     className={cn(buttonVariants({ variant: "filled", size: "bold" }), "w-auto lg:w-auto")}
                                                 >
                                                     {dict.board.list.apply}
@@ -391,10 +318,10 @@ export default function Page({ params }) {
                                                     {shareDropdownOpen && job && (
                                                         <div ref={dropdownRef} className="absolute right-0 z-50 mt-2 min-w-48 rounded-md border bg-white p-2 shadow-lg dark:bg-popover">
                                                             <Button variant="ghost" onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                                                Share via Email
+                                                                {dict.board.list.email}
                                                             </Button>
                                                             <Button variant="ghost"onClick={() => {setShareDropdownOpen(false); }} disabled={true} className="block w-full px-4 py-2 text-left text-sm">
-                                                                Share on LinkedIn
+                                                                {dict.board.list.linkedin}
                                                                 </Button>
                                                             <Button variant="ghost" onClick={() => {
                                                                 navigator.clipboard.writeText(`${window.location.href}`); 
