@@ -16,6 +16,8 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { SiteFooter } from "@/components/site-footer"
 import React from "react"
+import { UserAccountNav } from "@/components/user-account-nav"
+import NotificationBell from "@/components/notification-bell"
 
 interface boardLayoutProps {
     children: React.ReactNode
@@ -61,6 +63,47 @@ export default function BoardLayout({ children, params: { lang } }: boardLayoutP
       return <Loading />
     } 
     if (user){
+      return (dict && user && (
+        <div className="flex min-h-screen flex-col">
+          {!excludeHeader && (
+            <header className="container z-40">
+              <div className="flex h-16 w-full items-center justify-between py-4">
+                <div className="flex w-8/12 flex-row items-center justify-start portrait:w-4/12">
+                  <MainNav
+                    items={boardConfig.mainNav}
+                    params={{ lang: lang }}
+                    retractHeader={true}
+                  />
+                </div>
+                <div className="flex w-4/12 flex-row items-center justify-end portrait:w-8/12">
+                <div className="mx-6 md:flex">
+                  <div className="hidden md:flex">
+                    <LanguageToggle />
+                    <Separator className="mx-1" />
+                    <ModeToggle params={{ lang: lang }} />
+                  </div>
+                  <Separator className="mx-1" />
+                  <NotificationBell params={{ lang: lang }} />
+                </div>
+                <UserAccountNav
+                  user={{
+                    first_name: `${user.first_name}`,
+                    last_name: `${user.last_name}`,
+                    image_url: user.image_url,
+                    email: user.email,
+                  }}
+                  params={{ lang: lang }}
+              />
+                </div>
+              </div>
+            </header>
+          )}
+          <main className="flex-1">
+            {React.cloneElement(children as React.ReactElement<any>, { excludeHeader, excludeFooter })}
+          </main>
+          {!excludeFooter && <SiteFooter className="" params={{ lang: lang }} />}
+        </div>
+      ))
 
     } else {
       return (dict && (

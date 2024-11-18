@@ -16,8 +16,9 @@ import Link from "next/link";
 import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
 import parse, { domToReact } from 'html-react-parser';
+import { getCurrentUser, User } from "@/lib/api/session";
 
-function JobItem({ params, job }) {
+function JobItem({ params, job, user }) {
     const [dict, setDict] = useState<Record<string, any> | null>(null);
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -103,9 +104,9 @@ function JobItem({ params, job }) {
                         </div>
                     )}
 
-                    <Button className={cn(buttonVariants({ variant: "transparent", size: "default" }), "h-fit p-0 font-semibold text-muted-foreground hover:text-secondary-foreground")}>
+                    {user && <Button className={cn(buttonVariants({ variant: "transparent", size: "default" }), "h-fit p-0 font-semibold text-muted-foreground hover:text-secondary-foreground")}>
                         <Bookmark strokeWidth={3} className="size-4" />
-                    </Button>
+                    </Button>}
                 </div>
                 <div className="flex flex-row items-center justify-start gap-2">
                     <Link
@@ -136,7 +137,7 @@ function FilterItem({ label, onRemove }) {
     );
 }
 
-function JobList({ params, jobs, excludeHeader, excludeFooter }) {
+function JobList({ params, jobs, excludeHeader, excludeFooter, user }) {
     
 
     const [dict, setDict] = useState<Record<string, any> | null>(null);
@@ -393,7 +394,7 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
             <div className="flex w-full flex-col items-start justify-start rounded-lg bg-secondary p-4 xl:w-9/12">
                 {filteredJobs.map((job) => (
                     <div key={job.job_id} className="my-1.5 w-full">
-                        <JobItem params={params} job={job} />
+                        <JobItem user={user} params={params} job={job} />
                     </div>
                 ))}
             </div>
@@ -403,7 +404,7 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
 }
 
 export function Stats ({ dict, company, className }) {
-    if (company.company_industry) {
+    if (company?.company_industry) {
         return (
             <>
             <div className="flex flex-wrap items-start justify-start gap-2">
@@ -681,6 +682,7 @@ export interface Company {
     company_slug: string;
 }
 export default function Page({ params, excludeHeader, excludeFooter }) {
+    const [user, setUser] = useState<User | null>(null)
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
     const [dict, setDict] = useState<Record<string, any> | null>(null);
@@ -754,7 +756,19 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
             }
             setIsLoading(false);
         };
+        const fetchUser = async () => {
+            setIsLoading(true);
+            const { response, err } = await getCurrentUser()
+  
+            if (response) {
+            setUser(response)
+            }
+            setIsLoading(false)
+        };
+        fetchUser();
         fetchJobs();
+        
+        
     }, [params.slug, router, params.lang]);
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
     useEffect(() => {
@@ -895,7 +909,7 @@ export default function Page({ params, excludeHeader, excludeFooter }) {
                                 <EmbloySpacer className={"h-4"} />
                             </>
                         )}
-                        <JobList params={params} jobs={jobs} excludeHeader={undefined} excludeFooter={undefined} />
+                        <JobList user={user} params={params} jobs={jobs} excludeHeader={undefined} excludeFooter={undefined} />
                     </div>
                     )}
                 </div>
