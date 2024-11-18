@@ -15,7 +15,8 @@ import { toast } from "@/components/ui/use-toast";
 import { siteConfig } from "@/config/site";
 import { parseLocale } from "@/i18n-config";
 import parse, { domToReact } from 'html-react-parser';
-import { Company, JobLi, JobParagraph, JobStrong, JobTitle, JobUl, Socials as MainSocials, Stats } from "../page";
+import { Company, JobLi, JobParagraph, JobStrong, JobTitle, JobUl } from "@/app/[lang]/(board)/board/[slug]/utils";
+import { Stats, Socials as MainSocials } from "../utils";
 
 
 function Socials ({company, dict}) {
@@ -94,7 +95,7 @@ export default function Page({ params }) {
     const [company, setCompany] = useState<Company | null>(null);
 
     const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
-    const dropdownRef = useRef(null);
+    const dropdownRef = useRef<HTMLDivElement>(null)
     const toggleShareDropdown = () => setShareDropdownOpen(!shareDropdownOpen);
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -139,7 +140,7 @@ export default function Page({ params }) {
                 } else {
                     const job = res.response;
                     if (job !== undefined && job !== null) {
-                        setJob(job);
+                        setJob(job)
                     } else {
                         setError(404);
                     }
@@ -299,7 +300,7 @@ export default function Page({ params }) {
                                                             <h1 className="text-left font-heading text-xl">
                                                                 {company?.company_name}
                                                             </h1>
-                                                            <Stats company={company} dict={dict} className={"bg-white border dark:bg-border dark:border-input "} />  
+                                                            <Stats company={company} dict={dict} className={"border bg-white dark:border-input dark:bg-border "} />  
                                                         </div>  
                                                     </div>
                                                 ) : (
@@ -426,7 +427,7 @@ export default function Page({ params }) {
                                     <EmbloySpacer className={"h-4"} />
                                     <div className="flex w-full flex-row items-start justify-center gap-2 md:justify-start">
                                         {company?.company_logo && (
-                                            <div className="w-1/12 flex flex-row items-center justify-start gap-2">
+                                            <div className="flex w-1/12 flex-row items-center justify-start gap-2">
                                                 <Image
                                                     src={company.company_logo}
                                                     alt="Company Logo"
@@ -437,7 +438,7 @@ export default function Page({ params }) {
                                                 
                                             </div>
                                         ) }
-                                        <div className="w-11/12 flex flex-col items-start justify-start gap-1.5">
+                                        <div className="flex w-11/12 flex-col items-start justify-start gap-1.5">
                                             <h1 className="text-left font-heading text-xl">
                                                 {company?.company_name}
                                             </h1>
