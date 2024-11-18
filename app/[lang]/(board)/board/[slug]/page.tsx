@@ -420,9 +420,10 @@ function Socials({ dict, company }) {
                     variant: "default",
                 });
                 }}
-                className="mx-1 cursor-copy"
+                className="mx-1 flex flex-row items-center gap-0.5 break-all cursor-copy"
             >
-                <FaPhone className="text-gray-800 dark:text-gray-200" />
+                <FaPhone className="text-gray-800 dark:text-gray-200 text-xs" />
+                <p className="text-xs">{company.company_phone}</p>
             </button>
             )}
             {company?.company_email && (
@@ -434,9 +435,10 @@ function Socials({ dict, company }) {
                     variant: "default",
                 });
                 }}
-                className="mx-1 cursor-copy"
+                className="mx-1 flex flex-row gap-0.5 items-center break-all cursor-copy"
             >
-                <FaAt className="text-gray-800 dark:text-gray-200" />
+                <FaAt className="text-gray-800 dark:text-gray-200 text-xs" />
+                <p className="text-xs">{company.company_email}</p>
             </button>
             )}
           {categorized.facebook.length > 0 &&
@@ -445,9 +447,10 @@ function Socials({ dict, company }) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-1"
+                className="mx-1 flex flex-row gap-0.5 break-all items-center"
               >
-                <FaFacebook className="text-blue-600" />
+                <FaFacebook className="text-blue-600 text-xs" />
+                <p className="text-xs">{url}</p>
               </a>
             ))}
           {categorized.instagram.length > 0 &&
@@ -456,9 +459,10 @@ function Socials({ dict, company }) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-1"
+                className="mx-1 flex flex-row gap-0.5 break-all items-center"
               >
-                <FaInstagram className="text-pink-500" />
+                <FaInstagram className="text-pink-500 text-xs" />
+                <p className="text-xs">{url}</p>
               </a>
             ))}
           {categorized.linkedin.length > 0 &&
@@ -467,9 +471,10 @@ function Socials({ dict, company }) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-1"
+                className="mx-1 flex flex-row gap-0.5 break-all items-center"
               >
-                <FaLinkedin className="text-blue-700" />
+                <FaLinkedin className="text-blue-700 text-xs" />
+                <p className="text-xs">{url}</p>
               </a>
             ))}
           {categorized.github.length > 0 &&
@@ -478,9 +483,10 @@ function Socials({ dict, company }) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-1"
+                className="mx-1 flex flex-row gap-0.5 break-all items-center"
               >
-                <FaGithub className="text-gray-800 dark:text-gray-200" />
+                <FaGithub className="text-gray-800 dark:text-gray-200 text-xs" />
+                <p className="text-xs">{url}</p>
               </a>
             ))}
           {categorized.twitter.length > 0 &&
@@ -489,9 +495,10 @@ function Socials({ dict, company }) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-1"
+                className="mx-1 flex flex-row gap-0.5 break-all items-center"
               >
-                <FaTwitter className="text-blue-400" />
+                <FaTwitter className="text-blue-400 text-xs" />
+                <p className="text-xs">{url}</p>
               </a>
             ))}
           {categorized.other_urls.length > 0 &&
@@ -500,9 +507,9 @@ function Socials({ dict, company }) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-1 flex flex-row gap-0.5 break-all"
+                className="mx-1 flex flex-row gap-0.5 break-all items-center"
               >
-                <FaLink className="text-gray-800 dark:text-gray-200" />
+                <FaLink className="text-gray-800 dark:text-gray-200 text-xs" />
                 <p className="text-xs">{url}</p>
               </a>
             ))}
