@@ -11,6 +11,8 @@ import {
   Clock,
   DownloadCloud,
   MoreVertical,
+  Route,
+  ScrollText,
   Trash2,
 } from "lucide-react"
 
@@ -39,7 +41,9 @@ import {
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
 import { ApplicationAnswerList } from "./application-answer-list"
+import { ApplicationPipeline } from "./application-pipeline"
 import { ApplicationResponse } from "./application-response"
+import { Callout } from "./callout"
 import { Icons } from "./icons"
 
 interface ApplicationDisplayProps {
@@ -58,6 +62,7 @@ export function ApplicationDisplay({
   const [deadline, setDeadline] = useState<Date | null>(null)
   const [versionMap, setVersionMap] = useState<Map<number, number>>(new Map())
   const [version, setVersion] = useState<number>(defaultVersion)
+  const [showPipeline, setShowPipeline] = useState<boolean>(false)
   const today = new Date()
   const disabledPastDates = (date) =>
     isBefore(date, new Date()) && !isToday(date)
@@ -208,6 +213,44 @@ export function ApplicationDisplay({
             </Tooltip>
           </div>
           <div className="ml-auto flex items-center gap-2">
+            {showPipeline ? (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setShowPipeline(!showPipeline)}
+                  >
+                    <ScrollText className="size-4" />
+                    <span className="sr-only">
+                      {dict.dashboard.applications.submittedAnswers}
+                    </span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  {dict.dashboard.applications.submittedAnswers}
+                </TooltipContent>
+              </Tooltip>
+            ) : (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setShowPipeline(!showPipeline)}
+                  >
+                    <Route className="size-4" />
+                    <span className="sr-only">
+                      {dict.dashboard.applications.pipeline}
+                    </span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  {dict.dashboard.applications.pipeline}
+                </TooltipContent>
+              </Tooltip>
+            )}
+            <Separator orientation="vertical" className="mx-1 h-6" />
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -255,10 +298,10 @@ export function ApplicationDisplay({
               <div className="flex items-start gap-4 text-sm">
                 {
                   <Avatar>
-                    {application.job?.employer_image_url ? (
+                    {application.job?.employer?.employer_image_url ? (
                       <AvatarImage
                         alt="Picture"
-                        src={application.job?.employer_image_url}
+                        src={application.job?.employer?.employer_image_url}
                         className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
                       />
                     ) : (
@@ -270,12 +313,12 @@ export function ApplicationDisplay({
                 }
                 <div className="grid gap-1">
                   <div className="font-semibold">
-                    {application.job?.employer_name ||
+                    {application.job?.employer?.employer_name ||
                       `User#${application.job?.user_id}`}
                   </div>
                   <div className="line-clamp-1 text-xs">
-                    {application.job?.employer_email ||
-                      application.job?.employer_phone ||
+                    {application.job?.employer?.employer_email ||
+                      application.job?.employer?.employer_phone ||
                       dict.dashboard.applications.noContact}
                   </div>
                   <div className="line-clamp-1 text-xs">
@@ -318,16 +361,38 @@ export function ApplicationDisplay({
               </p>
             </div>
             <Separator />
-            <ApplicationAnswerList
-              application={application}
-              version={version}
-              params={{ lang: lang }}
-            />
-            <Separator className="mt-auto" />
-            <ApplicationResponse
-              application={application}
-              params={{ lang: lang }}
-            />
+            {showPipeline ? (
+              <>
+                <ApplicationPipeline
+                  application={application}
+                  version={version}
+                  params={{ lang: lang }}
+                />
+
+                <div className="md:p-4">
+                  <div className="grid gap-4">
+                    <div className="grid gap-4">
+                      <Callout type="danger">
+                        {dict.dashboard.applications.disclaimer}
+                      </Callout>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <ApplicationAnswerList
+                  application={application}
+                  version={version}
+                  params={{ lang: lang }}
+                />
+                <Separator className="mt-auto" />
+                <ApplicationResponse
+                  application={application}
+                  params={{ lang: lang }}
+                />
+              </>
+            )}
           </div>
         ) : (
           <div className="p-8 text-center text-muted-foreground">

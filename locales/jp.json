@@ -5,6 +5,11 @@
       "header": "現在、Embloyをサンドボックスモードで使用しています 🏖 - 一部の機能へのアクセスが制限される場合があります。",
       "description": "サンドボックスモードは、アカウントに影響を与えることなくEmbloyの機能をテストできる安全な環境です。このモードでは一部の機能が制限または無効になる場合があることに注意してください。すべての機能にアクセスするには、有料プランにアップグレードしてください。"
     },
+    "company": {
+      "title": "個人アカウント",
+      "header": "ここで個人アカウントを管理できます。会社アカウントを管理するには、リクルーターダッシュボードにアクセスしてください。",
+      "description": "会社アカウントはアクティブです。ここで個人アカウントを管理できます。会社アカウントを管理するには、リクルーターダッシュボード (https://genius.embloy.com) にアクセスしてください。"
+    },
     "features": "特長",
     "pricing": "価格設定",
     "employers": "雇用者",
@@ -414,10 +419,10 @@
             "job_status": "ステータス",
             "job_type": "仕事の種類",
             "referrer_url": "リファラURL",
-            "employer_phone": "雇用主電話",
-            "employer_name": "雇用主名",
-            "employer_email": "雇用主メール",
-            "employer_rating": "雇用主評価",
+            "employer_employer_phone": "雇用主電話",
+            "employer_employer_name": "雇用主名",
+            "employer_employer_email": "雇用主メール",
+            "employer_employer_rating": "雇用主評価",
             "key_skills": "主要スキル"
           }
         },
@@ -459,6 +464,10 @@
       "snooze": "スヌーズ",
       "setDeadline1": "雇用主の締め切りを設定",
       "setDeadline2": "雇用主の締め切りを設定",
+      "submittedAnswers": "提出した回答に切り替える",
+      "pipeline": "応募パイプラインに切り替える",
+      "noPipeline": "まだ応募イベントが受信されていません。",
+      "disclaimer": "これは実験的な機能です。フィードバックや提案があればお知らせください。",    
       "laterToday": "今日の後 ",
       "tomorrow": "明日",
       "thisWeekend": "今週末",

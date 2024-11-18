@@ -5,6 +5,11 @@
       "header": "Stai attualmente utilizzando Embloy in modalità sandbox 🏖 - l'accesso ad alcune funzionalità potrebbe essere limitato.",
       "description": "La modalità sandbox è un ambiente sicuro in cui puoi testare le funzionalità di Embloy senza influire sul tuo account. Si prega di notare che alcune funzionalità potrebbero essere limitate o disabilitate in questa modalità. Per accedere a tutte le funzionalità, esegui l'upgrade a un piano a pagamento."
     },
+    "company": {
+      "title": "Account Personale",
+      "header": "Qui puoi gestire il tuo account personale. Per gestire il tuo account aziendale, visita il dashboard dei recruiter.",
+      "description": "Il tuo account aziendale è attivo. Puoi gestire il tuo account personale qui. Per gestire il tuo account aziendale, visita il dashboard dei recruiter (https://genius.embloy.com)."
+    }, 
     "features": "Funzionalità",
     "pricing": "Prezzi",
     "employers": "Datori di lavoro",
@@ -414,10 +419,10 @@
             "job_status": "Stato",
             "job_type": "Tipo di lavoro",
             "referrer_url": "URL del referrer",
-            "employer_phone": "Telefono del datore di lavoro",
-            "employer_name": "Nome del datore di lavoro",
-            "employer_email": "Email del datore di lavoro",
-            "employer_rating": "Valutazione del datore di lavoro",
+            "employer_employer_phone": "Telefono del datore di lavoro",
+            "employer_employer_name": "Nome del datore di lavoro",
+            "employer_employer_email": "Email del datore di lavoro",
+            "employer_employer_rating": "Valutazione del datore di lavoro",
             "key_skills": "Competenze chiave"
           }
         },
@@ -459,6 +464,10 @@
       "snooze": "Snooze",
       "setDeadline1": "Imposta la scadenza per il datore di lavoro",
       "setDeadline2": "Imposta la scadenza del datore di lavoro",
+      "submittedAnswers": "Passa alle tue risposte inviate",
+      "pipeline": "Passa alla pipeline di candidatura",
+      "noPipeline": "Nessun evento di candidatura ricevuto finora.",
+      "disclaimer": "Questa è una funzione sperimentale. Se hai feedback o suggerimenti, faccelo sapere.",    
       "laterToday": "Più tardi oggi ",
       "tomorrow": "Domani",
       "thisWeekend": "Questo fine settimana",

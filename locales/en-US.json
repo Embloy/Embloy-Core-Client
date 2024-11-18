@@ -5,6 +5,11 @@
         "header": "You're currently using Embloy in sandbox mode 🏖 - access to some features may be limited.", 
         "description": "Sandbox mode is a safe environment where you can test Embloy's features without affecting your account. Please note that some features such as subscriptions and billing may be limited or disabled in this mode."
       },
+      "company": {
+        "title": "Personal Account",
+        "header": "Here you can manage your personal account. To manage your company account, please visit the recruiter dashboard.", 
+        "description": "You company account is active. You can manage your personal account here. To manage your company account, please visit the recruiter dashboard (https://genius.embloy.com)."
+      },      
       "features": "Features",
       "pricing": "Pricing",
       "employers": "Employers",
@@ -414,10 +419,10 @@
             "job_status": "Status",
             "job_type": "Job Type",
             "referrer_url": "Referrer URL",
-            "employer_phone": "Employer Phone",
-            "employer_name": "Employer Name",
-            "employer_email": "Employer Email",
-            "employer_rating": "Employer Rating",
+            "employer_employer_phone": "Employer Phone",
+            "employer_employer_name": "Employer Name",
+            "employer_employer_email": "Employer Email",
+            "employer_employer_rating": "Employer Rating",
             "key_skills": "Key Skills"
           }
         },
@@ -459,6 +464,10 @@
       "snooze": "Snooze",
       "setDeadline1": "Set deadline for employer",
       "setDeadline2": "Set employer deadline",
+      "submittedAnswers": "Switch to your submitted answers",
+      "pipeline": "Switch to application pipeline",
+      "noPipeline": "No application events received yet.",
+      "disclaimer": "This is an experimental feature. If you have any feedback or suggestions, please let us know.",
       "laterToday": "Later today ",
       "tomorrow": "Tomorrow",
       "thisWeekend": "This weekend",

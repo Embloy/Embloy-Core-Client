@@ -11,14 +11,15 @@ import {
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
 import { Locale } from "../i18n-config"
+import { Icons } from "./icons"
 
-interface SandboxBannerProps {
+interface CompanyBannerProps {
   params: {
     lang: Locale
   }
 }
 
-export function SandboxBanner({ params: { lang } }: SandboxBannerProps) {
+export function CompanyBanner({ params: { lang } }: CompanyBannerProps) {
   const [dict, setDict] = useState<Record<string, any> | null>(null)
   useEffect(() => {
     const fetchDictionary = async () => {
@@ -31,19 +32,21 @@ export function SandboxBanner({ params: { lang } }: SandboxBannerProps) {
 
   return (
     dict && (
-      <div className="inverted-border-radius-sandbox inset-x-0 top-0 flex items-center justify-between text-ellipsis bg-sandbox px-4 py-1 text-sandbox-foreground">
+      <div className="inverted-border-radius-company inset-x-0 top-0 flex items-center justify-between text-ellipsis bg-company px-4 py-1 text-company-foreground">
         <div className="w-full truncate text-left font-bold lg:w-1/6">
-          {dict.pages.sandbox.title}
+          {dict.pages.company.title}
         </div>
         <div className="mr-20 hidden w-4/6 items-center justify-center truncate text-center font-light lg:block">
-          <span className="truncate">{dict.pages.sandbox.header}</span>
+          <Link href={siteConfig.links.genius} passHref>
+            <span className="truncate">{dict.pages.company.header}</span>
+          </Link>
         </div>
         <div className="mt-1 w-1/6 text-right">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
-                  className="hover:text-sandbox-foreground-dark text-sandbox-foreground"
+                  className="hover:text-company-foreground-dark text-company-foreground"
                   aria-label="Info"
                 >
                   <svg
@@ -62,8 +65,8 @@ export function SandboxBanner({ params: { lang } }: SandboxBannerProps) {
                   </svg>
                 </button>
               </TooltipTrigger>
-              <TooltipContent className="w-64 bg-sandbox text-left text-sandbox-foreground">
-                {dict.pages.sandbox.description}
+              <TooltipContent className="w-64 bg-company text-left text-company-foreground">
+                {dict.pages.company.description}
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
