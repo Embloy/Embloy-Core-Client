@@ -37,7 +37,8 @@
       "copy": "リンクをコピー",
       "copied": "{number} コピーしました",
       "email": "メールで共有",
-      "linkedin": "LinkedInで共有"
+      "linkedin": "LinkedInで共有",
+      "noResults": "アクティブな求人はありません。"
     },
     "post": {
       "back": "{number} 件の求人に戻る",

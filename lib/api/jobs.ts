@@ -31,9 +31,6 @@ export async function getListedJobs(company_id): Promise<{response: {jobs: Job[]
   let data: {company:any, jobs: any[]; };
   try {
     data = await response.json();
-    if (response.status === 204) {
-      return { response: {jobs:[], company: data.company}, err: null };
-    }    
   } catch (error) {
     console.error('Failed to parse JSON response:', error);
     return { response: null, err: 500 };
@@ -44,11 +41,8 @@ export async function getListedJobs(company_id): Promise<{response: {jobs: Job[]
       ...job,
     };
   });
-  const company = data.company
 
-
-  const result = jobs.length > 0 ? {jobs, company} : null
-  return {response: result , err: null };
+  return {response: {jobs: jobs, company: data.company} , err: null };
 }
 
 export async function getUpcomingJobs(): Promise<{response: Job[] | null, err: number | null}> {

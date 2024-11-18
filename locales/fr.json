@@ -37,7 +37,8 @@
       "copy": "Copier le lien",
       "copied": "{number} copié",
       "email": "Partager par email",
-      "linkedin": "Partager sur LinkedIn"
+      "linkedin": "Partager sur LinkedIn",
+      "noResults": "Aucun emploi actif."
     },
     "post": {
       "back": "Retour à {number} emplois",

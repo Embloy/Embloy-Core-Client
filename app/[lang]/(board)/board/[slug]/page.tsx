@@ -95,11 +95,11 @@ function JobItem({ params, job, user, company }) {
                                 navigator.clipboard.writeText(`${window.location.href}/${job.job_slug}`); 
                                 setShareDropdownOpen(false); 
                                 return toast({
-                                    title: replaceNumberWithString(dict?.board.list.copied, "Link"),
+                                    title: replaceNumberWithString(dict.board.list.copied, "Link"),
                                     variant: "default",
                                   })
                                 }} className="block w-full px-4 py-2 text-left text-sm">
-                                {dict?.board.list.copy}
+                                {dict.board.list.copy}
                             </Button>
                         </div>
                     )}
@@ -113,13 +113,13 @@ function JobItem({ params, job, user, company }) {
                         href={`/${params.lang}/board/${params.slug}/${job.job_slug}`}
                         className={cn(buttonVariants({ variant: "link", size: "default" }), "h-fit p-0 text-xs text-muted-foreground")}
                     >
-                        {dict?.board.list.more}
+                        {dict.board.list.more}
                     </Link>
                     <Link
                         href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${company.id}&url=${siteConfig.url}/${params.lang}/board/${params.slug}/${job.job_slug}`}
                         className={cn(buttonVariants({ variant: "ghost", size: "default" }), "h-fit p-0 px-2 font-semibold")}
                     >
-                        {dict?.board.list.apply}
+                        {dict.board.list.apply}
                     </Link>
                 </div>
                 
@@ -225,18 +225,18 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) 
         }
     };
 
-    return (
+    return dict && (
         <div className="flex w-full flex-col items-start justify-between gap-6 xl:flex-row">
             <div className="flex w-full flex-col items-start justify-start gap-6 rounded-lg bg-secondary p-4 xl:hidden">
                 <div className="flex flex-col items-start justify-start gap-2">
                     <h1 className="text-left font-heading text-xl">
-                        {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
+                        {replaceNumberWithString(dict.board.list.found, filteredJobs.length.toString())}
                     </h1>
                 </div>
                 <div className="flex w-full flex-col items-start justify-start gap-2">
                     <Input
                         id="qry"
-                        placeholder={dict?.board.list.search}
+                        placeholder={dict.board.list.search}
                         type="text"
                         autoCapitalize="none"
                         autoCorrect="off"
@@ -249,13 +249,13 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) 
                         value={selectedCity || ""}
                     >
                         <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
-                            <SelectValue placeholder={dict?.board.list.loc_search} />
+                            <SelectValue placeholder={dict.board.list.loc_search} />
                         </SelectTrigger>
                         <SelectContent className="bg-background dark:bg-border">
                             {selectedCity === null && (
                                 <SelectItem value="" >
                                     <p className="text-accent-foreground/60">
-                                        {dict?.board.list.loc_search}
+                                        {dict.board.list.loc_search}
                                     </p>
                                 </SelectItem>
                             )} 
@@ -271,13 +271,13 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) 
                         value={selectedCategory || ""}
                     >
                         <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
-                            <SelectValue placeholder={dict?.board.list.cat_search} />
+                            <SelectValue placeholder={dict.board.list.cat_search} />
                         </SelectTrigger>
                         <SelectContent className="bg-background dark:bg-border">
                             {selectedCategory === null && (
                                 <SelectItem value="" >
                                     <p className="text-accent-foreground/60">
-                                        {dict?.board.list.cat_search}
+                                        {dict.board.list.cat_search}
                                     </p>
                                 </SelectItem>
                             )} 
@@ -315,13 +315,13 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) 
             <div className="hidden w-3/12 flex-col items-start justify-start gap-6 rounded-lg bg-secondary p-4 xl:flex">
                 <div className="flex flex-col items-start justify-start gap-2">
                     <h1 className="text-left font-heading text-xl">
-                        {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
+                        {replaceNumberWithString(dict.board.list.found, filteredJobs.length.toString())}
                     </h1>
                 </div>
                 <div className="flex w-full flex-col items-start justify-start gap-2">
                     <Input
                         id="qry"
-                        placeholder={dict?.board.list.search}
+                        placeholder={dict.board.list.search}
                         type="text"
                         autoCapitalize="none"
                         autoCorrect="off"
@@ -334,13 +334,13 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) 
                         value={selectedCity || ""}
                     >
                         <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
-                            <SelectValue placeholder={dict?.board.list.loc_search} />
+                            <SelectValue placeholder={dict.board.list.loc_search} />
                         </SelectTrigger>
                         <SelectContent className="bg-background dark:bg-border">
                             {selectedCity === null && (
                                 <SelectItem value="" >
                                     <p className="text-accent-foreground/60">
-                                        {dict?.board.list.loc_search}
+                                        {dict.board.list.loc_search}
                                     </p>
                                 </SelectItem>
                             )} 
@@ -356,13 +356,13 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) 
                         value={selectedCategory || ""}
                     >
                         <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
-                            <SelectValue placeholder={dict?.board.list.cat_search} />
+                            <SelectValue placeholder={dict.board.list.cat_search} />
                         </SelectTrigger>
                         <SelectContent className="bg-background dark:bg-border">
                             {selectedCategory === null && (
                                 <SelectItem value="" >
                                     <p className="text-accent-foreground/60">
-                                        {dict?.board.list.cat_search}
+                                        {dict.board.list.cat_search}
                                     </p>
                                 </SelectItem>
                             )} 
@@ -396,13 +396,18 @@ function JobList({ params, jobs, excludeHeader, excludeFooter, user, company }) 
                 </div>
             </div>
             <div className="flex w-full flex-col items-start justify-start rounded-lg bg-secondary p-4 xl:w-9/12">
-                {filteredJobs.map((job) => (
+                {filteredJobs.length > 0 ? (
+                    filteredJobs.map((job) => (
                     <div key={job.id} className="my-1.5 w-full">
                         <JobItem user={user} params={params} job={job} company={company} />
                     </div>
-                ))}
-            </div>
-          
+                    ))
+                ) : (
+                    <div className="my-1.5 w-full text-center text-muted-foreground">
+                        {dict.board.list.noResults}
+                    </div>
+                )}
+                </div>
         </div>
     );
 }
@@ -611,11 +616,11 @@ export default function Page({ params}) {
                                                 navigator.clipboard.writeText(`${window.location.href}`); 
                                                 setShareDropdownOpen(false); 
                                                 return toast({
-                                                    title: replaceNumberWithString(dict?.board.list.copied, "Link"),
+                                                    title: replaceNumberWithString(dict.board.list.copied, "Link"),
                                                     variant: "default",
                                                 })
                                                 }} className="block w-full px-4 py-2 text-left text-sm">
-                                                {dict?.board.list.copy}
+                                                {dict.board.list.copy}
                                             </Button>
                                         </div>
                                     )}

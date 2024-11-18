@@ -37,7 +37,8 @@
       "copy": "Copy link",
       "copied": "{number} copied",
       "email": "Share via email",
-      "linkedin": "Share on LinkedIn"
+      "linkedin": "Share on LinkedIn",
+      "noResults": "No active jobs."
     },
     "post": {
       "back": "Back to {number} jobs",

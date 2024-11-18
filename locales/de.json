@@ -37,7 +37,8 @@
       "copy": "Link kopieren",
       "copied": "{number} kopiert",
       "email": "Per E-Mail teilen",
-      "linkedin": "Auf LinkedIn teilen"
+      "linkedin": "Auf LinkedIn teilen",
+      "noResults": "Keine aktiven Jobs."
     },
     "post": {
       "back": "Zurück zu {number} Jobs",
