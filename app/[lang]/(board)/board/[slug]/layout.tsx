@@ -33,12 +33,10 @@ export default function BoardLayout({ children, params: { lang } }: boardLayoutP
     const [user, setUser] = useState<User | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [dict, setDict] = useState<Record<string, any> | null>(null)
-    const router = useRouter()
     const searchParams = useSearchParams()
-    const refreshToken = searchParams.get("refresh_token")
-    const noRedirect = searchParams.get("noredirect")
+
     const mode = searchParams.get("mode")
-    const eType = searchParams.get("eType")
+
     const excludeHeader = searchParams.get("exclude_header") === "true"
     const excludeFooter = searchParams.get("exclude_footer") === "true"
 
@@ -48,7 +46,7 @@ export default function BoardLayout({ children, params: { lang } }: boardLayoutP
         setDict(dictionary)
   
         setIsLoading(true)
-        const { response, err } = await getCurrentUser(refreshToken ?? undefined)
+        const { response, err } = await getCurrentUser()
   
         if (response) {
           setUser(response)
@@ -57,7 +55,7 @@ export default function BoardLayout({ children, params: { lang } }: boardLayoutP
       }
   
       fetchDictionaryAndUser()
-    }, [lang, refreshToken])
+    }, [lang])
     
     if (isLoading) {
       return <Loading />
@@ -93,13 +91,7 @@ export default function BoardLayout({ children, params: { lang } }: boardLayoutP
                     >
                       {dict.pages.add}
                     </Link>
-                    <ManualProxyForm
-                      params={{
-                        lang: lang,
-                        mode: mode,
-                        eType: eType,
-                      }}
-                    />
+                  
                     <Link
                       href={`/${lang}/login`}
                       className={cn(

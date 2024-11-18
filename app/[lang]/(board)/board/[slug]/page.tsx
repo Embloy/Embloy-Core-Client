@@ -221,7 +221,92 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
     };
 
     return (
-        <div className="flex w-full flex-row items-start justify-between gap-6">
+        <div className="flex w-full flex-col xl:flex-row items-start justify-between gap-6">
+            <div className="xl:hidden p-4 w-full flex flex-col items-start justify-start gap-6 rounded-lg bg-secondary">
+                <div className="flex flex-col items-start justify-start gap-2">
+                    <h1 className="text-left font-heading text-xl">
+                        {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
+                    </h1>
+                </div>
+                <div className="flex w-full flex-col items-start justify-start gap-2">
+                    <Input
+                        id="qry"
+                        placeholder={dict?.board.list.search}
+                        type="text"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="bg-background focus:ring-0"
+                    />
+                    <Select
+                        onValueChange={(value) => setSelectedCity(value)}
+                        value={selectedCity || ""}
+                    >
+                        <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
+                            <SelectValue placeholder={dict?.board.list.loc_search} />
+                        </SelectTrigger>
+                        <SelectContent className="bg-background dark:bg-border">
+                            {selectedCity === null && (
+                                <SelectItem value="" >
+                                    <p className="text-accent-foreground/60">
+                                        {dict?.board.list.loc_search}
+                                    </p>
+                                </SelectItem>
+                            )} 
+                            {uniqueCities.map((city) => (
+                                <SelectItem key={city} value={city}>
+                                    {city}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <Select
+                        onValueChange={(value) => setSelectedCategory(value)}
+                        value={selectedCategory || ""}
+                    >
+                        <SelectTrigger className="w-full bg-background focus:ring-0 dark:bg-border">
+                            <SelectValue placeholder={dict?.board.list.cat_search} />
+                        </SelectTrigger>
+                        <SelectContent className="bg-background dark:bg-border">
+                            {selectedCategory === null && (
+                                <SelectItem value="" >
+                                    <p className="text-accent-foreground/60">
+                                        {dict?.board.list.cat_search}
+                                    </p>
+                                </SelectItem>
+                            )} 
+                            {uniqueCategories.map((cat) => (
+                                <SelectItem key={cat} value={cat}>
+                                    {cat}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    
+                </div>
+                <div className="flex flex-col items-start justify-start gap-2">
+                    <div className="flex flex-col items-start justify-start gap-1.5">
+                        {searchQuery && (
+                            <FilterItem label={`Search: ${searchQuery}`} onRemove={() => handleRemoveFilter("searchQuery")} />
+                        )}
+                        {selectedCity && (
+                            <FilterItem
+                                label={`Location: ${selectedCity}`}
+                                onRemove={() => handleRemoveFilter("selectedCity")}
+                            />
+                        )}
+                        {selectedCategory && (
+                            <FilterItem
+                                label={`Category: ${selectedCategory}`}
+                                onRemove={() => handleRemoveFilter("selectedCategory")}
+                            />
+                        )}
+                    </div>
+                </div>
+
+
+            </div>
             <div className=" hidden w-3/12 flex-col items-start justify-start gap-6 rounded-lg bg-secondary p-4 xl:flex">
                 <div className="flex flex-col items-start justify-start gap-2">
                     <h1 className="text-left font-heading text-xl">
