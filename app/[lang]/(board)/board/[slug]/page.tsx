@@ -307,13 +307,12 @@ function JobList({ params, jobs, excludeHeader, excludeFooter }) {
 
 
             </div>
-            <div className=" hidden w-3/12 flex-col items-start justify-start gap-6 rounded-lg bg-secondary p-4 xl:flex">
+            <div className="hidden w-3/12 flex-col items-start justify-start gap-6 rounded-lg bg-secondary p-4 xl:flex">
                 <div className="flex flex-col items-start justify-start gap-2">
                     <h1 className="text-left font-heading text-xl">
                         {replaceNumberWithString(dict?.board.list.found, filteredJobs.length.toString())}
                     </h1>
                 </div>
-                <EmbloySpacer className={"h-4"} />
                 <div className="flex w-full flex-col items-start justify-start gap-2">
                     <Input
                         id="qry"
