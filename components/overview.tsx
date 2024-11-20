@@ -61,11 +61,11 @@ const CustomLegend = () => {
   ]
 
   return (
-    <div className="flex flex-wrap justify-center mt-4">
+    <div className="mt-4 flex flex-wrap justify-center">
       {legendItems.map((item) => (
-        <div key={item.label} className="flex items-center mx-2 my-1">
+        <div key={item.label} className="mx-2 my-1 flex items-center">
           <div
-            className="w-4 h-4 mr-2"
+            className="mr-2 size-4"
             style={{ backgroundColor: item.color }}
           />
           <span className="text-sm">{item.label}</span>
