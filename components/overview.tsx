@@ -6,7 +6,7 @@ import {
   ZoomOutIcon,
 } from "@radix-ui/react-icons"
 import html2canvas from "html2canvas"
-import { Legend, ResponsiveContainer, Sankey, Tooltip } from "recharts"
+import { ResponsiveContainer, Sankey, Tooltip } from "recharts"
 
 import { getDictionary } from "@/app/[lang]/dictionaries"
 
@@ -52,6 +52,29 @@ function useWindowSize() {
   return windowSize
 }
 
+const CustomLegend = () => {
+  const legendItems = [
+    { label: "Job Type", color: "#8884d8" },
+    { label: "Referrer", color: "#82ca9d" },
+    { label: "Application Status", color: "#ffc658" },
+    { label: "Position", color: "#ff7300" },
+  ]
+
+  return (
+    <div className="flex flex-wrap justify-center mt-4">
+      {legendItems.map((item) => (
+        <div key={item.label} className="flex items-center mx-2 my-1">
+          <div
+            className="w-4 h-4 mr-2"
+            style={{ backgroundColor: item.color }}
+          />
+          <span className="text-sm">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export function Overview({
   applications,
   params: { lang },
@@ -90,6 +113,35 @@ export function Overview({
   const statusMap = new Map<string, number>()
   const sourceMap = new Map<string, number>()
 
+  const addNode = (map: Map<string, number>, key: string, color: string) => {
+    if (!map.has(key)) {
+      map.set(key, nodes.length)
+      nodes.push({
+        name: key,
+        count: 1,
+        color: color,
+        stroke: color,
+      })
+    } else {
+      nodes[map.get(key)!].count++
+    }
+  }
+
+  const addLink = (source: number, target: number, color: string, stroke: string) => {
+    const existingLink = links.find(link => link.source === source && link.target === target)
+    if (existingLink) {
+      existingLink.value++
+    } else {
+      links.push({
+        source,
+        target,
+        value: 1,
+        color,
+        stroke,
+      })
+    }
+  }
+
   if (dict != null) {
     applications.forEach((app: any) => {
       if ((!filteredStatus || app.status === filteredStatus) && dict) {
@@ -99,95 +151,18 @@ export function Overview({
           app.job?.referrer_url || dict.dashboard.dashboard.analytics.unknown
         )
         const status = app.status
-        const source = app.job_id
+        const source = app.job?.position ?? app.job?.title ?? app.job_id.toString() 
 
-        if (!startMap.has("Start")) {
-          startMap.set("Start", nodes.length)
-          nodes.push({
-            name: "Start",
-            count: 0,
-            color: "#ff7300",
-            stroke: "#333",
-          })
-        }
+        addNode(startMap, "Start", "#ff7300")
+        addNode(jobTypeMap, jobType, "#8884d8")
+        addNode(referrerMap, referrer, "#82ca9d")
+        addNode(statusMap, status, "#ffc658")
+        addNode(sourceMap, source, "#ff7300")
 
-        if (!jobTypeMap.has(jobType)) {
-          jobTypeMap.set(jobType, nodes.length)
-          nodes.push({
-            name: jobType,
-            count: 0,
-            color: "#8884d8",
-            stroke: "#333",
-          })
-        }
-
-        if (!referrerMap.has(referrer)) {
-          referrerMap.set(referrer, nodes.length)
-          nodes.push({
-            name: referrer,
-            count: 0,
-            color: "#82ca9d",
-            stroke: "#333",
-          })
-        }
-
-        if (!statusMap.has(status)) {
-          statusMap.set(status, nodes.length)
-          nodes.push({
-            name: status,
-            count: 0,
-            color: "#ffc658",
-            stroke: "#333",
-          })
-        }
-
-        if (!sourceMap.has(source)) {
-          sourceMap.set(source, nodes.length)
-          nodes.push({
-            name: source,
-            count: 0,
-            color: "#ff7300",
-            stroke: "#333",
-          })
-        }
-
-        nodes[startMap.get("Start")!].count++
-        nodes[jobTypeMap.get(jobType)!].count++
-        nodes[referrerMap.get(referrer)!].count++
-        nodes[statusMap.get(status)!].count++
-        nodes[sourceMap.get(source)!].count++
-
-        links.push({
-          source: startMap.get("Start")!,
-          target: jobTypeMap.get(jobType)!,
-          value: 1,
-          color: "#8884d8",
-          stroke: "#333",
-        })
-
-        links.push({
-          source: jobTypeMap.get(jobType)!,
-          target: referrerMap.get(referrer)!,
-          value: 1,
-          color: "#8884d8",
-          stroke: "#333",
-        })
-
-        links.push({
-          source: referrerMap.get(referrer)!,
-          target: statusMap.get(status)!,
-          value: 1,
-          color: "#82ca9d",
-          stroke: "#333",
-        })
-
-        links.push({
-          source: statusMap.get(status)!,
-          target: sourceMap.get(source)!,
-          value: 1,
-          color: "#ffc658",
-          stroke: "#333",
-        })
+        addLink(startMap.get("Start")!, jobTypeMap.get(jobType)!, "#8884d8", "#333")
+        addLink(jobTypeMap.get(jobType)!, referrerMap.get(referrer)!, "#8884d8", "#333")
+        addLink(referrerMap.get(referrer)!, statusMap.get(status)!, "#82ca9d", "#333")
+        addLink(statusMap.get(status)!, sourceMap.get(source)!, "#ffc658", "#333")
       }
     })
 
@@ -212,7 +187,7 @@ export function Overview({
         const dataUrl = canvas.toDataURL("image/png")
         const link = document.createElement("a")
         link.href = dataUrl
-        link.download = "sankey-diagram.png"
+        link.download = "embloy-sankey-diagram.png"
         link.click()
       }
     }
@@ -321,6 +296,7 @@ export function Overview({
                   borderRadius: 4,
                   position: "relative",
                   zIndex: 1,
+                  color: "black",
                 }}
               >
                 {payload.target.name ? `${payload.target.name}: ` : ""}
@@ -385,28 +361,12 @@ export function Overview({
                 margin={margin}
                 iterations={32}
               >
-                <Tooltip
-                  content={({ payload }) => {
-                    if (!payload || !payload.length) return null
-                    const { source, target, value } = payload[0].payload
-                    return (
-                      <div className="rounded border bg-muted p-2 shadow">
-                        <p>
-                          <strong>{nodes[source]?.name}</strong> to{" "}
-                          <strong>{nodes[target]?.name}</strong>
-                        </p>
-                        <p>
-                          <strong>Value:</strong> {value}
-                        </p>
-                      </div>
-                    )
-                  }}
-                />
-                <Legend />
+                <Tooltip/>
               </Sankey>
             </ResponsiveContainer>
           </div>
         </div>
+        <CustomLegend />
       </div>
     )
   }
