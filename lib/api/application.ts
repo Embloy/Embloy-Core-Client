@@ -1,8 +1,9 @@
+import { z } from "zod"
+
 import { siteConfig } from "@/config/site"
 
 import { getAccessToken } from "./auth"
-import { Job } from "./sdk"
-
+import { Job } from "@/types/job-schema"
 export interface ApplicationAttachment {
   attachment: {
     id: number
@@ -23,6 +24,18 @@ export interface ApplicationAnswer {
   attachment: null | ApplicationAttachment
   version: number
 }
+export interface ApplicationEvent {
+  id: number
+  ext_id: string
+  job_id: number
+  user_id: number
+  event_type: string
+  event_details: string
+  previous_event_id: number | null
+  next_event_id: number | null
+  created_at: string
+  updated_at: string
+}
 
 export interface Application {
   job_id: number
@@ -33,6 +46,7 @@ export interface Application {
   response: string
   application_attachment: null | ApplicationAttachment
   application_answers: null | ApplicationAnswer[]
+  application_events: null | ApplicationEvent[]
   job: null | Job
   version: number
 }
@@ -68,7 +82,8 @@ export async function getApplications(): Promise<{
       ...item.application,
       application_attachment: item.application_attachment,
       application_answers: item.application_answers,
-      job: JSON.parse(item.job),
+      application_events: item.application_events,
+      job: item.job,
     })) || []
 
   return { response: result, err: null }

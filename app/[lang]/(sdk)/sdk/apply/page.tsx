@@ -7,8 +7,9 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { Separator } from "@radix-ui/react-select"
 import { z } from "zod"
 
+import { Job } from "@/types/job-schema"
 import { submitApplication } from "@/lib/api/application"
-import { Job, Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
+import { Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
 import { User, getCurrentUser, getSession } from "@/lib/api/session"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
@@ -42,6 +43,8 @@ export default function ApplyPage({ params: { lang } }) {
   const pathName = usePathname() as string
   const origin = useSearchParams()
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
+  const [expirationDate, setExpirationDate] = useState<Date | null>(null)
+  const [remainingTime, setRemainingTime] = useState<string>("")
   const [currentUser, setCurrentUser] = React.useState<User>()
   const [errorMessages, setErrorMessages] = useState<{
     [key: number]: string | null
@@ -153,6 +156,9 @@ export default function ApplyPage({ params: { lang } }) {
             setJob(requestData.job)
             setSession(requestData.session)
             validateFields()
+            const decodedToken = JSON.parse(atob(request_token.split(".")[1]))
+            const expDate = new Date(decodedToken.exp * 1000)
+            setExpirationDate(expDate)
           }
         }
       }
@@ -162,10 +168,33 @@ export default function ApplyPage({ params: { lang } }) {
     fetchData()
   }, [searchParams, router, origin, pathName, lang, dict])
 
+  useEffect(() => {
+    if (expirationDate) {
+      const interval = setInterval(() => {
+        const now = new Date()
+        const timeLeft = expirationDate.getTime() - now.getTime()
+
+        if (timeLeft <= 0) {
+          clearInterval(interval)
+          setRemainingTime("Expired")
+        } else {
+          const hours = Math.floor(timeLeft / (1000 * 60 * 60))
+          const minutes = Math.floor(
+            (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
+          )
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
+          setRemainingTime(`${hours}h ${minutes}m ${seconds}s`)
+        }
+      }, 1000)
+
+      return () => clearInterval(interval)
+    }
+  }, [expirationDate])
+
   function validateFields() {
     let isValid = true
 
-    job?.application_options.forEach((option) => {
+    job?.application_options?.forEach((option) => {
       const userOption = options.find(
         (opt) => opt.application_option_id === option.id
       )
@@ -257,44 +286,49 @@ export default function ApplyPage({ params: { lang } }) {
   useEffect(() => {
     if (!currentUser || !job) return
 
-    const defaultOptions = job.application_options.map((option) => {
-      let defaultAnswer = ""
-      switch (option.question_type) {
-        case "short_text" || "long_text":
-          defaultAnswer = getUserPropertyValue(currentUser, option.question)
-          break
-        case "link":
-          defaultAnswer = isUrlLabel(option.question)
-            ? (() => {
-                const normalizedLabel = normalizeLabel(option.question).replace(
-                  /url|profile|link/gi,
-                  ""
-                )
-                console.log("normalizedLabel", normalizedLabel)
-                console.log(
-                  "currentUserSlabel",
-                  currentUser[`${normalizedLabel}_url`]
-                )
-                if (
-                  normalizedLabel.includes("linkedin") ||
-                  normalizedLabel.includes("edin")
-                ) {
-                  return currentUser.linkedin_url || ""
-                }
-                return currentUser[`${normalizedLabel}_url`] || ""
-              })()
-            : ""
-          break
-        default:
-          break
-      }
+    const defaultOptions: {
+      application_option_id: number
+      answer: string
+      file: null
+    }[] =
+      job?.application_options?.map((option) => {
+        let defaultAnswer = ""
+        switch (option.question_type) {
+          case "short_text":
+          case "long_text":
+            defaultAnswer = getUserPropertyValue(currentUser, option.question)
+            break
+          case "link":
+            defaultAnswer = isUrlLabel(option.question)
+              ? (() => {
+                  const normalizedLabel = normalizeLabel(
+                    option.question
+                  ).replace(/url|profile|link/gi, "")
+                  console.log("normalizedLabel", normalizedLabel)
+                  console.log(
+                    "currentUserSlabel",
+                    currentUser[`${normalizedLabel}_url`]
+                  )
+                  if (
+                    normalizedLabel.includes("linkedin") ||
+                    normalizedLabel.includes("edin")
+                  ) {
+                    return currentUser.linkedin_url || ""
+                  }
+                  return currentUser[`${normalizedLabel}_url`] || ""
+                })()
+              : ""
+            break
+          default:
+            break
+        }
 
-      return {
-        application_option_id: option.id,
-        answer: defaultAnswer,
-        file: null,
-      }
-    })
+        return {
+          application_option_id: option.id,
+          answer: defaultAnswer,
+          file: null,
+        }
+      }) || []
 
     setOptions(defaultOptions)
   }, [currentUser, job])
@@ -308,7 +342,7 @@ export default function ApplyPage({ params: { lang } }) {
 
     const err = await submitApplication(
       searchParams.get("request_token"),
-      job?.job_id || 0,
+      job?.id || 0,
       options
     )
 
@@ -530,6 +564,58 @@ export default function ApplyPage({ params: { lang } }) {
           >
             {dict.sdk.goToEmbloy}
           </Link>
+
+          {remainingTime && (
+            <>
+              <div className="absolute left-1/2 top-4 hidden -translate-x-1/2 text-center md:top-8 md:block">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <p
+                        className={`text-sm ${
+                          remainingTime === "Expired"
+                            ? "text-red-500"
+                            : "text-muted-foreground"
+                        }`}
+                      >
+                        {remainingTime === "Expired"
+                          ? dict.sdk.expired
+                          : dict.sdk.remainingTime.replace(
+                              "{time}",
+                              remainingTime
+                            )}
+                      </p>
+                    </TooltipTrigger>
+                    <TooltipContent>{dict.sdk.timerDisclaimer}</TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+              <div className="mt-8 block text-center md:hidden">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <p
+                        className={`text-sm ${
+                          remainingTime === "Expired"
+                            ? "text-red-500"
+                            : "text-muted-foreground"
+                        }`}
+                      >
+                        {remainingTime === "Expired"
+                          ? dict.sdk.expired
+                          : dict.sdk.remainingTime.replace(
+                              "{time}",
+                              remainingTime
+                            )}
+                      </p>
+                    </TooltipTrigger>
+                    <TooltipContent>{dict.sdk.timerDisclaimer}</TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </>
+          )}
+
           <Image
             src="/images/banner-5c.png"
             alt="Description of the image"
@@ -537,7 +623,7 @@ export default function ApplyPage({ params: { lang } }) {
             height={842}
             className="hidden size-full lg:col-span-1 lg:block"
           />
-          <div className="mt-10 lg:col-span-2 lg:p-8">
+          <div className="mt-4 md:mt-10 lg:col-span-2 lg:p-8">
             {/* Job Information 
         <div className="flex h-full items-center justify-center lg:p-8 mb-10">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 bg-muted sm:w-[350px]">
@@ -565,7 +651,7 @@ export default function ApplyPage({ params: { lang } }) {
                   {dict.sdk.enterDetails}
                 </p>
               </div>
-              {job.application_options.map((option, index) => {
+              {job.application_options?.map((option, index) => {
                 const label = option.required
                   ? `${option.question} *`
                   : option.question
@@ -592,7 +678,7 @@ export default function ApplyPage({ params: { lang } }) {
                             handleTextChange(
                               option.id,
                               event.target.value,
-                              !!option.required 
+                              !!option.required
                             )
                           }
                         />

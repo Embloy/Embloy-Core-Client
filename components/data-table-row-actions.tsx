@@ -46,7 +46,7 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <Link href={`/dashboard/applications?id=${row.getValue("job_id")}&slug=${row.getValue("job_slug")}`}>
+        <Link href={`/dashboard/applications?id=${row.getValue("id")}&slug=${row.getValue("job_slug")}`}>
             <DropdownMenuItem>{dict.dashboard.upcoming.t.rowActions.goToApplication}</DropdownMenuItem>
         </Link>
         <DropdownMenuItem onClick={() => exportToCalendar(row.getValue("start_slot"), row.getValue("title"))}>

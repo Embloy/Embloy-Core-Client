@@ -5,6 +5,11 @@
       "header": "Vous utilisez actuellement Embloy en mode sandbox 🏖 - l'accès à certaines fonctionnalités peut être limité.",
       "description": "Le mode sandbox est un environnement sécurisé où vous pouvez tester les fonctionnalités d'Embloy sans affecter votre compte. Veuillez noter que certaines fonctionnalités peuvent être limitées ou désactivées dans ce mode. Pour accéder à toutes les fonctionnalités, veuillez passer à un plan payant."
     },
+    "company": {
+      "title": "Compte Personnel",
+      "header": "Ici, vous pouvez gérer votre compte personnel. Pour gérer votre compte entreprise, veuillez visiter le tableau de bord des recruteurs.",
+      "description": "Votre compte entreprise est actif. Vous pouvez gérer votre compte personnel ici. Pour gérer votre compte entreprise, veuillez visiter le tableau de bord des recruteurs (https://genius.embloy.com)."
+    },
     "features": "Fonctionnalités",
     "pricing": "Tarification",
     "employers": "Employeurs",
@@ -18,6 +23,28 @@
     "demo": "🠶 Apprenez comment fonctionne Embloy",
     "tutorial": "🠶 Tutoriels & Aide",
     "manual": "Postuler maintenant"
+  },
+  "board": {
+    "list": {
+      "_404": {"head": "Page non trouvée", "subHead": "La page que vous recherchez n'existe pas."},
+      "_500": {"head": "Une erreur s'est produite", "subHead": "Veuillez réessayer bientôt."},
+      "found": "{number} emplois trouvés",
+      "search": "Recherche",
+      "loc_search": "Ville",
+      "cat_search": "Département/Catégorie",
+      "more": "En savoir plus",
+      "apply": "Postuler",
+      "copy": "Copier le lien",
+      "copied": "{number} copié",
+      "email": "Partager par email",
+      "linkedin": "Partager sur LinkedIn",
+      "noResults": "Aucun emploi actif."
+    },
+    "post": {
+      "back": "Retour à {number} emplois",
+      "last_updated": "Mis à jour",
+      "similar": "Emplois similaires"
+    }
   },
   "marketing": {
     "landing": {
@@ -61,6 +88,10 @@
     "usefulLinks": {
       "about": "Liens utiles",
       "head": "Découvrez Embloy :"
+    },
+    "signup": {
+      "about": "Liens utiles",
+      "head": "Inscrivez-vous en seulement 10 secondes !"
     },
     "news": {
       "about": "Actualités",
@@ -165,7 +196,8 @@
       "dontHaveAccount": "Vous n'avez pas de compte ? S'inscrire",
       "forgotPassword": "Mot de passe oublié ?",
       "signIn": "Se connecter",
-      "orContinueWith": "Ou continuez avec"
+      "orContinueWith": "Ou continuez avec",
+      "skipAccount": "Vous ne voulez pas créer de compte ? Passez directement à la candidature."
     },
     "register": {
       "login": "Connexion",
@@ -184,6 +216,21 @@
       "and": " et ",
       "privacyPolicy": "Politique de confidentialité"
     },
+    "otp": {
+      "back": "Retour",
+      "title": "Continuer sans créer de compte.",
+      "enterEmail": "Entrez l'adresse e-mail que vous souhaitez utiliser pour postuler à cet emploi. Si vous changez d'avis, vous pourrez créer un compte plus tard.",
+      "oAuth": "Vous souhaitez postuler avec votre compte LinkedIn, GitHub, Google ou Microsoft ?",
+      "requestOTP": "Demander un code à usage unique",
+      "setOTP": "Entrez le code de vérification (par exemple, 123456)",
+      "Email": "E-mail",
+      "steps": {
+        "Input Name": "Saisir le nom",
+        "Input Email": "Saisir l'email",
+        "Verify": "Vérifier",
+        "Apply": "Postuler"
+      }
+    },  
     "pwreset": {
       "back": "Retour",
       "title": "Réinitialiser votre mot de passe",
@@ -245,6 +292,10 @@
         "title": "Quelque chose s'est mal passé.",
         "description": "Votre demande de lien d'activation a échoué. Veuillez réessayer."
       },
+      "otp": {
+        "title": "Quelque chose s'est mal passé.",
+        "description": "Votre demande de vérification OTP a échoué. Gardez à l'esprit que le code n'est valable que pendant 10 minutes."
+      },
       "First name is required": "Prénom est requis",
       "First name must be at most 128 characters": "Prénom doit comporter au maximum 128 caractères",
       "Last name is required": "Nom est requis",
@@ -253,7 +304,8 @@
       "Email must be at most 150 characters": "Email doit comporter au maximum 150 caractères",
       "Password must be at least 8 characters": "Le mot de passe doit comporter au moins 8 caractères",
       "Password must be at most 72 characters": "Le mot de passe doit comporter au maximum 72 caractères",
-      "Passwords must match": "Les mots de passe doivent correspondre"    
+      "Passwords must match": "Les mots de passe doivent correspondre",
+      "OTP code must be 6 digits": "Le code OTP doit comporter 6 chiffres"
     },
     "success": {
       "login": {
@@ -278,6 +330,10 @@
       "activation":{
         "title": "Succès",
         "description": "Un lien d'activation a été envoyé à votre email."
+      },
+      "otp": {
+        "title": "Succès",
+        "description": "Un code de vérification a été envoyé à votre adresse e-mail."
       }
     }
   },
@@ -373,10 +429,10 @@
             "job_status": "Statut",
             "job_type": "Type d'emploi",
             "referrer_url": "URL de référence",
-            "employer_phone": "Téléphone de l'employeur",
-            "employer_name": "Nom de l'employeur",
-            "employer_email": "E-mail de l'employeur",
-            "employer_rating": "Évaluation de l'employeur",
+            "employer_employer_phone": "Téléphone de l'employeur",
+            "employer_employer_name": "Nom de l'employeur",
+            "employer_employer_email": "E-mail de l'employeur",
+            "employer_employer_rating": "Évaluation de l'employeur",
             "key_skills": "Compétences clés"
           }
         },
@@ -418,6 +474,10 @@
       "snooze": "Snooze",
       "setDeadline1": "Définir une échéance pour l'employeur",
       "setDeadline2": "Définir une échéance pour l'employeur",
+      "submittedAnswers": "Passer à vos réponses soumises",
+      "pipeline": "Passer au pipeline de candidature",
+      "noPipeline": "Aucun événement de candidature reçu pour le moment.",
+      "disclaimer": "Ceci est une fonctionnalité expérimentale. Si vous avez des commentaires ou des suggestions, veuillez nous en informer.",    
       "laterToday": "Plus tard dans la journée ",
       "tomorrow": "Demain",
       "thisWeekend": "Ce week-end",
@@ -638,6 +698,9 @@
   },
   "sdk": {
     "loading": "Chargement...",
+    "remainingTime": "Temps restant : {time}",
+    "expired": "La session a expiré. Vous devrez recommencer le processus.",
+    "timerDisclaimer": "Pour garantir la sécurité de vos données, la session expirera lorsque le minuteur sera écoulé. Veuillez soumettre votre candidature avant l'expiration du minuteur.",  
     "byEmbloy": "par Embloy Platforms UG (haftungsbeschränkt)",
     "required": "Ce champ est requis",
     "validURL": "Ce champ doit être une URL valide",

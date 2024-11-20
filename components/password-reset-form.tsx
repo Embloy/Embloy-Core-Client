@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { resetPassword } from '@/lib/api/auth'; // Make sure to implement this function
+import { resetPassword } from '@/lib/api/auth';
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,7 +14,7 @@ import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { Locale } from "@/i18n-config"
 import { getDictionary } from "@/app/[lang]/dictionaries"
-import { passwordResetSchema } from "@/lib/validations/auth"
+import { emailSchema } from "@/lib/validations/auth"
 
 interface PasswordResetFormProps extends React.HTMLAttributes<HTMLDivElement> {
   params: {
@@ -22,7 +22,7 @@ interface PasswordResetFormProps extends React.HTMLAttributes<HTMLDivElement> {
   }
 }
 
-type FormData = z.infer<typeof passwordResetSchema>
+type FormData = z.infer<typeof emailSchema>
 
 export function PasswordResetForm({ className, params: {lang}, ...props }: PasswordResetFormProps) {
   const [dict, setDict] = React.useState<Record<string, any> | null>(null);
@@ -41,7 +41,7 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(passwordResetSchema),
+    resolver: zodResolver(emailSchema),
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 

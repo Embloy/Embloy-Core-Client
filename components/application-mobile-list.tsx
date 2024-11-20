@@ -102,11 +102,11 @@ export function ApplicationMobileList({
                       <div className="grid grid-cols-3 items-center">
                         <div className="col-span-1 mr-2">
                           <Avatar>
-                            {application.job?.employer_image_url ? (
+                            {application.job?.employer?.employer_image_url ? (
                               <div className="size-12 overflow-hidden rounded-full">
                                 <AvatarImage
                                   alt="Picture"
-                                  src={application.job?.employer_image_url}
+                                  src={application.job?.employer?.employer_image_url}
                                   className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
                                 />
                               </div>
@@ -136,10 +136,10 @@ export function ApplicationMobileList({
                     <div className="flex items-start p-4">
                       <div className="flex items-start gap-4 text-sm">
                         <Avatar>
-                          {application.job?.employer_image_url ? (
+                          {application.job?.employer?.employer_image_url ? (
                             <AvatarImage
                               alt="Picture"
-                              src={application.job?.employer_image_url}
+                              src={application.job?.employer?.employer_image_url}
                               className="size-12 rounded-full border-2 border-muted-foreground text-muted-foreground"
                             />
                           ) : (
@@ -150,12 +150,12 @@ export function ApplicationMobileList({
                         </Avatar>
                         <div className="grid gap-1">
                           <div className="font-semibold">
-                            {application.job?.employer_name ||
+                            {application.job?.employer?.employer_name ||
                               `User#${application.job?.user_id}`}
                           </div>
                           <div className="line-clamp-1 text-xs">
-                            {application.job?.employer_email ||
-                              application.job?.employer_phone ||
+                            {application.job?.employer?.employer_email ||
+                              application.job?.employer?.employer_phone ||
                               dict.dashboard.applications.noContact}
                           </div>
                           <div className="line-clamp-1 text-xs">
