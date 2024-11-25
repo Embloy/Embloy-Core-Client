@@ -74,6 +74,7 @@
     "date-fns": "^2.30.0",
     "embla-carousel-react": "8.0.0-rc22",
     "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
     "html-react-parser": "^5.1.18",
     "ics": "^3.8.1",
     "jotai": "^2.10.1",

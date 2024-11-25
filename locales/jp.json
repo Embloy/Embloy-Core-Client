@@ -341,7 +341,16 @@
     "dashboard": {
       "export": "エクスポート",
       "overview": "概要",
-      "analytics": "分析",
+      "analytics": {
+        "title": "分析",
+        "sankey": "サンキーダイアグラム",
+        "filterStatus": "ステータスでフィルター",
+        "exportJson": "JSONをエクスポート",
+        "exportPng": "PNGをエクスポート",
+        "zoomIn": "ズームイン",
+        "zoomOut": "ズームアウト",
+        "unknown": "不明"
+      },
       "integrations": "統合",
       "dashboard": "ダッシュボード",
       "upcomingJobs": "今後の仕事",

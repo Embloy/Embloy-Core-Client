@@ -4,10 +4,10 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { addDays } from "date-fns"
 import { saveAs } from "file-saver"
-import { Search } from "lucide-react"
 import { DateRange } from "react-day-picker"
 
 import { Job } from "@/types/job-schema"
+import { Application, getApplications } from "@/lib/api/application"
 import { getUpcomingJobs } from "@/lib/api/jobs"
 import { User, getCurrentUser } from "@/lib/api/session"
 import { toast } from "@/components/ui/use-toast"
@@ -37,6 +37,7 @@ export default function DashboardPage({ params: { lang } }) {
   const [isLoading, setIsLoading] = useState<Boolean>(true)
   const [user, setUser] = useState<User | null>(null)
   const [jobs, setJobs] = useState<Job[]>([])
+  const [applications, setApplications] = useState<Application[]>([])
   const router = useRouter()
   const [dict, setDict] = useState<Record<string, any> | null>(null)
   const [selectedTimeFrame, setSelectedTimeFrame] = useState<
@@ -98,6 +99,33 @@ export default function DashboardPage({ params: { lang } }) {
     }
 
     fetchJobs()
+
+    const fetchApplications = async () => {
+      setIsLoading(true)
+
+      const res = await getCurrentUser()
+      if (!res.response) {
+        router.push(`/${lang}/login`)
+      } else if (dict) {
+        setUser(res.response)
+        const { response, err } = await getApplications()
+
+        if (err || !response) {
+          return toast({
+            title: dict.errors[err || "500"].title || dict.errors.generic.title,
+            description:
+              dict.errors[err || "500"].description ||
+              dict.errors.generic.description,
+            variant: "destructive",
+          })
+        } else {
+          setApplications(response)
+        }
+      }
+      setIsLoading(false)
+    }
+
+    fetchApplications()
   }, [router, lang, dict])
 
   if (isLoading || !jobs) {
@@ -129,26 +157,30 @@ export default function DashboardPage({ params: { lang } }) {
                   <TabsTrigger value="overview">
                     {dict.dashboard.dashboard.overview}
                   </TabsTrigger>
-                  <TabsTrigger value="analytics" disabled>
-                    {dict.dashboard.dashboard.analytics}
-                  </TabsTrigger>
+                  <TabsTrigger
+                    value="analytics"
+                    disabled={!applications || applications.length === 0}
+                  >
+                    {dict.dashboard.dashboard.analytics.title}
+                  </TabsTrigger>{" "}
                   <TabsTrigger value="notifications" disabled>
                     {dict.dashboard.dashboard.integrations}
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value="analytics" className="space-y-4">
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                    <Card className="col-span-4">
-                      <CardHeader>
-                        <CardTitle>
-                          {dict.dashboard.dashboard.overview}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="pl-2">
-                        <Overview />
-                      </CardContent>
-                    </Card>
-                  </div>
+                  <Card className="col-span-4">
+                    <CardHeader>
+                      <CardTitle>
+                        {dict.dashboard.dashboard.analytics.sankey}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="pl-2">
+                      <Overview
+                        applications={applications}
+                        params={{ lang: lang }}
+                      />
+                    </CardContent>
+                  </Card>
                 </TabsContent>
                 <TabsContent value="overview" className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">

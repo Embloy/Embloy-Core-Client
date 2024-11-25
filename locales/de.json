@@ -341,7 +341,16 @@
     "dashboard": {
       "export": "Exportieren",
       "overview": "Übersicht",
-      "analytics": "Analytik",
+      "analytics": {
+        "title": "Analytics",
+        "sankey": "Sankey-Diagramm",
+        "filterStatus": "Nach Status filtern",
+        "exportJson": "JSON exportieren",
+        "exportPng": "PNG exportieren",
+        "zoomIn": "Vergrößern",
+        "zoomOut": "Verkleinern",
+        "unknown": "Unbekannt"
+      },
       "integrations": "Integrationen",
       "dashboard": "Dashboard",
       "upcomingJobs": "Bevorstehende Jobs",
