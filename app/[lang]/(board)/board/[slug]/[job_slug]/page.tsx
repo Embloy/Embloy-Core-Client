@@ -298,6 +298,14 @@ export default function Page({ params }) {
                                                             </h1>
                                                     </div>
                                                 )}
+                                                {job?.position && job.position !== job.title && (
+                                                    <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
+                                                            <h1 className="flex flex-row items-center justify-start gap-1.5 text-sm">
+                                                                <h1 className="font-heading">{"Level: "}</h1>
+                                                                {job.position}
+                                                            </h1>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="flex w-full flex-col items-start justify-start gap-2">
