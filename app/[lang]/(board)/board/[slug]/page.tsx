@@ -74,6 +74,15 @@ function JobItem({ params, job, user, company }) {
                             </h1>
                     </div>
                 )}
+                {(job.position && job.title !== job.position) && (
+                    <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
+                        
+                            <h1 className="flex flex-row items-center justify-start gap-1.5 text-xs">
+                            <h1 className="font-heading">{"Level: "}</h1>
+                                {job.position}
+                            </h1>
+                    </div>
+                )}
             </div>
             <div className="flex w-full flex-row items-center justify-between md:w-fit md:justify-start md:gap-16">
                 <div className="relative flex flex-row items-center justify-start gap-3">
