@@ -280,7 +280,7 @@ export default function Page({ params }) {
                                                     </Button>
                                                 </div>
                                             </div>
-                                            <div className="justfy-start flex flex-row items-center gap-2">
+                                            <div className="justfy-start flex flex-col md:flex-row items-start md:items-center gap-2">
                                                 {job?.city && (
                                                     <div className="flex flex-row items-center rounded-full border px-2 dark:border-background dark:text-muted-foreground">
                                                             <h1 className="flex flex-row items-center justify-start gap-1.5 text-sm">
