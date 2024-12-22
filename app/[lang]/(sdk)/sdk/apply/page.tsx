@@ -422,6 +422,7 @@ export default function ApplyPage({ params: { lang } }) {
 
   const handleAutosaveToggle = () => {
     setAutoSave((prev) => {
+      if (!prev) handleSaveDraft()
       Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
         sameSite: "Strict",
         secure: siteConfig.url.startsWith("https://"),
@@ -719,7 +720,7 @@ export default function ApplyPage({ params: { lang } }) {
           </div>
         </div>*/}
             {/* Application Form */}
-            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[650px]">
+            <div className="mx-auto flex w-full flex-col justify-center space-y-6 md:mt-5 sm:w-[650px]">
               <div className="flex flex-col space-y-2 text-center">
                 <Icons.logo className="mx-auto size-6" />
                 <h1 className="text-2xl font-semibold tracking-tight">
