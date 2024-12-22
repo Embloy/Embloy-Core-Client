@@ -484,6 +484,8 @@
       "nextWeek": "来週",
       "downloadAttachment": "添付ファイルをダウンロード",
       "yourSubmission": "アップロードされたファイルがあります",
+      "draftNotice": "これはまだ提出されていない下書きであり、雇用主には表示されません。",
+      "editApplication": "応募を編集/提出するためのリンク",    
       "more": "詳細",
       "markAsUnread": "未読としてマーク",
       "starJob": "ジョブに星を付ける",
@@ -723,6 +725,12 @@
     "no": "いいえ",
     "fieldsMarkedAreRequired": "* が付いているフィールドは必須です。",
     "newApplication": "新しい応募",
+    "draft": {
+      "savedTitle": "下書きが保存されました",
+      "savedDescription": "応募が下書きとして保存されました。後で編集を続けることができます。",
+      "save": "下書きとして保存",
+      "enableAutoSave": "自動保存"
+    },  
     "errors": {
       "request": {
         "title": "何かがうまくいかなかった。",

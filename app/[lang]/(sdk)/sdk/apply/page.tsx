@@ -5,9 +5,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { Separator } from "@radix-ui/react-select"
+import Cookies from "js-cookie"
 import { z } from "zod"
 
 import { Job } from "@/types/job-schema"
+import { siteConfig } from "@/config/site"
 import { submitApplication } from "@/lib/api/application"
 import { Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
 import { User, getCurrentUser, getSession } from "@/lib/api/session"
@@ -15,12 +17,14 @@ import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select"
+import { Switch } from "@/components/ui/switch"
 import {
   Tooltip,
   TooltipContent,
@@ -58,6 +62,11 @@ export default function ApplyPage({ params: { lang } }) {
     Array<{ application_option_id: number; answer: string; file: File | null }>
   >([])
   const [dict, setDict] = useState<Record<string, any> | null>(null)
+  const [autoSave, setAutoSave] = useState<boolean>(() => {
+    const cookieValue = Cookies.get("ep_application_autosave")
+    return cookieValue === "true"
+  })
+  const [isSaving, setIsSaving] = useState<boolean>(false)
   const mimeTypes = {
     pdf: "application/pdf",
     doc: "application/msword",
@@ -191,7 +200,7 @@ export default function ApplyPage({ params: { lang } }) {
     }
   }, [expirationDate])
 
-  function validateFields() {
+  function validateFields(ignoreRequired = false) {
     let isValid = true
 
     job?.application_options?.forEach((option) => {
@@ -200,7 +209,7 @@ export default function ApplyPage({ params: { lang } }) {
       )
       if (
         (option.question_type == "file" && userOption?.file) ||
-        option.required
+        (option.required && !ignoreRequired)
       ) {
         switch (option.question_type) {
           case "yes_no":
@@ -333,7 +342,21 @@ export default function ApplyPage({ params: { lang } }) {
     setOptions(defaultOptions)
   }, [currentUser, job])
 
-  async function onClick() {
+  useEffect(() => {
+    let autosaveInterval
+    if (autoSave) {
+      autosaveInterval = setInterval(() => {
+        handleSaveDraft()
+      }, 300000) // 5 minutes
+    }
+    return () => {
+      if (autosaveInterval) {
+        clearInterval(autosaveInterval)
+      }
+    }
+  }, [autoSave])
+
+  async function handleSubmit() {
     if (!validateFields()) {
       return
     }
@@ -343,6 +366,7 @@ export default function ApplyPage({ params: { lang } }) {
     const err = await submitApplication(
       searchParams.get("request_token"),
       job?.id || 0,
+      false,
       options
     )
 
@@ -360,6 +384,52 @@ export default function ApplyPage({ params: { lang } }) {
       router.refresh()
       router.push(`/${lang}/dashboard/applications`)
     }
+  }
+
+  async function handleSaveDraft() {
+    if (!validateFields(true) || !dict) {
+      return
+    }
+
+    setIsSaving(true)
+
+    const err = await submitApplication(
+      searchParams.get("request_token"),
+      job?.id || 0,
+      true,
+      options
+    )
+
+    if (err) {
+      setTimeout(() => {
+        setIsSaving(false)
+      }, 2000)
+      return toast({
+        title: dict.errors[err || "500"].title || dict.errors.generic.title,
+        description:
+          dict.errors[err || "500"].description ||
+          dict.errors.generic.description,
+        variant: "destructive",
+      })
+    } else {
+      return toast({
+        title: dict.sdk.draft.savedTitle,
+        description: dict.sdk.draft.savedDescription,
+        variant: "default",
+      })
+    }
+  }
+
+  const handleAutosaveToggle = () => {
+    setAutoSave((prev) => {
+      Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
+        sameSite: "Strict",
+        secure: siteConfig.url.startsWith("https://"),
+        domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
+        path: "/",
+      })
+      return !prev
+    })
   }
 
   const handleBackClick = (e) => {
@@ -565,56 +635,65 @@ export default function ApplyPage({ params: { lang } }) {
             {dict.sdk.goToEmbloy}
           </Link>
 
-          {remainingTime && (
-            <>
-              <div className="absolute left-1/2 top-4 hidden -translate-x-1/2 text-center md:top-8 md:block">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <p
-                        className={`text-sm ${
-                          remainingTime === "Expired"
-                            ? "text-red-500"
-                            : "text-muted-foreground"
-                        }`}
-                      >
-                        {remainingTime === "Expired"
-                          ? dict.sdk.expired
-                          : dict.sdk.remainingTime.replace(
-                              "{time}",
-                              remainingTime
-                            )}
-                      </p>
-                    </TooltipTrigger>
-                    <TooltipContent>{dict.sdk.timerDisclaimer}</TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-              <div className="mt-8 block text-center md:hidden">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <p
-                        className={`text-sm ${
-                          remainingTime === "Expired"
-                            ? "text-red-500"
-                            : "text-muted-foreground"
-                        }`}
-                      >
-                        {remainingTime === "Expired"
-                          ? dict.sdk.expired
-                          : dict.sdk.remainingTime.replace(
-                              "{time}",
-                              remainingTime
-                            )}
-                      </p>
-                    </TooltipTrigger>
-                    <TooltipContent>{dict.sdk.timerDisclaimer}</TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-            </>
-          )}
+          <div className="absolute left-1/2 top-4 hidden -translate-x-1/2 items-center text-center md:top-8 md:block">
+            {remainingTime && (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <p
+                      className={`text-sm ${
+                        remainingTime === "Expired"
+                          ? "text-red-500"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {remainingTime === "Expired"
+                        ? dict.sdk.expired
+                        : dict.sdk.remainingTime.replace(
+                            "{time}",
+                            remainingTime
+                          )}
+                    </p>
+                  </TooltipTrigger>
+                  <TooltipContent>{dict.sdk.timerDisclaimer}</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            )}
+            <div className="mt-2 flex items-center justify-center space-x-2">
+              <Label
+                htmlFor="handleAutosaveToggle"
+                className="text-xs font-normal sm:text-base"
+              >
+                {dict.sdk.draft.enableAutoSave}
+              </Label>
+              <Switch
+                id="handleAutosaveToggle"
+                aria-label="Auto-save"
+                checked={autoSave}
+                onClick={handleAutosaveToggle}
+              />
+            </div>
+          </div>
+          <div className="mt-8 block text-center md:hidden">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <p
+                    className={`text-sm ${
+                      remainingTime === "Expired"
+                        ? "text-red-500"
+                        : "text-muted-foreground"
+                    }`}
+                  >
+                    {remainingTime === "Expired"
+                      ? dict.sdk.expired
+                      : dict.sdk.remainingTime.replace("{time}", remainingTime)}
+                  </p>
+                </TooltipTrigger>
+                <TooltipContent>{dict.sdk.timerDisclaimer}</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
 
           <Image
             src="/images/banner-5c.png"
@@ -1035,8 +1114,8 @@ export default function ApplyPage({ params: { lang } }) {
               <p className="mt-2 text-sm text-gray-500">
                 {dict.sdk.fieldsMarkedAreRequired}
               </p>
-              <button
-                onClick={onClick}
+              <Button
+                onClick={handleSubmit}
                 className={cn(
                   buttonVariants({ variant: "default" }),
                   "text-md dark:shadow-gray flex h-12 w-full items-center justify-center rounded-full shadow-md shadow-primary",
@@ -1061,7 +1140,15 @@ export default function ApplyPage({ params: { lang } }) {
                   <Icons.add className="mr-2 size-4" />
                 )}
                 {dict.sdk.newApplication}
-              </button>
+              </Button>
+              <Button
+                onClick={handleSaveDraft}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "default" })
+                )}
+              >
+                {dict.sdk.draft.save}
+              </Button>
               <Separator className="mt-10 lg:mt-0" />
             </div>
           </div>

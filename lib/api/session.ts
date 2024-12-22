@@ -62,7 +62,7 @@ export async function getCurrentUser(
   refreshToken?: string
 ): Promise<{ response: User | null; err: number | null }> {
   if (refreshToken) {
-    Cookies.set("refresh_token", refreshToken, {
+    Cookies.set("ep_refresh_token", refreshToken, {
       sameSite: "Strict",
       secure: siteConfig.url.startsWith("https://"),
       domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
@@ -83,7 +83,7 @@ export async function getSession(
 ): Promise<{ session: Boolean }> {
   try {
     if (refreshToken) {
-      Cookies.set("refresh_token", refreshToken, {
+      Cookies.set("ep_refresh_token", refreshToken, {
         sameSite: "Strict",
         secure: siteConfig.url.startsWith("https://"),
         domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",

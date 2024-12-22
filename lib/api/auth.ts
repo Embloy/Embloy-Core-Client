@@ -25,7 +25,7 @@ export async function login(
     return responseRt.status
   }
 
-  Cookies.set("refresh_token", rtResult.refresh_token, {
+  Cookies.set("ep_refresh_token", rtResult.refresh_token, {
     sameSite: "Strict",
     secure: siteConfig.url.startsWith("https://"),
     domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
@@ -111,7 +111,7 @@ export async function activationToken(email: string): Promise<number | null> {
 // TODO: ERROR HANDLING
 export async function getAccessToken(): Promise<string | null> {
   // Check if a valid access token is already set
-  const existingAccessToken = Cookies.get("access_token")
+  const existingAccessToken = Cookies.get("ep_access_token")
   if (existingAccessToken) {
     // Verify if the access token is expired
     const isExpired = checkIfTokenExpired(existingAccessToken)
@@ -120,7 +120,7 @@ export async function getAccessToken(): Promise<string | null> {
     }
   }
 
-  const refreshToken = Cookies.get("refresh_token")
+  const refreshToken = Cookies.get("ep_refresh_token")
 
   if (!refreshToken) {
     return null
@@ -153,7 +153,7 @@ export async function getAccessToken(): Promise<string | null> {
   }
 
   const accessToken = atResult.access_token
-  Cookies.set("access_token", accessToken, {
+  Cookies.set("ep_access_token", accessToken, {
     sameSite: "Strict",
     secure: siteConfig.url.startsWith("https://"),
     domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
@@ -265,7 +265,7 @@ export async function validateOTP(
     return response.status
   }
 
-  Cookies.set("refresh_token", rtResult.refresh_token, {
+  Cookies.set("ep_refresh_token", rtResult.refresh_token, {
     sameSite: "Strict",
     secure: siteConfig.url.startsWith("https://"),
     domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",

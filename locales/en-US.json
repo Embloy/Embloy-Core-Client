@@ -484,6 +484,8 @@
       "nextWeek": "Next week",
       "downloadAttachment": "Download Attachment",
       "yourSubmission": "You submitted:",
+      "draftNotice": "This is a draft which has not been submitted yet and will not be visible to the employer.",
+      "editApplication": "Link to edit/submit your application",
       "more": "More",
       "markAsUnread": "Mark as unread",
       "starJob": "Star job",
@@ -723,6 +725,12 @@
     "no": "No",
     "fieldsMarkedAreRequired": "Fields marked with an * are required.",
     "newApplication": "New application",
+    "draft": {
+      "savedTitle": "Draft saved",
+      "savedDescription": "Your application has been saved as a draft. You can continue editing it later.",
+      "save": "Save as draft",
+      "enableAutoSave": "auto-save"
+    },
     "errors": {
       "request": {
         "title": "Something went wrong.",

@@ -484,6 +484,8 @@
       "nextWeek": "Nächste Woche",
       "downloadAttachment": "Anhang herunterladen",
       "yourSubmission": "Du hast folgendes hochgeladen:",
+      "draftNotice": "Dies ist ein Entwurf, der noch nicht eingereicht wurde und für den Arbeitgeber nicht sichtbar ist.",
+      "editApplication": "Link zum Bearbeiten/Einreichen Ihrer Bewerbung",    
       "more": "Mehr",
       "markAsUnread": "Als ungelesen markieren",
       "starJob": "Stellenangebot markieren",
@@ -723,6 +725,12 @@
     "no": "Nein",
     "fieldsMarkedAreRequired": "Felder mit einem * sind erforderlich.",
     "newApplication": "Neue Bewerbung",
+    "draft": {
+      "savedTitle": "Entwurf gespeichert",
+      "savedDescription": "Ihre Bewerbung wurde als Entwurf gespeichert. Sie können sie später weiter bearbeiten.",
+      "save": "Als Entwurf speichern",
+      "enableAutoSave": "Automatisches Speichern"
+    },
     "errors": {
       "request": {
         "title": "Etwas ist schief gelaufen.",

@@ -10,6 +10,7 @@ export const applicationOptionSchema = z.object({
   created_at: z.string(),
   updated_at: z.string(),
   deleted_at: z.string().nullable(),
+  submitted_at: z.string().nullable(),
 })
 
 export type ApplicationOption = z.infer<typeof applicationOptionSchema>

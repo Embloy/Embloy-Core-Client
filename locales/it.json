@@ -484,6 +484,8 @@
       "nextWeek": "Settimana prossima",
       "downloadAttachment": "Scarica allegato",
       "yourSubmission": "Tu hai inviato:",
+      "draftNotice": "Questa è una bozza che non è stata ancora inviata e non sarà visibile al datore di lavoro.",
+      "editApplication": "Link per modificare/inviare la tua candidatura",    
       "more": "Altro",
       "markAsUnread": "Contrassegna come non letto",
       "starJob": "Preferito",
@@ -723,6 +725,12 @@
     "no": "No",
     "fieldsMarkedAreRequired": "I campi contrassegnati con un * sono obbligatori.",
     "newApplication": "Nuova candidatura",
+    "draft": {
+      "savedTitle": "Bozza salvata",
+      "savedDescription": "La tua candidatura è stata salvata come bozza. Puoi continuare a modificarla in seguito.",
+      "save": "Salva come bozza",
+      "enableAutoSave": "salvataggio automatico"
+    },  
     "errors": {
       "request": {
         "title": "Qualcosa è andato storto.",

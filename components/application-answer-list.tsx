@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { Locale } from "@/i18n-config"
 import { DownloadCloud } from "lucide-react"
 
+import { siteConfig } from "@/config/site"
 import { Application } from "@/lib/api/application"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/new-york/ui/button"
 import { ScrollArea } from "@/components/new-york/ui/scroll-area"
 import {
@@ -11,6 +14,9 @@ import {
   TooltipTrigger,
 } from "@/components/new-york/ui/tooltip"
 import { getDictionary } from "@/app/[lang]/dictionaries"
+
+import { Callout } from "./callout"
+import { buttonVariants } from "./ui/button"
 
 interface ApplicationAnswerListProps {
   application: Application
@@ -38,7 +44,30 @@ export function ApplicationAnswerList({
   return (
     dict && (
       <ScrollArea className="h-screen" style={{ height: "50vh" }}>
-        <div className="space-y-4 p-4">
+        <div className="space-y-4 px-4 pb-4">
+          {application.submitted_at === null && (
+            <Callout type="info">
+              <span className="align-left">
+                {dict.dashboard.applications.draftNotice}
+              </span>
+              <Link
+                href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${
+                  application.user_id
+                }&url=${siteConfig.url}/${lang}/board/${application.user_id}/${
+                  application.job
+                    ? application.job.job_slug
+                    : application.job_id
+                }`}
+                target="_blank"
+                className={cn(
+                  buttonVariants({ variant: "link", size: "sm" }),
+                  "align-right text-sm"
+                )}
+              >
+                {dict.dashboard.applications.editApplication}
+              </Link>
+            </Callout>
+          )}
           {application?.job?.application_options?.map((option) => {
             const answer = application?.application_answers?.find(
               (answer) =>

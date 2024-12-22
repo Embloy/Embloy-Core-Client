@@ -484,6 +484,8 @@
       "nextWeek": "La semaine prochaine",
       "downloadAttachment": "Télécharger la pièce jointe",
       "yourSubmission": "Votre soumission:",
+      "draftNotice": "Ceci est un brouillon qui n'a pas encore été soumis et ne sera pas visible par l'employeur.",
+      "editApplication": "Lien pour modifier/soumettre votre candidature",    
       "more": "Plus",
       "markAsUnread": "Marquer comme non lu",
       "starJob": "Marquer le poste",
@@ -723,6 +725,12 @@
     "no": "Non",
     "fieldsMarkedAreRequired": "Les champs marqués d'un * sont obligatoires.",
     "newApplication": "Nouvelle candidature",
+    "draft": {
+      "savedTitle": "Brouillon enregistré",
+      "savedDescription": "Votre candidature a été enregistrée en tant que brouillon. Vous pouvez continuer à la modifier plus tard.",
+      "save": "Enregistrer en tant que brouillon",
+      "enableAutoSave": "sauvegarde automatique"
+    },  
     "errors": {
       "request": {
         "title": "Quelque chose s'est mal passé.",
