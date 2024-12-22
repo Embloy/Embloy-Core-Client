@@ -44,7 +44,7 @@ export function ApplicationAnswerList({
   return (
     dict && (
       <ScrollArea className="h-screen" style={{ height: "50vh" }}>
-        <div className="space-y-4 px-4 p-4">
+        <div className="space-y-4 p-4">
           {application.submitted_at === null && application.version == version && (
             <Callout type="info">
               <span className="align-left">
