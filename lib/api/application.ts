@@ -1,9 +1,10 @@
 import { z } from "zod"
 
+import { Job } from "@/types/job-schema"
 import { siteConfig } from "@/config/site"
 
 import { getAccessToken } from "./auth"
-import { Job } from "@/types/job-schema"
+
 export interface ApplicationAttachment {
   attachment: {
     id: number
@@ -42,6 +43,7 @@ export interface Application {
   user_id: number
   updated_at: string
   created_at: string
+  submitted_at: string | null
   status: string
   response: string
   application_attachment: null | ApplicationAttachment
@@ -92,6 +94,7 @@ export async function getApplications(): Promise<{
 export async function submitApplication(
   request_token: string | null,
   gq_job_id: number | null,
+  save_as_draft: boolean,
   options?: Array<{
     application_option_id: number
     answer: string
@@ -118,14 +121,19 @@ export async function submitApplication(
   let response: Response
 
   if (request_token) {
-    response = await fetch(`${siteConfig.api_url}/sdk/apply`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        request_token: `${request_token}`,
-      },
-      body: formData,
-    })
+    response = await fetch(
+      `${siteConfig.api_url}/sdk/apply${
+        save_as_draft ? `?save_as_draft=1` : ""
+      }`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          request_token: `${request_token}`,
+        },
+        body: formData,
+      }
+    )
   } else {
     response = await fetch(
       `${siteConfig.api_url}/jobs/${gq_job_id}/applications`,

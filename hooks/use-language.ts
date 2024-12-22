@@ -3,13 +3,13 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 export function useLanguage() {
-  const [cookies, setCookie, removeCookie] = useCookies(['lang']);
+  const [cookies, setCookie, removeCookie] = useCookies(['ep_lang']);
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
   const setLanguage = (lang) => {
-    setCookie('lang', lang, { path: '/' });
+    setCookie('ep_lang', lang, { path: '/' });
   };
 
   useEffect(() => {
@@ -17,15 +17,15 @@ export function useLanguage() {
     const queryString = new URLSearchParams(queryParams).toString();
     const url = `${pathName}?${queryString}`;
 
-    if (cookies.lang) {
+    if (cookies.ep_lang) {
       router.refresh();
       router.push(url);
     } else {
-      removeCookie('lang');
+      removeCookie('ep_lang');
       router.refresh();
       router.push(url);
     }
-  }, [cookies.lang]);
+  }, [cookies.ep_lang]);
 
-  return [cookies.lang || 'en-US', setLanguage];
+  return [cookies.ep_lang || 'en-US', setLanguage];
 }
