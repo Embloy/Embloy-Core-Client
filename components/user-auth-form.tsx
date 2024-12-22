@@ -243,7 +243,7 @@ export function UserAuthForm({
           <button
             type="button"
             className={cn(
-              buttonVariants({ variant: "outline" }),
+              buttonVariants({ variant: "ghost" }),
               "rounded-full border-none p-2 px-1 hover:bg-secondary"
             )}
             onClick={handleGithubSignIn}
@@ -258,7 +258,7 @@ export function UserAuthForm({
           <button
             type="button"
             className={cn(
-              buttonVariants({ variant: "outline" }),
+              buttonVariants({ variant: "ghost" }),
               "rounded-full border-none p-2 px-1 hover:bg-secondary"
             )}
             onClick={handleGoogleSignIn}
@@ -288,7 +288,7 @@ export function UserAuthForm({
           <button
             type="button"
             className={cn(
-              buttonVariants({ variant: "outline" }),
+              buttonVariants({ variant: "ghost" }),
               "border-none p-2 px-1 hover:bg-secondary"
             )}
             onClick={handleMicrosoftSignIn}
