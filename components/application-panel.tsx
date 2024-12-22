@@ -68,7 +68,7 @@ export function ApplicationPanel({
         <ResizablePanelGroup
           direction="horizontal"
           onLayout={(sizes: number[]) => {
-            document.cookie = `react-resizable-panels:layout=${JSON.stringify(
+            document.cookie = `ep_dashboard:layout=${JSON.stringify(
               sizes
             )}`
           }}
