@@ -27,7 +27,7 @@ export const userSchema = z.object({
     { message: 'phone' }
   ).nullable(),
   twitter_url: z.string().max(150, { message: 'twitter_url'}).refine(
-    url => /^https?:\/\/(www\.)?twitter\.com(\/.*)?$/.test(url) || url === '',
+    url => /^https?:\/\/(www\.)?(twitter\.com|x\.com)(\/.*)?$/.test(url) || url === '',
     { message: 'twitter_url' }
   ).nullable(),
   facebook_url: z.string().max(150, { message: 'facebook_url'}).refine(
@@ -39,7 +39,7 @@ export const userSchema = z.object({
     { message: 'instagram_url' }
   ).nullable(),
   linkedin_url: z.string().max(150, { message: 'linkedin_url'}).refine(
-    url => /^https?:\/\/(www\.)?linkedin\.com(\/.*)?$/.test(url) || url === '',
+    url => /^https?:\/\/(www\.)?linkedin\.com\/(company|in)(\/.*)?$/.test(url) || url === '',
     { message: 'linkedin_url' }
   ).nullable(),
   github_url: z.string().max(150, { message: 'github_url'}).refine(
