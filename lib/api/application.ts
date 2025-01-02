@@ -22,6 +22,7 @@ export interface ApplicationAnswer {
   user_id: number
   application_option_id: number
   answer: string
+  question: string
   attachment: null | ApplicationAttachment
   version: number
 }

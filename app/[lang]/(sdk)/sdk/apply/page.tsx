@@ -83,7 +83,7 @@ export default function ApplyPage({ params: { lang } }) {
     tif: "image/tiff",
     svg: "image/svg+xml",
     mp4: "video/mp4",
-    avi: "video/x-msvideo",
+    avi: "video/vnd.avi",
     mov: "video/quicktime",
     wmv: "video/x-ms-wmv",
     flv: "video/x-flv",

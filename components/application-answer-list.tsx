@@ -45,90 +45,99 @@ export function ApplicationAnswerList({
     dict && (
       <ScrollArea className="h-screen" style={{ height: "50vh" }}>
         <div className="space-y-4 p-4">
-          {application.submitted_at === null && application.version == version && (
-            <Callout type="info">
-              <span className="align-left">
-                {dict.dashboard.applications.draftNotice}
-              </span>
-              <Link
-                href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${
-                  application.user_id
-                }&url=${siteConfig.url}/${lang}/board/${application.user_id}/${
-                  application.job
-                    ? application.job.job_slug
-                    : application.job_id
-                }`}
-                target="_blank"
-                className={cn(
-                  buttonVariants({ variant: "link", size: "sm" }),
-                  "align-right text-sm"
-                )}
-              >
-                {dict.dashboard.applications.editApplication}
-              </Link>
-            </Callout>
-          )}
-          {application?.job?.application_options?.map((option) => {
-            const answer = application?.application_answers?.find(
-              (answer) =>
-                answer.application_option_id === option.id &&
-                answer.version === version
-            )
-            return (
-              <div key={option.id} className="flex flex-col space-y-2">
-                <div className="text-xs text-muted-foreground">
-                  {option.question}
+          {application.submitted_at === null &&
+            application.version == version && (
+              <Callout type="info">
+                <span className="align-left">
+                  {dict.dashboard.applications.draftNotice}
+                </span>
+                <Link
+                  href={`${siteConfig.apply_url}/?eType=manual&mode=job&id=${
+                    application.user_id
+                  }&url=${siteConfig.url}/${lang}/board/${
+                    application.user_id
+                  }/${
+                    application.job
+                      ? application.job.job_slug
+                      : application.job_id
+                  }`}
+                  target="_blank"
+                  className={cn(
+                    buttonVariants({ variant: "link", size: "sm" }),
+                    "align-right text-sm"
+                  )}
+                >
+                  {dict.dashboard.applications.editApplication}
+                </Link>
+              </Callout>
+            )}
+          {application?.application_answers
+            ?.filter((answer) => answer.version === version)
+            .map((answer) => {
+              return (
+                <div key={answer.id} className="flex flex-col space-y-2">
+                  <div className="text-xs text-muted-foreground">
+                    {answer.question}
+                  </div>
+                  {answer && (answer?.answer || answer?.attachment) ? (
+                    <div>
+                      {answer.attachment ? (
+                        <div className="ml-auto flex items-center gap-2">
+                          <p className="text-sm text-foreground">
+                            {dict.dashboard.applications.yourSubmission}
+                          </p>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                disabled={!answer.attachment?.url}
+                                onClick={() =>
+                                  window.open(answer.attachment?.url, "_blank")
+                                }
+                              >
+                                <DownloadCloud className="size-4" />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              {dict.dashboard.applications.downloadAttachment}
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+                      ) : (
+                        <div
+                          className="rounded-lg border bg-secondary p-2 text-sm font-semibold"
+                          style={{
+                            maxWidth:
+                              answer.answer.length < 100 ? "none" : "1100px",
+                            overflowWrap: "break-word",
+                          }}
+                        >
+                          {answer.answer &&
+                          answer.answer != null &&
+                          answer.answer !== "null"
+                            ? (() => {
+                                try {
+                                  const parsedAnswer = JSON.parse(answer.answer)
+                                  return Array.isArray(parsedAnswer)
+                                    ? parsedAnswer.join("; ")
+                                    : answer.answer
+                                } catch (e) {
+                                  return answer.answer
+                                }
+                              })()
+                            : answer.answer}{" "}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="rounded-lg border bg-secondary p-2 text-sm font-light italic text-muted-foreground">
+                      {dict.dashboard.applications.noAnswerProvided}
+                    </div>
+                  )}
                 </div>
-                {answer && answer?.answer && answer.answer !== "null" ? (
-                  <div>
-                    {answer.attachment ? (
-                      <div className="ml-auto flex items-center gap-2">
-                        <p className="text-sm text-foreground">
-                          {dict.dashboard.applications.yourSubmission}
-                        </p>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              disabled={!answer.attachment?.url}
-                              onClick={() =>
-                                window.open(answer.attachment?.url, "_blank")
-                              }
-                            >
-                              <DownloadCloud className="size-4" />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            {dict.dashboard.applications.downloadAttachment}
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
-                    ) : (
-                      <div
-                        className="rounded-lg border bg-secondary p-2 text-sm font-semibold"
-                        style={{
-                          maxWidth:
-                            answer.answer.length < 100 ? "none" : "1100px",
-                          overflowWrap: "break-word",
-                        }}
-                      >
-                        {option.question_type === "multiple_choice"
-                          ? Array.isArray(JSON.parse(answer.answer))
-                            ? JSON.parse(answer.answer).join("; ")
-                            : answer.answer
-                          : answer.answer}{" "}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="rounded-lg border bg-secondary p-2 text-sm font-light italic text-muted-foreground">
-                    {dict.dashboard.applications.noAnswerProvided}
-                  </div>
-                )}
-              </div>
-            )
-          })}
+              )
+            })}
         </div>
       </ScrollArea>
     )
