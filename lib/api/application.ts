@@ -137,7 +137,9 @@ export async function submitApplication(
     )
   } else {
     response = await fetch(
-      `${siteConfig.api_url}/jobs/${gq_job_id}/applications`,
+      `${siteConfig.api_url}/jobs/${gq_job_id}/applications${
+        save_as_draft ? `?save_as_draft=1` : ""
+      }`,
       {
         method: "POST",
         headers: {

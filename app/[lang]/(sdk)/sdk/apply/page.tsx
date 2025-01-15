@@ -423,7 +423,7 @@ export default function ApplyPage({ params: { lang } }) {
   const handleAutosaveToggle = () => {
     setAutoSave((prev) => {
       if (!prev) handleSaveDraft()
-      Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
+        Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
         sameSite: "Strict",
         secure: siteConfig.url.startsWith("https://"),
         domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
