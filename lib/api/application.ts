@@ -22,6 +22,7 @@ export interface ApplicationAnswer {
   user_id: number
   application_option_id: number
   answer: string
+  question: string
   attachment: null | ApplicationAttachment
   version: number
 }
@@ -136,7 +137,9 @@ export async function submitApplication(
     )
   } else {
     response = await fetch(
-      `${siteConfig.api_url}/jobs/${gq_job_id}/applications`,
+      `${siteConfig.api_url}/jobs/${gq_job_id}/applications${
+        save_as_draft ? `?save_as_draft=1` : ""
+      }`,
       {
         method: "POST",
         headers: {

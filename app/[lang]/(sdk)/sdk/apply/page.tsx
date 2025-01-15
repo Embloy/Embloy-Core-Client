@@ -83,7 +83,7 @@ export default function ApplyPage({ params: { lang } }) {
     tif: "image/tiff",
     svg: "image/svg+xml",
     mp4: "video/mp4",
-    avi: "video/x-msvideo",
+    avi: "video/vnd.avi",
     mov: "video/quicktime",
     wmv: "video/x-ms-wmv",
     flv: "video/x-flv",
@@ -422,7 +422,8 @@ export default function ApplyPage({ params: { lang } }) {
 
   const handleAutosaveToggle = () => {
     setAutoSave((prev) => {
-      Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
+      if (!prev) handleSaveDraft()
+        Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
         sameSite: "Strict",
         secure: siteConfig.url.startsWith("https://"),
         domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
@@ -719,7 +720,7 @@ export default function ApplyPage({ params: { lang } }) {
           </div>
         </div>*/}
             {/* Application Form */}
-            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[650px]">
+            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[650px] md:mt-5">
               <div className="flex flex-col space-y-2 text-center">
                 <Icons.logo className="mx-auto size-6" />
                 <h1 className="text-2xl font-semibold tracking-tight">
