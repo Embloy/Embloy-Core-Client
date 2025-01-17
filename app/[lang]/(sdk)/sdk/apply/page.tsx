@@ -1,5 +1,43 @@
 "use client"
 
+////////////////////////////////////////////////////////////////////////////////
+// WARNING: THE FOLLOWING CODE IS SPAGHETTI CODE. //////////////////////////////
+// YOU HAVE BEEN WARNED, ///////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////// ⣿⡟⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠉⣿⣿⣿ ///////////////////
+/////////////////// ⡟⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⣠⣰⣶⣽⣽⣷⣶⣀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣿⣿⣿ ///////////////////
+/////////////////// ⠁⠄⠄⠄⠄⠄⡀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣆⡀⠄⠄⠄⠄⠄⣀⠄⠄⣿⣿⣿ ///////////////////
+/////////////////// ⠄⠄⠄⠄⣤⣾⠟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣷⣶⣾⣿⠄⢀⣿⣿⣿ ///////////////////
+/////////////////// ⠄⠄⠄⠈⠉⠰⣷⣿⣿⣿⣿⣿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⢿⡿⣿⣿⠄⢸⣷⣿⣿ ///////////////////
+/////////////////// ⠄⠄⠄⠄⢀⣼⣿⣻⣿⡿⠿⠿⠆⠄⠄⠄⠈⢙⣿⡇⠉⠄⠄⠄⠄⣰⣞⡏⠄⢸⡿⣿⣿ ///////////////////
+/////////////////// ⢀⠄⠄⢀⢸⢿⣿⣟⣷⣦⣶⣶⣶⣶⣶⣷⣐⣼⣿⣷⠄⣠⣴⣤⣤⣄⢉⡄⠄⠸⠇⣿⣿ ///////////////////
+/////////////////// ⣶⣇⣤⡎⠘⠁⠐⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣾⣿⣿⣿⣾⣿⣿⡇⡶⣥⣴⣿⣿ ///////////////////
+/////////////////// ⢣⣛⡍⠸⠄⠄⠄⠈⢻⣿⣿⣿⣿⣿⣿⠏⢈⣿⣿⣿⡇⢿⣿⣿⣿⣿⡿⠃⠄⢜⣿⣿⣿ ///////////////////
+/////////////////// ⠃⠋⠼⠥⠄⢠⠄⠐⣠⣿⣿⣿⣿⡿⢁⠈⠉⠛⠛⠛⠋⠈⠟⣿⣿⡏⠄⢸⢸⣽⣿⣿⣿ ///////////////////
+/////////////////// ⠄⠄⠄⠄⠄⠈⠄⠠⢿⣿⣿⣿⣿⣿⣿⣿⣾⣦⣤⣀⣤⣤⡀⢨⠿⣇⠄⣿⣻⣿⣿⣿⣿ ///////////////////
+/////////////////// ⠄⣾⣾⡇⡀⠄⠄⢀⢢⣽⣿⣿⡿⠿⠻⠿⠛⠛⠿⠛⠻⠜⡽⣸⣿⣿⠿⢿⣿⣿⣿⣿⣿ ///////////////////
+/////////////////// ⣷⠎⢡⡭⠂⠄⠄⠄⠄⠺⣿⣿⣷⣾⢿⠙⠛⠛⠛⠛⠛⠳⢶⣿⣿⡿⢋⣿⣿⣿⣿⣿⣿ ///////////////////
+/////////////////// ⠁⠄⢸⣿⡄⡀⠄⠄⠄⠈⠙⠽⣿⣷⣷⣶⣿⣿⣿⣶⣤⣠⣬⣏⠉⠁⣾⣿⣿⣿⣿⣿⣿ ///////////////////
+/////////////////// ⠄⠄⢸⣿⣿⣦⡀⠄⠄⠄⠄⠄⠈⠛⠛⡟⠿⡿⢻⠛⠟⠿⠋⠁            ///////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// NO, SERIOUSLY, DON'T READ THIS CODE. IT'S A FUCKING MESS. ///////////////////
+// IT WILL MAKE YOU WANT TO PULL YOUR EYES OUT. ////////////////////////////////
+// THINK OF YOUR SANITY. ///////////////////////////////////////////////////////
+// THINK OF YOUR FUTURE. ///////////////////////////////////////////////////////
+// THINK OF YOUR FAMILY. ///////////////////////////////////////////////////////
+// THINK OF YOUR FRIENDS. //////////////////////////////////////////////////////
+// THINK OF YOUR PETS. /////////////////////////////////////////////////////////
+// THINK OF YOUR LIFE. /////////////////////////////////////////////////////////
+// THINK OF YOUR CAREER. ///////////////////////////////////////////////////////
+// THINK OF YOUR HEALTH. ///////////////////////////////////////////////////////
+// THINK OF YOUR HAPPINESS. ////////////////////////////////////////////////////
+// THINK OF YOUR WELL-BEING. ///////////////////////////////////////////////////
+// NOW THINK AGAIN IF YOU WANT TO READ THIS CODE. //////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -11,7 +49,12 @@ import { z } from "zod"
 import { Job } from "@/types/job-schema"
 import { siteConfig } from "@/config/site"
 import { submitApplication } from "@/lib/api/application"
-import { Session, applyWithGQ, makeRequest } from "@/lib/api/sdk"
+import {
+  Session,
+  applyWithGQ,
+  fetchApplicationDraft,
+  makeRequest,
+} from "@/lib/api/sdk"
 import { User, getCurrentUser, getSession } from "@/lib/api/session"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
@@ -293,68 +336,132 @@ export default function ApplyPage({ params: { lang } }) {
   }
 
   useEffect(() => {
-    if (!currentUser || !job) return
+    const fetchDraft = async () => {
+      if (!currentUser || !job) return
 
-    const defaultOptions: {
-      application_option_id: number
-      answer: string
-      file: null
-    }[] =
-      job?.application_options?.map((option) => {
-        let defaultAnswer = ""
-        switch (option.question_type) {
-          case "short_text":
-          case "long_text":
-            defaultAnswer = getUserPropertyValue(currentUser, option.question)
-            break
-          case "link":
-            defaultAnswer = isUrlLabel(option.question)
-              ? (() => {
-                  const normalizedLabel = normalizeLabel(
-                    option.question
-                  ).replace(/url|profile|link/gi, "")
-                  console.log("normalizedLabel", normalizedLabel)
-                  console.log(
-                    "currentUserSlabel",
-                    currentUser[`${normalizedLabel}_url`]
-                  )
-                  if (
-                    normalizedLabel.includes("linkedin") ||
-                    normalizedLabel.includes("edin")
-                  ) {
-                    return currentUser.linkedin_url || ""
+      const application_draft = await fetchApplicationDraft(job.id)
+
+      const defaultOptions = await Promise.all(
+        job?.application_options?.map(async (option) => {
+          let defaultAnswer = ""
+
+          if (application_draft) {
+            switch (option.question_type) {
+              case "file":
+                const attachment = application_draft?.application_answers?.find(
+                  (answer) => answer.application_option_id === option.id
+                )?.attachment
+
+                let draftedFile: File | null = null
+
+                if (attachment) {
+                  try {
+                    const response = await fetch(attachment.url)
+                    const blob = await response.blob()
+                    draftedFile = new File([blob], attachment.name, {
+                      type: blob.type,
+                    })
+                  } catch (error) {
+                    console.error("Failed to download file:", error)
                   }
-                  return currentUser[`${normalizedLabel}_url`] || ""
-                })()
-              : ""
-            break
-          default:
-            break
-        }
+                }
 
-        return {
-          application_option_id: option.id,
-          answer: defaultAnswer,
-          file: null,
-        }
-      }) || []
+                return {
+                  application_option_id: option.id,
+                  answer: "",
+                  file: draftedFile,
+                }
+              case "multiple_choice":
+                const answerString =
+                  application_draft?.application_answers?.find(
+                    (answer) => answer.application_option_id === option.id
+                  )?.answer || "[]"
 
-    setOptions(defaultOptions)
+                let selectedOptions: string[] = []
+                try {
+                  selectedOptions = JSON.parse(answerString)
+                } catch (e) {
+                  console.error("Failed to parse answer string:", e)
+                }
+
+                selectedOptions.sort((a, b) => a.localeCompare(b))
+
+                return {
+                  application_option_id: option.id,
+                  answer: selectedOptions.join("||| "),
+                  file: null,
+                }
+              default:
+                const draftedAnswer =
+                  application_draft?.application_answers?.find(
+                    (answer) => answer.application_option_id === option.id
+                  )?.answer || ""
+                return {
+                  application_option_id: option.id,
+                  answer: draftedAnswer,
+                  file: null,
+                }
+            }
+          }
+
+          switch (option.question_type) {
+            case "short_text":
+            case "long_text":
+              defaultAnswer = getUserPropertyValue(currentUser, option.question)
+              break
+            case "link":
+              defaultAnswer = isUrlLabel(option.question)
+                ? (() => {
+                    const normalizedLabel = normalizeLabel(
+                      option.question
+                    ).replace(/url|profile|link/gi, "")
+                    console.log("normalizedLabel", normalizedLabel)
+                    console.log(
+                      "currentUserSlabel",
+                      currentUser[`${normalizedLabel}_url`]
+                    )
+                    if (
+                      normalizedLabel.includes("linkedin") ||
+                      normalizedLabel.includes("edin")
+                    ) {
+                      return currentUser.linkedin_url || ""
+                    }
+                    return currentUser[`${normalizedLabel}_url`] || ""
+                  })()
+                : ""
+              break
+            default:
+              break
+          }
+
+          return {
+            application_option_id: option.id,
+            answer: defaultAnswer,
+            file: null,
+          }
+        }) || []
+      )
+      setOptions(defaultOptions)
+    }
+
+    fetchDraft()
   }, [currentUser, job])
 
   useEffect(() => {
-    let autosaveInterval
+    let autosaveTimeout: NodeJS.Timeout
+
     if (autoSave) {
-      autosaveInterval = setInterval(() => {
+      autosaveTimeout = setTimeout(() => {
         handleSaveDraft()
-      }, 300000) // 5 minutes
+      }, 30000) // Autosave 30 seconds after the last change
     }
+
     return () => {
-      if (autosaveInterval) {
-        clearInterval(autosaveInterval)
+      if (autosaveTimeout) {
+        clearTimeout(autosaveTimeout)
       }
     }
-  }, [autoSave])
+  }, [autoSave, options])
 
   async function handleSubmit() {
     if (!validateFields()) {
@@ -423,7 +530,7 @@ export default function ApplyPage({ params: { lang } }) {
   const handleAutosaveToggle = () => {
     setAutoSave((prev) => {
       if (!prev) handleSaveDraft()
-        Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
+      Cookies.set("ep_application_autosave", !prev ? "true" : "false", {
         sameSite: "Strict",
         secure: siteConfig.url.startsWith("https://"),
         domain: siteConfig.url.startsWith("https://") ? ".embloy.com" : "",
@@ -516,6 +623,14 @@ export default function ApplyPage({ params: { lang } }) {
     value: string,
     isChecked: boolean
   ) => {
+    console.log(
+      "old option: ",
+      options.find((opt) => opt.application_option_id === id)?.answer,
+      " contains? ",
+      options
+        .find((opt) => opt.application_option_id === id)
+        ?.answer.includes(value)
+    )
     try {
       setOptions((prevOptions) => {
         const index = prevOptions.findIndex(
@@ -537,6 +652,7 @@ export default function ApplyPage({ params: { lang } }) {
               .filter((answer) => answer !== value)
               .join("||| ")
           }
+          console.log("new option: ", id, newOptions)
           return newOptions
         } else {
           return [
@@ -848,7 +964,7 @@ export default function ApplyPage({ params: { lang } }) {
                           value={
                             options.find(
                               (opt) => opt.application_option_id === option.id
-                            )?.answer
+                            )?.answer || ""
                           }
                           maxLength={100}
                           required={!!option.required}
@@ -859,7 +975,10 @@ export default function ApplyPage({ params: { lang } }) {
                           }}
                           onChange={(event) => {
                             const value = event.target.value
-                            if (/^(0|[1-9][0-9]*)$/.test(value)) {
+                            if (
+                              value === "" ||
+                              /^(0|[1-9][0-9]*)$/.test(value)
+                            ) {
                               handleTextChange(
                                 option.id,
                                 value,
@@ -1018,9 +1137,12 @@ export default function ApplyPage({ params: { lang } }) {
                           >
                             <Checkbox
                               value={opt}
-                              checked={options[option.id]?.answer?.includes(
-                                opt
-                              )}
+                              checked={options
+                                .find(
+                                  (opt) =>
+                                    opt.application_option_id === option.id
+                                )
+                                ?.answer.includes(opt)}
                               onCheckedChange={(isChecked) => {
                                 handleMultipleChoiceChange(
                                   option.id,

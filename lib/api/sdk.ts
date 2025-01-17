@@ -1,6 +1,7 @@
 import { Job } from "@/types/job-schema"
 import { siteConfig } from "@/config/site"
 
+import { Application, ApplicationAnswer } from "./application"
 import { getAccessToken } from "./auth"
 
 export interface Session {
@@ -10,6 +11,7 @@ export interface Session {
   subscription_type: string
   success_url: string | null
   cancel_url: string | null
+  application_draft?: Application
 }
 
 export interface ResponseData {
@@ -68,5 +70,36 @@ export async function applyWithGQ(gq: string): Promise<ResponseData | null> {
       cancel_url: job.referrer_url,
     },
     job: job,
+  }
+}
+
+// TODO: ERROR HANDLING
+export async function fetchApplicationDraft(
+  job_id: number
+): Promise<Application | null> {
+  const accessToken = await getAccessToken()
+
+  const response = await fetch(
+    `${siteConfig.api_url}/jobs/${job_id}/application?draft_only=1`,
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${accessToken}` },
+    }
+  )
+
+  if (!response.ok) {
+    return null
+  }
+
+  const data = await response.json()
+
+  // Filter application options to exclude those with a version not equal to the application's version
+  if (data && data.application && data.application_answers) {
+    data.application_answers = data.application_answers.filter(
+      (answer: ApplicationAnswer) => answer.version === data.application.version
+    )
+    return data
+  } else {
+    return null
   }
 }

@@ -1,18 +1,15 @@
-import { z } from "zod"
-
 import { Job } from "@/types/job-schema"
 import { siteConfig } from "@/config/site"
 
 import { getAccessToken } from "./auth"
 
 export interface ApplicationAttachment {
-  attachment: {
-    id: number
-    user_id: number
-    job_id: number
-    created_at: string
-    updated_at: string
-  }
+  id: number
+  name: string
+  user_id: number
+  job_id: number
+  created_at: string
+  updated_at: string
   url: string
 }
 
