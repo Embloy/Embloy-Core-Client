@@ -209,7 +209,7 @@ export function UserSignUpForm({
                     autoCapitalize="none"
                     autoComplete="email"
                     autoCorrect="off"
-                    disabled={isLoading || isGitHubLoading}
+                    disabled//={isLoading || isGitHubLoading}
                     {...register("email")}
                   />
                   {errors?.email?.message && (
@@ -228,7 +228,7 @@ export function UserSignUpForm({
                     id="firstName"
                     placeholder={dict.auth.register.firstName}
                     type="text"
-                    disabled={isLoading || isGitHubLoading}
+                    disabled//={isLoading || isGitHubLoading}
                     {...register("firstName")}
                   />
                   {errors?.firstName?.message && (
@@ -246,7 +246,7 @@ export function UserSignUpForm({
                     id="lastName"
                     placeholder={dict.auth.register.lastName}
                     type="text"
-                    disabled={isLoading || isGitHubLoading}
+                    disabled//={isLoading || isGitHubLoading}
                     {...register("lastName")}
                   />
                   {errors?.lastName?.message && (
@@ -267,7 +267,7 @@ export function UserSignUpForm({
                     autoCapitalize="none"
                     autoComplete="password"
                     autoCorrect="off"
-                    disabled={isLoading || isGitHubLoading}
+                    disabled//={isLoading || isGitHubLoading}
                     {...register("password")}
                   />
                   {errors?.password?.message && (
@@ -285,7 +285,7 @@ export function UserSignUpForm({
                     id="passwordConfirmation"
                     placeholder={dict.auth.register.confirmPassword}
                     type="password"
-                    disabled={isLoading || isGitHubLoading}
+                    disabled//={isLoading || isGitHubLoading}
                     {...register("passwordConfirmation")}
                   />
                   {errors?.passwordConfirmation?.message && (
@@ -295,7 +295,8 @@ export function UserSignUpForm({
                     </p>
                   )}
                 </div>
-                <button className={cn(buttonVariants())} disabled={isLoading}>
+                <button className={cn(buttonVariants())} disabled//</div>={isLoading}
+                >
                   {isLoading && (
                     <Icons.spinner className="mr-2 size-4 animate-spin" />
                   )}
@@ -325,7 +326,7 @@ export function UserSignUpForm({
                 "rounded-full border-none p-2 px-1 hover:bg-secondary"
               )}
               onClick={handleGithubSignIn}
-              disabled={isLoading || isGitHubLoading}
+              disabled//</div>={isLoading || isGitHubLoading}
             >
               {isGitHubLoading ? (
                 <Icons.spinner className="size-8 animate-spin" />
@@ -340,7 +341,7 @@ export function UserSignUpForm({
                 "rounded-full border-none p-2 px-1 hover:bg-secondary"
               )}
               onClick={handleGoogleSignIn}
-              disabled={isLoading || isGoogleLoading}
+              disabled//</div>={isLoading || isGoogleLoading}
             >
               {isGoogleLoading ? (
                 <Icons.spinner className="size-8 animate-spin" />
@@ -355,7 +356,7 @@ export function UserSignUpForm({
                 "border-none p-2 px-1 hover:bg-secondary"
               )}
               onClick={handleLinkedinSignIn}
-              disabled={isLoading || isLinkedinLoading}
+              disabled//</div>={isLoading || isLinkedinLoading}
             >
               {isLinkedinLoading ? (
                 <Icons.spinner className="size-8 animate-spin" />
@@ -370,7 +371,7 @@ export function UserSignUpForm({
                 "border-none p-2 px-1 hover:bg-secondary"
               )}
               onClick={handleMicrosoftSignIn}
-              disabled={isLoading || isMicrosoftLoading}
+              disabled//</div>={isLoading || isMicrosoftLoading}
             >
               {isMicrosoftLoading ? (
                 <Icons.spinner className="size-8 animate-spin" />
@@ -390,10 +391,10 @@ export function UserSignUpForm({
               mode === "linkedin"
                 ? handleLinkedinSignIn
                 : mode === "google"
-                ? handleGoogleSignIn
-                : mode === "microsoft"
-                ? handleMicrosoftSignIn
-                : handleGithubSignIn
+                  ? handleGoogleSignIn
+                  : mode === "microsoft"
+                    ? handleMicrosoftSignIn
+                    : handleGithubSignIn
             }
             disabled={
               isLoading ||
@@ -404,9 +405,9 @@ export function UserSignUpForm({
             }
           >
             {(mode === "linkedin" && isLinkedinLoading) ||
-            (mode === "google" && isGoogleLoading) ||
-            (mode === "microsoft" && isMicrosoftLoading) ||
-            (mode === "github" && isGitHubLoading) ? (
+              (mode === "google" && isGoogleLoading) ||
+              (mode === "microsoft" && isMicrosoftLoading) ||
+              (mode === "github" && isGitHubLoading) ? (
               <Icons.spinner className="size-12 animate-spin" />
             ) : mode === "linkedin" ? (
               <Icons.linkedin className="size-12 lg:size-20" />

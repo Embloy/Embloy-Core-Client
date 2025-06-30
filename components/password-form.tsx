@@ -26,7 +26,7 @@ interface PasswordFormProps extends React.HTMLAttributes<HTMLDivElement> {
 
 type FormData = z.infer<typeof pwResetSchema>
 
-export function PasswordForm({ className, params: {lang}, ...props }: PasswordFormProps) {
+export function PasswordForm({ className, params: { lang }, ...props }: PasswordFormProps) {
   const [dict, setDict] = React.useState<Record<string, any> | null>(null);
   const searchParams = useSearchParams();
   const reset_token = searchParams.get("reset_token");
@@ -62,7 +62,7 @@ export function PasswordForm({ className, params: {lang}, ...props }: PasswordFo
       setIsLoading(true)
       const err = await setPassword(data.password, data.passwordConfirmation, reset_token ?? "");
       setIsLoading(false)
-      
+
       if (err) {
         return toast({
           title: err == 400 ? dict.auth.errors.pwreset.title : dict.errors[err || "500"].title || dict.errors.generic.title,
@@ -77,14 +77,14 @@ export function PasswordForm({ className, params: {lang}, ...props }: PasswordFo
       })
     }
   }
-  
+
   return dict && (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid gap-2">
+        <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="password">
-            {dict.auth.register.password}
+              {dict.auth.register.password}
             </Label>
             <Input
               id="password"
@@ -93,33 +93,34 @@ export function PasswordForm({ className, params: {lang}, ...props }: PasswordFo
               autoCapitalize="none"
               autoComplete="password"
               autoCorrect="off"
-              disabled={isLoading}
+              disabled//={isLoading}
               {...register("password")}
             />
-          {errors?.password?.message && (
-            <p className="px-1 text-xs text-red-600">
-              {dict.auth.errors[errors.password.message] || errors.password.message}
-            </p>
-          )}
+            {errors?.password?.message && (
+              <p className="px-1 text-xs text-red-600">
+                {dict.auth.errors[errors.password.message] || errors.password.message}
+              </p>
+            )}
           </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="passwordConfirmation">
-            {dict.auth.register.confirmPassword}
+              {dict.auth.register.confirmPassword}
             </Label>
             <Input
               id="passwordConfirmation"
               placeholder={dict.auth.register.confirmPassword}
               type="password"
-              disabled={isLoading}
+              disabled//={isLoading}
               {...register("passwordConfirmation")}
             />
-          {errors?.passwordConfirmation?.message && (
-            <p className="px-1 text-xs text-red-600">
-              {dict.auth.errors[errors.passwordConfirmation.message] || errors.passwordConfirmation.message}
-            </p>
-          )}
+            {errors?.passwordConfirmation?.message && (
+              <p className="px-1 text-xs text-red-600">
+                {dict.auth.errors[errors.passwordConfirmation.message] || errors.passwordConfirmation.message}
+              </p>
+            )}
           </div>
-          <button className={cn(buttonVariants())} disabled={isLoading}>
+          <button className={cn(buttonVariants())} disabled//={isLoading}
+          >
             {isLoading && (
               <Icons.spinner className="mr-2 size-4 animate-spin" />
             )}

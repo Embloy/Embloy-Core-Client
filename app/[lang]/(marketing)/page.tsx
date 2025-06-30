@@ -39,7 +39,7 @@ export default async function IndexPage({ params: { lang } }) {
               className="text-md rounded-full border-2 border-primary bg-low px-4 py-2 font-medium text-high duration-300 hover:border-primary hover:bg-primary hover:text-embloy-foreground dark:bg-embloy dark:text-secondary dark:hover:bg-primary dark:hover:text-embloy-foreground portrait:text-sm"
               target="_blank"
             >
-            {dict.marketing.inviteMessage}
+            {dict.marketing.finalAnnouncment}
           </Link>
           <div className="flex w-full flex-row items-start justify-between px-10 portrait:flex-col portrait:px-0">
             <div className="flex w-6/12 flex-col items-start justify-start gap-8 pt-5 portrait:w-full portrait:gap-4">
@@ -54,7 +54,7 @@ export default async function IndexPage({ params: { lang } }) {
                   href={`/${lang}/register`}
                   className={cn(
                     buttonVariants({ variant: "filled", size: "boldLg" }),
-                    " px-9 py-2 portrait:w-full portrait:px-4 portrait:py-0"
+                    "px-9 py-2 portrait:w-full portrait:px-4 portrait:py-0"
                   )}
                 >
                   {dict.pages.signup}

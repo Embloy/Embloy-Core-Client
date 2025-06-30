@@ -103,7 +103,7 @@ export function ManualProxyForm({
                 placeholder={urlPlaceholders[mode || "default"]}
                 value={url}
                 onChange={(e) => setURL(e.target.value)}
-                disabled={!!slug}
+                disabled//={!!slug}
               />
             </div>
             <div className="grid gap-2">
@@ -113,10 +113,11 @@ export function ManualProxyForm({
                 placeholder="05157a89-..."
                 value={slug}
                 onChange={(e) => setSlug(e.target.value)}
-                disabled={!!url}
+                disabled//={!!url}
               />
             </div>
-            <Button type="submit" variant="filled" disabled={isLoading || (!url && !slug)}>
+            <Button type="submit" variant="filled" disabled//</form>={isLoading || (!url && !slug)}
+            >
               {dict.dashboard.upcoming.apply}
             </Button>
           </form>
@@ -149,7 +150,7 @@ export function ManualProxyForm({
               placeholder={urlPlaceholders[mode || "default"]}
               value={url}
               onChange={(e) => setURL(e.target.value)}
-              disabled={!!slug}
+              disabled//={!!slug}
             />
           </div>
           <div className="grid gap-2">
@@ -159,10 +160,11 @@ export function ManualProxyForm({
               placeholder="eyJhbGciOiJIUzI1NiJ9°ey..."
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
-              disabled={!!url}
+              disabled//={!!url}
             />
           </div>
-          <Button type="submit" disabled={isLoading || (!url && !slug)}>
+          <Button type="submit" disabled//</form>={isLoading || (!url && !slug)}
+          >
             {dict.dashboard.upcoming.apply}
           </Button>
         </form>

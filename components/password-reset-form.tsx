@@ -24,7 +24,7 @@ interface PasswordResetFormProps extends React.HTMLAttributes<HTMLDivElement> {
 
 type FormData = z.infer<typeof emailSchema>
 
-export function PasswordResetForm({ className, params: {lang}, ...props }: PasswordResetFormProps) {
+export function PasswordResetForm({ className, params: { lang }, ...props }: PasswordResetFormProps) {
   const [dict, setDict] = React.useState<Record<string, any> | null>(null);
 
   React.useEffect(() => {
@@ -50,7 +50,7 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
     if (dict) {
       const err = await resetPassword(data.email);
       setIsLoading(false)
-      
+
       if (err) {
         return toast({
           title: dict.errors[err || "500"].title || dict.errors.generic.title,
@@ -58,7 +58,7 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
           variant: "destructive",
         })
       }
-      
+
       toast({
         title: dict.auth.success.pwreset.title,
         description: dict.auth.success.pwreset.description,
@@ -72,7 +72,7 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
-            {dict.auth.pwreset.email}
+              {dict.auth.pwreset.email}
             </Label>
             <Input
               id="email"
@@ -81,7 +81,7 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              disabled={isLoading}
+              disabled//={isLoading}
               {...register("email")}
             />
             {errors?.email?.message && (
@@ -91,7 +91,8 @@ export function PasswordResetForm({ className, params: {lang}, ...props }: Passw
             )}
 
           </div>
-          <button className={cn(buttonVariants())} disabled={isLoading}>
+          <button className={cn(buttonVariants())} disabled//</div>={isLoading}
+          >
             {isLoading && (
               <Icons.spinner className="mr-2 size-4 animate-spin" />
             )}

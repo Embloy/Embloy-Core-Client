@@ -24,7 +24,7 @@ interface ActivationTokenFormProps extends React.HTMLAttributes<HTMLDivElement> 
 
 type FormData = z.infer<typeof activationTokenSchema>
 
-export function ActivationTokenForm({ className, params: {lang}, ...props }: ActivationTokenFormProps) {
+export function ActivationTokenForm({ className, params: { lang }, ...props }: ActivationTokenFormProps) {
   const [dict, setDict] = React.useState<Record<string, any> | null>(null);
 
   React.useEffect(() => {
@@ -72,7 +72,7 @@ export function ActivationTokenForm({ className, params: {lang}, ...props }: Act
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
-            {dict.auth.activation.email}
+              {dict.auth.activation.email}
             </Label>
             <Input
               id="email"
@@ -81,7 +81,7 @@ export function ActivationTokenForm({ className, params: {lang}, ...props }: Act
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              disabled={isLoading}
+              disabled//={isLoading}
               {...register("email")}
             />
             {errors?.email?.message && (
@@ -91,7 +91,8 @@ export function ActivationTokenForm({ className, params: {lang}, ...props }: Act
             )}
 
           </div>
-          <button className={cn(buttonVariants())} disabled={isLoading}>
+          <button className={cn(buttonVariants())} disabled//</div>={isLoading}
+          >
             {isLoading && (
               <Icons.spinner className="mr-2 size-4 animate-spin" />
             )}

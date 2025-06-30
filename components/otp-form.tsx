@@ -162,7 +162,7 @@ export function OTPForm({
               <div className="grid gap-2">
                 <div className="grid gap-1">
                   <Label className="sr-only" htmlFor="firstName">
-                  {dict.auth.register.firstName}
+                    {dict.auth.register.firstName}
                   </Label>
                   <Input
                     id="firstName"
@@ -171,7 +171,7 @@ export function OTPForm({
                     autoCapitalize="none"
                     autoComplete="given-name"
                     autoCorrect="off"
-                    disabled={isLoading}
+                    disabled//={isLoading}
                     {...registerName("firstName")}
                   />
                   {nameErrors?.firstName?.message && (
@@ -182,7 +182,7 @@ export function OTPForm({
                 </div>
                 <div className="grid gap-1">
                   <Label className="sr-only" htmlFor="lastName">
-                  {dict.auth.register.lastName}
+                    {dict.auth.register.lastName}
                   </Label>
                   <Input
                     id="lastName"
@@ -191,7 +191,7 @@ export function OTPForm({
                     autoCapitalize="none"
                     autoComplete="family-name"
                     autoCorrect="off"
-                    disabled={isLoading}
+                    disabled//={isLoading}
                     {...registerName("lastName")}
                   />
                   {nameErrors?.lastName?.message && (
@@ -200,7 +200,8 @@ export function OTPForm({
                     </p>
                   )}
                 </div>
-                <button className={cn(buttonVariants())} disabled={isLoading}>
+                <button className={cn(buttonVariants())} disabled//</div>={isLoading}
+                >
                   {isLoading && (
                     <Icons.spinner className="mr-2 size-4 animate-spin" />
                   )}
@@ -223,7 +224,7 @@ export function OTPForm({
                     autoCapitalize="none"
                     autoComplete="email"
                     autoCorrect="off"
-                    disabled={isLoading}
+                    disabled//={isLoading}
                     {...registerEmail("email")}
                   />
                   {emailErrors?.email?.message && (
@@ -233,7 +234,8 @@ export function OTPForm({
                     </p>
                   )}
                 </div>
-                <button className={cn(buttonVariants())} disabled={isLoading}>
+                <button className={cn(buttonVariants())} disabled//</div>={isLoading}
+                >
                   {isLoading && (
                     <Icons.spinner className="mr-2 size-4 animate-spin" />
                   )}
@@ -258,7 +260,7 @@ export function OTPForm({
                     autoCorrect="off"
                     maxLength={6}
                     minLength={6}
-                    disabled={isLoading}
+                    disabled//={isLoading}
                     {...registerOTP("otp_code", {
                       setValueAs: (value) => value.trim(),
                     })}

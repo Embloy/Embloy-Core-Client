@@ -190,7 +190,7 @@ export function UserAuthForm({
                 autoCapitalize="none"
                 autoComplete="email"
                 autoCorrect="off"
-                disabled={isLoading || isGitHubLoading}
+                disabled//={isLoading || isGitHubLoading}
                 {...register("email")}
                 className="dark:bg-border"
               />
@@ -211,7 +211,7 @@ export function UserAuthForm({
                 autoCapitalize="none"
                 autoComplete="password"
                 autoCorrect="off"
-                disabled={isLoading || isGitHubLoading}
+                disabled//={isLoading || isGitHubLoading}
                 {...register("password")}
                 className="dark:bg-border"
               />
@@ -221,7 +221,8 @@ export function UserAuthForm({
                 </p>
               )}
             </div>
-            <button className={cn(buttonVariants())} disabled={isLoading}>
+            <button className={cn(buttonVariants())} disabled//</div>={isLoading}
+            >
               {isLoading && (
                 <Icons.spinner className="mr-2 size-8 animate-spin" />
               )}
@@ -247,7 +248,7 @@ export function UserAuthForm({
               "rounded-full border-none p-2 px-1 hover:bg-secondary"
             )}
             onClick={handleGithubSignIn}
-            disabled={isLoading || isGitHubLoading}
+            disabled//</div>={isLoading || isGitHubLoading}
           >
             {isGitHubLoading ? (
               <Icons.spinner className="size-8 animate-spin" />
@@ -262,7 +263,7 @@ export function UserAuthForm({
               "rounded-full border-none p-2 px-1 hover:bg-secondary"
             )}
             onClick={handleGoogleSignIn}
-            disabled={isLoading || isGoogleLoading}
+            disabled//</div>={isLoading || isGoogleLoading}
           >
             {isGoogleLoading ? (
               <Icons.spinner className="size-8 animate-spin" />
@@ -277,7 +278,7 @@ export function UserAuthForm({
               "border-none p-2 px-1 hover:bg-secondary"
             )}
             onClick={handleLinkedinSignIn}
-            disabled={isLoading || isLinkedinLoading}
+            disabled//</div>={isLoading || isLinkedinLoading}
           >
             {isLinkedinLoading ? (
               <Icons.spinner className="size-8 animate-spin" />
@@ -292,7 +293,7 @@ export function UserAuthForm({
               "border-none p-2 px-1 hover:bg-secondary"
             )}
             onClick={handleMicrosoftSignIn}
-            disabled={isLoading || isMicrosoftLoading}
+            disabled//</div>={isLoading || isMicrosoftLoading}
           >
             {isMicrosoftLoading ? (
               <Icons.spinner className="size-8 animate-spin" />
